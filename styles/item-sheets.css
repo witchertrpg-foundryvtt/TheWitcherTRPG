@@ -1,0 +1,112 @@
+.itemname {
+    text-align: center;
+}
+
+.item-options {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    margin-top: 1px;
+    height: 54px;
+}
+
+.item-option-tickbox {
+    display: flex;
+    height: 27px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.item-column {
+    text-align: center;
+    width: 168px;
+}
+
+.item-column label{
+    display: block;
+}
+
+.item-row {
+    display: flex;
+    text-align: center;
+}
+
+.item-second-column{
+    text-align: center;
+    width: 50%;
+}
+
+.item-second-column label{
+    display: block;
+    width: 100%;
+}
+
+.weapon-dmg-type{
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 0;
+    width: 100px;
+    margin: auto;
+}
+
+.weapon-dmg-type label {
+    display: flex;
+    margin: auto;
+    align-items: center;
+}
+
+.item-bottom-table {
+    text-align: center;
+}
+
+.item-bottom-table input{
+    display: block;
+    width: 75px;
+    height: 27px;
+    margin: auto;
+}
+
+.item-effect {
+    width: 90% !important;
+}
+
+.item-bottom-table-one {
+    width: 200px;
+}
+
+.item-table input:not(.damage-type)  {
+    height: 27px !important;
+    max-width: 120px;
+}
+
+.item-table td {
+    text-align: center;
+    padding: 0.25em 0.25em;
+}
+
+.spell-template-damage {
+    width: 15em;
+    margin-top: 0.6em;
+}
+
+.spell-template-damage input{
+    float: right;
+}
+
+.spell-template-damage div {
+    display: flex;
+    height: 27px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.description .editor {
+    height: 75px;
+}
+
+.description label {
+    display: flex;
+    justify-content: center;
+}

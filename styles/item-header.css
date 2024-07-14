@@ -1,0 +1,60 @@
+.item-header {
+
+    .itemname {
+        padding-bottom: 5px;
+    }
+
+    img {
+        height: 100px;
+        width: 100px;
+        border-radius: 20%;
+    }
+
+    itemimage {
+        display: flex;
+        flex-direction: column;
+    }
+
+    itemimage>div {
+        display: flex;
+        align-items: center;
+    }
+
+    itemimage>div input[type="checkbox"] {
+        margin: 3px 5px 0 0;
+    }
+
+    .information {
+        width: 70%;
+        margin-left: 5px;
+        text-align: center;
+        border: none;
+        background: none;
+    }
+
+    .item-header-tablerow {
+        display: flex;
+        justify-content: center;
+
+        td {
+            width: 100%;
+        }
+    }
+
+    .item-header-tablerow input {
+        display: block;
+        width: 75px;
+        margin: auto;
+    }
+
+    .item-header-tablerow select {
+        display: block;
+        margin: auto;
+    }
+
+    general {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 10px
+    }
+}

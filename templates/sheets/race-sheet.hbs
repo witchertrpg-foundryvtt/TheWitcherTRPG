@@ -1,0 +1,109 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+    <div>
+    </div>
+    <h2>{{localize "WITCHER.Actor.Perks"}}</h2>
+    <div class="flexrow">
+        <div class="perk">
+            <h3><input name="system.perk1.name" type="text" value="{{item.system.perk1.name}}"/></h3>
+            {{editor item.system.perk1.description target="system.perk1.description" button=true editable=editable}}
+        </div>
+        <div class="perk">
+            <h3><input name="system.perk2.name" type="text" value="{{item.system.perk2.name}}"/></h3>
+            {{editor item.system.perk2.description target="system.perk2.description" button=true editable=editable}}
+        </div>
+    </div>
+    <div class="flexrow">
+        <div class="perk">
+            <h3><input name="system.perk3.name" type="text" value="{{item.system.perk3.name}}"/></h3>
+            {{editor item.system.perk3.description target="system.perk3.description" button=true editable=editable}}
+        </div>
+        <div class="perk">
+            <h3><input name="system.perk4.name" type="text" value="{{item.system.perk4.name}}"/></h3>
+            {{editor item.system.perk4.description target="system.perk4.description" button=true editable=editable}}
+        </div>
+    </div>
+    <div class="flexrow">
+        <table>
+            <tr>
+                <th>{{localize "WITCHER.socialStanding.north"}}</th>
+                <th>{{localize "WITCHER.socialStanding.nilfgaard"}}</th>
+                <th>{{localize "WITCHER.socialStanding.skellige"}}</th>
+                <th>{{localize "WITCHER.socialStanding.dolBlathanna"}}</th>
+                <th>{{localize "WITCHER.socialStanding.mahakam"}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <select name="system.socialStanding.north" id="socialStandingNorth-select">
+                        {{#select item.system.socialStanding.north}}
+                            <option value="equal">{{localize "WITCHER.socialStanding.equal"}}</option>
+                            <option value="tolerated">{{localize "WITCHER.socialStanding.tolerated"}}</option>
+                            <option value="hated">{{localize "WITCHER.socialStanding.hated"}}</option>
+                            <option value="feared">{{localize "WITCHER.socialStanding.feared"}}</option>
+                            <option value="toleratedFeared">{{localize
+                                    "WITCHER.socialStanding.toleratedFeared"}}</option>
+                            <option value="hatedFeared">{{localize "WITCHER.socialStanding.hatedFeared"}}</option>
+                        {{/select}}
+                    </select>
+                </td>
+                <td>
+                    <select name="system.socialStanding.nilfgaard" id="socialStandingNilfgaard-select">
+                        {{#select item.system.socialStanding.nilfgaard}}
+                            <option value="equal">{{localize "WITCHER.socialStanding.equal"}}</option>
+                            <option value="tolerated">{{localize "WITCHER.socialStanding.tolerated"}}</option>
+                            <option value="hated">{{localize "WITCHER.socialStanding.hated"}}</option>
+                            <option value="feared">{{localize "WITCHER.socialStanding.feared"}}</option>
+                            <option value="toleratedFeared">{{localize
+                                    "WITCHER.socialStanding.toleratedFeared"}}</option>
+                            <option value="hatedFeared">{{localize "WITCHER.socialStanding.hatedFeared"}}</option>
+                        {{/select}}
+                    </select>
+                </td>
+                <td>
+                    <select name="system.socialStanding.skellige" id="socialStandingSkellige-select">
+                        {{#select item.system.socialStanding.skellige}}
+                            <option value="equal">{{localize "WITCHER.socialStanding.equal"}}</option>
+                            <option value="tolerated">{{localize "WITCHER.socialStanding.tolerated"}}</option>
+                            <option value="hated">{{localize "WITCHER.socialStanding.hated"}}</option>
+                            <option value="feared">{{localize "WITCHER.socialStanding.feared"}}</option>
+                            <option value="toleratedFeared">{{localize
+                                    "WITCHER.socialStanding.toleratedFeared"}}</option>
+                            <option value="hatedFeared">{{localize "WITCHER.socialStanding.hatedFeared"}}</option>
+                        {{/select}}
+                    </select>
+                </td>
+                <td>
+                    <select name="system.socialStanding.dolBlathanna" id="socialStandingDolBlathanna-select">
+                        {{#select item.system.socialStanding.dolBlathanna}}
+                            <option value="equal">{{localize "WITCHER.socialStanding.equal"}}</option>
+                            <option value="tolerated">{{localize "WITCHER.socialStanding.tolerated"}}</option>
+                            <option value="hated">{{localize "WITCHER.socialStanding.hated"}}</option>
+                            <option value="feared">{{localize "WITCHER.socialStanding.feared"}}</option>
+                            <option value="toleratedFeared">{{localize
+                                    "WITCHER.socialStanding.toleratedFeared"}}</option>
+                            <option value="hatedFeared">{{localize "WITCHER.socialStanding.hatedFeared"}}</option>
+                        {{/select}}
+                    </select>
+                </td>
+                <td>
+                    <select name="system.socialStanding.mahakam" id="socialStandingMahakam-select">
+                        {{#select item.system.socialStanding.mahakam}}
+                            <option value="equal">{{localize "WITCHER.socialStanding.equal"}}</option>
+                            <option value="tolerated">{{localize "WITCHER.socialStanding.tolerated"}}</option>
+                            <option value="hated">{{localize "WITCHER.socialStanding.hated"}}</option>
+                            <option value="feared">{{localize "WITCHER.socialStanding.feared"}}</option>
+                            <option value="toleratedFeared">{{localize
+                                    "WITCHER.socialStanding.toleratedFeared"}}</option>
+                            <option value="hatedFeared">{{localize "WITCHER.socialStanding.hatedFeared"}}</option>
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

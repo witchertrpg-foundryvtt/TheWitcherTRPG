@@ -1,0 +1,166 @@
+.profession-roll {
+    font-size: 20px;
+    color: black;
+    display: flex;
+}
+
+.profession-card i {
+    margin: 0px 0px 0px 5px;
+}
+
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
+}
+
+.profession-roll:hover i {
+    animation: vibrate 0.2s linear infinite;
+}
+
+.profession-roll i {
+    display: inline-block;
+}
+
+.profession-layout {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+  
+.profession-notes {
+    width: 100%;
+    min-width: 250px;
+    max-width: 810px;
+    margin: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.profession-notes-header {
+    background-color: #818181;
+    padding: 8px 10px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px 5px 0 0;
+}
+
+.profession-notes .editor {
+    height: 150px;
+    border-radius: 0 0 5px 5px;
+    padding: 0px 0px 0px 5px;
+}
+
+input.profession-level {
+    width: 35px;
+    padding: 5px;
+    border-radius: 0 5px 0 0;
+    background-color: rgba(255, 255, 255, 60%);
+}
+
+input.profession-skill-input {
+    border-radius: 5px 0 0 0;
+    background-color: rgba(255, 255, 255, 60%);
+}
+
+.defining-skill-select {
+    background-color: rgb(255 255 255 / 60%);
+    border-radius: 0;
+    margin: 0 5px 0 5px;
+    height: 26px;
+}
+
+.defining-skill-header {
+    background-color: #818181;
+    color: white;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+    padding: 5px;
+}
+
+.defining-skill {
+    background-color: #c3c3c3;
+}
+
+.first-path-select {
+    background-color: rgb(255 255 255 / 60%);
+    border-radius: 0;
+    margin: 0 5px 0 5px;
+    height: 26px;
+}
+
+.first-path-header {
+    background-color: #859ecd;
+    color: white;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+    padding: 5px;
+}
+
+.first-path {
+    background-color: #c4d3ef;
+}
+
+.second-path-select {
+    background-color: rgb(255 255 255 / 60%);
+    border-radius: 0;
+    margin: 0 5px 0 5px;
+    height: 26px;
+}
+
+.second-path-header {
+    background-color: #9ccd85;
+    color: white;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+    padding: 5px;
+}
+
+.second-path {
+    background-color: #cdebbf;
+}
+
+.third-path-select {
+    background-color: rgb(255 255 255 / 60%);
+    border-radius: 0;
+    margin: 0 5px 0 5px;
+    height: 26px;
+}
+
+.third-path-header {
+    background-color: #cd8585;
+    color: white;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+    padding: 5px;
+}
+
+.third-path {
+    background-color: #edc9c9;
+}
+
+.profession-flex {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-start;
+}
+
+.profession-card .editor {
+    height: 150px;
+    border-radius: 0 0 5px 5px;
+    padding: 0px 0px 0px 5px;
+}
+
+.profession-card {
+    min-width: 250px;
+    max-width: 400px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.skill-path-name {
+    margin: 5px !important;
+    width: 97.5% !important;
+}

@@ -1,0 +1,61 @@
+<header class="item-header">
+    <h1 class="itemname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+    <a class="configure-item"><i class="fas fa-gear"></i></a>
+    <general>
+        <itemimage>
+            {{#if (and (includes (getSetting "clickableImageItemTypes") item.type)  (or (window "game" "user" "isGM") (eq (getSetting "clickableImageCheckboxForGMOnly") false)) )}}
+                <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+                <div>
+                    <input type="checkbox" id="clickable-image-{{item._id}}" name="system.clickableImage"
+                        {{checked item.system.clickableImage}}>
+                    <label for="clickable-image-{{item._id}}">{{localize "WITCHER.Item.ClickableImage"}}</label>
+                </div>
+            {{else}}
+                <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+            {{/if}}
+        </itemimage>
+
+        <table class="information">
+            <tr class="item-header-tablerow">
+                <td>
+                    <label>{{localize "WITCHER.Item.Quantity"}}</label>
+                </td>
+                <td>
+                    <input type="text" name="system.quantity" value="{{item.system.quantity}}" data-dtype="Number" />
+                </td>
+            </tr>
+            <tr class="item-header-tablerow">
+                <td>
+                    <label>{{localize "WITCHER.Item.Weight"}}</label>
+                </td>
+                <td>
+                    <input type="text" name="system.weight" value="{{item.system.weight}}" data-dtype="Number" />
+                </td>
+            </tr>
+            <tr class="item-header-tablerow">
+                {{#if (eq item.type "mutagen")}}
+                    <td>
+                        <label>{{localize "WITCHER.Type"}}</label>
+                    </td>
+                    <td>
+                        <select name="system.type" id="type-select">
+                            {{#select item.system.type}}
+                                <option value="red">{{localize "WITCHER.Mutagen.Red"}}</option>
+                                <option value="green">{{localize "WITCHER.Mutagen.Green"}}</option>
+                                <option value="blue">{{localize "WITCHER.Mutagen.Blue"}}</option>
+                            {{/select}}
+                        </select>
+                    </td>
+                {{/if}}
+                {{#unless (eq item.type "mutagen")}}
+                    <td>
+                        <label>{{localize "WITCHER.Item.Cost"}}</label>
+                    </td>
+                    <td>
+                        <input type="text" name="system.cost" value="{{item.system.cost}}" data-dtype="Number" />
+                    </td>
+                {{/unless}}
+            </tr>
+        </table>
+    </general>
+</header>

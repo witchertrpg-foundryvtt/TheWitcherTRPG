@@ -1,0 +1,74 @@
+<header class="item-header">
+    <h1 class="itemname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+    <a class="configure-item"><i class="fas fa-gear"></i></a>
+    <general>
+        <itemimage>
+            {{#if (and (includes (getSetting "clickableImageItemTypes") item.type)  (or (window "game" "user" "isGM") (eq (getSetting "clickableImageCheckboxForGMOnly") false)) )}}
+                <div class="item-header-wrapper">
+                    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+                    <div>
+                        <input type="checkbox" id="clickable-image-{{item._id}}" name="system.clickableImage"
+                            {{checked item.system.clickableImage}}>
+                        <label for="clickable-image-{{item._id}}">{{localize "WITCHER.Item.ClickableImage"}}</label>
+                    </div>
+                </div>
+            {{else}}
+                <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+            {{/if}}
+        </itemimage>
+
+        <table class="information">
+            <tr class="item-header-tablerow">
+                <td>
+                    <label>{{localize "WITCHER.Spell.type"}}</label>
+                </td>
+                <td>
+                    <select name="system.class" id="profession-select">
+                        {{selectOptions selects.class selected=item.system.class localize=true}}
+                    </select>
+                </td>
+            </tr>
+            {{#unless (eq item.system.class "Hexes")}}
+                <tr class="item-header-tablerow">
+                    <td>
+                        <label>{{localize "WITCHER.Actor.Profession.Level"}}</label>
+                    </td>
+                    <td>
+                        {{#unless (eq item.system.class "MagicalGift")}}
+                            <select name="system.level">
+                                {{selectOptions selects.levelSpell selected=item.system.level localize=true}}
+                            </select>
+                        {{/unless}}
+                        {{#if (eq item.system.class "MagicalGift")}}
+                            <select name="system.level">
+                                {{selectOptions selects.levelMagicalGift selected=item.system.level localize=true}}
+                            </select>
+                        {{/if}}
+                    </td>
+                </tr>
+            {{/unless}}
+            <tr class="item-header-tablerow">
+                {{#if (or (eq item.system.class "Spells") (eq item.system.class "Witcher"))}}
+                    <td>
+                        <label>{{localize "WITCHER.Spell.Element"}}</label>
+                    </td>
+                    <td>
+                        <select name="system.source">
+                            {{selectOptions selects.sourceElements selected=item.system.source localize=true}}
+                        </select>
+                    </td>
+                {{/if}}
+                {{#if (eq item.system.class "Invocations")}}
+                    <td>
+                        <label>{{localize "WITCHER.Spell.Type"}}</label>
+                    </td>
+                    <td>
+                        <select name="system.source">
+                            {{selectOptions selects.sourceClass selected=item.system.source localize=true}}
+                        </select>
+                    </td>
+                {{/if}}
+            </tr>
+        </table>
+    </general>
+</header>

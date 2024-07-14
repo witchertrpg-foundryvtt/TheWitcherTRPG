@@ -1,0 +1,24 @@
+.effect-list{
+    margin-left: 10px;
+    flex: 1
+}
+.sp-table{
+    flex: 1
+}
+
+.sp {
+    align-items: center;
+}
+
+.sp i{
+    height: 20px;
+    width: 20px;
+}
+
+.location-table{
+    width: 100px;
+}
+
+.icon-spacer {
+    width: 10px;
+}

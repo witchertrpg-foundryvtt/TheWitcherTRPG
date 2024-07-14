@@ -1,0 +1,27 @@
+.left-loot-border {
+    border-right: solid 1px;
+    width: 150px;
+    height: 100%;
+}
+
+.loot-img {
+    max-width: 140px;
+    margin-top: 10px;
+    border-width: 0px;
+}
+
+table tr.hidden-view {
+    background-color: silver;
+}
+
+.hidden-from-view {
+    display: none
+}
+
+.table-empty-space {
+    width: 30px;
+}
+
+.table-empty-end-space {
+    width: 75px;
+}

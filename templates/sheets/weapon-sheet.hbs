@@ -1,0 +1,125 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{>"systems/TheWitcherTRPG/templates/partials/item-header.hbs"}}
+    <details class="description">
+        <summary>{{localize "WITCHER.Item.Description"}}</summary>
+        <textarea rows=5 name="system.description">{{item.system.description}}</textarea>
+    </details>
+    <div class="item-options">
+        <div class="item-column">
+            <div class="item-option-tickbox">
+                <label>{{localize "WITCHER.Weapon.onlyDmg"}}</label>
+                <input type="checkbox" name="system.rollOnlyDmg" {{checked item.system.rollOnlyDmg}} />
+            </div>
+            <div class="item-option-tickbox">
+                <label>{{localize "WITCHER.Weapon.useAmmo"}}</label>
+                <input type="checkbox" name="system.usingAmmo" {{checked item.system.usingAmmo}} />
+            </div>
+        </div>
+        <div class="item-column">
+            <div class="item-option-tickbox">
+                <label>{{localize "WITCHER.Weapon.isAmmunition"}}</label>
+                <input type="checkbox" name="system.isAmmo" {{checked item.system.isAmmo}} />
+            </div>
+            <div class="item-option-tickbox">
+                <label>{{localize "WITCHER.Weapon.isThrowable"}}</label>
+                <input type="checkbox" name="system.isThrowable" {{checked item.system.isThrowable}} />
+            </div>
+        </div>
+        <div class="item-column">
+            {{#unless item.system.isAmmo}}
+                <label>{{localize "WITCHER.Weapon.AttackSkill"}}:</label>
+                <select name="system.attackSkill">
+                    {{selectOptions config.attackSkills selected=item.system.attackSkill valueAttr="name" nameAttr="name" labelAttr="label" localize=true}}
+                </select>
+            {{/unless}}
+        </div>
+    </div>
+    <table class="item-table">
+        <tr>
+            <th>{{localize 'WITCHER.Dialog.damageType'}}</th>
+            {{#unless item.system.isAmmo}}
+                <th title="{{localize 'WITCHER.Weapon.WeaponAccuracy'}}">{{localize
+                        "WITCHER.Weapon.Short.WeaponAccuracy"}}</th>
+            {{/unless}}
+            <th title="{{localize 'WITCHER.Item.Availability'}}">{{localize "WITCHER.Item.Short.Availability"}}</th>
+            <th title="{{localize 'WITCHER.Weapon.Reliability'}}">{{localize "WITCHER.Weapon.Short.Reliability"}}</th>
+            <th title="{{localize 'WITCHER.Weapon.MaxReliability'}}">{{localize
+                    "WITCHER.Weapon.Short.MaxReliability"}}</th>
+            {{#unless item.system.isAmmo}}
+                <th>{{localize "WITCHER.Weapon.Hands.title"}}</th>
+            {{/unless}}
+            <th title="{{localize 'WITCHER.Weapon.Concealment'}}">{{localize "WITCHER.Weapon.Short.Concealment"}}</th>
+            {{#unless item.system.isAmmo}}
+                <th title="{{localize 'WITCHER.Weapon.Enhancements'}}">{{localize
+                        "WITCHER.Weapon.Short.Enhancements"}}</th>
+                <th title="{{localize 'WITCHER.Weapon.RateOfFire'}}">{{localize "WITCHER.Weapon.Short.RateOfFire"}}</th>
+            {{/unless}}
+
+        </tr>
+        <tr>
+            <td class="weapon-dmg-type">
+                <label>{{localize "WITCHER.Enhancement.Slashing"}}<input class="damage-type"
+                        title="{{localize 'WITCHER.Armor.slashing'}}" type="checkbox" id="slashing" {{checked
+                            item.system.type.slashing}} /></label>
+                <label>{{localize "WITCHER.Enhancement.Piercing"}}<input class="damage-type"
+                        title="{{localize 'WITCHER.Armor.piercing'}}" type="checkbox" id="piercing" {{checked
+                            item.system.type.piercing}} /></label>
+                <label>{{localize "WITCHER.Enhancement.Bludgeoning"}}<input class="damage-type" title="{{localize
+                        'WITCHER.Armor.bludgeoning'}}" type="checkbox" id="bludgeoning" {{checked
+                        item.system.type.bludgeoning}} /></label>
+                <label>{{localize "WITCHER.Enhancement.Elemental"}}<input class="damage-type"
+                        title="{{localize 'WITCHER.Armor.elemental'}}" type="checkbox" id="elemental" {{checked
+                            item.system.type.elemental}} /></label>
+            </td>
+            {{#unless item.system.isAmmo}}
+                <td>
+                    <input type="number" name="system.accuracy" value="{{item.system.accuracy}}" data-dtype="Number" />
+                </td>
+            {{/unless}}
+            <td>
+                <select name="system.avail" id="avail-select">
+                    {{selectOptions config.Availability blank='' selected=item.system.avail localize=true}}
+                </select>
+            </td>
+            <td><input type="number" name="system.reliable" value="{{item.system.reliable}}" data-dtype="Number" /></td>
+            <td><input type="number" name="system.maxReliability" value="{{item.system.maxReliability}}"
+                    data-dtype="Number" /></td>
+            {{#unless item.system.isAmmo}}
+                <td>
+                    <select name="system.hands" id="hands-select">
+                        {{selectOptions config.weapon.hands selected=item.system.hands localize=true}}
+                    </select>
+                </td>
+            {{/unless}}
+            <td>
+                <select name="system.conceal">
+                    {{selectOptions config.Concealment blank='' selected=item.system.conceal localize=true}}
+                </select>
+            </td>
+            {{#unless item.system.isAmmo}}
+                <td><input type="number" name="system.enhancements" value="{{item.system.enhancements}}"
+                        data-dtype="Number" /></td>
+                <td><input type="number" name="system.rateOfFire" value="{{item.system.rateOfFire}}"
+                        data-dtype="Number" /></td>
+            {{/unless}}
+        </tr>
+    </table>
+    <div class="flex">
+        {{#unless item.system.isAmmo}}
+            <table class="item-bottom-table item-bottom-table-one">
+                <tr>
+                    <th>{{localize "WITCHER.Weapon.Damage"}}</th>
+                    <th>{{localize "WITCHER.Weapon.Range"}}</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="system.damage" placeholder="1d6+0" value="{{item.system.damage}}" />
+                    </td>
+                    <td>
+                        <b><input type="text" name="system.range" placeholder="0m" value="{{item.system.range}}" /></b>
+                    </td>
+                </tr>
+            </table>
+        {{/unless}}
+    </div>
+</form>

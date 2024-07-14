@@ -1,0 +1,41 @@
+.editor {
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.308);
+    min-height: 100px;
+}
+
+.tox.tox-tinymce {
+    min-height: 200px;
+    min-width: 200px;
+}
+
+.lifeEvents {
+    margin: 10px;
+}
+
+.add-item {
+    margin-right: 5px;
+}
+
+.bg-note {
+    width: 80%;
+    float: left;
+    margin: 5px;
+}
+
+.item-delete {
+    margin: 5px;
+    width: 15px;
+}
+
+.crit-wounds {
+    min-width: 783px;
+    flex-grow: 1;
+    margin: 5px;
+    padding: 10px;
+
+}
+
+.modifier-display {
+    min-width: 100px;
+}

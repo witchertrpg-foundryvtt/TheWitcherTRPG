@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "module": "es6",
+      "target": "ES6"
+    },
+    "exclude": ["node_modules", "**/node_modules/*"],
+    "include": ["foundry/**/*.js", "foundry/**/*.mjs"],
+    "typeAcquisition": {
+      "include": ["jquery"]
+    }
+  }

@@ -1,0 +1,31 @@
+{{! Sheet Header }}
+<header class="actor-sheet-header">
+     {{> "systems/TheWitcherTRPG/templates/partials/character-header.hbs"}}
+</header>
+
+{{! Sheet Tab Navigation }}
+<nav class="sheet-tabs tabs flexrow" data-group="primary">
+     <a data-tab="skills">{{localize "WITCHER.Actor.SkillTab"}}</a>
+     <a data-tab="profession">{{localize "WITCHER.Actor.ProfessionTab"}}</a>
+     <a data-tab="inventory">{{localize "WITCHER.Actor.InventoryTab"}}</a>
+     <a data-tab="magic">{{localize "WITCHER.Actor.MagicTab"}}</a>
+     <a data-tab="background">{{localize "WITCHER.Actor.BackgroundTab"}}</a>
+</nav>
+{{! Sheet Body }}
+<section class="sheet-body">
+     <div class="tab" data-group="primary" data-tab="skills">
+          {{> "systems/TheWitcherTRPG/templates/partials/character/tab-skills.hbs"}}
+     </div>
+     <div class="tab" data-group="primary" data-tab="profession">
+          {{> "systems/TheWitcherTRPG/templates/partials/character/tab-profession.hbs"}}
+     </div>
+     <div class="tab" data-group="primary" data-tab="inventory">
+          {{> "systems/TheWitcherTRPG/templates/partials/character/tab-inventory.hbs"}}
+     </div>
+     <div class="tab" data-group="primary" data-tab="magic">
+          {{> "systems/TheWitcherTRPG/templates/partials/character/tab-magic.hbs"}}
+     </div>
+     <div class="tab" data-group="primary" data-tab="background">
+          {{~> "systems/TheWitcherTRPG/templates/partials/character/tab-background.hbs"~}}
+     </div>
+</section>

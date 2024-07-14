@@ -1,0 +1,33 @@
+.container-item {
+
+    .header {
+        display: flex;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .header input {
+        max-width: 90%;
+        margin-right: 10px;
+    }
+
+    .quantity-weight {
+        display: flex;
+    }
+
+}
+
+.container-item .item-content {
+    display: block;
+    border-style: inset;
+    margin: 5px;
+    padding: 5px;
+}
+
+.storedWeight {
+    display: flex;
+    gap: 10px;
+
+    text-align: center;
+    font-size: 1.2em;
+}

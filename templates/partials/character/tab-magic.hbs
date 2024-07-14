@@ -1,0 +1,426 @@
+<div class="flex">
+    <div class="spell-section">
+        <h2>
+            {{localize "WITCHER.Spell.Novice"}} -
+            {{localize "WITCHER.Spell.Spells"}},
+            {{localize "WITCHER.Spell.Invocations"}},
+            {{localize "WITCHER.Spell.Signs"}}
+            <a class="add-item" data-itemType="spell" data-spellType="spellNovice">
+                <i class="fas fa-plus"></i>
+            </a>
+        </h2>
+        <table class="novice-spell-table item-list">
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>{{localize "WITCHER.table.Name"}}</b></td>
+                <td><b>{{localize "WITCHER.Spell.StaCost"}}</b></td>
+                <td></td>
+            </tr>
+            {{#each noviceSpells as |noviceSpell id|}}
+                <tbody class="item" data-item-id="{{noviceSpell._id}}">
+                    <tr>
+                        <td>
+                            <div class="flex">
+                                <a class="item-spell-display"><i class="fas fa-info"></i></a>
+                                <a class="item-edit"><i class="fas fa-edit"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <img src="{{noviceSpell.img}}" class="item-img dragable" draggable="true"
+                                data-id="{{noviceSpell._id}}" />
+                        </td>
+                        <td><a class="spell-roll">{{noviceSpell.name}}</a></td>
+                        <td>
+                            <input class="inline-edit spell-sta" data-field="system.stamina" type="text"
+                                value="{{noviceSpell.system.stamina}}" placeholder="1" data-dtype="Number" />
+                        </td>
+                        <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+                    </tr>
+                    <tr class="item-info invisible">
+                        <td colspan="4">
+                            <div>
+                                <div class="flex">
+                                    <label>
+                                        <b>{{localize "WITCHER.Spell.Effect"}}: </b>
+                                    </label>{{noviceSpell.system.effect}}
+                                </div>
+                                <div class="flex justify">
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Mutagen.Source"}}: </b>
+                                        </label>{{noviceSpell.system.source}}
+                                    </div>
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Spell.Range"}}: </b>
+                                        </label>{{noviceSpell.system.range}}
+                                    </div>
+                                </div>
+                                <div class="flex justify">
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Spell.Duration"}}: </b>
+                                        </label>{{noviceSpell.system.duration}}
+                                    </div>
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Spell.Defence"}}: </b>
+                                        </label>{{noviceSpell.system.defence}}
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            {{/each}}
+        </table>
+
+        <h2>
+            {{localize "WITCHER.Spell.Journeyman"}} -
+            {{localize "WITCHER.Spell.Spells"}},
+            {{localize "WITCHER.Spell.Invocations"}},
+            {{localize "WITCHER.Spell.Signs"}}
+            <a class="add-item" data-itemType="spell" data-spellType="spellJourneyman">
+                <i class="fas fa-plus"></i>
+            </a>
+        </h2>
+        <table class="journeyman-spell-table item-list">
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>{{localize "WITCHER.table.Name"}}</b></td>
+                <td><b>{{localize "WITCHER.Spell.StaCost"}}</b></td>
+                <td></td>
+            </tr>
+            {{#each journeymanSpells as |journeymanSpell id|}}
+                <tbody class="item" data-item-id="{{journeymanSpell._id}}">
+                    <tr>
+                        <td>
+                            <div class="flex">
+                                <a class="item-spell-display"><i class="fas fa-info"></i></a>
+                                <a class="item-edit"><i class="fas fa-edit"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <img src="{{journeymanSpell.img}}" class="item-img dragable" draggable="true"
+                                data-id="{{journeymanSpell._id}}" />
+                        </td>
+                        <td><a class="spell-roll">{{journeymanSpell.name}}</a></td>
+                        <td>
+                            <input class="inline-edit spell-sta" data-field="system.stamina" type="text"
+                                value="{{journeymanSpell.system.stamina}}" placeholder="1" data-dtype="Number" />
+                        </td>
+                        <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+                    </tr>
+                    <tr class="item-info invisible">
+                        <td colspan="4">
+                            <div>
+                                <div class="flex">
+                                    <label>
+                                        <b>{{localize "WITCHER.Spell.Effect"}}: </b>
+                                    </label>{{journeymanSpell.system.effect}}
+                                </div>
+                                <div class="flex justify">
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Mutagen.Source"}}: </b>
+                                        </label>{{journeymanSpell.system.source}}
+                                    </div>
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Spell.Range"}}: </b>
+                                        </label>{{journeymanSpell.system.range}}
+                                    </div>
+                                </div>
+                                <div class="flex justify">
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Spell.Duration"}}: </b>
+                                        </label>{{journeymanSpell.system.duration}}
+                                    </div>
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Spell.Defence"}}: </b>
+                                        </label>{{journeymanSpell.system.defence}}
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            {{/each}}
+        </table>
+
+        <h2>
+            {{localize "WITCHER.Spell.Master"}} -
+            {{localize "WITCHER.Spell.Spells"}},
+            {{localize "WITCHER.Spell.Invocations"}},
+            {{localize "WITCHER.Spell.Signs"}}
+            <a class="add-item" data-itemType="spell" data-spellType="spellMaster">
+                <i class="fas fa-plus"></i>
+            </a>
+        </h2>
+        <table class="master-spell-table item-list">
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>{{localize "WITCHER.table.Name"}}</b></td>
+                <td><b>{{localize "WITCHER.Spell.StaCost"}}</b></td>
+                <td></td>
+            </tr>
+            {{#each masterSpells as |masterSpell id|}}
+                <tbody class="item" data-item-id="{{masterSpell._id}}">
+                    <tr>
+                        <td>
+                            <div class="flex">
+                                <a class="item-spell-display"><i class="fas fa-info"></i></a>
+                                <a class="item-edit"><i class="fas fa-edit"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <img src="{{masterSpell.img}}" class="item-img dragable" draggable="true"
+                                data-id="{{masterSpell._id}}" />
+                        </td>
+                        <td><a class="spell-roll">{{masterSpell.name}}</a></td>
+                        <td>
+                            <input class="inline-edit spell-sta" data-field="system.stamina" type="text"
+                                value="{{masterSpell.system.stamina}}" placeholder="1" data-dtype="Number" />
+                        </td>
+                        <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+                    </tr>
+                    <tr class="item-info invisible">
+                        <td colspan="4">
+                            <div>
+                                <div class="flex">
+                                    <label>
+                                        <b>{{localize "WITCHER.Spell.Effect"}}: </b>
+                                    </label>{{masterSpell.system.effect}}
+                                </div>
+                                <div class="flex justify">
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Mutagen.Source"}}: </b>
+                                        </label>{{masterSpell.system.source}}
+                                    </div>
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Spell.Range"}}: </b>
+                                        </label>{{masterSpell.system.range}}
+                                    </div>
+                                </div>
+                                <div class="flex justify">
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Spell.Duration"}}: </b>
+                                        </label>{{masterSpell.system.duration}}
+                                    </div>
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Spell.Defence"}}: </b>
+                                        </label>{{masterSpell.system.defence}}
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            {{/each}}
+        </table>
+    </div>
+    <div class="magic-section">
+        <div class="magic-info">
+            <div class="value-max-stat-display">
+                <label>{{localize "WITCHER.StVigor"}}</label>
+                <input class="focus-value" name="system.derivedStats.vigor.unmodifiedMax" type="number"
+                    value="{{system.derivedStats.vigor.unmodifiedMax}}" placeholder="0" data-dtype="Number" />
+                <span> -> {{system.derivedStats.vigor.max}}</span>
+            </div>
+            <div class="flex">
+                <input class="focus" name="system.focus1.name" type="text" value="{{system.focus1.name}}"
+                    placeholder="First Focus" />
+                <input class="focus-value" name="system.focus1.value" type="text" value="{{system.focus1.value}}"
+                    placeholder="0" />
+            </div>
+            <div class="flex">
+                <input class="focus" name="system.focus2.name" type="text" value="{{system.focus2.name}}"
+                    placeholder="Second Focus" />
+                <input class="focus-value" name="system.focus2.value" type="text" value="{{system.focus2.value}}"
+                    placeholder="0" />
+            </div>
+            <div class="flex">
+                <input class="focus" name="system.focus3.name" type="text" value="{{system.focus3.name}}"
+                    placeholder="Third Focus" />
+                <input class="focus-value" name="system.focus3.value" type="text" value="{{system.focus3.value}}"
+                    placeholder="0" />
+            </div>
+            <div class="flex">
+                <input class="focus" name="system.focus4.name" type="text" value="{{system.focus4.name}}"
+                    placeholder="Fourth Focus" />
+                <input class="focus-value" name="system.v.value" type="text" value="{{system.focus4.value}}"
+                    placeholder="0" />
+            </div>
+        </div>
+        <h2>{{localize "WITCHER.Spell.Rituals"}}
+            <a class="add-item" data-itemType="spell" data-spellType="rituals">
+                <i class="fas fa-plus"></i>
+            </a>
+        </h2>
+        <table class="hexes-table item-list">
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>{{localize "WITCHER.table.Name"}}</b></td>
+                <td><b>{{localize "WITCHER.Spell.StaCost"}}</b></td>
+                <td></td>
+            </tr>
+            {{#each rituals as |ritual id|}}
+                <tbody class="item" data-item-id="{{ritual._id}}">
+                    <tr>
+                        <td>
+                            <div class="flex">
+                                <a class="item-spell-display"><i class="fas fa-info"></i></a>
+                                <a class="item-edit"><i class="fas fa-edit"></i></a>
+                            </div>
+                        </td>
+                        <td><img src="{{ritual.img}}" class="item-img dragable" draggable="true"
+                                data-id="{{ritual._id}}" />
+                        </td>
+                        <td><a class="spell-roll">{{ritual.name}}</a></td>
+                        <td><input class="inline-edit spell-sta" data-field="system.stamina" type="text"
+                                value="{{ritual.system.stamina}}" placeholder="1" data-dtype="Number" /></td>
+                        <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+                    </tr>
+                    <tr class="item-info invisible">
+                        <td colspan="4">
+                            <div>
+                                <div class="flex">
+                                    <label><b>{{localize "WITCHER.Spell.Effect"}}: </b>
+                                    </label>{{ritual.system.effect}}
+                                </div>
+                                <div class="flex">
+                                    <label>
+                                        <b>{{localize "WITCHER.Spell.Components"}}: </b>
+                                    </label>{{ritual.system.components}}
+                                </div>
+                                <div class="flex justify">
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Spell.PrepTime"}}: </b>
+                                        </label>{{ritual.system.preparationTime}}
+                                    </div>
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.DC"}}: </b>
+                                        </label>{{ritual.system.difficultyCheck}}
+                                    </div>
+                                    <div class="flex1">
+                                        <label>
+                                            <b>{{localize "WITCHER.Spell.Duration"}}: </b>
+                                        </label>{{ritual.system.duration}}
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            {{/each}}
+        </table>
+        <h2>{{localize "WITCHER.Spell.Hexes"}}
+            <a class="add-item" data-itemType="spell" data-spellType="hexes">
+                <i class="fas fa-plus"></i>
+            </a>
+        </h2>
+        <table class="hexes-table item-list">
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>{{localize "WITCHER.table.Name"}}</b></td>
+                <td><b>{{localize "WITCHER.Spell.StaCost"}}</b></td>
+                <td></td>
+            </tr>
+            {{#each hexes as |hex id|}}
+                <tbody class="item" data-item-id="{{hex._id}}">
+                    <tr>
+                        <td>
+                            <div class="flex">
+                                <a class="item-spell-display"><i class="fas fa-info"></i></a>
+                                <a class="item-edit"><i class="fas fa-edit"></i></a>
+                            </div>
+                        </td>
+                        <td><img src="{{hex.img}}" class="item-img dragable" draggable="true" data-id="{{hex._id}}" />
+                        </td>
+                        <td><a class="spell-roll">{{hex.name}}</a></td>
+                        <td><input class="inline-edit spell-sta" data-field="system.stamina" type="text"
+                                value="{{hex.system.stamina}}" placeholder="1" data-dtype="Number" /></td>
+                        <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+                    </tr>
+                    <tr class="item-info invisible">
+                        <td colspan="4">
+                            <div>
+                                <div class="flex">
+                                    <label>
+                                        <b>{{localize "WITCHER.Spell.Effect"}}: </b>
+                                    </label>{{hex.system.effect}}
+                                </div>
+                                <div class="flex">
+                                    <label>
+                                        <b>{{localize "WITCHER.Spell.Requirements"}}: </b>
+                                    </label>{{hex.system.liftRequirement}}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            {{/each}}
+        </table>
+        <h2>{{localize "WITCHER.Spell.MagicalGift"}}
+            <a class="add-item" data-itemType="spell" data-spellType="magicalgift">
+                <i class="fas fa-plus"></i>
+            </a>
+        </h2>
+        <table class="magicalgift-table item-list">
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>{{localize "WITCHER.table.Name"}}</b></td>
+                <td><b>{{localize "WITCHER.Spell.StaCost"}}</b></td>
+                <td></td>
+            </tr>
+            {{#each magicalgift as |magicalgift id|}}
+                <tbody class="item" data-item-id="{{magicalgift._id}}">
+                    <tr>
+                        <td>
+                            <div class="flex">
+                                <a class="item-spell-display"><i class="fas fa-info"></i></a>
+                                <a class="item-edit"><i class="fas fa-edit"></i></a>
+                            </div>
+                        </td>
+                        <td><img src="{{magicalgift.img}}" class="item-img dragable" draggable="true"
+                                data-id="{{magicalgift._id}}" /></td>
+                        <td><a class="spell-roll">{{magicalgift.name}}</a></td>
+                        <td><input class="inline-edit spell-sta" data-field="system.stamina" type="text"
+                                value="{{magicalgift.system.stamina}}" placeholder="1" data-dtype="Number" /></td>
+                        <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+                    </tr>
+                    <tr class="item-info invisible">
+                        <td colspan="4">
+                            <div>
+                                <div class="flex">
+                                    <label>
+                                        <b>{{localize "WITCHER.Spell.Effect"}}: </b>
+                                    </label>{{magicalgift.system.effect}}
+                                </div>
+                                <div class="flex">
+                                    <label>
+                                        <b>{{localize "WITCHER.Spell.SideEffect"}}: </b>
+                                    </label>{{magicalgift.system.sideEffect}}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            {{/each}}
+        </table>
+    </div>
+</div>

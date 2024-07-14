@@ -1,0 +1,69 @@
+<label>{{localize "WITCHER.Monster.Resistances"}}</label>
+<input type="text" name="system.resistances" value="{{system.resistances}}" placeholder="" />
+<label>{{localize "WITCHER.Monster.Immunities"}}</label>
+<input type="text" name="system.immunities" value="{{system.immunities}}" placeholder="" />
+<label>{{localize "WITCHER.Monster.ImmunitiesStatusEffects"}}</label>
+<multi-select name="system.statusEffectImmunities">
+    {{selectOptions config.statusEffects selected=system.statusEffectImmunities nameAttr='id' valueAttr="id" labelAttr="label" localize=true}}
+</multi-select>
+<label>{{localize "WITCHER.Monster.Susceptibilities"}}</label>
+<input type="text" name="system.susceptibilities" value="{{system.susceptibilities}}" placeholder="" />
+<label>{{localize "WITCHER.Monster.Senses"}}</label>
+<input type="text" name="system.senses" value="{{system.senses}}" placeholder="" />
+
+<div class="monster-crit-wounds-section">
+    <h2>{{localize "WITCHER.CritWound.Header"}}<a class="add-crit" data-itemType="note"><i class="fas fa-plus"></i></a>
+    </h2>
+    {{> "systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs"}}
+</div>
+
+<h2>{{localize "WITCHER.background.globalModifier"}}<a class="add-global-modifier"><i class="fas fa-plus"></i></a></h2>
+{{#each globalModifiers as |globalModifier ev|}}
+    <div class="item" data-item-id="{{globalModifier.id}}">
+        <div class="flex">
+            <a class="item-edit"><i class="fas fa-edit"></i></a>
+            <img src="{{globalModifier.img}}" class="item-img" />
+            <label class="modifier-flex"><b>{{globalModifier.name}}</b></label>
+            <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+        </div>
+        <div class="flex">
+            <div class="modifier-flex">
+                {{#each globalModifier.system.stats as |stat index|}}
+                    <div>{{localize stat.stat}}:{{stat.modifier}}</div>
+                {{/each}}
+            </div>
+            <div class="modifier-flex">
+                {{#each globalModifier.system.derived as |derived index|}}
+                    <div>{{localize derived.derivedStat}}:{{derived.modifier}}</div>
+                {{/each}}
+            </div>
+            <div class="modifier-flex">
+                {{#each globalModifier.system.skills as |skill index|}}
+                    <div>{{localize skill.skill}}:{{skill.modifier}}</div>
+                {{/each}}
+            </div>
+        </div>
+        <textarea rows=3>{{globalModifier.system.description}}</textarea>
+    </div>
+{{/each}}
+
+<h2>{{localize "WITCHER.Notes"}} <a class="add-item" data-itemType="note"><i class="fas fa-plus"></i></a></h2>
+
+{{#each oldNotes as |note id|}}
+    <div class="item bg-note" data-item-id="{{note._id}}">
+        <div class="flex">
+            <input class="inline-edit" data-field="name" type="text" value="{{note.name}}" placeholder="name" />
+            <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+        </div>
+        <textarea class="inline-edit" rows="5" data-field="system.description">{{system.description}}</textarea>
+    </div>
+{{/each}}
+{{#each notes as |note|}}
+    <div class="item bg-note">
+        <div class="flex">
+            <input type="text" name="system.notes.{{@index}}.title" value="{{note.title}}" />
+            <a class="delete-note" data-note-index="{{@index}}"><i class="fas fa-trash-alt"></i></a>
+        </div>
+        {{editor note.details target=(concat "system.notes." @index ".details") button=true }}
+    </div>
+{{/each}}

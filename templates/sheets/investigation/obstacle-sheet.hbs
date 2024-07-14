@@ -1,0 +1,20 @@
+<form class="{{cssClass}}" autocomplete="off">
+     <h1 class="itemname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+
+     <label>{{localize "WITCHER.Type"}}</label>
+     <input type="text" name="system.type" value="{{item.system.type}}"/>
+
+     <label>{{localize "WITCHER.DC"}}</label>
+     <input type="number" name="system.dc" value="{{item.system.dc}}"/>
+
+     <label>{{localize "WITCHER.Investigation.skillsUsed"}}</label>
+     <multi-select class="inline-edit" name="system.skillsUsed"> 
+          {{selectOptions skills selected=item.system.skillsUsed nameAttr='name' valueAttr="name" labelAttr="label" localize=true}}
+     </multi-select>
+
+     <label>{{localize "WITCHER.Investigation.successDamage"}}</label>
+     <input type="text" name="system.successDamage" value="{{item.system.successDamage}}"/>
+
+     <label>{{localize "WITCHER.Investigation.failDamage"}}</label>
+     <input type="text" name="system.failDamage" value="{{item.system.failDamage}}"/>
+</form>

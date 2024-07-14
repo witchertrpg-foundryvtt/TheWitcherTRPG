@@ -1,0 +1,9 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{#if (eq actor.type "character")}}
+        {{~> "systems/TheWitcherTRPG/templates/sheets/actor/character-sheet.hbs"~}}
+    {{else if (eq actor.type "monster")}}
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/monster-sheet.hbs"}}
+    {{else if (eq actor.type "loot")}}
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/loot-sheet.hbs"}}
+    {{/if}}
+</form>

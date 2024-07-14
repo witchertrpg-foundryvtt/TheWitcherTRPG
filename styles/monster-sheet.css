@@ -1,0 +1,319 @@
+.monster-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.monster-flex-small {
+  flex-grow: 1;
+  flex-basis: 100%;
+}
+
+.break {
+  height: 0;
+  flex-basis: 100%;
+}
+
+.monster-main {
+  display: flex;
+  min-height: 630px;
+  flex-wrap: wrap;
+}
+
+.monster-sheet-left-column {
+  padding-right: 10px;
+  flex-basis: 180px;
+  flex: none;
+}
+
+.monster-left-sidebar {
+  flex-basis: 180px;
+  flex: none;
+}
+
+.monster-left-sidebar input {
+  font-weight: bold;
+  margin-right: 1px;
+  margin-bottom: 1px;
+  text-align: center;
+}
+
+.monster-stat-title label {
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+.monster-stat-title {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.monster-stat-lable {
+  display: inline-block;
+  width: 65px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.monster-stat-modmax {
+  font-weight: bold;
+  text-align: center;
+}
+
+.monster-stat-display {
+  display: flex;
+  text-align: center;
+  justify-content: flex-end;
+}
+
+.monster-stat-button {
+  width: 65px;
+  height: 26px;
+  background-color: darkred;
+  border-radius: 12px;
+  color: white;
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.monster-stat-button:hover {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+.monster-stat-display label {
+  font-weight: bold;
+  width: 55px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.monster-armor {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.monster-armor label {
+  font-weight: bold;
+  float: left;
+  width: 90px;
+  margin: 5px;
+}
+
+.monster-custom {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.monster-custom label {
+  margin: 5px;
+  width: 90px;
+  font-weight: bold;
+}
+
+.monster-HPSTA {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.monster-HPSTA label {
+  font-weight: bold;
+  width: 65px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.monster-header-center {
+  min-width: 380px;
+  flex: none;
+  margin: 0 20px 0 20px;
+}
+
+.monster-center-top {
+  display: flex;
+  margin-bottom: 1px;
+}
+
+.monster-center-top label,
+.monster-center-top select,
+.monster-center-top input {
+  font-weight: bold;
+  text-align: center;
+}
+
+.monster-center-top select {
+  height: 26px;
+}
+
+.monster-center-top div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3px;
+}
+
+.monster-type {
+  width: 110px;
+}
+
+.monster-difficulity,
+.monster-bounty {
+  width: 80px;
+}
+
+.monster-complexity {
+  width: 90px;
+}
+
+.monster-img {
+  width: 375px;
+  height: 545px;
+}
+
+.cat-img {
+  position: absolute;
+  height: 75px;
+  width: 75px;
+  top: 10px;
+  left: 10px;
+  border: none;
+}
+
+.monster-info {
+  position: absolute;
+  top: 410px;
+  left: 10px;
+  width: 250px;
+  background-color: silver;
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.monster-info input {
+  height: 18px;
+  font-weight: bold;
+}
+
+.monster-knowledge {
+  margin-top: 10px;
+  flex-basis: 380px;
+  flex-grow: 1;
+}
+
+.monster-knowledge label,
+.monster-knowledge input {
+  font-weight: bold;
+  text-align: center;
+}
+
+.monster-right-sidebar {
+  flex: 1 0;
+  overflow: hidden;
+  width: 100%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill-available;
+}
+
+.monster-right-buttons {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: flex-start;
+}
+
+.monster-right-attributes {
+  font-size: 15px;
+}
+
+.monster-right-attributes .right-element {
+  height: 45px;
+  width: 45px;
+  margin: 0 0 5px 5px;
+}
+
+.monster-right-attributes .right-image {
+  height: 100%;
+}
+
+.monster-right-attributes .right-value {
+  font-size: 15px;
+  bottom: 40px;
+  position: relative;
+  left: 20px;
+}
+
+.monster-right-attributes .death-section {
+  margin: 10px 0 0 20px
+}
+
+.monster-right-top {
+  padding: 10px;
+  flex-basis: 270px;
+  background-color: lightslategrey;
+  border-radius: 10px;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.monster-right-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.monster-crit-wounds-section {
+  margin-top: 10px;
+}
+
+.monster-button-roll {
+  width: 126.5px;
+}
+
+.monster-button-column {
+  width: 115px;
+  margin-left: 2.5px;
+}
+
+.monster-button-roll a {
+  display: flex;
+  width: 110px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  background-color: darkred;
+  border-radius: 12px;
+  color: white;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  margin: 0 auto;
+}
+
+.monster-button-roll a:hover {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+.monster-custom input:hover {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+.monster-knowledge .editor-content {
+  height: 100px;
+}
+
+.modifier-flex {
+  flex: 1
+}
+
+.img-view {
+  position: relative;
+}

@@ -1,0 +1,40 @@
+<div class="witcherTRPG">
+  <div>
+    {{localize "WITCHER.Damage.initial"}}: <span class="error-display">{{{infoTotalDmg}}}</span>
+  </div>
+  <div>
+    {{localize "WITCHER.Damage.totalSP"}}: <span class="error-display">
+      {{{displaySP}}}
+      {{#if damageProperties.improvedArmorPiercing}}
+        {{localize "WITCHER.Damage.improvedArmorPiercing"}}
+      {{/if}}
+    </span>
+  </div>
+  <div>
+    {{localize "WITCHER.Damage.afterSPReduct"}}: <span class="error-display">{{{infoAfterSPReduction}}}</span>
+  </div>
+  <div>
+    {{localize "WITCHER.Damage.afterLocationModifier"}}: <span class="error-display">{{{infoAfterLocation}}}</span>
+  </div>
+  <div>
+    {{localize "WITCHER.Damage.afterResistances"}}: <span class="error-display">{{{infoAfterResistance}}}
+      {{#if (or damageProperties.improvedArmorPiercing damageProperties.armorPiercing)}}
+        {{localize "WITCHER.Damage.armorPiercing"}}
+      {{/if}}
+    </span>
+  </div>
+  <div>
+    {{localize "WITCHER.Damage.totalApplied"}}: <span class="error-display">{{{totalDamage}}}</span>
+  </div>
+  {{#if damageProperties.ablating}}
+    <div>
+      {{localize "WITCHER.Damage.ablated"}}: <span class="error-display">{{{spDamage}}}</span>
+    </div>
+  {{/if}}
+  {{#if damageProperties.crushingForce}}
+    <div>
+      {{localize "WITCHER.Damage.crushingForce"}}: <span class="error-display">{{{spDamage}}}</span>
+    </div>
+  {{/if}}
+
+</div>

@@ -1,0 +1,39 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{>"systems/TheWitcherTRPG/templates/partials/item-header.hbs"}}
+
+    {{!-- Attributes Tab --}}
+    <table class="item-table">
+        <tr>
+            <th>{{localize "WITCHER.Type"}}</th>
+            <th>{{localize "WITCHER.Item.Short.Availability"}}</th>
+            <th>{{localize "WITCHER.Alchemy.Duration"}}</th>
+            {{#if (or (eq item.system.type "potion") (eq item.system.type "decoction"))}}
+                <th>{{localize "WITCHER.Alchemy.Toxicity"}}</th>
+            {{/if}}
+        </tr>
+        <tr>
+            <td>
+                <select name="system.type" id="type-select">
+                    {{selectOptions config.type selected=item.system.type localize=true}}
+                </select>
+            </td>
+            <td>
+                <select name="system.avail" id="avail-select">
+                    {{selectOptions config.Availability selected=item.system.avail localize=true}}
+                </select>
+            </td>
+            <td><input type="text" name="system.time" value="{{item.system.time}}"/></td>
+            {{#if (or (eq item.system.type "potion") (eq item.system.type "decoction"))}}
+                <td><input type="text" name="system.toxicity" value="{{item.system.toxicity}}"/></td>
+            {{/if}}
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div>
+                    <label>{{localize "WITCHER.Item.Effect"}}</label>
+                    <textarea rows=10 name="system.effect">{{item.system.effect}}</textarea>
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>

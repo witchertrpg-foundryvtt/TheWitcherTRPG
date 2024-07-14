@@ -1,0 +1,15 @@
+<div class="witcherTRPG">
+  <details>
+    <summary>
+      {{localize "WITCHER.Damage.totalApplied"}}: {{{totalAppliedDamage}}}
+    </summary>
+    {{#each results as |result|}}
+      <details>
+        <summary>
+          {{{result.location.alias}}}
+        </summary>
+        {{>"systems/TheWitcherTRPG/templates/chat/damage/damageToLocation.hbs" result}}
+      </details>
+    {{/each}}
+  </details>
+</div>

@@ -1,0 +1,56 @@
+{
+  "Actor": {
+    "types": [
+      "character",
+      "monster",
+      "loot",
+      "mystery"
+    ],
+    "templates": {
+      "baseActor": {}
+    },
+    "character": {},
+    "monster": {},
+    "loot": {}
+  },
+  "Item": {
+    "types": [
+      "alchemical",
+      "armor",
+      "component",
+      "container",
+      "diagrams",
+      "effect",
+      "enhancement",
+      "globalModifier",
+      "mount",
+      "mutagen",
+      "note",
+      "profession",
+      "race",
+      "spell",
+      "valuable",
+      "weapon",
+      
+      "clue",
+      "obstacle"
+    ],
+    "templates": {
+      "base": {}
+    },
+    "valuable": {},
+    "weapon": {},
+    "armor": {},
+    "enhancement": {},
+    "mount": {},
+    "alchemical": {},
+    "component": {},
+    "diagrams": {},
+    "mutagen": {},
+    "spell": {},
+    "profession": {},
+    "note": {},
+    "race": {},
+    "effect": {}
+  }
+}

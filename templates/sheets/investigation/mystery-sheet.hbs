@@ -1,0 +1,54 @@
+<form>
+    <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+    <label>Goal</label>
+    <input type="text" name="system.goal" value="{{actor.system.goal}}"/>
+
+    <label>Difficulty</label>
+    <input type="text" name="system.complexity.difficulty" value="{{actor.system.complexity.difficulty}}"/>
+
+    <label>Complexity</label>
+    <input type="number" name="system.complexity.complexity" value="{{actor.system.complexity.complexity}}"/>
+
+    <div class="flex">
+        <div class="item-section">
+            <h2>{{localize "WITCHER.Investigation.clues"}} <a class="add-item" data-itemType="clue"><i
+                    class="fas fa-plus"></i></a></h2>
+            <table class="item-table item-list">
+                <tr>
+                    <td class="table-empty-space"></td>
+                    <td><b>{{localize "WITCHER.Name"}}</b></td>
+                    <td><b>{{localize "WITCHER.Type"}}</b></td>
+                    <td><b>{{localize "WITCHER.DC"}}</b></td>
+                    <td><b>{{localize "WITCHER.Investigation.skillsUsed"}}</b></td>
+                    <td><b>{{localize "WITCHER.Investigation.timeIncrement"}}</b></td>
+                    <td><b>{{localize "WITCHER.Investigation.timeBonus"}}</b></td>
+                    <td><b>{{localize "WITCHER.Investigation.damage"}}</b></td>
+                    <td><b>{{localize "WITCHER.Investigation.obfuscation"}}</b></td>
+                    <td><b>{{localize "WITCHER.Investigation.penalty"}}</b></td>
+                    <td><b>{{localize "WITCHER.Investigation.focusDamage"}}</b></td>
+                    <td class="table-empty-end-space"></td>
+                </tr>
+                {{#each clues as |item id|}}
+                    {{> "systems/TheWitcherTRPG/templates/partials/investigation/clue-display.hbs" item=item isGM=../isGM skills=../skills}}
+                {{/each}}
+            </table>
+            <h2>{{localize "WITCHER.Investigation.obstacles"}} <a class="add-item" data-itemType="obstacle"><i class="fas fa-plus"></i></a>
+            </h2>
+            <table class="item-table item-list">
+                <tr>
+                    <td class="table-empty-space"></td>
+                    <td><b>{{localize "WITCHER.Name"}}</b></td>
+                    <td><b>{{localize "WITCHER.Type"}}</b></td>
+                    <td><b>{{localize "WITCHER.DC"}}</b></td>
+                    <td><b>{{localize "WITCHER.Investigation.skillsUsed"}}</b></td>
+                    <td><b>{{localize "WITCHER.Investigation.successDamage"}}</b></td>
+                    <td><b>{{localize "WITCHER.Investigation.failDamage"}}</b></td>
+                    <td class="table-empty-end-space"></td>
+                </tr>
+                {{#each obstacles as |item id|}}
+                    {{> "systems/TheWitcherTRPG/templates/partials/investigation/obstacle-display.hbs" item=item isGM=../isGM skills=../skills}}
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</form>

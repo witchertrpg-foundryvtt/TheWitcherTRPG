@@ -1,0 +1,130 @@
+<div class="tab body background">
+    <div class="flexrow BackgroundDescription">
+        <div class="flexcol background scrollable">
+            {{localize "WITCHER.Homeland"}}
+            <select name="system.general.homeland.value" id="homeland-select">
+                {{selectOptions config.homelands selected=system.general.homeland.value localize=true}}
+            </select>
+            {{#if (eq system.general.homeland.value "other")}}
+                <input class="details hometailOther" name="system.general.homeland.otherValue" type="text"
+                    value="{{system.general.homeland.otherValue}}" />
+            {{/if}}
+            {{#each system.general.details as |details dt|}}
+                {{localize details.label}}
+                <input class="details {{dt}}" name="system.general.details.{{dt}}.value" type="text"
+                    value="{{details.value}}" />
+            {{/each}}
+        </div>
+        {{editor system.general.background.value target="system.general.background.value" button=true
+                 editable=editable}}
+    </div>
+    <div class="flex">
+        <div class="crit-wounds">
+            <h2>{{localize "WITCHER.CritWound.Header"}}<a class="add-crit"><i class="fas fa-plus"></i></a></h2>
+            {{> "systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs"}}
+        </div>
+    </div>
+    <div>
+        <h2>{{localize "WITCHER.background.globalModifier"}}<a class="add-global-modifier"><i
+                    class="fas fa-plus"></i></a>
+        </h2>
+    </div>
+    {{#each globalModifiers as |globalModifier ev|}}
+        <div class="item flex" data-item-id="{{globalModifier.id}}">
+            <a class="item-edit"><i class="fas fa-edit"></i></a>
+            <img src="{{globalModifier.img}}" class="item-img" />
+            <div class="modifier-display">
+                <label><b>{{globalModifier.name}}</b></label>
+                <div class="flex">
+                    <label>{{localize "WITCHER.globalModifier.isActive"}}</label>
+                    <input class="inline-edit" data-field="system.isActive" type="checkbox"
+                        value={{globalModifier.system.isActive}} {{checked globalModifier.system.isActive}} />
+                </div>
+            </div>
+            <div class="modifier-display">
+                {{#each globalModifier.system.stats as |stat index|}}
+                    <div>{{ localize (lookup (lookup ../../config.statMap stat.stat) "labelShort") }}: {{stat.modifier}}
+                    </div>
+                {{/each}}
+            </div>
+            <div class="modifier-display">
+                {{#each globalModifier.system.derived as |derived index|}}
+                    <div>{{ localize (lookup (lookup ../../config.statMap derived.derivedStat) "labelShort") }}:
+                        {{derived.modifier}}
+                    </div>
+                {{/each}}
+            </div>
+            <div class="modifier-display">
+                {{#each globalModifier.system.skills as |skill index|}}
+                    <div>{{ localize (lookup (lookup ../../config.skillMap skill.skill) "label") }}: {{skill.modifier}}
+                    </div>
+                {{/each}}
+            </div>
+            <textarea rows=3>{{globalModifier.system.description}}</textarea>
+            <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+        </div>
+    {{/each}}
+
+    <div class="flexcol background">
+        <div class="lifeEvents scrollable" id="lifeEvents">
+            <table class="lifevents">
+                <tr class="headerrow lifeEvents">
+                    <th class="header lifeEvents" colspan="3">
+                        {{localize "WITCHER.LifeEvents"}}
+                    </th>
+                </tr>
+                <tr class="titlerow lifeEvents">
+                    <th>{{localize "WITCHER.Decade"}}</th>
+                    <th>{{localize "WITCHER.Event"}}</th>
+                    <th></th>
+                </tr>
+                {{#each system.general.lifeEvents as |events ev|}}
+                    <tr class="tablerow lifeEvents {{ev}}" data-event="{{ev}}">
+                        <td class="{{ev}} events">{{ev}}</td>
+                        <td>
+                            <input class="input lifeEvents" name="system.general.lifeEvents.{{ev}}.value" type="text"
+                                value="{{events.value}}" />
+                        </td>
+                        <td>
+                            {{#unless events.isOpened}}
+                                <a class="life-event-display"><i class="fas fa-chevron-right"></i></a>
+                            {{/unless}}
+                            {{#if events.isOpened}}
+                                <a class="life-event-display"><i class="fas fa-chevron-down"></i></a>
+                            {{/if}}
+                        </td>
+                    </tr>
+                    {{#if events.isOpened}}
+                        <tr>
+                            <td colspan="3">
+                                <textarea name="system.general.lifeEvents.{{ev}}.details">{{events.details}}</textarea>
+                            </td>
+                        </tr>
+                    {{/if}}
+                {{/each}}
+            </table>
+        </div>
+    </div>
+    <div>
+        <h2>{{localize "WITCHER.Notes"}} <a class="add-item" data-itemType="note"><i class="fas fa-plus"></i></a></h2>
+
+        {{#each oldNotes as |note id|}}
+            <div class="item bg-note" data-item-id="{{note._id}}">
+                <div class="flex">
+                    <input class="inline-edit" data-field="name" type="text" value="{{note.name}}" placeholder="name" />
+                    <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+                </div>
+                <textarea class="inline-edit" rows="5" data-field="system.description">{{system.description}}</textarea>
+            </div>
+        {{/each}}
+        {{#each notes as |note|}}
+            <div class="item bg-note">
+                <div class="flex">
+                    <input type="text" name="system.notes.{{@index}}.title" value="{{note.title}}" />
+                    <a class="delete-note" data-note-index="{{@index}}"><i class="fas fa-trash-alt"></i></a>
+                </div>
+                {{editor note.details target=(concat "system.notes." @index ".details") button=true }}
+            </div>
+        {{/each}}
+    </div>
+</div>

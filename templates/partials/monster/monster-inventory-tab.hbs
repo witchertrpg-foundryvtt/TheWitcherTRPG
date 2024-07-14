@@ -1,0 +1,305 @@
+<h2>{{localize "WITCHER.Loot.Weapons"}} <a class="add-item" data-itemType="weapon"><i class="fas fa-plus"></i></a></h2>
+<table class="item-table item-list">
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>{{localize "WITCHER.table.Name"}}</b></td>
+        <td><b>{{localize "WITCHER.Weapon.Short.Damage"}}</b></td>
+        <td><b>{{localize "WITCHER.Weapon.Short.Reliability"}}</b></td>
+        <td><b>{{localize "WITCHER.Item.ROF"}}</b></td>
+    </tr>
+    {{#each weapons as |weapon id|}}
+        <tbody class="item" data-item-id="{{weapon._id}}">
+        <tr>
+            <td>
+                <a class="item-weapon-display"><i class="fas fa-info"></i></a>
+            </td>
+            <td>
+                <img src="{{weapon.img}}" class="item-img dragable" draggable="true" data-id="{{weapon._id}}"/>
+            </td>
+            <td><a class="item-roll">{{weapon.name}}</a></td>
+            <td><input class="inline-edit" data-field="system.damage" type="text" value="{{weapon.system.damage}}"
+                       placeholder=""/></td>
+            <td><input class="inline-edit small" data-field="system.reliable" type="text"
+                       value="{{weapon.system.reliable}}" placeholder=""/></td>
+            <td><input class="inline-edit small" data-field="system.rateOfFire" type="text"
+                       value="{{weapon.system.rateOfFire}}" data-dtype="Number"/></td>
+        </tr>
+        <tr class="item-info invisible">
+            <td>
+                <a class="item-edit"><i class="fas fa-edit"></i></a>
+            </td>
+            <td>
+                <div class="monster-flex">
+                    <label>{{localize "WITCHER.Spell.Effect"}}:</label>
+                </div>
+            </td>
+            <td colspan="2">
+                <div class="monster-flex">
+                    {{#each weapon.system.effects as |effect id|}}
+                        <div class="monster-flex-small">{{effect.name}}
+                            {{#if effect.percentage}}
+                                ({{effect.percentage}})%
+                            {{/if}}</div>
+                    {{/each}}
+                </div>
+            <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a></td>
+        </tr>
+        </tbody>
+    {{/each}}
+</table>
+<h2>{{localize "WITCHER.Inventory.Armor"}}
+            <a class="add-item" data-itemType="armor">
+                <i class="fas fa-plus"></i>
+            </a>
+        </h2>
+        <table class="armor-table item-list">
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>{{localize "WITCHER.table.Quantity"}}</b></td>
+                <td><b>{{localize "WITCHER.table.Name"}}</b></td>
+                <td><b>{{localize "WITCHER.table.Equipped"}}</b></td>
+                <td><b>{{localize "WITCHER.table.StoppingPower"}}</b></td>
+                <td><b>{{localize "WITCHER.table.ResBludgeon"}}</b></td>
+                <td><b>{{localize "WITCHER.table.ResSlashing"}}</b></td>
+                <td><b>{{localize "WITCHER.table.ResPiercing"}}</b></td>
+                <td></td>
+            </tr>
+            {{#each armors as |armor id|}}
+                <tbody class="item" data-item-id="{{armor._id}}" data-type="armor">
+                <tr>
+                    <td>
+                        <a class="item-armor-display"><i class="fas fa-info"></i></a>
+                    </td>
+                    <td>
+                      {{> "systems/TheWitcherTRPG/templates/partials/item-image.hbs" item=armor}}
+                    </td>
+                    <td><input class="inline-edit item-quantity" data-field="system.quantity" type="text"
+                               value="{{armor.system.quantity}}" data-dtype="Number"/></td>
+                    <td><input class="inline-edit" data-field="name" type="text" value="{{armor.name}}"
+                               placeholder="name"/></td>
+                    {{#if (eq type "enhancement")}}
+                        <td colspan="2"></td>
+                    {{/if}}
+                    {{#unless (eq type "enhancement")}}
+                        <td><input class="inline-edit" data-field="system.equipped" type="checkbox" value={{armor.system.equipped}} {{checked armor.system.equipped}}/></td>
+                        <td>
+                            {{#if (eq armor.system.location "Head")}}
+                                <div class="flex sp">
+                                    <div class="icon-spacer"></div>
+                                    <i class="fas fa-hard-hat"></i>
+                                    <input class="inline-edit small" data-field="system.headStopping" type="text"
+                                           value="{{armor.system.headStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.headMaxStopping}}
+                                </div>
+                            {{/if}}
+
+                            {{#if (eq armor.system.location "Torso")}}
+                                <div class="flex sp">
+                                    <div class="icon-spacer"></div>
+                                    <i class="fas fa-tshirt"></i>
+                                    <input class="inline-edit small" data-field="system.torsoStopping" type="text"
+                                           value="{{armor.system.torsoStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.torsoMaxStopping}}
+                                </div>
+                                <div class="flex sp">
+                                    {{localize "WITCHER.Armor.LocationLeft"}}
+                                    <i class="fas fa-hand-paper"></i>
+                                    <input class="inline-edit small" data-field="system.leftArmStopping" type="text"
+                                           value="{{armor.system.leftArmStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.leftArmMaxStopping}}
+                                </div>
+                                <div class="flex sp">
+                                    {{localize "WITCHER.Armor.LocationRight"}}
+                                    <i class="fas fa-hand-paper"></i>
+                                    <input class="inline-edit small" data-field="system.rightArmStopping" type="text"
+                                           value="{{armor.system.rightArmStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.rightArmMaxStopping}}
+                                </div>
+                            {{/if}}
+
+                            {{#if (eq armor.system.location "Leg")}}
+                                <div class="flex sp">
+                                    {{localize "WITCHER.Armor.LocationLeft"}}
+                                    <i class="fas fa-shoe-prints"></i>
+                                    <input class="inline-edit small" data-field="system.leftLegStopping" type="text"
+                                           value="{{armor.system.leftLegStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.leftLegMaxStopping}}
+                                </div>
+                                <div class="flex sp">
+                                    {{localize "WITCHER.Armor.LocationRight"}}
+                                    <i class="fas fa-shoe-prints"></i>
+                                    <input class="inline-edit small" data-field="system.rightLegStopping" type="text"
+                                           value="{{armor.system.rightLegStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.rightLegMaxStopping}}
+                                </div>
+                            {{/if}}
+
+                            {{#if (eq armor.system.location "FullCover")}}
+                                <div class="flex sp">
+                                    <div class="icon-spacer"></div>
+                                    <i class="fas fa-hard-hat"></i>
+                                    <input class="inline-edit small" data-field="system.headStopping" type="text"
+                                           value="{{armor.system.headStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.headMaxStopping}}
+                                </div>
+                                <div class="flex sp">
+                                    <div class="icon-spacer"></div>
+                                    <i class="fas fa-tshirt"></i>
+                                    <input class="inline-edit small" data-field="system.torsoStopping" type="text"
+                                           value="{{armor.system.torsoStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.torsoMaxStopping}}
+                                </div>
+                                <div class="flex sp">
+                                    {{localize "WITCHER.Armor.LocationLeft"}}
+                                    <i class="fas fa-hand-paper"></i>
+                                    <input class="inline-edit small" data-field="system.leftArmStopping" type="text"
+                                           value="{{armor.system.leftArmStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.leftArmMaxStopping}}
+                                </div>
+                                <div class="flex sp">
+                                    {{localize "WITCHER.Armor.LocationRight"}}
+                                    <i class="fas fa-hand-paper"></i>
+                                    <input class="inline-edit small" data-field="system.rightArmStopping" type="text"
+                                           value="{{armor.system.rightArmStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.rightArmMaxStopping}}
+                                </div>
+                                <div class="flex sp">
+                                    {{localize "WITCHER.Armor.LocationLeft"}}
+                                    <i class="fas fa-shoe-prints"></i>
+                                    <input class="inline-edit small" data-field="system.leftLegStopping" type="text"
+                                           value="{{armor.system.leftLegStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.leftLegMaxStopping}}
+                                </div>
+                                <div class="flex sp">
+                                    {{localize "WITCHER.Armor.LocationRight"}}
+                                    <i class="fas fa-shoe-prints"></i>
+                                    <input class="inline-edit small" data-field="system.rightLegStopping" type="text"
+                                           value="{{armor.system.rightLegStopping}}" data-dtype="Number"/>
+                                    /{{armor.system.rightLegMaxStopping}}
+                                </div>
+                            {{/if}}
+
+                            {{#if (eq armor.system.location "Shield")}}
+                                {{localize "WITCHER.table.Reliability"}}
+                                <input class="inline-edit small" data-field="system.reliability" type="text"
+                                       value="{{armor.system.reliability}}" data-dtype="Number"/>
+                                /{{armor.system.reliabilityMax}}
+                            {{/if}}
+
+                        </td>
+                    {{/unless}}
+                    <td><input type="checkbox" name="system.bludgeoning" {{checked armor.system.bludgeoning}} disabled/>
+                    </td>
+                    <td><input type="checkbox" name="system.slashing" {{checked armor.system.slashing}} disabled/></td>
+                    <td><input type="checkbox" name="system.Piercing" {{checked armor.system.piercing}} disabled/></td>
+
+                </tr>
+                <tr class="item-info invisible">
+                    <td colspan="9">
+                        <table>
+                            {{#unless (eq type "enhancement")}}
+                                <tr>
+                                    <td colspan="8">
+                                        <div class="flex">
+                                            {{localize "WITCHER.Weapon.Short.Enhancements"}}:
+                                            {{#each armor.system.enhancementItems as |enhancement id|}}
+                                                {{#if enhancement.img}}
+                                                    <div class="item item-enhancement"
+                                                         data-item-id="{{enhancement.id}}">
+                                                        <img class="item-edit no-margin" src="{{enhancement.img}}"/>
+                                                    </div>
+                                                {{/if}}
+                                                {{#unless enhancement.img}}
+                                                    <div class="item-enhancement">
+                                                        <a>
+                                                            <div class="enhancement-slot enhancement-armor-slot"></div>
+                                                        </a>
+                                                    </div>
+                                                {{/unless}}
+                                            {{/each}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {{/unless}}
+                            {{#if (eq type "armor")}}
+                                <tr>
+                                    <td>
+                                        <div class="flex"><label class="label-info">
+                                            <b>{{localize "WITCHER.Armor.Short.ArmorEnhancement"}}: </b>
+                                        </label>{{armor.system.enhancements}}</div>
+                                    </td>
+                                    <td>
+                                        <div class="flex"><label class="label-info">
+                                            <b>{{localize "WITCHER.Armor.Short.EncumbranceValue"}}: </b>
+                                        </label>{{armor.system.encumb}}</div>
+                                    </td>
+                                    <td>
+                                        <div class="flex"><label class="label-info">
+                                            <b>{{localize "WITCHER.Item.Weight"}}: </b>
+                                        </label>{{armor.system.weight}}</div>
+                                    </td>
+                                    <td><a class="item-edit"><i class="fas fa-edit"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="flex">
+                                            <label><b>{{localize "WITCHER.Item.Effect"}}:</b></label>
+                                            {{#each armor.system.effects as |effect id|}}
+                                                {{effect.name}},
+                                            {{/each}}
+                                        </div>
+                                    </td>
+                                    <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a></td>
+                                </tr>
+                            {{/if}}
+                            {{#if (eq type "enhancement")}}
+                                <tr>
+                                    <td>
+                                        <div class="flex"><label class="label-info">
+                                            <b>{{localize "WITCHER.Armor.Short.EncumbranceValue"}}: </b>
+                                        </label>{{armor.system.encumb}}</div>
+                                    </td>
+                                    <td>
+                                        <div class="flex"><label class="label-info">
+                                            <b>{{localize "WITCHER.Item.Weight"}}: </b>
+                                        </label>{{armor.system.weight}}</div>
+                                    </td>
+                                    <td><a class="item-edit"><i class="fas fa-edit"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div>
+                                            <label>
+                                                <b>{{localize "WITCHER.Item.Effect"}}: </b>
+                                            </label>{{armor.system.effect}}
+                                        </div>
+                                    </td>
+                                    <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a></td>
+                                </tr>
+                            {{/if}}
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            {{/each}}
+        </table>
+
+<div class="flex">
+    <h2 class="flex1">{{localize "WITCHER.Loot.Name"}} <a class="add-item" data-itemType="valuable"><i
+            class="fas fa-plus"></i></a></h2>
+    <a class="button-roll export-loot">{{localize "WITCHER.Monster.exportLoot"}}</a>
+</div>
+<table class="item-list">
+    {{#each loots as |valuable id|}}
+        <tr class="item" data-item-id="{{valuable._id}}">
+            <td><img src="{{valuable.img}}" class="item-img dragable" draggable="true" data-id="{{valuable._id}}"/></td>
+            <td><input class="small-medium inline-edit" data-field="system.quantity" type="text"
+                       value="{{system.quantity}}" placeholder="1d6"/></td>
+            <td><input class="inline-edit" data-field="name" type="text" value="{{valuable.name}}" placeholder="name"/>
+            </td>
+            <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a></td>
+        </tr>
+    {{/each}}
+</table>

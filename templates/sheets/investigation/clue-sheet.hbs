@@ -1,0 +1,32 @@
+<form class="{{cssClass}}" autocomplete="off">
+     <h1 class="itemname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+
+     <label>{{localize "WITCHER.Type"}}</label>
+     <input type="text" name="system.type" value="{{item.system.type}}"/>
+
+     <label>{{localize "WITCHER.DC"}}</label>
+     <input type="number" name="system.dc" value="{{item.system.dc}}"/>
+
+     <label>{{localize "WITCHER.Investigation.skillsUsed"}}</label>
+     <multi-select class="inline-edit" name="system.skillsUsed"> 
+          {{selectOptions skills selected=item.system.skillsUsed nameAttr='name' valueAttr="name" labelAttr="label" localize=true}}
+     </multi-select>
+
+     <label>{{localize "WITCHER.Investigation.timeIncrement"}}</label>
+     <input type="text" name="system.timeIncrement" value="{{item.system.timeIncrement}}"/>
+
+     <label>{{localize "WITCHER.Investigation.timeBonus"}}</label>
+     <input type="number" name="system.timeBonus" value="{{item.system.timeBonus}}"/>
+
+     <label>{{localize "WITCHER.Investigation.damage"}}</label>
+     <input type="text" name="system.damage" value="{{item.system.damage}}"/>
+
+     <label>{{localize "WITCHER.Investigation.obfuscation"}}</label>
+     <input type="number" name="system.obfuscation" value="{{item.system.obfuscation}}"/>
+
+     <label>{{localize "WITCHER.Investigation.penalty"}}</label>
+     <input type="text" name="system.penalty" value="{{item.system.penalty}}"/>
+
+     <label>{{localize "WITCHER.Investigation.focusDamage"}}</label>
+     <input type="text" name="system.focusDamage" value="{{item.system.focusDamage}}"/>
+</form>

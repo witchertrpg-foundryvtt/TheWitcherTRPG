@@ -1,0 +1,40 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{>"systems/TheWitcherTRPG/templates/partials/item-header.hbs"}}
+    {{!-- effect Tab --}}
+    <div class="description">
+        <textarea rows=5 name="system.description">{{data.description}}</textarea>
+    </div>
+    <div class='storedWeight'>
+        <input type="text" value="{{data.storedWeight}}" disabled />
+        <span>
+            /
+        </span>
+        <input type="number" name="system.carry" value="{{item.system.carry}}" data-dtype="Number" />
+    </div>
+    {{#each data.itemContent as |storedItem|}}
+        <div class="container-item">
+            <div class="header">
+                <input type="text" value="{{storedItem.name}}" disabled />
+                <a class="remove-item" data-uuid="{{storedItem.uuid}}"><i
+                        class="fa-solid fa-arrow-up-from-bracket"></i></a>
+            </div>
+            <item-content class="item-content">
+                <div class="quantity-weight">
+                    <quantity>
+                        <label>{{localize "WITCHER.Item.Quantity"}}</label>
+                        <input type="text" value="{{storedItem.quantity}}" disabled />
+                    </quantity>
+                    <weight>
+                        <label>{{localize "WITCHER.Item.Weight"}}</label>
+                        <input type="text" value="{{storedItem.weight}}" disabled />
+                    </weight>
+                </div>
+                {{#if storedItem.description}}
+                    <description>
+                        <textarea rows=5 disabled>{{storedItem.description}}</textarea>
+                    </description>
+                {{/if}}
+            </item-content>
+        </div>
+    {{/each}}
+</form>
