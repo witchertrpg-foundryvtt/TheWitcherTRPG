@@ -6,7 +6,7 @@
     "minimum": "11",
     "verified": "12"
   },
-  "version": "1.000",
+  "version": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION",
   "authors": [
     {
       "name": "Stexinator",
@@ -126,7 +126,7 @@
   "gridUnits": "m",
   "primaryTokenAttribute": "resources.health",
   "secondaryTokenAttribute": "resources.power",
-  "url": "https://github.com/witchertrpg-foundryvtt/witchertrpg",
-  "manifest": "https://github.com/witchertrpg-foundryvtt/witchertrpg/releases/latest/download/system.json",
-  "download": "DOWNLOAD"
+  "url": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION",
+  "manifest": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTIONn",
+  "download": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
 }
