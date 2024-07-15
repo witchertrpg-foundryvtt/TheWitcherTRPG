@@ -30,8 +30,3 @@ It also keeps tracks of your current stamina and Focuses
 This tab is used to choose your origin and create your background. 
 You can keep tracks of your life events, and also you can add multiple notes for your characters.  
 Those could be anything, maybe notes on specific NPC that they encounter, your critical wounds, short stories in your backgrounds, etc. 
-
-## Version History ##
-
-### 1.000 ###
-- a fresh start
