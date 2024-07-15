@@ -67,7 +67,10 @@
       },
       "Settings": {
         "Alchemical": "Alchemical Settings",
-        "DamageProperties": "Damage Properties"
+        "Valuable": "Valuable Settings",
+        "Weapon": "Weapon Settings",
+        "DamageProperties": "Damage Properties",
+        "ConsumableProperties": "Consumable Properties"
       }
     },
     "Dialog": {

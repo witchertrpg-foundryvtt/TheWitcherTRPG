@@ -2,7 +2,7 @@
 import { genId } from "../../../scripts/witcher.js";
 import WitcherConfigurationSheet from "./WitcherConfigurationSheet.js";
 
-export default class WitcherAlchemicalConfigurationSheet extends WitcherConfigurationSheet {
+export default class WitcherConsumableConfigurationSheet extends WitcherConfigurationSheet {
 
 
   activateListeners(html) {

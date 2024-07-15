@@ -73,8 +73,9 @@ export default class WitcherItemSheet extends ItemSheet {
     this.item.update({ 'system.globalModifiers': newList });
   }
 
+  //overwrite in sub-classes
   async _renderConfigureDialog() {
-    //overwrite in sub-classes
+    
   }
 
   _handleRender(html) {
