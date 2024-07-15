@@ -4,8 +4,8 @@ import { RollConfig } from "../../scripts/rollConfig.js";
 
 export let skillMixin = {
   /** Do not delete. This method is here to give external modules the possibility to make skill rolls. */
-  async _onSkillRoll(statNum, skillNum) {
-    rollSkillCheck(this.actor, statNum, skillNum);
+  async _onSkillRoll(skillMapEntry) {
+    rollSkillCheck(this.actor, skillMapEntry);
   },
 
   async _onProfessionRoll(event) {
