@@ -362,15 +362,17 @@ export default class WitcherActorSheet extends ActorSheet {
               speaker: ChatMessage.getSpeaker({ actor: this.actor })
             }
             messageData.flavor = `
+            <div class="verbal-combat-attack-message">
               <h2>${game.i18n.localize("WITCHER.verbalCombat.Title")}: ${game.i18n.localize(vcName)}</h2>
               <b>${game.i18n.localize("WITCHER.Weapon.Damage")}</b>: ${vcDmg} <br />
               ${game.i18n.localize(effect)}
-              <hr />`
+              <hr />
+              </div>`
             messageData.flavor += vcDmg.includes("d") ? `<button class="vcDamage" > ${game.i18n.localize("WITCHER.table.Damage")}</button>` : ''
 
             let config = new RollConfig()
             config.showCrit = true
-            await extendedRoll(rollFormula, messageData, config, this.createVerbalCombatFlags(verbalCombat, vcDmg))
+            await extendedRoll(rollFormula, messageData, config, this.actor.createVerbalCombatFlags(verbalCombat, vcDmg))
           }
         },
         t2: {
@@ -380,20 +382,6 @@ export default class WitcherActorSheet extends ActorSheet {
     }).render(true);
   }
 
-  createVerbalCombatFlags(verbalCombat, vcDamage) {
-    return [
-      {
-        key: 'verbalCombat',
-        value: verbalCombat
-      },
-      {
-        key: 'damage',
-        value: {
-          formula: vcDamage
-        }
-      },
-    ]
-  }
 
   _onFocusIn(event) {
     event.currentTarget.select();

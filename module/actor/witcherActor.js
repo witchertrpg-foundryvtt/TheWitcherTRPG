@@ -48,6 +48,21 @@ export default class WitcherActor extends Actor {
     }
   }
 
+  createVerbalCombatFlags(verbalCombat, vcDamage) {
+    return [
+      {
+        key: 'verbalCombat',
+        value: verbalCombat
+      },
+      {
+        key: 'damage',
+        value: {
+          formula: vcDamage
+        }
+      },
+    ]
+  }
+
   getDefenceSuccessFlags(defenceSkill) {
     return {
       "witcher": { "origin": { "name": this.name } },
