@@ -177,7 +177,7 @@ async function applyDamageToLocation(actor, dialogData, damage, totalDamage, inf
   createResultMessage(actor, damageResult)
 
   actor?.update({
-    [`system.derivedStats.${derivedStat}.value`]: actor.system.derivedStats[derivedStat].value - Math.floor(totalDamage)
+    [`system.derivedStats.${derivedStat}.value`]: actor.system.derivedStats[derivedStat].value - Math.floor(damageResult.totalDamage)
   });
 }
 
