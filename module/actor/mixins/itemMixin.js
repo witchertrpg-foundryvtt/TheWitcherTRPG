@@ -879,9 +879,11 @@ export let itemMixin = {
     let toActivate = this.actor.items.find(item => item.type == "globalModifier" && item.name == name)
 
     if (!toActivate) {
-      let compendium = game.packs.get("TheWitcherTRPG.modifiers-and-conditions")
-      let newGlobalModifier = await compendium.getDocuments({ name: name })
-      toActivate = (await Item.create(newGlobalModifier, { parent: this.actor })).shift();
+      let compendium = game.packs.get(game.settings.get("TheWitcherTRPG", "globalModifierLookupCompendium"))
+      let newGlobalModifier = await compendium?.getDocuments({ name: name })
+      if (newGlobalModifier) {
+        toActivate = (await Item.create(newGlobalModifier, { parent: this.actor })).shift();
+      }
     }
 
     if (!toActivate || toActivate.system.isActive) return;
