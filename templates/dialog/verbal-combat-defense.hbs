@@ -1,0 +1,13 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <h1>{{localize "WITCHER.verbalCombat.Title"}}</h1>
+    <div>
+        {{#each defenses as |verbalData verbalName|}}
+            <div>
+                <input name="verbalCombat" type="radio" id={{verbalName}} value={{verbalName}}
+                    data-group={{groupName}} />
+                <label for={{verbalName}}>{{localize (concat verbalData.name)}}</label>
+            </div>
+        {{/each}}
+        <label>{{localize "WITCHER.Dialog.attackCustom"}}: <input name="customModifiers" value=0></label>
+    </div>
+</form>
