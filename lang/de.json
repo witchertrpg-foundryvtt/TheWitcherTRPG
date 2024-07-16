@@ -25,6 +25,13 @@
     "Item.Small": "K",
     "Item.Large": "G",
     "Item.CantHide": "N",
+    "Item.Settings": {
+      "Alchemical": "Einstellungen für alchemistische Gegenstände",
+      "Valuable": "Einstellungen für Ausrüstung",
+      "Weapon": "Einstellungen für Waffen",
+      "DamageProperties": "Schaden Eigenschaften",
+      "ConsumableProperties": "Verzehr Eigenschaften"
+    },
     "Weapon.Type": "Art",
     "Weapon.Short.WeaponAccuracy": "WG",
     "Weapon.Short.Damage": "SCH",

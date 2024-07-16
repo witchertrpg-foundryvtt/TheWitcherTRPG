@@ -1,10 +1,10 @@
 
 import WitcherItemSheet from "./WitcherItemSheet.js";
-import WitcherAlchemicalConfigurationSheet from "./configurations/WitcherAlchemicalConfigurationSheet.js";
+import WitcherConsumableConfigurationSheet from "./configurations/WitcherConsumableConfigurationSheet.js";
 
 export default class WitcherAlchemicalSheet extends WitcherItemSheet {
 
-  configuration = new WitcherAlchemicalConfigurationSheet(this.item);
+  configuration = new WitcherConsumableConfigurationSheet(this.item);
 
   get template() {
     return `systems/TheWitcherTRPG/templates/sheets/alchemical-sheet.hbs`;

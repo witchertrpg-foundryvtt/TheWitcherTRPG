@@ -2,6 +2,7 @@ import { WITCHER } from "./setup/config.js";
 import * as Chat from "./scripts/chat.js";
 import * as Attack from "./scripts/attack.js"
 import * as VerbalCombat from "./scripts/verbalCombat.js"
+import * as VerbalCombatDefense from "./scripts/verbalCombatDefense.js"
 import * as Defense from "./scripts/defenses.js"
 import * as ApplyDamage from "./scripts/applyDamage.js"
 import * as Crit from "./scripts/applyCrit.js"
@@ -48,6 +49,7 @@ async function preloadHandlebarsTemplates() {
         "systems/TheWitcherTRPG/templates/partials/item-image.hbs",
         "systems/TheWitcherTRPG/templates/partials/associated-item.hbs",
         "systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs",
+        "systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/consumablePropertiesConfiguration.hbs",
 
         "systems/TheWitcherTRPG/templates/sheets/investigation/mystery-sheet.hbs",
         "systems/TheWitcherTRPG/templates/partials/investigation/clue-display.hbs",
@@ -158,6 +160,7 @@ Hooks.once("polyglot.init", (LanguageProvider) => {
 
 Hooks.on("getChatLogEntryContext", ApplyDamage.addDamageMessageContextOptions);
 Hooks.on("getChatLogEntryContext", VerbalCombat.addVerbalCombatMessageContextOptions);
+Hooks.on("getChatLogEntryContext", VerbalCombatDefense.addVerbalCombatDefenseMessageContextOptions);
 Hooks.on("getChatLogEntryContext", Defense.addDefenseMessageContextOptions);
 Hooks.on("getChatLogEntryContext", Crit.addCritMessageContextOptions);
 

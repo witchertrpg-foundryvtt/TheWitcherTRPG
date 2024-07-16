@@ -15,6 +15,7 @@ import WitcherGlobalModifierSheet from "../item/sheets/WitcherGlobalModifierShee
 import WitcherSpellSheet from "../item/sheets/WitcherSpellSheet.js";
 import WitcherAlchemicalSheet from "../item/sheets/WitcherAlchemicalSheet.js";
 import WitcherArmorSheet from "../item/sheets/WitcherArmorSheet.js";
+import WitcherValuableSheet from "../item/sheets/WitcherValuableSheet.js";
 
 export const registerSheets = () => {
     Items.unregisterSheet("core", ItemSheet);
@@ -47,6 +48,10 @@ export const registerSheets = () => {
     Items.registerSheet("witcher", WitcherSpellSheet, {
         makeDefault: true,
         types: ['spell']
+    });
+    Items.registerSheet("witcher", WitcherValuableSheet, {
+        makeDefault: true,
+        types: ['valuable']
     });
     Items.registerSheet("witcher", WitcherWeaponSheet, {
         makeDefault: true,
