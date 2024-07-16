@@ -625,6 +625,10 @@
     "Settings.specialFont": "Benutze die besondere Schriftart von 'The Witcher'",
     "Settings.clickableImageItemTypes": "Zeige 'Zoombar'-Checkbox bei Items",
     "Settings.clickableImageItemTypesHint": "Eine kommaseparierte Liste von Item Typen, bei denen eine Checkbox angezeigt werden soll. Wenn die Checkbox angekreuzt ist, können die Spieler im Inventar auf das Item Bild klicken um es zu vergrößern. Mögliche Item Typen sind 'valuable', 'weapon', 'armor', 'alchemical', 'diagrams', 'component'.",
-    "Settings.clickableImageCheckboxForGMOnly": "Zeige 'Zoombar'-Checkbox nur dem GM"
+    "Settings.clickableImageCheckboxForGMOnly": "Zeige 'Zoombar'-Checkbox nur dem GM",
+    "Settings": {
+      "globalModifierLookupCompendium": "Global Modifier Nachschlage Compendium",
+      "globalModifierLookupCompendiumHint": "Wenn ein Globaler Modifier aktiviert werden soll, dieser aber nicht auf dem Charakterbogen vorhanden ist, wird in diesem Kompendium danach gesucht"
+    }
   }
 }
