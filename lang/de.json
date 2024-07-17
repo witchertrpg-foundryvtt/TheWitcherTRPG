@@ -430,6 +430,9 @@
     "Monster.Organization": "Organisation",
     "Monster.CommonerSuperstition": "Verbreitete Meinung: Bildung SG: ",
     "Monster.WitcherKnowledge": "Hexer-Kenntnisse: Hexer-Ausbildung SG: ",
+    "Monster": {
+      "hasTailWing": "Monster hat Schwanz oder Flügel"
+    },
     "Monster.SkillTab": "Fertigkeiten",
     "Monster.InventoryTab": "Angriffe/Beute",
     "Monster.DetailsTab": "Details",
