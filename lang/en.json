@@ -609,6 +609,7 @@
       "AcademicKnowledge": "Academic Knowledge (Education DC): ",
       "WitcherKnowledge": "Witcher Knowledge (Monster Lore DC): ",
       "dontAddAttr": "Do not add attributes to skill value",
+      "hasTailWing": "Monster has tail or wing",
       "SkillTab": "Skills",
       "InventoryTab": "Att/Loot",
       "DetailsTab": "Details",
