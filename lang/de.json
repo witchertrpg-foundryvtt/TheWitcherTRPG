@@ -9,6 +9,9 @@
     "Item.Cost": "Kosten",
     "Item.Effect": "Effekte",
     "Item.Quantity": "Anzahl",
+    "Item": {
+      "SourceBook": "Regelwerk"
+    },
     "Item.Description": "Beschreibung",
     "Item.Attribute": "Attributes",
     "Item.ROF": "ROF",

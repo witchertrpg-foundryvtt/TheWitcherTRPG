@@ -21,6 +21,7 @@
       "Effect": "Effects",
       "statusEffect": "Status Effect",
       "Quantity": "Quantity",
+      "SourceBook": "Source Book",
       "Description": "Description",
       "Attribute": "Attributes",
       "ROF": "ROF",
