@@ -49,7 +49,7 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
         let rightPanelSkills = ``
         Object.keys(this.actor.system.skills).forEach((parent, index) => {
             let skills = this.actor.system.skills[parent]
-            let skillBox = `<h2>${parent}</h2>`
+            let skillBox = `<h2>${game.i18n.localize(CONFIG.WITCHER.statMap[parent].label)}</h2>`
             Object.keys(skills).forEach((skill) => {
                 skillBox += `<input type="checkbox" name="display${skill}" ${skills[skill].isVisible ? "checked" : "unchecked"}> ${game.i18n.localize(skills[skill].label)}<br />`
             });
@@ -77,7 +77,8 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
 
         let skillConfig =
             `<hr>` +
-            `<input type="checkbox" name="dontAddAttr" ${this.actor.system.dontAddAttr ? "checked" : "unchecked"}> ${game.i18n.localize('WITCHER.Monster.dontAddAttr')}<br />`
+            `<input type="checkbox" name="dontAddAttr" ${this.actor.system.dontAddAttr ? "checked" : "unchecked"}> ${game.i18n.localize('WITCHER.Monster.dontAddAttr')}<br />` +
+            `<input type="checkbox" name="hasTailWing" ${this.actor.system.hasTailWing ? "checked" : "unchecked"}> ${game.i18n.localize('WITCHER.Monster.hasTailWing')}<br />`
         content += skillConfig
 
 
@@ -151,6 +152,7 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
                             'system.showMonsterLore': html.find("[name=showMonsterLore]").prop("checked"),
 
                             'system.dontAddAttr': html.find("[name=dontAddAttr]").prop("checked"),
+                            'system.hasTailWing': html.find("[name=hasTailWing]").prop("checked"),
                         })
                     }
                 }
