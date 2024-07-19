@@ -183,7 +183,7 @@ export default class WitcherActor extends Actor {
       "leftLeg",
     ]
 
-    if (this.type == "monster") {
+    if (this.type == "monster" && this.system.hasTailWing) {
       locations.push("tailWing")
     }
 

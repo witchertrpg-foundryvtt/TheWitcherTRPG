@@ -44,6 +44,7 @@ export default class MonsterData extends CommonActorData {
 
       customStat: new fields.BooleanField({ initial: false }),
       dontAddAttr: new fields.BooleanField({ initial: false }),
+      hasTailWing: new fields.BooleanField({ initial: false }),
     }
   }
 }
