@@ -1868,7 +1868,7 @@ WITCHER.statusEffects = [
     {
         id: 'hallucination',
         label: 'WITCHER.statusEffects.hallucination',
-        icon: 'icons/svg/terror.svg',
+        icon: 'systems/TheWitcherTRPG/assets/images/statusEffects/spectre.svg',
     },
     {
         id: 'nausea',
