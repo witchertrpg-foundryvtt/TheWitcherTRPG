@@ -8,6 +8,16 @@ export default class WitcherDiagramSheet extends WitcherItemSheet {
     return `systems/TheWitcherTRPG/templates/sheets/diagrams-sheet.hbs`;
   }
 
+  /** @inheritdoc */
+  _canDragStart(selector) {
+    return true;
+  }
+
+  /** @inheritdoc */
+  _canDragDrop(selector) {
+    return true;
+  }
+
   /** @override */
   getData() {
     const data = super.getData();
