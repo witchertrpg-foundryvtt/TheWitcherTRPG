@@ -3,7 +3,7 @@
   "title": "The Witcher TRPG - Foundry VTT",
   "description": "The Witcher TRPG System",
   "compatibility": {
-    "minimum": "11",
+    "minimum": "12",
     "verified": "12"
   },
   "version": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION",
@@ -122,8 +122,10 @@
   },
   "socket": false,
   "initiative": "1d10",
-  "gridDistance": 2,
-  "gridUnits": "m",
+  "grid": {
+    "distance": 2,
+    "units": "m"
+  },
   "primaryTokenAttribute": "resources.health",
   "secondaryTokenAttribute": "resources.power",
   "url": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION",

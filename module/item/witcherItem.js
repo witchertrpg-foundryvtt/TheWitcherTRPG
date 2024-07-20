@@ -328,14 +328,10 @@ export default class WitcherItem extends Item {
   }
 
   async applyStatus(actor, effects) {
-
-    //v12 only functionality
-    if (actor.toggleStatusEffect) {
-      effects.forEach(effect => {
-        if (!actor.statuses.find(status => status == effect.statusEffect)) {
-          actor.toggleStatusEffect(effect.statusEffect);
-        }
-      });
-    }
+    effects.forEach(effect => {
+      if (!actor.statuses.find(status => status == effect.statusEffect)) {
+        actor.toggleStatusEffect(effect.statusEffect);
+      }
+    });
   }
 }
