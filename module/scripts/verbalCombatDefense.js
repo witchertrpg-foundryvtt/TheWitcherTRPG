@@ -1,7 +1,6 @@
 import { extendedRoll } from "./chat.js";
 import { getInteractActor } from "./helper.js";
 import { RollConfig } from "./rollConfig.js";
-import { addAllModifiers } from "./witcher.js";
 
 export function addVerbalCombatDefenseMessageContextOptions(html, options) {
     let canDefend = li => li.find(".verbal-combat-attack-message").length
@@ -71,7 +70,7 @@ async function executeDefenseCallback(actor, totalAttack, html) {
 
     if (verbalCombat.skill) {
         rollFormula += !displayRollDetails ? ` +${vcStat} +${vcSkill}` : ` +${vcStat}[${game.i18n.localize(vcStatName)}] +${vcSkill}[${game.i18n.localize(vcSkillName)}]`
-        rollFormula = addAllModifiers(actor, verbalCombat.skill.name, rollFormula)
+        rollFormula += actor.addAllModifiers(verbalCombat.skill.name)
     }
 
     let customAtt = html.find("[name=customModifiers]")[0].value;

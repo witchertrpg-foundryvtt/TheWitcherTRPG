@@ -1,5 +1,5 @@
-import { RollConfig } from "../../scripts/rollConfig.js";
-import { extendedRoll } from "../../scripts/chat.js";
+import { RollConfig } from "../../../scripts/rollConfig.js";
+import { extendedRoll } from "../../../scripts/chat.js";
 
 export let deathsaveMixin = {
   async _removeDeathSaves(event) {
