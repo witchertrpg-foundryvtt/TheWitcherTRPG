@@ -1,6 +1,6 @@
-import { updateDerived, genId } from "../../scripts/witcher.js";
-import { extendedRoll } from "../../scripts/chat.js";
-import { RollConfig } from "../../scripts/rollConfig.js";
+import { extendedRoll } from "../../../scripts/chat.js";
+import { RollConfig } from "../../../scripts/rollConfig.js";
+import { genId } from "../../../scripts/helper.js";
 
 export let statMixin = {
 
@@ -64,7 +64,7 @@ export let statMixin = {
       this.actor.update({ [`system.${this.statMap[stat].origin}.${stat}.modifiers`]: modifiers });
     }
 
-    updateDerived(this.actor);
+    this.actor.updateDerived();
   },
 
   async _onRemoveStatModifier(event) {
@@ -92,7 +92,7 @@ export let statMixin = {
       this.actor.update({ [`system.${this.statMap[stat].origin}.${stat}.modifiers`]: newModList });
     }
 
-    updateDerived(this.actor);
+    this.actor.updateDerived();
   },
 
   /** Do not delete. This method is here to give external modules the possibility to make skill rolls. */
@@ -186,7 +186,7 @@ export let statMixin = {
   },
 
   _onHPChanged(event) {
-    updateDerived(this.actor)
+    this.actor.updateDerived()
   },
 
   calc_total_stats(context) {
@@ -199,7 +199,7 @@ export let statMixin = {
 
 
   statListener(html) {
-    html.find("input.stat-max").on("change", updateDerived(this.actor));
+    html.find("input.stat-max").on("change", this.actor.updateDerived());
 
     html.find(".hp-value").change(this._onHPChanged.bind(this));
 

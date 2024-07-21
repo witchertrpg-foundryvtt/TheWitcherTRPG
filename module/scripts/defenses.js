@@ -1,5 +1,4 @@
 import { extendedRoll } from "./chat.js";
-import { addAllModifiers } from "./witcher.js";
 import { RollConfig } from "./rollConfig.js";
 import { getInteractActor } from "./helper.js";
 
@@ -162,7 +161,7 @@ async function defense(actor, skillName, modifier, totalAttack, attackLocation, 
         rollFormula += !displayRollDetails ? `+${customDef}` : ` +${customDef}[${game.i18n.localize("WITCHER.Settings.Custom")}]`;
     }
 
-    rollFormula = addAllModifiers(actor, skillName, rollFormula)
+    rollFormula += actor.addAllModifiers(skillName)
     rollFormula = handleSpecialModifier(actor, rollFormula, buttonName.replace("Button", "").toLowerCase(), html.find("[name=form]")[0].selectedOptions[0].getAttribute('type'))
 
     let messageData = {

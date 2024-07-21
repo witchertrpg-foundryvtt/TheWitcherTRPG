@@ -1,5 +1,4 @@
 
-import { genId } from "../../scripts/witcher.js";
 import WitcherDamagePropertiesConfigurationSheet from "./configurations/WitcherDamagePropertiesConfigurationSheet.js";
 import WitcherItemSheet from "./WitcherItemSheet.js";
 
@@ -14,12 +13,6 @@ export default class WitcherWeaponSheet extends WitcherItemSheet {
   /** @override */
   getData() {
     const data = super.getData();
-
-    this.item.system.damageProperties.effects.forEach(effect => {
-      if (effect.id == undefined) {
-        effect.id = genId()
-      }
-    });
 
     data.config.attackSkills = [...new Set(CONFIG.WITCHER.meleeSkills.concat(CONFIG.WITCHER.rangedSkills).map(skill => CONFIG.WITCHER.skillMap[skill]))]
 
