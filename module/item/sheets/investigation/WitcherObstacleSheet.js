@@ -1,5 +1,3 @@
-import { WITCHER } from "../../../setup/config.js";
-
 export default class WitcherObstacleSheet extends ItemSheet {
   /** @override */
   static get defaultOptions() {
@@ -23,14 +21,8 @@ export default class WitcherObstacleSheet extends ItemSheet {
   getData() {
     const data = super.getData();
 
-    data.skills = WITCHER.skillMap
+    data.skills = CONFIG.WITCHER.skillMap
 
     return data;
-  }
-
-  activateListeners(html) {
-    super.activateListeners(html);
-
-   
   }
 }

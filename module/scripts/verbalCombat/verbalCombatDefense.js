@@ -23,9 +23,6 @@ export function addVerbalCombatDefenseMessageContextOptions(html, options) {
 async function executeDefense(actor, messageId, totalAttack) {
     if (!actor) return;
 
-    let message = game.messages.get(messageId)
-
-    // let location = game.messages.get(messageId)?.getFlag('TheWitcherTRPG', 'damage').location
     const dialogTemplate = await renderTemplate("systems/TheWitcherTRPG/templates/dialog/verbal-combat-defense.hbs", { defenses: CONFIG.WITCHER.verbalCombat.Defences });
 
     new Dialog({

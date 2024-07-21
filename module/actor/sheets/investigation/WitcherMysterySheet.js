@@ -1,4 +1,4 @@
-import { WITCHER } from "../../../setup/config.js";
+import { rollClue } from "../../../scripts/investigation/rollClue.js";
 
 export default class WitcherMysterySheet extends ActorSheet {
 
@@ -22,7 +22,7 @@ export default class WitcherMysterySheet extends ActorSheet {
     context.obstacles = context.actor.getList("obstacle");
 
     context.isGM = game.user.isGM
-    context.skills = WITCHER.skillMap
+    context.skills = CONFIG.WITCHER.skillMap
 
     return context;
   }
@@ -37,6 +37,9 @@ export default class WitcherMysterySheet extends ActorSheet {
     html.find(".item-hide").on("click", this._onItemHide.bind(this));
 
     html.find(".inline-edit").change(this._onInlineEdit.bind(this));
+
+    //automation
+    html.find(".roll-clue").on("click", this._onRollClue.bind(this));
   }
 
   async _onItemAdd(event) {
@@ -87,5 +90,12 @@ export default class WitcherMysterySheet extends ActorSheet {
     }
 
     return item.update({ [field]: value });
+  }
+
+  _onRollClue(event) {
+    let clueId = event.currentTarget.closest(".item").dataset.itemId;
+    let clue = this.actor.items.get(clueId);
+
+    rollClue(clue);
   }
 }
