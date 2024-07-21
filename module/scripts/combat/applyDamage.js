@@ -1,5 +1,5 @@
-import { buttonDialog } from "./chat.js";
-import { getInteractActor } from "./helper.js";
+import { buttonDialog } from "../chat.js";
+import { getInteractActor } from "../helper.js";
 
 export function addDamageMessageContextOptions(html, options) {
   let canApplyDamage = li => li.find(".damage-message").length

@@ -1,4 +1,4 @@
-import { getInteractActor } from "./helper.js";
+import { getInteractActor } from "../helper.js";
 
 export function addVerbalCombatChatListeners(html) {
 

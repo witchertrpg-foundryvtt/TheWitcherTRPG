@@ -1,6 +1,6 @@
-import { extendedRoll } from "./chat.js";
-import { getInteractActor } from "./helper.js";
-import { RollConfig } from "./rollConfig.js";
+import { extendedRoll } from "../chat.js";
+import { getInteractActor } from "../helper.js";
+import { RollConfig } from "../rollConfig.js";
 
 export function addVerbalCombatDefenseMessageContextOptions(html, options) {
     let canDefend = li => li.find(".verbal-combat-attack-message").length

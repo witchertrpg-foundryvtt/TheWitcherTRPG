@@ -1,6 +1,6 @@
 import { extendedRoll } from "../../scripts/chat.js";
 import { RollConfig } from "../../scripts/rollConfig.js";
-import { ExecuteDefense } from "../../scripts/defenses.js";
+import { ExecuteDefense } from "../../scripts/combat/defenses.js";
 
 import { sanitizeMixin } from "./mixins/sanitizeMixin.js"
 import { deathsaveMixin } from "./mixins/deathSaveMixin.js";
