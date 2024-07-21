@@ -1,6 +1,6 @@
-import { extendedRoll } from "./chat.js";
-import { RollConfig } from "./rollConfig.js";
-import { getInteractActor } from "./helper.js";
+import { extendedRoll } from "../chat.js";
+import { RollConfig } from "../rollConfig.js";
+import { getInteractActor } from "../helper.js";
 
 export function addDefenseMessageContextOptions(html, options) {
     let canDefend = li => li.find(".attack-message").length || li.find(".defense").length
