@@ -7,16 +7,16 @@ export function addCritMessageContextOptions(html, options) {
             name: `${game.i18n.localize("WITCHER.Context.applyCritDmg")}`,
             icon: '<i class="fas fa-user-minus"></i>',
             condition: wasCritted,
-            callback: li => {
-                applyCritDamage(getInteractActor(), li[0].dataset.messageId)
+            callback:async li => {
+                applyCritDamage(await getInteractActor(), li[0].dataset.messageId)
             }
         },
         {
             name: `${game.i18n.localize("WITCHER.Context.applyBonusCritDmg")}`,
             icon: '<i class="fas fa-user-minus"></i>',
             condition: wasCritted,
-            callback: li => {
-                applyBonusCritDamage(getInteractActor(), li[0].dataset.messageId
+            callback: async li => {
+                applyBonusCritDamage(await getInteractActor(), li[0].dataset.messageId
                 )
             }
         },
@@ -24,8 +24,8 @@ export function addCritMessageContextOptions(html, options) {
             name: `${game.i18n.localize("WITCHER.Context.applyCritWound")}`,
             icon: '<i class="fas fa-user-minus"></i>',
             condition: wasCritted,
-            callback: li => {
-                applyCritWound(getInteractActor(), li[0].dataset.messageId)
+            callback: async li => {
+                applyCritWound(await getInteractActor(), li[0].dataset.messageId)
             }
         }
     );
