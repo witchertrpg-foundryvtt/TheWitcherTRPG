@@ -1056,7 +1056,10 @@
       "penalty": "Penalty",
       "focusDamage": "Damage to Focus",
       "successDamage": "Success Damage",
-      "failDamage": "Fail Damage"
+      "failDamage": "Fail Damage",
+      "evidence": {
+        "chooseSkill": "Choose your skill"
+      }
     },
     "statusEffects": {
       "healing": "Healing",
