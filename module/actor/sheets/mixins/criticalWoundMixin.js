@@ -1,4 +1,5 @@
-import { genId } from "../../scripts/witcher.js";
+import { genId } from "../../../scripts/helper.js";
+
 
 export let criticalWoundMixin = {
 

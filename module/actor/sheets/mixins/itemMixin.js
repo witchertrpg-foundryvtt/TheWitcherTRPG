@@ -1,7 +1,6 @@
-import { buttonDialog, extendedRoll } from "../../scripts/chat.js";
-import { rollDamage } from "../../scripts/attack.js";
-import { addAllModifiers, getArmorEcumbrance } from "../../scripts/witcher.js";
-import { RollConfig } from "../../scripts/rollConfig.js";
+import { buttonDialog, extendedRoll } from "../../../scripts/chat.js";
+import { rollDamage } from "../../../scripts/attack.js";
+import { RollConfig } from "../../../scripts/rollConfig.js";
 
 export let itemMixin = {
 
@@ -572,7 +571,7 @@ export let itemMixin = {
               }
 
               attFormula = this.handleSpecialModifier(attFormula, strike)
-              attFormula = addAllModifiers(this.actor, attackSkill.name, attFormula)
+              attFormula += this.actor.addAllModifiers(attackSkill.name)
 
               messageData.flavor = `<div class="attack-message"><h1><img src="${item.img}" class="item-img" />${game.i18n.localize("WITCHER.Attack")}: ${item.name}</h1>`;
               messageData.flavor += `<span>  ${game.i18n.localize("WITCHER.Armor.Location")}: ${touchedLocation.alias} = ${touchedLocation.locationFormula} </span>`;
@@ -628,19 +627,19 @@ export let itemMixin = {
       case "Invocations":
       case "Spells":
         rollFormula += !displayRollDetails ? `+${this.actor.system.skills.will.spellcast.value}` : `+${this.actor.system.skills.will.spellcast.value}[${game.i18n.localize("WITCHER.SkWillSpellcastLable")}]`;
-        rollFormula = addAllModifiers(this.actor, "spellcast", rollFormula)
+        rollFormula += this.actor.addAllModifiers("spellcast")
         break;
       case "Rituals":
         rollFormula += !displayRollDetails ? `+${this.actor.system.skills.will.ritcraft.value}` : `+${this.actor.system.skills.will.ritcraft.value}[${game.i18n.localize("WITCHER.SkWillRitCraftLable")}]`;
-        rollFormula = addAllModifiers(this.actor, "ritcraft", rollFormula)
+        rollFormula += this.actor.addAllModifiers("ritcraft")
         break;
       case "Hexes":
         rollFormula += !displayRollDetails ? `+${this.actor.system.skills.will.hexweave.value}` : `+${this.actor.system.skills.will.hexweave.value}[${game.i18n.localize("WITCHER.SkWillHexLable")}]`;
-        rollFormula = addAllModifiers(this.actor, "hexweave", rollFormula)
+        rollFormula += this.actor.addAllModifiers("hexweave")
         break;
     }
 
-    let armorEnc = getArmorEcumbrance(this.actor)
+    let armorEnc = this.actor.getArmorEcumbrance()
     if (armorEnc > 0) {
       rollFormula += !displayRollDetails ? `-${armorEnc}` : `-${armorEnc}[${game.i18n.localize("WITCHER.Armor.EncumbranceValue")}]`
       rollFormula = this.handleSpecialModifier(rollFormula, "magic-armorencumbarance")
@@ -859,7 +858,7 @@ export let itemMixin = {
     await roll.toMessage(messageData);
 
     if (!roll.data.fumble) {
-      await spellItem.system.globalModifiers.forEach(modifier => this._activateGlobalModifier(modifier))
+      await spellItem.system.globalModifiers.forEach(modifier => this.actor._activateGlobalModifier(modifier))
     }
   },
 
@@ -873,24 +872,6 @@ export let itemMixin = {
     event.preventDefault();
     let section = event.currentTarget.closest(".substance");
     this.actor.update({ [`system.pannels.${section.dataset.subtype}IsOpen`]: !this.actor.system.pannels[section.dataset.subtype + 'IsOpen'] });
-  },
-
-  async _activateGlobalModifier(name) {
-    let toActivate = this.actor.items.find(item => item.type == "globalModifier" && item.name == name)
-
-    if (!toActivate) {
-      let compendium = game.packs.get(game.settings.get("TheWitcherTRPG", "globalModifierLookupCompendium"))
-      let newGlobalModifier = await compendium?.getDocuments({ name: name })
-      if (newGlobalModifier) {
-        toActivate = (await Item.create(newGlobalModifier, { parent: this.actor })).shift();
-      }
-    }
-
-    if (!toActivate || toActivate.system.isActive) return;
-
-    toActivate.update({
-      'system.isActive': true
-    });
   },
 
   itemListener(html) {

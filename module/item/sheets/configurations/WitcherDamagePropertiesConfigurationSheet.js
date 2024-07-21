@@ -1,5 +1,5 @@
 
-import { genId } from "../../../scripts/witcher.js";
+import { genId } from "../../../scripts/helper.js";
 import WitcherConfigurationSheet from "./WitcherConfigurationSheet.js";
 
 export default class WitcherDamagePropertiesConfigurationSheet extends WitcherConfigurationSheet {

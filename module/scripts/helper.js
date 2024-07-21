@@ -15,3 +15,11 @@ export function getInteractActor() {
 
     return actor;
 }
+
+export function genId() {
+    return randomID(16);
+};
+
+export function getRandomInt(max) {
+    return Math.floor(Math.random() * (max + 1)) + 1;
+}

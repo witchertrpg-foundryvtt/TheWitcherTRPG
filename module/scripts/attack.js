@@ -1,5 +1,4 @@
-import { getCurrentToken } from "./helper.js";
-import { getRandomInt } from "./witcher.js";
+import { getCurrentToken, getRandomInt } from "./helper.js";
 
 export function addAttackChatListeners(html) {
 
