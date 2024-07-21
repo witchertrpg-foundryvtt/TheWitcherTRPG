@@ -1,11 +1,11 @@
 import { WITCHER } from "./setup/config.js";
 import * as Chat from "./scripts/chat.js";
-import * as Attack from "./scripts/attack.js"
-import * as VerbalCombat from "./scripts/verbalCombat.js"
-import * as VerbalCombatDefense from "./scripts/verbalCombatDefense.js"
-import * as Defense from "./scripts/defenses.js"
-import * as ApplyDamage from "./scripts/applyDamage.js"
-import * as Crit from "./scripts/applyCrit.js"
+import * as Attack from "./scripts/combat/attack.js"
+import * as VerbalCombat from "./scripts/verbalCombat/verbalCombat.js"
+import * as VerbalCombatDefense from "./scripts/verbalCombat/verbalCombatDefense.js"
+import * as Defense from "./scripts/combat/defenses.js"
+import * as ApplyDamage from "./scripts/combat/applyDamage.js"
+import * as Crit from "./scripts/combat/applyCrit.js"
 import { registerSettings } from "./setup/settings.js";
 
 import WitcherItem from "./item/witcherItem.js";
