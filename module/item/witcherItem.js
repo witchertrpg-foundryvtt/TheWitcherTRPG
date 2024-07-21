@@ -313,7 +313,7 @@ export default class WitcherItem extends Item {
     }
 
     if (properties.appliesGlobalModifier) {
-      properties.consumeGlobalModifiers.forEach(modifier => this._activateGlobalModifier(modifier))
+      properties.consumeGlobalModifiers.forEach(modifier => this.actor._activateGlobalModifier(modifier))
     }
 
     this.applyStatus(this.actor, properties.effects)
@@ -325,22 +325,6 @@ export default class WitcherItem extends Item {
       heal = (await new Roll(value).evaluate()).total
     }
     return (parseInt(actor?.system.derivedStats.hp.value) + parseInt(heal)) > actor?.system.derivedStats.hp.max ? (parseInt(actor?.system.derivedStats.hp.max) - parseInt(actor?.system.derivedStats.hp.value)) : heal;
-  }
-
-  async _activateGlobalModifier(name) {
-    let toActivate = this.actor.items.find(item => item.type == "globalModifier" && item.name == name)
-
-    if (!toActivate) {
-      let compendium = game.packs.get("TheWitcherTRPG.modifiers-and-conditions")
-      let newGlobalModifier = await compendium.getDocuments({ name: name })
-      toActivate = (await Item.create(newGlobalModifier, { parent: this.actor })).shift();
-    }
-
-    if (!toActivate || toActivate.system.isActive) return;
-
-    toActivate.update({
-      'system.isActive': true
-    });
   }
 
   async applyStatus(actor, effects) {

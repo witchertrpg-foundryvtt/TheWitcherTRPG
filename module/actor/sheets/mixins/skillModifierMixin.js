@@ -1,4 +1,4 @@
-import { genId } from "../../scripts/witcher.js";
+import { genId } from "../../../scripts/helper.js";
 
 export let skillModifierMixin = {
   async _onAddSkillModifier(event) {

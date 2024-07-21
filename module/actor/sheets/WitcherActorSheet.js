@@ -1,17 +1,17 @@
 import { extendedRoll } from "../../scripts/chat.js";
-import { addAllModifiers } from "../../scripts/witcher.js";
 import { RollConfig } from "../../scripts/rollConfig.js";
-
 import { ExecuteDefense } from "../../scripts/defenses.js";
-import { sanitizeMixin } from "../mixins/sanitizeMixin.js"
-import { deathsaveMixin } from "../mixins/deathSaveMixin.js";
-import { criticalWoundMixin } from "../mixins/criticalWoundMixin.js";
-import { noteMixin } from "../mixins/noteMixin.js";
-import { globalModifierMixin } from "../mixins/globalModifierMixin.js";
-import { skillModifierMixin } from "../mixins/skillModifierMixin.js";
-import { skillMixin } from "../mixins/skillMixin.js";
-import { statMixin } from "../mixins/statMixin.js";
-import { itemMixin } from "../mixins/itemMixin.js";
+
+import { sanitizeMixin } from "./mixins/sanitizeMixin.js"
+import { deathsaveMixin } from "./mixins/deathSaveMixin.js";
+import { criticalWoundMixin } from "./mixins/criticalWoundMixin.js";
+import { noteMixin } from "./mixins/noteMixin.js";
+import { globalModifierMixin } from "./mixins/globalModifierMixin.js";
+import { skillModifierMixin } from "./mixins/skillModifierMixin.js";
+import { skillMixin } from "./mixins/skillMixin.js";
+import { statMixin } from "./mixins/statMixin.js";
+import { itemMixin } from "./mixins/itemMixin.js";
+
 import { itemContextMenu } from "../interactions/itemContextMenu.js";
 
 Array.prototype.sum = function (prop) {
@@ -347,7 +347,7 @@ export default class WitcherActorSheet extends ActorSheet {
 
             if (verbalCombat.skill) {
               rollFormula += !displayRollDetails ? ` +${vcStat} +${vcSkill}` : ` +${vcStat}[${game.i18n.localize(vcStatName)}] +${vcSkill}[${game.i18n.localize(vcSkillName)}]`
-              rollFormula = addAllModifiers(this.actor, verbalCombat.skill.name, rollFormula)
+              rollFormula += this.actor.addAllModifiers(verbalCombat.skill.name)
             }
 
             let customAtt = html.find("[name=customModifiers]")[0].value;
