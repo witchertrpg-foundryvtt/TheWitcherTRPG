@@ -1,4 +1,4 @@
-import { genId, getInteractActor, getRandomInt } from "./helper.js";
+import { genId, getInteractActor, getRandomInt } from "../helper.js";
 
 export function addCritMessageContextOptions(html, options) {
     let wasCritted = li => li.find(".crit-taken").length
