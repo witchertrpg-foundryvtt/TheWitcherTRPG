@@ -8,9 +8,9 @@ export function addDamageMessageContextOptions(html, options) {
       name: `${game.i18n.localize("WITCHER.Context.applyDmg")}`,
       icon: '<i class="fas fa-user-minus"></i>',
       condition: canApplyDamage,
-      callback: li => {
+      callback: async li => {
         ApplyNormalDamage(
-          getInteractActor(),
+          await getInteractActor(),
           li.find(".dice-total")[0].innerText,
           li[0].dataset.messageId
         )
@@ -20,9 +20,9 @@ export function addDamageMessageContextOptions(html, options) {
       name: `${game.i18n.localize("WITCHER.Context.applyNonLethal")}`,
       icon: '<i class="fas fa-user-minus"></i>',
       condition: canApplyDamage,
-      callback: li => {
+      callback: async li => {
         ApplyNonLethalDamage(
-          getInteractActor(),
+          await getInteractActor(),
           li.find(".dice-total")[0].innerText,
           li[0].dataset.messageId
         )

@@ -9,9 +9,9 @@ export function addDefenseMessageContextOptions(html, options) {
             name: `${game.i18n.localize("WITCHER.Context.Defense")}`,
             icon: '<i class="fas fa-shield-alt"></i>',
             condition: canDefend,
-            callback: li => {
+            callback: async li => {
                 ExecuteDefense(
-                    getInteractActor(),
+                    await getInteractActor(),
                     li[0].dataset.messageId,
                     li.find(".dice-total")[0].innerText)
             }
@@ -20,8 +20,8 @@ export function addDefenseMessageContextOptions(html, options) {
             name: `${game.i18n.localize("WITCHER.Context.Blocked")}`,
             icon: '<i class="fas fa-shield-alt"></i>',
             condition: canDefend,
-            callback: li => {
-                BlockAttack(getInteractActor())
+            callback: async li => {
+                BlockAttack(await getInteractActor())
             }
         },
     );
