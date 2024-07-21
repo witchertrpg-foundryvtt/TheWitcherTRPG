@@ -629,6 +629,11 @@
     "Settings": {
       "globalModifierLookupCompendium": "Global Modifier Nachschlage Compendium",
       "globalModifierLookupCompendiumHint": "Wenn ein Globaler Modifier aktiviert werden soll, dieser aber nicht auf dem Charakterbogen vorhanden ist, wird in diesem Kompendium danach gesucht"
+    },
+    "Investigation": {
+      "evidence": {
+        "chooseSkill": "Wähle eine Fertigkeit"
+      }
     }
   }
 }

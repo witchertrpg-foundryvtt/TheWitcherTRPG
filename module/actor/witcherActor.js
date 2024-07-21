@@ -294,6 +294,10 @@ export default class WitcherActor extends Actor {
     this.sheet._onSpellRoll(null, itemId)
   }
 
+  async rollSkill(skillName) {
+    this.sheet._onSkillRoll(CONFIG.WITCHER.skillMap[skillName])
+  }
+
   getControlledToken() {
     let tokens = game.canvas.tokens.controlled
     return tokens.length > 0 ? tokens[0].document : game.user.character?.token
