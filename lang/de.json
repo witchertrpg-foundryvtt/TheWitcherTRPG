@@ -10,7 +10,10 @@
     "Item.Effect": "Effekte",
     "Item.Quantity": "Anzahl",
     "Item": {
-      "SourceBook": "Regelwerk"
+      "SourceBook": "Regelwerk",
+      "DamageProperties": {
+        "variableDamage": "Variabler Schaden"
+      }
     },
     "Item.Description": "Beschreibung",
     "Item.Attribute": "Attributes",

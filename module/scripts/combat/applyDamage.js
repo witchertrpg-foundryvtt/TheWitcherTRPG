@@ -118,7 +118,6 @@ async function createApplyDamageDialog(actor, damage) {
 async function applyDamage(actor, totalDamage, messageId, derivedStat) {
   let damage = game.messages.get(messageId).getFlag('TheWitcherTRPG', 'damage')
 
-
   let infoTotalDmg = totalDamage
   let location = damage.location;
 
