@@ -23,6 +23,8 @@ export default function damageProperties() {
         defenseDifferenceMultiplier: new fields.BooleanField({ initial: false }),
         defenseMultiplierCap: new fields.NumberField({ initial: 5 }),
 
+        variableDamage: new fields.BooleanField({ initial: false }),
+
         effects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
     };
 }

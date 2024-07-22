@@ -74,6 +74,15 @@
     </tr>
     <tr class="item-header-tablerow">
         <td>
+            <label for="variableDamage">{{localize "WITCHER.Item.DamageProperties.variableDamage"}}</label>
+        </td>
+        <td>
+            <input type="checkbox" id="variableDamage" name="system.damageProperties.variableDamage"
+                {{checked item.system.damageProperties.variableDamage}} />
+        </td>
+    </tr>
+    <tr class="item-header-tablerow">
+        <td>
             <label
                 for="defenseDifferenceMultiplier">{{localize "WITCHER.Item.DamageProperties.defenseDifferenceMultiplier"}}</label>
         </td>
