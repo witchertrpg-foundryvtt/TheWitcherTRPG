@@ -1,5 +1,7 @@
 import { getCurrentToken, getRandomInt } from "../helper.js";
 
+const DialogV2 = foundry.applications.api.DialogV2
+
 export function addAttackChatListeners(html) {
 
     // setup chat listener messages for each message as some need the message context instead of chatlog context.
@@ -35,6 +37,10 @@ function onDamage(message) {
 export async function rollDamage(item, damage) {
     let messageData = {}
     messageData.flavor = `<div class="damage-message" <h1><img src="${item.img}" class="item-img" />${game.i18n.localize("WITCHER.table.Damage")}: ${item.name} </h1>`;
+
+    if (damage.damageProperties.variableDamage) {
+        damage.formula = await createVariableDamageDialog(damage.formula)
+    }
 
     if (damage.formula == "") {
         damage.formula = "0"
@@ -80,6 +86,21 @@ export async function rollDamage(item, damage) {
 
     let message = await (await new Roll(damage.formula).evaluate()).toMessage(messageData)
     message.setFlag('TheWitcherTRPG', 'damage', damage);
+}
+
+async function createVariableDamageDialog(damageFormula) {
+
+    const dialogTemplate = await renderTemplate("systems/TheWitcherTRPG/templates/dialog/combat/variableDamage.hbs", { currentDamage: damageFormula });
+
+    let newDamageFormula = await DialogV2.prompt({
+        ok: {
+            callback: (event, button, dialog) => button.form.elements.newDamage.value
+        },
+        title: `${game.i18n.localize("WITCHER.Item.DamageProperties.variableDamage")}`,
+        content: dialogTemplate,
+    })
+
+    return newDamageFormula;
 }
 
 async function onApplyStatus(event) {
