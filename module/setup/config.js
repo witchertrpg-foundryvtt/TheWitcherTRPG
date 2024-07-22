@@ -1272,7 +1272,7 @@ WITCHER.CritMod = {
     treated: "WITCHER.CritWound.Treated",
 }
 
-WITCHER.meleeSkills = ["brawling", "melee", "smallblades", "staffspear", "swordsmanship", "athletics"]
+WITCHER.meleeSkills = ["brawling", "melee", "smallblades", "staffspear", "swordsmanship"]
 WITCHER.rangedSkills = ["athletics", "archery", "crossbow"]
 WITCHER.magicSkills = ["spellcast", "ritcraft", "hexweave"]
 WITCHER.verbalCombatSkills = ["charisma", "persuasion", "seduction", "leadership", "deceit", "socialetq", "intimidation"]
