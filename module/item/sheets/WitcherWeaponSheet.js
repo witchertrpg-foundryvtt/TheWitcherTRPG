@@ -46,8 +46,4 @@ export default class WitcherWeaponSheet extends WitcherItemSheet {
     this.item.update({ 'system.type': newval });
   }
 
-  async _renderConfigureDialog() {
-    this.configuration._render(true)
-  }
-
 }
