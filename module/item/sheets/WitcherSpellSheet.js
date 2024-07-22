@@ -102,8 +102,4 @@ export default class WitcherSpellSheet extends WitcherItemSheet {
     console.log("Not implemented")
   }
 
-  async _renderConfigureDialog() {
-    this.configuration._render(true)
-  }
-
 }

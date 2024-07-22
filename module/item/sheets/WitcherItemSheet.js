@@ -14,6 +14,9 @@ export default class WitcherItemSheet extends ItemSheet {
     });
   }
 
+  //overwrite in sub-classes
+  configuration = undefined;
+
   get template() {
     return `systems/TheWitcherTRPG/templates/sheets/${this.object.type}-sheet.hbs`;
   }
@@ -25,6 +28,10 @@ export default class WitcherItemSheet extends ItemSheet {
 
     this.options.classes.push(`item-${this.item.type}`)
     data.data = data.item?.system
+
+    if (this.configuration) {
+      data.showConfig = true
+    }
     return data;
   }
 
@@ -73,9 +80,8 @@ export default class WitcherItemSheet extends ItemSheet {
     this.item.update({ 'system.globalModifiers': newList });
   }
 
-  //overwrite in sub-classes
   async _renderConfigureDialog() {
-    
+    this.configuration?._render(true)
   }
 
   _handleRender(html) {
