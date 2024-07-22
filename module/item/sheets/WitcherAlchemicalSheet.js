@@ -28,9 +28,4 @@ export default class WitcherAlchemicalSheet extends WitcherItemSheet {
       oil: "WITCHER.Alchemy.Oil",
     }
   }
-
-  async _renderConfigureDialog() {
-    this.configuration._render(true)
-  }
-
 }
