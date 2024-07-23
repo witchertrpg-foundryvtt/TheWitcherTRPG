@@ -1,4 +1,4 @@
-import { extendedRoll } from "../scripts/chat.js";
+import { extendedRoll } from "../scripts/rolls/extendedRoll.js";
 import { getRandomInt } from "../scripts/helper.js";
 import { RollConfig } from "../scripts/rollConfig.js";
 import { WITCHER } from "../setup/config.js";
@@ -9,19 +9,19 @@ export default class WitcherActor extends Actor {
     prepareDerivedData() {
         super.prepareDerivedData()
 
-        let armorEffects = this.getList("armor")
-            .filter(armor => armor.system.equipped)
-            .map(armor => armor.system.effects)
-            .flat()
-            .filter(effect => effect.statusEffect)
-            .map(effect => WITCHER.armorEffects.find(armorEffect => armorEffect.id == effect.statusEffect))
+            let armorEffects = this.getList("armor")
+                .filter(armor => armor.system.equipped)
+                .map(armor => armor.system.effects)
+                .flat()
+                .filter(effect => effect.statusEffect)
+                .map(effect => WITCHER.armorEffects.find(armorEffect => armorEffect.id == effect.statusEffect))
 
-        armorEffects.forEach(effect => {
-            if (effect.refersStatusEffect && !effect.addsResistance && !this.statuses.find(status => status == effect.id)) {
-                this.toggleStatusEffect(effect.id);
-            }
-        });
-    }
+            armorEffects.forEach(effect => {
+                if (effect.refersStatusEffect && !effect.addsResistance && !this.statuses.find(status => status == effect.id)) {
+                    this.toggleStatusEffect(effect.id);
+                }
+            });
+        }
 
     updateDerived() {
         const stats = this.system.stats;
@@ -302,8 +302,21 @@ export default class WitcherActor extends Actor {
 
     getDamageFlags() {
         return {
-            "witcher": { "origin": { "name": this.name } },
-            "damage": true,
+            origin: {
+                name: this.name,
+                uuid: this.uuid
+            },
+            damage: true,
+        }
+    }
+
+    getNoDamageFlags() {
+        return {
+            origin: {
+                name: this.name,
+                uuid: this.uuid
+            },
+            "damage": false,
         }
     }
 
@@ -322,26 +335,25 @@ export default class WitcherActor extends Actor {
         ]
     }
 
-    getDefenceSuccessFlags(defenceSkill) {
+    getDefenseSuccessFlags(defenseSkill) {
         return {
-            "witcher": { "origin": { "name": this.name } },
-            "defenceSkill": defenceSkill,
-            "defence": true,
+            origin: {
+                name: this.name,
+                uuid: this.uuid
+            },
+            defenseSkill: defenseSkill,
+            defense: true,
         }
     }
 
-    getNoDamageFlags() {
+    getDefenseFailFlags(defenseSkill) {
         return {
-            "witcher": { "origin": { "name": this.name } },
-            "damage": false,
-        }
-    }
-
-    getDefenceFailFlags(defenceSkill) {
-        return {
-            "witcher": { "origin": { "name": this.name } },
-            "defenceSkill": defenceSkill,
-            "defence": false,
+            origin: {
+                name: this.name,
+                uuid: this.uuid
+            },
+            defenseSkill: defenseSkill,
+            defense: false,
         }
     }
 

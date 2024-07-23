@@ -319,7 +319,7 @@ async function createResultMessage(actor, damageResult) {
     type: CONST.CHAT_MESSAGE_TYPES.OTHER,
   }
 
-  let message = await ChatMessage.create(chatData)
+  ChatMessage.create(chatData)
 }
 
 function getLocationArmor(actor, location, damageProperties) {
