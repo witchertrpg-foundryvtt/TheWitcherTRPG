@@ -1,4 +1,4 @@
-import { extendedRoll } from "../chat.js";
+import { extendedRoll } from "../rolls/extendedRoll.js";
 import { RollConfig } from "../rollConfig.js";
 import { getInteractActor } from "../helper.js";
 
@@ -170,7 +170,7 @@ async function defense(actor, skillName, modifier, totalAttack, attackLocation, 
     }
     messageData.flavor = `<h1>${game.i18n.localize("WITCHER.Dialog.Defense")}: ${game.i18n.localize("WITCHER.Dialog." + buttonName)}</h1><p>${displayFormula}</p>`;
 
-    let roll = await extendedRoll(rollFormula, messageData, createRollConfig(actor, skill, totalAttack))
+    let roll = await extendedRoll(rollFormula, messageData, createRollConfig(actor, CONFIG.WITCHER.skillMap[skillName], totalAttack))
     let crit = checkForCrit(roll.total, totalAttack)
     if (crit) {
         messageData.flavor += `<h3 class='center-important crit-taken'>${game.i18n.localize("WITCHER.Defense.Crit")}: ${game.i18n.localize(CONFIG.WITCHER.CritGravity[crit.severity])}</h3>`
@@ -198,8 +198,8 @@ function handleSpecialModifier(actor, formula, action, additionalTag) {
 }
 
 function handleExtraDefense(html, actor) {
-    let isExtraDefence = html.find("[name=isExtraDefense]").prop("checked");
-    if (isExtraDefence) {
+    let isExtraDefense = html.find("[name=isExtraDefense]").prop("checked");
+    if (isExtraDefense) {
         let newSta = actor.system.derivedStats.sta.value - 1
         if (newSta < 0) {
             ui.notifications.error(game.i18n.localize("WITCHER.Spell.notEnoughSta"));
@@ -216,11 +216,11 @@ function handleExtraDefense(html, actor) {
 function createRollConfig(actor, skill, totalAttack) {
     let config = new RollConfig()
     config.showResult = false;
-    config.defence = true
+    config.defense = true
     config.threshold = totalAttack
     config.thresholdDesc = skill.label
-    config.flagsOnSuccess = actor.getDefenceSuccessFlags(skill)
-    config.flagsOnFailure = actor.getDefenceFailFlags(skill)
+    config.flagsOnSuccess = actor.getDefenseSuccessFlags(skill)
+    config.flagsOnFailure = actor.getDefenseFailFlags(skill)
 
     return config;
 }

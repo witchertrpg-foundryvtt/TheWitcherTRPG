@@ -1,4 +1,6 @@
-import { buttonDialog, extendedRoll } from "../../../scripts/chat.js";
+import { buttonDialog } from "../../../scripts/chat.js";
+import { extendedRoll } from "../../../scripts/rolls/extendedRoll.js";
+
 import { rollDamage } from "../../../scripts/combat/attack.js";
 import { RollConfig } from "../../../scripts/rollConfig.js";
 
@@ -847,7 +849,7 @@ export let itemMixin = {
         let roll = await extendedRoll(rollFormula, messageData, config)
         await roll.toMessage(messageData);
 
-        if (!roll.data.fumble) {
+        if (!roll.options.fumble) {
             await spellItem.system.globalModifiers.forEach(modifier => this.actor._activateGlobalModifier(modifier))
         }
     },

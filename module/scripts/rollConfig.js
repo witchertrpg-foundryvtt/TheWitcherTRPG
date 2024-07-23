@@ -2,7 +2,7 @@
 export var RollConfig = (function () {
     class RollConfig {
         constructor() {
-            this.defence = false;
+            this.defense = false;
             this.threshold = -1;
             this.showCrit = true;
             this.showSuccess = true;
