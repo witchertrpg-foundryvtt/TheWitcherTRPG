@@ -49,7 +49,6 @@ export async function chooseFromAvailableActors() {
                 </select>`;
 
         let choosenActor = await Dialog.prompt({
-            title: game.i18n.localize('SR5.Skill.Teamwork.ParticipantActor'),
             content: dialog_content,
             callback: (html) => html.find('select').val()
         });
