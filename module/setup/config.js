@@ -1,5 +1,441 @@
 export const WITCHER = {}
 
+//Stats
+WITCHER.statTypes = {
+    none: "",
+    int: "WITCHER.Actor.Stat.Int",
+    ref: "WITCHER.Actor.Stat.Ref",
+    dex: "WITCHER.Actor.Stat.Dex",
+    body: "WITCHER.Actor.Stat.Body",
+    spd: "WITCHER.Actor.Stat.Spd",
+    emp: "WITCHER.Actor.Stat.Emp",
+    cra: "WITCHER.Actor.Stat.Cra",
+    will: "WITCHER.Actor.Stat.Will",
+    luck: "WITCHER.Actor.Stat.Luck",
+}
+
+WITCHER.statMap = {
+    int: {
+        origin: "stats",
+        name: "int",
+        label: "WITCHER.StInt",
+        labelShort: "WITCHER.Actor.Stat.Int"
+    },
+    ref: {
+        origin: "stats",
+        name: "ref",
+        label: "WITCHER.StRef",
+        labelShort: "WITCHER.Actor.Stat.Ref"
+    },
+    dex: {
+        origin: "stats",
+        name: "dex",
+        label: "WITCHER.StDex",
+        labelShort: "WITCHER.Actor.Stat.Dex"
+    },
+    body: {
+        origin: "stats",
+        name: "body",
+        label: "WITCHER.StBody",
+        labelShort: "WITCHER.Actor.Stat.Body"
+    },
+    spd: {
+        origin: "stats",
+        name: "spd",
+        label: "WITCHER.StSpd",
+        labelShort: "WITCHER.Actor.Stat.Spd"
+    },
+    emp: {
+        origin: "stats",
+        name: "emp",
+        label: "WITCHER.StEmp",
+        labelShort: "WITCHER.Actor.Stat.Emp"
+    },
+    cra: {
+        origin: "stats",
+        name: "cra",
+        label: "WITCHER.StCra",
+        labelShort: "WITCHER.Actor.Stat.Cra"
+    },
+    will: {
+        origin: "stats",
+        name: "will",
+        label: "WITCHER.StWill",
+        labelShort: "WITCHER.Actor.Stat.Will"
+    },
+    luck: {
+        origin: "stats",
+        name: "luck",
+        label: "WITCHER.StLuck",
+        labelShort: "WITCHER.Actor.Stat.Luck"
+    },
+
+    stun: {
+        origin: "coreStats",
+        name: "stun",
+        labelShort: "WITCHER.Actor.CoreStat.Stun",
+    },
+    run: {
+        origin: "coreStats",
+        name: "run",
+        labelShort: "WITCHER.Actor.CoreStat.Run",
+    },
+    leap: {
+        origin: "coreStats",
+        name: "leap",
+        labelShort: "WITCHER.Actor.CoreStat.Leap",
+    },
+    enc: {
+        origin: "coreStats",
+        name: "enc",
+        labelShort: "WITCHER.Actor.CoreStat.Enc",
+    },
+    rec: {
+        origin: "coreStats",
+        name: "rec",
+        labelShort: "WITCHER.Actor.CoreStat.Rec",
+    },
+    woundTreshold: {
+        origin: "coreStats",
+        name: "woundTreshold",
+        labelShort: "WITCHER.Actor.CoreStat.woundTreshold",
+    },
+
+    hp: {
+        origin: "derivedStats",
+        name: "hp",
+        labelShort: "WITCHER.Actor.DerStat.HP",
+    },
+    sta: {
+        origin: "derivedStats",
+        name: "sta",
+        labelShort: "WITCHER.Actor.DerStat.Sta",
+    },
+    resolve: {
+        origin: "derivedStats",
+        name: "resolve",
+        labelShort: "WITCHER.Actor.DerStat.Resolve",
+    },
+    focus: {
+        origin: "derivedStats",
+        name: "focus",
+        labelShort: "WITCHER.Actor.DerStat.Focus",
+    },
+    vigor: {
+        origin: "derivedStats",
+        name: "vigor",
+        labelShort: "WITCHER.Actor.DerStat.Vigor",
+    },
+
+    reputation: {
+        origin: ""
+    }
+}
+
+//Skills
+WITCHER.meleeSkills = ["brawling", "melee", "smallblades", "staffspear", "swordsmanship"]
+WITCHER.rangedSkills = ["athletics", "archery", "crossbow"]
+WITCHER.magicSkills = ["spellcast", "ritcraft", "hexweave"]
+WITCHER.verbalCombatSkills = ["charisma", "persuasion", "seduction", "leadership", "deceit", "socialetq", "intimidation"]
+WITCHER.empatheticVerbalCombatSkills = ["charisma", "persuasion", "seduction", "leadership", "deceit", "socialetq"]
+
+WITCHER.skillGroups = {
+    allSkills: {
+        label: "WITCHER.Skills.SkillGroups.allSkills",
+        name: "allSkills",
+    },
+    meleeSkills: {
+        label: "WITCHER.Skills.SkillGroups.meleeSkills",
+        name: "meleeSkills",
+    },
+    rangedSkills: {
+        label: "WITCHER.Skills.SkillGroups.rangedSkills",
+        name: "rangedSkills",
+    },
+    magicSkills: {
+        label: "WITCHER.Skills.SkillGroups.magicSkills",
+        name: "magicSkills",
+    },
+    verbalCombatSkills: {
+        label: "WITCHER.Skills.SkillGroups.verbalCombatSkills",
+        name: "verbalCombatSkills",
+    },
+    empatheticVerbalCombatSkills: {
+        label: "WITCHER.Skills.SkillGroups.empatheticVerbalCombatSkills",
+        name: "empatheticVerbalCombatSkills",
+    },
+}
+
+WITCHER.skillMap = {
+    awareness: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntAwareness",
+        name: "awareness",
+    },
+    business: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntBusiness",
+        name: "business",
+    },
+    deduction: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntDeduction",
+        name: "deduction",
+    },
+    education: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntEducation",
+        name: "education",
+    },
+    commonsp: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntCommonLable",
+        name: "commonsp",
+    },
+    eldersp: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntElderLable",
+        name: "eldersp",
+    },
+    dwarven: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntDwarvenLable",
+        name: "dwarven",
+    },
+    monster: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntMonster",
+        name: "monster",
+    },
+    socialetq: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntSocialEt",
+        name: "socialetq",
+    },
+    streetwise: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntStreet",
+        name: "streetwise",
+    },
+    tactics: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntTacticsLable",
+        name: "tactics",
+    },
+    teaching: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntTeaching",
+        name: "teaching",
+    },
+    wilderness: {
+        attribute: WITCHER.statMap.int,
+        label: "WITCHER.SkIntWilderness",
+        name: "wilderness",
+    },
+
+    brawling: {
+        attribute: WITCHER.statMap.ref,
+        label: "WITCHER.SkRefBrawling",
+        name: "brawling",
+    },
+    dodge: {
+        attribute: WITCHER.statMap.ref,
+        label: "WITCHER.SkRefDodge",
+        name: "dodge",
+    },
+    melee: {
+        attribute: WITCHER.statMap.ref,
+        label: "WITCHER.SkRefMelee",
+        name: "melee",
+    },
+    riding: {
+        attribute: WITCHER.statMap.ref,
+        label: "WITCHER.SkRefRiding",
+        name: "riding",
+    },
+    sailing: {
+        attribute: WITCHER.statMap.ref,
+        label: "WITCHER.SkRefSailing",
+        name: "sailing",
+    },
+    smallblades: {
+        attribute: WITCHER.statMap.ref,
+        label: "WITCHER.SkRefSmall",
+        name: "smallblades",
+    },
+    staffspear: {
+        attribute: WITCHER.statMap.ref,
+        label: "WITCHER.SkRefStaff",
+        name: "staffspear",
+    },
+    swordsmanship: {
+        attribute: WITCHER.statMap.ref,
+        label: "WITCHER.SkRefSwordsmanship",
+        name: "swordsmanship",
+    },
+
+    courage: {
+        attribute: WITCHER.statMap.will,
+        label: "WITCHER.SkWillCourage",
+        name: "courage",
+    },
+    hexweave: {
+        attribute: WITCHER.statMap.will,
+        label: "WITCHER.SkWillHexLable",
+        name: "hexweave",
+    },
+    intimidation: {
+        attribute: WITCHER.statMap.will,
+        label: "WITCHER.SkWillIntim",
+        name: "intimidation",
+    },
+    spellcast: {
+        attribute: WITCHER.statMap.will,
+        label: "WITCHER.SkWillSpellcastLable",
+        name: "spellcast",
+    },
+    resistmagic: {
+        attribute: WITCHER.statMap.will,
+        label: "WITCHER.SkWillResistMagLable",
+        name: "resistmagic",
+    },
+    resistcoerc: {
+        attribute: WITCHER.statMap.will,
+        label: "WITCHER.SkWillResistCoer",
+        name: "resistcoerc",
+    },
+    ritcraft: {
+        attribute: WITCHER.statMap.will,
+        label: "WITCHER.SkWillRitCraftLable",
+        name: "ritcraft",
+    },
+
+    archery: {
+        attribute: WITCHER.statMap.dex,
+        label: "WITCHER.SkDexArchery",
+        name: "archery",
+    },
+    athletics: {
+        attribute: WITCHER.statMap.dex,
+        label: "WITCHER.SkDexAthletics",
+        name: "athletics",
+    },
+    crossbow: {
+        attribute: WITCHER.statMap.dex,
+        label: "WITCHER.SkDexCrossbow",
+        name: "crossbow",
+    },
+    sleight: {
+        attribute: WITCHER.statMap.dex,
+        label: "WITCHER.SkDexSleight",
+        name: "sleight",
+    },
+    stealth: {
+        attribute: WITCHER.statMap.dex,
+        label: "WITCHER.SkDexStealth",
+        name: "stealth",
+    },
+
+    alchemy: {
+        attribute: WITCHER.statMap.cra,
+        label: "WITCHER.SkCraAlchemyLable",
+        name: "alchemy",
+    },
+    crafting: {
+        attribute: WITCHER.statMap.cra,
+        label: "WITCHER.SkCraCraftingLable",
+        name: "crafting",
+    },
+    disguise: {
+        attribute: WITCHER.statMap.cra,
+        label: "WITCHER.SkCraDisguise",
+        name: "disguise",
+    },
+    firstaid: {
+        attribute: WITCHER.statMap.cra,
+        label: "WITCHER.SkCraAid",
+        name: "firstaid",
+    },
+    forgery: {
+        attribute: WITCHER.statMap.cra,
+        label: "WITCHER.SkCraForge",
+        name: "forgery",
+    },
+    picklock: {
+        attribute: WITCHER.statMap.cra,
+        label: "WITCHER.SkCraPick",
+        name: "picklock",
+    },
+    trapcraft: {
+        attribute: WITCHER.statMap.cra,
+        label: "WITCHER.SkCraTrapCraftLable",
+        name: "trapcraft",
+    },
+
+    physique: {
+        attribute: WITCHER.statMap.body,
+        label: "WITCHER.SkBodyPhys",
+        name: "physique",
+    },
+    endurance: {
+        attribute: WITCHER.statMap.body,
+        label: "WITCHER.SkBodyEnd",
+        name: "endurance",
+    },
+
+    charisma: {
+        attribute: WITCHER.statMap.emp,
+        label: "WITCHER.SkEmpCharisma",
+        name: "charisma",
+    },
+    deceit: {
+        attribute: WITCHER.statMap.emp,
+        label: "WITCHER.SkEmpDeceit",
+        name: "deceit",
+    },
+    finearts: {
+        attribute: WITCHER.statMap.emp,
+        label: "WITCHER.SkEmpArts",
+        name: "finearts",
+    },
+    gambling: {
+        attribute: WITCHER.statMap.emp,
+        label: "WITCHER.SkEmpGambling",
+        name: "gambling",
+    },
+    grooming: {
+        attribute: WITCHER.statMap.emp,
+        label: "WITCHER.SkEmpGrooming",
+        name: "grooming",
+    },
+    perception: {
+        attribute: WITCHER.statMap.emp,
+        label: "WITCHER.SkEmpHumanPerc",
+        name: "perception",
+    },
+    leadership: {
+        attribute: WITCHER.statMap.emp,
+        label: "WITCHER.SkEmpLeadership",
+        name: "leadership",
+    },
+    persuasion: {
+        attribute: WITCHER.statMap.emp,
+        label: "WITCHER.SkEmpPersuasion",
+        name: "persuasion",
+    },
+    performance: {
+        attribute: WITCHER.statMap.emp,
+        label: "WITCHER.SkEmpPerformance",
+        name: "performance",
+    },
+    seduction: {
+        attribute: WITCHER.statMap.emp,
+        label: "WITCHER.SkEmpSeduction",
+        name: "seduction",
+    },
+}
+
+//Character info
 WITCHER.homelands = {
     other: "WITCHER.background.other",
     aedirn: "WITCHER.Homelands.aedirn",
@@ -38,19 +474,7 @@ WITCHER.socialStanding = {
     hatedFeared: "WITCHER.socialStanding.hatedFeared",
 }
 
-WITCHER.statTypes = {
-    none: "",
-    int: "WITCHER.Actor.Stat.Int",
-    ref: "WITCHER.Actor.Stat.Ref",
-    dex: "WITCHER.Actor.Stat.Dex",
-    body: "WITCHER.Actor.Stat.Body",
-    spd: "WITCHER.Actor.Stat.Spd",
-    emp: "WITCHER.Actor.Stat.Emp",
-    cra: "WITCHER.Actor.Stat.Cra",
-    will: "WITCHER.Actor.Stat.Will",
-    luck: "WITCHER.Actor.Stat.Luck",
-}
-
+//Items
 WITCHER.substanceTypes = {
     vitriol: "WITCHER.Inventory.Vitriol",
     rebis: "WITCHER.Inventory.Rebis",
@@ -94,6 +518,26 @@ WITCHER.weapon = {
     }
 }
 
+WITCHER.spells = {
+    Witcher: {
+        skill: WITCHER.skillMap.spellcast,
+    },
+    Invocations: {
+        skill: WITCHER.skillMap.spellcast,
+    },
+    Spells: {
+        skill: WITCHER.skillMap.spellcast,
+    },
+    Rituals: {
+        skill: WITCHER.skillMap.ritcraft,
+    },
+    Hexes: {
+        skill: WITCHER.skillMap.hexweave,
+    },
+}
+
+
+//Monster
 WITCHER.MonsterTypes = {
     Humanoid: "WITCHER.Monster.Type.Humanoid",
     Necrophage: "WITCHER.Monster.Type.Necrophage",
@@ -122,6 +566,8 @@ WITCHER.monsterComplexity = {
     difficult: "WITCHER.Monster.Difficult",
 }
 
+
+//Combat
 WITCHER.location = {
     head: "WITCHER.Location.Head",
     torso: "WITCHER.Location.Torso",
@@ -1272,426 +1718,6 @@ WITCHER.CritMod = {
     treated: "WITCHER.CritWound.Treated",
 }
 
-WITCHER.meleeSkills = ["brawling", "melee", "smallblades", "staffspear", "swordsmanship"]
-WITCHER.rangedSkills = ["athletics", "archery", "crossbow"]
-WITCHER.magicSkills = ["spellcast", "ritcraft", "hexweave"]
-WITCHER.verbalCombatSkills = ["charisma", "persuasion", "seduction", "leadership", "deceit", "socialetq", "intimidation"]
-WITCHER.empatheticVerbalCombatSkills = ["charisma", "persuasion", "seduction", "leadership", "deceit", "socialetq"]
-
-WITCHER.statMap = {
-    int: {
-        origin: "stats",
-        name: "int",
-        label: "WITCHER.StInt",
-        labelShort: "WITCHER.Actor.Stat.Int"
-    },
-    ref: {
-        origin: "stats",
-        name: "ref",
-        label: "WITCHER.StRef",
-        labelShort: "WITCHER.Actor.Stat.Ref"
-    },
-    dex: {
-        origin: "stats",
-        name: "dex",
-        label: "WITCHER.StDex",
-        labelShort: "WITCHER.Actor.Stat.Dex"
-    },
-    body: {
-        origin: "stats",
-        name: "body",
-        label: "WITCHER.StBody",
-        labelShort: "WITCHER.Actor.Stat.Body"
-    },
-    spd: {
-        origin: "stats",
-        name: "spd",
-        label: "WITCHER.StSpd",
-        labelShort: "WITCHER.Actor.Stat.Spd"
-    },
-    emp: {
-        origin: "stats",
-        name: "emp",
-        label: "WITCHER.StEmp",
-        labelShort: "WITCHER.Actor.Stat.Emp"
-    },
-    cra: {
-        origin: "stats",
-        name: "cra",
-        label: "WITCHER.StCra",
-        labelShort: "WITCHER.Actor.Stat.Cra"
-    },
-    will: {
-        origin: "stats",
-        name: "will",
-        label: "WITCHER.StWill",
-        labelShort: "WITCHER.Actor.Stat.Will"
-    },
-    luck: {
-        origin: "stats",
-        name: "luck",
-        label: "WITCHER.StLuck",
-        labelShort: "WITCHER.Actor.Stat.Luck"
-    },
-
-    stun: {
-        origin: "coreStats",
-        name: "stun",
-        labelShort: "WITCHER.Actor.CoreStat.Stun",
-    },
-    run: {
-        origin: "coreStats",
-        name: "run",
-        labelShort: "WITCHER.Actor.CoreStat.Run",
-    },
-    leap: {
-        origin: "coreStats",
-        name: "leap",
-        labelShort: "WITCHER.Actor.CoreStat.Leap",
-    },
-    enc: {
-        origin: "coreStats",
-        name: "enc",
-        labelShort: "WITCHER.Actor.CoreStat.Enc",
-    },
-    rec: {
-        origin: "coreStats",
-        name: "rec",
-        labelShort: "WITCHER.Actor.CoreStat.Rec",
-    },
-    woundTreshold: {
-        origin: "coreStats",
-        name: "woundTreshold",
-        labelShort: "WITCHER.Actor.CoreStat.woundTreshold",
-    },
-
-    hp: {
-        origin: "derivedStats",
-        name: "hp",
-        labelShort: "WITCHER.Actor.DerStat.HP",
-    },
-    sta: {
-        origin: "derivedStats",
-        name: "sta",
-        labelShort: "WITCHER.Actor.DerStat.Sta",
-    },
-    resolve: {
-        origin: "derivedStats",
-        name: "resolve",
-        labelShort: "WITCHER.Actor.DerStat.Resolve",
-    },
-    focus: {
-        origin: "derivedStats",
-        name: "focus",
-        labelShort: "WITCHER.Actor.DerStat.Focus",
-    },
-    vigor: {
-        origin: "derivedStats",
-        name: "vigor",
-        labelShort: "WITCHER.Actor.DerStat.Vigor",
-    },
-
-    reputation: {
-        origin: ""
-    }
-}
-
-WITCHER.skillGroups = {
-    allSkills: {
-        label: "WITCHER.Skills.SkillGroups.allSkills",
-        name: "allSkills",
-    },
-    meleeSkills: {
-        label: "WITCHER.Skills.SkillGroups.meleeSkills",
-        name: "meleeSkills",
-    },
-    rangedSkills: {
-        label: "WITCHER.Skills.SkillGroups.rangedSkills",
-        name: "rangedSkills",
-    },
-    magicSkills: {
-        label: "WITCHER.Skills.SkillGroups.magicSkills",
-        name: "magicSkills",
-    },
-    verbalCombatSkills: {
-        label: "WITCHER.Skills.SkillGroups.verbalCombatSkills",
-        name: "verbalCombatSkills",
-    },
-    empatheticVerbalCombatSkills: {
-        label: "WITCHER.Skills.SkillGroups.empatheticVerbalCombatSkills",
-        name: "empatheticVerbalCombatSkills",
-    },
-}
-
-WITCHER.skillMap = {
-    awareness: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntAwareness",
-        name: "awareness",
-    },
-    business: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntBusiness",
-        name: "business",
-    },
-    deduction: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntDeduction",
-        name: "deduction",
-    },
-    education: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntEducation",
-        name: "education",
-    },
-    commonsp: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntCommonLable",
-        name: "commonsp",
-    },
-    eldersp: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntElderLable",
-        name: "eldersp",
-    },
-    dwarven: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntDwarvenLable",
-        name: "dwarven",
-    },
-    monster: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntMonster",
-        name: "monster",
-    },
-    socialetq: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntSocialEt",
-        name: "socialetq",
-    },
-    streetwise: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntStreet",
-        name: "streetwise",
-    },
-    tactics: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntTacticsLable",
-        name: "tactics",
-    },
-    teaching: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntTeaching",
-        name: "teaching",
-    },
-    wilderness: {
-        attribute: WITCHER.statMap.int,
-        label: "WITCHER.SkIntWilderness",
-        name: "wilderness",
-    },
-
-    brawling: {
-        attribute: WITCHER.statMap.ref,
-        label: "WITCHER.SkRefBrawling",
-        name: "brawling",
-    },
-    dodge: {
-        attribute: WITCHER.statMap.ref,
-        label: "WITCHER.SkRefDodge",
-        name: "dodge",
-    },
-    melee: {
-        attribute: WITCHER.statMap.ref,
-        label: "WITCHER.SkRefMelee",
-        name: "melee",
-    },
-    riding: {
-        attribute: WITCHER.statMap.ref,
-        label: "WITCHER.SkRefRiding",
-        name: "riding",
-    },
-    sailing: {
-        attribute: WITCHER.statMap.ref,
-        label: "WITCHER.SkRefSailing",
-        name: "sailing",
-    },
-    smallblades: {
-        attribute: WITCHER.statMap.ref,
-        label: "WITCHER.SkRefSmall",
-        name: "smallblades",
-    },
-    staffspear: {
-        attribute: WITCHER.statMap.ref,
-        label: "WITCHER.SkRefStaff",
-        name: "staffspear",
-    },
-    swordsmanship: {
-        attribute: WITCHER.statMap.ref,
-        label: "WITCHER.SkRefSwordsmanship",
-        name: "swordsmanship",
-    },
-
-    courage: {
-        attribute: WITCHER.statMap.will,
-        label: "WITCHER.SkWillCourage",
-        name: "courage",
-    },
-    hexweave: {
-        attribute: WITCHER.statMap.will,
-        label: "WITCHER.SkWillHexLable",
-        name: "hexweave",
-    },
-    intimidation: {
-        attribute: WITCHER.statMap.will,
-        label: "WITCHER.SkWillIntim",
-        name: "intimidation",
-    },
-    spellcast: {
-        attribute: WITCHER.statMap.will,
-        label: "WITCHER.SkWillSpellcastLable",
-        name: "spellcast",
-    },
-    resistmagic: {
-        attribute: WITCHER.statMap.will,
-        label: "WITCHER.SkWillResistMagLable",
-        name: "resistmagic",
-    },
-    resistcoerc: {
-        attribute: WITCHER.statMap.will,
-        label: "WITCHER.SkWillResistCoer",
-        name: "resistcoerc",
-    },
-    ritcraft: {
-        attribute: WITCHER.statMap.will,
-        label: "WITCHER.SkWillRitCraftLable",
-        name: "ritcraft",
-    },
-
-    archery: {
-        attribute: WITCHER.statMap.dex,
-        label: "WITCHER.SkDexArchery",
-        name: "archery",
-    },
-    athletics: {
-        attribute: WITCHER.statMap.dex,
-        label: "WITCHER.SkDexAthletics",
-        name: "athletics",
-    },
-    crossbow: {
-        attribute: WITCHER.statMap.dex,
-        label: "WITCHER.SkDexCrossbow",
-        name: "crossbow",
-    },
-    sleight: {
-        attribute: WITCHER.statMap.dex,
-        label: "WITCHER.SkDexSleight",
-        name: "sleight",
-    },
-    stealth: {
-        attribute: WITCHER.statMap.dex,
-        label: "WITCHER.SkDexStealth",
-        name: "stealth",
-    },
-
-    alchemy: {
-        attribute: WITCHER.statMap.cra,
-        label: "WITCHER.SkCraAlchemyLable",
-        name: "alchemy",
-    },
-    crafting: {
-        attribute: WITCHER.statMap.cra,
-        label: "WITCHER.SkCraCraftingLable",
-        name: "crafting",
-    },
-    disguise: {
-        attribute: WITCHER.statMap.cra,
-        label: "WITCHER.SkCraDisguise",
-        name: "disguise",
-    },
-    firstaid: {
-        attribute: WITCHER.statMap.cra,
-        label: "WITCHER.SkCraAid",
-        name: "firstaid",
-    },
-    forgery: {
-        attribute: WITCHER.statMap.cra,
-        label: "WITCHER.SkCraForge",
-        name: "forgery",
-    },
-    picklock: {
-        attribute: WITCHER.statMap.cra,
-        label: "WITCHER.SkCraPick",
-        name: "picklock",
-    },
-    trapcraft: {
-        attribute: WITCHER.statMap.cra,
-        label: "WITCHER.SkCraTrapCraftLable",
-        name: "trapcraft",
-    },
-
-    physique: {
-        attribute: WITCHER.statMap.body,
-        label: "WITCHER.SkBodyPhys",
-        name: "physique",
-    },
-    endurance: {
-        attribute: WITCHER.statMap.body,
-        label: "WITCHER.SkBodyEnd",
-        name: "endurance",
-    },
-
-    charisma: {
-        attribute: WITCHER.statMap.emp,
-        label: "WITCHER.SkEmpCharisma",
-        name: "charisma",
-    },
-    deceit: {
-        attribute: WITCHER.statMap.emp,
-        label: "WITCHER.SkEmpDeceit",
-        name: "deceit",
-    },
-    finearts: {
-        attribute: WITCHER.statMap.emp,
-        label: "WITCHER.SkEmpArts",
-        name: "finearts",
-    },
-    gambling: {
-        attribute: WITCHER.statMap.emp,
-        label: "WITCHER.SkEmpGambling",
-        name: "gambling",
-    },
-    grooming: {
-        attribute: WITCHER.statMap.emp,
-        label: "WITCHER.SkEmpGrooming",
-        name: "grooming",
-    },
-    perception: {
-        attribute: WITCHER.statMap.emp,
-        label: "WITCHER.SkEmpHumanPerc",
-        name: "perception",
-    },
-    leadership: {
-        attribute: WITCHER.statMap.emp,
-        label: "WITCHER.SkEmpLeadership",
-        name: "leadership",
-    },
-    persuasion: {
-        attribute: WITCHER.statMap.emp,
-        label: "WITCHER.SkEmpPersuasion",
-        name: "persuasion",
-    },
-    performance: {
-        attribute: WITCHER.statMap.emp,
-        label: "WITCHER.SkEmpPerformance",
-        name: "performance",
-    },
-    seduction: {
-        attribute: WITCHER.statMap.emp,
-        label: "WITCHER.SkEmpSeduction",
-        name: "seduction",
-    },
-}
-
 WITCHER.verbalCombat = {
 
     EmpatheticAttacks: {
@@ -1809,6 +1835,8 @@ WITCHER.verbalCombat = {
     }
 }
 
+
+//Effects and Modifiers
 WITCHER.statusEffects = [
     {
         id: 'healing',
