@@ -1776,7 +1776,7 @@ WITCHER.verbalCombat = {
     },
 
 
-    Defences: {
+    Defenses: {
         Ignore: {
             name: "WITCHER.verbalCombat.Ignore",
             skill: WITCHER.skillMap.resistcoerc,

@@ -6,6 +6,7 @@ import * as VerbalCombatDefense from "./scripts/verbalCombat/verbalCombatDefense
 import * as Defense from "./scripts/combat/defenses.js"
 import * as ApplyDamage from "./scripts/combat/applyDamage.js"
 import * as Crit from "./scripts/combat/applyCrit.js"
+import * as Fumble from "./scripts/rolls/fumble.js"
 import { registerSettings } from "./setup/settings.js";
 
 import WitcherItem from "./item/witcherItem.js";
@@ -163,6 +164,7 @@ Hooks.on("getChatLogEntryContext", VerbalCombat.addVerbalCombatMessageContextOpt
 Hooks.on("getChatLogEntryContext", VerbalCombatDefense.addVerbalCombatDefenseMessageContextOptions);
 Hooks.on("getChatLogEntryContext", Defense.addDefenseMessageContextOptions);
 Hooks.on("getChatLogEntryContext", Crit.addCritMessageContextOptions);
+Hooks.on("getChatLogEntryContext", Fumble.addFumbleContextOptions);
 
 /**
  * Create a Macro from an Item drop.
