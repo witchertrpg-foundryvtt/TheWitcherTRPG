@@ -1,4 +1,4 @@
-import { extendedRoll } from "../chat.js";
+import { extendedRoll } from "../rolls/extendedRoll.js";
 import { getInteractActor } from "../helper.js";
 import { RollConfig } from "../rollConfig.js";
 
@@ -23,7 +23,7 @@ export function addVerbalCombatDefenseMessageContextOptions(html, options) {
 async function executeDefense(actor, messageId, totalAttack) {
     if (!actor) return;
 
-    const dialogTemplate = await renderTemplate("systems/TheWitcherTRPG/templates/dialog/verbal-combat-defense.hbs", { defenses: CONFIG.WITCHER.verbalCombat.Defences });
+    const dialogTemplate = await renderTemplate("systems/TheWitcherTRPG/templates/dialog/verbal-combat-defense.hbs", { defenses: CONFIG.WITCHER.verbalCombat.Defenses });
 
     new Dialog({
         title: `${game.i18n.localize("WITCHER.Dialog.DefenseTitle")}`,
@@ -47,7 +47,7 @@ async function executeDefenseCallback(actor, totalAttack, html) {
     if (!checkedBox) return;
     let verbal = checkedBox.value;
 
-    let verbalCombat = CONFIG.WITCHER.verbalCombat.Defences[verbal]
+    let verbalCombat = CONFIG.WITCHER.verbalCombat.Defenses[verbal]
     let vcName = verbalCombat.name;
 
     let vcStatName = verbalCombat.skill?.attribute.label ?? "WITCHER.Context.unavailable";
@@ -98,11 +98,11 @@ async function executeDefenseCallback(actor, totalAttack, html) {
 function createRollConfig(actor, skill, totalAttack) {
     let config = new RollConfig()
     config.showResult = true;
-    config.defence = true
+    config.defense = true
     config.threshold = totalAttack
     config.thresholdDesc = skill.label
-    config.flagsOnSuccess = actor.getDefenceSuccessFlags(skill)
-    config.flagsOnFailure = actor.getDefenceFailFlags(skill)
+    config.flagsOnSuccess = actor.getDefenseSuccessFlags(skill)
+    config.flagsOnFailure = actor.getDefenseFailFlags(skill)
 
     return config;
 }
