@@ -12,7 +12,7 @@ import { skillMixin } from "./mixins/skillMixin.js";
 import { statMixin } from "./mixins/statMixin.js";
 import { itemMixin } from "./mixins/itemMixin.js";
 
-import { itemContextMenu } from "../interactions/itemContextMenu.js";
+import { itemContextMenu } from "./interactions/itemContextMenu.js";
 
 Array.prototype.sum = function (prop) {
   var total = 0

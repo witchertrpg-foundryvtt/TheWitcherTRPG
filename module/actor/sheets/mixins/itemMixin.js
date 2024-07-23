@@ -620,24 +620,14 @@ export let itemMixin = {
         }
         let spellItem = this.actor.items.get(itemId);
         damage.item = spellItem;
+
         let rollFormula = `1d10`
-        rollFormula += !displayRollDetails ? `+${this.actor.system.stats.will.current}` : `+${this.actor.system.stats.will.current}[${game.i18n.localize("WITCHER.StWill")}]`;
-        switch (spellItem.system.class) {
-            case "Witcher":
-            case "Invocations":
-            case "Spells":
-                rollFormula += !displayRollDetails ? `+${this.actor.system.skills.will.spellcast.value}` : `+${this.actor.system.skills.will.spellcast.value}[${game.i18n.localize("WITCHER.SkWillSpellcastLable")}]`;
-                rollFormula += this.actor.addAllModifiers("spellcast")
-                break;
-            case "Rituals":
-                rollFormula += !displayRollDetails ? `+${this.actor.system.skills.will.ritcraft.value}` : `+${this.actor.system.skills.will.ritcraft.value}[${game.i18n.localize("WITCHER.SkWillRitCraftLable")}]`;
-                rollFormula += this.actor.addAllModifiers("ritcraft")
-                break;
-            case "Hexes":
-                rollFormula += !displayRollDetails ? `+${this.actor.system.skills.will.hexweave.value}` : `+${this.actor.system.skills.will.hexweave.value}[${game.i18n.localize("WITCHER.SkWillHexLable")}]`;
-                rollFormula += this.actor.addAllModifiers("hexweave")
-                break;
-        }
+        rollFormula += !displayRollDetails ? `+${this.actor.system.stats.will.current}` : `+${this.actor.system.stats.will.current}[${game.i18n.localize(CONFIG.WITCHER.statMap.will.label)}]`;
+
+        let usedSkill = CONFIG.WITCHER.spells[spellItem.system.class].skill
+
+        rollFormula += `+${this.actor.system.skills.will[usedSkill.name].value}` + (displayRollDetails ? `[${game.i18n.localize(usedSkill.label)}]` : '');
+        rollFormula += this.actor.addAllModifiers(usedSkill.name)
 
         let armorEnc = this.actor.getArmorEcumbrance()
         if (armorEnc > 0) {
@@ -845,7 +835,7 @@ export let itemMixin = {
         config.showResult = false;
 
         await spellItem.createSpellVisualEffectIfApplicable();
-        await spellItem.deleteSpellVisualEffect();
+        spellItem.deleteSpellVisualEffect();
 
         messageData.flags = {
             TheWitcherTRPG: {
