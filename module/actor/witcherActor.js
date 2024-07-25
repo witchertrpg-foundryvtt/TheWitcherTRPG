@@ -9,19 +9,19 @@ export default class WitcherActor extends Actor {
     prepareDerivedData() {
         super.prepareDerivedData()
 
-            let armorEffects = this.getList("armor")
-                .filter(armor => armor.system.equipped)
-                .map(armor => armor.system.effects)
-                .flat()
-                .filter(effect => effect.statusEffect)
-                .map(effect => WITCHER.armorEffects.find(armorEffect => armorEffect.id == effect.statusEffect))
+        let armorEffects = this.getList("armor")
+            .filter(armor => armor.system.equipped)
+            .map(armor => armor.system.effects)
+            .flat()
+            .filter(effect => effect.statusEffect)
+            .map(effect => WITCHER.armorEffects.find(armorEffect => armorEffect.id == effect.statusEffect))
 
-            armorEffects.forEach(effect => {
-                if (effect.refersStatusEffect && !effect.addsResistance && !this.statuses.find(status => status == effect.id)) {
-                    this.toggleStatusEffect(effect.id);
-                }
-            });
-        }
+        armorEffects.forEach(effect => {
+            if (effect.refersStatusEffect && !effect.addsResistance && !this.statuses.find(status => status == effect.id)) {
+                this.toggleStatusEffect(effect.id);
+            }
+        });
+    }
 
     updateDerived() {
         const stats = this.system.stats;
@@ -292,7 +292,7 @@ export default class WitcherActor extends Actor {
     }
 
     async rollSkill(skillName) {
-        this.sheet._onSkillRoll(CONFIG.WITCHER.skillMap[skillName])
+        this.rollSkillCheck(CONFIG.WITCHER.skillMap[skillName])
     }
 
     getControlledToken() {
