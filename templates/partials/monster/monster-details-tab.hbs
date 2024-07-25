@@ -4,7 +4,7 @@
 <input type="text" name="system.immunities" value="{{system.immunities}}" placeholder="" />
 <label>{{localize "WITCHER.Monster.ImmunitiesStatusEffects"}}</label>
 <multi-select name="system.statusEffectImmunities">
-    {{selectOptions config.statusEffects selected=system.statusEffectImmunities nameAttr='id' valueAttr="id" labelAttr="label" localize=true}}
+    {{selectOptions config.statusEffects selected=system.statusEffectImmunities nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
 </multi-select>
 <label>{{localize "WITCHER.Monster.Susceptibilities"}}</label>
 <input type="text" name="system.susceptibilities" value="{{system.susceptibilities}}" placeholder="" />

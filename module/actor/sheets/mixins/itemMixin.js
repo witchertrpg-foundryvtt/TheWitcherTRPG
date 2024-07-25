@@ -765,6 +765,7 @@ export let itemMixin = {
         }
         if (spellItem.system.duration) {
             let durationText = spellItem.system.duration
+            damage.duration = durationText;
             if (spellItem.system.duration.match(/\d+d\d+/g)) {
                 let durationSubstrings = spellItem.system.duration.split(" ");
                 let roll = await new Roll(durationSubstrings.shift()).evaluate()
@@ -820,7 +821,7 @@ export let itemMixin = {
                 shield = this.calcStaminaMulti(origStaCost, shield)
             }
 
-            messageData.flavor += `<button class="shield" data-img="${spellItem.img}" data-name="${spellItem.name}" data-shield="${shield}" data-actor="${this.actor.uuid}">${game.i18n.localize("WITCHER.Spell.Short.Shield")}</button>`;
+            messageData.flavor += `<button class="shield" data-img="${spellItem.icon}" data-name="${spellItem.name}" data-shield="${shield}" data-actor="${this.actor.uuid}">${game.i18n.localize("WITCHER.Spell.Short.Shield")}</button>`;
         }
 
         if (spellItem.system.doesHeal) {
@@ -828,8 +829,23 @@ export let itemMixin = {
             if (spellItem.system.staminaIsVar) {
                 heal = this.calcStaminaMulti(origStaCost, heal)
             }
-
             messageData.flavor += `<button class="heal" data-img="${spellItem.img}" data-name="${spellItem.name}" data-heal="${heal}" data-actor="${this.actor.uuid}">${game.i18n.localize("WITCHER.Spell.Short.Heal")}</button>`;
+        }
+
+        if (spellItem.system.createsShield || spellItem.system.doesHeal) {
+            messageData.flavor += `<b>${game.i18n.localize("WITCHER.Item.Effect")}:</b>`;
+            spellItem.system.damageProperties.effects.forEach(effect => {
+                messageData.flavor += `<div class="flex gap">`;
+                if (effect.name != '') {
+                    messageData.flavor += `<span>${effect.name}</span>`;
+                }
+                if (effect.statusEffect) {
+                    let statusEffect = CONFIG.WITCHER.statusEffects.find(status => status.id == effect.statusEffect);
+                    messageData.flavor += `<a class='apply-status' data-status='${effect.statusEffect}' data-duration='${damage.duration}' ><img class='chat-icon' src='${statusEffect.img}' /> <span>${game.i18n.localize(statusEffect.name)}</span></a>`;
+                }
+
+                messageData.flavor += `</div>`;
+            });
         }
 
         let config = new RollConfig()

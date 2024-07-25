@@ -63,6 +63,8 @@ function onHeal(event) {
     let actor = fromUuidSync(actorUuid);
 
     let target = game.user.targets[0]?.actor ?? canvas.tokens.controlled[0]?.actor ?? game.user.character
+    if (!target) return;
+
     heal = (target?.system.derivedStats.hp.value + heal) > target?.system.derivedStats.hp.max ? (target?.system.derivedStats.hp.max - target?.system.derivedStats.hp.value) : heal;
     target?.update({ 'system.derivedStats.hp.value': target.system.derivedStats.hp.value + heal });
 

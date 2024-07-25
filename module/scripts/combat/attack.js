@@ -1,4 +1,4 @@
-import { getCurrentToken, getRandomInt } from "../helper.js";
+import { getRandomInt } from "../helper.js";
 
 const DialogV2 = foundry.applications.api.DialogV2
 
@@ -16,11 +16,10 @@ export function addAttackChatListeners(html) {
 }
 
 export const chatMessageListeners = async (message, html) => {
-    if (!html.find('button.damage') && !!html.find('a.apply-status'))
+    if (!html.find('button.damage'))
         return;
 
     html.find('button.damage').on('click', _ => onDamage(message));
-    html.find('a.apply-status').on('click', event => onApplyStatus(event));
 }
 
 function onDamage(message) {
@@ -66,7 +65,7 @@ export async function rollDamage(item, damage) {
             }
             if (effect.statusEffect) {
                 let statusEffect = CONFIG.WITCHER.statusEffects.find(status => status.id == effect.statusEffect);
-                messageData.flavor += `<a class='apply-status' data-status='${effect.statusEffect}' ><img class='chat-icon' src='${statusEffect.icon}' /> <span>${game.i18n.localize(statusEffect.label)}</span></a>`;
+                messageData.flavor += `<a class='apply-status' data-status='${effect.statusEffect}' ><img class='chat-icon' src='${statusEffect.img}' /> <span>${game.i18n.localize(statusEffect.name)}</span></a>`;
             }
             if (effect.percentage) {
                 let rollPercentage = getRandomInt(100);
@@ -101,22 +100,4 @@ async function createVariableDamageDialog(damageFormula) {
     })
 
     return newDamageFormula;
-}
-
-async function onApplyStatus(event) {
-    let statusId = event.currentTarget.dataset.status
-    let target = getCurrentToken();
-
-    //only try to apply it when not already present
-    if (!target.actor.appliedEffects.find(effect => effect.statuses.find(status => status == statusId))) {
-        await target?.toggleEffect(CONFIG.WITCHER.statusEffects.find(effect => effect.id == statusId))
-
-        if (target?.actor.system.statusEffectImmunities?.find(immunity => immunity == statusId)) {
-            //untoggle it so people see it was tried to be applied but failed
-            setTimeout(() => {
-                target?.toggleEffect(CONFIG.WITCHER.statusEffects.find(effect => effect.id == statusId))
-            }, 1000);
-
-        }
-    }
 }

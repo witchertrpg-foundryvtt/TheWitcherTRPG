@@ -118,7 +118,14 @@
     }
   ],
   "relationships": {
-    "requires": []
+    "requires": [],
+    "recommends": [
+      {
+        "id": "statuscounter",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
   },
   "socket": false,
   "initiative": "1d10",
