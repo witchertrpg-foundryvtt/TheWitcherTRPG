@@ -5,6 +5,7 @@ import * as VerbalCombat from "./scripts/verbalCombat/verbalCombat.js"
 import * as VerbalCombatDefense from "./scripts/verbalCombat/verbalCombatDefense.js"
 import * as Defense from "./scripts/combat/defenses.js"
 import * as ApplyDamage from "./scripts/combat/applyDamage.js"
+import * as ApplyStatusEffects from "./scripts/statusEffects/applyStatusEffect.js"
 import * as Crit from "./scripts/combat/applyCrit.js"
 import * as Fumble from "./scripts/rolls/fumble.js"
 import { registerSettings } from "./setup/settings.js";
@@ -87,6 +88,7 @@ Hooks.on("renderChatLog", (app, html, data) => {
 Hooks.on('renderChatMessage', (message, html, data) => {
     Attack.chatMessageListeners(message, html)
     VerbalCombat.chatMessageListeners(message, html)
+    ApplyStatusEffects.chatMessageListeners(message, html)
 });
 
 /* -------------------------------------------- */

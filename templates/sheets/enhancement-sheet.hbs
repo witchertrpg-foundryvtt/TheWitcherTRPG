@@ -53,11 +53,11 @@
             <textarea class="edit-effect" rows=3 data-field="name">{{effect.name}}</textarea>
             {{#if (or (eq ../item.system.type "weapon") (eq ../item.system.type "rune"))}}
                 <select class="edit-effect item-effect" data-field="statusEffect">
-                    {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="label" localize=true}}
+                    {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                 </select>
             {{else}}
                 <select class="edit-effect item-effect" data-field="statusEffect">
-                    {{selectOptions ../config.armorEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="label" localize=true}}
+                    {{selectOptions ../config.armorEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                 </select>
             {{/if}}
             <div class="flex">
