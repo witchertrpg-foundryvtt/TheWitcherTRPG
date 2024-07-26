@@ -615,12 +615,14 @@ export let itemMixin = {
     async _onSpellRoll(event, itemId = null) {
 
         let displayRollDetails = game.settings.get("TheWitcherTRPG", "displayRollsDetails")
-        let damage = {};
 
         if (!itemId) {
             itemId = event.currentTarget.closest(".item").dataset.itemId;
         }
         let spellItem = this.actor.items.get(itemId);
+        let damage = {
+            damageProperties: spellItem.system.damageProperties
+        };
         damage.item = spellItem;
 
         let rollFormula = `1d10`
