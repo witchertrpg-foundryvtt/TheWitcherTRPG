@@ -621,9 +621,13 @@ export let itemMixin = {
         }
         let spellItem = this.actor.items.get(itemId);
         let damage = {
-            damageProperties: spellItem.system.damageProperties
+            damageProperties: spellItem.system.damageProperties,
+            item: spellItem
         };
-        damage.item = spellItem;
+
+        let templateInfo = {
+            actor: this.actor
+        }
 
         let rollFormula = `1d10`
         rollFormula += !displayRollDetails ? `+${this.actor.system.stats.will.current}` : `+${this.actor.system.stats.will.current}[${game.i18n.localize(CONFIG.WITCHER.statMap.will.label)}]`;
@@ -741,30 +745,20 @@ export let itemMixin = {
         if (useMinimalStaCost) {
             staCostDisplay += `[${game.i18n.localize("WITCHER.MinValue")}]`
         }
+        templateInfo.staCostDisplay = staCostDisplay;
 
         if (customModifier < 0) { rollFormula += !displayRollDetails ? ` ${customModifier}` : ` ${customModifier}[${game.i18n.localize("WITCHER.Settings.Custom")}]` }
         if (customModifier > 0) { rollFormula += !displayRollDetails ? ` +${customModifier}` : ` +${customModifier}[${game.i18n.localize("WITCHER.Settings.Custom")}]` }
         if (isExtraAttack) { rollFormula += !displayRollDetails ? ` -3` : ` -3[${game.i18n.localize("WITCHER.Dialog.attackExtra")}]` }
 
-        let spellSource = ''
         switch (spellItem.system.source) {
-            case "mixedElements": spellSource = "WITCHER.Spell.Mixed"; break;
-            case "earth": spellSource = "WITCHER.Spell.Earth"; break;
-            case "air": spellSource = "WITCHER.Spell.Air"; break;
-            case "fire": spellSource = "WITCHER.Spell.Fire"; break;
-            case "Water": spellSource = "WITCHER.Spell.Water"; break;
+            case "mixedElements": templateInfo.spellSource = "WITCHER.Spell.Mixed"; break;
+            case "earth": templateInfo.spellSource = "WITCHER.Spell.Earth"; break;
+            case "air": templateInfo.spellSource = "WITCHER.Spell.Air"; break;
+            case "fire": templateInfo.spellSource = "WITCHER.Spell.Fire"; break;
+            case "Water": templateInfo.spellSource = "WITCHER.Spell.Water"; break;
         }
 
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            flavor: `<h2><img src="${spellItem.img}" class="item-img" />${spellItem.name}</h2>
-            <div><b>${game.i18n.localize("WITCHER.Spell.StaCost")}: </b>${staCostDisplay}</div>
-            <div><b>${game.i18n.localize("WITCHER.Mutagen.Source")}: </b>${game.i18n.localize(spellSource)}</div>
-            <div><b>${game.i18n.localize("WITCHER.Spell.Effect")}: </b>${spellItem.system.effect}</div>`
-        }
-        if (spellItem.system.range) {
-            messageData.flavor += `<div><b>${game.i18n.localize("WITCHER.Spell.Range")}: </b>${spellItem.system.range}</div>`
-        }
         if (spellItem.system.duration) {
             let durationText = spellItem.system.duration
             damage.duration = durationText.replace(/\D/g, "");;
@@ -777,25 +771,7 @@ export let itemMixin = {
                 durationText = durationRoll.outerHTML + " " + durationSubstrings.join(" ")
             }
 
-            messageData.flavor += `<div><b>${game.i18n.localize("WITCHER.Spell.Duration")}: </b>` + durationText + `</div>`
-        }
-        if (spellItem.system.defence) {
-            messageData.flavor += `<div class='defense'><b>${game.i18n.localize("WITCHER.Spell.Defence")}: </b>${spellItem.system.defence}</div>`
-        }
-        if (spellItem.system.preparationTime) {
-            messageData.flavor += `<div><b>${game.i18n.localize("WITCHER.Spell.PrepTime")}: </b>${spellItem.system.preparationTime}</div>`
-        }
-        if (spellItem.system.difficultyCheck) {
-            messageData.flavor += `<div><b>${game.i18n.localize("WITCHER.DC")}: </b>${spellItem.system.difficultyCheck}</div>`
-        }
-        if (spellItem.system.components) {
-            messageData.flavor += `<div><b>${game.i18n.localize("WITCHER.Spell.Components")}: </b>${spellItem.system.components}</div>`
-        }
-        if (spellItem.system.alternateComponents) {
-            messageData.flavor += `<div><b>${game.i18n.localize("WITCHER.Spell.AlternateComponents")}: </b>${spellItem.system.alternateComponents}</div>`
-        }
-        if (spellItem.system.liftRequirement) {
-            messageData.flavor += `<div><b>${game.i18n.localize("WITCHER.Spell.Requirements")}: </b>${spellItem.system.liftRequirement}</div>`
+            templateInfo.durationText = durationText;
         }
 
         if (spellItem.system.causeDamages) {
@@ -812,58 +788,53 @@ export let itemMixin = {
 
             damage.effects = spellItem.system.damageProperties.effects;
             damage.formula = dmg;
-
-            messageData.flavor += `<button class="damage" data-img="${spellItem.img}" data-name="${spellItem.name}">${game.i18n.localize("WITCHER.table.Damage")}</button>`;
             damage.location = this.actor.getLocationObject("randomSpell")
         }
 
         if (spellItem.system.createsShield) {
-            let shield = spellItem.system.shield || "0"
+            damage.shield = spellItem.system.shield || "0"
             if (spellItem.system.staminaIsVar) {
-                shield = this.calcStaminaMulti(origStaCost, shield)
+                damage.shield = this.calcStaminaMulti(origStaCost, shield)
             }
-
-            messageData.flavor += `<button class="shield" data-img="${spellItem.icon}" data-name="${spellItem.name}" data-shield="${shield}" data-actor="${this.actor.uuid}">${game.i18n.localize("WITCHER.Spell.Short.Shield")}</button>`;
         }
 
         if (spellItem.system.doesHeal) {
-            let heal = spellItem.system.heal || "0"
+            damage.heal = spellItem.system.heal || "0"
             if (spellItem.system.staminaIsVar) {
-                heal = this.calcStaminaMulti(origStaCost, heal)
+                damage.heal = this.calcStaminaMulti(origStaCost, heal)
             }
-            messageData.flavor += `<button class="heal" data-img="${spellItem.img}" data-name="${spellItem.name}" data-heal="${heal}" data-actor="${this.actor.uuid}">${game.i18n.localize("WITCHER.Spell.Short.Heal")}</button>`;
         }
 
         if (spellItem.system.selfEffects.length > 0) {
-            messageData.flavor += `<b>${game.i18n.localize("WITCHER.Item.Effect")}:</b>`;
+            templateInfo.selfEffects = [];
             spellItem.system.selfEffects.forEach(effect => {
-                messageData.flavor += `<div class="flex gap">`;
                 if (effect.name != '') {
-                    messageData.flavor += `<span>${effect.name}</span>`;
                 }
                 if (effect.statusEffect) {
                     let statusEffect = CONFIG.WITCHER.statusEffects.find(status => status.id == effect.statusEffect);
-                    messageData.flavor += `<a class='apply-status' data-status='${effect.statusEffect}' data-duration='${damage.duration}' ><img class='chat-icon' src='${statusEffect.img}' /> <span>${game.i18n.localize(statusEffect.name)}</span></a>`;
+                    templateInfo.selfEffects.push({ effect: effect, statusEffect: statusEffect });
                 }
-
-                messageData.flavor += `</div>`;
             });
         }
-
-        let config = new RollConfig()
-        config.showCrit = true
-        config.showResult = false;
 
         await spellItem.createSpellVisualEffectIfApplicable();
         spellItem.deleteSpellVisualEffect();
 
-        messageData.flags = {
-            TheWitcherTRPG: {
-                attack: spellItem.getSpellFlags(),
-                damage: damage,
-                effects: spellItem.system.damageProperties.effects
+        const chatMessage = await renderTemplate("systems/TheWitcherTRPG/templates/chat/combat/spellItem.hbs", { spellItem, templateInfo, damage });
+        let messageData = {
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            flavor: chatMessage,
+            flags: {
+                TheWitcherTRPG: {
+                    attack: spellItem.getSpellFlags(),
+                    damage: damage,
+                    effects: spellItem.system.damageProperties.effects
+                }
             }
         }
+
+        let config = new RollConfig({ showResult: false })
+
         let roll = await extendedRoll(rollFormula, messageData, config)
         await roll.toMessage(messageData);
 
