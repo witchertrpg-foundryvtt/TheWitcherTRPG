@@ -48,5 +48,5 @@ function handleStatusCounterIntegration(target, statusId, duration) {
 
     let effectCounter = EffectCounter.getAllCounters(target).find(effects => effects.path == statusEffect.img)
     effectCounter.setValue(duration)
-    effectCounter.changeType("statuscounter.countdown_turn", target)
+    effectCounter.changeType("statuscounter.countdown_round", target)
 }

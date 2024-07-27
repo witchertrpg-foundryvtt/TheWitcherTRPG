@@ -1,3 +1,30 @@
 <form class="{{cssClass}}" autocomplete="off">
+    <h3>{{localize "WITCHER.Item.Settings.Spell.SelfProperties"}}</h3>
+    <table class="item-bottom-table">
+        <tr>
+            <th><a class="add-effect-self" data-target='system.selfEffects'
+                    title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
+            </th>
+            <th>{{localize "WITCHER.Item.Effect"}}</th>
+        </tr>
+        {{#each item.system.selfEffects as |effect name|}}
+            <tr class="list-item" data-id="{{effect.id}}">
+                <td>
+                    <a class="remove-effect-self" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                            class="fas fa-minus"></i></a>
+                </td>
+                <td>
+                    <input class="edit-effect-self item-effect" placeholder="{{localize "WITCHER.table.Name"}}"
+                        data-field="name" type="text" value="{{effect.name}}" />
+                </td>
+                <td>
+                    <select class="edit-effect-self item-effect" data-field="statusEffect">
+                        {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                    </select>
+                </td>
+
+            </tr>
+        {{/each}}
+    </table>
     {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs"}}
 </form>

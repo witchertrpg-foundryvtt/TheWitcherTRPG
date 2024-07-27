@@ -767,7 +767,7 @@ export let itemMixin = {
         }
         if (spellItem.system.duration) {
             let durationText = spellItem.system.duration
-            damage.duration = durationText;
+            damage.duration = durationText.replace(/\D/g, "");;
             if (spellItem.system.duration.match(/\d+d\d+/g)) {
                 let durationSubstrings = spellItem.system.duration.split(" ");
                 let roll = await new Roll(durationSubstrings.shift()).evaluate()
@@ -834,9 +834,9 @@ export let itemMixin = {
             messageData.flavor += `<button class="heal" data-img="${spellItem.img}" data-name="${spellItem.name}" data-heal="${heal}" data-actor="${this.actor.uuid}">${game.i18n.localize("WITCHER.Spell.Short.Heal")}</button>`;
         }
 
-        if (spellItem.system.createsShield || spellItem.system.doesHeal) {
+        if (spellItem.system.selfEffects.length > 0) {
             messageData.flavor += `<b>${game.i18n.localize("WITCHER.Item.Effect")}:</b>`;
-            spellItem.system.damageProperties.effects.forEach(effect => {
+            spellItem.system.selfEffects.forEach(effect => {
                 messageData.flavor += `<div class="flex gap">`;
                 if (effect.name != '') {
                     messageData.flavor += `<span>${effect.name}</span>`;
