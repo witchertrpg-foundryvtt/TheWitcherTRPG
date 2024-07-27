@@ -10,10 +10,20 @@
         "Item.Effect": "Effekte",
         "Item.Quantity": "Anzahl",
         "Item": {
-      "SourceBook": "Regelwerk",
-      "DamageProperties": {
-        "variableDamage": "Variabler Schaden"
-      }
+            "SourceBook": "Regelwerk",
+            "DamageProperties": {
+                "variableDamage": "Variabler Schaden"
+            },
+            "ConsumeProperties": {
+                "doesHeal": "Heilt",
+                "heal": "Heilt für",
+                "appliesGlobalModifier": "Wendet Globale Modifikatoren an",
+                "Chat": {
+                    "healedFor": "Hat geheilt für",
+                    "consumeGlobalModifiers": "Hat Globale Modifikatoren angewendet",
+                    "consumeEffects": "Hat Effekte angewendet"
+                }
+            }
         },
         "Item.Description": "Beschreibung",
         "Item.Attribute": "Attributes",

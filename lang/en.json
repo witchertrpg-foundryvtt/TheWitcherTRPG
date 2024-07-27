@@ -50,7 +50,12 @@
             "ConsumeProperties": {
                 "doesHeal": "Applies heal",
                 "heal": "Heals for",
-                "appliesGlobalModifier": "Applies Global Modifier"
+                "appliesGlobalModifier": "Applies Global Modifier",
+                "Chat": {
+                    "healedFor": "healed for",
+                    "consumeGlobalModifiers": "applied these global modifiers",
+                    "consumeEffects": "applied these effects"
+                }
             },
             "DamageProperties": {
                 "appliesGlobalModifierToHit": "Applies Global Modifier to Hit (not functional)",

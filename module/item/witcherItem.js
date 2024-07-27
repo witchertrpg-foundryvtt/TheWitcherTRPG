@@ -313,9 +313,11 @@ export default class WitcherItem extends Item {
 
     async consume() {
         let properties = this.system.consumeProperties
+        let messageInfos = {}
         if (properties.doesHeal) {
             let heal = parseInt(await this.calculateHealValue(properties.heal, this.actor));
             this.actor?.update({ 'system.derivedStats.hp.value': this.actor.system.derivedStats.hp.value + heal });
+            messageInfos.heal = heal;
         }
 
         if (properties.appliesGlobalModifier) {
@@ -323,6 +325,7 @@ export default class WitcherItem extends Item {
         }
 
         this.applyStatus(this.actor, properties.effects)
+        this.createConsumeMessage(messageInfos)
     }
 
     async calculateHealValue(value, actor) {
@@ -334,10 +337,26 @@ export default class WitcherItem extends Item {
     }
 
     async applyStatus(actor, effects) {
-            effects.forEach(effect => {
-                if (!actor.statuses.find(status => status == effect.statusEffect)) {
-                    actor.toggleStatusEffect(effect.statusEffect);
-                }
-            });
-        }
+        effects.forEach(effect => {
+            if (!actor.statuses.find(status => status == effect.statusEffect)) {
+                actor.toggleStatusEffect(effect.statusEffect);
+            }
+        });
     }
+
+    async createConsumeMessage(messageInfos) {
+        const messageTemplate = 'systems/TheWitcherTRPG/templates/chat/item/consume.hbs'
+
+        let statusEffects = this.system.consumeProperties.effects.map(effect => { return { name: effect.name, statusEffect: CONFIG.WITCHER.statusEffects.find(configEffect => configEffect.id == effect.statusEffect) } })
+
+        const content = await renderTemplate(messageTemplate, { item: this, messageInfos, statusEffects })
+        const chatData = {
+            content: content,
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            type: CONST.CHAT_MESSAGE_STYLES.OTHER,
+        }
+
+        ChatMessage.create(chatData)
+    }
+}
+
