@@ -40,7 +40,7 @@ export async function onApplyStatus(event) {
 }
 
 function handleStatusCounterIntegration(target, statusId, duration) {
-    if (!game.modules.get("statuscounter").active) return;
+    if (!game.modules.get("statuscounter")?.active) return;
 
     if (!duration || duration == 0) return;
 
