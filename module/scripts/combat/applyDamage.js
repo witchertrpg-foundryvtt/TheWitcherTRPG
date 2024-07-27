@@ -201,7 +201,7 @@ async function applyDamageToAllLocations(actor, dialogData, damage, totalDamage,
     const content = await renderTemplate(messageTemplate, templateContext)
     const chatData = {
         content: content,
-        type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+        type: CONST.CHAT_MESSAGE_STYLES.OTHER,
     }
 
     ChatMessage.applyRollMode(chatData, game.settings.get("core", "rollMode"));
@@ -317,7 +317,7 @@ async function createResultMessage(actor, damageResult) {
         content: content,
         speaker: ChatMessage.getSpeaker({ actor: actor }),
         flags: actor.getDamageFlags(),
-        type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+        type: CONST.CHAT_MESSAGE_STYLES.OTHER,
     }
 
     ChatMessage.applyRollMode(chatData, game.settings.get("core", "rollMode"));

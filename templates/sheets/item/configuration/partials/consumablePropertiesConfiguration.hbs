@@ -69,8 +69,6 @@
                     title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
             </th>
             <th>{{localize "WITCHER.Item.Effect"}}</th>
-            <th></th>
-            <th>{{localize "WITCHER.Percentage"}}</th>
         </tr>
         {{#each item.system.consumeProperties.effects as |effect name|}}
             <tr class="list-item" data-id="{{effect.id}}">
@@ -86,10 +84,6 @@
                     <select class="edit-effect item-effect" data-field="statusEffect">
                         {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                     </select>
-                </td>
-                <td>
-                    <input class="edit-effect" placeholder="%" data-field="percentage" type="text"
-                        value="{{effect.percentage}}" data-dtype="Number" />
                 </td>
             </tr>
         {{/each}}
