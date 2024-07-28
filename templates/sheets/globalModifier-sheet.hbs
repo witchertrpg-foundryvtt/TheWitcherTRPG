@@ -60,7 +60,7 @@
                 <div class="flex list-item" data-id="{{special.id}}">
                     <a class="remove-modifier-special"><i class="fas fa-minus"></i></a>
                     <select class="modifiers-edit-special" data-field="special">
-                        {{selectOptions ../globalModifierConfig.special blank='' selected=special.special nameAttr='id' valueAttr="id" labelAttr="label" localize=true}}
+                        {{selectOptions ../globalModifierConfig.special blank='' selected=special.special nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                     </select>
                 </div>
             {{/each}}
