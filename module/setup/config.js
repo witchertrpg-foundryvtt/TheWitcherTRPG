@@ -1480,14 +1480,14 @@ WITCHER.Crit = {
             }
         }
     },
-    hearthDamage: {
-        label: "WITCHER.CritWound.Name.DeadlyHearthDamage",
-        description: "WITCHER.CritWound.DeadlyHearthDamage",
+    heartDamage: {
+        label: "WITCHER.CritWound.Name.DeadlyHeartDamage",
+        description: "WITCHER.CritWound.DeadlyHeartDamage",
         location: ["torso"],
         severity: "deadly",
         effect: {
             none: {
-                description: "WITCHER.CritWound.Mod.DeadlyHearthDamage.None",
+                description: "WITCHER.CritWound.Mod.DeadlyHeartDamage.None",
                 stats: [
                     {
                         stat: "body",
@@ -1507,7 +1507,7 @@ WITCHER.Crit = {
                 skills: []
             },
             stabilized: {
-                description: "WITCHER.CritWound.Mod.DeadlyHearthDamage.Stabilized",
+                description: "WITCHER.CritWound.Mod.DeadlyHeartDamage.Stabilized",
                 stats: [
                     {
                         stat: "body",
@@ -1527,7 +1527,7 @@ WITCHER.Crit = {
                 skills: []
             },
             treated: {
-                description: "WITCHER.CritWound.Mod.DeadlyHearthDamage.Treated",
+                description: "WITCHER.CritWound.Mod.DeadlyHeartDamage.Treated",
                 stats: [],
                 derived: [],
                 skills: []
