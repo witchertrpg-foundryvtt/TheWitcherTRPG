@@ -1,3 +1,4 @@
+import { genId } from "../../scripts/helper.js";
 
 export default class WitcherItemSheet extends ItemSheet {
     /** @override */
