@@ -25,37 +25,36 @@ import GlobalModifierData from "../data/item/globalModifierData.js";
 
 
 export const registerDataModels = () => {
-  foundry.utils.mergeObject(CONFIG.Actor.dataModels, {
-    // The keys are the types defined in our template.json
-    baseActor: CommonActorData,
-    character: CharacterData,
-    monster: MonsterData,
-    loot: LootData,
+    foundry.utils.mergeObject(CONFIG.Actor.dataModels, {
+        // The keys are the types defined in our template.json
+        character: CharacterData,
+        monster: MonsterData,
+        loot: LootData,
 
-    mystery: MysteryActorData
-  })
+        mystery: MysteryActorData
+    })
 
-  foundry.utils.mergeObject(CONFIG.Item.dataModels, {
-    // The keys are the types defined in our template.json
-    base: CommonItemData,
-    alchemical: AlchemicalData,
-    armor: ArmorData,
-    container: ContainerData,
-    component: ComponentData,
-    diagrams: DiagramData,
-    effect: EffectData,
-    enhancement: EnhancementData,
-    gobalModifier: GlobalModifierData,
-    mount: MountData,
-    mutagen: MutagenData,
-    note: NoteData,
-    profession: ProfessionData,
-    race: RaceData,
-    spell: SpellData,
-    valuable: ValuableData,
-    weapon: WeaponData,
+    foundry.utils.mergeObject(CONFIG.Item.dataModels, {
+        // The keys are the types defined in our template.json
+        base: CommonItemData,
+        alchemical: AlchemicalData,
+        armor: ArmorData,
+        container: ContainerData,
+        component: ComponentData,
+        diagrams: DiagramData,
+        effect: EffectData,
+        enhancement: EnhancementData,
+        gobalModifier: GlobalModifierData,
+        mount: MountData,
+        mutagen: MutagenData,
+        note: NoteData,
+        profession: ProfessionData,
+        race: RaceData,
+        spell: SpellData,
+        valuable: ValuableData,
+        weapon: WeaponData,
 
-    clue: ClueData,
-    obstacle: ObstacleData
-  })
+        clue: ClueData,
+        obstacle: ObstacleData
+    })
 }
