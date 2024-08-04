@@ -137,7 +137,7 @@ async function createResultMessage(actor, result) {
         user: game.user.id,
         content: content,
         speaker: ChatMessage.getSpeaker({ actor: actor }),
-        type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+        type: CONST.CHAT_MESSAGE_STYLES.OTHER,
     }
 
     ChatMessage.create(chatData)

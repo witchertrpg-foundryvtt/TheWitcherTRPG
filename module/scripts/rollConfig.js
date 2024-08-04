@@ -1,12 +1,14 @@
 // @ts-check
 export var RollConfig = (function () {
     class RollConfig {
-        constructor() {
+        constructor(options = {
+            showResult: true
+        }) {
             this.defense = false;
             this.threshold = -1;
             this.showCrit = true;
             this.showSuccess = true;
-            this.showResult = true;
+            this.showResult = options.showResult;
             this.reversal = false;
             this.thresholdDesc = "";
             this.messageOnSuccess = "";

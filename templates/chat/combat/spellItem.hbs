@@ -1,0 +1,65 @@
+<h2><img src="{{spellItem.img}}" class="item-img" />{{spellItem.name}}</h2>
+<div><b>{{localize "WITCHER.Spell.StaCost"}}: </b>{{templateInfo.staCostDisplay}}</div>
+<div><b>{{localize "WITCHER.Mutagen.Source"}}: </b>{{localize templateInfo.spellSource }}</div>
+<div><b>{{localize "WITCHER.Spell.Effect"}}: </b>{{spellItem.system.effect}}</div>
+{{#if spellItem.system.range}}
+    <div><b>{{localize "WITCHER.Spell.Range"}}: </b>{{spellItem.system.range}}</div>
+{{/if}}
+
+{{#if spellItem.system.duration}}
+    <div><b>{{localize "WITCHER.Spell.Duration"}}: </b> {{{templateInfo.durationText}}} </div>
+{{/if}}
+
+{{#if spellItem.system.defence}}
+    <div class='defense'><b>{{localize "WITCHER.Spell.Defence"}}:
+        </b>{{spellItem.system.defence}}</div>
+{{/if}}
+{{#if spellItem.system.preparationTime}}
+    <div><b>{{localize "WITCHER.Spell.PrepTime"}}: </b>{{spellItem.system.preparationTime}}
+    </div>
+{{/if}}
+{{#if spellItem.system.difficultyCheck}}
+    <div><b>{{localize "WITCHER.DC"}}: </b>{{spellItem.system.difficultyCheck}}</div>
+{{/if}}
+{{#if spellItem.system.components}}
+    <div><b>{{localize "WITCHER.Spell.Components"}}: </b>{{spellItem.system.components}}
+    </div>
+{{/if}}
+{{#if spellItem.system.alternateComponents}}
+    <div><b>{{localize "WITCHER.Spell.AlternateComponents"}}:
+        </b>{{spellItem.system.alternateComponents}}</div>
+{{/if}}
+{{#if spellItem.system.liftRequirement}}
+    <div><b>{{localize "WITCHER.Spell.Requirements"}}:
+        </b>{{spellItem.system.liftRequirement}}</div>
+{{/if}}
+
+{{#if spellItem.system.causeDamages}}
+    <button class="damage" data-img="{{spellItem.img}}" data-name="{{spellItem.name}}">
+        {{localize "WITCHER.table.Damage"}}</button>
+{{/if}}
+{{#if spellItem.system.createsShield}}
+    <button class="shield" data-img="{{spellItem.img}}" data-name="{{spellItem.name}}" data-shield="{{damage.shield}}"
+        data-actor="{{templateInfo.actor.uuid}}">{{localize "WITCHER.Spell.Short.Shield"}}</button>
+{{/if}}
+{{#if spellItem.system.doesHeal}}
+    <button class="heal" data-img="{{spellItem.img}}" data-name="{{spellItem.name}}" data-heal="{{damage.heal}}"
+        data-actor="{{templateInfo.actor.uuid}}">{{localize "WITCHER.Spell.Short.Heal"}}</button>
+{{/if}}
+{{#if templateInfo.selfEffects}}
+    <b>{{localize "WITCHER.Item.Effect"}}:</b>
+    {{#each templateInfo.selfEffects as |selfEffect|}}
+        <div class=" flex gap">
+            {{#unless (eq selfEffect.effect.name '')}}
+                <span>{{selfEffect.effect.name}}</span>
+            {{/unless}}
+            {{#if selfEffect.effect.statusEffect}}
+                <a class='apply-status' data-status='{{selfEffect.effect.statusEffect}}'
+                    data-duration='{{../damage.duration}}'><img class='chat-icon'
+                        src='{{selfEffect.statusEffect.img}}' />
+                    <span>{{localize selfEffect.statusEffect.name}}</span>
+                </a>
+            {{/if}}
+        </div>
+    {{/each}}
+{{/if}}

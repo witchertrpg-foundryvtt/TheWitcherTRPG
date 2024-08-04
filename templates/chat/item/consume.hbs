@@ -1,0 +1,32 @@
+<div class="witcherTRPG">
+
+    {{log this}}
+    <h3>
+        {{item.name}}
+    </h3>
+    {{#if item.system.consumeProperties.doesHeal}}
+        <div>
+            {{localize "WITCHER.Item.ConsumeProperties.Chat.healedFor"}}: {{messageInfos.heal}}
+        </div>
+    {{/if}}
+    {{#if item.system.consumeProperties.appliesGlobalModifier}}
+        <div>
+            {{localize "WITCHER.Item.ConsumeProperties.Chat.consumeGlobalModifiers"}}:
+        </div>
+        {{#each item.system.consumeProperties.consumeGlobalModifiers as |modifier|}}
+            <div>{{modifier}}</div>
+        {{/each}}
+    {{/if}}
+    {{#if item.system.consumeProperties.effects}}
+        <div>
+            {{localize "WITCHER.Item.ConsumeProperties.Chat.consumeEffects"}}:
+        </div>
+        {{#each statusEffects as |effect|}}
+            <div>
+                <span>{{effect.name}}</span>
+                <img class='chat-icon' src='{{effect.statusEffect.img}}' />
+                <span> {{localize effect.statusEffect.name}}</span>
+            </div>
+        {{/each}}
+    {{/if}}
+</div>
