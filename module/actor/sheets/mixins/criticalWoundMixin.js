@@ -1,12 +1,10 @@
-import { genId } from "../../../scripts/helper.js";
-
 
 export let criticalWoundMixin = {
 
     async _onCriticalWoundAdd(event) {
         event.preventDefault();
         const critList = this.actor.system.critWounds;
-        critList.push({ id: genId() });
+        critList.push({ id: foundry.utils.randomID() });
         this.actor.update({ "system.critWounds": critList });
     },
 

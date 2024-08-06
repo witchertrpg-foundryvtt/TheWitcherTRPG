@@ -1,5 +1,4 @@
 
-import { genId } from "../../../scripts/helper.js";
 import WitcherConfigurationSheet from "./WitcherConfigurationSheet.js";
 
 export default class WitcherConsumableConfigurationSheet extends WitcherConfigurationSheet {
@@ -54,7 +53,7 @@ export default class WitcherConsumableConfigurationSheet extends WitcherConfigur
   _onAddEffect(event) {
     event.preventDefault();
     let newList = this.item.system.consumeProperties.effects ?? []
-    newList.push({ id: genId(), percentage: 100 })
+    newList.push({ percentage: 100 })
     this.item.update({ 'system.consumeProperties.effects': newList });
   }
 

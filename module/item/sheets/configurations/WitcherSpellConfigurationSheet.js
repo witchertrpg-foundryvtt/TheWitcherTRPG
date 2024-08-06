@@ -1,5 +1,4 @@
 
-import { genId } from "../../../scripts/helper.js";
 import WitcherDamagePropertiesConfigurationSheet from "./WitcherDamagePropertiesConfigurationSheet.js";
 
 export default class WitcherSpellConfigurationSheet extends WitcherDamagePropertiesConfigurationSheet {
@@ -15,7 +14,7 @@ export default class WitcherSpellConfigurationSheet extends WitcherDamagePropert
     _onAddEffectSelf(event) {
         event.preventDefault();
         let newList = this.item.system.selfEffects ?? []
-        newList.push({ id: genId(), percentage: 100 })
+        newList.push({ percentage: 100 })
         this.item.update({ 'system.selfEffects': newList });
     }
 
