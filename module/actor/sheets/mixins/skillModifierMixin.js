@@ -1,4 +1,3 @@
-import { genId } from "../../../scripts/helper.js";
 
 export let skillModifierMixin = {
   async _onAddSkillModifier(event) {
@@ -8,7 +7,7 @@ export let skillModifierMixin = {
     if (this.actor.system.skills[stat][skill].modifiers) {
       newModifierList = this.actor.system.skills[stat][skill].modifiers
     }
-    newModifierList.push({ id: genId(), name: "Modifier", value: 0 })
+    newModifierList.push({ name: "Modifier", value: 0 })
 
     this.actor.update({ [`system.skills.${this.skillMap[skill].attribute.name}.${skill}.modifiers`]: newModifierList });
   },

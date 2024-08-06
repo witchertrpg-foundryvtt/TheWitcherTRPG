@@ -1,5 +1,4 @@
 
-import { genId } from "../../scripts/helper.js";
 import WitcherItemSheet from "./WitcherItemSheet.js";
 
 export default class WitcherDiagramSheet extends WitcherItemSheet {
@@ -69,7 +68,7 @@ export default class WitcherDiagramSheet extends WitcherItemSheet {
         this.item.update({ 'system.associatedItemUuid': item.uuid });
       } else {
         let newComponentList = this.item.system.craftingComponents ?? []
-        newComponentList.push({ id: genId(), name: item.name, quantity: 1 })
+        newComponentList.push({ name: item.name, quantity: 1 })
         this.item.update({ 'system.craftingComponents': newComponentList });
       }
     }
@@ -92,7 +91,7 @@ export default class WitcherDiagramSheet extends WitcherItemSheet {
   _onAddComponent(event) {
     event.preventDefault();
     let newComponentList = this.item.system.craftingComponents ?? []
-    newComponentList.push({ id: genId(), name: "component", quantity: "" })
+    newComponentList.push({ name: "component", quantity: "" })
     this.item.update({ 'system.craftingComponents': newComponentList });
   }
 
