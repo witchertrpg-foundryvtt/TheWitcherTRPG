@@ -1,7 +1,6 @@
 
 import WitcherItemSheet from "./WitcherItemSheet.js";
 import { WITCHER } from "../../setup/config.js";
-import { genId } from "../../scripts/helper.js";
 
 export default class WitcherGlobalModifierSheet extends WitcherItemSheet {
 
@@ -45,7 +44,7 @@ export default class WitcherGlobalModifierSheet extends WitcherItemSheet {
   _onAddModifier(type, event) {
     event.preventDefault();
     let newModifierList = this.item.system[type] ?? []
-    newModifierList.push({ id: genId() })
+    newModifierList.push({ })
     this.item.update({ [`system.${type}`]: newModifierList });
   }
 

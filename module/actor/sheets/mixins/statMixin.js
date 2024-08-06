@@ -1,6 +1,5 @@
 import { extendedRoll } from '../../../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../../../scripts/rollConfig.js';
-import { genId } from '../../../scripts/helper.js';
 
 export let statMixin = {
     _onStatModifierDisplay(event) {
@@ -29,11 +28,11 @@ export let statMixin = {
 
         if (stat == 'reputation') {
             let newModifierList = this.actor.system.reputation.modifiers;
-            newModifierList.push({ id: genId(), name: 'Modifier', value: 0 });
+            newModifierList.push({ name: 'Modifier', value: 0 });
             this.actor.update({ [`system.${stat}.modifiers`]: newModifierList });
         } else {
             let newModifierList = this.actor.system[this.statMap[stat].origin][stat].modifiers;
-            newModifierList.push({ id: genId(), name: 'Modifier', value: 0 });
+            newModifierList.push({ name: 'Modifier', value: 0 });
             this.actor.update({ [`system.${this.statMap[stat].origin}.${stat}.modifiers`]: newModifierList });
         }
     },

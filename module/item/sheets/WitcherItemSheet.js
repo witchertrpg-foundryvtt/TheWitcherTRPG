@@ -1,4 +1,3 @@
-import { genId } from "../../scripts/helper.js";
 
 export default class WitcherItemSheet extends ItemSheet {
     /** @override */
@@ -87,7 +86,7 @@ export default class WitcherItemSheet extends ItemSheet {
     _onAddEffect(event) {
         event.preventDefault();
         let newList = this.item.system.effects ?? []
-        newList.push({ id: genId(), percentage: 100 })
+        newList.push({ percentage: 100 })
         this.item.update({ 'system.effects': newList });
     }
 

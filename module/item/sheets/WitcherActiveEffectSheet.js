@@ -1,7 +1,6 @@
 
 import WitcherItemSheet from "./WitcherItemSheet.js";
 import { WITCHER } from "../../setup/config.js";
-import { genId } from "../../scripts/helper.js";
 
 export default class WitcherEffectSheet extends WitcherItemSheet {
 
@@ -43,7 +42,7 @@ export default class WitcherEffectSheet extends WitcherItemSheet {
     if (this.item.system.stats) {
       newModifierList = this.item.system.stats
     }
-    newModifierList.push({ id: genId(), stat: "none", modifier: 0 })
+    newModifierList.push({ stat: "none", modifier: 0 })
     this.item.update({ 'system.stats': newModifierList });
   }
 
@@ -73,7 +72,7 @@ export default class WitcherEffectSheet extends WitcherItemSheet {
     if (this.item.system.skills) {
       newModifierList = this.item.system.skills
     }
-    newModifierList.push({ id: genId(), skill: "none", modifier: 0 })
+    newModifierList.push({ skill: "none", modifier: 0 })
     this.item.update({ 'system.skills': newModifierList });
   }
 
@@ -104,7 +103,7 @@ export default class WitcherEffectSheet extends WitcherItemSheet {
     if (this.item.system.derived) {
       newModifierList = this.item.system.derived
     }
-    newModifierList.push({ id: genId(), derivedStat: "none", modifier: 0 })
+    newModifierList.push({ derivedStat: "none", modifier: 0 })
     this.item.update({ 'system.derived': newModifierList });
   }
 
