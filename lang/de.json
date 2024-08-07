@@ -1019,6 +1019,7 @@
             "Failed": "Fehlgeschlagen"
         },
         "globalModifier": {
+            "tab": "Globaler Modifikator",
             "isActive": "ist aktiv",
             "special": "Spezielle Effekte",
             "specialEffect": {
@@ -1030,6 +1031,14 @@
                 "armoredCaster": "Gepanzerter Zauberer",
                 "meleeDamage": "+1 Nahkampfschaden Damage"
             }
+        },
+        "activeEffect": {
+            "tab": "Aktiver Effekt",
+            "source": "Quelle",
+            "toggle": "An/Aus",
+            "temporary": "Temporär",
+            "passive": "Passive",
+            "inactive": "Inaktive"
         },
         "character.socialStanding": "Gesellschaftlicher Stand",
         "socialStanding": {

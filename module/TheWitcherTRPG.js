@@ -50,6 +50,8 @@ async function preloadHandlebarsTemplates() {
         "systems/TheWitcherTRPG/templates/partials/spell-header.hbs",
         "systems/TheWitcherTRPG/templates/partials/item-image.hbs",
         "systems/TheWitcherTRPG/templates/partials/associated-item.hbs",
+        "systems/TheWitcherTRPG/templates/partials/effect-part.hbs",
+
         "systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs",
         "systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/consumablePropertiesConfiguration.hbs",
 
@@ -72,6 +74,7 @@ Hooks.once("init", function () {
     CONFIG.statusEffects = CONFIG.WITCHER.statusEffects;
     CONFIG.Item.documentClass = WitcherItem;
     CONFIG.Actor.documentClass = WitcherActor;
+    CONFIG.ActiveEffect.legacyTransferral = false;
 
     registerDataModels();
     registerSheets();
