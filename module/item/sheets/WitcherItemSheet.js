@@ -6,7 +6,7 @@ export default class WitcherItemSheet extends ItemSheet {
             classes: ["witcher", "sheet", "item"],
             width: 520,
             height: 480,
-            tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
+            tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "data" }],
             dragDrop: [{
                 dragSelector: ".items-list .item",
                 dropSelector: null
@@ -28,6 +28,8 @@ export default class WitcherItemSheet extends ItemSheet {
 
         this.options.classes.push(`item-${this.item.type}`)
         data.data = data.item?.system
+        // Prepare active effects for easier access
+        data.effects = this.prepareActiveEffectCategories(this.item.effects);
 
         data.showConfig = !!this.configuration
 
@@ -48,6 +50,11 @@ export default class WitcherItemSheet extends ItemSheet {
         html.find(".configure-item").on("click", this._renderConfigureDialog.bind(this));
 
         html.find("input").focusin(ev => this._onFocusIn(ev));
+
+        // Active Effect management
+        html.on("click", ".effect-control", (ev) =>
+            this.onManageActiveEffect(ev, this.item)
+        );
     }
 
     _onAddGlobalModifier(event) {
@@ -144,5 +151,75 @@ export default class WitcherItemSheet extends ItemSheet {
 
     _onFocusIn(event) {
         event.currentTarget.select();
+    }
+
+    /**
+     * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
+     * @param {ActiveEffect[]} effects    A collection or generator of Active Effect documents to prepare sheet data for
+     * @returns {object}                   Data for rendering
+     */
+    prepareActiveEffectCategories(effects) {
+        // Define effect header categories
+        const categories = {
+            temporary: {
+                type: "temporary",
+                label: game.i18n.localize("WITCHER.activeEffect.temporary"),
+                effects: []
+            },
+            passive: {
+                type: "passive",
+                label: game.i18n.localize("WITCHER.activeEffect.passive"),
+                effects: []
+            },
+            inactive: {
+                type: "inactive",
+                label: game.i18n.localize("WITCHER.activeEffect.inactive"),
+                effects: []
+            }
+        };
+
+        // Iterate over active effects, classifying them into categories
+        for (let e of effects) {
+            if (e.disabled) categories.inactive.effects.push(e);
+            else if (e.isTemporary) categories.temporary.effects.push(e);
+            else categories.passive.effects.push(e);
+        }
+        return categories;
+    }
+
+    /**
+     * Manage Active Effect instances through an Actor or Item Sheet via effect control buttons.
+     * @param {MouseEvent} event      The left-click event on the effect control
+     * @param {Actor|Item} owner      The owning document which manages this effect
+     * @returns {object}              effect function
+     */
+    onManageActiveEffect(event, owner) {
+        event.preventDefault();
+        const a = event.currentTarget;
+        const li = a.closest("li");
+        const effect = li.dataset.effectId
+            ? owner.effects.get(li.dataset.effectId)
+            : null;
+        switch (a.dataset.action) {
+            case "create":
+                return owner.createEmbeddedDocuments("ActiveEffect", [
+                    {
+                        name: game.i18n.format("DOCUMENT.New", {
+                            type: game.i18n.localize("DOCUMENT.ActiveEffect")
+                        }),
+                        icon: "icons/svg/aura.svg",
+                        origin: owner.uuid,
+                        "duration.rounds":
+                            li.dataset.effectType === "temporary" ? 1 : undefined,
+                        disabled: li.dataset.effectType === "inactive"
+                    },
+                ]);
+            case "edit":
+                return effect.sheet.render(true);
+            case "delete":
+                return effect.delete();
+            case "toggle":
+                return effect.update({ disabled: !effect.disabled });
+        }
     }
 }
