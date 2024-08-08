@@ -12,9 +12,17 @@
 				|<span class='progress-total'>{{system.derivedStats.sta.max}}</span></h3>
 		</div>
 		<div class='progress-container'>
-			<progress class='toxicity-bar' value='50' max='100'></progress>
-			<h3 class='progress-text'><input class='progress-input' name='0' type='number' value='0' max='99' placeholder='0' data-dtype='Number' />
-				|<span class='progress-total'>100</span></h3>
+			<progress class='toxicity-bar' value='{{system.derivedStats.toxicity.value}}' max='{{system.derivedStats.toxicity.max}}'></progress>
+			<h3 class='progress-text'><input
+					class='progress-input'
+					name='system.derivedStats.toxicity.value'
+					type='number'
+					value='{{system.derivedStats.toxicity.value}}'
+					max='{{system.derivedStats.toxicity.max}}'
+					placeholder='0'
+					data-dtype='Number'
+				/>
+				|<span class='progress-total'>{{system.derivedStats.toxicity.max}}</span></h3>
 		</div>
 	</div>
 	<div class='death-section'>

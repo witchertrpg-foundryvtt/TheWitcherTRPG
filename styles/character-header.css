@@ -275,13 +275,9 @@ input.right-value {
 	width: 150px;
 }
 
-.hp-bar {
-	border: none;
-	background-color: rgba(153, 6, 6, 0.1);
-	border-radius: 5px 5px 0 0;
-}
-
+.hp-bar,
 .hp-bar::-webkit-progress-bar {
+	border: none;
 	background-color: rgba(153, 6, 6, 0.1);
 	border-radius: 5px 5px 0 0;
 }
@@ -290,23 +286,18 @@ input.right-value {
 	background-color: #e30000;
 	border-radius: 5px 5px 0 0;
 }
-
-.hp-bar::-moz-progress-value {
+.hp-bar::-moz-progress-value,
+.hp-bar::-moz-progress-bar {
 	border-radius: 5px 5px 0 0;
 }
 
 .hp-bar::-moz-progress-bar {
 	background-color: #e30000;
-	border-radius: 5px 5px 0 0;
 }
 
-.sta-bar {
-	border: none;
-	background-color: rgba(23, 114, 153, 0.1);
-	border-radius: 0;
-}
-
+.sta-bar,
 .sta-bar::-webkit-progress-bar {
+	border: none;
 	background-color: rgba(23, 114, 153, 0.1);
 	border-radius: 0;
 }
@@ -316,22 +307,18 @@ input.right-value {
 	border-radius: 0;
 }
 
-.sta-bar::-moz-progress-value {
+.sta-bar::-moz-progress-value,
+.sta-bar::-moz-progress-bar {
 	border-radius: 0;
 }
 
 .sta-bar::-moz-progress-bar {
 	background-color: #14abec;
-	border-radius: 0;
 }
 
-.toxicity-bar {
-	border: none;
-	background-color: rgba(41, 153, 23, 0.1);
-	border-radius: 0 0 5px 5px;
-}
-
+.toxicity-bar,
 .toxicity-bar::-webkit-progress-bar {
+	border: none;
 	background-color: rgba(41, 153, 23, 0.1);
 	border-radius: 0 0 5px 5px;
 }
@@ -341,13 +328,13 @@ input.right-value {
 	border-radius: 0 0 5px 5px;
 }
 
+.toxicity-bar::-moz-progress-bar,
 .toxicity-bar::-moz-progress-value {
 	border-radius: 0 0 5px 5px;
 }
 
 .toxicity-bar::-moz-progress-bar {
 	background-color: #2eb917;
-	border-radius: 0 0 5px 5px;
 }
 
 .progress-container {

@@ -118,6 +118,7 @@ export default class WitcherActor extends Actor {
 
         let hpTotalModifiers = this.getAllModifiers("hp").totalModifiers;
         let staTotalModifiers = this.getAllModifiers("sta").totalModifiers;
+        let toxTotalModifiers = this.getAllModifiers("toxicity").totalModifiers;
         let resTotalModifiers = this.getAllModifiers("resolve").totalModifiers;
         let focusTotalModifiers = this.getAllModifiers("focus").totalModifiers;
         let vigorModifiers = this.getAllModifiers("vigor").totalModifiers;
@@ -125,11 +126,13 @@ export default class WitcherActor extends Actor {
         let staDivider = this.getAllModifiers("sta").totalDivider;
         this.system.derivedStats.hp.modifiers.forEach(item => hpTotalModifiers += Number(item.value));
         this.system.derivedStats.sta.modifiers.forEach(item => staTotalModifiers += Number(item.value));
+        this.system.derivedStats.toxicity.modifiers.forEach(item => toxTotalModifiers += Number(item.value));
         this.system.derivedStats.resolve.modifiers.forEach(item => resTotalModifiers += Number(item.value));
         this.system.derivedStats.focus.modifiers.forEach(item => focusTotalModifiers += Number(item.value));
 
         let curHp = this.system.derivedStats.hp.max + hpTotalModifiers;
         let curSta = this.system.derivedStats.sta.max + staTotalModifiers;
+        let curTox = this.system.derivedStats.toxicity.max + toxTotalModifiers;
         let curRes = this.system.derivedStats.resolve.max + resTotalModifiers;
         let curFocus = this.system.derivedStats.focus.max + focusTotalModifiers;
         let curVigor = this.system.derivedStats.vigor.unmodifiedMax + vigorModifiers;
@@ -139,6 +142,7 @@ export default class WitcherActor extends Actor {
         if (this.system.customStat != true) {
             curHp = Math.floor((base * 5 + hpTotalModifiers) / hpDivider)
             curSta = Math.floor((base * 5 + staTotalModifiers) / staDivider)
+            curTox = Math.floor(100 + toxTotalModifiers)
             curRes = (Math.floor((curWill + curInt) / 2) * 5) + resTotalModifiers
             curFocus = (Math.floor((curWill + curInt) / 2) * 3) + focusTotalModifiers
         }
@@ -159,6 +163,7 @@ export default class WitcherActor extends Actor {
             'system.derivedStats.hp.max': curHp,
             'system.derivedStats.hp.unmodifiedMax': unmodifiedMaxHp,
             'system.derivedStats.sta.max': curSta,
+            'system.derivedStats.toxicity.max': curTox,
             'system.derivedStats.resolve.max': curRes,
             'system.derivedStats.focus.max': curFocus,
             'system.derivedStats.vigor.max': curVigor,

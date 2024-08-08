@@ -375,6 +375,7 @@
             "DerStat.HP": "Max HP",
             "DerStat.Shield": "Shield",
             "DerStat.Sta": "STA",
+            "DerStat.Toxicity": "Toxicity",
             "DerStat.Resolve": "Resolve",
             "DerStat.Focus": "Focus",
             "DerStat.Punch": "Punch",
