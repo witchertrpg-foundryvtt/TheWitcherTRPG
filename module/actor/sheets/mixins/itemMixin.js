@@ -794,7 +794,7 @@ export let itemMixin = {
         if (spellItem.system.createsShield) {
             damage.shield = spellItem.system.shield || "0"
             if (spellItem.system.staminaIsVar) {
-                damage.shield = this.calcStaminaMulti(origStaCost, shield)
+                damage.shield = this.calcStaminaMulti(origStaCost, damage.shield)
             }
         }
 

@@ -24,7 +24,7 @@ export async function onApplyStatus(event) {
     let target = getCurrentCharacter();
 
     //only try to apply it when not already present
-    if (!target.appliedEffects.find(effect => effect.statuses.find(status => status == statusId))) {
+    if (target && !target.appliedEffects.find(effect => effect.statuses.find(status => status == statusId))) {
         await target.toggleStatusEffect(statusId)
 
         handleStatusCounterIntegration(target, statusId, event.currentTarget.dataset.duration)
