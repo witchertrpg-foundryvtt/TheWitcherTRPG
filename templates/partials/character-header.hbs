@@ -1,5 +1,22 @@
 <div class='char-image'>
 	<img class='witcher-actor-img' src='{{actor.img}}' data-edit='img' title='{{actor.name}}' />
+	<div class='status-section'>
+		<div class='progress-container'>
+			<progress class='hp-bar' value='{{system.derivedStats.hp.value}}' max='{{system.derivedStats.hp.unmodifiedMax}}'></progress>
+			<h3 class='progress-text'><input class='progress-input' name='system.derivedStats.hp.value' type='number' value='{{system.derivedStats.hp.value}}' max='99' placeholder='0' data-dtype='Number' />
+				|<span class='progress-total'>{{system.derivedStats.hp.max}}</span></h3>
+		</div>
+		<div class='progress-container'>
+			<progress class='sta-bar' value='{{system.derivedStats.sta.value}}' max='{{system.derivedStats.sta.max}}'></progress>
+			<h3 class='progress-text'><input class='progress-input' name='system.derivedStats.sta.value' type='number' value='{{system.derivedStats.sta.value}}' max='99' placeholder='0' data-dtype='Number' />
+				|<span class='progress-total'>{{system.derivedStats.sta.max}}</span></h3>
+		</div>
+		<div class='progress-container'>
+			<progress class='toxicity-bar' value='50' max='100'></progress>
+			<h3 class='progress-text'><input class='progress-input' name='0' type='number' value='0' max='99' placeholder='0' data-dtype='Number' />
+				|<span class='progress-total'>100</span></h3>
+		</div>
+	</div>
 	<div class='death-section'>
 		<a class='death-minus'><i class='fa-solid fa-rotate-left'></i></a>
 		<div class='death-counter'>
@@ -10,7 +27,7 @@
 	</div>
 	<div class='wound-state-section'>
 		<h3>Wound State</h3>
-		{{#if (eq system.derivedStats.hp.value system.derivedStats.hp.unmodifiedMax)}}
+		{{#if (gte system.derivedStats.hp.value system.derivedStats.hp.unmodifiedMax)}}
 			<i class='fa-solid fa-heart' style='color: green;'></i>
 		{{else if (gte system.derivedStats.hp.value system.coreStats.woundTreshold.current)}}
 			<i class='fa-solid fa-heart-crack' style='color: green;'></i>
@@ -191,7 +208,6 @@
 						<img class='right-image' src='systems/TheWitcherTRPG/assets/images/health.png' />
 					{{/unless}}
 				{{/if}}
-				<input class='right-value hp-value' name='system.derivedStats.hp.value' type='number' value='{{system.derivedStats.hp.value}}' max='99' placeholder='0' data-dtype='Number' />
 			</div>
 			<div class='right-element'>
 				<label>{{localize 'WITCHER.Actor.Shield'}}</label>
@@ -201,7 +217,6 @@
 			<div class='right-element'>
 				<label>{{localize 'WITCHER.Actor.Stamina'}} ({{system.derivedStats.sta.max}})</label>
 				<img class='right-image' src='systems/TheWitcherTRPG/assets/images/stamina.png' />
-				<input class='right-value' style='bottom:48px;' name='system.derivedStats.sta.value' type='number' value='{{system.derivedStats.sta.value}}' max='99' placeholder='0' data-dtype='Number' />
 			</div>
 		</div>
 		<div class='right-row'>

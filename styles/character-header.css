@@ -252,7 +252,8 @@ input.right-value {
 }
 
 .death-counter > h3,
-.wound-state-section > h3 {
+.wound-state-section > h3,
+.progress-container > h3 {
 	border-bottom: none;
 	margin-bottom: 0;
 }
@@ -260,4 +261,128 @@ input.right-value {
 .death-counter > i {
 	padding-top: 2px;
 	padding-bottom: 3px;
+}
+
+.status-section {
+	display: flex;
+	flex-direction: column;
+}
+
+.hp-bar,
+.sta-bar,
+.toxicity-bar {
+	height: 20px;
+	width: 150px;
+}
+
+.hp-bar {
+	border: none;
+	background-color: rgba(153, 6, 6, 0.1);
+	border-radius: 5px 5px 0 0;
+}
+
+.hp-bar::-webkit-progress-bar {
+	background-color: rgba(153, 6, 6, 0.1);
+	border-radius: 5px 5px 0 0;
+}
+
+.hp-bar::-webkit-progress-value {
+	background-color: #e30000;
+	border-radius: 5px 5px 0 0;
+}
+
+.hp-bar::-moz-progress-value {
+	border-radius: 5px 5px 0 0;
+}
+
+.hp-bar::-moz-progress-bar {
+	background-color: #e30000;
+	border-radius: 5px 5px 0 0;
+}
+
+.sta-bar {
+	border: none;
+	background-color: rgba(23, 114, 153, 0.1);
+	border-radius: 0;
+}
+
+.sta-bar::-webkit-progress-bar {
+	background-color: rgba(23, 114, 153, 0.1);
+	border-radius: 0;
+}
+
+.sta-bar::-webkit-progress-value {
+	background-color: #14abec;
+	border-radius: 0;
+}
+
+.sta-bar::-moz-progress-value {
+	border-radius: 0;
+}
+
+.sta-bar::-moz-progress-bar {
+	background-color: #14abec;
+	border-radius: 0;
+}
+
+.toxicity-bar {
+	border: none;
+	background-color: rgba(41, 153, 23, 0.1);
+	border-radius: 0 0 5px 5px;
+}
+
+.toxicity-bar::-webkit-progress-bar {
+	background-color: rgba(41, 153, 23, 0.1);
+	border-radius: 0 0 5px 5px;
+}
+
+.toxicity-bar::-webkit-progress-value {
+	background-color: #2eb917;
+	border-radius: 0 0 5px 5px;
+}
+
+.toxicity-bar::-moz-progress-value {
+	border-radius: 0 0 5px 5px;
+}
+
+.toxicity-bar::-moz-progress-bar {
+	background-color: #2eb917;
+	border-radius: 0 0 5px 5px;
+}
+
+.progress-container {
+	margin-top: 5px;
+	position: relative;
+	height: 20px;
+	width: 100%;
+}
+
+.progress-text {
+	display: flex;
+	flex-direction: row;
+	position: absolute;
+	width: 100%;
+	height: 20px;
+	text-align: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	font-weight: bold;
+	color: white;
+}
+
+.progress-input {
+	justify-content: center;
+	border: none;
+}
+
+input.progress-input,
+.progress-total {
+	background-color: rgba(0, 0, 0, 0);
+	line-height: 20px;
+	width: 60px;
+	height: 20px;
+	border: none;
+	font-weight: bold;
+	color: white;
 }
