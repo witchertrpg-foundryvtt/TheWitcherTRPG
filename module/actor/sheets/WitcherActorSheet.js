@@ -13,6 +13,7 @@ import { statMixin } from "./mixins/statMixin.js";
 import { itemMixin } from "./mixins/itemMixin.js";
 
 import { itemContextMenu } from "./interactions/itemContextMenu.js";
+import { activeEffectMixin } from "./mixins/activeEffectMixin.js";
 
 Array.prototype.sum = function (prop) {
     var total = 0
@@ -64,6 +65,9 @@ export default class WitcherActorSheet extends ActorSheet {
         this._prepareSpells(context);
         this._prepareItems(context);
         this._prepareCritWounds(context);
+
+        // Prepare active effects for easier access
+        context.effects = this.prepareActiveEffectCategories(this.actor.effects);
 
         context.isGM = game.user.isGM
         return context;
@@ -191,6 +195,7 @@ export default class WitcherActorSheet extends ActorSheet {
         this.skillModifierListener(html)
 
         this.itemListener(html)
+        this.activeEffectListener(html)
 
         this.deathSaveListener(html)
         this.criticalWoundListener(html)
@@ -198,6 +203,7 @@ export default class WitcherActorSheet extends ActorSheet {
         this.globalModifierListener(html)
 
         this.itemContextMenu(html)
+
     }
 
     calcStaminaMulti(origStaCost, value) {
@@ -399,6 +405,7 @@ Object.assign(WitcherActorSheet.prototype, skillMixin)
 Object.assign(WitcherActorSheet.prototype, skillModifierMixin)
 
 Object.assign(WitcherActorSheet.prototype, itemMixin)
+Object.assign(WitcherActorSheet.prototype, activeEffectMixin)
 
 Object.assign(WitcherActorSheet.prototype, sanitizeMixin)
 Object.assign(WitcherActorSheet.prototype, deathsaveMixin)
