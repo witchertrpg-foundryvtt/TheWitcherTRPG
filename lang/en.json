@@ -1020,6 +1020,7 @@
             "Failed": "Failed"
         },
         "globalModifier": {
+            "tab": "Global Modifier",
             "isActive": "Is Active",
             "special": "Special Effects",
             "specialEffect": {
@@ -1031,6 +1032,14 @@
                 "armoredCaster": "Armored Caster",
                 "meleeDamage": "+1 Melee Damage"
             }
+        },
+        "activeEffect": {
+            "tab": "Active Effect",
+            "source": "Source",
+            "toggle": "Toggle",
+            "temporary": "Temporary",
+            "passive": "Passive",
+            "inactive": "Inactive"
         },
         "character.socialStanding": "Social Standing",
         "socialStanding": {

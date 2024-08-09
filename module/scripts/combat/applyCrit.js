@@ -1,4 +1,4 @@
-import { genId, getInteractActor, getRandomInt } from "../helper.js";
+import { getInteractActor, getRandomInt } from "../helper.js";
 
 export function addCritMessageContextOptions(html, options) {
     let wasCritted = li => li.find(".crit-taken").length
@@ -78,7 +78,7 @@ async function applyCritWound(actor, messageId) {
 
     const critList = actor.system.critWounds;
     critList.push({
-        id: genId(),
+        id: foundry.utils.randomID(),
         configEntry: wound,
         location: crit.location.name
     });
