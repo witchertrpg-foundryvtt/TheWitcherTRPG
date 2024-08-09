@@ -168,6 +168,7 @@ input.charname {
 .witcher-actor-img {
 	height: 150px;
 	width: 150px;
+	object-fit: cover;
 }
 
 .core-stats-list {
