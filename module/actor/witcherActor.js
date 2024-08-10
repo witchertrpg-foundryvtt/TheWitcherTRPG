@@ -159,7 +159,7 @@ export default class WitcherActor extends Actor {
 			'system.stats.luck.current': curLuck,
 
 			'system.stats.int.totalModifiers': intTotalModifiers,
-			'system.stats.ref.totalModifiers': refTotalModifiers,   
+			'system.stats.ref.totalModifiers': refTotalModifiers,
 			'system.stats.dex.totalModifiers': dexTotalModifiers,
 			'system.stats.body.totalModifiers': bodyTotalModifiers,
 			'system.stats.spd.totalModifiers': spdTotalModifiers,
@@ -193,6 +193,13 @@ export default class WitcherActor extends Actor {
 
 			'system.coreStats.woundTreshold.current': Math.floor((baseMax + wtTotalModifiers) / wtDivider),
 			'system.coreStats.woundTreshold.max': baseMax,
+
+			'system.coreStats.stun.totalModifiers': stunTotalModifiers,
+			'system.coreStats.enc.totalModifiers': encTotalModifiers,
+			'system.coreStats.run.totalModifiers': runTotalModifiers,
+			'system.coreStats.leap.totalModifiers': leapTotalModifiers,
+			'system.coreStats.rec.totalModifiers': recTotalModifiers,
+			'system.coreStats.woundTreshold.totalModifiers': wtTotalModifiers,
 
 			'system.attackStats.meleeBonus': meleeBonus,
 			'system.attackStats.punch.value': `1d6+${meleeBonus}`,

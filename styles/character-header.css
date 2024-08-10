@@ -70,6 +70,10 @@
 	background-color: rgba(23, 114, 153, 0.2);
 }
 
+.stat-mod-zero {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
 .stat-mod-minus {
 	background-color: rgba(153, 6, 6, 0.3);
 }
