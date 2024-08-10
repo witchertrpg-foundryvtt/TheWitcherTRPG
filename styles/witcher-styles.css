@@ -17,6 +17,7 @@
 @import "./container-sheet.css";
 @import "./chat.css";
 @import "./item-header.css";
+@import "./activeEffect.css";
 
 @font-face {
     font-family: 'Thewitcher';

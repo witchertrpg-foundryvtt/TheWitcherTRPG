@@ -1872,6 +1872,48 @@ WITCHER.statusEffects = [
         id: 'prone',
         name: 'WITCHER.statusEffects.prone',
         img: 'icons/svg/falling.svg',
+        changes: [
+            {
+                key: 'system.skills.ref.brawling.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.ref.melee.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.ref.smallblades.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.ref.staffspear.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.ref.swordsmanship.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.dex.archery.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.dex.crossbow.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.ref.dodge.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+        ],
     },
     {
         id: 'bleed',
@@ -1882,16 +1924,137 @@ WITCHER.statusEffects = [
         id: 'freeze',
         name: 'WITCHER.statusEffects.freeze',
         img: 'icons/svg/frozen.svg',
+        changes: [
+            {
+                key: 'system.stats.spd',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.stats.ref',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -1,
+            },
+        ],
     },
     {
         id: 'staggered',
         name: 'WITCHER.statusEffects.staggered',
         img: 'icons/svg/sword.svg',
+        changes: [
+            {
+                key: 'system.skills.ref.brawling.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.ref.melee.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.ref.smallblades.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.ref.staffspear.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.ref.swordsmanship.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.dex.archery.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.dex.crossbow.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.ref.dodge.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+        ],
     },
     {
         id: 'intoxication',
         name: 'WITCHER.statusEffects.intoxication',
         img: 'icons/svg/tankard.svg',
+        changes: [
+            {
+                key: 'system.stats.dex.max',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.stats.ref.max',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.stats.int.max',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -2,
+            },
+            {
+                key: 'system.skills.emp.seduction.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.emp.persuasion.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.emp.leadership.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.emp.charisma.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.emp.deceit.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.int.socialetq.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.will.intimidation.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.will.resistcoerc.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.emp.perception.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.emp.gambling.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+        ],
     },
     {
         id: 'hallucination',
@@ -1912,6 +2075,53 @@ WITCHER.statusEffects = [
         id: 'blinded',
         name: 'WITCHER.statusEffects.blinded',
         img: 'icons/svg/blind.svg',
+        changes: [
+            {
+                key: 'system.skills.ref.brawling.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.ref.melee.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.ref.smallblades.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.ref.staffspear.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.ref.swordsmanship.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.dex.archery.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.dex.crossbow.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.ref.dodge.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -3,
+            },
+            {
+                key: 'system.skills.int.awareness.value',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: -5,
+            },
+        ],
     },
     {
         id: 'shielded',
