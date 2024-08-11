@@ -1,18 +1,18 @@
-import { extendedRoll } from '../../scripts/rolls/extendedRoll.js'
-import { RollConfig } from '../../scripts/rollConfig.js'
-import { ExecuteDefense } from '../../scripts/combat/defenses.js'
+import { extendedRoll } from "../../scripts/rolls/extendedRoll.js"
+import { RollConfig } from "../../scripts/rollConfig.js"
+import { ExecuteDefense } from "../../scripts/combat/defenses.js"
 
-import { sanitizeMixin } from './mixins/sanitizeMixin.js'
-import { deathsaveMixin } from './mixins/deathSaveMixin.js'
-import { criticalWoundMixin } from './mixins/criticalWoundMixin.js'
-import { noteMixin } from './mixins/noteMixin.js'
-import { globalModifierMixin } from './mixins/globalModifierMixin.js'
-import { skillModifierMixin } from './mixins/skillModifierMixin.js'
-import { skillMixin } from './mixins/skillMixin.js'
-import { statMixin } from './mixins/statMixin.js'
-import { itemMixin } from './mixins/itemMixin.js'
+import { sanitizeMixin } from "./mixins/sanitizeMixin.js"
+import { deathsaveMixin } from "./mixins/deathSaveMixin.js"
+import { criticalWoundMixin } from "./mixins/criticalWoundMixin.js"
+import { noteMixin } from "./mixins/noteMixin.js"
+import { globalModifierMixin } from "./mixins/globalModifierMixin.js"
+import { skillModifierMixin } from "./mixins/skillModifierMixin.js"
+import { skillMixin } from "./mixins/skillMixin.js"
+import { statMixin } from "./mixins/statMixin.js"
+import { itemMixin } from "./mixins/itemMixin.js"
 
-import { itemContextMenu } from './interactions/itemContextMenu.js'
+import { itemContextMenu } from "./interactions/itemContextMenu.js"
 
 Array.prototype.sum = function (prop) {
 	var total = 0
@@ -44,13 +44,13 @@ export default class WitcherActorSheet extends ActorSheet {
 	getData() {
 		const context = super.getData()
 
-		context.useAdrenaline = game.settings.get('TheWitcherTRPG', 'useOptionalAdrenaline')
-		context.displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails')
-		context.useVerbalCombat = game.settings.get('TheWitcherTRPG', 'useOptionalVerbalCombat')
-		context.displayRep = game.settings.get('TheWitcherTRPG', 'displayRep')
+		context.useAdrenaline = game.settings.get("TheWitcherTRPG", "useOptionalAdrenaline")
+		context.displayRollDetails = game.settings.get("TheWitcherTRPG", "displayRollsDetails")
+		context.useVerbalCombat = game.settings.get("TheWitcherTRPG", "useOptionalVerbalCombat")
+		context.displayRep = game.settings.get("TheWitcherTRPG", "displayRep")
 
 		context.config = CONFIG.WITCHER
-		CONFIG.Combat.initiative.formula = '1d10 + @stats.ref.current' + (context.displayRollDetails ? '[REF]' : '')
+		CONFIG.Combat.initiative.formula = "1d10 + @stats.ref.current" + (context.displayRollDetails ? "[REF]" : "")
 
 		const actorData = this.actor.toObject(false)
 		context.system = actorData.system
@@ -80,23 +80,23 @@ export default class WitcherActorSheet extends ActorSheet {
 	_prepareGeneralInformation(context) {
 		let actor = context.actor
 
-		context.oldNotes = actor.getList('note')
+		context.oldNotes = actor.getList("note")
 		context.notes = actor.system.notes
-		context.globalModifiers = actor.getList('effect').concat(actor.getList('globalModifier'))
+		context.globalModifiers = actor.getList("effect").concat(actor.getList("globalModifier"))
 	}
 
 	_prepareSpells(context) {
-		context.spells = context.actor.getList('spell')
+		context.spells = context.actor.getList("spell")
 
-		context.noviceSpells = context.spells.filter((s) => s.system.level == 'novice' && (s.system.class == 'Spells' || s.system.class == 'Invocations' || s.system.class == 'Witcher'))
+		context.noviceSpells = context.spells.filter((s) => s.system.level == "novice" && (s.system.class == "Spells" || s.system.class == "Invocations" || s.system.class == "Witcher"))
 
-		context.journeymanSpells = context.spells.filter((s) => s.system.level == 'journeyman' && (s.system.class == 'Spells' || s.system.class == 'Invocations' || s.system.class == 'Witcher'))
+		context.journeymanSpells = context.spells.filter((s) => s.system.level == "journeyman" && (s.system.class == "Spells" || s.system.class == "Invocations" || s.system.class == "Witcher"))
 
-		context.masterSpells = context.spells.filter((s) => s.system.level == 'master' && (s.system.class == 'Spells' || s.system.class == 'Invocations' || s.system.class == 'Witcher'))
+		context.masterSpells = context.spells.filter((s) => s.system.level == "master" && (s.system.class == "Spells" || s.system.class == "Invocations" || s.system.class == "Witcher"))
 
-		context.hexes = context.spells.filter((s) => s.system.class == 'Hexes')
-		context.rituals = context.spells.filter((s) => s.system.class == 'Rituals')
-		context.magicalgift = context.spells.filter((s) => s.system.class == 'MagicalGift')
+		context.hexes = context.spells.filter((s) => s.system.class == "Hexes")
+		context.rituals = context.spells.filter((s) => s.system.class == "Rituals")
+		context.magicalgift = context.spells.filter((s) => s.system.class == "MagicalGift")
 	}
 
 	/**
@@ -105,17 +105,17 @@ export default class WitcherActorSheet extends ActorSheet {
 	_prepareItems(context) {
 		let items = context.items
 
-		context.enhancements = items.filter((i) => i.type == 'enhancement' && i.system.type != 'armor' && !i.system.applied)
-		context.runeItems = context.enhancements.filter((e) => e.system.type == 'rune')
-		context.glyphItems = context.enhancements.filter((e) => e.system.type == 'glyph')
-		context.containers = items.filter((i) => i.type == 'container')
+		context.enhancements = items.filter((i) => i.type == "enhancement" && i.system.type != "armor" && !i.system.applied)
+		context.runeItems = context.enhancements.filter((e) => e.system.type == "rune")
+		context.glyphItems = context.enhancements.filter((e) => e.system.type == "glyph")
+		context.containers = items.filter((i) => i.type == "container")
 
 		context.totalWeight = context.actor.getTotalWeight()
 		context.totalCost = context.items.cost()
 	}
 
 	_prepareWeapons(context) {
-		context.weapons = context.actor.getList('weapon')
+		context.weapons = context.actor.getList("weapon")
 		context.weapons.forEach((weapon) => {
 			if (weapon.system.enhancements > 0 && weapon.system.enhancements != weapon.system.enhancementItemIds.length) {
 				let newEnhancementList = []
@@ -136,7 +136,7 @@ export default class WitcherActorSheet extends ActorSheet {
 
 	_prepareArmor(context) {
 		context.armors = context.items.filter(function (item) {
-			return item.type == 'armor' || (item.type == 'enhancement' && item.system.type == 'armor' && item.system.applied == false)
+			return item.type == "armor" || (item.type == "enhancement" && item.system.type == "armor" && item.system.applied == false)
 		})
 
 		context.armors.forEach((armor) => {
@@ -145,7 +145,7 @@ export default class WitcherActorSheet extends ActorSheet {
 				let enhancementItems = armor.system.enhancementItems ?? []
 				for (let i = 0; i < armor.system.enhancements; i++) {
 					let element = enhancementItems[i]
-					if (element && JSON.stringify(element) != '{}') {
+					if (element && JSON.stringify(element) != "{}") {
 						newEnhancementList.push(element)
 					} else {
 						newEnhancementList.push({})
@@ -169,20 +169,20 @@ export default class WitcherActorSheet extends ActorSheet {
 	activateListeners(html) {
 		super.activateListeners(html)
 
-		html.find('.life-event-display').on('click', this._onLifeEventDisplay.bind(this))
+		html.find(".life-event-display").on("click", this._onLifeEventDisplay.bind(this))
 
-		html.find('.init-roll').on('click', this._onInitRoll.bind(this))
-		html.find('.crit-roll').on('click', this._onCritRoll.bind(this))
-		html.find('.defense-roll').on('click', this._onDefenseRoll.bind(this))
-		html.find('.heal-button').on('click', this._onHeal.bind(this))
-		html.find('.verbal-button').on('click', this._onVerbalCombat.bind(this))
+		html.find(".init-roll").on("click", this._onInitRoll.bind(this))
+		html.find(".crit-roll").on("click", this._onCritRoll.bind(this))
+		html.find(".defense-roll").on("click", this._onDefenseRoll.bind(this))
+		html.find(".heal-button").on("click", this._onHeal.bind(this))
+		html.find(".verbal-button").on("click", this._onVerbalCombat.bind(this))
 
-		html.find('.luck-minus').on('click', this._onLuckMinus.bind(this))
-		html.find('.luck-reset').on('click', this._onLuckReset.bind(this))
-		html.find('.adrenaline-minus').on('click', this._onAdrenalineMinus.bind(this))
-		html.find('.adrenaline-plus').on('click', this._onAdrenalinePlus.bind(this))
+		html.find(".luck-minus").on("click", this._onLuckMinus.bind(this))
+		html.find(".luck-reset").on("click", this._onLuckReset.bind(this))
+		html.find(".adrenaline-minus").on("click", this._onAdrenalineMinus.bind(this))
+		html.find(".adrenaline-plus").on("click", this._onAdrenalinePlus.bind(this))
 
-		html.find('input').focusin((ev) => this._onFocusIn(ev))
+		html.find("input").focusin((ev) => this._onFocusIn(ev))
 
 		//mixins
 		this.statListener(html)
@@ -203,12 +203,12 @@ export default class WitcherActorSheet extends ActorSheet {
 		let staminaMulti = parseInt(origStaCost)
 
 		if (value.replace) {
-			value = value.replace('/STA', '')
+			value = value.replace("/STA", "")
 		}
 
-		if (value.includes && value.includes('d')) {
-			let diceAmount = value.split('d')[0]
-			let diceType = 'd' + value.split('d')[1].replace('/STA', '')
+		if (value.includes && value.includes("d")) {
+			let diceAmount = value.split("d")[0]
+			let diceType = "d" + value.split("d")[1].replace("/STA", "")
 			return staminaMulti * diceAmount + diceType
 		} else {
 			return staminaMulti * value
@@ -220,7 +220,7 @@ export default class WitcherActorSheet extends ActorSheet {
 	}
 
 	async _onCritRoll(event) {
-		let rollResult = await new Roll('1d10x10').evaluate({ async: true })
+		let rollResult = await new Roll("1d10x10").evaluate({ async: true })
 		let messageData = {
 			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 		}
@@ -233,28 +233,28 @@ export default class WitcherActorSheet extends ActorSheet {
 
 	async _onHeal() {
 		let dialogTemplate = `
-      <h1>${game.i18n.localize('WITCHER.Heal.title')}</h1>
+      <h1>${game.i18n.localize("WITCHER.Heal.title")}</h1>
       <div class="flex">
         <div>
-          <div><input id="R" type="checkbox" unchecked/> ${game.i18n.localize('WITCHER.Heal.resting')}</div>
-          <div><input id="SF" type="checkbox" unchecked/> ${game.i18n.localize('WITCHER.Heal.sterilized')}</div>
+          <div><input id="R" type="checkbox" unchecked/> ${game.i18n.localize("WITCHER.Heal.resting")}</div>
+          <div><input id="SF" type="checkbox" unchecked/> ${game.i18n.localize("WITCHER.Heal.sterilized")}</div>
         </div>
         <div>
-          <div><input id="HH" type="checkbox" unchecked/> ${game.i18n.localize('WITCHER.Heal.healinghand')}</div>
-            <div><input id="HT" type="checkbox" unchecked/> ${game.i18n.localize('WITCHER.Heal.healingTent')}</div>
+          <div><input id="HH" type="checkbox" unchecked/> ${game.i18n.localize("WITCHER.Heal.healinghand")}</div>
+            <div><input id="HT" type="checkbox" unchecked/> ${game.i18n.localize("WITCHER.Heal.healingTent")}</div>
         </div>
       </div>`
 		new Dialog({
-			title: game.i18n.localize('WITCHER.Heal.dialogTitle'),
+			title: game.i18n.localize("WITCHER.Heal.dialogTitle"),
 			content: dialogTemplate,
 			buttons: {
 				t1: {
-					label: game.i18n.localize('WITCHER.Heal.button'),
+					label: game.i18n.localize("WITCHER.Heal.button"),
 					callback: async (html) => {
-						let rested = html.find('#R')[0].checked
-						let sterFluid = html.find('#SF')[0].checked
-						let healHand = html.find('#HH')[0].checked
-						let healTent = html.find('#HT')[0].checked
+						let rested = html.find("#R")[0].checked
+						let sterFluid = html.find("#SF")[0].checked
+						let healHand = html.find("#HH")[0].checked
+						let healTent = html.find("#HT")[0].checked
 
 						let actor = this.actor
 						let rec = actor.system.coreStats.rec.current
@@ -263,34 +263,34 @@ export default class WitcherActorSheet extends ActorSheet {
 						let maxHealth = actor.system.derivedStats.hp.max
 						//Calculate healed amount
 						if (rested) {
-							console.log('Spent Day Resting')
+							console.log("Spent Day Resting")
 							total_rec += rec
 						} else {
-							console.log('Spent Day Active')
+							console.log("Spent Day Active")
 							total_rec += Math.floor(rec / 2)
 						}
 						if (sterFluid) {
-							console.log('Add Sterilising Fluid Bonus')
+							console.log("Add Sterilising Fluid Bonus")
 							total_rec += 2
 						}
 						if (healHand) {
-							console.log('Add Healing Hands Bonus')
+							console.log("Add Healing Hands Bonus")
 							total_rec += 3
 						}
 						if (healTent) {
-							console.log('Add Healing Tent Bonus')
+							console.log("Add Healing Tent Bonus")
 							total_rec += 2
 						}
 						//Update actor health
-						await actor.update({ 'system.derivedStats.hp.value': Math.min(curHealth + total_rec, maxHealth) })
+						await actor.update({ "system.derivedStats.hp.value": Math.min(curHealth + total_rec, maxHealth) })
 						setTimeout(() => {
 							let newSTA = actor.system.derivedStats.sta.max
 							//Delay stamina refill to allow actor sheet to update max STA value if previously Seriously Wounded or in Death State, otherwise it would refill to the weakened max STA value
-							actor.update({ 'system.derivedStats.sta.value': newSTA })
+							actor.update({ "system.derivedStats.sta.value": newSTA })
 						}, 400)
 
 						ui.notifications.info(
-							`${actor.name} ${game.i18n.localize('WITCHER.Heal.recovered')} ${rested ? game.i18n.localize('WITCHER.Heal.restful') : game.i18n.localize('WITCHER.Heal.active')} ${game.i18n.localize('WITCHER.Heal.day')}`
+							`${actor.name} ${game.i18n.localize("WITCHER.Heal.recovered")} ${rested ? game.i18n.localize("WITCHER.Heal.restful") : game.i18n.localize("WITCHER.Heal.active")} ${game.i18n.localize("WITCHER.Heal.day")}`
 						)
 
 						//Remove add one day for each Crit wound and removes it if equals to max days.
@@ -302,25 +302,25 @@ export default class WitcherActorSheet extends ActorSheet {
 								newCritList.push(crit)
 							}
 						})
-						this.actor.update({ 'system.critWounds': newCritList })
+						this.actor.update({ "system.critWounds": newCritList })
 					},
 				},
 				t2: {
-					label: `${game.i18n.localize('WITCHER.Button.Cancel')}`,
+					label: `${game.i18n.localize("WITCHER.Button.Cancel")}`,
 				},
 			},
 		}).render(true)
 	}
 
 	async _onVerbalCombat() {
-		let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails')
-		const dialogTemplate = await renderTemplate('systems/TheWitcherTRPG/templates/dialog/verbal-combat.hbs', { verbalCombat: CONFIG.WITCHER.verbalCombat })
+		let displayRollDetails = game.settings.get("TheWitcherTRPG", "displayRollsDetails")
+		const dialogTemplate = await renderTemplate("systems/TheWitcherTRPG/templates/dialog/verbal-combat.hbs", { verbalCombat: CONFIG.WITCHER.verbalCombat })
 		new Dialog({
-			title: game.i18n.localize('WITCHER.verbalCombat.DialogTitle'),
+			title: game.i18n.localize("WITCHER.verbalCombat.DialogTitle"),
 			content: dialogTemplate,
 			buttons: {
 				t1: {
-					label: `${game.i18n.localize('WITCHER.Dialog.ButtonRoll')}`,
+					label: `${game.i18n.localize("WITCHER.Dialog.ButtonRoll")}`,
 					callback: async (html) => {
 						let checkedBox = document.querySelector('input[name="verbalCombat"]:checked')
 						let group = checkedBox.dataset.group
@@ -329,17 +329,17 @@ export default class WitcherActorSheet extends ActorSheet {
 						let verbalCombat = CONFIG.WITCHER.verbalCombat[group][verbal]
 						let vcName = verbalCombat.name
 
-						let vcStatName = verbalCombat.skill?.attribute.label ?? 'WITCHER.Context.unavailable'
+						let vcStatName = verbalCombat.skill?.attribute.label ?? "WITCHER.Context.unavailable"
 						let vcStat = verbalCombat.skill ? this.actor.system.stats[verbalCombat.skill.attribute.name]?.current : 0
 
-						let vcSkillName = verbalCombat.skill?.label ?? 'WITCHER.Context.unavailable'
+						let vcSkillName = verbalCombat.skill?.label ?? "WITCHER.Context.unavailable"
 						let vcSkill = verbalCombat.skill ? this.actor.system.skills[verbalCombat.skill.attribute.name][verbalCombat.skill.name]?.value : 0
 
 						let vcDmg = verbalCombat.baseDmg
 							? `${verbalCombat.baseDmg}+${this.actor.system.stats[verbalCombat.dmgStat.name].current}[${game.i18n.localize(verbalCombat.dmgStat?.label)}]`
-							: game.i18n.localize('WITCHER.verbalCombat.None')
-						if (verbal == 'Counterargue') {
-							vcDmg = `${game.i18n.localize('WITCHER.verbalCombat.CounterargueDmg')}`
+							: game.i18n.localize("WITCHER.verbalCombat.None")
+						if (verbal == "Counterargue") {
+							vcDmg = `${game.i18n.localize("WITCHER.verbalCombat.CounterargueDmg")}`
 						}
 
 						let effect = verbalCombat.effect
@@ -351,12 +351,12 @@ export default class WitcherActorSheet extends ActorSheet {
 							rollFormula += this.actor.addAllModifiers(verbalCombat.skill.name)
 						}
 
-						let customAtt = html.find('[name=customModifiers]')[0].value
+						let customAtt = html.find("[name=customModifiers]")[0].value
 						if (customAtt < 0) {
-							rollFormula += !displayRollDetails ? `${customAtt}` : `${customAtt}[${game.i18n.localize('WITCHER.Settings.Custom')}]`
+							rollFormula += !displayRollDetails ? `${customAtt}` : `${customAtt}[${game.i18n.localize("WITCHER.Settings.Custom")}]`
 						}
 						if (customAtt > 0) {
-							rollFormula += !displayRollDetails ? `+${customAtt}` : `+${customAtt}[${game.i18n.localize('WITCHER.Settings.Custom')}]`
+							rollFormula += !displayRollDetails ? `+${customAtt}` : `+${customAtt}[${game.i18n.localize("WITCHER.Settings.Custom")}]`
 						}
 
 						let messageData = {
@@ -364,12 +364,12 @@ export default class WitcherActorSheet extends ActorSheet {
 						}
 						messageData.flavor = `
             <div class="verbal-combat-attack-message">
-              <h2>${game.i18n.localize('WITCHER.verbalCombat.Title')}: ${game.i18n.localize(vcName)}</h2>
-              <b>${game.i18n.localize('WITCHER.Weapon.Damage')}</b>: ${vcDmg} <br />
+              <h2>${game.i18n.localize("WITCHER.verbalCombat.Title")}: ${game.i18n.localize(vcName)}</h2>
+              <b>${game.i18n.localize("WITCHER.Weapon.Damage")}</b>: ${vcDmg} <br />
               ${game.i18n.localize(effect)}
               <hr />
               </div>`
-						messageData.flavor += vcDmg.includes('d') ? `<button class="vcDamage" > ${game.i18n.localize('WITCHER.table.Damage')}</button>` : ''
+						messageData.flavor += vcDmg.includes("d") ? `<button class="vcDamage" > ${game.i18n.localize("WITCHER.table.Damage")}</button>` : ""
 
 						let config = new RollConfig()
 						config.showCrit = true
@@ -377,7 +377,7 @@ export default class WitcherActorSheet extends ActorSheet {
 					},
 				},
 				t2: {
-					label: `${game.i18n.localize('WITCHER.Button.Cancel')}`,
+					label: `${game.i18n.localize("WITCHER.Button.Cancel")}`,
 				},
 			},
 		}).render(true)
@@ -386,25 +386,25 @@ export default class WitcherActorSheet extends ActorSheet {
 	async _onLuckMinus(event) {
 		event.preventDefault()
 		if (this.actor.system.stats.luck.total > 0) {
-			await this.actor.update({ 'system.stats.luck.total': this.actor.system.stats.luck.total - 1 })
+			await this.actor.update({ "system.stats.luck.total": this.actor.system.stats.luck.total - 1 })
 		}
 	}
 
 	async _onLuckReset(event) {
 		event.preventDefault()
-		await this.actor.update({ 'system.stats.luck.total': this.actor.system.stats.luck.max })
+		await this.actor.update({ "system.stats.luck.total": this.actor.system.stats.luck.max })
 	}
 
 	async _onAdrenalineMinus(event) {
 		event.preventDefault()
 		if (this.actor.system.adrenaline.current > 0) {
-			await this.actor.update({ 'system.adrenaline.current': this.actor.system.adrenaline.current - 1 })
+			await this.actor.update({ "system.adrenaline.current": this.actor.system.adrenaline.current - 1 })
 		}
 	}
 
 	async _onAdrenalinePlus(event) {
 		event.preventDefault()
-		await this.actor.update({ 'system.adrenaline.current': this.actor.system.adrenaline.current + 1 })
+		await this.actor.update({ "system.adrenaline.current": this.actor.system.adrenaline.current + 1 })
 	}
 
 	_onFocusIn(event) {
@@ -413,7 +413,7 @@ export default class WitcherActorSheet extends ActorSheet {
 
 	_onLifeEventDisplay(event) {
 		event.preventDefault()
-		let section = event.currentTarget.closest('.lifeEvents')
+		let section = event.currentTarget.closest(".lifeEvents")
 		this.actor.update({ [`system.general.lifeEvents.${section.dataset.event}.isOpened`]: !this.actor.system.general.lifeEvents[section.dataset.event].isOpened })
 	}
 }

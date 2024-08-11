@@ -1,14 +1,14 @@
-import { extendedRoll } from '../scripts/rolls/extendedRoll.js'
-import { getRandomInt } from '../scripts/helper.js'
-import { RollConfig } from '../scripts/rollConfig.js'
-import { WITCHER } from '../setup/config.js'
-import { modifierMixin } from './mixins/modifierMixin.js'
+import { extendedRoll } from "../scripts/rolls/extendedRoll.js"
+import { getRandomInt } from "../scripts/helper.js"
+import { RollConfig } from "../scripts/rollConfig.js"
+import { WITCHER } from "../setup/config.js"
+import { modifierMixin } from "./mixins/modifierMixin.js"
 
 export default class WitcherActor extends Actor {
 	prepareDerivedData() {
 		super.prepareDerivedData()
 
-		let armorEffects = this.getList('armor')
+		let armorEffects = this.getList("armor")
 			.filter((armor) => armor.system.equipped)
 			.map((armor) => armor.system.effects)
 			.flat()
@@ -28,24 +28,24 @@ export default class WitcherActor extends Actor {
 		const baseMax = Math.floor((stats.body.max + stats.will.max) / 2)
 		const meleeBonus = Math.ceil((stats.body.current - 6) / 2) * 2
 
-		let intTotalModifiers = this.getAllModifiers('int').totalModifiers
-		let refTotalModifiers = this.getAllModifiers('ref').totalModifiers
-		let dexTotalModifiers = this.getAllModifiers('dex').totalModifiers
-		let bodyTotalModifiers = this.getAllModifiers('body').totalModifiers
-		let spdTotalModifiers = this.getAllModifiers('spd').totalModifiers
-		let empTotalModifiers = this.getAllModifiers('emp').totalModifiers
-		let craTotalModifiers = this.getAllModifiers('cra').totalModifiers
-		let willTotalModifiers = this.getAllModifiers('will').totalModifiers
-		let luckTotalModifiers = this.getAllModifiers('luck').totalModifiers
-		let intDivider = this.getAllModifiers('int').totalDivider
-		let refDivider = this.getAllModifiers('ref').totalDivider
-		let dexDivider = this.getAllModifiers('dex').totalDivider
-		let bodyDivider = this.getAllModifiers('body').totalDivider
-		let spdDivider = this.getAllModifiers('spd').totalDivider
-		let empDivider = this.getAllModifiers('emp').totalDivider
-		let craDivider = this.getAllModifiers('cra').totalDivider
-		let willDivider = this.getAllModifiers('will').totalDivider
-		let luckDivider = this.getAllModifiers('luck').totalDivider
+		let intTotalModifiers = this.getAllModifiers("int").totalModifiers
+		let refTotalModifiers = this.getAllModifiers("ref").totalModifiers
+		let dexTotalModifiers = this.getAllModifiers("dex").totalModifiers
+		let bodyTotalModifiers = this.getAllModifiers("body").totalModifiers
+		let spdTotalModifiers = this.getAllModifiers("spd").totalModifiers
+		let empTotalModifiers = this.getAllModifiers("emp").totalModifiers
+		let craTotalModifiers = this.getAllModifiers("cra").totalModifiers
+		let willTotalModifiers = this.getAllModifiers("will").totalModifiers
+		let luckTotalModifiers = this.getAllModifiers("luck").totalModifiers
+		let intDivider = this.getAllModifiers("int").totalDivider
+		let refDivider = this.getAllModifiers("ref").totalDivider
+		let dexDivider = this.getAllModifiers("dex").totalDivider
+		let bodyDivider = this.getAllModifiers("body").totalDivider
+		let spdDivider = this.getAllModifiers("spd").totalDivider
+		let empDivider = this.getAllModifiers("emp").totalDivider
+		let craDivider = this.getAllModifiers("cra").totalDivider
+		let willDivider = this.getAllModifiers("will").totalDivider
+		let luckDivider = this.getAllModifiers("luck").totalDivider
 		this.system.stats.int.modifiers.forEach((item) => (intTotalModifiers += Number(item.value)))
 		this.system.stats.ref.modifiers.forEach((item) => (refTotalModifiers += Number(item.value)))
 		this.system.stats.dex.modifiers.forEach((item) => (dexTotalModifiers += Number(item.value)))
@@ -56,18 +56,18 @@ export default class WitcherActor extends Actor {
 		this.system.stats.will.modifiers.forEach((item) => (willTotalModifiers += Number(item.value)))
 		this.system.stats.luck.modifiers.forEach((item) => (luckTotalModifiers += Number(item.value)))
 
-		let stunTotalModifiers = this.getAllModifiers('stun').totalModifiers
-		let runTotalModifiers = this.getAllModifiers('run').totalModifiers
-		let leapTotalModifiers = this.getAllModifiers('leap').totalModifiers
-		let encTotalModifiers = this.getAllModifiers('enc').totalModifiers
-		let recTotalModifiers = this.getAllModifiers('rec').totalModifiers
-		let wtTotalModifiers = this.getAllModifiers('woundTreshold').totalModifiers
-		let stunDivider = this.getAllModifiers('stun').totalDivider
-		let runDivider = this.getAllModifiers('run').totalDivider
-		let leapDivider = this.getAllModifiers('leap').totalDivider
-		let encDivider = this.getAllModifiers('enc').totalDivider
-		let recDivider = this.getAllModifiers('rec').totalDivider
-		let wtDivider = this.getAllModifiers('woundTreshold').totalDivider
+		let stunTotalModifiers = this.getAllModifiers("stun").totalModifiers
+		let runTotalModifiers = this.getAllModifiers("run").totalModifiers
+		let leapTotalModifiers = this.getAllModifiers("leap").totalModifiers
+		let encTotalModifiers = this.getAllModifiers("enc").totalModifiers
+		let recTotalModifiers = this.getAllModifiers("rec").totalModifiers
+		let wtTotalModifiers = this.getAllModifiers("woundTreshold").totalModifiers
+		let stunDivider = this.getAllModifiers("stun").totalDivider
+		let runDivider = this.getAllModifiers("run").totalDivider
+		let leapDivider = this.getAllModifiers("leap").totalDivider
+		let encDivider = this.getAllModifiers("enc").totalDivider
+		let recDivider = this.getAllModifiers("rec").totalDivider
+		let wtDivider = this.getAllModifiers("woundTreshold").totalDivider
 		this.system.coreStats.stun.modifiers.forEach((item) => (stunTotalModifiers += Number(item.value)))
 		this.system.coreStats.run.modifiers.forEach((item) => (runTotalModifiers += Number(item.value)))
 		this.system.coreStats.leap.modifiers.forEach((item) => (leapTotalModifiers += Number(item.value)))
@@ -114,14 +114,14 @@ export default class WitcherActor extends Actor {
 			curWill = Math.floor((this.system.stats.will.max + willTotalModifiers) / 2 / willDivider)
 		}
 
-		let hpTotalModifiers = this.getAllModifiers('hp').totalModifiers
-		let staTotalModifiers = this.getAllModifiers('sta').totalModifiers
-		let toxTotalModifiers = this.getAllModifiers('toxicity').totalModifiers
-		let resTotalModifiers = this.getAllModifiers('resolve').totalModifiers
-		let focusTotalModifiers = this.getAllModifiers('focus').totalModifiers
-		let vigorModifiers = this.getAllModifiers('vigor').totalModifiers
-		let hpDivider = this.getAllModifiers('hp').totalDivider
-		let staDivider = this.getAllModifiers('sta').totalDivider
+		let hpTotalModifiers = this.getAllModifiers("hp").totalModifiers
+		let staTotalModifiers = this.getAllModifiers("sta").totalModifiers
+		let toxTotalModifiers = this.getAllModifiers("toxicity").totalModifiers
+		let resTotalModifiers = this.getAllModifiers("resolve").totalModifiers
+		let focusTotalModifiers = this.getAllModifiers("focus").totalModifiers
+		let vigorModifiers = this.getAllModifiers("vigor").totalModifiers
+		let hpDivider = this.getAllModifiers("hp").totalDivider
+		let staDivider = this.getAllModifiers("sta").totalDivider
 		this.system.derivedStats.hp.modifiers.forEach((item) => (hpTotalModifiers += Number(item.value)))
 		this.system.derivedStats.sta.modifiers.forEach((item) => (staTotalModifiers += Number(item.value)))
 		this.system.derivedStats.toxicity.modifiers.forEach((item) => (toxTotalModifiers += Number(item.value)))
@@ -146,71 +146,71 @@ export default class WitcherActor extends Actor {
 		}
 
 		this.update({
-			'system.deathStateApplied': isDead,
-			'system.woundTresholdApplied': isWounded,
-			'system.stats.int.current': curInt,
-			'system.stats.ref.current': curRef,
-			'system.stats.dex.current': curDex,
-			'system.stats.body.current': curBody,
-			'system.stats.spd.current': curSpd,
-			'system.stats.emp.current': curEmp,
-			'system.stats.cra.current': curCra,
-			'system.stats.will.current': curWill,
-			'system.stats.luck.current': curLuck,
+			"system.deathStateApplied": isDead,
+			"system.woundTresholdApplied": isWounded,
+			"system.stats.int.current": curInt,
+			"system.stats.ref.current": curRef,
+			"system.stats.dex.current": curDex,
+			"system.stats.body.current": curBody,
+			"system.stats.spd.current": curSpd,
+			"system.stats.emp.current": curEmp,
+			"system.stats.cra.current": curCra,
+			"system.stats.will.current": curWill,
+			"system.stats.luck.current": curLuck,
 
-			'system.stats.int.totalModifiers': intTotalModifiers,
-			'system.stats.ref.totalModifiers': refTotalModifiers,
-			'system.stats.dex.totalModifiers': dexTotalModifiers,
-			'system.stats.body.totalModifiers': bodyTotalModifiers,
-			'system.stats.spd.totalModifiers': spdTotalModifiers,
-			'system.stats.emp.totalModifiers': empTotalModifiers,
-			'system.stats.cra.totalModifiers': craTotalModifiers,
-			'system.stats.will.totalModifiers': willTotalModifiers,
-			'system.stats.luck.totalModifiers': luckTotalModifiers,
+			"system.stats.int.totalModifiers": intTotalModifiers,
+			"system.stats.ref.totalModifiers": refTotalModifiers,
+			"system.stats.dex.totalModifiers": dexTotalModifiers,
+			"system.stats.body.totalModifiers": bodyTotalModifiers,
+			"system.stats.spd.totalModifiers": spdTotalModifiers,
+			"system.stats.emp.totalModifiers": empTotalModifiers,
+			"system.stats.cra.totalModifiers": craTotalModifiers,
+			"system.stats.will.totalModifiers": willTotalModifiers,
+			"system.stats.luck.totalModifiers": luckTotalModifiers,
 
-			'system.derivedStats.hp.max': curHp,
-			'system.derivedStats.hp.unmodifiedMax': unmodifiedMaxHp,
-			'system.derivedStats.sta.max': curSta,
-			'system.derivedStats.toxicity.max': curTox,
-			'system.derivedStats.resolve.max': curRes,
-			'system.derivedStats.focus.max': curFocus,
-			'system.derivedStats.vigor.max': curVigor,
+			"system.derivedStats.hp.max": curHp,
+			"system.derivedStats.hp.unmodifiedMax": unmodifiedMaxHp,
+			"system.derivedStats.sta.max": curSta,
+			"system.derivedStats.toxicity.max": curTox,
+			"system.derivedStats.resolve.max": curRes,
+			"system.derivedStats.focus.max": curFocus,
+			"system.derivedStats.vigor.max": curVigor,
 
-			'system.coreStats.stun.current': Math.floor((Math.clamp(base, 1, 10) + stunTotalModifiers) / stunDivider),
-			'system.coreStats.stun.max': Math.clamp(baseMax, 1, 10),
+			"system.coreStats.stun.current": Math.floor((Math.clamp(base, 1, 10) + stunTotalModifiers) / stunDivider),
+			"system.coreStats.stun.max": Math.clamp(baseMax, 1, 10),
 
-			'system.coreStats.enc.current': Math.floor((stats.body.current * 10 + encTotalModifiers) / encDivider),
-			'system.coreStats.enc.max': stats.body.current * 10,
+			"system.coreStats.enc.current": Math.floor((stats.body.current * 10 + encTotalModifiers) / encDivider),
+			"system.coreStats.enc.max": stats.body.current * 10,
 
-			'system.coreStats.run.current': Math.floor((stats.spd.current * 3 + runTotalModifiers) / runDivider),
-			'system.coreStats.run.max': stats.spd.current * 3,
+			"system.coreStats.run.current": Math.floor((stats.spd.current * 3 + runTotalModifiers) / runDivider),
+			"system.coreStats.run.max": stats.spd.current * 3,
 
-			'system.coreStats.leap.current': Math.floor((stats.spd.current * 3) / 5 + leapTotalModifiers) / leapDivider,
-			'system.coreStats.leap.max': Math.floor((stats.spd.max * 3) / 5),
+			"system.coreStats.leap.current": Math.floor((stats.spd.current * 3) / 5 + leapTotalModifiers) / leapDivider,
+			"system.coreStats.leap.max": Math.floor((stats.spd.max * 3) / 5),
 
-			'system.coreStats.rec.current': Math.floor((base + recTotalModifiers) / recDivider),
-			'system.coreStats.rec.max': baseMax,
+			"system.coreStats.rec.current": Math.floor((base + recTotalModifiers) / recDivider),
+			"system.coreStats.rec.max": baseMax,
 
-			'system.coreStats.woundTreshold.current': Math.floor((baseMax + wtTotalModifiers) / wtDivider),
-			'system.coreStats.woundTreshold.max': baseMax,
+			"system.coreStats.woundTreshold.current": Math.floor((baseMax + wtTotalModifiers) / wtDivider),
+			"system.coreStats.woundTreshold.max": baseMax,
 
-			'system.coreStats.stun.totalModifiers': stunTotalModifiers,
-			'system.coreStats.enc.totalModifiers': encTotalModifiers,
-			'system.coreStats.run.totalModifiers': runTotalModifiers,
-			'system.coreStats.leap.totalModifiers': leapTotalModifiers,
-			'system.coreStats.rec.totalModifiers': recTotalModifiers,
-			'system.coreStats.woundTreshold.totalModifiers': wtTotalModifiers,
+			"system.coreStats.stun.totalModifiers": stunTotalModifiers,
+			"system.coreStats.enc.totalModifiers": encTotalModifiers,
+			"system.coreStats.run.totalModifiers": runTotalModifiers,
+			"system.coreStats.leap.totalModifiers": leapTotalModifiers,
+			"system.coreStats.rec.totalModifiers": recTotalModifiers,
+			"system.coreStats.woundTreshold.totalModifiers": wtTotalModifiers,
 
-			'system.attackStats.meleeBonus': meleeBonus,
-			'system.attackStats.punch.value': `1d6+${meleeBonus}`,
-			'system.attackStats.kick.value': `1d6+${4 + meleeBonus}`,
+			"system.attackStats.meleeBonus": meleeBonus,
+			"system.attackStats.punch.value": `1d6+${meleeBonus}`,
+			"system.attackStats.kick.value": `1d6+${4 + meleeBonus}`,
 		})
 	}
 
 	rollSkillCheck(skillMapEntry) {
-		const tolerated = ['tolerated', 'toleratedFeared']
-		const feared = ['feared', 'toleratedFeared', 'hatedFeared']
-		const hated = ['hated', 'hatedFeared']
+		const tolerated = ["tolerated", "toleratedFeared"]
+		const feared = ["feared", "toleratedFeared", "hatedFeared"]
+		const hated = ["hated", "hatedFeared"]
 
 		let attribute = skillMapEntry.attribute
 		let attributeLabel = game.i18n.localize(attribute.label)
@@ -220,7 +220,7 @@ export default class WitcherActor extends Actor {
 		let skillLabel = game.i18n.localize(skillMapEntry.label)
 		let skillValue = this.system.skills[attribute.name][skillName].value
 
-		let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails')
+		let displayRollDetails = game.settings.get("TheWitcherTRPG", "displayRollsDetails")
 
 		let messageData = {
 			speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -234,43 +234,43 @@ export default class WitcherActor extends Actor {
 			rollFormula = !displayRollDetails ? `1d10+${attributeValue}+${skillValue}` : `1d10+${attributeValue}[${attributeLabel}]+${skillValue}[${skillLabel}]`
 		}
 
-		if (this.type == 'character') {
+		if (this.type == "character") {
 			// core rulebook page 21
-			if (attribute.name == 'emp' && (skillName == 'charisma' || skillName == 'leadership' || skillName == 'persuasion' || skillName == 'seduction')) {
+			if (attribute.name == "emp" && (skillName == "charisma" || skillName == "leadership" || skillName == "persuasion" || skillName == "seduction")) {
 				if (tolerated.includes(this.system.general.socialStanding)) {
-					rollFormula += !displayRollDetails ? `-1` : `-1[${game.i18n.localize('WITCHER.socialStanding.tolerated')}]`
+					rollFormula += !displayRollDetails ? `-1` : `-1[${game.i18n.localize("WITCHER.socialStanding.tolerated")}]`
 				} else if (hated.includes(this.system.general.socialStanding)) {
-					rollFormula += !displayRollDetails ? `-2` : `-2[${game.i18n.localize('WITCHER.socialStanding.hated')}]`
+					rollFormula += !displayRollDetails ? `-2` : `-2[${game.i18n.localize("WITCHER.socialStanding.hated")}]`
 				}
 			}
-			if (attribute.name == 'emp' && skillName == 'charisma' && feared.includes(this.system.general.socialStanding)) {
-				rollFormula += !displayRollDetails ? `-1` : `-1[${game.i18n.localize('WITCHER.socialStanding.feared')}]`
+			if (attribute.name == "emp" && skillName == "charisma" && feared.includes(this.system.general.socialStanding)) {
+				rollFormula += !displayRollDetails ? `-1` : `-1[${game.i18n.localize("WITCHER.socialStanding.feared")}]`
 			}
-			if (attribute.name == 'will' && skillName == 'intimidation' && feared.includes(this.system.general.socialStanding)) {
-				rollFormula += !displayRollDetails ? `+1` : `+1[${game.i18n.localize('WITCHER.socialStanding.feared')}]`
+			if (attribute.name == "will" && skillName == "intimidation" && feared.includes(this.system.general.socialStanding)) {
+				rollFormula += !displayRollDetails ? `+1` : `+1[${game.i18n.localize("WITCHER.socialStanding.feared")}]`
 			}
 		}
 
 		rollFormula += this.addAllModifiers(skillMapEntry.name)
 
 		let armorEnc = this.getArmorEcumbrance()
-		if (armorEnc > 0 && (skillName == 'hexweave' || skillName == 'ritcraft' || skillName == 'spellcast')) {
-			rollFormula += !displayRollDetails ? `-${armorEnc}` : `-${armorEnc}[${game.i18n.localize('WITCHER.Armor.EncumbranceValue')}]`
+		if (armorEnc > 0 && (skillName == "hexweave" || skillName == "ritcraft" || skillName == "spellcast")) {
+			rollFormula += !displayRollDetails ? `-${armorEnc}` : `-${armorEnc}[${game.i18n.localize("WITCHER.Armor.EncumbranceValue")}]`
 		}
 
 		new Dialog({
-			title: `${game.i18n.localize('WITCHER.Dialog.Skill')}: ${skillLabel}`,
-			content: `<label>${game.i18n.localize('WITCHER.Dialog.attackCustom')}: <input name="customModifiers" value=0></label>`,
+			title: `${game.i18n.localize("WITCHER.Dialog.Skill")}: ${skillLabel}`,
+			content: `<label>${game.i18n.localize("WITCHER.Dialog.attackCustom")}: <input name="customModifiers" value=0></label>`,
 			buttons: {
 				LocationRandom: {
-					label: game.i18n.localize('WITCHER.Button.Continue'),
+					label: game.i18n.localize("WITCHER.Button.Continue"),
 					callback: async (html) => {
-						let customAtt = html.find('[name=customModifiers]')[0].value
+						let customAtt = html.find("[name=customModifiers]")[0].value
 						if (customAtt < 0) {
-							rollFormula += !displayRollDetails ? ` ${customAtt}` : ` ${customAtt}[${game.i18n.localize('WITCHER.Settings.Custom')}]`
+							rollFormula += !displayRollDetails ? ` ${customAtt}` : ` ${customAtt}[${game.i18n.localize("WITCHER.Settings.Custom")}]`
 						}
 						if (customAtt > 0) {
-							rollFormula += !displayRollDetails ? ` +${customAtt}` : ` +${customAtt}[${game.i18n.localize('WITCHER.Settings.Custom')}]`
+							rollFormula += !displayRollDetails ? ` +${customAtt}` : ` +${customAtt}[${game.i18n.localize("WITCHER.Settings.Custom")}]`
 						}
 						let config = new RollConfig()
 						config.showCrit = true
@@ -284,18 +284,18 @@ export default class WitcherActor extends Actor {
 
 	getArmorEcumbrance() {
 		let encumbranceModifier = 0
-		let armors = this.items.filter((item) => item.type == 'armor' && item.system.equipped)
+		let armors = this.items.filter((item) => item.type == "armor" && item.system.equipped)
 		armors.forEach((item) => {
 			encumbranceModifier += item.system.encumb
 		})
 
-		let relevantModifier = this.getList('globalModifier')
+		let relevantModifier = this.getList("globalModifier")
 			.filter((modifier) => modifier.system.isActive)
 			.filter((modifier) => modifier.system.special?.length > 0)
 			.map((modifier) => modifier.system.special)
 			.flat()
 			.map((modifier) => CONFIG.WITCHER.specialModifier.find((special) => special.id == modifier.special))
-			.filter((special) => special.tags.includes('armorencumbarance'))
+			.filter((special) => special.tags.includes("armorencumbarance"))
 
 		relevantModifier.forEach((modifier) => (encumbranceModifier += parseInt(modifier.formula)))
 
@@ -342,11 +342,11 @@ export default class WitcherActor extends Actor {
 	createVerbalCombatFlags(verbalCombat, vcDamage) {
 		return [
 			{
-				key: 'verbalCombat',
+				key: "verbalCombat",
 				value: verbalCombat,
 			},
 			{
-				key: 'damage',
+				key: "damage",
 				value: {
 					formula: vcDamage,
 				},
@@ -378,9 +378,9 @@ export default class WitcherActor extends Actor {
 
 	isEnoughThrowableWeapon(item) {
 		if (item.system.isThrowable) {
-			let throwableItems = this.items.filter((w) => w.type == 'weapon' && w.name == item.name)
+			let throwableItems = this.items.filter((w) => w.type == "weapon" && w.name == item.name)
 
-			let quantity = throwableItems[0].system.quantity >= 0 ? throwableItems[0].system.quantity : throwableItems.sum('quantity')
+			let quantity = throwableItems[0].system.quantity >= 0 ? throwableItems[0].system.quantity : throwableItems.sum("quantity")
 			return quantity > 0
 		} else {
 			return false
@@ -411,7 +411,7 @@ export default class WitcherActor extends Actor {
 	}
 
 	getSubstance(name) {
-		return this.getList('component').filter((i) => i.system.type == 'substances' && i.system.substanceType == name && !i.system.isStored)
+		return this.getList("component").filter((i) => i.system.type == "substances" && i.system.substanceType == name && !i.system.isStored)
 	}
 
 	getList(name) {
@@ -428,18 +428,18 @@ export default class WitcherActor extends Actor {
 	findNeededComponent(componentName) {
 		return this.items.filter(
 			(item) =>
-				item.type == 'component' &&
+				item.type == "component" &&
 				(item.name == componentName ||
-					(item.system.type == 'substances' &&
-						((game.i18n.localize('WITCHER.Inventory.Vitriol') == componentName && item.system.substanceType == 'vitriol') ||
-							(game.i18n.localize('WITCHER.Inventory.Rebis') == componentName && item.system.substanceType == 'rebis') ||
-							(game.i18n.localize('WITCHER.Inventory.Aether') == componentName && item.system.substanceType == 'aether') ||
-							(game.i18n.localize('WITCHER.Inventory.Quebrith') == componentName && item.system.substanceType == 'quebrith') ||
-							(game.i18n.localize('WITCHER.Inventory.Hydragenum') == componentName && item.system.substanceType == 'hydragenum') ||
-							(game.i18n.localize('WITCHER.Inventory.Vermilion') == componentName && item.system.substanceType == 'vermilion') ||
-							(game.i18n.localize('WITCHER.Inventory.Sol') == componentName && item.system.substanceType == 'sol') ||
-							(game.i18n.localize('WITCHER.Inventory.Caelum') == componentName && item.system.substanceType == 'caelum') ||
-							(game.i18n.localize('WITCHER.Inventory.Fulgur') == componentName && item.system.substanceType == 'fulgur'))))
+					(item.system.type == "substances" &&
+						((game.i18n.localize("WITCHER.Inventory.Vitriol") == componentName && item.system.substanceType == "vitriol") ||
+							(game.i18n.localize("WITCHER.Inventory.Rebis") == componentName && item.system.substanceType == "rebis") ||
+							(game.i18n.localize("WITCHER.Inventory.Aether") == componentName && item.system.substanceType == "aether") ||
+							(game.i18n.localize("WITCHER.Inventory.Quebrith") == componentName && item.system.substanceType == "quebrith") ||
+							(game.i18n.localize("WITCHER.Inventory.Hydragenum") == componentName && item.system.substanceType == "hydragenum") ||
+							(game.i18n.localize("WITCHER.Inventory.Vermilion") == componentName && item.system.substanceType == "vermilion") ||
+							(game.i18n.localize("WITCHER.Inventory.Sol") == componentName && item.system.substanceType == "sol") ||
+							(game.i18n.localize("WITCHER.Inventory.Caelum") == componentName && item.system.substanceType == "caelum") ||
+							(game.i18n.localize("WITCHER.Inventory.Fulgur") == componentName && item.system.substanceType == "fulgur"))))
 		)
 	}
 
@@ -449,149 +449,149 @@ export default class WitcherActor extends Actor {
 		if (newQuantity <= 0) {
 			await this.items.get(itemId).delete()
 		} else {
-			await foundItem.update({ 'system.quantity': newQuantity })
+			await foundItem.update({ "system.quantity": newQuantity })
 		}
 	}
 
 	getAllLocations() {
-		let locations = ['head', 'torso', 'rightArm', 'leftArm', 'rightLeg', 'leftLeg']
+		let locations = ["head", "torso", "rightArm", "leftArm", "rightLeg", "leftLeg"]
 
-		if (this.type == 'monster' && this.system.hasTailWing) {
-			locations.push('tailWing')
+		if (this.type == "monster" && this.system.hasTailWing) {
+			locations.push("tailWing")
 		}
 
 		return locations
 	}
 
 	getLocationObject(location) {
-		let alias = ''
+		let alias = ""
 		let modifier = `+0`
 		let locationFormula
 		switch (location) {
-			case 'randomSpell':
-			case 'randomHuman':
+			case "randomSpell":
+			case "randomHuman":
 				let randomHumanLocation = getRandomInt(10)
 				switch (randomHumanLocation) {
 					case 1:
-						location = 'head'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationHead')}`
+						location = "head"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationHead")}`
 						locationFormula = 3
 						break
 					case 2:
 					case 3:
 					case 4:
-						location = 'torso'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationTorso')}`
+						location = "torso"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationTorso")}`
 						locationFormula = 1
 						break
 					case 5:
-						location = 'rightArm'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationRight')} ${game.i18n.localize('WITCHER.Armor.LocationArm')}`
+						location = "rightArm"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationRight")} ${game.i18n.localize("WITCHER.Armor.LocationArm")}`
 						locationFormula = 0.5
 						break
 					case 6:
-						location = 'leftArm'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationLeft')} ${game.i18n.localize('WITCHER.Armor.LocationArm')}`
+						location = "leftArm"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationLeft")} ${game.i18n.localize("WITCHER.Armor.LocationArm")}`
 						locationFormula = 0.5
 						break
 					case 7:
 					case 8:
-						location = 'rightLeg'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationRight')} ${game.i18n.localize('WITCHER.Armor.LocationLeg')}`
+						location = "rightLeg"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationRight")} ${game.i18n.localize("WITCHER.Armor.LocationLeg")}`
 						locationFormula = 0.5
 						break
 					case 9:
 					case 10:
-						location = 'leftLeg'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationLeft')} ${game.i18n.localize('WITCHER.Armor.LocationLeg')}`
+						location = "leftLeg"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationLeft")} ${game.i18n.localize("WITCHER.Armor.LocationLeg")}`
 						locationFormula = 0.5
 						break
 					default:
-						location = 'torso'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationTorso')}`
+						location = "torso"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationTorso")}`
 						locationFormula = 1
 						break
 				}
 				break
-			case 'randomMonster':
+			case "randomMonster":
 				let randomMonsterLocation = getRandomInt(10)
 				switch (randomMonsterLocation) {
 					case 1:
-						location = 'head'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationHead')}`
+						location = "head"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationHead")}`
 						locationFormula = 3
 						break
 					case 2:
 					case 3:
 					case 4:
 					case 5:
-						location = 'torso'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationTorso')}`
+						location = "torso"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationTorso")}`
 						locationFormula = 1
 						break
 					case 6:
 					case 7:
-						location = 'rightLeg'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationRight')} ${game.i18n.localize('WITCHER.Dialog.attackLimb')}`
+						location = "rightLeg"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationRight")} ${game.i18n.localize("WITCHER.Dialog.attackLimb")}`
 						locationFormula = 0.5
 						break
 					case 8:
 					case 9:
-						location = 'leftLeg'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationLeft')} ${game.i18n.localize('WITCHER.Dialog.attackLimb')}`
+						location = "leftLeg"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationLeft")} ${game.i18n.localize("WITCHER.Dialog.attackLimb")}`
 						locationFormula = 0.5
 						break
 					case 10:
-						location = 'tailWing'
-						alias = `${game.i18n.localize('WITCHER.Dialog.attackTail')}`
+						location = "tailWing"
+						alias = `${game.i18n.localize("WITCHER.Dialog.attackTail")}`
 						locationFormula = 0.5
 						break
 					default:
-						location = 'torso'
-						alias = `${game.i18n.localize('WITCHER.Armor.LocationTorso')}`
+						location = "torso"
+						alias = `${game.i18n.localize("WITCHER.Armor.LocationTorso")}`
 						locationFormula = 1
 						break
 				}
 				break
-			case 'randomSpell':
-				alias = `${game.i18n.localize('WITCHER.Location.All')}`
+			case "randomSpell":
+				alias = `${game.i18n.localize("WITCHER.Location.All")}`
 				break
-			case 'head':
-				alias = `${game.i18n.localize('WITCHER.Armor.LocationHead')}`
+			case "head":
+				alias = `${game.i18n.localize("WITCHER.Armor.LocationHead")}`
 				locationFormula = 3
 				modifier = `-6`
 				break
-			case 'torso':
-				alias = `${game.i18n.localize('WITCHER.Armor.LocationTorso')}`
+			case "torso":
+				alias = `${game.i18n.localize("WITCHER.Armor.LocationTorso")}`
 				locationFormula = 1
 				modifier = `-1`
 				break
-			case 'rightArm':
-				alias = `${game.i18n.localize('WITCHER.Armor.LocationRight')} ${game.i18n.localize('WITCHER.Armor.LocationArm')}`
+			case "rightArm":
+				alias = `${game.i18n.localize("WITCHER.Armor.LocationRight")} ${game.i18n.localize("WITCHER.Armor.LocationArm")}`
 				locationFormula = 0.5
 				modifier = `-3`
 				break
-			case 'leftArm':
-				alias = `${game.i18n.localize('WITCHER.Armor.LocationLeft')} ${game.i18n.localize('WITCHER.Armor.LocationArm')}`
+			case "leftArm":
+				alias = `${game.i18n.localize("WITCHER.Armor.LocationLeft")} ${game.i18n.localize("WITCHER.Armor.LocationArm")}`
 				locationFormula = 0.5
 				modifier = `-3`
 				break
-			case 'rightLeg':
-				alias = `${game.i18n.localize('WITCHER.Armor.LocationRight')} ${game.i18n.localize('WITCHER.Armor.LocationLeg')}`
+			case "rightLeg":
+				alias = `${game.i18n.localize("WITCHER.Armor.LocationRight")} ${game.i18n.localize("WITCHER.Armor.LocationLeg")}`
 				locationFormula = 0.5
 				modifier = `-2`
 				break
-			case 'leftLeg':
-				alias = `${game.i18n.localize('WITCHER.Armor.LocationLeft')} ${game.i18n.localize('WITCHER.Armor.LocationLeg')}`
+			case "leftLeg":
+				alias = `${game.i18n.localize("WITCHER.Armor.LocationLeft")} ${game.i18n.localize("WITCHER.Armor.LocationLeg")}`
 				locationFormula = 0.5
 				modifier = `-2`
 				break
-			case 'tailWing':
-				alias = `${game.i18n.localize('WITCHER.Dialog.attackTail')}`
+			case "tailWing":
+				alias = `${game.i18n.localize("WITCHER.Dialog.attackTail")}`
 				locationFormula = 0.5
 				break
 			default:
-				alias = `${game.i18n.localize('WITCHER.Armor.LocationTorso')}`
+				alias = `${game.i18n.localize("WITCHER.Armor.LocationTorso")}`
 				locationFormula = 1
 				modifier = `-1`
 				break

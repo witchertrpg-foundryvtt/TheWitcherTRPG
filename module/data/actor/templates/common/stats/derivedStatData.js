@@ -1,4 +1,4 @@
-import modifier from '../modifierData.js'
+import modifier from "../modifierData.js"
 
 const fields = foundry.data.fields
 
