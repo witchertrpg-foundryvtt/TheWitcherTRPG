@@ -1926,12 +1926,12 @@ WITCHER.statusEffects = [
         img: 'icons/svg/frozen.svg',
         changes: [
             {
-                key: 'system.stats.spd',
+                key: 'system.stats.spd.max',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
                 value: -3,
             },
             {
-                key: 'system.stats.ref',
+                key: 'system.stats.ref.max',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
                 value: -1,
             },
