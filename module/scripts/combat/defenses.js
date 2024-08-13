@@ -76,7 +76,7 @@ function ExecuteDefense(actor, messageId, totalAttack) {
     let shields = actor.items.filter(function (item) { return item.type == "armor" && item.system.location == "Shield" });
 
     let options = `<option value="brawling"> ${game.i18n.localize("WITCHER.SkRefBrawling")} </option>`;
-    weapons.forEach(item => options += `<option value="${item.system.attackSkill}" itemId="${item.id}" type="Weapon"> ${item.name} (${game.i18n.localize(item.getItemAttackSkill().alias)})</option>`);
+    weapons.forEach(item => options += `<option value="${item.system.attackSkill}" data-itemId="${item.id}" type="Weapon"> ${item.name} (${game.i18n.localize(item.getItemAttackSkill().alias)})</option>`);
     shields.forEach(item => options += `<option value="melee" itemId="${item.id}" type="Shield"> ${item.name} (${game.i18n.localize("WITCHER.SkRefMelee")})</option>`);
 
     const content = `
@@ -112,15 +112,17 @@ function ExecuteDefense(actor, messageId, totalAttack) {
             Parry: {
                 label: `${game.i18n.localize("WITCHER.Dialog.ButtonParry")}`,
                 callback: async html => {
-                    let defenseSkill = html.find("[name=form]")[0].value;
-                    defense(actor, defenseSkill, -3, totalAttack, location, html, "ButtonParry")
+                    let selectedOption = html.find("[name=form]")[0].selectedOptions[0]
+                    let defenseSkill = selectedOption.value;
+                    defense(actor, defenseSkill, -3, totalAttack, location, html, "ButtonParry", selectedOption.dataset.itemid)
                 }
             },
             ParryAgainstThrown: {
                 label: `${game.i18n.localize("WITCHER.Dialog.ButtonParryThrown")}`,
                 callback: async html => {
-                    let defenseSkill = html.find("[name=form]")[0].value;
-                    defense(actor, defenseSkill, -5, totalAttack, location, html, "ButtonParryThrown")
+                    let selectedOption = html.find("[name=form]")[0].selectedOptions[0]
+                    let defenseSkill = selectedOption.value;
+                    defense(actor, defenseSkill, -5, totalAttack, location, html, "ButtonParryThrown", selectedOption.dataset.itemid)
                 }
             },
             MagicResist: {
@@ -133,7 +135,7 @@ function ExecuteDefense(actor, messageId, totalAttack) {
     }).render(true)
 }
 
-async function defense(actor, skillName, modifier, totalAttack, attackLocation, html, buttonName) {
+async function defense(actor, skillName, modifier, totalAttack, attackLocation, html, buttonName, weaponId) {
     let displayRollDetails = game.settings.get("TheWitcherTRPG", "displayRollsDetails")
 
     if (!handleExtraDefense(html, actor)) {
@@ -151,6 +153,13 @@ async function defense(actor, skillName, modifier, totalAttack, attackLocation, 
 
     if (modifier < 0) {
         rollFormula += !displayRollDetails ? `${modifier}` : `${modifier}[${game.i18n.localize("WITCHER.Dialog." + buttonName)}]`;
+
+        if (buttonName == "ButtonParry" || buttonName == "ButtonParryThrown") {
+            let weapon = actor.items.get(weaponId)
+            if (weapon?.system.defenseProperties.parrying) {
+                rollFormula += !displayRollDetails ? `+${Math.abs(modifier)}` : `+${Math.abs(modifier)}[${weapon.name}]`;
+            }
+        }
     }
     if (modifier > 0) {
         rollFormula += !displayRollDetails ? `+${modifier}` : `+${modifier}[${game.i18n.localize("WITCHER.Dialog." + buttonName)}]`;

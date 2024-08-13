@@ -68,6 +68,9 @@
                 "defenseDifferenceMultiplier": "Damage is multiplied by difference of defense (not functional)",
                 "defenseMultiplierCap": "Multiplier is capped at (not functional)"
             },
+            "DefenseProperties": {
+                "parrying": "Negates parry penalty"
+            },
             "ContextMenu": {
                 "Consume": "Consume",
                 "NotConsumable": "The item is not configured as consumable",
@@ -78,6 +81,7 @@
                 "Valuable": "Valuable Settings",
                 "Weapon": "Weapon Settings",
                 "DamageProperties": "Damage Properties",
+                "DefenseProperties": "Defense Properties",
                 "ConsumableProperties": "Consumable Properties"
             }
         },
