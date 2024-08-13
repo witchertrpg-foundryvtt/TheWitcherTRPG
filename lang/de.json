@@ -90,6 +90,9 @@
                 "defenseDifferenceMultiplier": "Der Schaden wird mit der Verteidigungsdifferenz multipliziert (nicht funktionsfähig)",
                 "defenseMultiplierCap": "Der Multiplikator ist begrenzt auf (nicht funktionsfähig)"
             },
+            "DefenseProperties": {
+                "parrying": "Negiert Parier Mali"
+            },
             "ContextMenu": {
                 "Consume": "Konsumieren",
                 "NotConsumable": "Der Gegenstand ist nicht als konsumierbar konfiguriert",
@@ -100,6 +103,7 @@
                 "Valuable": "Einstellungen für Ausrüstung",
                 "Weapon": "Einstellungen für Waffen",
                 "DamageProperties": "Schaden Eigenschaften",
+                "DefenseProperties": "Verteidung Eigenschaften",
                 "ConsumableProperties": "Verzehr Eigenschaften"
             }
         },
