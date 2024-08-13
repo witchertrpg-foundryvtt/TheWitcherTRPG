@@ -3,7 +3,6 @@ import WitcherConfigurationSheet from "./WitcherConfigurationSheet.js";
 
 export default class WitcherDamagePropertiesConfigurationSheet extends WitcherConfigurationSheet {
 
-
     activateListeners(html) {
         super.activateListeners(html);
         html.find(".add-effect-damageProperties").on("click", this._onAddEffectDamageProperties.bind(this));
