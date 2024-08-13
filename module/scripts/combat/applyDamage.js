@@ -510,6 +510,11 @@ function calculateResistances(totalDamage, damage, armorSet) {
 }
 
 async function applySpDamage(location, damageProperties, armorSet) {
+    if (damageProperties.bypassesWornArmor) {
+        //damage bypasses armor so no SP damage
+        return 0;
+    }
+
     let spDamage = damageProperties.crushingForce || damageProperties.ablating
         ? Math.floor((await new Roll("1d6/2+1").evaluate()).total)
         : 1
