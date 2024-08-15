@@ -70,7 +70,8 @@
             },
             "ContextMenu": {
                 "Consume": "Konsumieren",
-                "NotConsumable": "Der Gegenstand ist nicht als konsumierbar konfiguriert"
+                "NotConsumable": "Der Gegenstand ist nicht als konsumierbar konfiguriert",
+                "RemoveEnhancement": "Verbesserung ausbauen"
             },
             "Settings": {
                 "Alchemical": "Einstellungen für alchemistische Gegenstände",
