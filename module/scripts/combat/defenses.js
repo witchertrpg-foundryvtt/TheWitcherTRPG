@@ -192,7 +192,7 @@ function handleSpecialModifier(actor, formula, action, additionalTag) {
         .filter(special => special.tags.includes(action))
         .filter(special => special.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true)
 
-    relevantModifier.forEach(modifier => formula += `${modifier.formula}[${game.i18n.localize(modifier.label)}]`)
+    relevantModifier.forEach(modifier => formula += `${modifier.formula}[${game.i18n.localize(modifier.name)}]`)
 
     return formula;
 }
