@@ -70,7 +70,8 @@
             },
             "ContextMenu": {
                 "Consume": "Consume",
-                "NotConsumable": "The item is not configured as consumable"
+                "NotConsumable": "The item is not configured as consumable",
+                "RemoveEnhancement": "Remove Enhancement"
             },
             "Settings": {
                 "Alchemical": "Alchemical Settings",
