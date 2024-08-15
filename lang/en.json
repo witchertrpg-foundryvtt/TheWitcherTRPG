@@ -607,7 +607,6 @@
             "Simple": "Simple",
             "Complex": "Complex",
             "Difficult": "Difficult",
-            "Type.Lable": "Type",
             "Difficulty": "Difficulty",
             "Complexity": "Complexity",
             "Bounty": "Bounty",
@@ -627,6 +626,7 @@
             "SpellsTab": "Spells",
             "SkillList": "Display specific skills",
             "Type": {
+                "Lable": "Type",
                 "Humanoid": "Humanoid",
                 "Necrophage": "Necrophage",
                 "Specter": "Specter",
