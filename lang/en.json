@@ -78,6 +78,7 @@
             },
             "Settings": {
                 "Alchemical": "Alchemical Settings",
+                "Armor": "Armor Settings",
                 "Valuable": "Valuable Settings",
                 "Weapon": "Weapon Settings",
                 "DamageProperties": "Damage Properties",

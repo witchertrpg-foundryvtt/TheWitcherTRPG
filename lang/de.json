@@ -100,6 +100,7 @@
             },
             "Settings": {
                 "Alchemical": "Einstellungen für alchemistische Gegenstände",
+                "Armor": "Einstellungen für Rüstung",
                 "Valuable": "Einstellungen für Ausrüstung",
                 "Weapon": "Einstellungen für Waffen",
                 "DamageProperties": "Schaden Eigenschaften",
