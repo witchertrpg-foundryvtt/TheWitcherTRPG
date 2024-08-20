@@ -368,6 +368,7 @@
             "Stat.Cra": "CRA",
             "Stat.Will": "WILL",
             "Stat.Luck": "LUCK",
+            "Stat.Toxicity": "Toxicity",
             "StatTitle.LableLeft": "Statistics",
             "StatTitle.ModMax": "Mod / Max",
             "StatTitle.Derived": "Derived",
