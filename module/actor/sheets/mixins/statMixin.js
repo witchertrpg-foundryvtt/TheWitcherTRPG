@@ -196,6 +196,29 @@ export let statMixin = {
         return totalStats;
     },
 
+    async _onLuckMinus(event) {
+        event.preventDefault();
+        if (this.actor.system.stats.luck.total > 0) {
+            await this.actor.update({ 'system.stats.luck.total': this.actor.system.stats.luck.total - 1 });
+        }
+    },
+
+    async _onLuckReset(event) {
+        event.preventDefault();
+        await this.actor.update({ 'system.stats.luck.total': this.actor.system.stats.luck.max });
+    },
+
+    async _onAdrenalineMinus(event) {
+        event.preventDefault();
+        if (this.actor.system.adrenaline.current > 0) {
+            await this.actor.update({ 'system.adrenaline.current': this.actor.system.adrenaline.current - 1 });
+        }
+    },
+
+    async _onAdrenalinePlus(event) {
+        event.preventDefault();
+        await this.actor.update({ 'system.adrenaline.current': this.actor.system.adrenaline.current + 1 });
+    },
 
     statListener(html) {
         html.find("input.stat-max").on("change", this.actor.updateDerived());
@@ -211,6 +234,10 @@ export let statMixin = {
         html.find(".add-modifier").on("click", this._onAddStatModifier.bind(this));
         html.find(".delete-stat").on("click", this._onRemoveStatModifier.bind(this));
         html.find(".list-mod-edit").on("blur", this._onEditStatModifier.bind(this));
-    }
 
-}
+        html.find('.luck-minus').on('click', this._onLuckMinus.bind(this));
+        html.find('.luck-reset').on('click', this._onLuckReset.bind(this));
+        html.find('.adrenaline-minus').on('click', this._onAdrenalineMinus.bind(this));
+        html.find('.adrenaline-plus').on('click', this._onAdrenalinePlus.bind(this));
+    },
+};
