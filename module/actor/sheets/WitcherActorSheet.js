@@ -1,19 +1,19 @@
-import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
-import { RollConfig } from '../../scripts/rollConfig.js';
-import { ExecuteDefense } from '../../scripts/combat/defenses.js';
+import { extendedRoll } from "../../scripts/rolls/extendedRoll.js";
+import { RollConfig } from "../../scripts/rollConfig.js";
+import { ExecuteDefense } from "../../scripts/combat/defenses.js";
 
-import { sanitizeMixin } from './mixins/sanitizeMixin.js';
-import { deathsaveMixin } from './mixins/deathSaveMixin.js';
-import { criticalWoundMixin } from './mixins/criticalWoundMixin.js';
-import { noteMixin } from './mixins/noteMixin.js';
-import { globalModifierMixin } from './mixins/globalModifierMixin.js';
-import { skillModifierMixin } from './mixins/skillModifierMixin.js';
-import { skillMixin } from './mixins/skillMixin.js';
-import { statMixin } from './mixins/statMixin.js';
-import { itemMixin } from './mixins/itemMixin.js';
+import { sanitizeMixin } from "./mixins/sanitizeMixin.js"
+import { deathsaveMixin } from "./mixins/deathSaveMixin.js";
+import { criticalWoundMixin } from "./mixins/criticalWoundMixin.js";
+import { noteMixin } from "./mixins/noteMixin.js";
+import { globalModifierMixin } from "./mixins/globalModifierMixin.js";
+import { skillModifierMixin } from "./mixins/skillModifierMixin.js";
+import { skillMixin } from "./mixins/skillMixin.js";
+import { statMixin } from "./mixins/statMixin.js";
+import { itemMixin } from "./mixins/itemMixin.js";
 
-import { itemContextMenu } from './interactions/itemContextMenu.js';
-import { activeEffectMixin } from './mixins/activeEffectMixin.js';
+import { itemContextMenu } from "./interactions/itemContextMenu.js";
+import { activeEffectMixin } from "./mixins/activeEffectMixin.js";
 
 Array.prototype.sum = function (prop) {
     var total = 0;
@@ -67,7 +67,7 @@ export default class WitcherActorSheet extends ActorSheet {
         // Prepare active effects for easier access
         context.effects = this.prepareActiveEffectCategories(this.actor.effects);
 
-        context.isGM = game.user.isGM;
+        context.isGM = game.user.isGM
         return context;
     }
 
@@ -208,15 +208,15 @@ export default class WitcherActorSheet extends ActorSheet {
         this.skillListener(html);
         this.skillModifierListener(html);
 
-        this.itemListener(html);
-        this.activeEffectListener(html);
+        this.itemListener(html)
+        this.activeEffectListener(html)
 
         this.deathSaveListener(html);
         this.criticalWoundListener(html);
         this.noteListener(html);
         this.globalModifierListener(html);
 
-        this.itemContextMenu(html);
+        this.itemContextMenu(html)
     }
 
     calcStaminaMulti(origStaCost, value) {

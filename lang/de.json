@@ -1,9 +1,31 @@
 {
     "TYPES": {
         "Item": {
+            "alchemical": "Alchemika",
+            "armor": "Rüstung",
+            "clue": "Hinweis",
+            "component": "Komponente",
+            "container": "Behälter",
+            "diagrams": "Diagramm",
             "effect": "Effekt (Veraltet)",
-            "globalModifier": "Globaler Modifikator"
-        }
+            "enhancement": "Verbesserung",
+            "globalModifier": "Globaler Modifikator",
+            "mount": "Reittier",
+            "mutagen": "Mutagen",
+            "note": "Notiz",
+            "obstacle": "Hinderniss",
+            "profession": "Beruf",
+            "race": "Rasse",
+            "spell": "Zauber",
+            "valuable": "Ausrüstung",
+            "weapon": "Waffe"
+        },
+        "Actor": {
+            "character": "Charakter",
+            "loot": "Beute",
+            "monster": "Monster",
+            "mystery": "Geheimnis"
+        }			
     },
     "WITCHER": {
         "Name": "Name",
@@ -68,15 +90,21 @@
                 "defenseDifferenceMultiplier": "Der Schaden wird mit der Verteidigungsdifferenz multipliziert (nicht funktionsfähig)",
                 "defenseMultiplierCap": "Der Multiplikator ist begrenzt auf (nicht funktionsfähig)"
             },
+            "DefenseProperties": {
+                "parrying": "Negiert Parier Mali"
+            },
             "ContextMenu": {
                 "Consume": "Konsumieren",
-                "NotConsumable": "Der Gegenstand ist nicht als konsumierbar konfiguriert"
+                "NotConsumable": "Der Gegenstand ist nicht als konsumierbar konfiguriert",
+                "RemoveEnhancement": "Verbesserung ausbauen"
             },
             "Settings": {
                 "Alchemical": "Einstellungen für alchemistische Gegenstände",
+                "Armor": "Einstellungen für Rüstung",
                 "Valuable": "Einstellungen für Ausrüstung",
                 "Weapon": "Einstellungen für Waffen",
                 "DamageProperties": "Schaden Eigenschaften",
+                "DefenseProperties": "Verteidung Eigenschaften",
                 "ConsumableProperties": "Verzehr Eigenschaften"
             }
         },
@@ -194,7 +222,7 @@
             "Broken": "Deine Waffe ist zerbrochen.",
             "onlyDmg": "Nur Schaden würfeln",
             "useAmmo": "Verbraucht Munition",
-            "armorPiercing": "Panverbrechend",
+            "armorPiercing": "Panzerbrechend",
             "improvedArmorPiercing": "Verbessertes Panzerbrechen",
             "ablating": "Abtragung",
             "crushingForce": "Vernichtende Wucht"
@@ -372,7 +400,7 @@
             "CoreStat.woundTreshold": "WS",
             "DerStat.Vigor": "Elan",
             "DerStat.HP": "Max LP",
-            "DerStat.Shield": "Shild",
+            "DerStat.Shield": "Schild",
             "DerStat.Sta": "AUS",
             "DerStat.Resolve": "Entschlossenheit",
             "DerStat.Focus": "Fokus",
@@ -386,7 +414,7 @@
             "Stamina": "Ausdauer",
             "Resolve": "Entschlossenheit",
             "Hp": "LP",
-            "Shield": "Shild",
+            "Shield": "Schild",
             "Skill.Intelligence": "Intelligenz",
             "Skill.Reflex": "Reflexe",
             "Skill.Willpower": "Willenskraft",
@@ -783,7 +811,7 @@
             "Short": {
                 "StaCost": "AUS Kosten",
                 "Variable": "V.AUS",
-                "Shield": "Shild",
+                "Shield": "Schild",
                 "Heal": "Heilung"
             }
         },
@@ -849,7 +877,7 @@
         "SkIntSocialEt": "Umgangsformen",
         "SkIntStreet": "Straßenwissen",
         "SkIntTactics": "Taktik (2)",
-        "SkIntTacticsLable": "Tactik",
+        "SkIntTacticsLable": "Taktik",
         "SkIntTeaching": "Unterrichten",
         "SkIntWilderness": "Wildnisleben",
         "SkRefBrawling": "Raufen",
@@ -859,6 +887,7 @@
         "SkRefSailing": "Segeln",
         "SkRefSmall": "Kleine Klingenwaffen",
         "SkRefStaff": "Stab/Speer",
+        "SkRefSwordmanship": "Schwertkampf",
         "SkRefSwordsmanship": "Schwertkampf",
         "SkDexArchery": "Bogenschießen",
         "SkDexAthletics": "Athletik",
@@ -933,7 +962,7 @@
             "ToMuchShield": "Gesamter Schaden wurde durch Schild oder Rüstung absorbiert",
             "isVulnerable": "Anfällig gegenüber der Attacke",
             "oilDmg": "Addiere Öl-Schaden (+5)",
-            "shield": "Shild",
+            "shield": "Schild",
             "silverDmg": "Addiere Silberschaden",
             "silver": "Silner",
             "oil": "Öl"

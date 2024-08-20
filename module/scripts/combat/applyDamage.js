@@ -221,8 +221,8 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
     let displaySP = locationArmor.displaySP
 
     if (damageProperties.improvedArmorPiercing) {
-        totalSP = totalSP / 2;
-        displaySP = displaySP / 2;
+        totalSP = Math.ceil(totalSP / 2);
+        displaySP = Math.ceil(displaySP / 2);
     }
 
     let silverDamage = 0;
@@ -510,6 +510,11 @@ function calculateResistances(totalDamage, damage, armorSet) {
 }
 
 async function applySpDamage(location, damageProperties, armorSet) {
+    if (damageProperties.bypassesNaturalArmor) {
+        //damage bypasses armor so no SP damage
+       return 0;
+    }
+
     let spDamage = damageProperties.crushingForce || damageProperties.ablating
         ? Math.floor((await new Roll("1d6/2+1").evaluate()).total)
         : 1
