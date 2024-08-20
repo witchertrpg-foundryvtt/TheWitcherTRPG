@@ -1,4 +1,4 @@
-import modifier from "../modifierData.js";
+import modifier from '../modifierData.js';
 
 const fields = foundry.data.fields;
 
@@ -9,6 +9,7 @@ export default function stat(label) {
         total: new fields.NumberField({ initial: 0}),
         label: new fields.StringField({ initial: label}),
         isOpened: new fields.BooleanField({ initial: false}),
-        modifiers: new fields.ArrayField(new fields.SchemaField(modifier()))
+        modifiers: new fields.ArrayField(new fields.SchemaField(modifier())),
+        totalModifiers: new fields.NumberField({ initial: 0 }),
     };
   }

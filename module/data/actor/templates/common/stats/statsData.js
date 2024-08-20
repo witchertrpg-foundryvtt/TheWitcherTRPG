@@ -13,5 +13,6 @@ export default function stats() {
         cra: new fields.SchemaField(stat("WITCHER.Actor.Stat.Cra")),
         will: new fields.SchemaField(stat("WITCHER.Actor.Stat.Will")),
         luck: new fields.SchemaField(stat("WITCHER.Actor.Stat.Luck")),
+        toxicity: new fields.SchemaField(stat('WITCHER.Actor.Stat.Toxicity')),
     };
   }
