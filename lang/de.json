@@ -90,15 +90,21 @@
                 "defenseDifferenceMultiplier": "Der Schaden wird mit der Verteidigungsdifferenz multipliziert (nicht funktionsfähig)",
                 "defenseMultiplierCap": "Der Multiplikator ist begrenzt auf (nicht funktionsfähig)"
             },
+			"DefenseProperties": {
+                "parrying": "Negiert Parier Mali"
+            },
             "ContextMenu": {
                 "Consume": "Konsumieren",
-                "NotConsumable": "Der Gegenstand ist nicht als konsumierbar konfiguriert"
+                "NotConsumable": "Der Gegenstand ist nicht als konsumierbar konfiguriert",
+                "RemoveEnhancement": "Verbesserung ausbauen"
             },
             "Settings": {
                 "Alchemical": "Einstellungen für alchemistische Gegenstände",
+				"Armor": "Einstellungen für Rüstung",
                 "Valuable": "Einstellungen für Ausrüstung",
                 "Weapon": "Einstellungen für Waffen",
                 "DamageProperties": "Schaden Eigenschaften",
+                "DefenseProperties": "Verteidung Eigenschaften",
                 "ConsumableProperties": "Verzehr Eigenschaften"
             }
         },
