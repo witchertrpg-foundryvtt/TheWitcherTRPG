@@ -90,21 +90,15 @@
                 "defenseDifferenceMultiplier": "Der Schaden wird mit der Verteidigungsdifferenz multipliziert (nicht funktionsfähig)",
                 "defenseMultiplierCap": "Der Multiplikator ist begrenzt auf (nicht funktionsfähig)"
             },
-            "DefenseProperties": {
-                "parrying": "Negiert Parier Mali"
-            },
             "ContextMenu": {
                 "Consume": "Konsumieren",
-                "NotConsumable": "Der Gegenstand ist nicht als konsumierbar konfiguriert",
-                "RemoveEnhancement": "Verbesserung ausbauen"
+                "NotConsumable": "Der Gegenstand ist nicht als konsumierbar konfiguriert"
             },
             "Settings": {
                 "Alchemical": "Einstellungen für alchemistische Gegenstände",
-                "Armor": "Einstellungen für Rüstung",
                 "Valuable": "Einstellungen für Ausrüstung",
                 "Weapon": "Einstellungen für Waffen",
                 "DamageProperties": "Schaden Eigenschaften",
-                "DefenseProperties": "Verteidung Eigenschaften",
                 "ConsumableProperties": "Verzehr Eigenschaften"
             }
         },
@@ -1053,12 +1047,12 @@
             "special": "Spezielle Effekte",
             "specialEffect": {
                 "wolfstrike": "Wolfsschule Harter Angriff",
-                "viperstrike": "Schlangenschule Biedhändiger Angriff",
+                "viperstrike": "Schlangenschule Beidhändiger Angriff",
                 "manticoreparry": "Mantikorschule Parrieren",
                 "manticoreparrythrown": "Mantikorschule Wurfwaffe parrieren",
                 "armorEncumbarance": "-1 Behinderungswert",
                 "armoredCaster": "Gepanzerter Zauberer",
-                "meleeDamage": "+1 Nahkampfschaden Damage"
+                "meleeDamage": "+1 Nahkampfschaden"
             }
         },
         "activeEffect": {
@@ -1120,23 +1114,23 @@
             "poison": "Gift",
             "disease": "Krankheit",
             "prone": "Niedergeschlagen",
-            "bleed": "Bluten",
+            "bleed": "Blutung",
             "freeze": "Einfrieren",
             "staggered": "Angeschlagen",
             "intoxication": "Intoxikation",
             "hallucination": "Halluzination",
-            "nausea": "Nausea",
-            "suffocation": "Übelkeit",
+            "nausea": "Übelkeit",
+            "suffocation": "Ersticken",
             "blinded": "Geblendet",
             "shielded": "Geschützt",
             "invisible": "Unsichtbar",
             "unconscious": "Bewusstlos",
-            "grappled": "Gehalten",
+            "grappled": "Festhalten",
             "flying": "Fliegend",
-            "frightened": "Verängstigt",
+            "frightened": "Furcht",
             "aiming": "Zielend",
             "deaf": "Taub",
-            "reducedVision": "Reduzierte Sehkraft",
+            "reducedVision": "Eingeschränkte Sicht",
             "holdAction": "Aktion halten",
             "dead": "Tot"
         },
