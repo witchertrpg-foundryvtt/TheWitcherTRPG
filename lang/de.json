@@ -90,7 +90,7 @@
                 "defenseDifferenceMultiplier": "Der Schaden wird mit der Verteidigungsdifferenz multipliziert (nicht funktionsfähig)",
                 "defenseMultiplierCap": "Der Multiplikator ist begrenzt auf (nicht funktionsfähig)"
             },
-			"DefenseProperties": {
+            "DefenseProperties": {
                 "parrying": "Negiert Parier Mali"
             },
             "ContextMenu": {
@@ -100,7 +100,7 @@
             },
             "Settings": {
                 "Alchemical": "Einstellungen für alchemistische Gegenstände",
-				"Armor": "Einstellungen für Rüstung",
+                "Armor": "Einstellungen für Rüstung",
                 "Valuable": "Einstellungen für Ausrüstung",
                 "Weapon": "Einstellungen für Waffen",
                 "DamageProperties": "Schaden Eigenschaften",
