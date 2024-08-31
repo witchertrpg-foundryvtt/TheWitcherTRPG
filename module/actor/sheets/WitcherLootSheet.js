@@ -104,11 +104,8 @@ export default class WitcherMonsterSheet extends ActorSheet {
     }
     else {
       let newItem = { ...Additem };
-
-      if (numberOfItem) {
-        newItem.system.quantity = Number(numberOfItem)
-      }
-      await actor.createEmbeddedDocuments("Item", [newItem]);
+      let [createdItem] =await actor.createEmbeddedDocuments("Item", [newItem]);
+      await createdItem.update({ "system.quantity": Number(numberOfItem) });
     }
   }
 
@@ -247,6 +244,16 @@ export default class WitcherMonsterSheet extends ActorSheet {
     }
 
     let buyerActor = game.actors.get(characterId)
+    if (!buyerActor) {
+      ui.notifications.error("Character Not Found");
+      return
+    }
+    
+    if (!numberOfItem) {
+      ui.notifications.error("Invalid Quantity");
+      return
+    }
+
     let token = buyerActor.token ?? buyerActor.getActiveTokens()[0]
     if (token) {
       buyerActor = token.actor
