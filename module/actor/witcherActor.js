@@ -493,6 +493,20 @@ export default class WitcherActor extends Actor {
         );
     }
 
+    async addItem(addItem, numberOfItem, forcecreate = false) {
+        let foundItem = this.items.find(item => item.name == addItem.name && item.type == addItem.type);
+        if (foundItem && !forcecreate && !foundItem.system.isStored) {
+            await foundItem.update({ 'system.quantity': Number(foundItem.system.quantity) + Number(numberOfItem) });
+        } else {
+            let newItem = { ...addItem.toObject() };
+
+            if (numberOfItem) {
+                newItem.system.quantity = Number(numberOfItem);
+            }
+            await this.createEmbeddedDocuments('Item', [newItem]);
+        }
+    }
+
     async removeItem(itemId, quantityToRemove) {
         let foundItem = this.items.get(itemId);
         let newQuantity = foundItem.system.quantity - quantityToRemove;
@@ -501,6 +515,13 @@ export default class WitcherActor extends Actor {
         } else {
             await foundItem.update({ 'system.quantity': newQuantity });
         }
+    }
+
+    async removeItemsOfType(type) {
+        this.deleteEmbeddedDocuments(
+            'Item',
+            this.items.filter(item => item.type === type).map(item => item.id)
+        );
     }
 
     getAllLocations() {
