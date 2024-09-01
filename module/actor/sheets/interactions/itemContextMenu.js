@@ -31,7 +31,7 @@ export let itemContextMenu = {
         }
 
         item.consume();
-        this._removeItem(this.actor, item.id, 1)
+        this.actor.removeItem(item.id, 1)
     },
 
     removableEnhancement() {

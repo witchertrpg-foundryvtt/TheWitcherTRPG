@@ -14,7 +14,7 @@ export let itemMixin = {
         if (this.actor.uuid === item.parent?.uuid) return this._onSortItem(event, itemData);
 
         if (this._isUniqueItem(itemData)) {
-            await this._removeItemsOfType(itemData.type);
+            await this.actor.removeItemsOfType(itemData.type);
         }
 
         // dragData should exist for WitcherActorSheet, WitcherItemSheet.
@@ -45,7 +45,7 @@ export let itemMixin = {
                 roll.toMessage(messageData);
 
                 // Add items to the recipient actor
-                this._addItem(this.actor, dragData.item, Math.floor(roll.total));
+                this.actor.addItem(dragData.item, Math.floor(roll.total));
 
                 // Remove items from donor actor
                 if (previousActor) {
@@ -85,16 +85,16 @@ export let itemMixin = {
                         return;
                     } else {
                         // Remove items from donor actor
-                        this._removeItem(previousActor, dragData.item._id, numberOfItem);
+                        previousActor.removeItem(dragData.item._id, numberOfItem);
                         if (numberOfItem > dragData.item.system.quantity) {
                             numberOfItem = dragData.item.system.quantity;
                         }
                         // Add items to the recipient actor
-                        this._addItem(this.actor, dragData.item, numberOfItem);
+                        this.actor.addItem(dragData.item, numberOfItem);
                     }
                 } else {
                     // Add item to the recipient actor
-                    this._addItem(this.actor, dragData.item, 1);
+                    this.actor.addItem(dragData.item, 1);
                     // Remove item from donor actor
                     if (previousActor) {
                         await previousActor.items.get(dragData.item._id).delete();
@@ -113,7 +113,7 @@ export let itemMixin = {
             }
 
             if (itemToAdd) {
-                this._addItem(this.actor, itemToAdd, 1);
+                this.actor.addItem(itemToAdd, 1);
             }
         } else {
             super._onDrop(event, data);
@@ -122,32 +122,6 @@ export let itemMixin = {
 
     _isUniqueItem(itemData) {
         return false;
-    },
-
-    async _removeItemsOfType(type) {
-        let actor = this.actor;
-        actor.deleteEmbeddedDocuments(
-            'Item',
-            actor.items.filter(item => item.type === type).map(item => item.id)
-        );
-    },
-
-    async _removeItem(actor, itemId, quantityToRemove) {
-        actor.removeItem(itemId, quantityToRemove);
-    },
-
-    async _addItem(actor, addItem, numberOfItem, forcecreate = false) {
-        let foundItem = actor.items.find(item => item.name == addItem.name && item.type == addItem.type);
-        if (foundItem && !forcecreate && !foundItem.system.isStored) {
-            await foundItem.update({ 'system.quantity': Number(foundItem.system.quantity) + Number(numberOfItem) });
-        } else {
-            let newItem = { ...addItem };
-
-            if (numberOfItem) {
-                newItem.system.quantity = Number(numberOfItem);
-            }
-            await actor.createEmbeddedDocuments('Item', [newItem]);
-        }
     },
 
     async _onItemAdd(event) {
@@ -340,15 +314,15 @@ export let itemMixin = {
 
                             let newName = choosenEnhancement.name + '(Applied)';
                             let newQuantity = choosenEnhancement.system.quantity;
-                            if (newQuantity > 1) {
-                                newQuantity -= 1;
-                                await this._addItem(this.actor, choosenEnhancement.toObject(), newQuantity, true);
-                            }
                             await choosenEnhancement.update({
                                 'name': newName,
                                 'system.applied': true,
                                 'system.quantity': 1
                             });
+                            if (newQuantity > 1) {
+                                newQuantity -= 1;
+                                await this.actor.addItem(choosenEnhancement, newQuantity, true);
+                            }
                         }
                     }
                 }
