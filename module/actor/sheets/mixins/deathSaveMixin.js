@@ -35,6 +35,7 @@ export let deathsaveMixin = {
         let config = new RollConfig()
         config.reversal = true
         config.showSuccess = true
+        config.showCrit = false
         config.threshold = stunBase
 
         await extendedRoll(`1d10`, messageData, config)
