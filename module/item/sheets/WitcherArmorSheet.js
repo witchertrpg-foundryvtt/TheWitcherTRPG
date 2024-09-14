@@ -1,7 +1,10 @@
 
+import WitcheActiveEffectConfigurationSheet from "./configurations/WitcherActiveEffectConfigurationSheet.js";
 import WitcherItemSheet from "./WitcherItemSheet.js";
 
 export default class WitcherArmorSheet extends WitcherItemSheet {
+
+    configuration = new WitcheActiveEffectConfigurationSheet(this.item);
 
 
     get template() {

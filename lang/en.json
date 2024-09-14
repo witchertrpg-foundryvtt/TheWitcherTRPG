@@ -68,15 +68,21 @@
                 "defenseDifferenceMultiplier": "Damage is multiplied by difference of defense (not functional)",
                 "defenseMultiplierCap": "Multiplier is capped at (not functional)"
             },
+            "DefenseProperties": {
+                "parrying": "Negates parry penalty"
+            },
             "ContextMenu": {
                 "Consume": "Consume",
-                "NotConsumable": "The item is not configured as consumable"
+                "NotConsumable": "The item is not configured as consumable",
+                "RemoveEnhancement": "Remove Enhancement"
             },
             "Settings": {
                 "Alchemical": "Alchemical Settings",
+                "Armor": "Armor Settings",
                 "Valuable": "Valuable Settings",
                 "Weapon": "Weapon Settings",
                 "DamageProperties": "Damage Properties",
+                "DefenseProperties": "Defense Properties",
                 "ConsumableProperties": "Consumable Properties"
             }
         },
@@ -362,6 +368,7 @@
             "Stat.Cra": "CRA",
             "Stat.Will": "WILL",
             "Stat.Luck": "LUCK",
+            "Stat.Toxicity": "Toxicity",
             "StatTitle.LableLeft": "Statistics",
             "StatTitle.ModMax": "Mod / Max",
             "StatTitle.Derived": "Derived",
@@ -607,7 +614,6 @@
             "Simple": "Simple",
             "Complex": "Complex",
             "Difficult": "Difficult",
-            "Type.Lable": "Type",
             "Difficulty": "Difficulty",
             "Complexity": "Complexity",
             "Bounty": "Bounty",
@@ -627,6 +633,7 @@
             "SpellsTab": "Spells",
             "SkillList": "Display specific skills",
             "Type": {
+                "Lable": "Type",
                 "Humanoid": "Humanoid",
                 "Necrophage": "Necrophage",
                 "Specter": "Specter",
