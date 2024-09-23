@@ -331,7 +331,7 @@ export default class WitcherActor extends Actor {
             .map(modifier => modifier.system.special)
             .flat()
             .map(modifier => CONFIG.WITCHER.specialModifier.find(special => special.id == modifier.special))
-            .filter(special => special.tags.includes('armorencumbarance'));
+            .filter(special => special?.tags?.includes('armorencumbarance'));
 
         relevantModifier.forEach(modifier => (encumbranceModifier += parseInt(modifier.formula)));
 
