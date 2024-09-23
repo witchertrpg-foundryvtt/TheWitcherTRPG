@@ -683,8 +683,8 @@ export let itemMixin = {
             .map(modifier => modifier.system.special)
             .flat()
             .map(modifier => CONFIG.WITCHER.specialModifier.find(special => special.id == modifier.special))
-            .filter(special => special.tags.includes(action))
-            .filter(special => special.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true);
+            .filter(special => special?.tags?.includes(action))
+            .filter(special => special?.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true);
 
         relevantModifier.forEach(
             modifier => (attFormula += `${modifier.formula}[${game.i18n.localize(modifier.name)}]`)
