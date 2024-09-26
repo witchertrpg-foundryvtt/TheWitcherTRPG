@@ -404,7 +404,10 @@ export let itemMixin = {
             meleeBonus: meleeBonus
         };
         const myDialogOptions = { width: 500 };
-        const dialogTemplate = await renderTemplate('systems/TheWitcherTRPG/templates/chat/weapon-attack.hbs', data);
+        const dialogTemplate = await renderTemplate(
+            'systems/TheWitcherTRPG/templates/dialog/combat/weapon-attack.hbs',
+            data
+        );
 
         new Dialog(
             {
@@ -708,45 +711,55 @@ export let itemMixin = {
         let customModifier = 0;
         let isExtraAttack = false;
 
-        let content = `<label>${game.i18n.localize('WITCHER.Dialog.attackExtra')}: <input type="checkbox" name="isExtraAttack"></label> <br />`;
-        if (spellItem.system.staminaIsVar) {
-            content += `${game.i18n.localize('WITCHER.Spell.staminaDialog')}<input class="small" name="staCost" value=1> <br />`;
-        }
-
-        let focusOptions = `<option value="0"> </option>`;
-        let secondFocusOptions = `<option value="0" selected> </option>`;
-
         let useFocus = false;
+        let handlebarFocusOptions = {};
         if (this.actor.system.focus1.value > 0) {
-            focusOptions += `<option value="${this.actor.system.focus1.value}" selected> ${this.actor.system.focus1.name} (${this.actor.system.focus1.value}) </option>`;
-            secondFocusOptions += `<option value="${this.actor.system.focus1.value}"> ${this.actor.system.focus1.name} (${this.actor.system.focus1.value}) </option>`;
             useFocus = true;
+            handlebarFocusOptions.focus1 = {
+                value: this.actor.system.focus1.value,
+                label: this.actor.system.focus1.name + '(' + this.actor.system.focus1.value + ')'
+            };
         }
         if (this.actor.system.focus2.value > 0) {
-            focusOptions += `<option value="${this.actor.system.focus2.value}"> ${this.actor.system.focus2.name} (${this.actor.system.focus2.value}) </option>`;
-            secondFocusOptions += `<option value="${this.actor.system.focus2.value}"> ${this.actor.system.focus2.name} (${this.actor.system.focus2.value}) </option>`;
             useFocus = true;
+            handlebarFocusOptions.focus2 = {
+                value: this.actor.system.focus2.value,
+                label: this.actor.system.focus2.name + '(' + this.actor.system.focus2.value + ')'
+            };
         }
         if (this.actor.system.focus3.value > 0) {
-            focusOptions += `<option value="${this.actor.system.focus3.value}"> ${this.actor.system.focus3.name} (${this.actor.system.focus3.value}) </option>`;
-            secondFocusOptions += `<option value="${this.actor.system.focus3.value}"> ${this.actor.system.focus3.name} (${this.actor.system.focus3.value}) </option>`;
             useFocus = true;
+            handlebarFocusOptions.focus3 = {
+                value: this.actor.system.focus3.value,
+                label: this.actor.system.focus3.name + '(' + this.actor.system.focus3.value + ')'
+            };
         }
         if (this.actor.system.focus4.value > 0) {
-            focusOptions += `<option value="${this.actor.system.focus4.value}"> ${this.actor.system.focus4.name} (${this.actor.system.focus4.value}) </option>`;
-            secondFocusOptions += `<option value="${this.actor.system.focus4.value}"> ${this.actor.system.focus4.name} (${this.actor.system.focus4.value}) </option>`;
             useFocus = true;
+            handlebarFocusOptions.focus4 = {
+                value: this.actor.system.focus4.value,
+                label: this.actor.system.focus4.name + '(' + this.actor.system.focus4.value + ')'
+            };
         }
 
-        if (useFocus) {
-            content += ` <label>${game.i18n.localize('WITCHER.Spell.ChooseFocus')}: <select name="focus">${focusOptions}</select></label> <br />`;
-            content += ` <label>${game.i18n.localize('WITCHER.Spell.ChooseExpandedFocus')}: <select name="secondFocus">${secondFocusOptions}</select></label> <br />`;
-        }
-        content += `<label>${game.i18n.localize('WITCHER.Dialog.attackCustom')}: <input class="small" name="customMod" value=0></label> <br /><br />`;
+        let data = {
+            causeDamage: spellItem.system.causeDamages,
+            staminaIsVar: spellItem.system.staminaIsVar,
+            useFocus: useFocus,
+            focusOptions: handlebarFocusOptions
+        };
+
+        console.log();
+
+        const dialogTemplate = await renderTemplate(
+            'systems/TheWitcherTRPG/templates/dialog/combat/spell-attack.hbs',
+            data
+        );
+
         let cancel = true;
         let focusValue = 0;
         let secondFocusValue = 0;
-
+        let location;
         let dialogData = {
             buttons: [
                 [
@@ -763,12 +776,13 @@ export let itemMixin = {
                         if (html.find('[name=secondFocus]')[0]) {
                             secondFocusValue = html.find('[name=secondFocus]')[0].value;
                         }
+                        location = html.find('[name=location]')[0].value;
                         cancel = false;
                     }
                 ]
             ],
             title: game.i18n.localize('WITCHER.Spell.MagicCost'),
-            content: content
+            content: dialogTemplate
         };
 
         await buttonDialog(dialogData);
@@ -872,7 +886,7 @@ export let itemMixin = {
 
             damage.effects = spellItem.system.damageProperties.effects;
             damage.formula = dmg;
-            damage.location = this.actor.getLocationObject('randomSpell');
+            damage.location = this.actor.getLocationObject(location);
         }
 
         if (spellItem.system.createsShield) {

@@ -1,0 +1,36 @@
+{{#if causeDamage}}
+    <div>
+        <label>{{localize "WITCHER.Dialog.attackLocation"}}:</label>
+
+        <select name="location">
+            <option value="randomHuman"> {{localize "WITCHER.Dialog.attackRandomHuman"}} </option>
+            <option value="randomMonster"> {{localize "WITCHER.Dialog.attackRandomMonster"}} </option>
+            <option value="head"> {{localize "WITCHER.Dialog.attackHead"}} </option>
+            <option value="torso"> {{localize "WITCHER.Dialog.attackTorso"}} </option>
+            <option value="leftArm"> {{localize "WITCHER.Dialog.attackLArm"}} </option>
+            <option value="rightArm"> {{localize "WITCHER.Dialog.attackRArm"}} </option>
+            <option value="leftLeg"> {{localize "WITCHER.Dialog.attackLLeg"}} </option>
+            <option value="rightLeg"> {{localize "WITCHER.Dialog.attackRLeg"}} </option>
+            <option value="tailWing"> {{localize "WITCHER.Dialog.attackTail"}} </option>
+        </select>
+    </div>
+{{/if}}
+
+<label>{{ localize 'WITCHER.Dialog.attackExtra' }}: <input type="checkbox" name="isExtraAttack"></label> <br />
+{{#if staminaIsVar}}
+    {{ localize 'WITCHER.Spell.staminaDialog'}}<input class="small" name="staCost" value=1> <br />
+{{/if}}
+{{#if useFocus}}
+    {{log focusOptions}}
+    <label>{{ localize 'WITCHER.Spell.ChooseFocus' }}:
+        <select name="focus">{{selectOptions focusOptions }}</select>
+    </label>
+    <br />
+    <label>{{ localize 'WITCHER.Spell.ChooseExpandedFocus' }}:
+        <select name="secondFocus">${secondFocusOptions}</select>
+    </label>
+    <br />
+{{/if}}
+
+<label>{{ localize 'WITCHER.Dialog.attackCustom' }}: <input class="small" name="customMod" value=0></label>
+<br /><br />
