@@ -351,7 +351,7 @@ export let itemMixin = {
             : `${item.system.damage}[${game.i18n.localize('WITCHER.Diagram.Weapon')}]`;
 
         let isMeleeAttack = item.doesWeaponNeedMeleeSkillToAttack();
-        if (this.actor.type == 'character' && isMeleeAttack) {
+        if ((this.actor.type == 'character' || this.actor.system.addMeleeBonus) && isMeleeAttack) {
             if (this.actor.system.attackStats.meleeBonus < 0) {
                 displayDmgFormula += `${this.actor.system.attackStats.meleeBonus}`;
                 formula += !displayRollDetails
