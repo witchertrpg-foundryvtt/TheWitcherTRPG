@@ -14,6 +14,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
             height: 600,
             template: "systems/TheWitcherTRPG/templates/sheets/actor/actor-sheet.hbs",
             tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
+            scrollY:[".item-list"]
         });
     }
 
