@@ -886,7 +886,12 @@ export let itemMixin = {
 
             damage.effects = spellItem.system.damageProperties.effects;
             damage.formula = dmg;
-            damage.location = this.actor.getLocationObject(location);
+            let touchedLocation = this.actor.getLocationObject(location);
+            rollFormula += !displayRollDetails
+                ? `${touchedLocation.modifier}`
+                : `${touchedLocation.modifier}[${touchedLocation.alias}]`;
+            damage.location = touchedLocation;
+            damage.type = 'elemental';
         }
 
         if (spellItem.system.createsShield) {
