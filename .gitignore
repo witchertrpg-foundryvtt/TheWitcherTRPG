@@ -3,3 +3,5 @@ build
 generate-release-notes.js
 /node_modules/
 /foundry/
+/.vscode/
+/TheWitcherTRPG.lock

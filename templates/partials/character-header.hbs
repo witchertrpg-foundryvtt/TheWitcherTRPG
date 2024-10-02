@@ -228,7 +228,9 @@
 					<h4 class=''>{{localize 'WITCHER.Actor.Shield'}}</h4>
 				</div>
 				<div class='optional-info'>
-					<h3>{{system.derivedStats.shield.value}}</h3>
+					<h3>
+                        <input class='small' type='number' name='system.derivedStats.shield.value' value='{{system.derivedStats.shield.value}}' data-dtype='Number' />
+                    </h3>
 				</div>
 			</div>
 			{{#if useVerbalCombat}}
@@ -264,7 +266,9 @@
 				</div>
 				<div class='optional-info'>
 					<a class='optional-buttons luck-minus'><i style='color: black;' class='fa-solid fa-minus'></i></a>
-					<h3>{{system.stats.luck.total}}</h3>
+					<h3>
+                        <input class='small' type='number' name='system.stats.luck.total' value='{{system.stats.luck.total}}' data-dtype='Number' />
+                    </h3>
 					<a class='optional-buttons luck-reset'><i style='color: black;' class='fa-solid fa-rotate-left'></i></a>
 				</div>
 			</div>
@@ -276,7 +280,9 @@
 					</div>
 					<div class='optional-info'>
 						<a class='optional-buttons adrenaline-minus'><i style='color: black;' class='fa-solid fa-minus'></i></a>
-						<h3>{{system.adrenaline.current}}</h3>
+						<h3>
+                            <input class='small' type='number' name='system.adrenaline.current' value='{{system.adrenaline.current}}' data-dtype='Number' />
+                        </h3>
 						<a class='optional-buttons adrenaline-plus'><i style='color: black;' class='fa-solid fa-plus'></i></a>
 					</div>
 				</div>

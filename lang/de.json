@@ -237,7 +237,7 @@
             "bludgeoning": "Wuchtschaden",
             "slashing": "Hiebschaden",
             "piercing": "Stichschaden",
-            "elemnatal": "Elementar",
+            "elemental": "Elementar",
             "Type": "Typ",
             "StoppingPower": "Aktuelle Abwehrkraft",
             "MaxStoppingPower": "Maximale Abwehrkraft",
