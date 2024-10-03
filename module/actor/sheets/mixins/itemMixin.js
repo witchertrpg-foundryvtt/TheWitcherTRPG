@@ -749,8 +749,6 @@ export let itemMixin = {
             focusOptions: handlebarFocusOptions
         };
 
-        console.log();
-
         const dialogTemplate = await renderTemplate(
             'systems/TheWitcherTRPG/templates/dialog/combat/spell-attack.hbs',
             data
@@ -776,7 +774,7 @@ export let itemMixin = {
                         if (html.find('[name=secondFocus]')[0]) {
                             secondFocusValue = html.find('[name=secondFocus]')[0].value;
                         }
-                        location = html.find('[name=location]')[0].value;
+                        location = html.find('[name=location]')[0]?.value;
                         cancel = false;
                     }
                 ]
