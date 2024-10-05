@@ -83,7 +83,10 @@
                 "Weapon": "Weapon Settings",
                 "DamageProperties": "Damage Properties",
                 "DefenseProperties": "Defense Properties",
-                "ConsumableProperties": "Consumable Properties"
+                "ConsumableProperties": "Consumable Properties",
+                "Spell": {
+                    "SelfProperties": "Apply to caster"
+                }
             }
         },
         "Dialog": {

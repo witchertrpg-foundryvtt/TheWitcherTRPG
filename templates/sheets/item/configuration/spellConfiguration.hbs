@@ -14,10 +14,6 @@
                             class="fas fa-minus"></i></a>
                 </td>
                 <td>
-                    <input class="edit-effect-self item-effect" placeholder="{{localize "WITCHER.table.Name"}}"
-                        data-field="name" type="text" value="{{effect.name}}" />
-                </td>
-                <td>
                     <select class="edit-effect-self item-effect" data-field="statusEffect">
                         {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                     </select>
@@ -26,5 +22,7 @@
             </tr>
         {{/each}}
     </table>
-    {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs"}}
+    {{#if data.causeDamages}}
+        {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs"}}
+    {{/if}}
 </form>
