@@ -85,7 +85,8 @@
                 "DefenseProperties": "Defense Properties",
                 "ConsumableProperties": "Consumable Properties",
                 "Spell": {
-                    "SelfProperties": "Apply to caster"
+                    "SelfProperties": "Apply to caster",
+                    "HitProperties": "Apply to target"
                 }
             }
         },

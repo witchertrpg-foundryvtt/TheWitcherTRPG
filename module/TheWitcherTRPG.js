@@ -15,6 +15,7 @@ import WitcherActor from './actor/witcherActor.js';
 
 import { registerDataModels } from './setup/registerDataModels.js';
 import { registerSheets } from './setup/registerSheets.js';
+import { registerSocketListeners } from './setup/socketHook.js';
 
 async function preloadHandlebarsTemplates() {
     const templatePath = [
@@ -111,6 +112,8 @@ Hooks.once('ready', async function () {
             chat.classList.add('witcher-style');
         }
     }
+
+    registerSocketListeners();
 });
 
 Hooks.once('dragRuler.ready', SpeedProvider => {

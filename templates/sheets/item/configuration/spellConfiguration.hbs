@@ -22,6 +22,31 @@
             </tr>
         {{/each}}
     </table>
+
+    <h3>{{localize "WITCHER.Item.Settings.Spell.HitProperties"}}</h3>
+    <table class="item-bottom-table">
+        <tr>
+            <th><a class="add-effect-hit" data-target='system.onHitEffects'
+                    title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
+            </th>
+            <th>{{localize "WITCHER.Item.Effect"}}</th>
+        </tr>
+        {{#each item.system.onHitEffects as |effect name|}}
+            <tr class="list-item" data-id="{{effect.id}}">
+                <td>
+                    <a class="remove-effect-hit" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                            class="fas fa-minus"></i></a>
+                </td>
+                <td>
+                    <select class="edit-effect-hit item-effect" data-field="statusEffect">
+                        {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                    </select>
+                </td>
+
+            </tr>
+        {{/each}}
+    </table>
+
     {{#if data.causeDamages}}
         {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs"}}
     {{/if}}

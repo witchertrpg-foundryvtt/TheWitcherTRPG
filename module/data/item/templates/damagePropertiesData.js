@@ -15,9 +15,9 @@ export default function damageProperties() {
         bypassesWornArmor: new fields.BooleanField({ initial: false }),
         bypassesNaturalArmor: new fields.BooleanField({ initial: false }),
 
-        appliesGlobalModifierToDamaged: new fields.BooleanField({ initial: false }),
         hitGlobalModifiers: new fields.ArrayField(new fields.StringField({ initial: '' })),
         appliesGlobalModifierToHit: new fields.BooleanField({ initial: false }),
+        appliesGlobalModifierToDamaged: new fields.BooleanField({ initial: false }),
         damagedGlobalModifiers: new fields.ArrayField(new fields.StringField({ initial: '' })),
 
         defenseDifferenceMultiplier: new fields.BooleanField({ initial: false }),
@@ -25,6 +25,6 @@ export default function damageProperties() {
 
         variableDamage: new fields.BooleanField({ initial: false }),
 
-        effects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
+        effects: new fields.ArrayField(new fields.SchemaField(itemEffect()))
     };
 }

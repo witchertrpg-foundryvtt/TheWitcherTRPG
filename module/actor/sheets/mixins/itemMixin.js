@@ -3,7 +3,10 @@ import { extendedRoll } from '../../../scripts/rolls/extendedRoll.js';
 
 import { rollDamage } from '../../../scripts/combat/attack.js';
 import { RollConfig } from '../../../scripts/rollConfig.js';
-import { applyStatusEffectToActor } from '../../../scripts/statusEffects/applyStatusEffect.js';
+import {
+    applyStatusEffectToActor,
+    applyStatusEffectToTargets
+} from '../../../scripts/statusEffects/applyStatusEffect.js';
 
 export let itemMixin = {
     async _onDropItem(event, data) {
@@ -948,6 +951,7 @@ export let itemMixin = {
             spellItem.system.selfEffects.forEach(effect =>
                 applyStatusEffectToActor(this.actor.uuid, effect.statusEffect, damage.duration)
             );
+            applyStatusEffectToTargets(spellItem.system.onCastEffects, damage.duration);
         }
     },
 
