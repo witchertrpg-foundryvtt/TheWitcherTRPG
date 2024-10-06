@@ -1,9 +1,6 @@
-
-import WitcherConfigurationSheet from "./WitcherConfigurationSheet.js";
+import WitcherConfigurationSheet from './WitcherConfigurationSheet.js';
 
 export default class WitcheActiveEffectConfigurationSheet extends WitcherConfigurationSheet {
-
-
     /** @override */
     getData() {
         const data = super.getData();
@@ -17,33 +14,30 @@ export default class WitcheActiveEffectConfigurationSheet extends WitcherConfigu
         super.activateListeners(html);
 
         // Active Effect management
-        html.on("click", ".effect-control", (ev) =>
-            this.onManageActiveEffect(ev, this.item)
-        );
-
+        html.on('click', '.effect-control', ev => this.onManageActiveEffect(ev, this.item));
     }
 
     /**
-       * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
-       * @param {ActiveEffect[]} effects    A collection or generator of Active Effect documents to prepare sheet data for
-       * @returns {object}                   Data for rendering
-       */
+     * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
+     * @param {ActiveEffect[]} effects    A collection or generator of Active Effect documents to prepare sheet data for
+     * @returns {object}                   Data for rendering
+     */
     prepareActiveEffectCategories(effects) {
         // Define effect header categories
         const categories = {
             temporary: {
-                type: "temporary",
-                label: game.i18n.localize("WITCHER.activeEffect.temporary"),
+                type: 'temporary',
+                label: game.i18n.localize('WITCHER.activeEffect.temporary'),
                 effects: []
             },
             passive: {
-                type: "passive",
-                label: game.i18n.localize("WITCHER.activeEffect.passive"),
+                type: 'passive',
+                label: game.i18n.localize('WITCHER.activeEffect.passive'),
                 effects: []
             },
             inactive: {
-                type: "inactive",
-                label: game.i18n.localize("WITCHER.activeEffect.inactive"),
+                type: 'inactive',
+                label: game.i18n.localize('WITCHER.activeEffect.inactive'),
                 effects: []
             }
         };
@@ -66,31 +60,25 @@ export default class WitcheActiveEffectConfigurationSheet extends WitcherConfigu
     onManageActiveEffect(event, owner) {
         event.preventDefault();
         const a = event.currentTarget;
-        const li = a.closest("li");
-        const effect = li.dataset.effectId
-            ? owner.effects.get(li.dataset.effectId)
-            : null;
+        const li = a.closest('li');
+        const effect = li.dataset.effectId ? owner.effects.get(li.dataset.effectId) : null;
         switch (a.dataset.action) {
-            case "create":
-                return owner.createEmbeddedDocuments("ActiveEffect", [
+            case 'create':
+                return owner.createEmbeddedDocuments('ActiveEffect', [
                     {
-                        name: game.i18n.format("DOCUMENT.New", {
-                            type: game.i18n.localize("DOCUMENT.ActiveEffect")
-                        }),
-                        icon: "icons/svg/aura.svg",
-                        origin: owner.uuid,
-                        "duration.rounds":
-                            li.dataset.effectType === "temporary" ? 1 : undefined,
-                        disabled: li.dataset.effectType === "inactive"
-                    },
+                        'name': owner.name,
+                        'icon': owner.img,
+                        'origin': owner.uuid,
+                        'duration.rounds': li.dataset.effectType === 'temporary' ? 1 : undefined,
+                        'disabled': li.dataset.effectType === 'inactive'
+                    }
                 ]);
-            case "edit":
+            case 'edit':
                 return effect.sheet.render(true);
-            case "delete":
+            case 'delete':
                 return effect.delete();
-            case "toggle":
+            case 'toggle':
                 return effect.update({ disabled: !effect.disabled });
         }
     }
-
 }
