@@ -1,4 +1,5 @@
 import { getCurrentCharacter } from '../helper.js';
+import { SocketMessage } from '../socket/socketMessage.js';
 
 export function addStatusEffectChatListeners(html) {
     // setup chat listener messages for each message as some need the message context instead of chatlog context.
@@ -27,6 +28,12 @@ export async function onApplyStatus(event) {
 
 export async function applyStatusEffectToActor(actorUuid, statusEffectId, duration) {
     let actor = fromUuidSync(actorUuid);
+
+    if (!actor.isOwner) {
+        sendToGm(actorUuid, statusEffectId, duration);
+        return;
+    }
+
     //only try to apply it when not already present
     if (actor && !actor.appliedEffects.find(effect => effect.statuses.find(status => status == statusEffectId))) {
         await actor.toggleStatusEffect(statusEffectId);
@@ -52,4 +59,8 @@ function handleStatusCounterIntegration(target, statusId, duration) {
     let effectCounter = EffectCounter.getAllCounters(target).find(effects => effects.path == statusEffect.img);
     effectCounter.setValue(parseInt(duration));
     effectCounter.changeType('statuscounter.countdown_round', target);
+}
+
+function sendToGm(actorUuid, statusEffectId, duration) {
+    SocketMessage.emitForGM('applyStatusEffectToActor', { actorUuid, statusEffectId, duration });
 }

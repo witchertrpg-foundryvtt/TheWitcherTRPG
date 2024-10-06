@@ -883,7 +883,6 @@ export let itemMixin = {
                 });
             }
 
-            damage.effects = spellItem.system.damageProperties.effects;
             damage.formula = dmg;
             let touchedLocation = this.actor.getLocationObject(location);
             rollFormula += !displayRollDetails
