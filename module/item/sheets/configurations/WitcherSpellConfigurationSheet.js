@@ -7,9 +7,9 @@ export default class WitcherSpellConfigurationSheet extends WitcherDamagePropert
         html.find('.edit-effect-self').on('blur', this._onEditEffectOfArray.bind(this, 'selfEffects'));
         html.find('.remove-effect-self').on('click', this._oRemoveEffectFromArray.bind(this, 'selfEffects'));
 
-        html.find('.add-effect-hit').on('click', this._onAddEffectToArray.bind(this, 'onHitEffects'));
-        html.find('.edit-effect-hit').on('blur', this._onEditEffectOfArray.bind(this, 'onHitEffects'));
-        html.find('.remove-effect-hit').on('click', this._oRemoveEffectFromArray.bind(this, 'onHitEffects'));
+        html.find('.add-effect-cast').on('click', this._onAddEffectToArray.bind(this, 'onCastEffects'));
+        html.find('.edit-effect-cast').on('blur', this._onEditEffectOfArray.bind(this, 'onCastEffects'));
+        html.find('.remove-effect-cast').on('click', this._oRemoveEffectFromArray.bind(this, 'onCastEffects'));
     }
 
     _onAddEffectToArray(array, event) {

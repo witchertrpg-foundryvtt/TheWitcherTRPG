@@ -23,22 +23,22 @@
         {{/each}}
     </table>
 
-    <h3>{{localize "WITCHER.Item.Settings.Spell.HitProperties"}}</h3>
+    <h3>{{localize "WITCHER.Item.Settings.Spell.CastProperties"}}</h3>
     <table class="item-bottom-table">
         <tr>
-            <th><a class="add-effect-hit" data-target='system.onHitEffects'
+            <th><a class="add-effect-cast" data-target='system.onCastEffects'
                     title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
             </th>
             <th>{{localize "WITCHER.Item.Effect"}}</th>
         </tr>
-        {{#each item.system.onHitEffects as |effect name|}}
+        {{#each item.system.onCastEffects as |effect name|}}
             <tr class="list-item" data-id="{{effect.id}}">
                 <td>
-                    <a class="remove-effect-hit" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                    <a class="remove-effect-cast" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
                             class="fas fa-minus"></i></a>
                 </td>
                 <td>
-                    <select class="edit-effect-hit item-effect" data-field="statusEffect">
+                    <select class="edit-effect-cast item-effect" data-field="statusEffect">
                         {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                     </select>
                 </td>

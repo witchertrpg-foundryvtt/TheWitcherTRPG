@@ -86,7 +86,7 @@
                 "ConsumableProperties": "Consumable Properties",
                 "Spell": {
                     "SelfProperties": "Apply to caster",
-                    "HitProperties": "Apply to target"
+                    "CastProperties": "Apply to target"
                 }
             }
         },
