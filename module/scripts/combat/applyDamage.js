@@ -1,5 +1,7 @@
 import { buttonDialog } from '../chat.js';
+import { applyModifierToActor } from '../globalModifier/applyGlobalModifier.js';
 import { getInteractActor } from '../helper.js';
+import { applyStatusEffectToActor } from '../statusEffects/applyStatusEffect.js';
 
 export function addDamageMessageContextOptions(html, options) {
     let canApplyDamage = li => li.find('.damage-message').length;
@@ -122,8 +124,6 @@ async function applyDamage(actor, totalDamage, messageId, derivedStat) {
     let infoTotalDmg = totalDamage;
     let location = damage.location;
 
-    console.log(damage);
-
     let dialogData = await createApplyDamageDialog(actor, damage);
 
     if (dialogData.cancel) {
@@ -163,6 +163,15 @@ async function applyDamage(actor, totalDamage, messageId, derivedStat) {
         applyDamageToAllLocations(actor, dialogData, damage, totalDamage, infoTotalDmg, derivedStat);
     } else {
         applyDamageToLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, location, derivedStat);
+    }
+
+    damage.damageProperties.effects
+        .filter(effect => effect.statusEffect)
+        .filter(effect => effect.applied)
+        .forEach(effect => applyStatusEffectToActor(actor.uuid, effect.statusEffect, damage.duration));
+
+    if (damage.damageProperties.appliesGlobalModifierToDamaged) {
+        damage.damageProperties.damagedGlobalModifiers.forEach(modifier => applyModifierToActor(actor.uuid, modifier));
     }
 }
 

@@ -3,6 +3,12 @@ import { extendedRoll } from '../../../scripts/rolls/extendedRoll.js';
 
 import { rollDamage } from '../../../scripts/combat/attack.js';
 import { RollConfig } from '../../../scripts/rollConfig.js';
+import {
+    applyStatusEffectToActor,
+    applyStatusEffectToTargets
+} from '../../../scripts/statusEffects/applyStatusEffect.js';
+import { applyModifierToActor, applyModifierToTargets } from '../../../scripts/globalModifier/applyGlobalModifier.js';
+import damageProperties from '../../../data/item/templates/damagePropertiesData.js';
 
 export let itemMixin = {
     async _onDropItem(event, data) {
@@ -882,7 +888,6 @@ export let itemMixin = {
                 });
             }
 
-            damage.effects = spellItem.system.damageProperties.effects;
             damage.formula = dmg;
             let touchedLocation = this.actor.getLocationObject(location);
             rollFormula += !displayRollDetails
@@ -944,7 +949,12 @@ export let itemMixin = {
         await roll.toMessage(messageData);
 
         if (!roll.options.fumble) {
-            await spellItem.system.globalModifiers.forEach(modifier => this.actor._activateGlobalModifier(modifier));
+            spellItem.system.globalModifiers.forEach(modifier => applyModifierToActor(his.actor.uuid, modifier));
+            spellItem.system.selfEffects.forEach(effect =>
+                applyStatusEffectToActor(this.actor.uuid, effect.statusEffect, damage.duration)
+            );
+            applyStatusEffectToTargets(spellItem.system.onCastEffects, damage.duration);
+            applyModifierToTargets(spellItem.system.damageProperties?.hitGlobalModifiers);
         }
     },
 

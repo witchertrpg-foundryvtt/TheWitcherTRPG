@@ -15,6 +15,8 @@ import WitcherActor from './actor/witcherActor.js';
 
 import { registerDataModels } from './setup/registerDataModels.js';
 import { registerSheets } from './setup/registerSheets.js';
+import { registerSocketListeners } from './setup/socketHook.js';
+import WitcherActiveEffect from './activeEffect/witcherActiveEffect.js';
 
 async function preloadHandlebarsTemplates() {
     const templatePath = [
@@ -74,6 +76,7 @@ Hooks.once('init', function () {
     CONFIG.statusEffects = CONFIG.WITCHER.statusEffects;
     CONFIG.Item.documentClass = WitcherItem;
     CONFIG.Actor.documentClass = WitcherActor;
+    CONFIG.ActiveEffect.documentClass = WitcherActiveEffect;
     CONFIG.ActiveEffect.legacyTransferral = false;
 
     registerDataModels();
@@ -111,6 +114,8 @@ Hooks.once('ready', async function () {
             chat.classList.add('witcher-style');
         }
     }
+
+    registerSocketListeners();
 });
 
 Hooks.once('dragRuler.ready', SpeedProvider => {

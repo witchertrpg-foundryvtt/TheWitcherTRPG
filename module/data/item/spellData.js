@@ -1,14 +1,12 @@
-import { migrateDamageProperties } from "../migrations/damagePropertiesMigration.js";
-import CommonItemData from "./commonItemData.js";
-import damageProperties from "./templates/damagePropertiesData.js";
-import itemEffect from "./templates/itemEffectData.js";
+import { migrateDamageProperties } from '../migrations/damagePropertiesMigration.js';
+import CommonItemData from './commonItemData.js';
+import damageProperties from './templates/damagePropertiesData.js';
+import itemEffect from './templates/itemEffectData.js';
 
 const fields = foundry.data.fields;
 
 export default class SpellData extends CommonItemData {
-
     static defineSchema() {
-
         const commonData = super.defineSchema();
         return {
             // Using destructuring to effectively append our additional data here
@@ -51,21 +49,20 @@ export default class SpellData extends CommonItemData {
 
             globalModifiers: new fields.ArrayField(new fields.StringField({ initial: '' })),
             selfEffects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
-        }
+            onCastEffects: new fields.ArrayField(new fields.SchemaField(itemEffect()))
+        };
     }
-
 
     /** @inheritdoc */
     static migrateData(source) {
         super.migrateData(source);
 
-        if ("dificultyCheck" in source) {
+        if ('dificultyCheck' in source) {
             source.difficultyCheck = source.dificultyCheck;
         }
 
-        this.effects?.forEach(effect => effect.percentage = parseInt(effect.percentage))
+        this.effects?.forEach(effect => (effect.percentage = parseInt(effect.percentage)));
 
         migrateDamageProperties(source);
     }
-
 }
