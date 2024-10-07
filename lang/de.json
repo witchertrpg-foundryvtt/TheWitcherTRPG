@@ -81,7 +81,7 @@
             },
             "DamageProperties": {
                 "appliesGlobalModifierToHit": "wendet globalen Modifikator bei Treffer an",
-                "appliesGlobalModifierToDamaged": "wendet globalen Modifikator bei Schaden an (nicht funktionsfähig)",
+                "appliesGlobalModifierToDamaged": "wendet globalen Modifikator bei Schaden an",
                 "damageIsAblation": "Behandelt Schaden als Abtragung (nicht funktionsfähig)",
                 "damageToAllLocations": "Schädigt alle Trefferzonen",
                 "bypassesWornArmor": "Umgeht getragene Rüstung",

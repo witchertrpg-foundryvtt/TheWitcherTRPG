@@ -1,4 +1,5 @@
 import { buttonDialog } from '../chat.js';
+import { applyModifierToActor } from '../globalModifier/applyGlobalModifier.js';
 import { getInteractActor } from '../helper.js';
 import { applyStatusEffectToActor } from '../statusEffects/applyStatusEffect.js';
 
@@ -168,6 +169,10 @@ async function applyDamage(actor, totalDamage, messageId, derivedStat) {
         .filter(effect => effect.statusEffect)
         .filter(effect => effect.applied)
         .forEach(effect => applyStatusEffectToActor(actor.uuid, effect.statusEffect, damage.duration));
+
+    if (damage.damageProperties.appliesGlobalModifierToDamaged) {
+        damage.damageProperties.damagedGlobalModifiers.forEach(modifier => applyModifierToActor(actor.uuid, modifier));
+    }
 }
 
 async function applyDamageToLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, location, derivedStat) {
