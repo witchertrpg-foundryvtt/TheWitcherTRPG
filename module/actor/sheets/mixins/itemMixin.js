@@ -7,6 +7,8 @@ import {
     applyStatusEffectToActor,
     applyStatusEffectToTargets
 } from '../../../scripts/statusEffects/applyStatusEffect.js';
+import { applyModifierToActor, applyModifierToTargets } from '../../../scripts/globalModifier/applyGlobalModifier.js';
+import damageProperties from '../../../data/item/templates/damagePropertiesData.js';
 
 export let itemMixin = {
     async _onDropItem(event, data) {
@@ -947,11 +949,12 @@ export let itemMixin = {
         await roll.toMessage(messageData);
 
         if (!roll.options.fumble) {
-            spellItem.system.globalModifiers.forEach(modifier => this.actor._activateGlobalModifier(modifier));
+            spellItem.system.globalModifiers.forEach(modifier => applyModifierToActor(his.actor.uuid, modifier));
             spellItem.system.selfEffects.forEach(effect =>
                 applyStatusEffectToActor(this.actor.uuid, effect.statusEffect, damage.duration)
             );
             applyStatusEffectToTargets(spellItem.system.onCastEffects, damage.duration);
+            applyModifierToTargets(spellItem.system.damageProperties?.hitGlobalModifiers);
         }
     },
 

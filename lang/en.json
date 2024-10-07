@@ -58,7 +58,7 @@
                 }
             },
             "DamageProperties": {
-                "appliesGlobalModifierToHit": "Applies Global Modifier to Hit (not functional)",
+                "appliesGlobalModifierToHit": "Applies Global Modifier to Hit",
                 "appliesGlobalModifierToDamaged": "Applies Global Modifier to Damaged (not functional)",
                 "damageIsAblation": "Treat damage as ablation (not functional)",
                 "damageToAllLocations": "Damages all locations",
