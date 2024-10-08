@@ -81,7 +81,7 @@ function BlockAttack(actor) {
 function ExecuteDefense(actor, messageId, totalAttack) {
     if (!actor) return;
 
-    let damage = game.messages.get(messageId)?.getFlag('TheWitcherTRPG', 'damage');
+    let attackDamageObject = game.messages.get(messageId)?.getFlag('TheWitcherTRPG', 'damage');
 
     let weapons = actor.items.filter(function (item) {
         return (
@@ -116,20 +116,32 @@ function ExecuteDefense(actor, messageId, totalAttack) {
             Dodge: {
                 label: `${game.i18n.localize('WITCHER.Dialog.ButtonDodge')}`,
                 callback: async html => {
-                    defense(actor, { skillName: 'dodge' }, { totalAttack, damage }, html, 'ButtonDodge');
+                    defense(actor, { skillName: 'dodge' }, { totalAttack, attackDamageObject }, html, 'ButtonDodge');
                 }
             },
             Reposition: {
                 label: `${game.i18n.localize('WITCHER.Dialog.ButtonReposition')}`,
                 callback: async html => {
-                    defense(actor, { skillName: 'athletics' }, { totalAttack, damage }, html, 'ButtonReposition');
+                    defense(
+                        actor,
+                        { skillName: 'athletics' },
+                        { totalAttack, attackDamageObject },
+                        html,
+                        'ButtonReposition'
+                    );
                 }
             },
             Block: {
                 label: `${game.i18n.localize('WITCHER.Dialog.ButtonBlock')}`,
                 callback: async html => {
                     let defenseSkill = html.find('[name=form]')[0].value;
-                    defense(actor, { skillName: defenseSkill }, { totalAttack, damage }, html, 'ButtonBlock');
+                    defense(
+                        actor,
+                        { skillName: defenseSkill },
+                        { totalAttack, attackDamageObject },
+                        html,
+                        'ButtonBlock'
+                    );
                 }
             },
             Parry: {
@@ -141,7 +153,7 @@ function ExecuteDefense(actor, messageId, totalAttack) {
                     defense(
                         actor,
                         { skillName: defenseSkill, modifier: -3, stagger: true },
-                        { totalAttack, damage, attacker },
+                        { totalAttack, attackDamageObject, attacker },
                         html,
                         'ButtonParry',
                         selectedOption.dataset.itemid,
@@ -157,7 +169,7 @@ function ExecuteDefense(actor, messageId, totalAttack) {
                     defense(
                         actor,
                         { skillName: defenseSkill, modifier: -5 },
-                        { totalAttack, damage },
+                        { totalAttack, attackDamageObject },
                         html,
                         'ButtonParryThrown',
                         selectedOption.dataset.itemid
@@ -167,7 +179,13 @@ function ExecuteDefense(actor, messageId, totalAttack) {
             MagicResist: {
                 label: `${game.i18n.localize('WITCHER.Dialog.ButtonMagicResist')}`,
                 callback: async html => {
-                    defense(actor, { skillName: 'resistmagic' }, { totalAttack, damage }, html, 'ButtonMagicResist');
+                    defense(
+                        actor,
+                        { skillName: 'resistmagic' },
+                        { totalAttack, attackDamageObject },
+                        html,
+                        'ButtonMagicResist'
+                    );
                 }
             }
         }
@@ -233,6 +251,11 @@ async function defense(
         buttonName.replace('Button', '').toLowerCase(),
         html.find('[name=form]')[0].selectedOptions[0].getAttribute('type')
     );
+
+    if (skillName != 'resistmagic' && actor.statuses.find(status => status == 'stun')) {
+        rollFormula = '10[Stun]';
+        actor.toggleStatusEffect('stun');
+    }
 
     let messageData = {
         speaker: ChatMessage.getSpeaker({ actor: actor }),
