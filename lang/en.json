@@ -1107,6 +1107,7 @@
             }
         },
         "statusEffects": {
+            "applyCombat": "Applying combat effect for ",
             "healing": "Healing",
             "buffed": "Buffed",
             "fire": "Fire",
