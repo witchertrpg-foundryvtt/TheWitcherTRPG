@@ -1,7 +1,6 @@
 {
     "TYPES": {
         "Item": {
-            "effect": "Effect (Deprecated)",
             "globalModifier": "Global Modifier"
         }
     },
