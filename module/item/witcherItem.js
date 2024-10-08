@@ -4,19 +4,6 @@ import { WITCHER } from '../setup/config.js';
 import AbilityTemplate from './ability-template.js';
 
 export default class WitcherItem extends Item {
-    async _preCreate(data, options, user) {
-        //active effects are discontinued, so no new ones should be created
-        if (data.type === 'effect') return false;
-        await super._preCreate(data, options, user);
-    }
-
-    static migrateData(source) {
-        if (source.type == 'effect') {
-            source.type = 'globalModifier';
-        }
-
-        return super.migrateData(source);
-    }
 
     async roll() {}
 

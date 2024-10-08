@@ -6,7 +6,6 @@ import WitcherItemSheet from "../item/sheets/WitcherItemSheet.js";
 import WitcherWeaponSheet from "../item/sheets/WitcherWeaponSheet.js";
 import WitcherDiagramSheet from "../item/sheets/WitcherDiagramSheet.js";
 import WitcherContainerSheet from "../item/sheets/WitcherContainerSheet.js";
-import WitcherEffectSheet from "../item/sheets/WitcherActiveEffectSheet.js";
 
 import WitcherMysterySheet from "../actor/sheets/investigation/WitcherMysterySheet.js";
 import WitcherClueSheet from "../item/sheets/investigation/WitcherClueSheet.js";
@@ -36,10 +35,6 @@ export const registerSheets = () => {
     Items.registerSheet("witcher", WitcherDiagramSheet, {
         makeDefault: true,
         types: ['diagrams']
-    });
-    Items.registerSheet("witcher", WitcherEffectSheet, {
-        makeDefault: true,
-        types: ['effect']
     });
     Items.registerSheet("witcher", WitcherGlobalModifierSheet, {
         makeDefault: true,

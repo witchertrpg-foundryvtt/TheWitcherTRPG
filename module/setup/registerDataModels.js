@@ -16,7 +16,6 @@ import RaceData from "../data/item/raceData.js";
 import ProfessionData from "../data/item/professionData.js";
 import SpellData from "../data/item/spellData.js";
 import DiagramData from "../data/item/diagramData.js";
-import EffectData from "../data/item/effectData.js";
 import ArmorData from "../data/item/armorData.js";
 import ClueData from "../data/investigation/clueData.js";
 import ObstacleData from "../data/investigation/obstacleData.js";
@@ -42,7 +41,6 @@ export const registerDataModels = () => {
         container: ContainerData,
         component: ComponentData,
         diagrams: DiagramData,
-        effect: EffectData,
         enhancement: EnhancementData,
         gobalModifier: GlobalModifierData,
         mount: MountData,

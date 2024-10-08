@@ -77,8 +77,6 @@ export default class WitcherSpellSheet extends WitcherItemSheet {
         const data = TextEditor.getDragEventData(event);
         // Handle different data types
         switch (data.type) {
-            case "ActiveEffect":
-                return this._onDropActiveEffect(event, data);
             case "Item":
                 return this._onDropItem(event, data);
         }
@@ -96,9 +94,4 @@ export default class WitcherSpellSheet extends WitcherItemSheet {
         this.item.update({ 'system.globalModifiers': globalModifiers })
 
     }
-
-    async _onDropActiveEffect(event, data) {
-        console.log("Not implemented")
-    }
-
 }
