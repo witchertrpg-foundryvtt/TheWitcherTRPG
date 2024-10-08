@@ -2,6 +2,7 @@ import { extendedRoll } from '../rolls/extendedRoll.js';
 import { RollConfig } from '../rollConfig.js';
 import { getInteractActor } from '../helper.js';
 import { applyModifierToActor } from '../globalModifier/applyGlobalModifier.js';
+import { applyStatusEffectToActor } from '../statusEffects/applyStatusEffect.js';
 
 export function addDefenseMessageContextOptions(html, options) {
     let canDefend = li => li.find('.attack-message').length || li.find('.defense').length;
@@ -81,6 +82,7 @@ function ExecuteDefense(actor, messageId, totalAttack) {
     if (!actor) return;
 
     let damage = game.messages.get(messageId)?.getFlag('TheWitcherTRPG', 'damage');
+
     let weapons = actor.items.filter(function (item) {
         return (
             item.type == 'weapon' && !item.system.isAmmo && CONFIG.WITCHER.meleeSkills.includes(item.system.attackSkill)
@@ -114,36 +116,36 @@ function ExecuteDefense(actor, messageId, totalAttack) {
             Dodge: {
                 label: `${game.i18n.localize('WITCHER.Dialog.ButtonDodge')}`,
                 callback: async html => {
-                    defense(actor, 'dodge', 0, totalAttack, damage, html, 'ButtonDodge');
+                    defense(actor, { skillName: 'dodge' }, { totalAttack, damage }, html, 'ButtonDodge');
                 }
             },
             Reposition: {
                 label: `${game.i18n.localize('WITCHER.Dialog.ButtonReposition')}`,
                 callback: async html => {
-                    defense(actor, 'athletics', 0, totalAttack, damage, html, 'ButtonReposition');
+                    defense(actor, { skillName: 'athletics' }, { totalAttack, damage }, html, 'ButtonReposition');
                 }
             },
             Block: {
                 label: `${game.i18n.localize('WITCHER.Dialog.ButtonBlock')}`,
                 callback: async html => {
                     let defenseSkill = html.find('[name=form]')[0].value;
-                    defense(actor, defenseSkill, 0, totalAttack, damage, html, 'ButtonBlock');
+                    defense(actor, { skillName: defenseSkill }, { totalAttack, damage }, html, 'ButtonBlock');
                 }
             },
             Parry: {
                 label: `${game.i18n.localize('WITCHER.Dialog.ButtonParry')}`,
                 callback: async html => {
+                    let attacker = game.messages.get(messageId)?.getFlag('TheWitcherTRPG', 'attack').owner;
                     let selectedOption = html.find('[name=form]')[0].selectedOptions[0];
                     let defenseSkill = selectedOption.value;
                     defense(
                         actor,
-                        defenseSkill,
-                        -3,
-                        totalAttack,
-                        damage,
+                        { skillName: defenseSkill, modifier: -3, stagger: true },
+                        { totalAttack, damage, attacker },
                         html,
                         'ButtonParry',
-                        selectedOption.dataset.itemid
+                        selectedOption.dataset.itemid,
+                        attacker
                     );
                 }
             },
@@ -154,10 +156,8 @@ function ExecuteDefense(actor, messageId, totalAttack) {
                     let defenseSkill = selectedOption.value;
                     defense(
                         actor,
-                        defenseSkill,
-                        -5,
-                        totalAttack,
-                        damage,
+                        { skillName: defenseSkill, modifier: -5 },
+                        { totalAttack, damage },
                         html,
                         'ButtonParryThrown',
                         selectedOption.dataset.itemid
@@ -167,14 +167,21 @@ function ExecuteDefense(actor, messageId, totalAttack) {
             MagicResist: {
                 label: `${game.i18n.localize('WITCHER.Dialog.ButtonMagicResist')}`,
                 callback: async html => {
-                    defense(actor, 'resistmagic', 0, totalAttack, damage, html, 'ButtonMagicResist');
+                    defense(actor, { skillName: 'resistmagic' }, { totalAttack, damage }, html, 'ButtonMagicResist');
                 }
             }
         }
     }).render(true);
 }
 
-async function defense(actor, skillName, modifier, totalAttack, attackDamageObject, html, buttonName, weaponId) {
+async function defense(
+    actor,
+    { skillName, modifier = 0, stagger = false },
+    { totalAttack, attackDamageObject, attacker },
+    html,
+    buttonName,
+    weaponId
+) {
     let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
     if (!handleExtraDefense(html, actor)) {
@@ -251,6 +258,11 @@ async function defense(actor, skillName, modifier, totalAttack, attackDamageObje
         attackDamageObject.damageProperties.hitGlobalModifiers.forEach(modifier =>
             applyModifierToActor(actor.uuid, modifier)
         );
+    }
+
+    if (roll.total > totalAttack && stagger) {
+        applyStatusEffectToActor(attacker, 'staggered', 1);
+        console.log(attacker);
     }
 }
 
