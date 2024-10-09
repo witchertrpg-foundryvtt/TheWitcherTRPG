@@ -8,7 +8,7 @@
             "container": "Behälter",
             "diagrams": "Diagramm",
             "enhancement": "Verbesserung",
-            "globalModifier": "Globaler Modifikator",
+            "globalModifier": "Globaler Modifikator (abgekündigt)",
             "mount": "Reittier",
             "mutagen": "Mutagen",
             "note": "Notiz",
@@ -24,7 +24,7 @@
             "loot": "Beute",
             "monster": "Monster",
             "mystery": "Geheimnis"
-        }			
+        }
     },
     "WITCHER": {
         "Name": "Name",

@@ -1,7 +1,7 @@
 {
     "TYPES": {
         "Item": {
-            "globalModifier": "Global Modifier"
+            "globalModifier": "Global Modifier (deprecated)"
         }
     },
     "WITCHER": {
