@@ -3,6 +3,7 @@ import { getRandomInt } from '../scripts/helper.js';
 import { RollConfig } from '../scripts/rollConfig.js';
 import { WITCHER } from '../setup/config.js';
 import { modifierMixin } from './mixins/modifierMixin.js';
+import { skillModifierMixin } from './sheets/mixins/skillModifierMixin.js';
 
 export default class WitcherActor extends Actor {
     prepareDerivedData() {
