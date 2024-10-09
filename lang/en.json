@@ -76,6 +76,7 @@
                 "RemoveEnhancement": "Remove Enhancement"
             },
             "Settings": {
+                "General": "General Settings",
                 "Alchemical": "Alchemical Settings",
                 "Armor": "Armor Settings",
                 "Valuable": "Valuable Settings",
