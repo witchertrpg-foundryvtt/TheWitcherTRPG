@@ -1,27 +1,26 @@
-import MonsterData from "../data/actor/monsterData.js";
-import ContainerData from "../data/item/containerData.js";
-import LootData from "../data/actor/lootData.js";
-import CommonActorData from "../data/actor/commonActorData.js"
-import CharacterData from "../data/actor/characterData.js";
-import ValuableData from "../data/item/valuableData.js";
-import WeaponData from "../data/item/weaponData.js";
-import EnhancementData from "../data/item/enhancementData.js";
-import MountData from "../data/item/mountData.js";
-import AlchemicalData from "../data/item/alchemicalData.js";
-import MutagenData from "../data/item/mutagenData.js";
-import NoteData from "../data/item/noteData.js";
-import CommonItemData from "../data/item/commonItemData.js";
-import ComponentData from "../data/item/componentData.js";
-import RaceData from "../data/item/raceData.js";
-import ProfessionData from "../data/item/professionData.js";
-import SpellData from "../data/item/spellData.js";
-import DiagramData from "../data/item/diagramData.js";
-import ArmorData from "../data/item/armorData.js";
-import ClueData from "../data/investigation/clueData.js";
-import ObstacleData from "../data/investigation/obstacleData.js";
-import MysteryActorData from "../data/investigation/mysteryActorData.js";
-import GlobalModifierData from "../data/item/globalModifierData.js";
-
+import MonsterData from '../data/actor/monsterData.js';
+import ContainerData from '../data/item/containerData.js';
+import LootData from '../data/actor/lootData.js';
+import CharacterData from '../data/actor/characterData.js';
+import ValuableData from '../data/item/valuableData.js';
+import WeaponData from '../data/item/weaponData.js';
+import EnhancementData from '../data/item/enhancementData.js';
+import MountData from '../data/item/mountData.js';
+import AlchemicalData from '../data/item/alchemicalData.js';
+import MutagenData from '../data/item/mutagenData.js';
+import NoteData from '../data/item/noteData.js';
+import CommonItemData from '../data/item/commonItemData.js';
+import ComponentData from '../data/item/componentData.js';
+import RaceData from '../data/item/raceData.js';
+import ProfessionData from '../data/item/professionData.js';
+import SpellData from '../data/item/spellData.js';
+import DiagramData from '../data/item/diagramData.js';
+import ArmorData from '../data/item/armorData.js';
+import ClueData from '../data/investigation/clueData.js';
+import ObstacleData from '../data/investigation/obstacleData.js';
+import MysteryActorData from '../data/investigation/mysteryActorData.js';
+import GlobalModifierData from '../data/item/globalModifierData.js';
+import ActiveEffectData from '../data/activeEffects/activeEffectData.js';
 
 export const registerDataModels = () => {
     foundry.utils.mergeObject(CONFIG.Actor.dataModels, {
@@ -31,7 +30,7 @@ export const registerDataModels = () => {
         loot: LootData,
 
         mystery: MysteryActorData
-    })
+    });
 
     foundry.utils.mergeObject(CONFIG.Item.dataModels, {
         // The keys are the types defined in our template.json
@@ -54,5 +53,7 @@ export const registerDataModels = () => {
 
         clue: ClueData,
         obstacle: ObstacleData
-    })
-}
+    });
+
+    CONFIG.ActiveEffect.dataModels.base = ActiveEffectData;
+};
