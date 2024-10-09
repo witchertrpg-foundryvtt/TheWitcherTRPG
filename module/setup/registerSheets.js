@@ -17,6 +17,7 @@ import WitcherArmorSheet from '../item/sheets/WitcherArmorSheet.js';
 import WitcherValuableSheet from '../item/sheets/WitcherValuableSheet.js';
 import WitcherActiveEffect from '../activeEffect/witcherActiveEffect.js';
 import { WitcherActiveEffectConfig } from '../activeEffect/WitcherActiveEffectSheet.js';
+import WitcherRaceSheet from '../item/sheets/WitcherRaceSheet.js';
 
 export const registerSheets = () => {
     Items.unregisterSheet('core', ItemSheet);
@@ -41,6 +42,10 @@ export const registerSheets = () => {
     Items.registerSheet('witcher', WitcherGlobalModifierSheet, {
         makeDefault: true,
         types: ['globalModifier']
+    });
+    Items.registerSheet('witcher', WitcherRaceSheet, {
+        makeDefault: true,
+        types: ['race']
     });
     Items.registerSheet('witcher', WitcherSpellSheet, {
         makeDefault: true,
