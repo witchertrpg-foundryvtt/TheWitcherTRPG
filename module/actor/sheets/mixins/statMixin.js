@@ -191,7 +191,9 @@ export let statMixin = {
     calc_total_stats(context) {
         let totalStats = 0;
         for (let element in context.system.stats) {
-            totalStats += context.system.stats[element].max;
+            if (element !== 'toxicity') {
+                totalStats += context.system.stats[element].max;
+            }
         }
         return totalStats;
     },
