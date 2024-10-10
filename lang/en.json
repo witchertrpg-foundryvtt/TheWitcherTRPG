@@ -49,7 +49,7 @@
             "ConsumeProperties": {
                 "doesHeal": "Applies heal",
                 "heal": "Heals for",
-                "appliesGlobalModifier": "Applies Global Modifier",
+                "appliesGlobalModifier": "Applies Global Modifier (will be removed, convert to active effects)",
                 "Chat": {
                     "healedFor": "healed for",
                     "consumeGlobalModifiers": "applied these global modifiers",
@@ -57,8 +57,8 @@
                 }
             },
             "DamageProperties": {
-                "appliesGlobalModifierToHit": "Applies Global Modifier to Hit",
-                "appliesGlobalModifierToDamaged": "Applies Global Modifier to Damaged",
+                "appliesGlobalModifierToHit": "Applies Global Modifier to Hit (will be removed, convert to active effects)",
+                "appliesGlobalModifierToDamaged": "Applies Global Modifier to Damaged (will be removed, convert to active effects)",
                 "damageIsAblation": "Treat damage as ablation (not functional)",
                 "damageToAllLocations": "Damages all locations",
                 "bypassesWornArmor": "Bypasses worn armor",
@@ -1031,9 +1031,10 @@
             "Rolled": "Rolled",
             "Applied": "Applied",
             "Failed": "Failed",
-            "applySelf": "Apply this active effect on self when used (not functional)",
-            "applyOnHit": "Apply this active effect on hit when used (not functional)",
-            "applyOnDamage": "Apply this active effect on damage when used (not functional)"
+            "applySelf": "Apply this active effect on self when used",
+            "applyOnTarget": "Apply this active effect on target when used",
+            "applyOnHit": "Apply this active effect on hit when used",
+            "applyOnDamage": "Apply this active effect on damage when used"
         },
         "globalModifier": {
             "tab": "Global Modifier",

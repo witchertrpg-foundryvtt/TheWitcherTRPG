@@ -1,5 +1,4 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <h3>{{localize "WITCHER.Item.Settings.Spell.SelfProperties"}}</h3>
     {{! Sheet Tab Navigation }}
     <nav class="sheet-tabs tabs flexrow" data-group="primary">
         <a data-tab="general">{{localize "WITCHER.Item.Settings.General"}}</a>
@@ -13,6 +12,7 @@
     {{! Sheet Body }}
     <section class="sheet-body">
         <div class="tab" data-group="primary" data-tab="general">
+            <h3>{{localize "WITCHER.Item.Settings.Spell.SelfProperties"}}</h3>
             <table class="item-bottom-table">
                 <tr>
                     <th><a class="add-effect-self" data-target='system.selfEffects'

@@ -71,7 +71,7 @@
             "ConsumeProperties": {
                 "doesHeal": "Heilt",
                 "heal": "Heilt für",
-                "appliesGlobalModifier": "Wendet Globale Modifikatoren an",
+                "appliesGlobalModifier": "Wendet Globale Modifikatoren an (wird entfernt, stattdessen Aktive Effekte benutzen)",
                 "Chat": {
                     "healedFor": "Hat geheilt für",
                     "consumeGlobalModifiers": "Hat Globale Modifikatoren angewendet",
@@ -79,8 +79,8 @@
                 }
             },
             "DamageProperties": {
-                "appliesGlobalModifierToHit": "wendet globalen Modifikator bei Treffer an",
-                "appliesGlobalModifierToDamaged": "wendet globalen Modifikator bei Schaden an",
+                "appliesGlobalModifierToHit": "wendet globalen Modifikator bei Treffer an (wird entfernt, stattdessen Aktive Effekte benutzen)",
+                "appliesGlobalModifierToDamaged": "wendet globalen Modifikator bei Schaden an (wird entfernt, stattdessen Aktive Effekte benutzen)",
                 "damageIsAblation": "Behandelt Schaden als Abtragung (nicht funktionsfähig)",
                 "damageToAllLocations": "Schädigt alle Trefferzonen",
                 "bypassesWornArmor": "Umgeht getragene Rüstung",
