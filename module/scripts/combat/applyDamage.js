@@ -1,3 +1,4 @@
+import { applyActiveEffectToActor, applyActiveEffectToActorViaId } from '../activeEffects/applyActiveEffect.js';
 import { buttonDialog } from '../chat.js';
 import { applyModifierToActor } from '../globalModifier/applyGlobalModifier.js';
 import { getInteractActor } from '../helper.js';
@@ -173,6 +174,8 @@ async function applyDamage(actor, totalDamage, messageId, derivedStat) {
     if (damage.damageProperties.appliesGlobalModifierToDamaged) {
         damage.damageProperties.damagedGlobalModifiers.forEach(modifier => applyModifierToActor(actor.uuid, modifier));
     }
+
+    applyActiveEffectToActorViaId(actor.uuid, damage.itemUuid, 'applyOnDamage', damage.duration);
 }
 
 async function applyDamageToLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, location, derivedStat) {

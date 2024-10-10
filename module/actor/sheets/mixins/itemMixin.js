@@ -8,7 +8,10 @@ import {
     applyStatusEffectToTargets
 } from '../../../scripts/statusEffects/applyStatusEffect.js';
 import { applyModifierToActor, applyModifierToTargets } from '../../../scripts/globalModifier/applyGlobalModifier.js';
-import damageProperties from '../../../data/item/templates/damagePropertiesData.js';
+import {
+    applyActiveEffectToActor,
+    applyActiveEffectToTargets
+} from '../../../scripts/activeEffects/applyActiveEffect.js';
 
 export let itemMixin = {
     async _onDropItem(event, data) {
@@ -344,6 +347,14 @@ export let itemMixin = {
         editor.toggleClass('invisible');
     },
 
+    createBaseDamageObject(item) {
+        return {
+            damageProperties: item.system.damageProperties,
+            item: item,
+            itemUuid: item.uuid
+        };
+    },
+
     async _onItemRoll(event, itemId = null) {
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
@@ -451,10 +462,11 @@ export let itemMixin = {
                             let customDmg = html.find('[name=customDmg]')[0].value;
                             let attacknumber = 1;
 
-                            let damage = {
+                            let damage = this.createBaseDamageObject(item);
+                            damage = {
+                                ...damage,
                                 strike: strike,
-                                type: damageType,
-                                damageProperties: item.system.damageProperties
+                                type: damageType
                             };
 
                             if (isExtraAttack) {
@@ -683,10 +695,7 @@ export let itemMixin = {
             itemId = event.currentTarget.closest('.item').dataset.itemId;
         }
         let spellItem = this.actor.items.get(itemId);
-        let damage = {
-            damageProperties: spellItem.system.damageProperties,
-            item: spellItem
-        };
+        let damage = this.createBaseDamageObject(spellItem);
 
         let templateInfo = {
             actor: this.actor
@@ -949,12 +958,22 @@ export let itemMixin = {
         await roll.toMessage(messageData);
 
         if (!roll.options.fumble) {
-            spellItem.system.globalModifiers.forEach(modifier => applyModifierToActor(his.actor.uuid, modifier));
+            spellItem.system.globalModifiers.forEach(modifier => applyModifierToActor(this.actor.uuid, modifier));
             spellItem.system.selfEffects.forEach(effect =>
                 applyStatusEffectToActor(this.actor.uuid, effect.statusEffect, damage.duration)
             );
+            applyActiveEffectToActor(
+                this.actor.uuid,
+                spellItem.effects.filter(effect => effect.system.applySelf),
+                damage.duration
+            );
+
             applyStatusEffectToTargets(spellItem.system.onCastEffects, damage.duration);
             applyModifierToTargets(spellItem.system.damageProperties?.hitGlobalModifiers);
+            applyActiveEffectToTargets(
+                spellItem.effects.filter(effect => effect.system.applyOnTarget),
+                damage.duration
+            );
         }
     },
 

@@ -3,6 +3,7 @@ import { RollConfig } from '../rollConfig.js';
 import { getInteractActor } from '../helper.js';
 import { applyModifierToActor } from '../globalModifier/applyGlobalModifier.js';
 import { applyStatusEffectToActor } from '../statusEffects/applyStatusEffect.js';
+import { applyActiveEffectToActorViaId } from '../activeEffects/applyActiveEffect.js';
 
 export function addDefenseMessageContextOptions(html, options) {
     let canDefend = li => li.find('.attack-message').length || li.find('.defense').length;
@@ -276,15 +277,23 @@ async function defense(
     let message = await roll.toMessage(messageData);
     message.setFlag('TheWitcherTRPG', 'crit', crit);
 
-    if (roll.total < totalAttack && attackDamageObject.damageProperties.appliesGlobalModifierToHit) {
-        attackDamageObject.damageProperties.hitGlobalModifiers.forEach(modifier =>
-            applyModifierToActor(actor.uuid, modifier)
+    if (roll.total < totalAttack) {
+        if (attackDamageObject.damageProperties.appliesGlobalModifierToHit) {
+            attackDamageObject.damageProperties.hitGlobalModifiers.forEach(modifier =>
+                applyModifierToActor(actor.uuid, modifier)
+            );
+        }
+
+        applyActiveEffectToActorViaId(
+            actor.uuid,
+            attackDamageObject.itemUuid,
+            'applyOnHit',
+            attackDamageObject.duration
         );
     }
 
     if (roll.total > totalAttack && stagger) {
         applyStatusEffectToActor(attacker, 'staggered', 1);
-        console.log(attacker);
     }
 }
 

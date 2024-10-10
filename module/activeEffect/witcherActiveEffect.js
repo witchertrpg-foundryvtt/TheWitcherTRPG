@@ -4,6 +4,7 @@ export default class WitcherActiveEffect extends ActiveEffect {
             this.parent.system.isActive === false ||
             this.parent.system.equipped === false ||
             this.system.applySelf === true ||
+            this.system.applyOnTarget === true ||
             this.system.applyOnHit === true ||
             this.system.applyOnDamage === true
         )

@@ -58,6 +58,11 @@
             </div>
 
             <div class="form-group">
+                <label>{{ localize "WITCHER.Effect.applyOnTarget" }}</label>
+                <input type="checkbox" name="system.applyOnTarget" {{ checked data.system.applyOnTarget }} />
+            </div>
+
+            <div class="form-group">
                 <label>{{ localize "WITCHER.Effect.applyOnHit" }}</label>
                 <input type="checkbox" name="system.applyOnHit" {{ checked data.system.applyOnHit }} />
             </div>
