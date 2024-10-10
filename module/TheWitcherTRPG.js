@@ -335,3 +335,8 @@ Handlebars.registerHelper('includes', function (csv, substr) {
         .map(v => v.trim())
         .includes(substr);
 });
+
+Handlebars.registerHelper('formatModLabel', function (statCurrent, statMax, statTotalModifiers) {
+    let calc = (statCurrent - statMax) + statTotalModifiers
+    return calc
+  });
