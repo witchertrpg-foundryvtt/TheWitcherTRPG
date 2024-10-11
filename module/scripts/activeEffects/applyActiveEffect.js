@@ -39,7 +39,8 @@ export async function applyActiveEffectToActor(actorUuid, activeEffects, duratio
     let newEffects = activeEffects.map(effect =>
         effect.clone(
             {
-                'duration.rounds': duration,
+                'duration.rounds': duration ?? effect.duration.rounds,
+                'duration.combat': ui.combat.combats.find(combat => combat.isActive)?.id,
                 'system.applySelf': false,
                 'system.applyOnTarget': false,
                 'system.applyOnHit': false,
