@@ -1,3 +1,69 @@
-.effect > .effect-name > img {
-    width: 32px;
+.effects-list {
+    padding: 0;
+}
+
+.effects-header, .effect-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 100px;
+}
+
+/* Effects Header Style */
+
+.effects-header {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 2px groove #eeede0;
+}
+
+.effects-header:nth-child(n+2) {
+    margin-top: 5px;
+}
+
+.effects-header > h4 {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Effects Row Style */
+
+.effect-list {
+    padding: 0;
+    margin: 0;
+}
+
+.effect-row {
+    padding: 10px 5px 10px;
+    border-bottom: 1px rgba(25, 24, 19, 0.2) solid;
+}
+
+.effect-row:last-child {
+    border-bottom: none;
+    margin-bottom: 5px;
+}
+
+.effect-name{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.effect-name > img {
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    border-color: rgba(25, 24, 19, 0.6);
+}
+
+.effect-name > h4 {
+    margin-bottom: 0;
+}
+
+.effect-source, .effect-duration, .effect-control {
+    align-self: center;
+}
+
+.effect-control {
+    color: rgba(25, 24, 19, 0.8);
 }
