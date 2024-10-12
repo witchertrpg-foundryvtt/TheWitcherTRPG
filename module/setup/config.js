@@ -1927,12 +1927,12 @@ WITCHER.statusEffects = [
         img: 'icons/svg/frozen.svg',
         changes: [
             {
-                key: 'system.stats.spd.max',
+                key: 'system.stats.spd.totalModifiers',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
                 value: -3
             },
             {
-                key: 'system.stats.ref.max',
+                key: 'system.stats.ref.totalModifiers',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
                 value: -1
             }
@@ -1991,17 +1991,17 @@ WITCHER.statusEffects = [
         img: 'icons/svg/tankard.svg',
         changes: [
             {
-                key: 'system.stats.dex.max',
+                key: 'system.stats.dex.totalModifiers',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
                 value: -2
             },
             {
-                key: 'system.stats.ref.max',
+                key: 'system.stats.ref.totalModifiers',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
                 value: -2
             },
             {
-                key: 'system.stats.int.max',
+                key: 'system.stats.int.totalModifiers',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
                 value: -2
             },
