@@ -90,11 +90,11 @@
 								<div class='flex stat-info'>
 									<a class='char-stat-button stat-roll'>{{localize details.label}} {{details.current}}</a>
 									{{#if (gt details.current details.max)}}
-										<h4 class='header-stat stat-mod stat-mod-plus'>{{formatModLabel details.current details.max details.totalModifiers}}</h4>
+										<h4 class='header-stat stat-mod stat-mod-plus'>{{formatModLabel details.current details.max}}</h4>
 									{{else if (eq details.current details.max)}}
-										<h4 class='header-stat stat-mod stat-mod-zero'>{{formatModLabel details.current details.max details.totalModifiers}}</h4>
+										<h4 class='header-stat stat-mod stat-mod-zero'>{{formatModLabel details.current details.max}}</h4>
 									{{else}}
-										<h4 class='header-stat stat-mod stat-mod-minus'>{{formatModLabel details.current details.max details.totalModifiers}}</h4>
+										<h4 class='header-stat stat-mod stat-mod-minus'>{{formatModLabel details.current details.max}}</h4>
 									{{/if}}
 									<input class='header-stat stat-max' name='system.stats.{{stat}}.max' type='number' value='{{details.max}}' placeholder='0' data-dtype='Number' />
 

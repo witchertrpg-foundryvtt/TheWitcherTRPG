@@ -336,7 +336,7 @@ Handlebars.registerHelper('includes', function (csv, substr) {
         .includes(substr);
 });
 
-Handlebars.registerHelper('formatModLabel', function (statCurrent, statMax, statTotalModifiers) {
-    let calc = (statCurrent - statMax) + statTotalModifiers
+Handlebars.registerHelper('formatModLabel', function (statCurrent, statMax) {
+    let calc = statCurrent - statMax
     return calc
   });
