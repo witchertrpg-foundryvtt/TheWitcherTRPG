@@ -1,3 +1,4 @@
+import { applyActiveEffectToActor, applyActiveEffectToActorViaId } from '../activeEffects/applyActiveEffect.js';
 import { buttonDialog } from '../chat.js';
 import { applyModifierToActor } from '../globalModifier/applyGlobalModifier.js';
 import { getInteractActor } from '../helper.js';
@@ -64,7 +65,7 @@ async function createApplyDamageDialog(actor, damage) {
     `;
 
     let location = damage.location;
-    let damageTypeloc = `WITCHER.Armor.${damage.type}`;
+    let damageTypeloc = `WITCHER.DamageType.${damage.type}`;
     let content = `<label>${game.i18n.localize('WITCHER.Damage.damageType')}: <b>${game.i18n.localize(damageTypeloc)}</b></label> <br />
       <label>${game.i18n.localize('WITCHER.Damage.CurrentLocation')}: <b>${location.alias}</b></label> <br />
       <label>${game.i18n.localize('WITCHER.Damage.ChangeLocation')}: <select name="changeLocation">${locationOptions}</select></label> <br />`;
@@ -173,6 +174,8 @@ async function applyDamage(actor, totalDamage, messageId, derivedStat) {
     if (damage.damageProperties.appliesGlobalModifierToDamaged) {
         damage.damageProperties.damagedGlobalModifiers.forEach(modifier => applyModifierToActor(actor.uuid, modifier));
     }
+
+    applyActiveEffectToActorViaId(actor.uuid, damage.itemUuid, 'applyOnDamage', damage.duration);
 }
 
 async function applyDamageToLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, location, derivedStat) {

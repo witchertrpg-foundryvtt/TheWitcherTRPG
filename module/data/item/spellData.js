@@ -39,6 +39,7 @@ export default class SpellData extends CommonItemData {
 
             causeDamages: new fields.BooleanField({ initial: false }),
             damage: new fields.StringField({ nullable: true, initial: null }),
+            damageType: new fields.StringField({ initial: 'elemental', nullable: false }),
             damageProperties: new fields.SchemaField(damageProperties()),
 
             createsShield: new fields.BooleanField({ initial: false }),

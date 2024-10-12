@@ -1,9 +1,9 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <h1>{{localize "WITCHER.Item.Settings.Alchemical"}}</h1>
+    <h1>{{localize "WITCHER.Item.Settings.Race"}}</h1>
+
     {{! Sheet Tab Navigation }}
     <nav class="sheet-tabs tabs flexrow" data-group="primary">
         <a data-tab="general">{{localize "WITCHER.Item.Settings.General"}}</a>
-        <a data-tab="consumable">{{localize "WITCHER.Item.Settings.ConsumableProperties"}}</a>
         <a data-tab="effects">{{localize "WITCHER.activeEffect.tab"}}</a>
     </nav>
 
@@ -11,11 +11,11 @@
     <section class="sheet-body">
         <div class="tab" data-group="primary" data-tab="general">
         </div>
-        <div class="tab" data-group="primary" data-tab="consumable">
-            {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/consumablePropertiesConfiguration.hbs"}}
-        </div>
         <div class="tab effects" data-group="primary" data-tab="effects">
             {{> systems/TheWitcherTRPG/templates/partials/effect-part.hbs}}
         </div>
     </section>
+
+
+
 </form>

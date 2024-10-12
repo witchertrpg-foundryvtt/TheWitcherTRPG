@@ -1,53 +1,79 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <h3>{{localize "WITCHER.Item.Settings.Spell.SelfProperties"}}</h3>
-    <table class="item-bottom-table">
-        <tr>
-            <th><a class="add-effect-self" data-target='system.selfEffects'
-                    title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
-            </th>
-            <th>{{localize "WITCHER.Item.Effect"}}</th>
-        </tr>
-        {{#each item.system.selfEffects as |effect name|}}
-            <tr class="list-item" data-id="{{effect.id}}">
-                <td>
-                    <a class="remove-effect-self" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
-                            class="fas fa-minus"></i></a>
-                </td>
-                <td>
-                    <select class="edit-effect-self item-effect" data-field="statusEffect">
-                        {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
-                    </select>
-                </td>
+    {{! Sheet Tab Navigation }}
+    <nav class="sheet-tabs tabs flexrow" data-group="primary">
+        <a data-tab="general">{{localize "WITCHER.Item.Settings.General"}}</a>
+        {{#if data.causeDamages}}
+            <a data-tab="damageProperties">{{localize "WITCHER.Item.Settings.DamageProperties"}}</a>
+        {{/if}}
 
-            </tr>
-        {{/each}}
-    </table>
+        <a data-tab="effects">{{localize "WITCHER.activeEffect.tab"}}</a>
+    </nav>
 
-    <h3>{{localize "WITCHER.Item.Settings.Spell.CastProperties"}}</h3>
-    <table class="item-bottom-table">
-        <tr>
-            <th><a class="add-effect-cast" data-target='system.onCastEffects'
-                    title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
-            </th>
-            <th>{{localize "WITCHER.Item.Effect"}}</th>
-        </tr>
-        {{#each item.system.onCastEffects as |effect name|}}
-            <tr class="list-item" data-id="{{effect.id}}">
-                <td>
-                    <a class="remove-effect-cast" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
-                            class="fas fa-minus"></i></a>
-                </td>
-                <td>
-                    <select class="edit-effect-cast item-effect" data-field="statusEffect">
-                        {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
-                    </select>
-                </td>
+    {{! Sheet Body }}
+    <section class="sheet-body">
+        <div class="tab" data-group="primary" data-tab="general">
+            <h3>{{localize "WITCHER.Item.Settings.Spell.SelfProperties"}}</h3>
+            <table class="item-bottom-table">
+                <tr>
+                    <th><a class="add-effect-self" data-target='system.selfEffects'
+                            title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
+                    </th>
+                    <th>{{localize "WITCHER.Item.Effect"}}</th>
+                </tr>
+                {{#each item.system.selfEffects as |effect name|}}
+                    <tr class="list-item" data-id="{{effect.id}}">
+                        <td>
+                            <a class="remove-effect-self" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                                    class="fas fa-minus"></i></a>
+                        </td>
+                        <td>
+                            <select class="edit-effect-self item-effect" data-field="statusEffect">
+                                {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                            </select>
+                        </td>
 
-            </tr>
-        {{/each}}
-    </table>
+                    </tr>
+                {{/each}}
+            </table>
 
-    {{#if data.causeDamages}}
-        {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs"}}
-    {{/if}}
+            <h3>{{localize "WITCHER.Item.Settings.Spell.CastProperties"}}</h3>
+            <table class="item-bottom-table">
+                <tr>
+                    <th><a class="add-effect-cast" data-target='system.onCastEffects'
+                            title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
+                    </th>
+                    <th>{{localize "WITCHER.Item.Effect"}}</th>
+                </tr>
+                {{#each item.system.onCastEffects as |effect name|}}
+                    <tr class="list-item" data-id="{{effect.id}}">
+                        <td>
+                            <a class="remove-effect-cast" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                                    class="fas fa-minus"></i></a>
+                        </td>
+                        <td>
+                            <select class="edit-effect-cast item-effect" data-field="statusEffect">
+                                {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                            </select>
+                        </td>
+
+                    </tr>
+                {{/each}}
+            </table>
+
+            {{log this}}
+            <div>
+                <span>{{localize "WITCHER.DamageType.name"}}</span>
+                <select name='system.damageType'>
+                    {{selectOptions config.spellDamageTypes selected=item.system.damageType localize=true}}
+                </select>
+            </div>
+
+        </div>
+        <div class="tab" data-group="primary" data-tab="damageProperties">
+            {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs"}}
+        </div>
+        <div class="tab effects" data-group="primary" data-tab="effects">
+            {{> systems/TheWitcherTRPG/templates/partials/effect-part.hbs}}
+        </div>
+    </section>
 </form>

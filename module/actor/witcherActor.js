@@ -3,6 +3,7 @@ import { getRandomInt } from '../scripts/helper.js';
 import { RollConfig } from '../scripts/rollConfig.js';
 import { WITCHER } from '../setup/config.js';
 import { modifierMixin } from './mixins/modifierMixin.js';
+import { skillModifierMixin } from './sheets/mixins/skillModifierMixin.js';
 
 export default class WitcherActor extends Actor {
     prepareDerivedData() {
@@ -28,20 +29,17 @@ export default class WitcherActor extends Actor {
 
     updateDerived() {
         const stats = this.system.stats;
-        const base = Math.floor((stats.body.current + stats.will.current) / 2);
-        const baseMax = Math.floor((stats.body.max + stats.will.max) / 2);
-        const meleeBonus = Math.ceil((stats.body.current - 6) / 2) * 2;
 
-        let intTotalModifiers = this.getAllModifiers('int').totalModifiers;
-        let refTotalModifiers = this.getAllModifiers('ref').totalModifiers;
-        let dexTotalModifiers = this.getAllModifiers('dex').totalModifiers;
-        let bodyTotalModifiers = this.getAllModifiers('body').totalModifiers;
-        let spdTotalModifiers = this.getAllModifiers('spd').totalModifiers;
-        let empTotalModifiers = this.getAllModifiers('emp').totalModifiers;
-        let craTotalModifiers = this.getAllModifiers('cra').totalModifiers;
-        let willTotalModifiers = this.getAllModifiers('will').totalModifiers;
-        let luckTotalModifiers = this.getAllModifiers('luck').totalModifiers;
-        let toxTotalModifiers = this.getAllModifiers('toxicity').totalModifiers;
+        let intTotalModifiers = this.getAllModifiers('int').totalModifiers + stats.int.totalModifiers;
+        let refTotalModifiers = this.getAllModifiers('ref').totalModifiers + stats.ref.totalModifiers;
+        let dexTotalModifiers = this.getAllModifiers('dex').totalModifiers + stats.dex.totalModifiers;
+        let bodyTotalModifiers = this.getAllModifiers('body').totalModifiers + stats.body.totalModifiers;
+        let spdTotalModifiers = this.getAllModifiers('spd').totalModifiers + stats.spd.totalModifiers;
+        let empTotalModifiers = this.getAllModifiers('emp').totalModifiers + stats.emp.totalModifiers;
+        let craTotalModifiers = this.getAllModifiers('cra').totalModifiers + stats.cra.totalModifiers;
+        let willTotalModifiers = this.getAllModifiers('will').totalModifiers + stats.will.totalModifiers;
+        let luckTotalModifiers = this.getAllModifiers('luck').totalModifiers + stats.luck.totalModifiers;
+        let toxTotalModifiers = this.getAllModifiers('toxicity').totalModifiers + stats.toxicity.totalModifiers;
         let intDivider = this.getAllModifiers('int').totalDivider;
         let refDivider = this.getAllModifiers('ref').totalDivider;
         let dexDivider = this.getAllModifiers('dex').totalDivider;
@@ -62,12 +60,15 @@ export default class WitcherActor extends Actor {
         this.system.stats.luck.modifiers.forEach(item => (luckTotalModifiers += Number(item.value)));
         this.system.stats.toxicity.modifiers.forEach(item => (toxTotalModifiers += Number(item.value)));
 
-        let stunTotalModifiers = this.getAllModifiers('stun').totalModifiers;
-        let runTotalModifiers = this.getAllModifiers('run').totalModifiers;
-        let leapTotalModifiers = this.getAllModifiers('leap').totalModifiers;
-        let encTotalModifiers = this.getAllModifiers('enc').totalModifiers;
-        let recTotalModifiers = this.getAllModifiers('rec').totalModifiers;
-        let wtTotalModifiers = this.getAllModifiers('woundTreshold').totalModifiers;
+        let stunTotalModifiers =
+            this.getAllModifiers('stun').totalModifiers + this.system.coreStats.stun.totalModifiers;
+        let runTotalModifiers = this.getAllModifiers('run').totalModifiers + this.system.coreStats.run.totalModifiers;
+        let leapTotalModifiers =
+            this.getAllModifiers('leap').totalModifiers + this.system.coreStats.leap.totalModifiers;
+        let encTotalModifiers = this.getAllModifiers('enc').totalModifiers + this.system.coreStats.enc.totalModifiers;
+        let recTotalModifiers = this.getAllModifiers('rec').totalModifiers + this.system.coreStats.rec.totalModifiers;
+        let wtTotalModifiers =
+            this.getAllModifiers('woundTreshold').totalModifiers + this.system.coreStats.woundTreshold.totalModifiers;
         let stunDivider = this.getAllModifiers('stun').totalDivider;
         let runDivider = this.getAllModifiers('run').totalDivider;
         let leapDivider = this.getAllModifiers('leap').totalDivider;
@@ -140,6 +141,8 @@ export default class WitcherActor extends Actor {
         let curFocus = this.system.derivedStats.focus.max + focusTotalModifiers;
         let curVigor = this.system.derivedStats.vigor.unmodifiedMax + vigorModifiers;
 
+        const base = Math.floor((stats.body.current + stats.will.current) / 2);
+        const baseMax = Math.floor((stats.body.max + stats.will.max) / 2);
         let unmodifiedMaxHp = baseMax * 5;
 
         if (this.system.customStat != true) {
@@ -149,6 +152,8 @@ export default class WitcherActor extends Actor {
             curRes = Math.floor((curWill + curInt) / 2) * 5 + resTotalModifiers;
             curFocus = Math.floor((curWill + curInt) / 2) * 3 + focusTotalModifiers;
         }
+
+        const meleeBonus = Math.ceil((curBody - 6) / 2) * 2;
 
         this.update({
             'system.deathStateApplied': isDead,
@@ -164,16 +169,6 @@ export default class WitcherActor extends Actor {
             'system.stats.luck.current': curLuck,
             'system.stats.toxicity.max': curTox,
 
-            'system.stats.int.totalModifiers': intTotalModifiers,
-            'system.stats.ref.totalModifiers': refTotalModifiers,
-            'system.stats.dex.totalModifiers': dexTotalModifiers,
-            'system.stats.body.totalModifiers': bodyTotalModifiers,
-            'system.stats.spd.totalModifiers': spdTotalModifiers,
-            'system.stats.emp.totalModifiers': empTotalModifiers,
-            'system.stats.cra.totalModifiers': craTotalModifiers,
-            'system.stats.will.totalModifiers': willTotalModifiers,
-            'system.stats.luck.totalModifiers': luckTotalModifiers,
-
             'system.derivedStats.hp.max': curHp,
             'system.derivedStats.hp.unmodifiedMax': unmodifiedMaxHp,
             'system.derivedStats.sta.max': curSta,
@@ -183,27 +178,21 @@ export default class WitcherActor extends Actor {
 
             'system.coreStats.stun.current': Math.floor((Math.clamp(base, 1, 10) + stunTotalModifiers) / stunDivider),
             'system.coreStats.stun.max': Math.clamp(baseMax, 1, 10),
-            'system.coreStats.stun.totalModifiers': stunTotalModifiers,
 
             'system.coreStats.enc.current': Math.floor((stats.body.current * 10 + encTotalModifiers) / encDivider),
             'system.coreStats.enc.max': stats.body.current * 10,
-            'system.coreStats.enc.totalModifiers': encTotalModifiers,
 
             'system.coreStats.run.current': Math.floor((stats.spd.current * 3 + runTotalModifiers) / runDivider),
             'system.coreStats.run.max': stats.spd.current * 3,
-            'system.coreStats.run.totalModifiers': runTotalModifiers,
 
             'system.coreStats.leap.current': Math.floor((stats.spd.current * 3) / 5 + leapTotalModifiers) / leapDivider,
             'system.coreStats.leap.max': Math.floor((stats.spd.max * 3) / 5),
-            'system.coreStats.leap.totalModifiers': leapTotalModifiers,
 
             'system.coreStats.rec.current': Math.floor((base + recTotalModifiers) / recDivider),
             'system.coreStats.rec.max': baseMax,
-            'system.coreStats.rec.totalModifiers': recTotalModifiers,
 
             'system.coreStats.woundTreshold.current': Math.floor((baseMax + wtTotalModifiers) / wtDivider),
             'system.coreStats.woundTreshold.max': baseMax,
-            'system.coreStats.woundTreshold.totalModifiers': wtTotalModifiers,
 
             'system.attackStats.meleeBonus': meleeBonus,
             'system.attackStats.punch.value': `1d6+${meleeBonus}`,

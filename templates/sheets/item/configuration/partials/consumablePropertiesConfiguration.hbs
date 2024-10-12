@@ -29,23 +29,22 @@
                 </td>
             </tr>
         {{/if}}
-        <tr class="item-header-tablerow">
-            <td>
-                <label>{{localize "WITCHER.Item.ConsumeProperties.appliesGlobalModifier"}}</label>
-            </td>
-            <td>
-                <input type="checkbox" name="system.consumeProperties.appliesGlobalModifier"
-                    {{checked item.system.consumeProperties.appliesGlobalModifier}} />
-            </td>
-        </tr>
+        {{#if item.system.consumeProperties.consumeGlobalModifiers}}
+            <tr class="item-header-tablerow">
+                <td>
+                    <label>{{localize "WITCHER.Item.ConsumeProperties.appliesGlobalModifier"}}</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="system.consumeProperties.appliesGlobalModifier"
+                        {{checked item.system.consumeProperties.appliesGlobalModifier}} />
+                </td>
+            </tr>
+        {{/if}}
     {{/if}}
 </table>
 {{#if item.system.consumeProperties.appliesGlobalModifier}}
     <table>
         <tr>
-            <th><a class="add-global-modifier" title="{{localize "WITCHER.Item.AddGlobalModifier"}}"><i
-                        class="fas fa-plus"></i></a>
-            </th>
             <th>{{localize "TYPES.Item.globalModifier"}}</th>
         </tr>
         {{#each item.system.consumeProperties.consumeGlobalModifiers as |modifier|}}

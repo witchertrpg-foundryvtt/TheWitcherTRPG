@@ -1,8 +1,7 @@
 {
     "TYPES": {
         "Item": {
-            "effect": "Effect (Deprecated)",
-            "globalModifier": "Global Modifier"
+            "globalModifier": "Global Modifier (deprecated)"
         }
     },
     "WITCHER": {
@@ -50,7 +49,7 @@
             "ConsumeProperties": {
                 "doesHeal": "Applies heal",
                 "heal": "Heals for",
-                "appliesGlobalModifier": "Applies Global Modifier",
+                "appliesGlobalModifier": "Applies Global Modifier (will be removed, convert to active effects)",
                 "Chat": {
                     "healedFor": "healed for",
                     "consumeGlobalModifiers": "applied these global modifiers",
@@ -58,8 +57,8 @@
                 }
             },
             "DamageProperties": {
-                "appliesGlobalModifierToHit": "Applies Global Modifier to Hit",
-                "appliesGlobalModifierToDamaged": "Applies Global Modifier to Damaged",
+                "appliesGlobalModifierToHit": "Applies Global Modifier to Hit (will be removed, convert to active effects)",
+                "appliesGlobalModifierToDamaged": "Applies Global Modifier to Damaged (will be removed, convert to active effects)",
                 "damageIsAblation": "Treat damage as ablation (not functional)",
                 "damageToAllLocations": "Damages all locations",
                 "bypassesWornArmor": "Bypasses worn armor",
@@ -77,8 +76,10 @@
                 "RemoveEnhancement": "Remove Enhancement"
             },
             "Settings": {
+                "General": "General Settings",
                 "Alchemical": "Alchemical Settings",
                 "Armor": "Armor Settings",
+                "Race": "Race Settings",
                 "Valuable": "Valuable Settings",
                 "Weapon": "Weapon Settings",
                 "DamageProperties": "Damage Properties",
@@ -173,6 +174,16 @@
             "Skill": "Performing a Skill Check",
             "profession.skill": "Performing a profession skill"
         },
+        "DamageType": {
+            "name": "Damage Type",
+            "bludgeoning": "Bludgeoning",
+            "slashing": "Slashing",
+            "piercing": "Piercing",
+            "elemental": "Elemental",
+            "electricity": "Electricity",
+            "fire": "Fire",
+            "ice": "Ice"
+        },
         "Weapon": {
             "Type": "Type",
             "Short.WeaponAccuracy": "WA",
@@ -216,11 +227,6 @@
             "EncumbranceValue": "Encumbrance Value",
             "Resistances": "Resistances",
             "Res": "Res",
-            "unavailable": "N/A",
-            "bludgeoning": "Bludgeoning",
-            "slashing": "Slashing",
-            "piercing": "Piercing",
-            "elemental": "Elemental",
             "Type": "Type",
             "StoppingPower": "Current Stopping power",
             "MaxStoppingPower": "Maximum Stopping power",
@@ -1029,7 +1035,11 @@
         "Effect": {
             "Rolled": "Rolled",
             "Applied": "Applied",
-            "Failed": "Failed"
+            "Failed": "Failed",
+            "applySelf": "Apply this active effect on self when used",
+            "applyOnTarget": "Apply this active effect on target when used",
+            "applyOnHit": "Apply this active effect on hit when used",
+            "applyOnDamage": "Apply this active effect on damage when used"
         },
         "globalModifier": {
             "tab": "Global Modifier",

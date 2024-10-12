@@ -21,8 +21,7 @@
     <div class="sheet-body">
         <div class="flex" data-group="primary" data-tab="data">
             <div class="global-modifier-column">
-                <b>{{localize "WITCHER.Actor.StatTitle.LableLeft"}} </b><a class="add-modifier-stat"><i
-                        class="fas fa-plus"></i></a>
+                <b>{{localize "WITCHER.Actor.StatTitle.LableLeft"}} </b>
                 {{#each item.system.stats as |stat index|}}
                     <div class="flex list-item" data-id="{{stat.id}}" data-type="stat">
                         <a class="remove-modifier-stat"><i class="fas fa-minus"></i></a>
@@ -34,8 +33,7 @@
                 {{/each}}
             </div>
             <div class="global-modifier-column">
-                <b>{{localize "WITCHER.Actor.StatTitle.Derived"}} </b><a class="add-modifier-derived"><i
-                        class="fas fa-plus"></i></a>
+                <b>{{localize "WITCHER.Actor.StatTitle.Derived"}} </b>
                 {{#each item.system.derived as |derived index|}}
                     <div class="flex list-item" data-id="{{derived.id}}" data-type="derived">
                         <a class="remove-modifier-derived"><i class="fas fa-minus"></i></a>
@@ -48,8 +46,7 @@
                 {{/each}}
             </div>
             <div class="global-modifier-column">
-                <b>{{localize "WITCHER.Monster.SkillTab"}} </b><a class="add-modifier-skill"><i
-                        class="fas fa-plus"></i></a>
+                <b>{{localize "WITCHER.Monster.SkillTab"}} </b>
                 {{#each item.system.skills as |skill index|}}
                     <div class="flex list-item" data-id="{{skill.id}}">
                         <a class="remove-modifier-skill"><i class="fas fa-minus"></i></a>

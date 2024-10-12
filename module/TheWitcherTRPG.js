@@ -17,6 +17,7 @@ import { registerDataModels } from './setup/registerDataModels.js';
 import { registerSheets } from './setup/registerSheets.js';
 import { registerSocketListeners } from './setup/socketHook.js';
 import WitcherActiveEffect from './activeEffect/witcherActiveEffect.js';
+import { registerHooks } from './setup/hooks.js';
 
 async function preloadHandlebarsTemplates() {
     const templatePath = [
@@ -69,6 +70,8 @@ async function preloadHandlebarsTemplates() {
     return loadTemplates(templatePath);
 }
 
+registerHooks();
+
 Hooks.once('init', function () {
     console.log('TheWitcherTRPG | init system');
 
@@ -95,12 +98,39 @@ Hooks.on('renderChatMessage', (message, html, data) => {
     ApplyStatusEffects.chatMessageListeners(message, html);
 });
 
-/* -------------------------------------------- */
-/*  Hotbar Macros                               */
-/* -------------------------------------------- */
+Hooks.on('renderActiveEffectConfig', async (activeEffectConfig, html, data) => {
+    const effectsSection = html[0].querySelector("section[data-tab='effects']");
+    const inputFields = effectsSection.querySelectorAll('.key input');
+    const datalist = document.createElement('datalist');
+    const attributeKeyOptions = {};
+
+    datalist.id = 'attribute-key-list';
+    inputFields.forEach(inputField => {
+        inputField.setAttribute('list', 'attribute-key-list');
+    });
+
+    for (const datamodel in CONFIG.Actor.dataModels) {
+        CONFIG.Actor.dataModels[datamodel].schema.apply(function () {
+            if (!(this instanceof foundry.data.fields.SchemaField)) {
+                attributeKeyOptions[this.fieldPath] = this.label;
+            }
+        });
+    }
+
+    const sortedKeys = Object.keys(attributeKeyOptions).sort();
+    sortedKeys.forEach(key => {
+        const attributeKeyOption = document.createElement('option');
+        attributeKeyOption.value = key;
+        if (!!attributeKeyOptions[key]) attributeKeyOption.label = attributeKeyOptions[key];
+        datalist.appendChild(attributeKeyOption);
+    });
+
+    effectsSection.append(datalist);
+});
+
 Hooks.once('ready', async function () {
     // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-    Hooks.on('hotbarDrop', (bar, data, slot) => createBoilerplateMacro(data, slot));
+    Hooks.on('hotbarDrop', (bar, data, slot) => createMacro(data, slot));
 
     if (game.settings.get('TheWitcherTRPG', 'useWitcherFont')) {
         let els = document.getElementsByClassName('game');
@@ -200,7 +230,7 @@ Hooks.on('getChatLogEntryContext', Fumble.addFumbleContextOptions);
  * @param {number} slot     The hotbar slot to use
  * @returns {Promise}
  */
-async function createBoilerplateMacro(data, slot) {
+async function createMacro(data, slot) {
     if (data.type == 'Actor') {
         const actor = game.actors.get(data.id);
         if (!actor) {
@@ -305,3 +335,8 @@ Handlebars.registerHelper('includes', function (csv, substr) {
         .map(v => v.trim())
         .includes(substr);
 });
+
+Handlebars.registerHelper('formatModLabel', function (statCurrent, statMax) {
+    let calc = statCurrent - statMax
+    return calc
+  });
