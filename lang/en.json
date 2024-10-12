@@ -174,6 +174,16 @@
             "Skill": "Performing a Skill Check",
             "profession.skill": "Performing a profession skill"
         },
+        "DamageType": {
+            "name": "Damage Type",
+            "bludgeoning": "Bludgeoning",
+            "slashing": "Slashing",
+            "piercing": "Piercing",
+            "elemental": "Elemental",
+            "electricity": "Electricity",
+            "fire": "Fire",
+            "ice": "Ice"
+        },
         "Weapon": {
             "Type": "Type",
             "Short.WeaponAccuracy": "WA",
@@ -217,11 +227,6 @@
             "EncumbranceValue": "Encumbrance Value",
             "Resistances": "Resistances",
             "Res": "Res",
-            "unavailable": "N/A",
-            "bludgeoning": "Bludgeoning",
-            "slashing": "Slashing",
-            "piercing": "Piercing",
-            "elemental": "Elemental",
             "Type": "Type",
             "StoppingPower": "Current Stopping power",
             "MaxStoppingPower": "Maximum Stopping power",

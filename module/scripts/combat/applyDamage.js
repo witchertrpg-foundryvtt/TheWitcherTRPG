@@ -65,7 +65,7 @@ async function createApplyDamageDialog(actor, damage) {
     `;
 
     let location = damage.location;
-    let damageTypeloc = `WITCHER.Armor.${damage.type}`;
+    let damageTypeloc = `WITCHER.DamageType.${damage.type}`;
     let content = `<label>${game.i18n.localize('WITCHER.Damage.damageType')}: <b>${game.i18n.localize(damageTypeloc)}</b></label> <br />
       <label>${game.i18n.localize('WITCHER.Damage.CurrentLocation')}: <b>${location.alias}</b></label> <br />
       <label>${game.i18n.localize('WITCHER.Damage.ChangeLocation')}: <select name="changeLocation">${locationOptions}</select></label> <br />`;

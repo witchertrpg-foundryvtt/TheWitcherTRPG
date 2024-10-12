@@ -544,6 +544,16 @@ WITCHER.spells = {
     }
 };
 
+WITCHER.spellDamageTypes = {
+    bludgeoning: 'WITCHER.DamageType.bludgeoning',
+    slashing: 'WITCHER.DamageType.slashing',
+    piercing: 'WITCHER.DamageType.piercing',
+    elemental: 'WITCHER.DamageType.elemental',
+    electricity: 'WITCHER.DamageType.electricity',
+    fire: 'WITCHER.DamageType.fire',
+    ice: 'WITCHER.DamageType.ice'
+};
+
 //Monster
 WITCHER.MonsterTypes = {
     Humanoid: 'WITCHER.Monster.Type.Humanoid',

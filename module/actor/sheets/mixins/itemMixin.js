@@ -903,7 +903,7 @@ export let itemMixin = {
                 ? `${touchedLocation.modifier}`
                 : `${touchedLocation.modifier}[${touchedLocation.alias}]`;
             damage.location = touchedLocation;
-            damage.type = 'elemental';
+            damage.type = spellItem.system.damageType;
         }
 
         if (spellItem.system.createsShield) {
