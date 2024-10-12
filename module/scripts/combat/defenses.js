@@ -7,76 +7,15 @@ import { applyActiveEffectToActorViaId } from '../activeEffects/applyActiveEffec
 
 export function addDefenseMessageContextOptions(html, options) {
     let canDefend = li => li.find('.attack-message').length || li.find('.defense').length;
-    options.push(
-        {
-            name: `${game.i18n.localize('WITCHER.Context.Defense')}`,
-            icon: '<i class="fas fa-shield-alt"></i>',
-            condition: canDefend,
-            callback: async li => {
-                ExecuteDefense(await getInteractActor(), li[0].dataset.messageId, li.find('.dice-total')[0].innerText);
-            }
-        },
-        {
-            name: `${game.i18n.localize('WITCHER.Context.Blocked')}`,
-            icon: '<i class="fas fa-shield-alt"></i>',
-            condition: canDefend,
-            callback: async li => {
-                BlockAttack(await getInteractActor());
-            }
+    options.push({
+        name: `${game.i18n.localize('WITCHER.Context.Defense')}`,
+        icon: '<i class="fas fa-shield-alt"></i>',
+        condition: canDefend,
+        callback: async li => {
+            ExecuteDefense(await getInteractActor(), li[0].dataset.messageId, li.find('.dice-total')[0].innerText);
         }
-    );
+    });
     return options;
-}
-
-function BlockAttack(actor) {
-    let weapons = actor.items.filter(function (item) {
-        return (
-            item.type == 'weapon' && !item.system.isAmmo && CONFIG.WITCHER.meleeSkills.includes(item.system.attackSkill)
-        );
-    });
-    let shields = actor.items.filter(function (item) {
-        return item.type == 'armor' && item.system.location == 'Shield';
-    });
-
-    let options = `<option value="brawling"> ${game.i18n.localize('WITCHER.SkRefBrawling')} </option>`;
-    weapons.forEach(
-        item =>
-            (options += `<option value="${item.system.attackSkill}" itemId="${item.id}" type="Weapon"> ${item.name} (${game.i18n.localize(item.getItemAttackSkill().alias)})</option>`)
-    );
-    shields.forEach(
-        item =>
-            (options += `<option value="Melee" itemId="${item.id}" type="Shield"> ${item.name} (${game.i18n.localize('WITCHER.SkRefMelee')})</option>`)
-    );
-
-    const content = `<label>${game.i18n.localize('WITCHER.Dialog.DefenseWith')}: </label><select name="form">${options}</select><br />`;
-
-    new Dialog({
-        title: `${game.i18n.localize('WITCHER.Dialog.DefenseTitle')}`,
-        content,
-        buttons: {
-            Block: {
-                label: `${game.i18n.localize('WITCHER.Dialog.ButtonBlock')}`,
-                callback: html => {
-                    let item_id = html.find('[name=form]')[0].selectedOptions[0].getAttribute('itemid');
-                    let type = html.find('[name=form]')[0].selectedOptions[0].getAttribute('type');
-                    if (item_id) {
-                        let item = actor.items.get(item_id);
-                        if (type == 'Weapon') {
-                            item.update({ 'system.reliable': item.system.reliable - 1 });
-                            if (item.system.reliable - 1 <= 0) {
-                                return ui.notifications.error(game.i18n.localize('WITCHER.Weapon.Broken'));
-                            }
-                        } else {
-                            item.update({ 'system.reliability': item.system.reliability - 1 });
-                            if (item.system.reliability - 1 <= 0) {
-                                return ui.notifications.error(game.i18n.localize('WITCHER.Shield.Broken'));
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }).render(true);
 }
 
 function ExecuteDefense(actor, messageId, totalAttack) {
@@ -96,11 +35,11 @@ function ExecuteDefense(actor, messageId, totalAttack) {
     let options = `<option value="brawling"> ${game.i18n.localize('WITCHER.SkRefBrawling')} </option>`;
     weapons.forEach(
         item =>
-            (options += `<option value="${item.system.attackSkill}" data-itemId="${item.id}" type="Weapon"> ${item.name} (${game.i18n.localize(item.getItemAttackSkill().alias)})</option>`)
+            (options += `<option value="${item.system.attackSkill}" data-itemId="${item.id}"> ${item.name} (${game.i18n.localize(item.getItemAttackSkill().alias)})</option>`)
     );
     shields.forEach(
         item =>
-            (options += `<option value="melee" itemId="${item.id}" type="Shield"> ${item.name} (${game.i18n.localize('WITCHER.SkRefMelee')})</option>`)
+            (options += `<option value="melee" data-itemId="${item.id}"> ${item.name} (${game.i18n.localize('WITCHER.SkRefMelee')})</option>`)
     );
 
     const content = `
@@ -136,12 +75,14 @@ function ExecuteDefense(actor, messageId, totalAttack) {
                 label: `${game.i18n.localize('WITCHER.Dialog.ButtonBlock')}`,
                 callback: async html => {
                     let defenseSkill = html.find('[name=form]')[0].value;
+                    let selectedOption = html.find('[name=form]')[0].selectedOptions[0];
                     defense(
                         actor,
-                        { skillName: defenseSkill },
+                        { skillName: defenseSkill, block: true },
                         { totalAttack, attackDamageObject },
                         html,
-                        'ButtonBlock'
+                        'ButtonBlock',
+                        selectedOption.dataset.itemid
                     );
                 }
             },
@@ -157,8 +98,7 @@ function ExecuteDefense(actor, messageId, totalAttack) {
                         { totalAttack, attackDamageObject, attacker },
                         html,
                         'ButtonParry',
-                        selectedOption.dataset.itemid,
-                        attacker
+                        selectedOption.dataset.itemid
                     );
                 }
             },
@@ -195,11 +135,11 @@ function ExecuteDefense(actor, messageId, totalAttack) {
 
 async function defense(
     actor,
-    { skillName, modifier = 0, stagger = false },
+    { skillName, modifier = 0, stagger = false, block = false },
     { totalAttack, attackDamageObject, attacker },
     html,
     buttonName,
-    weaponId
+    defenseItemId
 ) {
     let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
@@ -224,7 +164,7 @@ async function defense(
             : `${modifier}[${game.i18n.localize('WITCHER.Dialog.' + buttonName)}]`;
 
         if (buttonName == 'ButtonParry' || buttonName == 'ButtonParryThrown') {
-            let weapon = actor.items.get(weaponId);
+            let weapon = actor.items.get(defenseItemId);
             if (weapon?.system.defenseProperties.parrying) {
                 rollFormula += !displayRollDetails
                     ? `+${Math.abs(modifier)}`
@@ -277,24 +217,10 @@ async function defense(
     let message = await roll.toMessage(messageData);
     message.setFlag('TheWitcherTRPG', 'crit', crit);
 
-    if (roll.total < totalAttack) {
-        if (attackDamageObject.damageProperties.appliesGlobalModifierToHit) {
-            attackDamageObject.damageProperties.hitGlobalModifiers.forEach(modifier =>
-                applyModifierToActor(actor.uuid, modifier)
-            );
-        }
-
-        applyActiveEffectToActorViaId(
-            actor.uuid,
-            attackDamageObject.itemUuid,
-            'applyOnHit',
-            attackDamageObject.duration
-        );
-    }
-
-    if (roll.total > totalAttack && stagger) {
-        applyStatusEffectToActor(attacker, 'staggered', 1);
-    }
+    handleDefenseResults(actor, roll, { totalAttack, attackDamageObject, attacker }, defenseItemId, {
+        stagger,
+        block
+    });
 }
 
 function handleSpecialModifier(actor, formula, action, additionalTag) {
@@ -434,4 +360,4 @@ function handleDefenseResults(
     }
 }
 
-export { ExecuteDefense, BlockAttack };
+export { ExecuteDefense };
