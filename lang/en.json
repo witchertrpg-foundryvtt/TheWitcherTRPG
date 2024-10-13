@@ -1175,6 +1175,12 @@
                 "9": "You trip and hit your head. You are knocked prone, take 1d6 points of non-lethal damage to the head, and must make a Stun save.",
                 ">9": "You fail horribly and not only fall prone but also take 1d6 lethal damage to the head and must make a Stun save."
             }
+        },
+        "Deprecations": {
+            "globalModifier": {
+                "title": "Global Modifier Deprecation",
+                "text": "The following actors need to be modified. If you dont do it, before global modifiers are removed, your world might stop working."
+            }
         }
     }
 }

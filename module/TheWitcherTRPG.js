@@ -18,6 +18,7 @@ import { registerSheets } from './setup/registerSheets.js';
 import { registerSocketListeners } from './setup/socketHook.js';
 import WitcherActiveEffect from './activeEffect/witcherActiveEffect.js';
 import { registerHooks } from './setup/hooks.js';
+import { deprecationWarnings } from './setup/globalModifiers.js';
 
 async function preloadHandlebarsTemplates() {
     const templatePath = [
@@ -146,6 +147,7 @@ Hooks.once('ready', async function () {
     }
 
     registerSocketListeners();
+    deprecationWarnings();
 });
 
 Hooks.once('dragRuler.ready', SpeedProvider => {
@@ -337,6 +339,6 @@ Handlebars.registerHelper('includes', function (csv, substr) {
 });
 
 Handlebars.registerHelper('formatModLabel', function (statCurrent, statMax) {
-    let calc = statCurrent - statMax
-    return calc
-  });
+    let calc = statCurrent - statMax;
+    return calc;
+});

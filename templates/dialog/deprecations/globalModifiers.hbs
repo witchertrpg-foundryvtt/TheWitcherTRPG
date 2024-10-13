@@ -1,0 +1,8 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <span>{{localize "WITCHER.Deprecations.globalModifier.text"}}</span>
+    {{#each affectedActors as |actor|}}
+        <div>
+            <span>{{actor.name}}</span>
+        </div>
+    {{/each}}
+</form>
