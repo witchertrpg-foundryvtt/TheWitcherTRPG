@@ -417,7 +417,8 @@
             "CurrentIP": "Current IP:",
             "SkillName": "Skill name...",
             "TotalSkill": "Total Skills",
-            "TotalProfSkill": "Total Profession Skills"
+            "TotalProfSkill": "Total Profession Skills",
+            "SpecialSkillModifier": "Special Skill Modifiers"
         },
         "CritWound": {
             "Header": "Crit Wounds",
@@ -1107,6 +1108,7 @@
             }
         },
         "statusEffects": {
+            "applyCombat": "Applying combat effect for ",
             "healing": "Healing",
             "buffed": "Buffed",
             "fire": "Fire",
@@ -1172,6 +1174,12 @@
                 "8": "You trip and fall prone. You must make a Stun save.",
                 "9": "You trip and hit your head. You are knocked prone, take 1d6 points of non-lethal damage to the head, and must make a Stun save.",
                 ">9": "You fail horribly and not only fall prone but also take 1d6 lethal damage to the head and must make a Stun save."
+            }
+        },
+        "Deprecations": {
+            "globalModifier": {
+                "title": "Global Modifier Deprecation",
+                "text": "The following actors need to be modified. If you dont do it, before global modifiers are removed, your world might stop working."
             }
         }
     }

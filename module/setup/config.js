@@ -1852,7 +1852,12 @@ WITCHER.statusEffects = [
     {
         id: 'healing',
         name: 'WITCHER.statusEffects.healing',
-        img: 'icons/svg/regen.svg'
+        img: 'icons/svg/regen.svg',
+        combat: {
+            turn: {
+                hp: '+3'
+            }
+        }
     },
     {
         id: 'buffed',
@@ -1862,7 +1867,17 @@ WITCHER.statusEffects = [
     {
         id: 'fire',
         name: 'WITCHER.statusEffects.fire',
-        img: 'icons/svg/fire.svg'
+        img: 'icons/svg/fire.svg',
+        combat: {
+            turn: {
+                damage: {
+                    damage: '5',
+                    allLocations: true,
+                    type: 'fire',
+                    spDamage: '1'
+                }
+            }
+        }
     },
     {
         id: 'stun',
@@ -1872,7 +1887,15 @@ WITCHER.statusEffects = [
     {
         id: 'poison',
         name: 'WITCHER.statusEffects.poison',
-        img: 'icons/svg/poison.svg'
+        img: 'icons/svg/poison.svg',
+        combat: {
+            turn: {
+                damage: {
+                    damage: '3',
+                    ignoreArmor: true
+                }
+            }
+        }
     },
     {
         id: 'disease',
@@ -1929,7 +1952,15 @@ WITCHER.statusEffects = [
     {
         id: 'bleed',
         name: 'WITCHER.statusEffects.bleed',
-        img: 'icons/svg/blood.svg'
+        img: 'icons/svg/blood.svg',
+        combat: {
+            turn: {
+                damage: {
+                    damage: '2',
+                    ignoreArmor: true
+                }
+            }
+        }
     },
     {
         id: 'freeze',
@@ -2080,7 +2111,15 @@ WITCHER.statusEffects = [
     {
         id: 'suffocation',
         name: 'WITCHER.statusEffects.suffocation',
-        img: 'icons/svg/silenced.svg'
+        img: 'icons/svg/silenced.svg',
+        combat: {
+            turn: {
+                damage: {
+                    damage: '3',
+                    ignoreArmor: true
+                }
+            }
+        }
     },
     {
         id: 'blinded',

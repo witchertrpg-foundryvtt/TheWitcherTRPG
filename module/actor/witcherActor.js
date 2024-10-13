@@ -322,7 +322,15 @@ export default class WitcherActor extends Actor {
             .map(modifier => CONFIG.WITCHER.specialModifier.find(special => special.id == modifier.special))
             .filter(special => special?.tags?.includes('armorencumbarance'));
 
-        relevantModifier.forEach(modifier => (encumbranceModifier += parseInt(modifier.formula)));
+        let relevantActorModifier = this.system.specialSkillModifiers
+            .map(specialSkillModifier =>
+                CONFIG.WITCHER.specialModifier.find(special => special.id == specialSkillModifier.modifier)
+            )
+            .filter(special => special?.tags?.includes('armorencumbarance'));
+
+        relevantModifier
+            .concat(relevantActorModifier)
+            .forEach(modifier => (encumbranceModifier += parseInt(modifier.formula)));
 
         return Math.max(encumbranceModifier, 0);
     }
