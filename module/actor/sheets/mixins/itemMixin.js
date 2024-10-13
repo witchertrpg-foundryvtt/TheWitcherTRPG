@@ -681,10 +681,18 @@ export let itemMixin = {
             .filter(special => special?.tags?.includes(action))
             .filter(special => special?.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true);
 
-        relevantModifier.forEach(
-            modifier => (attFormula += `${modifier.formula}[${game.i18n.localize(modifier.name)}]`)
-        );
+        let relevantActorModifier = this.actor.system.specialSkillModifiers
+            .map(specialSkillModifier =>
+                CONFIG.WITCHER.specialModifier.find(special => special.id == specialSkillModifier.modifier)
+            )
+            .filter(special => special?.tags?.includes(action))
+            .filter(special => special?.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true);
 
+        relevantModifier
+            .concat(relevantActorModifier)
+            .forEach(modifier => (attFormula += `${modifier.formula}[${game.i18n.localize(modifier.name)}]`));
+
+        console.log(relevantActorModifier);
         return attFormula;
     },
 

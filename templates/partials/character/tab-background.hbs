@@ -24,46 +24,65 @@
             {{> "systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs"}}
         </div>
     </div>
-    <div>
-        <h2>{{localize "WITCHER.background.globalModifier"}}<a class="add-global-modifier"><i
-                    class="fas fa-plus"></i></a>
-        </h2>
-    </div>
-    {{#each globalModifiers as |globalModifier ev|}}
-        <div class="item flex" data-item-id="{{globalModifier.id}}">
-            <a class="item-edit"><i class="fas fa-edit"></i></a>
-            <img src="{{globalModifier.img}}" class="item-img" />
-            <div class="modifier-display">
-                <label><b>{{globalModifier.name}}</b></label>
-                <div class="flex">
-                    <label>{{localize "WITCHER.globalModifier.isActive"}}</label>
-                    <input class="inline-edit" data-field="system.isActive" type="checkbox"
-                        value={{globalModifier.system.isActive}} {{checked globalModifier.system.isActive}} />
-                </div>
-            </div>
-            <div class="modifier-display">
-                {{#each globalModifier.system.stats as |stat index|}}
-                    <div>{{ localize (lookup (lookup ../../config.statMap stat.stat) "labelShort") }}: {{stat.modifier}}
-                    </div>
-                {{/each}}
-            </div>
-            <div class="modifier-display">
-                {{#each globalModifier.system.derived as |derived index|}}
-                    <div>{{ localize (lookup (lookup ../../config.statMap derived.derivedStat) "labelShort") }}:
-                        {{derived.modifier}}
-                    </div>
-                {{/each}}
-            </div>
-            <div class="modifier-display">
-                {{#each globalModifier.system.skills as |skill index|}}
-                    <div>{{ localize (lookup (lookup ../../config.skillMap skill.skill) "label") }}: {{skill.modifier}}
-                    </div>
-                {{/each}}
-            </div>
-            <textarea rows=3>{{globalModifier.system.description}}</textarea>
-            <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+    {{#if globalModifiers}}
+        <div>
+            <h2>{{localize "WITCHER.background.globalModifier"}}
+            </h2>
         </div>
-    {{/each}}
+        {{#each globalModifiers as |globalModifier ev|}}
+            <div class="item flex" data-item-id="{{globalModifier.id}}">
+                <a class="item-edit"><i class="fas fa-edit"></i></a>
+                <img src="{{globalModifier.img}}" class="item-img" />
+                <div class="modifier-display">
+                    <label><b>{{globalModifier.name}}</b></label>
+                    <div class="flex">
+                        <label>{{localize "WITCHER.globalModifier.isActive"}}</label>
+                        <input class="inline-edit" data-field="system.isActive" type="checkbox"
+                            value={{globalModifier.system.isActive}} {{checked globalModifier.system.isActive}} />
+                    </div>
+                </div>
+                <div class="modifier-display">
+                    {{#each globalModifier.system.stats as |stat index|}}
+                        <div>{{ localize (lookup (lookup ../../config.statMap stat.stat) "labelShort") }}:
+                            {{stat.modifier}}
+                        </div>
+                    {{/each}}
+                </div>
+                <div class="modifier-display">
+                    {{#each globalModifier.system.derived as |derived index|}}
+                        <div>{{ localize (lookup (lookup ../../config.statMap derived.derivedStat) "labelShort") }}:
+                            {{derived.modifier}}
+                        </div>
+                    {{/each}}
+                </div>
+                <div class="modifier-display">
+                    {{#each globalModifier.system.skills as |skill index|}}
+                        <div>{{ localize (lookup (lookup ../../config.skillMap skill.skill) "label") }}:
+                            {{skill.modifier}}
+                        </div>
+                    {{/each}}
+                </div>
+                <textarea rows=3>{{globalModifier.system.description}}</textarea>
+                <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+            </div>
+        {{/each}}
+    {{/if}}
+
+    <div class="global-modifier-column">
+        <div>
+            <h2>{{localize "WITCHER.Actor.SpecialSkillModifier"}}<a class="add-special-skill-modifier"><i
+                        class="fas fa-plus"></i></a>
+            </h2>
+        </div>
+        {{#each system.specialSkillModifiers as |special index|}}
+            <div class="flex list-item" data-id="{{special.id}}">
+                <a class="remove-special-skill-modifier"><i class="fas fa-minus"></i></a>
+                <select class="edit-special-skill-modifier">
+                    {{selectOptions ../config.specialModifier blank='' selected=special.modifier nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                </select>
+            </div>
+        {{/each}}
+    </div>
 
     <div class="flexcol background">
         <div class="lifeEvents scrollable" id="lifeEvents">

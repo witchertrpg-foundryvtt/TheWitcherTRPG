@@ -417,7 +417,8 @@
             "CurrentIP": "Current IP:",
             "SkillName": "Skill name...",
             "TotalSkill": "Total Skills",
-            "TotalProfSkill": "Total Profession Skills"
+            "TotalProfSkill": "Total Profession Skills",
+            "SpecialSkillModifier": "Special Skill Modifiers"
         },
         "CritWound": {
             "Header": "Crit Wounds",
