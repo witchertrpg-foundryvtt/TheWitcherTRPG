@@ -4,8 +4,11 @@ import { WITCHER } from '../setup/config.js';
 import AbilityTemplate from './ability-template.js';
 
 export default class WitcherItem extends Item {
-
-    async roll() {}
+    async _preCreate(data, options, user) {
+        //global modifiers are discontinued, so no new ones should be created
+        if (data.type === 'globalModifier') return false;
+        await super._preCreate(data, options, user);
+    }
 
     async createSpellVisualEffectIfApplicable() {
         if (this.system.createTemplate && this.system.templateType && this.system.templateSize) {
