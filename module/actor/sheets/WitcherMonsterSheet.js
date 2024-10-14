@@ -15,7 +15,13 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
     getData() {
         let context = super.getData();
         this._prepareLoot(context);
+        this._prepareCharacterData(context);
         return context;
+    }
+
+    _prepareCharacterData(context) {
+        let actor = context.actor;
+        context.profession = actor.getList("profession")[0];
     }
 
     _prepareLoot(context) {
