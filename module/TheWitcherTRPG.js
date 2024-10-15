@@ -30,6 +30,7 @@ async function preloadHandlebarsTemplates() {
 
         'systems/TheWitcherTRPG/templates/partials/character/tab-skills.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs',
+        'systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/tab-profession.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/tab-background.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/tab-inventory.hbs',
@@ -47,6 +48,7 @@ async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/partials/monster/monster-details-tab.hbs',
         'systems/TheWitcherTRPG/templates/partials/monster/monster-spell-tab.hbs',
         'systems/TheWitcherTRPG/templates/partials/monster/monster-skill-display.hbs',
+        'systems/TheWitcherTRPG/templates/partials/monster/monster-custom-skill-display.hbs',
 
         'systems/TheWitcherTRPG/templates/partials/loot/loot-item-display.hbs',
 

@@ -300,6 +300,72 @@ export default class WitcherActor extends Actor {
         }).render(true);
     }
 
+    rollCustomSkillCheck(event) {
+        let customSkill = this.items.find(item => item.id == event.currentTarget.closest('.item').dataset.itemId);
+
+        let attribute = CONFIG.WITCHER.statMap[customSkill.system.attribute];
+        let attributeLabel = game.i18n.localize(attribute.label);
+        let attributeValue = this.system.stats[attribute.name].current;
+
+        let skillLabel = customSkill.name;
+        let skillValue = customSkill.system.value;
+
+        let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
+
+        let messageData = {
+            speaker: ChatMessage.getSpeaker({ actor: this }),
+            flavor: `${attributeLabel}: ${skillLabel} Check`
+        };
+
+        let rollFormula;
+        if (this.system.dontAddAttr) {
+            rollFormula = !displayRollDetails ? `1d10+${skillValue}` : `1d10+${skillValue}[${skillLabel}]`;
+        } else {
+            rollFormula = !displayRollDetails
+                ? `1d10+${attributeValue}+${skillValue}`
+                : `1d10+${attributeValue}[${attributeLabel}]+${skillValue}[${skillLabel}]`;
+        }
+
+        rollFormula += this.addAllModifiers(customSkill.name);
+        customSkill.system.modifiers?.forEach(mod => {
+            if (mod.value < 0) {
+                rollFormula += !displayRollDetails ? ` ${mod.value}` : ` ${mod.value}[${mod.name}]`;
+            }
+            if (mod.value > 0) {
+                rollFormula += !displayRollDetails ? ` +${mod.value}` : ` +${mod.value}[${mod.name}]`;
+            }
+        });
+
+        new Dialog({
+            title: `${game.i18n.localize('WITCHER.Dialog.Skill')}: ${skillLabel}`,
+            content: `<label>${game.i18n.localize(
+                'WITCHER.Dialog.attackCustom'
+            )}: <input name="customModifiers" value=0></label>`,
+            buttons: {
+                LocationRandom: {
+                    label: game.i18n.localize('WITCHER.Button.Continue'),
+                    callback: async html => {
+                        let customModifier = html.find('[name=customModifiers]')[0].value;
+                        if (customModifier < 0) {
+                            rollFormula += !displayRollDetails
+                                ? ` ${customModifier}`
+                                : ` ${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
+                        }
+                        if (customModifier > 0) {
+                            rollFormula += !displayRollDetails
+                                ? ` +${customModifier}`
+                                : ` +${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
+                        }
+                        let config = new RollConfig();
+                        config.showCrit = true;
+                        config.showSuccess = true;
+                        await extendedRoll(rollFormula, messageData, config);
+                    }
+                }
+            }
+        }).render(true);
+    }
+
     getArmorEcumbrance() {
         let encumbranceModifier = 0;
         let armors = this.items.filter(item => item.type == 'armor' && item.system.equipped);

@@ -9,6 +9,9 @@
                     {{#each system.skills.int as |skill name|}}
                         {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="int"}}
                     {{/each}}
+                    {{#each system.customSkills.int as |skill name|}}
+                        {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="int"}}
+                    {{/each}}
                 </table>
             </details>
         </div>
@@ -57,6 +60,9 @@
                     {{#each system.skills.ref as |skill name|}}
                         {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="ref"}}
                     {{/each}}
+                    {{#each customSkills.ref}}
+                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
+                    {{/each}}
                 </table>
             </details>
         </div>
@@ -68,6 +74,9 @@
                 <table class="table-skills">
                     {{#each system.skills.will as |skill name|}}
                         {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="will" skill-data=system}}
+                    {{/each}}
+                    {{#each customSkills.will}}
+                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
                     {{/each}}
                 </table>
             </details>
@@ -84,6 +93,9 @@
                     {{#each system.skills.dex as |skill name|}}
                         {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="dex" skill-data=system}}
                     {{/each}}
+                    {{#each customSkills.dex}}
+                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
+                    {{/each}}
                 </table>
             </details>
         </div>
@@ -96,6 +108,9 @@
                 <table class="table-skills">
                     {{#each system.skills.cra as |skill name|}}
                         {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="cra" skill-data=system}}
+                    {{/each}}
+                    {{#each customSkills.cra}}
+                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
                     {{/each}}
                 </table>
             </details>
@@ -113,6 +128,9 @@
                     {{#each system.skills.body as |skill name|}}
                         {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="body" skill-data=system}}
                     {{/each}}
+                    {{#each customSkills.body}}
+                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
+                    {{/each}}
                 </table>
             </details>
         </div>
@@ -125,6 +143,9 @@
                 <table class="table-skills">
                     {{#each system.skills.emp as |skill name|}}
                         {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="emp" skill-data=system}}
+                    {{/each}}
+                    {{#each customSkills.emp}}
+                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
                     {{/each}}
                 </table>
             </details>

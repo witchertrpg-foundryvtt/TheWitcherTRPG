@@ -18,6 +18,7 @@ import WitcherValuableSheet from '../item/sheets/WitcherValuableSheet.js';
 import WitcherActiveEffect from '../activeEffect/witcherActiveEffect.js';
 import { WitcherActiveEffectConfig } from '../activeEffect/WitcherActiveEffectSheet.js';
 import WitcherRaceSheet from '../item/sheets/WitcherRaceSheet.js';
+import WitcherSkillItemSheet from '../item/sheets/WitcherSkillItemSheet.js';
 
 export const registerSheets = () => {
     Items.unregisterSheet('core', ItemSheet);
@@ -85,6 +86,11 @@ export const registerSheets = () => {
     Items.registerSheet('witcher', WitcherObstacleSheet, {
         makeDefault: true,
         types: ['obstacle']
+    });
+
+    Items.registerSheet('witcher', WitcherSkillItemSheet, {
+        makeDefault: true,
+        types: ['skill']
     });
 
     // Register configs for embedded documents.
