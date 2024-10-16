@@ -19,6 +19,7 @@ import { registerSocketListeners } from './setup/socketHook.js';
 import WitcherActiveEffect from './activeEffect/witcherActiveEffect.js';
 import { registerHooks } from './setup/hooks.js';
 import { deprecationWarnings } from './setup/globalModifiers.js';
+import { applyActiveEffectToActorViaId } from './scripts/activeEffects/applyActiveEffect.js';
 
 async function preloadHandlebarsTemplates() {
     const templatePath = [
@@ -85,6 +86,10 @@ Hooks.once('init', function () {
     CONFIG.Actor.documentClass = WitcherActor;
     CONFIG.ActiveEffect.documentClass = WitcherActiveEffect;
     CONFIG.ActiveEffect.legacyTransferral = false;
+
+    game.api = {
+        applyActiveEffectToActorViaId
+    };
 
     registerDataModels();
     registerSheets();

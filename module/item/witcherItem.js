@@ -12,13 +12,16 @@ export default class WitcherItem extends Item {
 
     async createSpellVisuals(damage) {
         if (this.system.createTemplate && this.system.templateType && this.system.templateSize) {
-            let templates = await AbilityTemplate.fromItem(this)?.drawPreview();
+            AbilityTemplate.fromItem(this)
+                ?.drawPreview()
+                .then(templates => {
+                    if (this.system.regionProperties.createRegionFromTemplate) {
+                        this.createRegionFromTemplates(templates, damage);
+                    }
 
-            if (this.system.regionProperties.createRegionFromTemplate) {
-                this.createRegionFromTemplates(templates, damage);
-            }
-
-            this.deleteSpellVisualEffect(templates);
+                    return templates;
+                })
+                .then(templates => this.deleteSpellVisualEffect(templates));
         }
     }
 
@@ -35,44 +38,42 @@ export default class WitcherItem extends Item {
 
     async createRegionFromTemplates(templates, damage) {
         templates.forEach(async template => {
-            if (template.t != 'cone') {
-                let shape = {
-                    x: template.x,
-                    y: template.y
+            let origShape = template.object.shape ?? template.object._computeShape();
+            let points = origShape.points ?? origShape.toPolygon().points;
+            let shape = {
+                hole: false,
+                type: 'polygon',
+                points: points.map((pt, ind) => (ind % 2 ? pt + template.y : pt + template.x))
+            };
+
+            let behaviors = [];
+            if (this.system.regionProperties.applyMacroOnEnter) {
+                let behavior = {
+                    name: 'Execute Macro on Enter',
+                    type: 'executeMacro',
+                    system: {
+                        events: ['tokenEnter'],
+                        uuid: this.system.regionProperties.applyMacroOnEnter
+                    }
                 };
+                behaviors.push(behavior);
+            }
 
-                if (template.t == 'circle') {
-                    shape = {
-                        ...shape,
-                        type: template.t,
-                        radius: template.distance * canvas.dimensions.distancePixels
-                    };
-                }
-
-                if (template.t == 'rect' || template.t == 'ray') {
-                    shape = {
-                        ...shape,
-                        type: 'rectangle',
-                        width: template.width * canvas.dimensions.distancePixels,
-                        height: template.distance * canvas.dimensions.distancePixels
-                    };
-                }
-
-                let regions = await game.scenes.active.createEmbeddedDocuments('Region', [
-                    {
-                        name: this.name,
-                        shapes: [shape],
-                        flags: {
-                            TheWitcherTRPG: {
-                                item: this.uuid,
-                                duration: damage.duration
-                            }
+            let regions = await game.scenes.active.createEmbeddedDocuments('Region', [
+                {
+                    name: this.name,
+                    shapes: [shape],
+                    behaviors: behaviors,
+                    flags: {
+                        TheWitcherTRPG: {
+                            item: this.uuid,
+                            duration: damage.duration
                         }
                     }
-                ]);
+                }
+            ]);
 
-                regions.forEach(region => region.update({ visibility: 2 }));
-            }
+            regions.forEach(region => region.update({ visibility: 2 }));
         });
     }
 

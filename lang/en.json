@@ -71,7 +71,8 @@
                 "parrying": "Negates parry penalty"
             },
             "RegionProperties": {
-                "createRegionFromTemplate": "Create Region from Template"
+                "createRegionFromTemplate": "Create Region from Template",
+                "applyMacroOnEnter": "Apply Macro on Enter"
             },
             "ContextMenu": {
                 "Consume": "Consume",
