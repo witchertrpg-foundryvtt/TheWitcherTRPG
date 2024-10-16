@@ -61,6 +61,7 @@ async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs',
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/defensePropertiesConfiguration.hbs',
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/consumablePropertiesConfiguration.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/regionPropertiesConfiguration.hbs',
 
         'systems/TheWitcherTRPG/templates/sheets/investigation/mystery-sheet.hbs',
         'systems/TheWitcherTRPG/templates/partials/investigation/clue-display.hbs',

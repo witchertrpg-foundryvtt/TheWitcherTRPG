@@ -10,22 +10,70 @@ export default class WitcherItem extends Item {
         await super._preCreate(data, options, user);
     }
 
-    async createSpellVisualEffectIfApplicable() {
+    async createSpellVisuals(damage) {
         if (this.system.createTemplate && this.system.templateType && this.system.templateSize) {
-            let template = await AbilityTemplate.fromItem(this)?.drawPreview();
-            this.visualEffect = template;
+            let templates = await AbilityTemplate.fromItem(this)?.drawPreview();
+
+            if (this.system.regionProperties.createRegionFromTemplate) {
+                this.createRegionFromTemplates(templates, damage);
+            }
+
+            this.deleteSpellVisualEffect(templates);
         }
     }
 
-    async deleteSpellVisualEffect() {
-        if (this.visualEffect && this.system.visualEffectDuration > 0) {
+    async deleteSpellVisualEffect(templates) {
+        if (templates && this.system.visualEffectDuration > 0) {
             setTimeout(() => {
                 canvas.scene.deleteEmbeddedDocuments(
                     'MeasuredTemplate',
-                    this.visualEffect.map(effect => effect.id)
+                    templates.map(effect => effect.id)
                 );
             }, this.system.visualEffectDuration * 1000);
         }
+    }
+
+    async createRegionFromTemplates(templates, damage) {
+        templates.forEach(async template => {
+            if (template.t != 'cone') {
+                let shape = {
+                    x: template.x,
+                    y: template.y
+                };
+
+                if (template.t == 'circle') {
+                    shape = {
+                        ...shape,
+                        type: template.t,
+                        radius: template.distance * canvas.dimensions.distancePixels
+                    };
+                }
+
+                if (template.t == 'rect' || template.t == 'ray') {
+                    shape = {
+                        ...shape,
+                        type: 'rectangle',
+                        width: template.width * canvas.dimensions.distancePixels,
+                        height: template.distance * canvas.dimensions.distancePixels
+                    };
+                }
+
+                let regions = await game.scenes.active.createEmbeddedDocuments('Region', [
+                    {
+                        name: this.name,
+                        shapes: [shape],
+                        flags: {
+                            TheWitcherTRPG: {
+                                item: this.uuid,
+                                duration: damage.duration
+                            }
+                        }
+                    }
+                ]);
+
+                regions.forEach(region => region.update({ visibility: 2 }));
+            }
+        });
     }
 
     getItemAttackSkill() {

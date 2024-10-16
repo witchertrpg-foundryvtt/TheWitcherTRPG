@@ -6,6 +6,10 @@
             <a data-tab="damageProperties">{{localize "WITCHER.Item.Settings.DamageProperties"}}</a>
         {{/if}}
 
+        {{#if data.createTemplate}}
+            <a data-tab="regionProperties">{{localize "WITCHER.Item.Settings.RegionProperties"}}</a>
+        {{/if}}
+
         <a data-tab="effects">{{localize "WITCHER.activeEffect.tab"}}</a>
     </nav>
 
@@ -59,8 +63,6 @@
                     </tr>
                 {{/each}}
             </table>
-
-            {{log this}}
             <div>
                 <span>{{localize "WITCHER.DamageType.name"}}</span>
                 <select name='system.damageType'>
@@ -71,6 +73,9 @@
         </div>
         <div class="tab" data-group="primary" data-tab="damageProperties">
             {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs"}}
+        </div>
+        <div class="tab" data-group="primary" data-tab="regionProperties">
+            {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/regionPropertiesConfiguration.hbs"}}
         </div>
         <div class="tab effects" data-group="primary" data-tab="effects">
             {{> systems/TheWitcherTRPG/templates/partials/effect-part.hbs}}

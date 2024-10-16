@@ -939,8 +939,8 @@ export let itemMixin = {
             });
         }
 
-        await spellItem.createSpellVisualEffectIfApplicable();
-        spellItem.deleteSpellVisualEffect();
+        await spellItem.createSpellVisuals(damage);
+
 
         const chatMessage = await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/spellItem.hbs', {
             spellItem,

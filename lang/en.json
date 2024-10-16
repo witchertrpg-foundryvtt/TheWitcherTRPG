@@ -70,6 +70,9 @@
             "DefenseProperties": {
                 "parrying": "Negates parry penalty"
             },
+            "RegionProperties": {
+                "createRegionFromTemplate": "Create Region from Template"
+            },
             "ContextMenu": {
                 "Consume": "Consume",
                 "NotConsumable": "The item is not configured as consumable",
@@ -85,6 +88,7 @@
                 "DamageProperties": "Damage Properties",
                 "DefenseProperties": "Defense Properties",
                 "ConsumableProperties": "Consumable Properties",
+                "RegionProperties": "Region Properties",
                 "Spell": {
                     "SelfProperties": "Apply to caster",
                     "CastProperties": "Apply to target"
