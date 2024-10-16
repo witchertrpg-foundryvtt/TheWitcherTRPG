@@ -33,7 +33,7 @@ export default class SpellData extends CommonItemData {
             sideEffect: new fields.StringField({ initial: '' }),
 
             createTemplate: new fields.BooleanField({ initial: false }),
-            templateSize: new fields.StringField({ initial: '' }),
+            templateSize: new fields.NumberField({ initial: 0 }),
             templateType: new fields.StringField({ initial: '' }),
             visualEffectDuration: new fields.NumberField(),
 
@@ -64,6 +64,13 @@ export default class SpellData extends CommonItemData {
 
         this.effects?.forEach(effect => (effect.percentage = parseInt(effect.percentage)));
 
+        this.migrateTemplateSize(source);
         migrateDamageProperties(source);
+    }
+
+    static migrateTemplateSize(source) {
+        if (typeof source.templateSize === 'string' || source.templateSize instanceof String) {
+            source.templateSize = parseInt(source.templateSize) || 0;
+        }
     }
 }
