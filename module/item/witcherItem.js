@@ -66,8 +66,10 @@ export default class WitcherItem extends Item {
                     behaviors: behaviors,
                     flags: {
                         TheWitcherTRPG: {
-                            item: this.uuid,
-                            duration: damage.duration
+                            item: this,
+                            itemUuid: this.uuid,
+                            duration: damage.duration,
+                            actorUuid: this.parent.uuid
                         }
                     }
                 }

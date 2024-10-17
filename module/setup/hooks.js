@@ -1,4 +1,5 @@
 import { removeExpiredActiveEffects } from '../scripts/activeEffects/activeEffectHook.js';
+import { countdownDurationOfRegions } from '../scripts/regions/regionHooks.js';
 import { applyStatusRoundEffects } from '../scripts/statusEffects/statusEffectHook.js';
 
 export function registerHooks() {
@@ -10,4 +11,5 @@ export function registerHooks() {
 function combatHooks(combat, update, options, userId) {
     removeExpiredActiveEffects(combat);
     applyStatusRoundEffects(combat);
+    countdownDurationOfRegions(combat, update, options, userId);
 }
