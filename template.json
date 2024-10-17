@@ -1,55 +1,52 @@
 {
-  "Actor": {
-    "types": [
-      "character",
-      "monster",
-      "loot",
-      "mystery"
-    ],
-    "templates": {
-      "baseActor": {}
+    "Actor": {
+        "types": ["character", "monster", "loot", "mystery"],
+        "templates": {
+            "baseActor": {}
+        },
+        "character": {},
+        "monster": {},
+        "loot": {}
     },
-    "character": {},
-    "monster": {},
-    "loot": {}
-  },
-  "Item": {
-    "types": [
-      "alchemical",
-      "armor",
-      "component",
-      "container",
-      "diagrams",
-      "enhancement",
-      "globalModifier",
-      "mount",
-      "mutagen",
-      "note",
-      "profession",
-      "race",
-      "spell",
-      "valuable",
-      "weapon",
-      
-      "clue",
-      "obstacle"
-    ],
-    "templates": {
-      "base": {}
-    },
-    "valuable": {},
-    "weapon": {},
-    "armor": {},
-    "enhancement": {},
-    "mount": {},
-    "alchemical": {},
-    "component": {},
-    "diagrams": {},
-    "mutagen": {},
-    "spell": {},
-    "profession": {},
-    "note": {},
-    "race": {},
-    "effect": {}
-  }
+    "Item": {
+        "types": [
+            "alchemical",
+            "armor",
+            "component",
+            "container",
+            "diagrams",
+            "enhancement",
+            "globalModifier",
+            "mount",
+            "mutagen",
+            "note",
+            "profession",
+            "race",
+            "spell",
+            "valuable",
+            "weapon",
+
+            "clue",
+            "obstacle",
+
+            "skill"
+        ],
+        "templates": {
+            "base": {}
+        },
+        "valuable": {},
+        "weapon": {},
+        "armor": {},
+        "enhancement": {},
+        "mount": {},
+        "alchemical": {},
+        "component": {},
+        "diagrams": {},
+        "mutagen": {},
+        "spell": {},
+        "profession": {},
+        "note": {},
+        "race": {},
+        "effect": {}
+    }
 }

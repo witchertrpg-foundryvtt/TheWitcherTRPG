@@ -140,36 +140,36 @@
 {{/if}}
 
 {{#if system.damageProperties.appliesGlobalModifierToDamaged}}
-<table>
-    <tr class="item-header-tablerow">
-        <td>
-            <label
-                for="appliesGlobalModifierToDamaged">{{localize "WITCHER.Item.DamageProperties.appliesGlobalModifierToDamaged"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" id="damageProperties.appliesGlobalModifierToDamaged"
-                name="system.damageProperties.appliesGlobalModifierToDamaged"
-                {{checked item.system.damageProperties.appliesGlobalModifierToDamaged}} />
-        </td>
-    </tr>
-    {{#if item.system.damageProperties.appliesGlobalModifierToDamaged}}
-        <tr>
-            <th>{{localize "TYPES.Item.globalModifier"}}</th>
+    <table>
+        <tr class="item-header-tablerow">
+            <td>
+                <label
+                    for="appliesGlobalModifierToDamaged">{{localize "WITCHER.Item.DamageProperties.appliesGlobalModifierToDamaged"}}</label>
+            </td>
+            <td>
+                <input type="checkbox" id="damageProperties.appliesGlobalModifierToDamaged"
+                    name="system.damageProperties.appliesGlobalModifierToDamaged"
+                    {{checked item.system.damageProperties.appliesGlobalModifierToDamaged}} />
+            </td>
         </tr>
-        {{#each item.system.damageProperties.damagedGlobalModifiers as |modifier|}}
+        {{#if item.system.damageProperties.appliesGlobalModifierToDamaged}}
             <tr>
-                <td class="list-item" data-id="{{modifier}}" data-target='damageProperties.damagedGlobalModifiers'>
-                    <a class="remove-global-modifier-damageProperties"
-                        title="{{localize "WITCHER.Item.RemoveGlobalModifier"}}"><i class="fas fa-minus"></i></a>
-                </td>
-                <td class="list-item" data-id="{{modifier}}" data-target='damageProperties.damagedGlobalModifiers'>
-                    <input class="edit-global-modifier-damageProperties" placeholder="{{localize "WITCHER.table.Name"}}"
-                        type="text" value="{{modifier}}" />
-                </td>
+                <th>{{localize "TYPES.Item.globalModifier"}}</th>
             </tr>
-        {{/each}}
-    {{/if}}
-</table>
+            {{#each item.system.damageProperties.damagedGlobalModifiers as |modifier|}}
+                <tr>
+                    <td class="list-item" data-id="{{modifier}}" data-target='damageProperties.damagedGlobalModifiers'>
+                        <a class="remove-global-modifier-damageProperties"
+                            title="{{localize "WITCHER.Item.RemoveGlobalModifier"}}"><i class="fas fa-minus"></i></a>
+                    </td>
+                    <td class="list-item" data-id="{{modifier}}" data-target='damageProperties.damagedGlobalModifiers'>
+                        <input class="edit-global-modifier-damageProperties"
+                            placeholder="{{localize "WITCHER.table.Name"}}" type="text" value="{{modifier}}" />
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+    </table>
 {{/if}}
 
 <table class="item-bottom-table">

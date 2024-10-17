@@ -1,6 +1,5 @@
 import CommonItemData from "./commonItemData.js";
 import consumable from "./templates/consumableData.js";
-import consumeProperties from "./templates/consumePropertiesData.js";
 
 const fields = foundry.data.fields;
 

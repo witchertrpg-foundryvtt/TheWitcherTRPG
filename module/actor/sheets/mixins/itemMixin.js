@@ -233,7 +233,7 @@ export let itemMixin = {
         event.preventDefault();
         event.stopPropagation();
         let itemId = event.currentTarget.closest('.item').dataset.itemId;
-        return await this.actor.items.get(itemId).delete();
+        this.actor.items.get(itemId).delete();
     },
 
     async _chooseEnhancement(event) {
@@ -692,7 +692,6 @@ export let itemMixin = {
             .concat(relevantActorModifier)
             .forEach(modifier => (attFormula += `${modifier.formula}[${game.i18n.localize(modifier.name)}]`));
 
-        console.log(relevantActorModifier);
         return attFormula;
     },
 
@@ -940,8 +939,8 @@ export let itemMixin = {
             });
         }
 
-        await spellItem.createSpellVisualEffectIfApplicable();
-        spellItem.deleteSpellVisualEffect();
+        await spellItem.createSpellVisuals(damage);
+
 
         const chatMessage = await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/spellItem.hbs', {
             spellItem,
