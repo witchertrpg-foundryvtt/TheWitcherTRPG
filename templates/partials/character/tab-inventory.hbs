@@ -463,11 +463,6 @@
             {{> "systems/TheWitcherTRPG/templates/partials/character/tab-inventory-valuables.hbs" valuables=clothingAndContainers}}
         {{/if}}
 
-        {{#if containers}}
-            <h3>{{localize "WITCHER.Valuable.Containers"}}</h3>
-            {{> "systems/TheWitcherTRPG/templates/partials/character/tab-inventory-valuables.hbs" valuables=containers}}
-        {{/if}}
-
         {{#if mounts}}
             <h3>{{localize "WITCHER.Inventory.Mounts"}}</h3>
             {{> "systems/TheWitcherTRPG/templates/partials/character/tab-inventory-mounts.hbs" mounts=mounts}}
@@ -476,6 +471,13 @@
         {{#if mountAccessories}}
             <h3>{{localize "WITCHER.Valuable.MountAccessories"}}</h3>
             {{> "systems/TheWitcherTRPG/templates/partials/character/tab-inventory-valuables.hbs" valuables=mountAccessories}}
+        {{/if}}
+
+        <h2>{{localize "WITCHER.Valuable.Containers"}}<a class="add-item" data-itemType="container">
+                <i class="fas fa-plus"></i>
+            </a></h2>
+        {{#if containers}}
+            {{> "systems/TheWitcherTRPG/templates/partials/character/tab-inventory-valuables.hbs" valuables=containers}}
         {{/if}}
 
         <h2>{{localize "WITCHER.Inventory.Diagrams"}}
