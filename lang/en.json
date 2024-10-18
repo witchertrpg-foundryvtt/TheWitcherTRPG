@@ -830,6 +830,8 @@
         "Settings": {
             "Adrenaline": "Use Adrenaline Optional Rule",
             "AdrenalineDetails": "Adrenaline is the willpower to go on and Fight harder in dire situations",
+            "WoundsAffectSkillBase": "Wounds affect skill base",
+            "WoundsAffectSkillBaseDetails": "Wounds affect skill base instead of only skill. This makes wounds more impactful.",
             "displayRollDetails": "Display roll's details",
             "displayRollDetailsHint": "Display details when rolling dice : 1d10+2[stat]+4[skill]-3[parry]",
             "Custom": "Custom",

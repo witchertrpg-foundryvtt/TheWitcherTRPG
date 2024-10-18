@@ -213,14 +213,17 @@ export default class WitcherActor extends Actor {
             flavor: `${attributeLabel}: ${skillLabel} Check`
         };
 
-        let rollFormula;
-        if (this.system.dontAddAttr) {
-            rollFormula = !displayRollDetails ? `1d10+${skillValue}` : `1d10+${skillValue}[${skillLabel}]`;
-        } else {
-            rollFormula = !displayRollDetails
-                ? `1d10+${attributeValue}+${skillValue}`
-                : `1d10+${attributeValue}[${attributeLabel}]+${skillValue}[${skillLabel}]`;
+        let rollFormula = '1d10 +';
+        if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
+            rollFormula += '(';
         }
+        if (!this.system.dontAddAttr) {
+            rollFormula += !displayRollDetails ? `${attributeValue} +` : `${attributeValue}[${attributeLabel}] +`;
+        }
+
+        rollFormula += '(';
+        rollFormula += !displayRollDetails ? `${skillValue}` : `${skillValue}[${skillLabel}]`;
+        rollFormula += this.addAllModifiers(skillMapEntry.name);
 
         if (this.type == 'character') {
             // core rulebook page 21
@@ -260,8 +263,6 @@ export default class WitcherActor extends Actor {
                     : `+1[${game.i18n.localize('WITCHER.socialStanding.feared')}]`;
             }
         }
-
-        rollFormula += this.addAllModifiers(skillMapEntry.name);
 
         let armorEnc = this.getArmorEcumbrance();
         if (armorEnc > 0 && (skillName == 'hexweave' || skillName == 'ritcraft' || skillName == 'spellcast')) {
