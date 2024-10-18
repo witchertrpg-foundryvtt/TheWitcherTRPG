@@ -18,6 +18,7 @@
 @import "./chat.css";
 @import "./item-header.css";
 @import "./activeEffect.css";
+@import "./special-skill-table.css";
 
 @font-face {
     font-family: 'Thewitcher';

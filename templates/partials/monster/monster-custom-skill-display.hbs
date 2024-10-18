@@ -1,0 +1,59 @@
+<tbody class="skill item" data-item-id="{{id}}">
+    <tr>
+        {{#if (or system.isProfession system.isPickup)}}
+            <td  id="custom-rollable">
+        {{/if}}
+        {{#if system.isLearned}}
+            {{#unless (or system.isProfession system.isPickup)}}
+                <td class=" learned-skilled" id="custom-rollable">
+            {{/unless}}
+        {{/if}}
+        {{#unless (or system.isProfession system.isPickup system.isLearned)}}
+            <td class="not-skilled" id="custom-rollable">
+        {{/unless}}
+        <a><span>{{name}}</span></a>
+        </td>
+        <td class="char-input-skill">
+            <input class="inline-edit value" data-field="system.value" type="number" value="{{system.value}}" />
+        </td>
+        <td>
+            {{#if system.isOpened}}
+                <a class="custom-skill-modifier-display"><i class="fas fa-chevron-down"></i></a>
+            {{else}}
+                <a class="custom-skill-modifier-display"><i class="fas fa-chevron-right"></i></a>
+            {{/if}}
+        </td>
+        <td>
+            <a class="remove-custom-skill"><i class="fas fa-trash-alt"></i></a>
+        </td>
+    </tr>
+    {{#if system.isOpened}}
+        <tr>
+            <td colspan="3">
+                <a class="add-custom-skill-modifier"><i class="fas fa-plus"></i></a>
+                {{#each system.modifiers as |modifier value|}}
+                    <div class="list-modifiers" data-id="{{modifier.id}}">
+                        <input class="medium edit-custom-skill-modifier" data-field="name" type="text"
+                            value="{{modifier.name}}" />
+                        <input class="small edit-custom-skill-modifier" data-field="value" type="number"
+                            value="{{modifier.value}}" />
+                        <a class="delete-custom-skill-modifier"><i class="fas fa-trash-alt"
+                                data-id="{{modifier.id}}"></i></a>
+                    </div>
+                {{/each}}
+            </td>
+        </tr>
+        {{#if system.activeEffectModifiers}}
+            <tr>
+                <td colspan="3">
+                    <div class="list-modifiers">
+                        <input class="medium skill-mod-edit" type="text" value="{{localize "WITCHER.activeEffect.tab"}}"
+                            disabled />
+                        <input class="small skill-mod-edit" type="number" value="{{system.activeEffectModifiers}}"
+                            disabled />
+                    </div>
+                </td>
+            </tr>
+        {{/if}}
+    {{/if}}
+</tbody>

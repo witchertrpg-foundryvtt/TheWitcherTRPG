@@ -1,0 +1,62 @@
+{{#if profession}}
+    <div class='item' data-item-id='{{profession._id}}'>
+        <h1 class='flex flex-header'>
+            <label>{{localize 'WITCHER.Profession'}}:</label>
+            <input class='inline-edit' data-field='name' type='text' value='{{profession.name}}' placeholder='Name' />
+            <a class='item-edit'><i class='fas fa-edit'></i></a>
+            <a class='item-delete'><i class='fas fa-trash-alt'></i></a>
+        </h1>
+        <div class='profession-layout'>
+            <div class='profession-flex'>
+                <div class='profession-card defining-skill'>
+                    <div
+                        class='flex defining-skill-header profession-display'
+                        data-stat='{{profession.system.definingSkill.stat}}'
+                        data-level='{{profession.system.definingSkill.level}}'
+                        data-name='{{profession.system.definingSkill.skillName}}'
+                        data-effet='{{profession.system.definingSkill.definition}}'
+                    >
+                        <input
+                            class='inline-edit profession-skill-input'
+                            data-field='system.definingSkill.skillName'
+                            type='text'
+                            value='{{profession.system.definingSkill.skillName}}'
+                            placeholder=''
+                        />
+                        <select class='inline-edit defining-skill-select' data-field='system.definingSkill.stat'>
+                            {{selectOptions
+                                config.statTypes
+                                selected=profession.system.definingSkill.stat
+                                localize=true
+                            }}
+                        </select>
+                        <input
+                            class='inline-edit profession-level'
+                            data-field='system.definingSkill.level'
+                            type='number'
+                            value='{{profession.system.definingSkill.level}}'
+                            placeholder=''
+                        />
+                        {{#unless (eq profession.system.definingSkill.stat 'none')}}
+                            <a class='profession-roll'><i class='fas fa-dice-d20'></i></a>
+                        {{/unless}}
+                    </div>
+                    {{editor
+                        profession.system.definingSkill.definition
+                        target='profession.system.definingSkill.definition'
+                        button=true
+                        editable=false
+                    }}
+                </div>
+                <div class='profession-notes'>
+                    <div class='profession-notes-header'>{{localize 'WITCHER.Notes'}}</div>
+                    {{editor profession.system.notes target='profession.system.notes' button=true editable=false}}
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}
+{{#unless profession}}
+    <h1>{{localize 'WITCHER.Actor.Adda.Profession'}}
+        <a class='add-item' data-itemType='profession'><i class='fas fa-plus'></i></a></h1>
+{{/unless}}
