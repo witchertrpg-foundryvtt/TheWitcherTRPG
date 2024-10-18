@@ -41,6 +41,7 @@ async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/partials/character/tab-inventory-runes-glyphs.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/substances.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/tab-magic.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/tab-effects.hbs',
 
         'systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs',
 

@@ -28,14 +28,6 @@
     width: 15px;
 }
 
-.crit-wounds {
-    min-width: 783px;
-    flex-grow: 1;
-    margin: 5px;
-    padding: 10px;
-
-}
-
 .modifier-display {
     min-width: 100px;
 }
