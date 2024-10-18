@@ -1,30 +1,95 @@
-.critwound-left {
-    width: 50%;
-    margin-right: 5px;
+.crit-wounds {
+    flex-grow: 1;
 }
 
-.critwounds-right {
-    width: 50%;
-    margin-left: 5px;
+.critwound-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.crit-wounds-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 2px groove #eeede0;
+    margin-top: 10px;
+}
+
+.crit-wounds-header-name {
+    margin-bottom: 0;
+    border-bottom: none;
+    opacity: 0.8;
+}
+
+.critwound-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 100px;
+    height: 60px;
+    align-items: center;
+    padding: 10px 5px 10px;
+}
+
+.critwound-display {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.critwound-display,
+.delete-crit {
+    width: 33.33px;
+}
+
+.critwound-controls {
+    display: flex;
+    justify-content: end;
+}
+
+.crit-wounds-table {
+    border: none;
+    margin: 0;
+}
+
+.crit-wounds-table > tbody > tr {
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 1px rgba(25, 24, 19, 0.2) solid;
+}
+
+.crit-wounds-table > tbody {
+    background-color: rgba(0, 0, 0, 0);
+}
+.crit-wounds-table > tbody > tr:last-child {
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 0px;
+}
+
+.crit-wounds-table {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.critwound input,
+.critwound select,
+.critwound textarea {
+    border: none;
+}
+
+.critwounds-description {
+    padding: 0 5px 1rem 5px;
+}
+
+.crit-wound-description,
+.crit-wound-mod-description {
+    padding-bottom: 0.5rem;
 }
 
 .crit-wounds-table textarea {
     resize: vertical;
 }
 
-.add-crit,
-.delete-crit {
+.add-crit {
     margin: 5px;
     width: 15px;
-}
-
-.critwounds-second-line {
-    display: flex;
-    text-align: center;
-    height: 26px;
-    width: 232px;
-    line-height: 26px;
-    margin: 1px;
 }
 
 .healing-time-lable {

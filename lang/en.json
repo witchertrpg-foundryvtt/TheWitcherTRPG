@@ -1064,7 +1064,7 @@
             }
         },
         "activeEffect": {
-            "tab": "Active Effect",
+            "tab": "Effects",
             "source": "Source",
             "toggle": "Toggle",
             "temporary": "Temporary",
