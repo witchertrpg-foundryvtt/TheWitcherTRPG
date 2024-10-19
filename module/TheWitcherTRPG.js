@@ -51,7 +51,6 @@ async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/partials/monster/monster-spell-tab.hbs',
         'systems/TheWitcherTRPG/templates/partials/monster/monster-skill-display.hbs',
         'systems/TheWitcherTRPG/templates/partials/monster/monster-custom-skill-display.hbs',
-        'systems/TheWitcherTRPG/templates/partials/monster/monster-tab-skills.hbs',
         'systems/TheWitcherTRPG/templates/partials/monster/monster-profession-skill-display.hbs',
 
         'systems/TheWitcherTRPG/templates/partials/loot/loot-item-display.hbs',

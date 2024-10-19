@@ -82,7 +82,9 @@ export let modifierMixin = {
         let modifierFormula = '';
         modifierFormula += this.addSkillModifiers(skillName);
         modifierFormula += this.addGlobalModifier(skillName);
-        modifierFormula += ')';
+        if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
+            modifierFormula += ')';
+        }
         modifierFormula += this.addWoundsModifier(skillName);
         return modifierFormula;
     },
@@ -167,9 +169,6 @@ export let modifierMixin = {
                         skill.skill == 'all'
                     ) {
                         if (skill.modifier?.toString().includes('/')) {
-                            if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
-                                formula += ')';
-                            }
                             formula += !displayRollDetails
                                 ? ` /${Number(skill.modifier.replace('/', ''))}`
                                 : ` /${Number(skill.modifier.replace('/', ''))}[${game.i18n.localize('WITCHER.CritWound.Header')}]`;

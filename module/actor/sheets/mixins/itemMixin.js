@@ -511,7 +511,17 @@ export let itemMixin = {
                                 attacknumber = 2;
                             }
                             for (let i = 0; i < attacknumber; i++) {
-                                let attFormula = '1d10';
+                                let attFormula = '1d10+';
+                                let skill = CONFIG.WITCHER.skillMap[attackSkill.name];
+                                if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
+                                    attFormula += '(';
+                                }
+                                attFormula += !displayRollDetails
+                                    ? `${this.actor.system.stats[skill.attribute.name].current}+${this.actor.system.skills[skill.attribute.name][skill.name].value}`
+                                    : `${this.actor.system.stats[skill.attribute.name].current}[${game.i18n.localize(skill.attribute.label)}]+${this.actor.system.skills[skill.attribute.name][skill.name].value}[${game.i18n.localize(skill.label)}]`;
+
+                                attFormula = this.handleSpecialModifier(attFormula, strike);
+                                attFormula += this.actor.addAllModifiers(attackSkill.name);
                                 let damageFormula = formula;
 
                                 if (item.system.accuracy < 0) {
@@ -590,11 +600,6 @@ export let itemMixin = {
                                         : `+${customAim}[${game.i18n.localize('WITCHER.Dialog.attackCustom')}]`;
                                 }
 
-                                let skill = CONFIG.WITCHER.skillMap[attackSkill.name];
-                                attFormula += !displayRollDetails
-                                    ? `+${this.actor.system.stats[skill.attribute.name].current}+${this.actor.system.skills[skill.attribute.name][skill.name].value}`
-                                    : `+${this.actor.system.stats[skill.attribute.name].current}[${game.i18n.localize(skill.attribute.label)}]+${this.actor.system.skills[skill.attribute.name][skill.name].value}[${game.i18n.localize(skill.label)}]`;
-
                                 if (customAtt != '0') {
                                     attFormula += !displayRollDetails
                                         ? `+${customAtt}`
@@ -642,9 +647,6 @@ export let itemMixin = {
                                         ? `${attFormula}-3`
                                         : `${attFormula} -3[${game.i18n.localize('WITCHER.Dialog.attackStrike')}]`;
                                 }
-
-                                attFormula = this.handleSpecialModifier(attFormula, strike);
-                                attFormula += this.actor.addAllModifiers(attackSkill.name);
 
                                 messageData.flavor = `<div class="attack-message"><h1><img src="${item.img}" class="item-img" />${game.i18n.localize('WITCHER.Attack')}: ${item.name}</h1>`;
                                 messageData.flavor += `<span>  ${game.i18n.localize('WITCHER.Armor.Location')}: ${touchedLocation.alias} = ${touchedLocation.locationFormula} </span>`;
@@ -941,7 +943,6 @@ export let itemMixin = {
 
         await spellItem.createSpellVisuals(damage);
 
-
         const chatMessage = await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/spellItem.hbs', {
             spellItem,
             templateInfo,
@@ -1046,4 +1047,3 @@ export let itemMixin = {
         this._dragDrop.push(newDragDrop);
     }
 };
-
