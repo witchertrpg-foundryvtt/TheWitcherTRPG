@@ -121,28 +121,6 @@ export default class WitcherItemSheet extends ItemSheet {
         this.configuration?._render(true);
     }
 
-    _handleRender(html) {
-        html.find('.add-effect').on('click', args => {
-            console.log(args.currentTarget.dataset);
-        });
-    }
-
-    _handleConfiguration(html) {
-        const formElement = html[0].querySelector('form');
-        const formData = new FormDataExtended(formElement);
-
-        this._updateItem(formData.object);
-    }
-
-    _updateItem(formData) {
-        let updateData = {};
-        for (let [key, value] of Object.entries(formData)) {
-            updateData[key] = value;
-        }
-
-        this.item.update(updateData);
-    }
-
     _onFocusIn(event) {
         event.currentTarget.select();
     }

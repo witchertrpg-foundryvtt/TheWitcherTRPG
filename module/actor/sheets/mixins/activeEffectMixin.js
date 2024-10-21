@@ -68,11 +68,20 @@ export let activeEffectMixin = {
         }
     },
 
+    async _onActiveEffectDisplayInfo(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        let section = event.currentTarget.closest('.effect-row');
+        let editor = $(section).find('.effect-description');
+        editor.toggleClass('invisible');
+    },
+
     activeEffectListener(html) {
         // Active Effect management
         html.on("click", ".effect-control", (ev) =>
             this.onManageActiveEffect(ev, this.actor)
         );
+        html.find('.effect-display').on('click', this._onActiveEffectDisplayInfo.bind(this));
     }
 
 }

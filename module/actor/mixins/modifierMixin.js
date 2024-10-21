@@ -82,6 +82,9 @@ export let modifierMixin = {
         let modifierFormula = '';
         modifierFormula += this.addSkillModifiers(skillName);
         modifierFormula += this.addGlobalModifier(skillName);
+        if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
+            modifierFormula += ')';
+        }
         modifierFormula += this.addWoundsModifier(skillName);
         return modifierFormula;
     },
@@ -91,6 +94,9 @@ export let modifierMixin = {
         let skill = CONFIG.WITCHER.skillMap[skillName];
 
         let formula = '';
+
+        if (!skill) return formula;
+
         this.system.skills[skill.attribute.name][skill.name].modifiers?.forEach(mod => {
             if (mod.value < 0) {
                 formula += !displayRollDetails ? ` ${mod.value}` : ` ${mod.value}[${mod.name}]`;

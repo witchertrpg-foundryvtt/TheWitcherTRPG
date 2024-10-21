@@ -9,12 +9,12 @@ async function globalModifiers() {
         .filter(actor => actor.isOwner)
         .filter(actor => actor.items.some(item => item.type == 'globalModifier'));
 
-    if (affectedActors.length > 0) {
-        console.log(affectedActors);
+    let affectedItems = game.items.filter(item => item.type == 'globalModifier');
 
+    if (affectedActors.length > 0 || affectedItems.length > 0) {
         const dialogTemplate = await renderTemplate(
             'systems/TheWitcherTRPG/templates/dialog/deprecations/globalModifiers.hbs',
-            { affectedActors }
+            { affectedActors, affectedItems }
         );
         DialogV2.prompt({
             window: { title: `${game.i18n.localize('WITCHER.Deprecations.globalModifier.title')}` },

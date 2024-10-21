@@ -1,8 +1,18 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <span>{{localize "WITCHER.Deprecations.globalModifier.text"}}</span>
-    {{#each affectedActors as |actor|}}
-        <div>
-            <span>{{actor.name}}</span>
-        </div>
-    {{/each}}
+    {{#if affectedActors}}
+        <span>{{localize "WITCHER.Deprecations.globalModifier.text"}}</span>
+        {{#each affectedActors as |actor|}}
+            <div>
+                <span>{{actor.name}}</span>
+            </div>
+        {{/each}}
+    {{/if}}
+    {{#if affectedItems}}
+        <span>{{localize "WITCHER.Deprecations.globalModifier.item"}}</span>
+        {{#each affectedItems as |item|}}
+            <div>
+                <span>{{item.name}}</span>
+            </div>
+        {{/each}}
+    {{/if}}
 </form>

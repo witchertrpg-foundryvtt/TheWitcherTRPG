@@ -2,12 +2,12 @@
     padding: 0;
 }
 
-.effects-header, .effect-row {
+/* Effects Header Style */
+
+.effects-header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 100px;
 }
-
-/* Effects Header Style */
 
 .effects-header {
     padding: 5px;
@@ -16,7 +16,7 @@
     border: 2px groove #eeede0;
 }
 
-.effects-header:nth-child(n+2) {
+.effects-header:nth-child(n + 2) {
     margin-top: 5px;
 }
 
@@ -27,6 +27,16 @@
 
 /* Effects Row Style */
 
+.effect-first-row {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+}
+
+.effect-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 .effect-list {
     padding: 0;
     margin: 0;
@@ -35,14 +45,15 @@
 .effect-row {
     padding: 10px 5px 10px;
     border-bottom: 1px rgba(25, 24, 19, 0.2) solid;
+    display: flex;
+    flex-direction: column;
 }
 
 .effect-row:last-child {
     border-bottom: none;
-    margin-bottom: 5px;
 }
 
-.effect-name{
+.effect-name {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -60,10 +71,17 @@
     margin-bottom: 0;
 }
 
-.effect-source, .effect-duration, .effect-control {
+.effect-source,
+.effect-duration,
+.effect-control {
     align-self: center;
 }
 
 .effect-control {
     color: rgba(25, 24, 19, 0.8);
 }
+
+.effect-description {
+    padding: 10px 120px 0 50px;
+}
+

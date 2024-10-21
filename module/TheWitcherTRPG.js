@@ -19,6 +19,7 @@ import { registerSocketListeners } from './setup/socketHook.js';
 import WitcherActiveEffect from './activeEffect/witcherActiveEffect.js';
 import { registerHooks } from './setup/hooks.js';
 import { deprecationWarnings } from './setup/globalModifiers.js';
+import { applyActiveEffectToActorViaId } from './scripts/activeEffects/applyActiveEffect.js';
 
 async function preloadHandlebarsTemplates() {
     const templatePath = [
@@ -30,6 +31,7 @@ async function preloadHandlebarsTemplates() {
 
         'systems/TheWitcherTRPG/templates/partials/character/tab-skills.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs',
+        'systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/tab-profession.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/tab-background.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/tab-inventory.hbs',
@@ -39,6 +41,7 @@ async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/partials/character/tab-inventory-runes-glyphs.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/substances.hbs',
         'systems/TheWitcherTRPG/templates/partials/character/tab-magic.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/tab-effects.hbs',
 
         'systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs',
 
@@ -47,6 +50,8 @@ async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/partials/monster/monster-details-tab.hbs',
         'systems/TheWitcherTRPG/templates/partials/monster/monster-spell-tab.hbs',
         'systems/TheWitcherTRPG/templates/partials/monster/monster-skill-display.hbs',
+        'systems/TheWitcherTRPG/templates/partials/monster/monster-custom-skill-display.hbs',
+        'systems/TheWitcherTRPG/templates/partials/monster/monster-profession-skill-display.hbs',
 
         'systems/TheWitcherTRPG/templates/partials/loot/loot-item-display.hbs',
 
@@ -59,6 +64,7 @@ async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs',
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/defensePropertiesConfiguration.hbs',
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/consumablePropertiesConfiguration.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/regionPropertiesConfiguration.hbs',
 
         'systems/TheWitcherTRPG/templates/sheets/investigation/mystery-sheet.hbs',
         'systems/TheWitcherTRPG/templates/partials/investigation/clue-display.hbs',
@@ -82,6 +88,10 @@ Hooks.once('init', function () {
     CONFIG.Actor.documentClass = WitcherActor;
     CONFIG.ActiveEffect.documentClass = WitcherActiveEffect;
     CONFIG.ActiveEffect.legacyTransferral = false;
+
+    game.api = {
+        applyActiveEffectToActorViaId
+    };
 
     registerDataModels();
     registerSheets();
@@ -342,3 +352,4 @@ Handlebars.registerHelper('formatModLabel', function (statCurrent, statMax) {
     let calc = statCurrent - statMax;
     return calc;
 });
+

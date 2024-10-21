@@ -49,10 +49,10 @@ export async function rollDamage(item, damage) {
     messageData.flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.damageType')}:</b> ${game.i18n.localize(damageTypeloc)} </div>`;
     messageData.flavor += `<div>${game.i18n.localize('WITCHER.Damage.RemoveSP')}</div>`;
 
-    if (damage.damageProperties.effects && damage.damageProperties.effects.length > 0) {
+    if (damage.effects && damage.effects.length > 0) {
         messageData.flavor += `<b>${game.i18n.localize('WITCHER.Item.Effect')}:</b>`;
 
-        damage.damageProperties.effects.forEach((effect, index, effectArray) => {
+        damage.effects.forEach((effect, index, effectArray) => {
             messageData.flavor += `<div class="flex gap">`;
             if (effect.name != '') {
                 messageData.flavor += `<span>${effect.name}</span>`;
