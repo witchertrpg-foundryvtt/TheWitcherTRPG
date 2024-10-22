@@ -223,7 +223,6 @@ export default class WitcherActor extends Actor {
             rollFormula += !displayRollDetails ? `${attributeValue} +` : `${attributeValue}[${attributeLabel}] +`;
         }
 
-        rollFormula += '(';
         rollFormula += !displayRollDetails ? `${skillValue}` : `${skillValue}[${skillLabel}]`;
         rollFormula += this.addAllModifiers(skillMapEntry.name);
 
