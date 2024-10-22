@@ -3,43 +3,6 @@ export function addChatListeners(html) {
     html.on('click', "button.heal", onHeal)
 }
 
-/*
-  Button Dialog
-    Send an array of buttons to create a dialog that will execute specific callbacks based on button pressed.
-
-    returns a promise (no value)
-
-  data = {
-    buttons : [[`Label`, ()=>{Callback} ], ...]
-    title : `title_label`,
-    content : `Html_Content`
-  }
-*/
-export async function buttonDialog(data) {
-    return await new Promise(async (resolve) => {
-        let buttons = {}, dialog;
-
-        data.buttons.forEach(([str, callback]) => {
-            buttons[str] = {
-                label: str,
-                callback
-            }
-        });
-
-        dialog = new Dialog({
-            title: data.title,
-            content: data.content,
-            buttons,
-            close: () => resolve()
-        }, {
-            width: 300,
-        });
-
-        await dialog._render(true);
-    });
-}
-
-
 function onShield(event) {
     let shield = event.currentTarget.getAttribute("data-shield")
     let actorUuid = event.currentTarget.getAttribute("data-actor")

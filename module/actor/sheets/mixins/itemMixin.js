@@ -1,4 +1,3 @@
-import { buttonDialog } from '../../../scripts/chat.js';
 import { extendedRoll } from '../../../scripts/rolls/extendedRoll.js';
 
 import { rollDamage } from '../../../scripts/combat/attack.js';
@@ -12,6 +11,8 @@ import {
     applyActiveEffectToActor,
     applyActiveEffectToTargets
 } from '../../../scripts/activeEffects/applyActiveEffect.js';
+
+const DialogV2 = foundry.applications.api.DialogV2;
 
 export let itemMixin = {
     async _onDropItem(event, data) {
@@ -640,10 +641,6 @@ export let itemMixin = {
         }
         rollFormula = this.handleSpecialModifier(rollFormula, 'magic');
 
-        let staCostTotal = spellItem.system.stamina;
-        let customModifier = 0;
-        let isExtraAttack = false;
-
         let useFocus = false;
         let handlebarFocusOptions = {};
         if (this.actor.system.focus1.value > 0) {
@@ -687,40 +684,25 @@ export let itemMixin = {
             data
         );
 
-        let cancel = true;
-        let focusValue = 0;
-        let secondFocusValue = 0;
-        let location;
-        let dialogData = {
-            buttons: [
-                [
-                    `${game.i18n.localize('WITCHER.Button.Continue')}`,
-                    html => {
-                        if (spellItem.system.staminaIsVar) {
-                            staCostTotal = html.find('[name=staCost]')[0].value;
-                        }
-                        customModifier = html.find('[name=customMod]')[0].value;
-                        isExtraAttack = html.find('[name=isExtraAttack]').prop('checked');
-                        if (html.find('[name=focus]')[0]) {
-                            focusValue = html.find('[name=focus]')[0].value;
-                        }
-                        if (html.find('[name=secondFocus]')[0]) {
-                            secondFocusValue = html.find('[name=secondFocus]')[0].value;
-                        }
-                        location = html.find('[name=location]')[0]?.value;
-                        cancel = false;
+        let { staCostTotal, customModifier, isExtraAttack, focusValue, secondFocusValue, location } =
+            await DialogV2.prompt({
+                window: { title: `${game.i18n.localize('WITCHER.Spell.MagicCost')}` },
+                content: dialogTemplate,
+                modal: true,
+                ok: {
+                    callback: (event, button, dialog) => {
+                        return {
+                            staCostTotal: button.form.elements.staCost?.value ?? spellItem.system.stamina,
+                            customModifier: button.form.elements.customMod.value,
+                            isExtraAttack: button.form.elements.isExtraAttack.checked,
+                            focusValue: button.form.elements.focus?.value ?? 0,
+                            secondFocusValue: button.form.elements.secondFocus?.value ?? 0,
+                            location: button.form.elements.location.value
+                        };
                     }
-                ]
-            ],
-            title: game.i18n.localize('WITCHER.Spell.MagicCost'),
-            content: dialogTemplate
-        };
+                }
+            });
 
-        await buttonDialog(dialogData);
-
-        if (cancel) {
-            return;
-        }
         let origStaCost = staCostTotal;
 
         staCostTotal -= Number(focusValue) + Number(secondFocusValue);
@@ -850,7 +832,7 @@ export let itemMixin = {
             });
         }
 
-        await spellItem.createSpellVisuals(damage);
+        spellItem.createSpellVisuals(damage);
 
         const chatMessage = await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/spellItem.hbs', {
             spellItem,

@@ -1,5 +1,6 @@
-import { buttonDialog } from '../../scripts/chat.js';
 import { itemMixin } from './mixins/itemMixin.js';
+
+const DialogV2 = foundry.applications.api.DialogV2;
 
 export default class WitcherLootSheet extends ActorSheet {
     static get defaultOptions() {
@@ -106,32 +107,22 @@ export default class WitcherLootSheet extends ActorSheet {
             }
         }
         content += `To Character : <select name="character">${Characteroptions}</select>`;
-        let cancel = true;
-        let numberOfItem = 0;
-        let totalCost = 0;
-        let characterId = '';
-        let coinType = '';
 
-        let dialogData = {
-            buttons: [
-                [
-                    `${game.i18n.localize('WITCHER.Button.Continue')}`,
-                    html => {
-                        numberOfItem = html.find('[name=itemQty]')[0].value;
-                        totalCost = html.find('[name=costTotalValue]')[0].value;
-                        coinType = html.find('[name=coinType]')[0].value;
-                        characterId = html.find('[name=character]')[0].value;
-                        cancel = false;
-                    }
-                ]
-            ],
-            title: game.i18n.localize('WITCHER.Loot.BuyTitle'),
-            content: content
-        };
-        await buttonDialog(dialogData);
-        if (cancel) {
-            return;
-        }
+        let { numberOfItem, totalCost, characterId, coinType } = await DialogV2.prompt({
+            window: { title: `${game.i18n.localize('WITCHER.Loot.BuyTitle')}` },
+            content: content,
+            modal: true,
+            ok: {
+                callback: (event, button, dialog) => {
+                    return {
+                        numberOfItem: button.form.elements.itemQty.value,
+                        totalCost: button.form.elements.costTotalValue.value,
+                        coinType: button.form.elements.coinType.value,
+                        characterId: button.form.elements.character.value
+                    };
+                }
+            }
+        });
 
         let buyerActor = game.actors.get(characterId);
         let hasEnoughMoney = buyerActor.system.currency[coinType] >= totalCost;

@@ -1,8 +1,9 @@
 import { applyActiveEffectToActorViaId } from '../activeEffects/applyActiveEffect.js';
-import { buttonDialog } from '../chat.js';
 import { applyModifierToActor } from '../globalModifier/applyGlobalModifier.js';
 import { getInteractActor } from '../helper.js';
 import { applyStatusEffectToActor } from '../statusEffects/applyStatusEffect.js';
+
+const DialogV2 = foundry.applications.api.DialogV2;
 
 export function addDamageMessageContextOptions(html, options) {
     let canApplyDamage = li => li.find('.damage-message').length;
@@ -79,34 +80,24 @@ async function createApplyDamageDialog(actor, damage) {
     <label>${game.i18n.localize('WITCHER.Damage.oilDmg')}: <input type="checkbox" name="oilDmg"></label><br />
     <label>${game.i18n.localize('WITCHER.Damage.silverDmg')}: <select name="silverDmg">${silverOptions}</select></label><br />`;
 
-    let cancel = true;
-    let resistNonSilver = false;
-    let resistNonMeteorite = false;
-    let newLocation = false;
-    let isVulnerable = false;
-    let addOilDmg = false;
-    let silverDmg;
-
-    let dialogData = {
-        buttons: [
-            [
-                `${game.i18n.localize('WITCHER.Button.Continue')}`,
-                html => {
-                    newLocation = html.find('[name=changeLocation]')[0].value;
-                    resistNonSilver = html.find('[name=resistNonSilver]').prop('checked');
-                    resistNonMeteorite = html.find('[name=resistNonMeteorite]').prop('checked');
-                    isVulnerable = html.find('[name=vulnerable]').prop('checked');
-                    addOilDmg = html.find('[name=oilDmg]').prop('checked');
-                    silverDmg = html.find('[name=silverDmg]')[0].value;
-                    cancel = false;
+    let { newLocation, resistNonSilver, resistNonMeteorite, isVulnerable, addOilDmg, silverDmg } =
+        await DialogV2.prompt({
+            window: { title: `${game.i18n.localize('WITCHER.Context.applyDmg')}` },
+            content: content,
+            modal: true,
+            ok: {
+                callback: (event, button, dialog) => {
+                    return {
+                        newLocation: button.form.elements.changeLocation.value,
+                        resistNonSilver: button.form.elements.resistNonSilver.checked,
+                        resistNonMeteorite: button.form.elements.resistNonMeteorite.checked,
+                        isVulnerable: button.form.elements.vulnerable.checked,
+                        addOilDmg: button.form.elements.oilDmg.checked,
+                        silverDmg: button.form.elements.silverDmg.value
+                    };
                 }
-            ]
-        ],
-        title: game.i18n.localize('WITCHER.Context.applyDmg'),
-        content: content
-    };
-
-    await buttonDialog(dialogData);
+            }
+        });
 
     return {
         cancel,
