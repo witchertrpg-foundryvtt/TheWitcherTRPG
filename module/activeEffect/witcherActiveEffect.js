@@ -12,4 +12,8 @@ export default class WitcherActiveEffect extends ActiveEffect {
 
         return false;
     }
+
+    get isDisabled() {
+        return this.disabled || !(this.parent?.system?.equipped ?? true);
+    }
 }
