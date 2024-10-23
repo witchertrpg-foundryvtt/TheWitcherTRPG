@@ -4,25 +4,79 @@ import { WITCHER } from '../setup/config.js';
 import AbilityTemplate from './ability-template.js';
 
 export default class WitcherItem extends Item {
+    async _preCreate(data, options, user) {
+        //global modifiers are discontinued, so no new ones should be created
+        // if (data.type === 'globalModifier') return false;
+        await super._preCreate(data, options, user);
+    }
 
-    async roll() {}
-
-    async createSpellVisualEffectIfApplicable() {
+    async createSpellVisuals(damage) {
         if (this.system.createTemplate && this.system.templateType && this.system.templateSize) {
-            let template = await AbilityTemplate.fromItem(this)?.drawPreview();
-            this.visualEffect = template;
+            AbilityTemplate.fromItem(this)
+                ?.drawPreview()
+                .then(templates => {
+                    if (this.system.regionProperties.createRegionFromTemplate) {
+                        this.createRegionFromTemplates(templates, damage);
+                    }
+
+                    return templates;
+                })
+                .then(templates => this.deleteSpellVisualEffect(templates));
         }
     }
 
-    async deleteSpellVisualEffect() {
-        if (this.visualEffect && this.system.visualEffectDuration > 0) {
+    async deleteSpellVisualEffect(templates) {
+        if (templates && this.system.visualEffectDuration > 0) {
             setTimeout(() => {
                 canvas.scene.deleteEmbeddedDocuments(
                     'MeasuredTemplate',
-                    this.visualEffect.map(effect => effect.id)
+                    templates.map(effect => effect.id)
                 );
             }, this.system.visualEffectDuration * 1000);
         }
+    }
+
+    async createRegionFromTemplates(templates, damage) {
+        templates.forEach(async template => {
+            let origShape = template.object.shape ?? template.object._computeShape();
+            let points = origShape.points ?? origShape.toPolygon().points;
+            let shape = {
+                hole: false,
+                type: 'polygon',
+                points: points.map((pt, ind) => (ind % 2 ? pt + template.y : pt + template.x))
+            };
+
+            let behaviors = [];
+            if (this.system.regionProperties.applyMacroOnEnter) {
+                let behavior = {
+                    name: 'Execute Macro on Enter',
+                    type: 'executeMacro',
+                    system: {
+                        events: ['tokenEnter'],
+                        uuid: this.system.regionProperties.applyMacroOnEnter
+                    }
+                };
+                behaviors.push(behavior);
+            }
+
+            let regions = await game.scenes.active.createEmbeddedDocuments('Region', [
+                {
+                    name: this.name,
+                    shapes: [shape],
+                    behaviors: behaviors,
+                    flags: {
+                        TheWitcherTRPG: {
+                            item: this,
+                            itemUuid: this.uuid,
+                            duration: damage.duration,
+                            actorUuid: this.parent.uuid
+                        }
+                    }
+                }
+            ]);
+
+            regions.forEach(region => region.update({ visibility: 2 }));
+        });
     }
 
     getItemAttackSkill() {

@@ -2,6 +2,7 @@ import { migrateDamageProperties } from '../migrations/damagePropertiesMigration
 import CommonItemData from './commonItemData.js';
 import damageProperties from './templates/damagePropertiesData.js';
 import itemEffect from './templates/itemEffectData.js';
+import regionProperties from './templates/regionPropertiesData.js';
 
 const fields = foundry.data.fields;
 
@@ -33,9 +34,10 @@ export default class SpellData extends CommonItemData {
             sideEffect: new fields.StringField({ initial: '' }),
 
             createTemplate: new fields.BooleanField({ initial: false }),
-            templateSize: new fields.StringField({ initial: '' }),
+            templateSize: new fields.NumberField({ initial: 0 }),
             templateType: new fields.StringField({ initial: '' }),
             visualEffectDuration: new fields.NumberField(),
+            regionProperties: new fields.SchemaField(regionProperties()),
 
             causeDamages: new fields.BooleanField({ initial: false }),
             damage: new fields.StringField({ nullable: true, initial: null }),
@@ -64,6 +66,13 @@ export default class SpellData extends CommonItemData {
 
         this.effects?.forEach(effect => (effect.percentage = parseInt(effect.percentage)));
 
+        this.migrateTemplateSize(source);
         migrateDamageProperties(source);
+    }
+
+    static migrateTemplateSize(source) {
+        if (typeof source.templateSize === 'string' || source.templateSize instanceof String) {
+            source.templateSize = parseInt(source.templateSize) || 0;
+        }
     }
 }

@@ -12,6 +12,7 @@ import { itemMixin } from './mixins/itemMixin.js';
 import { itemContextMenu } from './interactions/itemContextMenu.js';
 import { activeEffectMixin } from './mixins/activeEffectMixin.js';
 import { specialSkillModifierMixin } from './mixins/specialSkillModifierMixin.js';
+import { customSkillMixin } from './mixins/customSkillMixin.js';
 
 Array.prototype.sum = function (prop) {
     var total = 0;
@@ -56,6 +57,7 @@ export default class WitcherActorSheet extends ActorSheet {
         context.items = context.actor.items.filter(i => !i.system.isStored);
 
         this._prepareGeneralInformation(context);
+        this._prepareCustomSkills(context);
         this._prepareWeapons(context);
         this._prepareArmor(context);
         this._prepareSpells(context);
@@ -77,6 +79,22 @@ export default class WitcherActorSheet extends ActorSheet {
     /** @inheritdoc */
     _canDragDrop(selector) {
         return true;
+    }
+
+    _prepareCustomSkills(context) {
+        let customSkills = this.actor.items.filter(item => item.type === 'skill');
+
+        var filteredStats = Object.keys(CONFIG.WITCHER.statMap).reduce(function (stats, index) {
+            if (CONFIG.WITCHER.statMap[index].origin === 'stats') {
+                stats.push(CONFIG.WITCHER.statMap[index].name);
+            }
+            return stats;
+        }, []);
+
+        context.customSkills = {};
+        filteredStats.forEach(stat => {
+            context.customSkills[stat] = customSkills.filter(skill => skill.system.attribute === stat);
+        });
     }
 
     _prepareGeneralInformation(context) {
@@ -205,6 +223,7 @@ export default class WitcherActorSheet extends ActorSheet {
         this.statListener(html);
         this.skillListener(html);
         this.skillModifierListener(html);
+        this.customSkillListener(html);
 
         this.itemListener(html);
         this.activeEffectListener(html);
@@ -353,6 +372,7 @@ export default class WitcherActorSheet extends ActorSheet {
 Object.assign(WitcherActorSheet.prototype, statMixin);
 Object.assign(WitcherActorSheet.prototype, skillMixin);
 Object.assign(WitcherActorSheet.prototype, skillModifierMixin);
+Object.assign(WitcherActorSheet.prototype, customSkillMixin);
 
 Object.assign(WitcherActorSheet.prototype, itemMixin);
 Object.assign(WitcherActorSheet.prototype, activeEffectMixin);

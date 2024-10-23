@@ -154,9 +154,13 @@ async function defense(
 
     let displayFormula = `1d10 + ${game.i18n.localize(skillMapEntry.attribute.labelShort)} + ${game.i18n.localize(skillMapEntry.label)}`;
 
-    let rollFormula = !displayRollDetails
-        ? `1d10+${stat}+${skillValue}`
-        : `1d10+${stat}[${game.i18n.localize(skillMapEntry.attribute.labelShort)}] +${skillValue}[${game.i18n.localize(skillMapEntry.label)}]`;
+    let rollFormula = '1d10+';
+    if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
+        rollFormula += '(';
+    }
+    rollFormula += !displayRollDetails
+        ? `${stat}+${skillValue}`
+        : `${stat}[${game.i18n.localize(skillMapEntry.attribute.labelShort)}] +${skillValue}[${game.i18n.localize(skillMapEntry.label)}]`;
 
     if (modifier < 0) {
         rollFormula += !displayRollDetails

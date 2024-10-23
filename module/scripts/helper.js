@@ -7,17 +7,16 @@ export function getCurrentToken() {
 }
 
 export async function getInteractActor() {
-    let actor = getCurrentCharacter();
-    if (!actor) {
-        actor = await chooseFromAvailableActors();
-    }
-
-    if (!actor) {
-        ui.notifications.error(game.i18n.localize('WITCHER.Context.SelectActor'));
-        return null;
-    }
-
-    return actor;
+    return Promise.resolve(getCurrentCharacter())
+        .then(actor => {
+            return actor ?? chooseFromAvailableActors();
+        })
+        .then(actor => {
+            if (!actor) {
+                ui.notifications.error(game.i18n.localize('WITCHER.Context.SelectActor'));
+            }
+            return actor;
+        });
 }
 
 /**

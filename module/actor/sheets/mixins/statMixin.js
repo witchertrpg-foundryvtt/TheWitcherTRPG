@@ -62,8 +62,6 @@ export let statMixin = {
         else {
             this.actor.update({ [`system.${this.statMap[stat].origin}.${stat}.modifiers`]: modifiers });
         }
-
-        this.actor.updateDerived();
     },
 
     async _onRemoveStatModifier(event) {
@@ -90,8 +88,6 @@ export let statMixin = {
         else {
             this.actor.update({ [`system.${this.statMap[stat].origin}.${stat}.modifiers`]: newModList });
         }
-
-        this.actor.updateDerived();
     },
 
     /** Do not delete. This method is here to give external modules the possibility to make skill rolls. */
@@ -184,10 +180,6 @@ export let statMixin = {
         }).render(true);
     },
 
-    _onHPChanged(event) {
-        this.actor.updateDerived()
-    },
-
     calc_total_stats(context) {
         let totalStats = 0;
         for (let element in context.system.stats) {
@@ -223,10 +215,6 @@ export let statMixin = {
     },
 
     statListener(html) {
-        html.find("input.stat-max").on("change", this.actor.updateDerived());
-
-        html.find(".hp-value").change(this._onHPChanged.bind(this));
-
         html.find(".stat-roll").on("click", this._onStatSaveRoll.bind(this));
         html.find(".reputation-roll").on("click", this._onReputation.bind(this));
 
