@@ -2,11 +2,12 @@ import { extendedRoll } from '../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../scripts/rollConfig.js';
 import { WITCHER } from '../setup/config.js';
 import AbilityTemplate from './ability-template.js';
+import { applyActiveEffectToActorViaId } from '../scripts/activeEffects/applyActiveEffect.js';
 
 export default class WitcherItem extends Item {
     async _preCreate(data, options, user) {
         //global modifiers are discontinued, so no new ones should be created
-        // if (data.type === 'globalModifier') return false;
+        if (data.type === 'globalModifier') return false;
         await super._preCreate(data, options, user);
     }
 
@@ -377,6 +378,7 @@ export default class WitcherItem extends Item {
         }
 
         this.applyStatus(this.actor, properties.effects);
+        applyActiveEffectToActorViaId(this.actor.uuid, this.uuid, 'applySelf');
         this.createConsumeMessage(messageInfos);
     }
 

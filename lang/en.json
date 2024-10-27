@@ -1047,7 +1047,10 @@
             "applySelf": "Apply this active effect on self when used",
             "applyOnTarget": "Apply this active effect on target when used",
             "applyOnHit": "Apply this active effect on hit when used",
-            "applyOnDamage": "Apply this active effect on damage when used"
+            "applyOnDamage": "Apply this active effect on damage when used",
+            "Error": {
+                "belongsToItem": "This effect belongs to an item"
+            }
         },
         "globalModifier": {
             "tab": "Global Modifier",

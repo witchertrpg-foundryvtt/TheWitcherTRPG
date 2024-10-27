@@ -1,4 +1,4 @@
-import { applyActiveEffectToActor, applyActiveEffectToActorViaId } from '../activeEffects/applyActiveEffect.js';
+import { applyActiveEffectToActorViaId } from '../activeEffects/applyActiveEffect.js';
 import { buttonDialog } from '../chat.js';
 import { applyModifierToActor } from '../globalModifier/applyGlobalModifier.js';
 import { getInteractActor } from '../helper.js';
