@@ -1,4 +1,3 @@
-import { buttonDialog } from '../../../scripts/chat.js';
 import { extendedRoll } from '../../../scripts/rolls/extendedRoll.js';
 
 import { rollDamage } from '../../../scripts/combat/attack.js';
@@ -13,6 +12,8 @@ import {
     applyActiveEffectToTargets
 } from '../../../scripts/activeEffects/applyActiveEffect.js';
 
+const DialogV2 = foundry.applications.api.DialogV2;
+
 export let itemMixin = {
     async _onDropItem(event, data) {
         if (!this.actor.isOwner) return false;
@@ -26,103 +27,9 @@ export let itemMixin = {
             await this.actor.removeItemsOfType(itemData.type);
         }
 
-        // dragData should exist for WitcherActorSheet, WitcherItemSheet.
-        // It is populated during the activateListeners phase
-        let witcherDragData = event.dataTransfer.getData('text/plain');
-        let dragData = witcherDragData ? JSON.parse(witcherDragData) : data;
-
-        // handle itemDrop prepared in WitcherActorSheet, WitcherItemSheet
-        // need this to drop item from actor
-        if (witcherDragData && dragData.type === 'itemDrop') {
-            let previousActor = game.actors.get(dragData.actor._id);
-            let token = previousActor.token ?? previousActor.getActiveTokens()[0];
-            if (token) {
-                previousActor = token.actor;
-            }
-
-            if (previousActor == this.actor) {
-                return;
-            }
-
-            // Calculate the rollable amount of items to be dropped from actors' inventory
-            if (typeof dragData.item.system.quantity === 'string' && dragData.item.system.quantity.includes('d')) {
-                let messageData = {
-                    speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-                    flavor: `<h1>Quantity of ${dragData.item.name}</h1>`
-                };
-                let roll = await new Roll(dragData.item.system.quantity).evaluate({ async: true });
-                roll.toMessage(messageData);
-
-                // Add items to the recipient actor
-                this.actor.addItem(dragData.item, Math.floor(roll.total));
-
-                // Remove items from donor actor
-                if (previousActor) {
-                    await previousActor.items.get(dragData.item._id).delete();
-                }
-                return;
-            }
-
-            if (dragData.item.system.quantity != 0) {
-                if (dragData.item.system.quantity > 1) {
-                    let content = `${game.i18n.localize('WITCHER.Items.transferMany')}: <input type="number" class="small" name="numberOfItem" value=1>/${dragData.item.system.quantity} <br />`;
-                    let cancel = true;
-                    let numberOfItem = 0;
-                    let dialogData = {
-                        buttons: [
-                            [
-                                `${game.i18n.localize('WITCHER.Button.Continue')}`,
-                                html => {
-                                    numberOfItem = html.find('[name=numberOfItem]')[0].value;
-                                    cancel = false;
-                                }
-                            ],
-                            [
-                                `${game.i18n.localize('WITCHER.Button.All')}`,
-                                () => {
-                                    numberOfItem = dragData.item.system.quantity;
-                                    cancel = false;
-                                }
-                            ]
-                        ],
-                        title: game.i18n.localize('WITCHER.Items.transferTitle'),
-                        content: content
-                    };
-                    await buttonDialog(dialogData);
-
-                    if (cancel) {
-                        return;
-                    } else {
-                        // Remove items from donor actor
-                        previousActor.removeItem(dragData.item._id, numberOfItem);
-                        if (numberOfItem > dragData.item.system.quantity) {
-                            numberOfItem = dragData.item.system.quantity;
-                        }
-                        // Add items to the recipient actor
-                        this.actor.addItem(dragData.item, numberOfItem);
-                    }
-                } else {
-                    // Add item to the recipient actor
-                    this.actor.addItem(dragData.item, 1);
-                    // Remove item from donor actor
-                    if (previousActor) {
-                        await previousActor.items.get(dragData.item._id).delete();
-                    }
-                }
-            }
-        } else if (dragData && dragData.type === 'Item') {
-            // Adding items from compendia
-            // We do not have the same dragData object in compendia as for Actor or Item
-            let itemToAdd = item;
-
-            // Somehow previous item from passed data object is empty. Let's try to get item from passed event
-            if (!itemToAdd) {
-                let dragEventData = TextEditor.getDragEventData(event);
-                itemToAdd = await fromUuid(dragEventData.uuid);
-            }
-
-            if (itemToAdd) {
-                this.actor.addItem(itemToAdd, 1);
+        if (data && data.type === 'Item') {
+            if (item) {
+                this.actor.addItem(item, 1);
             }
         } else {
             super._onDrop(event, data);
@@ -734,10 +641,6 @@ export let itemMixin = {
         }
         rollFormula = this.handleSpecialModifier(rollFormula, 'magic');
 
-        let staCostTotal = spellItem.system.stamina;
-        let customModifier = 0;
-        let isExtraAttack = false;
-
         let useFocus = false;
         let handlebarFocusOptions = {};
         if (this.actor.system.focus1.value > 0) {
@@ -781,40 +684,25 @@ export let itemMixin = {
             data
         );
 
-        let cancel = true;
-        let focusValue = 0;
-        let secondFocusValue = 0;
-        let location;
-        let dialogData = {
-            buttons: [
-                [
-                    `${game.i18n.localize('WITCHER.Button.Continue')}`,
-                    html => {
-                        if (spellItem.system.staminaIsVar) {
-                            staCostTotal = html.find('[name=staCost]')[0].value;
-                        }
-                        customModifier = html.find('[name=customMod]')[0].value;
-                        isExtraAttack = html.find('[name=isExtraAttack]').prop('checked');
-                        if (html.find('[name=focus]')[0]) {
-                            focusValue = html.find('[name=focus]')[0].value;
-                        }
-                        if (html.find('[name=secondFocus]')[0]) {
-                            secondFocusValue = html.find('[name=secondFocus]')[0].value;
-                        }
-                        location = html.find('[name=location]')[0]?.value;
-                        cancel = false;
+        let { staCostTotal, customModifier, isExtraAttack, focusValue, secondFocusValue, location } =
+            await DialogV2.prompt({
+                window: { title: `${game.i18n.localize('WITCHER.Spell.MagicCost')}` },
+                content: dialogTemplate,
+                modal: true,
+                ok: {
+                    callback: (event, button, dialog) => {
+                        return {
+                            staCostTotal: button.form.elements.staCost?.value ?? spellItem.system.stamina,
+                            customModifier: button.form.elements.customMod.value,
+                            isExtraAttack: button.form.elements.isExtraAttack.checked,
+                            focusValue: button.form.elements.focus?.value ?? 0,
+                            secondFocusValue: button.form.elements.secondFocus?.value ?? 0,
+                            location: button.form.elements.location.value
+                        };
                     }
-                ]
-            ],
-            title: game.i18n.localize('WITCHER.Spell.MagicCost'),
-            content: dialogTemplate
-        };
+                }
+            });
 
-        await buttonDialog(dialogData);
-
-        if (cancel) {
-            return;
-        }
         let origStaCost = staCostTotal;
 
         staCostTotal -= Number(focusValue) + Number(secondFocusValue);
@@ -944,7 +832,7 @@ export let itemMixin = {
             });
         }
 
-        await spellItem.createSpellVisuals(damage);
+        spellItem.createSpellVisuals(damage);
 
         const chatMessage = await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/spellItem.hbs', {
             spellItem,
@@ -1027,26 +915,5 @@ export let itemMixin = {
 
         html.find('.item-roll').on('click', this._onItemRoll.bind(this));
         html.find('.spell-roll').on('click', this._onSpellRoll.bind(this));
-
-        html.find('.dragable').on('dragstart', ev => {
-            let itemId = ev.target.dataset.id;
-            let item = this.actor.items.get(itemId);
-            ev.originalEvent.dataTransfer.setData(
-                'text/plain',
-                JSON.stringify({
-                    item: item,
-                    actor: this.actor,
-                    type: 'itemDrop'
-                })
-            );
-        });
-
-        const newDragDrop = new DragDrop({
-            dragSelector: `.dragable`,
-            dropSelector: `.window-content`,
-            permissions: { dragstart: this._canDragStart.bind(this), drop: this._canDragDrop.bind(this) },
-            callbacks: { dragstart: this._onDragStart.bind(this), drop: this._onDrop.bind(this) }
-        });
-        this._dragDrop.push(newDragDrop);
     }
 };
