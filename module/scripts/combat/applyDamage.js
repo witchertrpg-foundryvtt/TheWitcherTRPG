@@ -88,19 +88,18 @@ async function createApplyDamageDialog(actor, damage) {
             ok: {
                 callback: (event, button, dialog) => {
                     return {
-                        newLocation: button.form.elements.changeLocation.value,
-                        resistNonSilver: button.form.elements.resistNonSilver.checked,
-                        resistNonMeteorite: button.form.elements.resistNonMeteorite.checked,
-                        isVulnerable: button.form.elements.vulnerable.checked,
-                        addOilDmg: button.form.elements.oilDmg.checked,
-                        silverDmg: button.form.elements.silverDmg.value
+                        newLocation: button.form.elements.changeLocation?.value,
+                        resistNonSilver: button.form.elements.resistNonSilver?.checked,
+                        resistNonMeteorite: button.form.elements.resistNonMeteorite?.checked,
+                        isVulnerable: button.form.elements.vulnerable?.checked,
+                        addOilDmg: button.form.elements.oilDmg?.checked,
+                        silverDmg: button.form.elements.silverDmg?.value
                     };
                 }
             }
         });
 
     return {
-        cancel,
         resistNonSilver,
         resistNonMeteorite,
         newLocation,
@@ -121,10 +120,6 @@ async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat
     let location = damage.location;
 
     let dialogData = await createApplyDamageDialog(actor, damage);
-
-    if (dialogData.cancel) {
-        return;
-    }
 
     if (dialogData.newLocation != 'Empty') {
         location = actor.getLocationObject(dialogData.newLocation);
