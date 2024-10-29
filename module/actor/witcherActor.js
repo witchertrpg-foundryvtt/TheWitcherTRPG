@@ -43,7 +43,8 @@ export default class WitcherActor extends Actor {
         this.calculateStat('cra');
         this.calculateStat('will');
         this.calculateStat('luck');
-        this.calculateStat('toxicity');
+
+        this.system.stats.toxicity.max = this.system.stats.toxicity.max + this.system.stats.toxicity.totalModifiers;
     }
 
     calculateStat(stat) {
@@ -66,9 +67,9 @@ export default class WitcherActor extends Actor {
             if (currentEncumbrance < totalWeights) {
                 encDiff = Math.ceil((totalWeights - currentEncumbrance) / 5);
             }
-            let armorEnc = this.getArmorEcumbrance();
 
             if (stat === 'ref' || stat === 'dex') {
+                let armorEnc = this.getArmorEcumbrance();
                 totalModifiers += -armorEnc - encDiff;
             }
 
@@ -160,31 +161,32 @@ export default class WitcherActor extends Actor {
 
     calculateDerivedStat(stat) {
         let totalModifiers = this.getAllModifiers(stat).totalModifiers || 0;
-        let divider = this.getAllModifiers(stat).totalDivider || 0;
+        let divider = this.getAllModifiers(stat).totalDivider || 1;
         this.system.derivedStats[stat].modifiers.forEach(item => (totalModifiers += Number(item.value)));
+        totalModifiers += this.system.derivedStats[stat].totalModifiers;
 
-        let current = this.system.derivedStats[stat].max + totalModifiers;
+        let modifiedMax = this.system.derivedStats[stat].max + totalModifiers;
 
         const base = Math.floor((this.system.stats.body.current + this.system.stats.will.current) / 2);
 
         if (stat === 'resolve' || stat === 'focus') {
-            divider += 2;
+            divider += 1;
         }
         if (this.system.customStat != true) {
             if (stat === 'hp' || stat === 'sta') {
-                current = Math.floor((base * 5 + totalModifiers) / divider);
+                modifiedMax = Math.floor((base * 5 + totalModifiers) / divider);
             } else if (stat === 'resolve') {
-                current =
+                modifiedMax =
                     Math.floor((this.system.stats.will.current + this.system.stats.int.current) / divider) * 5 +
                     totalModifiers;
             } else if (stat === 'focus') {
-                current =
+                modifiedMax =
                     Math.floor((this.system.stats.will.current + this.system.stats.int.current) / divider) * 3 +
                     totalModifiers;
             }
         }
 
-        this.system.derivedStats[stat].max = current;
+        this.system.derivedStats[stat].max = modifiedMax;
         this.system.derivedStats[stat].totalModifiers = totalModifiers;
     }
 
