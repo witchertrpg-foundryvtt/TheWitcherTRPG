@@ -697,7 +697,7 @@ export let itemMixin = {
                             isExtraAttack: button.form.elements.isExtraAttack.checked,
                             focusValue: button.form.elements.focus?.value ?? 0,
                             secondFocusValue: button.form.elements.secondFocus?.value ?? 0,
-                            location: button.form.elements.location.value
+                            location: button.form.elements.location?.value
                         };
                     }
                 }
