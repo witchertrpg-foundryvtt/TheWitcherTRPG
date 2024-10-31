@@ -423,7 +423,10 @@
             "SkillName": "Skill name...",
             "TotalSkill": "Total Skills",
             "TotalProfSkill": "Total Profession Skills",
-            "SpecialSkillModifier": "Special Skill Modifiers"
+            "SpecialSkillModifier": "Special Skill Modifiers",
+            "attackStats": {
+                "critLocationModifier": "Crit Location Modifier"
+            }
         },
         "CritWound": {
             "Header": "Crit Wounds",
@@ -852,13 +855,26 @@
         "Resources.modifiers": "Resources Modifiers",
         "Notes": "Notes",
         "Skills": {
+            "Name": "Skill",
             "SkillGroups": {
+                "name": "Skill Groups",
                 "allSkills": "All Skills",
                 "meleeSkills": "Melee Skills",
                 "rangedSkills": "Ranged Skills",
                 "magicSkills": "Magic Skills",
                 "verbalCombatSkills": "Verbal Combat Skills",
                 "empatheticVerbalCombatSkills": "Empathetic Verbal Combat Skills"
+            }
+        },
+        "Stats": {
+            "stats": {
+                "Name": "Stats"
+            },
+            "coreStats": {
+                "Name": "Core Stats"
+            },
+            "derivedStats": {
+                "Name": "Derived Stats"
             }
         },
         "SkIntAwareness": "Awareness",
@@ -1050,6 +1066,9 @@
             "applyOnDamage": "Apply this active effect on damage when used",
             "Error": {
                 "belongsToItem": "This effect belongs to an item"
+            },
+            "wizard": {
+                "other": "Other"
             }
         },
         "globalModifier": {
