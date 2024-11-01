@@ -189,6 +189,16 @@
             "Skill": "Durchführen eines Fähigkeitschecks",
             "profession.skill": "Durchführen einer Berufsfertigkeit"
         },
+	"DamageType": {
+            "name": "Schadensart",
+            "bludgeoning": "Wucht",
+            "slashing": "Hieb",
+            "piercing": "Stich",
+            "elemental": "Elementar",
+            "electricity": "Elektrizität",
+            "fire": "Feuer",
+            "ice": "Eis"
+	},	
         "Weapon": {
             "Type": "Art",
             "Short.WeaponAccuracy": "WG",
@@ -388,6 +398,7 @@
             "Stat.Cra": "HAN",
             "Stat.Will": "WIL",
             "Stat.Luck": "GLÜ",
+	    "Stat.Toxicity": "Toxizität",
             "StatTitle.LableLeft": "Eigensch.",
             "StatTitle.ModMax": "Mod / Max",
             "StatTitle.Derived": "Abgeleitet",
@@ -426,8 +437,12 @@
             "CurrentIP": "Aktuelle SP:",
             "SkillName": "Fertigkeitsname...",
             "TotalSkill": "Gesamt Fertigkeiten",
-            "TotalProfSkill": "Gesamt Berufsfertigkeiten"
-        },
+            "TotalProfSkill": "Gesamt Berufsfertigkeiten",
+            "SpecialSkillModifier": "besondere Fähigkeits-Modifikatoren",
+            "attackStats": {
+                "critLocationModifier": "Kritischer Trefferzone-modifikator"
+	    }
+	},
         "CritWound": {
             "Header": "Krit Wunden",
             "HealingTime.Label": "Tage bis geheilt",
@@ -653,6 +668,7 @@
             "SpellsTab": "Zauber",
             "SkillList": "Zeige spezielle Fertigkeiten",
             "Type": {
+                "Lable": "Typ",
                 "Humanoid": "Humanoide",
                 "Necrophage": "Nekrophagen",
                 "Specter": "Geister",
@@ -832,6 +848,8 @@
         "Settings": {
             "Adrenaline": "Verwende die optionale Regel für Adrenalin",
             "AdrenalineDetails": "Adrenalin ist der Wille weiter zu machen und zu kämpfen in fatalen Situationen.",
+            "WoundsAffectSkillBase": "Wunden wirken auf Fertigkeitsbasis",
+            "WoundsAffectSkillBaseDetails": "Wunden wirken auf Fertigkeitsbasis und nicht nur auf Fertigkeit. Dadurch werden Wunden wirkungsvoller.",
             "displayRollDetails": "Zeige Würfelwurf Details",
             "displayRollDetailsHint": "Zeigt Details im Chat bei einem Würfelwurf, z.B. 1d10+2[stat]+4[skill]-3[parry]",
             "Custom": "Custom",
@@ -852,7 +870,9 @@
         "Resources.modifiers": "Ressourcenmodifikatoren",
         "Notes": "Notizen",
         "Skills": {
+	    "Name": "Fertigkeit",
             "SkillGroups": {
+		"name": "Fertigkeitsgruppen",
                 "allSkills": "Alle Fertigkeiten",
                 "meleeSkills": "Nahkampffertigkeiten",
                 "rangedSkills": "Fernkampffertigkeiten",
@@ -861,7 +881,18 @@
                 "empatheticVerbalCombatSkills": "Einfühlsame Verbaler Schlagabtausch Fertigkeiten"
             }
         },
-        "SkIntAwareness": "Aufmerksamkeit",
+        "Stats": {
+            "stats": {
+                "Name": "Eigenschaften"
+            },
+            "coreStats": {
+                "Name": "Grundwerte"
+            },
+            "derivedStats": {
+                "Name": "Abgeleitete Werte"
+            }
+        },
+	"SkIntAwareness": "Aufmerksamkeit",
         "SkIntBusiness": "Geschäftsinn",
         "SkIntDeduction": "Schlussfolgerunden",
         "SkIntEducation": "Bildung",
@@ -951,7 +982,7 @@
             "totalSP": "Gesamtabwehrkraft",
             "improvedArmorPiercing": "(Nach verbessertem Panzerbrechen)",
             "afterSPReduct": "Schaden nach AK-Reduzierung",
-            "armorPiercing": "(Ignoriert aufgrund von Panverbrechen)",
+            "armorPiercing": "(Ignoriert aufgrund von Panzerbrechen)",
             "afterLocationModifier": "Schaden nach Trefferzonenmodifikator",
             "afterResistances": "Schaden nach Resistenzen/Anfälligkeiten",
             "totalApplied": "Angewandter Gesamtschaden",
@@ -1044,7 +1075,17 @@
         "Effect": {
             "Rolled": "Gewürfelt",
             "Applied": "Angewendet",
-            "Failed": "Fehlgeschlagen"
+            "Failed": "Fehlgeschlagen",
+			"applySelf": "Wende aktiven Effekt bei Verwendung auf sich selbst an",
+            "applyOnTarget": "Wende aktiven Effekt bei Verwendung auf das Ziel an",
+            "applyOnHit": "Wende aktiven Effekt bei einem Treffer an",
+            "applyOnDamage": "Wende aktiven Effekt bei Verwendung auf den Schaden an",
+            "Error": {
+                "belongsToItem": "Dieser Effekt gehört zu einem Gegenstand"
+            },
+            "wizard": {
+                "other": "Andere"
+            }
         },
         "globalModifier": {
             "tab": "Globaler Modifikator",
@@ -1178,6 +1219,13 @@
                 "9": "Du stolperst und stößt dir den Kopf. Du stürzt zu Boden, erleidest 1W6 Punkte nichttödlichen Schaden am Kopf und musst einen Rettungswurf auf Betäubung ablegen.",
                 ">9": "Du erleidest einen furchtbaren Sturz und fällst nicht nur zu Boden, sondern nimmst auch 1W6 tödlichen Schaden am Kopf und musst einen Rettungswurf auf Betäubung ablegen."
             }
+        },
+		"Deprecations": {
+            "globalModifier": {
+                "title": "Global Modifier Abschaffung",
+                "text": "Die folgenden Akteure müssen geändert werden. Wenn Sie dies nicht tun, bevor globale Modifikatoren entfernt werden, funktioniert Ihre Welt möglicherweise nicht mehr.",
+                "item": "Die folgenden Gegenstände müssen entfernt werden. Wenn Sie dies nicht tun, bevor globale Modifikatoren entfernt werden, funktioniert Ihre Welt möglicherweise nicht mehr."
+            }
         }
-    }
+	}
 }
