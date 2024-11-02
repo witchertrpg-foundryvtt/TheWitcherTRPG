@@ -19,6 +19,7 @@ import WitcherActiveEffect from '../activeEffect/witcherActiveEffect.js';
 import { WitcherActiveEffectConfig } from '../activeEffect/WitcherActiveEffectSheet.js';
 import WitcherRaceSheet from '../item/sheets/WitcherRaceSheet.js';
 import WitcherSkillItemSheet from '../item/sheets/WitcherSkillItemSheet.js';
+import WitcherMutagenSheet from '../item/sheets/WitcherMutagenSheet.js';
 
 export const registerSheets = () => {
     Items.unregisterSheet('core', ItemSheet);
@@ -43,6 +44,10 @@ export const registerSheets = () => {
     Items.registerSheet('witcher', WitcherGlobalModifierSheet, {
         makeDefault: true,
         types: ['globalModifier']
+    });
+    Items.registerSheet('witcher', WitcherMutagenSheet, {
+        makeDefault: true,
+        types: ['mutagen']
     });
     Items.registerSheet('witcher', WitcherRaceSheet, {
         makeDefault: true,
