@@ -11,6 +11,7 @@ import note from './templates/common/noteData.js';
 import attackStats from './templates/character/attackStatsData.js';
 import pannels from './templates/character/pannelsData.js';
 import specialSkillModifier from './templates/character/specialSkillModifierData.js';
+import lifepathData from './templates/common/lifepathData.js';
 
 const fields = foundry.data.fields;
 
@@ -41,7 +42,8 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
             notes: new fields.ArrayField(new fields.SchemaField(note())),
             pannels: new fields.SchemaField(pannels()),
 
-            specialSkillModifiers: new fields.ArrayField(new fields.SchemaField(specialSkillModifier()))
+            specialSkillModifiers: new fields.ArrayField(new fields.SchemaField(specialSkillModifier())),
+            lifepathModifiers: new fields.SchemaField(lifepathData())
         };
     }
 

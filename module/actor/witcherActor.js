@@ -371,7 +371,7 @@ export default class WitcherActor extends Actor {
     }
 
     getArmorEcumbrance() {
-        let encumbranceModifier = 0;
+        let encumbranceModifier = -this.system.lifepathModifiers.ignoredArmorEncumbrance;
         let armors = this.items.filter(item => item.type == 'armor' && item.system.equipped);
         armors.forEach(item => {
             encumbranceModifier += item.system.encumb;
