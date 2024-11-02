@@ -216,6 +216,7 @@ async function defense(
     if (crit) {
         messageData.flavor += `<h3 class='center-important crit-taken'>${game.i18n.localize('WITCHER.Defense.Crit')}: ${game.i18n.localize(CONFIG.WITCHER.CritGravity[crit.severity])}</h3>`;
         crit.location = attackDamageObject.location;
+        crit.critEffectModifier = attackDamageObject.crit.critEffectModifier;
     }
 
     let message = await roll.toMessage(messageData);

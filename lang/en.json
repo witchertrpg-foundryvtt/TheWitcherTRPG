@@ -425,7 +425,8 @@
             "TotalProfSkill": "Total Profession Skills",
             "SpecialSkillModifier": "Special Skill Modifiers",
             "attackStats": {
-                "critLocationModifier": "Crit Location Modifier"
+                "critLocationModifier": "Crit Location Modifier",
+                "critEffectModifier": "Crit Effect Modifier"
             }
         },
         "CritWound": {

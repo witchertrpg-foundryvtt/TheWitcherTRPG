@@ -123,6 +123,11 @@ export class WitcherActiveEffectConfig extends ActiveEffectConfig {
                 group: game.i18n.localize('WITCHER.Effect.wizard.other'),
                 label: 'WITCHER.Actor.attackStats.critLocationModifier',
                 value: 'system.attackStats.critLocationModifier'
+            },
+            critEffectModifier: {
+                group: game.i18n.localize('WITCHER.Effect.wizard.other'),
+                label: 'WITCHER.Actor.attackStats.critEffectModifier',
+                value: 'system.attackStats.critEffectModifier'
             }
         };
     }

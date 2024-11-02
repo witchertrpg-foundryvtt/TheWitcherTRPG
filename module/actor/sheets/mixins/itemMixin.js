@@ -258,7 +258,10 @@ export let itemMixin = {
         return {
             damageProperties: item.system.damageProperties,
             item: item,
-            itemUuid: item.uuid
+            itemUuid: item.uuid,
+            crit: {
+                critEffectModifier: item.parent.system.attackStats.critEffectModifier
+            }
         };
     },
 
