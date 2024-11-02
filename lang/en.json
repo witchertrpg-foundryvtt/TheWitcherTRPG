@@ -1221,8 +1221,12 @@
         "Deprecations": {
             "globalModifier": {
                 "title": "Global Modifier Deprecation",
-                "text": "The following actors need to be modified. If you dont do it, before global modifiers are removed, your world might stop working.",
-                "item": "The following items need to be removed. If you dont do it, before global modifiers are removed, your world might stop working."
+                "text": "The following actors need to be modified. If you dont do it, before global modifiers are removed, your world might stop working. The functionality was moved to active effects.",
+                "item": "The following items need to be removed. If you dont do it, before global modifiers are removed, your world might stop working. The functionality was moved to active effects."
+            },
+            "specialSkillModifiers": {
+                "title": "Special Skill Modifier Deprecation",
+                "text": "The following actors need to be modified. If you dont do it, before special skill modifiers are removed, data will be lost. The functionality was moved to active effects."
             }
         }
     }

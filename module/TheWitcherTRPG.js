@@ -18,7 +18,7 @@ import { registerSheets } from './setup/registerSheets.js';
 import { registerSocketListeners } from './setup/socketHook.js';
 import WitcherActiveEffect from './activeEffect/witcherActiveEffect.js';
 import { registerHooks } from './setup/hooks.js';
-import { deprecationWarnings } from './setup/globalModifiers.js';
+import { deprecationWarnings } from './setup/deprecations.js';
 import { applyActiveEffectToActorViaId } from './scripts/activeEffects/applyActiveEffect.js';
 
 async function preloadHandlebarsTemplates() {
@@ -352,4 +352,3 @@ Handlebars.registerHelper('formatModLabel', function (statCurrent, statMax) {
     let calc = statCurrent - statMax;
     return calc;
 });
-
