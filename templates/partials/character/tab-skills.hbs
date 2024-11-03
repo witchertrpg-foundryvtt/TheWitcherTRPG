@@ -9,8 +9,8 @@
                     {{#each system.skills.int as |skill name|}}
                         {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="int"}}
                     {{/each}}
-                    {{#each system.customSkills.int as |skill name|}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="int"}}
+                    {{#each customSkills.int}}
+                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
                     {{/each}}
                 </table>
             </details>

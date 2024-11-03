@@ -38,15 +38,17 @@ export async function extendedRoll(rollFormula, messageData, config, flags = [])
                 crit: true
             };
         } else {
-            if (extraRollTotal >= rollTotal) {
-                extraRollTotal = rollTotal;
-            }
-            extraRollFormula += `-${extraRollTotal}[${extraRollDescription}]`;
-            rollTotal -= extraRollTotal;
             options = {
                 fumble: true,
                 fumbleAmount: extraRollTotal
             };
+
+            if (extraRollTotal >= rollTotal) {
+                extraRollTotal = rollTotal;
+            }
+
+            extraRollFormula += `-${extraRollTotal}[${extraRollDescription}]`;
+            rollTotal -= extraRollTotal;
         }
 
         //print add/subtract roll info

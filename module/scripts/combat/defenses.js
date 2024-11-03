@@ -169,7 +169,7 @@ async function defense(
 
         if (buttonName == 'ButtonParry' || buttonName == 'ButtonParryThrown') {
             let weapon = actor.items.get(defenseItemId);
-            if (weapon?.system.defenseProperties.parrying) {
+            if (weapon?.system.defenseProperties?.parrying) {
                 rollFormula += !displayRollDetails
                     ? `+${Math.abs(modifier)}`
                     : `+${Math.abs(modifier)}[${weapon.name}]`;
@@ -189,13 +189,13 @@ async function defense(
             : ` +${customDef}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
     }
 
-    rollFormula += actor.addAllModifiers(skillName);
     rollFormula = handleSpecialModifier(
         actor,
         rollFormula,
         buttonName.replace('Button', '').toLowerCase(),
-        html.find('[name=form]')[0].selectedOptions[0].getAttribute('type')
+        actor.items.get(defenseItemId)?.type
     );
+    rollFormula += actor.addAllModifiers(skillName);
 
     if (skillName != 'resistmagic' && actor.statuses.find(status => status == 'stun')) {
         rollFormula = '10[Stun]';
@@ -216,6 +216,7 @@ async function defense(
     if (crit) {
         messageData.flavor += `<h3 class='center-important crit-taken'>${game.i18n.localize('WITCHER.Defense.Crit')}: ${game.i18n.localize(CONFIG.WITCHER.CritGravity[crit.severity])}</h3>`;
         crit.location = attackDamageObject.location;
+        crit.critEffectModifier = attackDamageObject.crit.critEffectModifier;
     }
 
     let message = await roll.toMessage(messageData);
@@ -239,6 +240,22 @@ function handleSpecialModifier(actor, formula, action, additionalTag) {
         .filter(special => special?.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true);
 
     relevantModifier.forEach(modifier => (formula += `${modifier.formula}[${game.i18n.localize(modifier.name)}]`));
+
+    if (additionalTag === 'armor') {
+        if (action === 'parry') {
+            formula +=
+                actor.system.lifepathModifiers.shieldParryBonus > 0
+                    ? ` +${actor.system.lifepathModifiers.shieldParryBonus}[${game.i18n.localize('WITCHER.Actor.Lifepath.Bonus')}]`
+                    : '';
+        }
+
+        if (action === 'parrythrown') {
+            formula +=
+                actor.system.lifepathModifiers.shieldParryThrownBonus > 0
+                    ? ` +${actor.system.lifepathModifiers.shieldParryThrownBonus}[${game.i18n.localize('WITCHER.Actor.Lifepath.Bonus')}]`
+                    : '';
+        }
+    }
 
     return formula;
 }

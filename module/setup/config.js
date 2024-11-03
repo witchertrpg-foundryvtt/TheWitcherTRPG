@@ -2279,14 +2279,14 @@ WITCHER.specialModifier = [
         id: 'manticore-parry',
         name: 'WITCHER.globalModifier.specialEffect.manticoreparry',
         tags: ['parry'],
-        additionalTags: ['shield'],
+        additionalTags: ['armor'],
         formula: '+3'
     },
     {
         id: 'manticore-parry-thrown',
         name: 'WITCHER.globalModifier.specialEffect.manticoreparrythrown',
         tags: ['parrythrown'],
-        additionalTags: ['shield'],
+        additionalTags: ['armor'],
         formula: '+5'
     },
     {

@@ -48,6 +48,7 @@ export class WitcherActiveEffectConfig extends ActiveEffectConfig {
             ...this.getStatSuggestions(),
             ...this.getSkillGroupSuggestions(),
             ...this.getSkillSuggestions(),
+            ...this.getLifepathSuggestions(),
             ...this.getOtherSuggestions()
         };
     }
@@ -112,6 +113,44 @@ export class WitcherActiveEffectConfig extends ActiveEffectConfig {
             }, {});
     }
 
+    getLifepathSuggestions() {
+        let path = 'system.lifepathModifiers.';
+        let label = 'WITCHER.Actor.Lifepath.';
+
+        return {
+            strongStrikeAttackBonus: {
+                group: game.i18n.localize('WITCHER.Effect.wizard.lifepath'),
+                label: label + 'strongStrikeAttackBonus',
+                value: path + 'strongStrikeAttackBonus'
+            },
+            jointStrikeAttackBonus: {
+                group: game.i18n.localize('WITCHER.Effect.wizard.lifepath'),
+                label: label + 'jointStrikeAttackBonus',
+                value: path + 'jointStrikeAttackBonus'
+            },
+            shieldParryBonus: {
+                group: game.i18n.localize('WITCHER.Effect.wizard.lifepath'),
+                label: label + 'shieldParryBonus',
+                value: path + 'shieldParryBonus'
+            },
+            shieldParryThrownBonus: {
+                group: game.i18n.localize('WITCHER.Effect.wizard.lifepath'),
+                label: label + 'shieldParryThrownBonus',
+                value: path + 'shieldParryThrownBonus'
+            },
+            ignoredArmorEncumbrance: {
+                group: game.i18n.localize('WITCHER.Effect.wizard.lifepath'),
+                label: label + 'ignoredArmorEncumbrance',
+                value: path + 'ignoredArmorEncumbrance'
+            },
+            ignoredEvWhenCasting: {
+                group: game.i18n.localize('WITCHER.Effect.wizard.lifepath'),
+                label: label + 'ignoredEvWhenCasting',
+                value: path + 'ignoredEvWhenCasting'
+            }
+        };
+    }
+
     getOtherSuggestions() {
         return {
             meleeBonus: {
@@ -123,6 +162,11 @@ export class WitcherActiveEffectConfig extends ActiveEffectConfig {
                 group: game.i18n.localize('WITCHER.Effect.wizard.other'),
                 label: 'WITCHER.Actor.attackStats.critLocationModifier',
                 value: 'system.attackStats.critLocationModifier'
+            },
+            critEffectModifier: {
+                group: game.i18n.localize('WITCHER.Effect.wizard.other'),
+                label: 'WITCHER.Actor.attackStats.critEffectModifier',
+                value: 'system.attackStats.critEffectModifier'
             }
         };
     }

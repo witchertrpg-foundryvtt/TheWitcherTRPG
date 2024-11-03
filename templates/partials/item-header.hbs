@@ -41,11 +41,7 @@
                     </td>
                     <td>
                         <select name="system.type" id="type-select">
-                            {{#select item.system.type}}
-                                <option value="red">{{localize "WITCHER.Mutagen.Red"}}</option>
-                                <option value="green">{{localize "WITCHER.Mutagen.Green"}}</option>
-                                <option value="blue">{{localize "WITCHER.Mutagen.Blue"}}</option>
-                            {{/select}}
+                            {{selectOptions config.type selected=item.system.type localize=true}}
                         </select>
                     </td>
                 {{/if}}

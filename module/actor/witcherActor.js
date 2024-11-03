@@ -191,7 +191,7 @@ export default class WitcherActor extends Actor {
     }
 
     calculateAttackStats() {
-        const meleeBonus = Math.ceil((this.system.stats.body.current - 6) / 2) * 2;
+        const meleeBonus = Math.ceil((this.system.stats.body.current - 6) / 2) * 2 + this.system.attackStats.meleeBonus;
         this.system.attackStats.meleeBonus = meleeBonus;
         this.system.attackStats.punch.value = `1d6+${meleeBonus}`;
         this.system.attackStats.kick.value = `1d6+${4 + meleeBonus}`;
@@ -371,7 +371,7 @@ export default class WitcherActor extends Actor {
     }
 
     getArmorEcumbrance() {
-        let encumbranceModifier = 0;
+        let encumbranceModifier = -this.system.lifepathModifiers.ignoredArmorEncumbrance;
         let armors = this.items.filter(item => item.type == 'armor' && item.system.equipped);
         armors.forEach(item => {
             encumbranceModifier += item.system.encumb;

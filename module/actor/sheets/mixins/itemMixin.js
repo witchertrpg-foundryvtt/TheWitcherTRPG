@@ -258,7 +258,10 @@ export let itemMixin = {
         return {
             damageProperties: item.system.damageProperties,
             item: item,
-            itemUuid: item.uuid
+            itemUuid: item.uuid,
+            crit: {
+                critEffectModifier: item.parent.system.attackStats.critEffectModifier
+            }
         };
     },
 
@@ -549,10 +552,34 @@ export let itemMixin = {
                                     : `${touchedLocation.modifier}[${touchedLocation.alias}]`;
                                 damage.location = touchedLocation;
 
-                                if (strike == 'joint' || strike == 'strong') {
+                                if (strike == 'joint') {
                                     attFormula = !displayRollDetails
-                                        ? `${attFormula}-3`
-                                        : `${attFormula} -3[${game.i18n.localize('WITCHER.Dialog.attackStrike')}]`;
+                                        ? `${attFormula} -3${
+                                              this.actor.system.lifepathModifiers.jointStrikeAttackBonus > 0
+                                                  ? ` +${this.actor.system.lifepathModifiers.jointStrikeAttackBonus}`
+                                                  : ''
+                                          }`
+                                        : `${attFormula} -3[${game.i18n.localize('WITCHER.Dialog.attackStrike')}]${
+                                              this.actor.system.lifepathModifiers.jointStrikeAttackBonus > 0
+                                                  ? ` +${this.actor.system.lifepathModifiers.jointStrikeAttackBonus}[${game.i18n.localize('WITCHER.Actor.Lifepath.Bonus')}]`
+                                                  : ''
+                                          }`;
+                                }
+
+                                if (strike == 'strong') {
+                                    if (!displayRollDetails) {
+                                        attFormula = `${attFormula} -3${
+                                            this.actor.system.lifepathModifiers.strongStrikeAttackBonus > 0
+                                                ? ` +${this.actor.system.lifepathModifiers.strongStrikeAttackBonus}`
+                                                : ''
+                                        }`;
+                                    } else {
+                                        attFormula = `${attFormula} -3[${game.i18n.localize('WITCHER.Dialog.attackStrike')}]${
+                                            this.actor.system.lifepathModifiers.strongStrikeAttackBonus > 0
+                                                ? ` +${this.actor.system.lifepathModifiers.strongStrikeAttackBonus}[${game.i18n.localize('WITCHER.Actor.Lifepath.Bonus')}]`
+                                                : ''
+                                        }`;
+                                    }
                                 }
 
                                 messageData.flavor = `<div class="attack-message"><h1><img src="${item.img}" class="item-img" />${game.i18n.localize('WITCHER.Attack')}: ${item.name}</h1>`;
@@ -635,8 +662,16 @@ export let itemMixin = {
         let armorEnc = this.actor.getArmorEcumbrance();
         if (armorEnc > 0) {
             rollFormula += !displayRollDetails
-                ? `-${armorEnc}`
-                : `-${armorEnc}[${game.i18n.localize('WITCHER.Armor.EncumbranceValue')}]`;
+                ? ` -${armorEnc}${
+                      this.actor.system.lifepathModifiers.ignoredEvWhenCasting > 0
+                          ? ` +${this.actor.system.lifepathModifiers.ignoredEvWhenCasting}`
+                          : ''
+                  }`
+                : ` -${armorEnc}[${game.i18n.localize('WITCHER.Armor.EncumbranceValue')}]${
+                      this.actor.system.lifepathModifiers.ignoredEvWhenCasting > 0
+                          ? ` +${this.actor.system.lifepathModifiers.ignoredEvWhenCasting}[${game.i18n.localize('WITCHER.Actor.Lifepath.Bonus')}]`
+                          : ''
+                  }`;
             rollFormula = this.handleSpecialModifier(rollFormula, 'magic-armorencumbarance');
         }
         rollFormula = this.handleSpecialModifier(rollFormula, 'magic');
