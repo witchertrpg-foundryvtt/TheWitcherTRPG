@@ -3,7 +3,6 @@
  * Adopted from 5e https://github.com/foundryvtt/dnd5e/blob/3.2.x/module/canvas/ability-template.mjs#L36
  */
 export default class AbilityTemplate extends MeasuredTemplate {
-
     /**
      * Track the timestamp when the last mouse move event was captured.
      * @type {number}
@@ -39,35 +38,37 @@ export default class AbilityTemplate extends MeasuredTemplate {
         if (!templateShape) return null;
 
         // Prepare template data
-        const templateData = foundry.utils.mergeObject({
-            t: templateShape,
-            user: game.user.id,
-            distance: item.system.templateSize,
-            direction: 0,
-            x: 0,
-            y: 0,
-            fillColor: game.user.color,
-            flags: { witcher: { origin: item.uuid } }
-        }, options);
+        const templateData = foundry.utils.mergeObject(
+            {
+                t: templateShape,
+                user: game.user.id,
+                distance: item.system.templateSize,
+                direction: 0,
+                x: 0,
+                y: 0,
+                fillColor: game.user.color,
+                flags: { witcher: { origin: item.uuid } }
+            },
+            options
+        );
 
         // Additional type-specific data
         switch (templateShape) {
-            case "cone":
+            case 'cone':
                 templateData.angle = CONFIG.MeasuredTemplate.defaults.angle;
                 break;
-            case "rect": // 5e rectangular AoEs are always cubes
+            case 'rect': // 5e rectangular AoEs are always cubes
                 templateData.width = item.system.templateSize;
                 templateData.distance = Math.hypot(item.system.templateSize, item.system.templateSize);
                 templateData.direction = 45;
                 break;
-            case "ray":
-                templateData.width = 1
+            case 'ray':
+                templateData.width = 1;
                 templateData.distance = item.system.templateSize ?? canvas.dimensions.distance;
                 break;
             default:
                 break;
         }
-
 
         // Return the template constructed from the item data
         const cls = CONFIG.MeasuredTemplate.documentClass;
@@ -120,8 +121,8 @@ export default class AbilityTemplate extends MeasuredTemplate {
             };
 
             // Activate listeners
-            canvas.stage.on("mousemove", this.#events.move);
-            canvas.stage.on("mousedown", this.#events.confirm);
+            canvas.stage.on('mousemove', this.#events.move);
+            canvas.stage.on('mousedown', this.#events.confirm);
             canvas.app.view.oncontextmenu = this.#events.cancel;
             canvas.app.view.onwheel = this.#events.rotate;
         });
@@ -135,8 +136,8 @@ export default class AbilityTemplate extends MeasuredTemplate {
      */
     async _finishPlacement(event) {
         this.layer._onDragLeftCancel(event);
-        canvas.stage.off("mousemove", this.#events.move);
-        canvas.stage.off("mousedown", this.#events.confirm);
+        canvas.stage.off('mousemove', this.#events.move);
+        canvas.stage.off('mousedown', this.#events.confirm);
         canvas.app.view.oncontextmenu = null;
         canvas.app.view.onwheel = null;
         this.#initialLayer.activate();
@@ -155,7 +156,7 @@ export default class AbilityTemplate extends MeasuredTemplate {
         if (now - this.#moveTime <= 20) return;
         const center = event.data.getLocalPosition(this.layer);
         const interval = canvas.grid.type === CONST.GRID_TYPES.GRIDLESS ? 0 : 2;
-        const snapped = canvas.grid.getSnappedPosition(center.x, center.y, interval);
+        const snapped = canvas.grid.getSnappedPoint(center, interval);
         this.document.updateSource({ x: snapped.x, y: snapped.y });
         this.refresh();
         this.#moveTime = now;
@@ -172,7 +173,7 @@ export default class AbilityTemplate extends MeasuredTemplate {
         event.stopPropagation();
         const delta = canvas.grid.type > CONST.GRID_TYPES.SQUARE ? 30 : 15;
         const snap = event.shiftKey ? delta : 5;
-        const update = { direction: this.document.direction + (snap * Math.sign(event.deltaY)) };
+        const update = { direction: this.document.direction + snap * Math.sign(event.deltaY) };
         this.document.updateSource(update);
         this.refresh();
     }
@@ -186,9 +187,9 @@ export default class AbilityTemplate extends MeasuredTemplate {
     async _onConfirmPlacement(event) {
         await this._finishPlacement(event);
         const interval = canvas.grid.type === CONST.GRID_TYPES.GRIDLESS ? 0 : 2;
-        const destination = canvas.grid.getSnappedPosition(this.document.x, this.document.y, interval);
+        const destination = canvas.grid.getSnappedPoint(this.document, interval);
         this.document.updateSource(destination);
-        this.#events.resolve(canvas.scene.createEmbeddedDocuments("MeasuredTemplate", [this.document.toObject()]));
+        this.#events.resolve(canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [this.document.toObject()]));
     }
 
     /* -------------------------------------------- */
@@ -201,5 +202,4 @@ export default class AbilityTemplate extends MeasuredTemplate {
         await this._finishPlacement(event);
         this.#events.reject();
     }
-
 }
