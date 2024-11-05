@@ -44,7 +44,7 @@ export default class WitcherActor extends Actor {
         this.calculateStat('will');
         this.calculateStat('luck');
 
-        this.system.stats.toxicity.max = this.system.stats.toxicity.max + this.system.stats.toxicity.totalModifiers;
+        this.system.stats.toxicity.max += this.system.stats.toxicity.totalModifiers;
     }
 
     calculateStat(stat) {
@@ -191,8 +191,8 @@ export default class WitcherActor extends Actor {
     }
 
     calculateAttackStats() {
-        const meleeBonus = Math.ceil((this.system.stats.body.current - 6) / 2) * 2 + this.system.attackStats.meleeBonus;
-        this.system.attackStats.meleeBonus = meleeBonus;
+        const meleeBonus = Math.ceil((this.system.stats.body.current - 6) / 2) * 2;
+        this.system.attackStats.meleeBonus += meleeBonus;
         this.system.attackStats.punch.value = `1d6+${meleeBonus}`;
         this.system.attackStats.kick.value = `1d6+${4 + meleeBonus}`;
     }
