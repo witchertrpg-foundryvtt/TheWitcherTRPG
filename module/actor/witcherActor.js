@@ -694,59 +694,44 @@ export default class WitcherActor extends Actor {
                 switch (randomHumanLocation) {
                     case 1:
                         location = 'head';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationHead')}`;
                         locationFormula = 3;
                         break;
                     case 2:
                     case 3:
                     case 4:
                         location = 'torso';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationTorso')}`;
                         locationFormula = 1;
                         break;
                     case 5:
                         location = 'rightArm';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationRight')} ${game.i18n.localize(
-                            'WITCHER.Armor.LocationArm'
-                        )}`;
                         locationFormula = 0.5;
                         break;
                     case 6:
                         location = 'leftArm';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationLeft')} ${game.i18n.localize(
-                            'WITCHER.Armor.LocationArm'
-                        )}`;
                         locationFormula = 0.5;
                         break;
                     case 7:
                     case 8:
                         location = 'rightLeg';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationRight')} ${game.i18n.localize(
-                            'WITCHER.Armor.LocationLeg'
-                        )}`;
                         locationFormula = 0.5;
                         break;
                     case 9:
                     case 10:
                         location = 'leftLeg';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationLeft')} ${game.i18n.localize(
-                            'WITCHER.Armor.LocationLeg'
-                        )}`;
                         locationFormula = 0.5;
                         break;
                     default:
                         location = 'torso';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationTorso')}`;
                         locationFormula = 1;
                         break;
                 }
+                alias = `${game.i18n.localize('WITCHER.Location.Random')}`;
                 break;
             case 'randomMonster':
                 let randomMonsterLocation = getRandomInt(10);
                 switch (randomMonsterLocation) {
                     case 1:
                         location = 'head';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationHead')}`;
                         locationFormula = 3;
                         break;
                     case 2:
@@ -754,36 +739,28 @@ export default class WitcherActor extends Actor {
                     case 4:
                     case 5:
                         location = 'torso';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationTorso')}`;
                         locationFormula = 1;
                         break;
                     case 6:
                     case 7:
                         location = 'rightLeg';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationRight')} ${game.i18n.localize(
-                            'WITCHER.Dialog.attackLimb'
-                        )}`;
                         locationFormula = 0.5;
                         break;
                     case 8:
                     case 9:
                         location = 'leftLeg';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationLeft')} ${game.i18n.localize(
-                            'WITCHER.Dialog.attackLimb'
-                        )}`;
                         locationFormula = 0.5;
                         break;
                     case 10:
                         location = 'tailWing';
-                        alias = `${game.i18n.localize('WITCHER.Dialog.attackTail')}`;
                         locationFormula = 0.5;
                         break;
                     default:
                         location = 'torso';
-                        alias = `${game.i18n.localize('WITCHER.Armor.LocationTorso')}`;
                         locationFormula = 1;
                         break;
                 }
+                alias = `${game.i18n.localize('WITCHER.Location.Random')}`;
                 break;
             case 'head':
                 alias = `${game.i18n.localize('WITCHER.Armor.LocationHead')}`;

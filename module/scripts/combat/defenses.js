@@ -1,6 +1,6 @@
 import { extendedRoll } from '../rolls/extendedRoll.js';
 import { RollConfig } from '../rollConfig.js';
-import { getInteractActor } from '../helper.js';
+import { getInteractActor, getRandomInt } from '../helper.js';
 import { applyModifierToActor } from '../globalModifier/applyGlobalModifier.js';
 import { applyStatusEffectToActor } from '../statusEffects/applyStatusEffect.js';
 import { applyActiveEffectToActorViaId } from '../activeEffects/applyActiveEffect.js';
@@ -215,7 +215,8 @@ async function defense(
     let crit = checkForCrit(roll.total, totalAttack);
     if (crit) {
         messageData.flavor += `<h3 class='center-important crit-taken'>${game.i18n.localize('WITCHER.Defense.Crit')}: ${game.i18n.localize(CONFIG.WITCHER.CritGravity[crit.severity])}</h3>`;
-        crit.location = attackDamageObject.location;
+        crit.location = await handleCritLocation(actor, attackDamageObject);
+        attackDamageObject.location = crit.location
         crit.critEffectModifier = attackDamageObject.crit.critEffectModifier;
     }
 
@@ -331,6 +332,48 @@ function checkForCrit(defenseRoll, totalAttack) {
     }
 
     return null;
+}
+
+async function handleCritLocation(actor, attackDamageObject) {
+    if (attackDamageObject.originalLocation.includes('random')) {
+        let critLocation = (await new Roll('2d6+' + attackDamageObject.crit.critLocationModifier).evaluate()).total;
+        let location;
+        switch (true) {
+            case critLocation >= 12: {
+                location = actor.getLocationObject('head');
+                location.critEffect = 6;
+                break;
+            }
+            case critLocation == 11: {
+                location = actor.getLocationObject('head');
+                location.critEffect = 1;
+                break;
+            }
+            case critLocation == 9 || critLocation == 10: {
+                location = actor.getLocationObject('torso');
+                location.critEffect = 6;
+                break;
+            }
+            case critLocation >= 6 && critLocation <= 8: {
+                location = actor.getLocationObject('torso');
+                location.critEffect = 1;
+                break;
+            }
+            case critLocation == 4 || critLocation == 5: {
+                let side = getRandomInt(2);
+                location = actor.getLocationObject((side == 1 ? 'left' : 'right') + 'Arm');
+                break;
+            }
+            case critLocation < 4: {
+                let side = getRandomInt(2);
+                location = actor.getLocationObject((side == 1 ? 'left' : 'right') + 'Leg');
+                break;
+            }
+        }
+        return location;
+    } else {
+        return attackDamageObject.location;
+    }
 }
 
 function handleDefenseResults(

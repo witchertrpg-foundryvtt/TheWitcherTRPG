@@ -260,6 +260,7 @@ export let itemMixin = {
             item: item,
             itemUuid: item.uuid,
             crit: {
+                critLocationModifier: item.parent.system.attackStats.critLocationModifier,
                 critEffectModifier: item.parent.system.attackStats.critEffectModifier
             }
         };
@@ -551,6 +552,7 @@ export let itemMixin = {
                                     ? `${touchedLocation.modifier}`
                                     : `${touchedLocation.modifier}[${touchedLocation.alias}]`;
                                 damage.location = touchedLocation;
+                                damage.originalLocation = location;
 
                                 if (strike == 'joint') {
                                     attFormula = !displayRollDetails
@@ -583,7 +585,7 @@ export let itemMixin = {
                                 }
 
                                 messageData.flavor = `<div class="attack-message"><h1><img src="${item.img}" class="item-img" />${game.i18n.localize('WITCHER.Attack')}: ${item.name}</h1>`;
-                                messageData.flavor += `<span>  ${game.i18n.localize('WITCHER.Armor.Location')}: ${touchedLocation.alias} = ${touchedLocation.locationFormula} </span>`;
+                                messageData.flavor += `<span>  ${game.i18n.localize('WITCHER.Armor.Location')}: ${touchedLocation.alias} </span>`;
 
                                 messageData.flavor += `<button class="damage">${game.i18n.localize('WITCHER.table.Damage')}</button>`;
                                 if (item.system.rollOnlyDmg) {
@@ -838,6 +840,7 @@ export let itemMixin = {
                 ? `${touchedLocation.modifier}`
                 : `${touchedLocation.modifier}[${touchedLocation.alias}]`;
             damage.location = touchedLocation;
+            damage.originalLocation = location;
             damage.type = spellItem.system.damageType;
         }
 
