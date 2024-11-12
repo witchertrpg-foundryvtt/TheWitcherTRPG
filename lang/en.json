@@ -1229,6 +1229,52 @@
                 "title": "Special Skill Modifier Deprecation",
                 "text": "The following actors need to be modified. If you dont do it, before special skill modifiers are removed, data will be lost. The functionality was moved to active effects."
             }
+        },
+        "AssociatedDiagram": {
+            "actions": {
+                "add": "Add crafting diagram",
+                "remove": "Remove crafting diagram"
+            },
+            "missing": "Associated crafting diagram is missing (drag it here to add)",
+            "title": "Crafting diagram"
+        },
+        "Repair": {
+            "buttons": {
+                "repair": "Repair",
+                "simulate": "Simulate repair",
+                "request": "Request repapir"
+            },
+            "dialog": {
+                "title": "Repairing",
+                "component": "Component",
+                "quantity": "Quantity",
+                "required": "Required"
+            },
+            "result": {
+                "success": "Repair successfull!",
+                "failure": "Repair failed"
+            },
+            "params": {
+                "craftingDC": "Crafting DC",
+                "repairDC": "Repair DC",
+                "repairMod": "Repair modifier",
+                "enchants": "Enchants modifier",
+                "damagedLocations": "Damaged locations",
+                "components": "Components"
+            },
+            "damagedLocations": {
+                "weapon": "Weapon reliability",
+                "shield": "Shield reliability"
+            },
+            "chat": {
+                "requestTitle": "is requesting to repair"
+            },
+            "alerts": {
+                "notEnoughComponents": "Not enough components to repair this item",
+                "itemIsAlreadyRepaired": "This item is already fully repaired",
+                "noDiagram": "No associated diagram found for this item",
+                "invalidDiagram": "The type of this diagram is not valid for this item"
+            }
         }
     }
 }
