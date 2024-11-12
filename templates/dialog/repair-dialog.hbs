@@ -1,0 +1,66 @@
+<div class="flexcol">
+    <div class="scrollable">
+        <header class="item-header">
+            <h1 class="itemname">Repairing {{data.item.name}}</h1>
+            <general>
+                <itemimage>
+                    <img class="profile-img" src="{{data.item.img}}" title="{{data.item.name}}" />
+                </itemimage>
+
+                <table class="information repair-info">
+                    <tr class="item-header-tablerow">
+                        <td>
+                            <label>{{ localize "WITCHER.Repair.params.repairDC" }}</label>
+                        </td>
+                        <td>
+                            {{data.repairDC}}
+                        </td>
+                    </tr>
+                    {{#each data.damagedLocations}}
+                    <tr class="item-header-tablerow">
+                        <td>
+                            <label>{{label}}</label>
+                        </td>
+                        <td>
+                            {{reliabilityValue}}/{{maxReliabilityValue}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </general>
+        </header>
+        <table class="repair">
+            <thead>
+                <tr class="headerrow">
+                    <th colspan="2" class="header">{{ localize "WITCHER.Repair.dialog.component" }}</th>
+                    <th class="header">{{ localize "WITCHER.Repair.dialog.quantity" }}</th>
+                    <th class="header">{{ localize "WITCHER.Repair.dialog.required" }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each missingComponents}}
+                <tr class="tablerow item">
+                    <td>
+                        <img src="icons/svg/item-bag.svg" class="item-img" />
+                    </td>
+                    <td>{{ component.name }}</td>
+                    <td>{{ quantity }} {{#if missingQuantity}}<span class="error-display">({{ missingQuantity
+                            }})</span>{{/if}}</td>
+                    <td>1</td>
+                </tr>
+                {{/each}}
+                {{#each ownedComponents}}
+                <tr class="tablerow item">
+                    <td>
+                        <img src="{{ component.img }}" class="item-img" />
+                    </td>
+                    <td>{{ component.name }}</td>
+                    <td>{{ quantity }} {{#if missingQuantity}}<span class="error-display">({{ missingQuantity
+                            }})</span>{{/if}}</td>
+                    <td>1</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

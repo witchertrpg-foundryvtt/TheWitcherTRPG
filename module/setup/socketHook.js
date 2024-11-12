@@ -1,5 +1,6 @@
 import { applyActiveEffectToActor, applyActiveEffectToActorViaId } from '../scripts/activeEffects/applyActiveEffect.js';
 import { applyStatusEffectToActor } from '../scripts/statusEffects/applyStatusEffect.js';
+import { updateItemByUuid } from '../scripts/item/updateItem.js';
 
 export const registerSocketListeners = function () {
     let SYSTEM_SOCKET = 'system.TheWitcherTRPG';
@@ -8,7 +9,8 @@ export const registerSocketListeners = function () {
         applyStatusEffectToActor,
         applyActiveEffectToActor,
         applyActiveEffectToActorViaId,
-        createRegionFromTemplateUuids: 'item'
+        createRegionFromTemplateUuids: 'item',
+        updateItemByUuid
     };
 
     if (!game.socket || !game.user) return;
@@ -17,6 +19,12 @@ export const registerSocketListeners = function () {
         if (game.user !== game.users.activeGM) return;
 
         console.log('Received system socket message.', message);
+
+        if (callableFunctions[message.type] === 'item') {
+            let item = fromUuidSync(message.data.shift());
+            item[message.type](...message.data);
+            return;
+        }
 
         if (callableFunctions[message.type] === 'item') {
             let item = fromUuidSync(message.data.shift());

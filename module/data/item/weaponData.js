@@ -3,6 +3,7 @@ import CommonItemData from "./commonItemData.js";
 import damageProperties from "./templates/damagePropertiesData.js";
 import defenseProperties from "./templates/defensePropertiesData.js";
 import weaponType from "./templates/weaponTypeData.js";
+import {associatedItem, unwrapAssociatedItem} from "./templates/associatedItemData.js";
 
 const fields = foundry.data.fields;
 
@@ -39,6 +40,8 @@ export default class WeaponData extends CommonItemData {
 
             damageProperties: new fields.SchemaField(damageProperties()),
             defenseProperties: new fields.SchemaField(defenseProperties()),
+
+            ...associatedItem('associatedDiagramUuid'),
         }
 
     }
@@ -64,6 +67,8 @@ export default class WeaponData extends CommonItemData {
                 }
             });
         }
+
+        unwrapAssociatedItem(this, 'associatedDiagramUuid', 'associatedDiagram')
     }
 
     /** @inheritdoc */
