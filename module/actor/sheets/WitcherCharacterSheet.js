@@ -311,7 +311,6 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     async _repairItem(event) {
         let itemId = event.currentTarget.closest(".item").dataset.itemId
         let item = this.actor.items.get(itemId)
-
-        await RepairSystem.process(this.actor, item)
+        await item.repair()
     }
 }

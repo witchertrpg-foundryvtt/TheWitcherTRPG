@@ -1,6 +1,7 @@
 import { extendedRoll } from "../../scripts/rolls/extendedRoll.js";
 import { RollConfig } from "../../scripts/rollConfig.js";
-import { updateItem } from "../../scripts/item/updateItem.js";
+import { WITCHER } from "../../setup/config.js";
+import { emitForGM } from "../../scripts/socket/socketMessage.js";
 
 const repairableItemTypes = ['weapon', 'armor']
 const durabilityLocations = [
@@ -14,7 +15,7 @@ const durabilityLocations = [
     { label: ['WITCHER.Repair.damagedLocations.shield'], reliability: 'reliability', maxReliability: 'reliabilityMax' },
 ]
 
-const repairModifier = 5
+const repairModifier = -5
 const perEnchantModifier = 2
 
 class Repair {
@@ -89,26 +90,42 @@ class Repair {
             Repair: {
                 label: game.i18n.localize(`WITCHER.Repair.buttons.repair`),
                 icon: `<i class="fas fa-hammer"></i>`,
-                callback: (_) => this.repairItem(data, false)
+                callback: (_) => this.repairItem(data, {
+                    simulate: false,
+                    gmRepair: false
+                })
             },
             SimRepair: {
                 label: game.i18n.localize(`WITCHER.Repair.buttons.simulate`),
                 icon: `<i class="fas fa-scale-balanced"></i>`,
-                callback: (_) => this.repairItem(data, true)
+                callback: (_) => this.repairItem(data, {
+                    simulate: true,
+                    gmRepair: false
+                })
             }
         };
         if (!data.artisan) {
             buttons['RequestRepair'] = {
                 label: game.i18n.localize(`WITCHER.Repair.buttons.request`),
                 icon: `<i class="fas fa-coins"></i>`,
-                callback: (_) => this.requestRepair(data)
+                callback: (_) => this.sendRepairInfoToChat(data, true)
+            }
+        } else if(game.user.isGM) {
+            buttons['GmRepair'] = {
+                label: game.i18n.localize(`WITCHER.Repair.buttons.gmRepair`),
+                icon: `<i class="fas fa-crown"></i>`,
+                callback: (_) => this.repairItem(data, {
+                    simulate: true,
+                    gmRepair: true
+                })
             }
         }
 
         new Dialog({
             title: `${game.i18n.localize('WITCHER.Repair.dialog.title')} ${data.item.name}`,
             content: template,
-            buttons: buttons
+            buttons: buttons,
+            render: html => this.attachHtmlListeners(html, data)
         }).render(true)
     }
 
@@ -116,7 +133,9 @@ class Repair {
         let templateData = {
             ownedComponents: [],
             missingComponents: [],
-            data: data
+            data: data,
+            isRequest: data.artisan !== null,
+            canEditCost: game.user.isGM
         };
 
         data.ownedComponents.forEach(oc => {
@@ -140,8 +159,8 @@ class Repair {
         return await renderTemplate("systems/TheWitcherTRPG/templates/dialog/repair-dialog.hbs", templateData)
     }
 
-    async repairItem(data, simulate) {
-        if (!simulate) {
+    async repairItem(data, options) {
+        if (!options.simulate) {
             if (data.missingComponents.length) {
                 return ui.notifications.error(game.i18n.localize('WITCHER.Repair.alerts.notEnoughComponents'))
             }
@@ -150,6 +169,32 @@ class Repair {
             }
         }
 
+        if (options.gmRepair) {
+            await this.gmRepair(data)
+        } else {
+            await this.commonRepair(data, options.simulate)
+        }
+    }
+
+    attachHtmlListeners(html, data) {
+        html.find('.component-cost').on('change', this._onComponentCostChange.bind(this, data))
+    }
+
+    _onComponentCostChange(data, event) {
+        const totalPriceContainer = document.getElementById('total-price')
+        const additionalCost = Array.from(document.getElementsByClassName('component-cost')).reduce((sum, el) => {
+            const value = el.value ? parseInt(el.value) : 0
+            return sum + value
+        }, 0)
+        const initialPrice = parseInt(totalPriceContainer.getAttribute('data-price'))
+        const newPrice = initialPrice + additionalCost
+
+        totalPriceContainer.innerText = newPrice
+
+        data.additionalCost = additionalCost
+    }
+
+    async commonRepair(data, simulate) {
         const rollFormula = this.prepareRollFormula(data)
 
         let config = this.prepareRollConfig(data)
@@ -165,6 +210,12 @@ class Repair {
         roll.toMessage(messageData)
     }
 
+    async gmRepair(data) {
+        await this.sendRepairInfoToChat(data, false)
+
+        this._doRestoreReliability(data.item, data.damagedLocations)
+    }
+
     prepareRollFormula(data) {
         const stat = data.executor.system.stats.cra.current;
         const statName = game.i18n.localize(data.executor.system.stats.cra.label);
@@ -175,7 +226,7 @@ class Repair {
 
         let rollFormula = displayRollDetails
             ? `1d10+${stat}[${statName}]+${skill}[${data.skillName}]`
-            : `1d10 + ${stat}`;
+            : `1d10 + ${stat} + ${skill}`;
         rollFormula += data.executor.addAllModifiers("crafting")
 
         return rollFormula
@@ -190,7 +241,7 @@ class Repair {
         config.threshold = data.repairDC
         config.thresholdDesc = data.skillName
         config.messageOnSuccess = game.i18n.localize('WITCHER.Repair.result.success')
-        config.messageOnFailure = game.i18n.localize('WITCHER.Repair.result.failed')
+        config.messageOnFailure = game.i18n.localize('WITCHER.Repair.result.failure')
 
         return config
     }
@@ -208,6 +259,7 @@ class Repair {
         return await renderTemplate("systems/TheWitcherTRPG/templates/chat/item/repair.hbs", {
             data: data,
             isRequest: isRequest,
+            isOrder: data.artisan !== null,
             showComponents: data.ownedComponents.length || data.missingComponents.length
         });
     }
@@ -218,19 +270,23 @@ class Repair {
         })
 
         if (success) {
-            let update = {}
-            data.damagedLocations.forEach(loc => update[`system.${loc.reliability}`] = loc.maxReliabilityValue)
-
-            updateItem(data.item, update)
+            if (data.item.canUserModify(game.user, 'update')) {
+                const updateData = this.getRestoreReliabilityData(data.damagedLocations)
+                data.item.update(updateData)
+            } else {
+                emitForGM('restoreReliability', [data.item.uuid])
+            }
         }
     }
 
-    async requestRepair(data) {
-        const content = await this.renderChatTemplate(data, true)
+
+
+    async sendRepairInfoToChat(data, isRequest) {
+        const content = await this.renderChatTemplate(data, isRequest)
 
         const chatData = {
             content: content,
-            speaker: ChatMessage.getSpeaker({ actor: data.actor }),
+            speaker: ChatMessage.getSpeaker({ actor: data.executor }),
             type: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 
@@ -252,6 +308,23 @@ class Repair {
 
         return durabilityLocations.filter(loc => system[loc.reliability] < system[loc.maxReliability])
     }
+
+    restoreReliability(item) {
+        const damagedLocations = this.prepareDamageLocationsData(item)
+        this._doRestoreReliability(item, damagedLocations)
+    }
+
+    _doRestoreReliability(item, damagedLocations) {
+        const updateData = this.getRestoreReliabilityData(damagedLocations)
+        item.update(updateData)
+    }
+
+    getRestoreReliabilityData(damagedLocations) {
+        return damagedLocations.reduce((acc, loc) => {
+            acc[`system.${loc.reliability}`] = loc.maxReliabilityValue
+            return acc
+        }, {})
+    }
 }
 
 class RepairData {
@@ -263,6 +336,7 @@ class RepairData {
         this.missingComponents = missingComponents
         this.damagedLocations = damagedLocations
         this.artisan = artisan
+        this.additionalCost = 0
     }
 
     get enchantsCount() {
@@ -274,17 +348,17 @@ class RepairData {
     }
 
     get repairDC() {
-        return this.diagram.system.craftingDC - repairModifier + this.enchantsDC
+        return this.diagram.system.craftingDC + repairModifier + this.enchantsDC
     }
 
-    get repairDCForumulae() {
-        let formulae = `${this.diagram.system.craftingDC}[${game.i18n.localize('WITCHER.Repair.params.craftingDC')}] - ${repairModifier}[${game.i18n.localize('WITCHER.Repair.params.repairMod')}]`
+    get repairDCForumula() {
+        let formula = `${this.diagram.system.craftingDC}[${game.i18n.localize('WITCHER.Repair.params.craftingDC')}] - ${Math.abs(repairModifier)}[${game.i18n.localize('WITCHER.Repair.params.repairMod')}]`
         const echantsCount = this.enchantsCount
         if (echantsCount) {
-            formulae += ` + ${echantsCount} * ${perEnchantModifier}[${game.i18n.localize('WITCHER.Repair.params.enchants')}]`
+            formula += ` + ${echantsCount} * ${perEnchantModifier}[${game.i18n.localize('WITCHER.Repair.params.enchants')}]`
         }
 
-        return formulae
+        return formula
     }
 
     get enchantsDC() {
@@ -292,7 +366,11 @@ class RepairData {
     }
 
     get skillName() {
-        return game.i18n.localize(this.executor.system.skills.cra.crafting.label).replace(" (2)", "")
+        return game.i18n.localize(WITCHER.skillMap.crafting.label)
+    }
+    
+    get repairPrice() {
+        return this.ownedComponents.reduce((sum, comp) => sum + comp.system.cost, this.additionalCost)
     }
 }
 

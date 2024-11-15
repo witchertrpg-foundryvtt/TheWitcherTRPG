@@ -445,6 +445,14 @@ export default class WitcherItem extends Item {
         ChatMessage.create(chatData);
     }
 
+    async repair() {
+        await RepairSystem.process(this.actor, this)
+    }
+
+    restoreReliability() {
+        RepairSystem.restoreReliability(this)
+    }
+
     get canBeRepaired() {
         return RepairSystem.canBeRepaired(this)
     }
