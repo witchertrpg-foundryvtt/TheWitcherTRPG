@@ -1242,13 +1242,17 @@
             "buttons": {
                 "repair": "Repair",
                 "simulate": "Simulate repair",
-                "request": "Request repapir"
+                "request": "Request repair",
+                "gmRepair": "GM repair"
             },
             "dialog": {
                 "title": "Repairing",
                 "component": "Component",
                 "quantity": "Quantity",
-                "required": "Required"
+                "required": "Required",
+                "cost": "Cost",
+                "totalPrice": "Total price",
+                "unknown": "N/A"
             },
             "result": {
                 "success": "Repair successfull!",

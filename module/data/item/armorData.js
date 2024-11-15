@@ -1,6 +1,6 @@
 import CommonItemData from "./commonItemData.js";
 import itemEffect from "./templates/itemEffectData.js";
-import {associatedItem, unwrapAssociatedItem} from "./templates/associatedItemData.js";
+import {associatedDiagramUuid, unwrapAssociatedDiagram} from "./templates/associatedDiagramData.js";
 
 const fields = foundry.data.fields;
 
@@ -52,7 +52,7 @@ export default class ArmorData extends CommonItemData {
 
       effects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
 
-      ...associatedItem('associatedDiagramUuid'),
+      ...associatedDiagramUuid(),
     }
   }
 
@@ -78,7 +78,7 @@ export default class ArmorData extends CommonItemData {
       });
     }
 
-    unwrapAssociatedItem(this, 'associatedDiagramUuid', 'associatedDiagram')
+    unwrapAssociatedDiagram(this)
   }
 
   /** @inheritdoc */
