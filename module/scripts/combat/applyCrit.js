@@ -64,7 +64,7 @@ async function applyCritWound(actor, messageId) {
     if (possibleWounds.length == 1) {
         wound = possibleWounds[0];
     } else {
-        let woundRoll = getRandomInt(6) + crit.critEffectModifier;
+        let woundRoll = crit.location.critEffect ?? getRandomInt(6) + crit.critEffectModifier;
         if (woundRoll > 4) {
             wound = possibleWounds[0];
         } else {

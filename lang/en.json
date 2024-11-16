@@ -343,6 +343,7 @@
             "crushingForce": "Crushing Force"
         },
         "Location": {
+            "Random": "Random",
             "All": "unspecified",
             "Left": "Left",
             "Right": "Right",
@@ -439,7 +440,6 @@
         "StSpd": "Speed",
         "StVigor": "Vigor",
         "StReputation": "Rep",
-
         "CritWound": {
             "Header": "Crit Wounds",
             "HealingTime.Label": "Days Until Healed",
