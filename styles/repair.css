@@ -2,7 +2,8 @@
     margin-top: 10px;
 }
 
-table.repair td:nth-child(n+3), th:nth-child(n+2) {
+table.repair td:nth-child(n+3),
+th:nth-child(n+2) {
     text-align: center;
 }
 
@@ -17,4 +18,16 @@ table.repair-info td:last-child {
 table.repair-info td {
     font-weight: bold;
     font-size: 1.15em;
+}
+
+tr.repair-price td {
+    font-weight: bold;
+    font-size: 1.15em;
+    border-top: 1px solid black;
+    text-align: right;
+    padding: 0.5em 0;
+}
+
+tr.repair-price td.total-price {
+    text-align: center;
 }

@@ -25,12 +25,6 @@ export const registerSocketListeners = function () {
             return;
         }
 
-        if (callableFunctions[message.type] === 'item') {
-            let item = fromUuidSync(message.data.shift());
-            item[message.type](...message.data);
-            return;
-        }
-
         callableFunctions[message.type](...message.data);
     });
 };

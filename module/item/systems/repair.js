@@ -1,6 +1,5 @@
 import { extendedRoll } from "../../scripts/rolls/extendedRoll.js";
 import { RollConfig } from "../../scripts/rollConfig.js";
-import { WITCHER } from "../../setup/config.js";
 import { emitForGM } from "../../scripts/socket/socketMessage.js";
 
 const repairableItemTypes = ['weapon', 'armor']
@@ -49,15 +48,54 @@ class Repair {
             }
         })
 
+        const components = await this.compendiumLookup(missingComponents)
+
         return new RepairData(
             actor,
             item,
             diagram,
             ownedComponents,
-            missingComponents,
+            components.missing,
+            components.unknown,
             this.prepareDamageLocationsData(item),
             artisan
         )
+    }
+
+    async compendiumLookup(missingComponents) {
+        const craftingCompendium = game.packs.get("wtrpg-complete-compendium.crafting")
+        const generalCompendium = game.packs.get("wtrpg-complete-compendium.gear")
+
+        let result = {
+            missing: [],
+            unknown: []
+        }
+
+        if (craftingCompendium && generalCompendium) {
+            const componentPromises = missingComponents.map(async (component) => craftingCompendium.getDocuments({ name: component.name }))
+                                        .concat(missingComponents.map(async (component) => generalCompendium.getDocuments({ name: component.name })))
+
+            const mappedComponents = (await Promise.all(componentPromises)).flat().reduce((map, comp) => {
+                map[comp.name] = {
+                    name: comp.name,
+                    img: comp.img,
+                    cost: comp.system.cost
+                }
+
+                return map
+            }, {})
+
+            result.missing = Object.values(mappedComponents)
+            result.unknown = []
+
+            if (Object.keys(mappedComponents).length !== missingComponents.length) {
+                result.unknown = missingComponents.filter(c => !(c.name in mappedComponents))
+            }
+        } else {
+            result.unknown = missingComponents
+        }
+        
+        return result
     }
 
     prepareDamageLocationsData(item) {
@@ -110,7 +148,7 @@ class Repair {
                 icon: `<i class="fas fa-coins"></i>`,
                 callback: (_) => this.sendRepairInfoToChat(data, true)
             }
-        } else if(game.user.isGM) {
+        } else if (game.user.isGM) {
             buttons['GmRepair'] = {
                 label: game.i18n.localize(`WITCHER.Repair.buttons.gmRepair`),
                 icon: `<i class="fas fa-crown"></i>`,
@@ -133,6 +171,7 @@ class Repair {
         let templateData = {
             ownedComponents: [],
             missingComponents: [],
+            unknownComponents: [],
             data: data,
             isRequest: data.artisan !== null,
             canEditCost: game.user.isGM
@@ -156,12 +195,20 @@ class Repair {
             })
         })
 
+        data.unknownComponents.forEach(oc => {
+            templateData.unknownComponents.push({
+                component: oc,
+                quantity: 0,
+                missingQuantity: 1,
+            })
+        })
+
         return await renderTemplate("systems/TheWitcherTRPG/templates/dialog/repair-dialog.hbs", templateData)
     }
 
     async repairItem(data, options) {
         if (!options.simulate) {
-            if (data.missingComponents.length) {
+            if (data.missingComponents.length || data.unknownComponents.length) {
                 return ui.notifications.error(game.i18n.localize('WITCHER.Repair.alerts.notEnoughComponents'))
             }
             if (!data.damagedLocations.length) {
@@ -217,12 +264,12 @@ class Repair {
     }
 
     prepareRollFormula(data) {
-        const stat = data.executor.system.stats.cra.current;
-        const statName = game.i18n.localize(data.executor.system.stats.cra.label);
+        const stat = data.executor.system.stats.cra.current
+        const statName = game.i18n.localize(CONFIG.WITCHER.statMap.cra.label)
 
-        const skill = data.executor.system.skills.cra.crafting.value;
+        const skill = data.executor.system.skills.cra.crafting.value
 
-        const displayRollDetails = game.settings.get("TheWitcherTRPG", "displayRollsDetails");
+        const displayRollDetails = game.settings.get("TheWitcherTRPG", "displayRollsDetails")
 
         let rollFormula = displayRollDetails
             ? `1d10+${stat}[${statName}]+${skill}[${data.skillName}]`
@@ -328,12 +375,13 @@ class Repair {
 }
 
 class RepairData {
-    constructor(actor, item, diagram, ownedComponents, missingComponents, damagedLocations, artisan = null) {
+    constructor(actor, item, diagram, ownedComponents, missingComponents, unknownComponents, damagedLocations, artisan = null) {
         this.actor = actor
         this.item = item
         this.diagram = diagram
         this.ownedComponents = ownedComponents
         this.missingComponents = missingComponents
+        this.unknownComponents = unknownComponents
         this.damagedLocations = damagedLocations
         this.artisan = artisan
         this.additionalCost = 0
@@ -351,11 +399,11 @@ class RepairData {
         return this.diagram.system.craftingDC + repairModifier + this.enchantsDC
     }
 
-    get repairDCForumula() {
+    get repairDCFormula() {
         let formula = `${this.diagram.system.craftingDC}[${game.i18n.localize('WITCHER.Repair.params.craftingDC')}] - ${Math.abs(repairModifier)}[${game.i18n.localize('WITCHER.Repair.params.repairMod')}]`
-        const echantsCount = this.enchantsCount
-        if (echantsCount) {
-            formula += ` + ${echantsCount} * ${perEnchantModifier}[${game.i18n.localize('WITCHER.Repair.params.enchants')}]`
+        const enchantsCount = this.enchantsCount
+        if (enchantsCount) {
+            formula += ` + ${enchantsCount} * ${perEnchantModifier}[${game.i18n.localize('WITCHER.Repair.params.enchants')}]`
         }
 
         return formula
@@ -366,11 +414,13 @@ class RepairData {
     }
 
     get skillName() {
-        return game.i18n.localize(WITCHER.skillMap.crafting.label)
+        return game.i18n.localize(CONFIG.WITCHER.skillMap.crafting.label)
     }
-    
+
     get repairPrice() {
-        return this.ownedComponents.reduce((sum, comp) => sum + comp.system.cost, this.additionalCost)
+        const ownedPrice = this.ownedComponents.reduce((sum, comp) => sum + comp.system.cost, this.additionalCost)
+
+        return this.missingComponents.reduce((sum, comp) => sum + comp.cost, ownedPrice)
     }
 }
 
