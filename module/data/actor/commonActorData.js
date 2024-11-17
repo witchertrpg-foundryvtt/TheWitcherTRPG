@@ -54,6 +54,8 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
             source.derivedStats.vigor.unmodifiedMax = source.derivedStats.vigor.value;
         }
 
-        source.attackStats.meleeBonus = 0;
+        if (source?.attackStats?.meleeBonus) {
+            source.attackStats.meleeBonus = 0;
+        }
     }
 }
