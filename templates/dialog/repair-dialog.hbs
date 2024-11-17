@@ -1,7 +1,7 @@
 <div class="flexcol">
     <div class="scrollable">
         <header class="item-header">
-            <h1 class="itemname">Repairing {{data.item.name}}</h1>
+            <h1 class="itemname">{{localize "WITCHER.Repair.dialog.title" }} {{data.item.name}}</h1>
             <general>
                 <itemimage>
                     <img class="profile-img" src="{{data.item.img}}" title="{{data.item.name}}" />
@@ -35,10 +35,11 @@
                     <th colspan="2" class="header">{{ localize "WITCHER.Repair.dialog.component" }}</th>
                     <th class="header">{{ localize "WITCHER.Repair.dialog.quantity" }}</th>
                     <th class="header">{{ localize "WITCHER.Repair.dialog.required" }}</th>
+                    {{#if isRequest}}<th class="header">{{ localize "WITCHER.Repair.dialog.cost" }}</th>{{/if}}
                 </tr>
             </thead>
             <tbody>
-                {{#each missingComponents}}
+                {{#each unknownComponents }}
                 <tr class="tablerow item">
                     <td>
                         <img src="icons/svg/item-bag.svg" class="item-img" />
@@ -47,6 +48,26 @@
                     <td>{{ quantity }} {{#if missingQuantity}}<span class="error-display">({{ missingQuantity
                             }})</span>{{/if}}</td>
                     <td>1</td>
+                    {{#if ../isRequest}}<td data-component-id="{{ component._id }}">
+                        {{#if ../canEditCost}}
+                        <input type="text" class="component-cost" data-dtype="Number" />
+                        {{else}}
+                        {{ localize "WITCHER.Repair.dialog.unknown" }}
+                        {{/if}}
+                        </td>
+                    {{/if}}
+                </tr>
+                {{/each}}
+                {{#each missingComponents}}
+                <tr class="tablerow item">
+                    <td>
+                        <img src="{{ component.img }}" class="item-img" />
+                    </td>
+                    <td>{{ component.name }}</td>
+                    <td>{{ quantity }} {{#if missingQuantity}}<span class="error-display">({{ missingQuantity
+                            }})</span>{{/if}}</td>
+                    <td>1</td>
+                    {{#if ../isRequest}}<td>{{ component.cost }}</td>{{/if}}
                 </tr>
                 {{/each}}
                 {{#each ownedComponents}}
@@ -58,8 +79,15 @@
                     <td>{{ quantity }} {{#if missingQuantity}}<span class="error-display">({{ missingQuantity
                             }})</span>{{/if}}</td>
                     <td>1</td>
+                    {{#if ../isRequest}}<td>{{ component.system.cost }}</td>{{/if}}
                 </tr>
                 {{/each}}
+                {{#if isRequest}}
+                <tr class="repair-price">
+                    <td colspan="4">{{ localize "WITCHER.Repair.dialog.totalPrice" }}</td>
+                    <td class="total-price"><span data-price="{{ data.repairPrice }}" id="total-price">{{ data.repairPrice }}</span></td>
+                </tr>
+                {{/if}}
             </tbody>
         </table>
     </div>

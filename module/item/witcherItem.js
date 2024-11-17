@@ -47,18 +47,7 @@ export default class WitcherItem extends Item {
         );
     }
 
-    async createRegionFromTemplateUuids(templateUuids, damage) {
-        this.createRegionFromTemplates(
-            templateUuids.map(uuid => fromUuidSync(uuid)),
-            damage
-        );
-    }
-
     async createRegionFromTemplates(templates, damage) {
-        if (!game.user.isGM) {
-            emitForGM('createRegionFromTemplateUuids', [this.uuid, templates.map(template => template.uuid), damage]);
-            return;
-        }
         if (!game.user.isGM) {
             emitForGM('createRegionFromTemplateUuids', [this.uuid, templates.map(template => template.uuid), damage]);
             return;
