@@ -102,11 +102,20 @@
                                     </td>
                                     {{#unless weapon.system.isAmmo}}
                                         <td>
-                                            <div class="flex">
-                                                <label class="label-info">
-                                                    <b>{{localize "WITCHER.Weapon.Hands.title"}}: </b>
-                                                </label>{{weapon.system.hands}}
-                                            </div>
+                                            <div class="flex"> 
+                                                <label class="label-info"> 
+                                                <b>{{localize "WITCHER.Weapon.Hands.title"}}: </b> 
+                                                </label>
+                                                {{#if (eq weapon.system.hands "left")}}
+                                                    {{localize "WITCHER.Weapon.Hands.left"}}
+                                                {{else if (eq weapon.system.hands "right")}}
+                                                    {{localize "WITCHER.Weapon.Hands.right"}}
+                                                {{else if (eq weapon.system.hands "both")}}
+                                                    {{localize "WITCHER.Weapon.Hands.both"}}
+                                                {{else}}
+                                                    {{localize "WITCHER.Weapon.Hands.none"}}
+                                                {{/if}}
+                                            </div> 
                                         </td>
                                     {{/unless}}
                                     {{#if weapon.system.hands}}
@@ -163,16 +172,20 @@
                                         <td colspan="6">
                                     {{/if}}
                                     <div class="flex">
-                                        <b>{{localize "WITCHER.Item.Effect"}}: </b>
-                                        {{#each weapon.system.effects as |effect id|}}
-                                            <div class="flex">
-                                                {{effect.name}}
-                                                {{#if effect.percentage}}
-                                                    ({{effect.percentage}})%
-                                                {{/if}}
-                                                ,
-                                            </div>
-                                        {{/each}}
+                                        <b>{{localize "WITCHER.Item.Effect"}}:</b>
+                                        {{#if weapon.system.damageProperties.effects}}
+                                            {{#each weapon.system.damageProperties.effects as |effect id|}}
+                                                &nbsp;
+                                                <div class="flex">
+                                                    {{effect.name}}
+                                                    {{#if effect.percentage}}
+                                                        ({{effect.percentage}})%
+                                                    {{/if}}{{#unless @last}},{{/unless}}
+                                                </div>
+                                            {{/each}}
+                                        {{else}}
+                                            <span>&nbsp;{{localize "WITCHER.NoEffects"}}</span>
+                                        {{/if}}
                                     </div>
                         </td>
                         <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a></td>
