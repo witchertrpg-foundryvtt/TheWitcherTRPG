@@ -36,12 +36,19 @@
             </td>
             <td colspan="2">
                 <div class="monster-flex">
-                    {{#each weapon.system.effects as |effect id|}}
-                        <div class="monster-flex-small">{{effect.name}}
-                            {{#if effect.percentage}}
-                                ({{effect.percentage}})%
-                            {{/if}}</div>
-                    {{/each}}
+                    {{#if weapon.system.damageProperties.effects}}
+                        {{#each weapon.system.damageProperties.effects as |effect id|}}
+                            &nbsp;
+                            <div class="flex">
+                                {{effect.name}}
+                                {{#if effect.percentage}}
+                                    ({{effect.percentage}})%
+                                {{/if}}{{#unless @last}},{{/unless}}
+                            </div>
+                        {{/each}}
+                    {{else}}
+                        <span>&nbsp;{{localize "WITCHER.NoEffects"}}</span>
+                    {{/if}}
                 </div>
             <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a></td>
         </tr>
