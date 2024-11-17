@@ -399,6 +399,25 @@ export default class WitcherActor extends Actor {
     }
 
     async rollItem(itemId) {
+        let item = this.items.get(itemId);
+
+        if (!item) return;
+
+        if (item.type === 'weapon') {
+            this.rollWeapon(itemId);
+        }
+
+        if (item.type === 'spell') {
+            this.rollSpell(itemId);
+        }
+
+        if (item.system.isConsumable) {
+            item.consume();
+            this.removeItem(item.id, 1);
+        }
+    }
+
+    async rollWeapon(itemId) {
         this.sheet._onItemRoll(null, itemId);
     }
 

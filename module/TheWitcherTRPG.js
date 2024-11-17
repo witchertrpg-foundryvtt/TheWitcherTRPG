@@ -141,7 +141,12 @@ Hooks.on('renderActiveEffectConfig', async (activeEffectConfig, html, data) => {
 
 Hooks.once('ready', async function () {
     // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-    Hooks.on('hotbarDrop', (bar, data, slot) => createMacro(data, slot));
+    Hooks.on('hotbarDrop', (bar, data, slot) => {
+        if (data.type === 'Item') {
+            createMacro(data, slot);
+            return false;
+        }
+    });
 
     if (game.settings.get('TheWitcherTRPG', 'useWitcherFont')) {
         let els = document.getElementsByClassName('game');
@@ -243,82 +248,25 @@ Hooks.on('getChatLogEntryContext', Fumble.addFumbleContextOptions);
  * @returns {Promise}
  */
 async function createMacro(data, slot) {
-    if (data.type == 'Actor') {
-        const actor = game.actors.get(data.id);
-        if (!actor) {
-            return;
-        }
-        const command = `game.actors.get('${data.id}')?.sheet.render(true)`;
-        let macro = game.macros.entities.find(macro => macro.name === actor.name && macro.command === command);
-
-        if (!macro) {
-            macro = await Macro.create(
-                {
-                    name: actor.name,
-                    type: 'script',
-                    img: actor.system.img,
-                    command: command
-                },
-                { renderSheet: false }
-            );
-        }
-        game.user.assignHotbarMacro(macro, slot);
-        return false;
-    } else if (!('item' in data)) {
+    if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.')) {
         return ui.notifications.warn('You can only create macro buttons for owned Items');
-    } else if (data.item.type == 'weapon') {
-        const weapon = data.item;
-        let foundActor = null;
-        game.actors.forEach(actor => {
-            actor.items.forEach(item => {
-                if (weapon._id == item.id) {
-                    foundActor = actor;
-                }
-            });
-        });
-        if (!foundActor) {
-            return ui.notifications.warn('You can only create macro buttons with the original character');
-        }
-        const command = `actor = game.actors.get('${foundActor.id}'); actor.rollItem("${weapon._id}")`;
-        let macro = game.macros.find(m => m.name === weapon.name && m.command === command);
-        if (!macro) {
-            macro = await Macro.create({
-                name: weapon.name,
-                type: 'script',
-                img: weapon.img,
-                command: command,
-                flags: { 'boilerplate.itemMacro': true }
-            });
-        }
-        game.user.assignHotbarMacro(macro, slot);
-        return false;
-    } else if (data.item.type == 'spell') {
-        const spell = data.item;
-        let foundActor = null;
-        game.actors.forEach(actor => {
-            actor.items.forEach(item => {
-                if (spell._id == item.id) {
-                    foundActor = actor;
-                }
-            });
-        });
-        if (!foundActor) {
-            return ui.notifications.warn('You can only create macro buttons with the original character');
-        }
-        const command = `actor = game.actors.get('${foundActor.id}'); actor.rollSpell("${spell._id}")`;
-        let macro = game.macros.find(m => m.name === spell.name && m.command === command);
-        if (!macro) {
-            macro = await Macro.create({
-                name: spell.name,
-                type: 'script',
-                img: spell.img,
-                command: command,
-                flags: { 'boilerplate.itemMacro': true }
-            });
-        }
-        game.user.assignHotbarMacro(macro, slot);
-        return false;
     }
+
+    let item = fromUuidSync(data.uuid);
+
+    let command = `actor = fromUuidSync('${item.parent.uuid}'); actor.useItem("${item.id}")`;
+
+    let macro = game.macros.find(m => m.name === item.name && m.command === command);
+
+    if (!macro) {
+        macro = await Macro.create({
+            name: item.name,
+            type: 'script',
+            img: item.img,
+            command: command
+        });
+    }
+    game.user.assignHotbarMacro(macro, slot);
 }
 
 Handlebars.registerHelper('getOwnedComponentCount', function (actor, componentName) {
