@@ -236,22 +236,6 @@ export default class WitcherActorSheet extends ActorSheet {
         this.itemContextMenu(html);
     }
 
-    calcStaminaMulti(origStaCost, value) {
-        let staminaMulti = parseInt(origStaCost);
-
-        if (value.replace) {
-            value = value.replace('/STA', '');
-        }
-
-        if (value.includes && value.includes('d')) {
-            let diceAmount = value.split('d')[0];
-            let diceType = 'd' + value.split('d')[1].replace('/STA', '');
-            return staminaMulti * diceAmount + diceType;
-        } else {
-            return staminaMulti * value;
-        }
-    }
-
     async _onInitRoll(event) {
         this.actor.rollInitiative({ createCombatants: true, rerollInitiative: true });
     }

@@ -199,5 +199,30 @@ export let modifierMixin = {
         toActivate.update({
             'system.isActive': true
         });
+    },
+
+    handleSpecialModifier(attFormula, action, additionalTag) {
+        let relevantModifier = this
+            .getList('globalModifier')
+            .filter(modifier => modifier.system.isActive)
+            .filter(modifier => modifier.system.special?.length > 0)
+            .map(modifier => modifier.system.special)
+            .flat()
+            .map(modifier => CONFIG.WITCHER.specialModifier.find(special => special.id == modifier.special))
+            .filter(special => special?.tags?.includes(action))
+            .filter(special => special?.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true);
+
+        let relevantActorModifier = this.system.specialSkillModifiers
+            .map(specialSkillModifier =>
+                CONFIG.WITCHER.specialModifier.find(special => special.id == specialSkillModifier.modifier)
+            )
+            .filter(special => special?.tags?.includes(action))
+            .filter(special => special?.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true);
+
+        relevantModifier
+            .concat(relevantActorModifier)
+            .forEach(modifier => (attFormula += `${modifier.formula}[${game.i18n.localize(modifier.name)}]`));
+
+        return attFormula;
     }
 };
