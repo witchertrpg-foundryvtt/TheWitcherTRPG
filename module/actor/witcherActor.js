@@ -167,7 +167,7 @@ export default class WitcherActor extends Actor {
         this.system.derivedStats[stat].modifiers.forEach(item => (totalModifiers += Number(item.value)));
         totalModifiers += this.system.derivedStats[stat].totalModifiers;
 
-        let modifiedMax = this.system.derivedStats[stat].max + totalModifiers;
+        let modifiedMax = this.system.derivedStats[stat].unmodifiedMax + totalModifiers;
 
         const base = Math.floor((this.system.stats.body.current + this.system.stats.will.current) / 2);
 
