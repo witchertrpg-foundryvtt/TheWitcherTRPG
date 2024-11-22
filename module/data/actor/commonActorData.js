@@ -54,8 +54,27 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
             source.derivedStats.vigor.unmodifiedMax = source.derivedStats.vigor.value;
         }
 
-        if (source?.attackStats?.meleeBonus) {
-            source.attackStats.meleeBonus = 0;
-        }
+        this.migrateCalculatedStats(source);
+    }
+
+    static migrateCalculatedStats(source) {
+        if (source?.attackStats?.meleeBonus) source.attackStats.meleeBonus = 0;
+
+        if (source?.stats?.int?.totalModifiers) source.stats.int.totalModifiers = 0;
+        if (source?.stats?.ref?.totalModifiers) source.stats.ref.totalModifiers = 0;
+        if (source?.stats?.dex?.totalModifiers) source.stats.dex.totalModifiers = 0;
+        if (source?.stats?.body?.totalModifiers) source.stats.body.totalModifiers = 0;
+        if (source?.stats?.spd?.totalModifiers) source.stats.spd.totalModifiers = 0;
+        if (source?.stats?.emp?.totalModifiers) source.stats.emp.totalModifiers = 0;
+        if (source?.stats?.cra?.totalModifiers) source.stats.cra.totalModifiers = 0;
+        if (source?.stats?.will?.totalModifiers) source.stats.will.totalModifiers = 0;
+        if (source?.stats?.luck?.totalModifiers) source.stats.luck.totalModifiers = 0;
+
+        if (source?.coreStats?.stun?.totalModifiers) source.coreStats.stun.totalModifiers = 0;
+        if (source?.coreStats?.enc?.totalModifiers) source.coreStats.enc.totalModifiers = 0;
+        if (source?.coreStats?.run?.totalModifiers) source.coreStats.run.totalModifiers = 0;
+        if (source?.coreStats?.leap?.totalModifiers) source.coreStats.leap.totalModifiers = 0;
+        if (source?.coreStats?.rec?.totalModifiers) source.coreStats.rec.totalModifiers = 0;
+        if (source?.coreStats?.woundTreshold?.totalModifiers) source.coreStats.woundTreshold.totalModifiers = 0;
     }
 }
