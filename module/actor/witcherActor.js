@@ -3,6 +3,8 @@ import { getRandomInt } from '../scripts/helper.js';
 import { RollConfig } from '../scripts/rollConfig.js';
 import { WITCHER } from '../setup/config.js';
 import { modifierMixin } from './mixins/modifierMixin.js';
+import { baseDamageMixin } from './mixins/baseDamageMixin.js';
+import { castSpellMixin } from './mixins/castSpellMixin.js';
 
 export default class WitcherActor extends Actor {
     prepareDerivedData() {
@@ -398,12 +400,27 @@ export default class WitcherActor extends Actor {
         return Math.max(encumbranceModifier, 0);
     }
 
-    async rollItem(itemId) {
-        this.sheet._onItemRoll(null, itemId);
+    async useItem(itemId) {
+        let item = this.items.get(itemId);
+
+        if (!item) return;
+
+        if (item.type === 'weapon') {
+            this.rollWeapon(itemId);
+        }
+
+        if (item.type === 'spell') {
+            this.castSpell(item);
+        }
+
+        if (item.system.isConsumable) {
+            item.consume();
+            this.removeItem(item.id, 1);
+        }
     }
 
-    async rollSpell(itemId) {
-        this.sheet._onSpellRoll(null, itemId);
+    async rollWeapon(itemId) {
+        this.sheet._onItemRoll(null, itemId);
     }
 
     async rollSkill(skillName) {
@@ -821,3 +838,5 @@ export default class WitcherActor extends Actor {
 }
 
 Object.assign(WitcherActor.prototype, modifierMixin);
+Object.assign(WitcherActor.prototype, baseDamageMixin);
+Object.assign(WitcherActor.prototype, castSpellMixin);

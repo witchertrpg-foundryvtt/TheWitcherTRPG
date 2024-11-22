@@ -1,7 +1,7 @@
 {
     "TYPES": {
         "Item": {
-            "globalModifier": "Modificador Global"
+            "globalModifier": "Modificador Global (Descontinuado)"
         }
     },
     "WITCHER": {
@@ -10,6 +10,122 @@
         "Percentage": "Porcentagem",
         "DC": "ND",
         "Attack": "Ataque",
+        "NoEffects": "Sem Efeitos",
+        "Actor": {
+            "SkillTab": "Perícias & Modificadores",
+            "ProfessionTab": "Profissão & Raça",
+            "InventoryTab": "Equipamento & Inventário",
+            "MagicTab": "Magia & Feitiços",
+            "BackgroundTab": "Antecedente",
+            "Name": "Nome do Personagem",
+            "Race": "Raça",
+            "Gender": "Gênero",
+            "Age": "Idade",
+            "Perks": "Vantagens",
+            "Adda.Profession": "Adicione uma Profissão",
+            "Adda.Race": "Adicione uma Raça",
+            "TotalStats": "Total de Atr.",
+            "Stat.Int": "INT",
+            "Stat.Ref": "REF",
+            "Stat.Dex": "DES",
+            "Stat.Body": "CORPO",
+            "Stat.Spd": "VEL",
+            "Stat.Emp": "EMP",
+            "Stat.Cra": "CRI",
+            "Stat.Will": "VON",
+            "Stat.Luck": "SORTE",
+            "Stat.Toxicity": "Toxicidade",
+            "StatTitle.LableLeft": "Atributos",
+            "StatTitle.ModMax": "Mod / Máx",
+            "StatTitle.Derived": "Derivado",
+            "CoreStat.Stun": "ATORD",
+            "CoreStat.Run": "CORRER",
+            "CoreStat.Leap": "SALTO",
+            "CoreStat.Enc": "FARDO",
+            "CoreStat.Rec": "REC",
+            "CoreStat.woundTreshold": "LF",
+            "DerStat.Vigor": "VIGOR",
+            "DerStat.HP": "PV Máx",
+            "DerStat.Shield": "Escudo",
+            "DerStat.Sta": "EST",
+            "DerStat.Resolve": "Determ.",
+            "DerStat.Focus": "Foco",
+            "DerStat.Punch": "Soco",
+            "DerStat.Kick": "Chute",
+            "Initiative": "Iniciativa",
+            "SavingThrow": "Salva Guarda",
+            "Crit/Fumble": "Crít/Vacilo",
+            "Defense": "Defesa",
+            "Adrenaline": "Adrenalina",
+            "Stamina": "Estamina",
+            "Resolve": "Desterminação",
+            "Hp": "PV",
+            "Shield": "Escudo",
+            "Skill.Intelligence": "Inteligência",
+            "Skill.Reflex": "Reflexo",
+            "Skill.Willpower": "Vontade",
+            "Skill.Dexterity": "Destreza",
+            "Skill.Crafting": "Criar",
+            "Skill.Body": "Corpo",
+            "Skill.Empathy": "Empatia",
+            "Profession.Level": "Nível",
+            "ImprovementPoints": "Pontos de Melhoria",
+            "CurrentIP": "PMs Atuais:",
+            "SkillName": "Perícia...",
+            "TotalSkill": "Perícias Totais",
+            "TotalProfSkill": "Árvore de Profissão",
+            "SpecialSkillModifier": "Modificadores Especiais",
+            "Lifepath": {
+                "Bonus": "Bônus do Caminho de Vida",
+                "strongStrikeAttackBonus": "Bônus de Ataque Forte",
+                "jointStrikeAttackBonus": "Bônus de Ataque Conjunto",
+                "shieldParryBonus": "Bônus de Escudo para Aparar",
+                "shieldParryThrownBonus": "Bônus de Escudo para Aparar Arremessáveis",
+                "ignoredArmorEncumbrance": "Sobrecarga de Armadura Ignorada",
+                "ignoredEvWhenCasting": "VF Ignorado ao Conjurar"
+            },
+            "attackStats": {
+                "critLocationModifier": "Modificador de Local Crítico",
+                "critEffectModifier": "Modificador de Efeito Crítico"
+            }
+        },
+        "Alchemy": {
+            "Duration": "Duração",
+            "Toxicity": "Tox.",
+            "Alchemical": "Alquímico",
+            "Potion": "Poção",
+            "Decoction": "Elixir",
+            "Oil": "Óleo"
+        },
+        "Armor": {
+            "ArmorEnhancement": "Melhoria de Armadura",
+            "Reliable": "Dura.",
+            "EncumbranceValue": "Valor de Fardo",
+            "Resistances": "Resistências",
+            "Res": "Res",
+            "Type": "Tipo",
+            "StoppingPower": "Poder de Parada Atual",
+            "MaxStoppingPower": "Poder de Parada Máximo",
+            "Short.ArmorEnhancement": "MA",
+            "Short.EncumbranceValue": "VF",
+            "Short.StoppingPower": "PP",
+            "Short.MaxStoppingPower": "PP Máx.",
+            "Light": "Armadura Leve",
+            "Medium": "Armadura Média",
+            "Heavy": "Armadura Pesada",
+            "Natural": "Armadura Natural",
+            "LayerBonus": "Bônus de Camada",
+            "LocationHead": "Cabeça",
+            "LocationTorso": "Tronco",
+            "LocationLeg": "Perna",
+            "LocationArm": "Braço",
+            "LocationFull": "Cobertura Total",
+            "LocationShield": "Escudo",
+            "LocationLeft": "E.",
+            "LocationRight": "D.",
+            "Location": "Local",
+            "tooMuch": "Há muita armadura equipada do mesmo tipo"
+        },
         "Item": {
             "ClickableImage": "Ampliável",
             "Short.Availability": "Disp.",
@@ -70,6 +186,10 @@
             "DefenseProperties": {
                 "parrying": "Nega penalidade de aparar"
             },
+            "RegionProperties": {
+                "createRegionFromTemplate": "Criar Região a partir do Modelo",
+                "applyMacroOnEnter": "Aplicar Macro ao Entrar"
+            },
             "ContextMenu": {
                 "Consume": "Consumir",
                 "NotConsumable": "O item não está configurado como consumível",
@@ -79,12 +199,14 @@
                 "General": "Configurações Gerais",
                 "Alchemical": "Configurações dos Alquímicos",
                 "Armor": "Configurações da Armadura",
+                "Mutagen": "Configurações de Mutagênico",
                 "Race": "Configurações de Raça",
                 "Valuable": "Configurações de Valioso",
                 "Weapon": "Configurações da Arma",
                 "DamageProperties": "Propriedades do Dano",
                 "DefenseProperties": "Propriedades da Defesa",
                 "ConsumableProperties": "Propriedades de Consumíveis",
+                "RegionProperties": "Propriedades de Região",
                 "Spell": {
                     "SelfProperties": "Aplicar ao conjurador",
                     "CastProperties": "Aplicar ao alvo"
@@ -178,8 +300,8 @@
             "name": "Tipo de Dano",
             "bludgeoning": "Concussivo",
             "slashing": "Cortante",
-            "piercing": "Piercing",
-            "elemental": "Perfurante",
+            "piercing": "Perfurante",
+            "elemental": "Elemental",
             "electricity": "Elétrico",
             "fire": "Fogo",
             "ice": "Gelo"
@@ -221,36 +343,8 @@
             "ablating": "Ablativa",
             "crushingForce": "Força de Esmagamento"
         },
-        "Armor": {
-            "ArmorEnhancement": "Melhoria de Armadura",
-            "Reliable": "Dura.",
-            "EncumbranceValue": "Valor de Fardo",
-            "Resistances": "Resistências",
-            "Res": "Res",
-            "Type": "Tipo",
-            "StoppingPower": "Poder de Parada Atual",
-            "MaxStoppingPower": "Poder de Parada Máximo",
-            "Short.ArmorEnhancement": "MA",
-            "Short.EncumbranceValue": "VF",
-            "Short.StoppingPower": "PP",
-            "Short.MaxStoppingPower": "PP Máx.",
-            "Light": "Armadura Leve",
-            "Medium": "Armadura Média",
-            "Heavy": "Armadura Pesada",
-            "Natural": "Armadura Natural",
-            "LayerBonus": "Bônus de Camada",
-            "LocationHead": "Cabeça",
-            "LocationTorso": "Tronco",
-            "LocationLeg": "Perna",
-            "LocationArm": "Braço",
-            "LocationFull": "Cobertura Total",
-            "LocationShield": "Escudo",
-            "LocationLeft": "E.",
-            "LocationRight": "D.",
-            "Location": "Local",
-            "tooMuch": "Há muita armadura equipada do mesmo tipo"
-        },
         "Location": {
+            "Random": "Aleatório",
             "All": "Não especificado",
             "Left": "Esquerdo",
             "Right": "Direito",
@@ -286,14 +380,6 @@
             "Control": "Controle",
             "Speed": "Velocidade",
             "Hp": "PV"
-        },
-        "Alchemy": {
-            "Duration": "Duração",
-            "Toxicity": "Tox.",
-            "Alchemical": "Alquímico",
-            "Potion": "Poção",
-            "Decoction": "Elixir",
-            "Oil": "Óleo"
         },
         "Diagram": {
             "alchemyDC": "ND de Alquimia",
@@ -355,71 +441,6 @@
         "StSpd": "Velocidade",
         "StVigor": "Vigor",
         "StReputation": "Rep",
-        "Actor": {
-            "SkillTab": "Perícias & Modificadores",
-            "ProfessionTab": "Profissão & Raça",
-            "InventoryTab": "Equipamento & Inventário",
-            "MagicTab": "Magia & Feitiços",
-            "BackgroundTab": "Antecedente",
-            "Name": "Nome do Personagem",
-            "Race": "Raça",
-            "Gender": "Gênero",
-            "Age": "Idade",
-            "Perks": "Vantagens",
-            "Adda.Profession": "Adicione uma Profissão",
-            "Adda.Race": "Adicione uma Raça",
-            "TotalStats": "Total de Atr.",
-            "Stat.Int": "INT",
-            "Stat.Ref": "REF",
-            "Stat.Dex": "DES",
-            "Stat.Body": "CORPO",
-            "Stat.Spd": "VEL",
-            "Stat.Emp": "EMP",
-            "Stat.Cra": "CRI",
-            "Stat.Will": "VON",
-            "Stat.Luck": "SORTE",
-            "Stat.Toxicity": "Toxicidade",
-            "StatTitle.LableLeft": "Atributos",
-            "StatTitle.ModMax": "Mod / Máx",
-            "StatTitle.Derived": "Derivado",
-            "CoreStat.Stun": "ATORD",
-            "CoreStat.Run": "CORRER",
-            "CoreStat.Leap": "SALTO",
-            "CoreStat.Enc": "FARDO",
-            "CoreStat.Rec": "REC",
-            "CoreStat.woundTreshold": "LF",
-            "DerStat.Vigor": "VIGOR",
-            "DerStat.HP": "PV Máx",
-            "DerStat.Shield": "Escudo",
-            "DerStat.Sta": "EST",
-            "DerStat.Resolve": "Determ.",
-            "DerStat.Focus": "Foco",
-            "DerStat.Punch": "Soco",
-            "DerStat.Kick": "Chute",
-            "Initiative": "Iniciativa",
-            "SavingThrow": "Salva Guarda",
-            "Crit/Fumble": "Crít/Vacilo",
-            "Defense": "Defesa",
-            "Adrenaline": "Adrenalina",
-            "Stamina": "Estamina",
-            "Resolve": "Desterminação",
-            "Hp": "PV",
-            "Shield": "Escudo",
-            "Skill.Intelligence": "Inteligência",
-            "Skill.Reflex": "Reflexo",
-            "Skill.Willpower": "Vontade",
-            "Skill.Dexterity": "Destreza",
-            "Skill.Crafting": "Criar",
-            "Skill.Body": "Corpo",
-            "Skill.Empathy": "Empatia",
-            "Profession.Level": "Nível",
-            "ImprovementPoints": "Pontos de Melhoria",
-            "CurrentIP": "PMs Atuais:",
-            "SkillName": "Perícia...",
-            "TotalSkill": "Perícias Totais",
-            "TotalProfSkill": "Árvore de Profissão",
-            "SpecialSkillModifier": "Modificadores Especiais"
-        },
         "CritWound": {
             "Header": "Ferimentos Críticos",
             "HealingTime.Label": "Dias até Curado",
@@ -825,6 +846,8 @@
         "Settings": {
             "Adrenaline": "Use a Regra Opcional de Adrenalina",
             "AdrenalineDetails": "Adrenalina é a força de vontade para continuar e lutar mais em situações difíceis",
+            "WoundsAffectSkillBase": "Ferimentos afetam a base de perícias",
+            "WoundsAffectSkillBaseDetails": "Ferimentos afetam a base de perícias em vez de somente as perícias. Isso torna os ferimentos mais impactantes.",
             "displayRollDetails": "Exibir Detalhes das Rolagens",
             "displayRollDetailsHint": "Exibe detalhes ao lançar dados: 1d10+2[atributo]+4[perícia]-3[aparar]",
             "Custom": "Personalizado",
@@ -845,13 +868,26 @@
         "Resources.modifiers": "Modificadores de Recursos",
         "Notes": "Anotações",
         "Skills": {
+            "Name": "Perícias",
             "SkillGroups": {
+                "name": "Grupos de Perícias",
                 "allSkills": "Todas as Perícias",
                 "meleeSkills": "Perícias de Curta Distância",
                 "rangedSkills": "Perícias a Distância",
                 "magicSkills": "Perícias Mágicas",
                 "verbalCombatSkills": "Perícias de Combate Verbal",
                 "empatheticVerbalCombatSkills": "Perícias Empáticas de Combate Verbal"
+            }
+        },
+        "Stats": {
+            "stats": {
+                "Name": "Status"
+            },
+            "coreStats": {
+                "Name": "Status Principal"
+            },
+            "derivedStats": {
+                "Name": "Status Derivado"
             }
         },
         "SkIntAwareness": "Consciência",
@@ -1040,7 +1076,14 @@
             "applySelf": "Aplicar este efeito ativo em si mesmo quando usado",
             "applyOnTarget": "Aplicar este efeito ativo ao alvo quando usado",
             "applyOnHit": "Aplicar este efeito ativo ao acertar quando usado",
-            "applyOnDamage": "Aplicar este efeito ativo em dano quando usado"
+            "applyOnDamage": "Aplicar este efeito ativo em dano quando usado",
+            "Error": {
+                "belongsToItem": "Este efeito pertence a um item"
+            },
+            "wizard": {
+                "lifepath": "Caminho de Vida",
+                "other": "Outro"
+            }
         },
         "globalModifier": {
             "tab": "Modificador Global",
@@ -1179,7 +1222,12 @@
         "Deprecations": {
             "globalModifier": {
                 "title": "Modificador Global Depreciado",
-                "text": "Os seguintes atores precisam ser modificados. Se você não fizer isso, antes que os modificadores globais sejam removidos, seu mundo pode parar de funcionar."
+                "text": "Os seguintes atores precisam ser modificados. Se você não fizer isso, antes que os modificadores globais sejam removidos, seu mundo pode parar de funcionar.",
+                "item": "Os seguintes itens precisam ser removidos. Se você não fizer isso, antes que os modificadores globais sejam removidos, seu mundo pode parar de funcionar. A funcionalidade foi movida para efeitos ativos."
+            },
+            "specialSkillModifiers": {
+                "title": "Descontinuação do Modificador de Perícia Especial",
+                "text": "Os seguintes atores precisam ser modificados. Se você não fizer isso, antes que os modificadores de habilidade especial sejam removidos, os dados serão perdidos. A funcionalidade foi movida para efeitos ativos."
             }
         }
     }

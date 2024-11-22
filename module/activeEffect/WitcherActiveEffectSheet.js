@@ -77,13 +77,16 @@ export class WitcherActiveEffectConfig extends ActiveEffectConfig {
                 let skillGroup = CONFIG.WITCHER.skillGroups[key];
                 let paths = [];
 
-                if (!CONFIG.WITCHER[skillGroup.name]) return;
-
-                CONFIG.WITCHER[skillGroup.name].forEach(skillName => {
+                CONFIG.WITCHER[skillGroup.name]?.forEach(skillName => {
                     let skill = CONFIG.WITCHER.skillMap[skillName];
-                    paths.push('system.' + skill.attribute.name + '.' + skillName + '.activeEffectModifiers');
+                    paths.push('system.skills.' + skill.attribute.name + '.' + skillName + '.activeEffectModifiers');
                 });
 
+                if (skillGroup.name === 'allSkills') {
+                    let allSkills = this.getSkillSuggestions();
+                    let allSkillPaths = Object.keys(allSkills).map(skill => allSkills[skill].value);
+                    paths.push(...allSkillPaths);
+                }
                 return {
                     label: skillGroup.label,
                     value: paths,
@@ -103,7 +106,7 @@ export class WitcherActiveEffectConfig extends ActiveEffectConfig {
                 let skill = CONFIG.WITCHER.skillMap[key];
                 return {
                     label: skill.label,
-                    value: 'system.' + skill.attribute.name + '.' + key + '.activeEffectModifiers',
+                    value: 'system.skills.' + skill.attribute.name + '.' + key + '.activeEffectModifiers',
                     group: game.i18n.localize('WITCHER.Skills.Name')
                 };
             })
