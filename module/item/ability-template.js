@@ -156,7 +156,7 @@ export default class AbilityTemplate extends MeasuredTemplate {
         if (now - this.#moveTime <= 20) return;
         const center = event.data.getLocalPosition(this.layer);
         const interval = canvas.grid.type === CONST.GRID_TYPES.GRIDLESS ? 0 : 2;
-        const snapped = canvas.grid.getSnappedPoint(center, interval);
+        const snapped = canvas.grid.getSnappedPoint(center, {mode: interval});
         this.document.updateSource({ x: snapped.x, y: snapped.y });
         this.refresh();
         this.#moveTime = now;
@@ -187,7 +187,7 @@ export default class AbilityTemplate extends MeasuredTemplate {
     async _onConfirmPlacement(event) {
         await this._finishPlacement(event);
         const interval = canvas.grid.type === CONST.GRID_TYPES.GRIDLESS ? 0 : 2;
-        const destination = canvas.grid.getSnappedPoint(this.document, interval);
+        const destination = canvas.grid.getSnappedPoint(this.document, {mode: interval});
         this.document.updateSource(destination);
         this.#events.resolve(canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [this.document.toObject()]));
     }
