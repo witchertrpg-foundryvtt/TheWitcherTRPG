@@ -6,7 +6,7 @@ export let weaponAttackMixin = {
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
         let displayDmgFormula = `${weapon.system.damage}`;
-        let formula = !displayRollDetails
+        let damageFormula = !displayRollDetails
             ? `${weapon.system.damage}`
             : `${weapon.system.damage}[${game.i18n.localize('WITCHER.Diagram.Weapon')}]`;
 
@@ -14,17 +14,17 @@ export let weaponAttackMixin = {
         if ((this.type == 'character' || this.system.addMeleeBonus) && isMeleeAttack) {
             if (this.system.attackStats.meleeBonus < 0) {
                 displayDmgFormula += `${this.system.attackStats.meleeBonus}`;
-                formula += !displayRollDetails
+                damageFormula += !displayRollDetails
                     ? `${this.system.attackStats.meleeBonus}`
                     : `${this.system.attackStats.meleeBonus}[${game.i18n.localize('WITCHER.Dialog.attackMeleeBonus')}]`;
             }
             if (this.system.attackStats.meleeBonus > 0) {
                 displayDmgFormula += `+${this.system.attackStats.meleeBonus}`;
-                formula += !displayRollDetails
+                damageFormula += !displayRollDetails
                     ? `+${this.system.attackStats.meleeBonus}`
                     : `+${this.system.attackStats.meleeBonus}[${game.i18n.localize('WITCHER.Dialog.attackMeleeBonus')}]`;
             }
-            formula = this.handleSpecialModifier(formula, 'melee-damage');
+            damageFormula = this.handleSpecialModifier(damageFormula, 'melee-damage');
         }
 
         let attackSkill = weapon.getItemAttackSkill();
@@ -140,14 +140,13 @@ export let weaponAttackMixin = {
                                 weapon.update({ 'system.quantity': newQuantity });
                             }
 
-                            if (weapon.system.enhancementItems) {
-                                weapon.system.enhancementItems.forEach(element => {
-                                    if (element && JSON.stringify(element) != '{}') {
-                                        let enhancement = this.items.get(element.id);
-                                        allEffects.push(...enhancement.system.effects);
-                                    }
-                                });
-                            }
+                            weapon.system.enhancementItems.forEach(element => {
+                                if (element && JSON.stringify(element) != '{}') {
+                                    let enhancement = this.items.get(element.id);
+                                    allEffects.push(...enhancement.system.effects);
+                                }
+                            });
+
                             damage.damageProperties.effects = allEffects;
 
                             if (strike == 'fast') {
@@ -165,7 +164,6 @@ export let weaponAttackMixin = {
 
                                 attFormula = this.handleSpecialModifier(attFormula, strike);
                                 attFormula += this.addAllModifiers(attackSkill.name);
-                                let damageFormula = formula;
 
                                 if (weapon.system.accuracy < 0) {
                                     attFormula += !displayRollDetails

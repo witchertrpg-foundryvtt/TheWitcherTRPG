@@ -1,7 +1,7 @@
 export let damageUtilMixin = {
     createBaseDamageObject(item) {
         return {
-            damageProperties: item.system.damageProperties,
+            damageProperties: foundry.utils.deepClone(item.system.damageProperties),
             item: item,
             itemUuid: item.uuid,
             crit: {
