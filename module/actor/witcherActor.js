@@ -5,6 +5,7 @@ import { WITCHER } from '../setup/config.js';
 import { modifierMixin } from './mixins/modifierMixin.js';
 import { baseDamageMixin } from './mixins/baseDamageMixin.js';
 import { castSpellMixin } from './mixins/castSpellMixin.js';
+import { locationMixin } from './mixins/locationMixin.js';
 
 export default class WitcherActor extends Actor {
     prepareDerivedData() {
@@ -427,11 +428,6 @@ export default class WitcherActor extends Actor {
         this.rollSkillCheck(CONFIG.WITCHER.skillMap[skillName]);
     }
 
-    getControlledToken() {
-        let tokens = game.canvas.tokens.controlled;
-        return tokens.length > 0 ? tokens[0].document : game.user.character?.token;
-    }
-
     getDamageFlags() {
         return {
             origin: {
@@ -691,7 +687,7 @@ export default class WitcherActor extends Actor {
         );
     }
 
-    getAllLocations() {
+    static getAllLocations() {
         let locations = ['head', 'torso', 'rightArm', 'leftArm', 'rightLeg', 'leftLeg'];
 
         if (this.type == 'monster' && this.system.hasTailWing) {
@@ -701,7 +697,7 @@ export default class WitcherActor extends Actor {
         return locations;
     }
 
-    getLocationObject(location) {
+    static getLocationObject(location) {
         let alias = '';
         let modifier = `+0`;
         let locationFormula;
@@ -840,3 +836,4 @@ export default class WitcherActor extends Actor {
 Object.assign(WitcherActor.prototype, modifierMixin);
 Object.assign(WitcherActor.prototype, baseDamageMixin);
 Object.assign(WitcherActor.prototype, castSpellMixin);
+Object.assign(WitcherActor.prototype, locationMixin);
