@@ -8,6 +8,7 @@
         "Name": "Name",
         "Type": "Type",
         "Percentage": "Percentage",
+        "NoEffects": "No Effects",
         "DC": "DC",
         "Attack": "Attack",
         "Actor": {
