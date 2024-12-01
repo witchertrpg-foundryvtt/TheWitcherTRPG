@@ -102,20 +102,12 @@
                                     </td>
                                     {{#unless weapon.system.isAmmo}}
                                         <td>
-                                            <div class="flex"> 
-                                                <label class="label-info"> 
-                                                <b>{{localize "WITCHER.Weapon.Hands.title"}}: </b> 
+                                            <div class="flex">
+                                                <label class="label-info">
+                                                    <b>{{localize "WITCHER.Weapon.Hands.title"}}: </b>
                                                 </label>
-                                                {{#if (eq weapon.system.hands "left")}}
-                                                    {{localize "WITCHER.Weapon.Hands.left"}}
-                                                {{else if (eq weapon.system.hands "right")}}
-                                                    {{localize "WITCHER.Weapon.Hands.right"}}
-                                                {{else if (eq weapon.system.hands "both")}}
-                                                    {{localize "WITCHER.Weapon.Hands.both"}}
-                                                {{else}}
-                                                    {{localize "WITCHER.Weapon.Hands.none"}}
-                                                {{/if}}
-                                            </div> 
+                                                {{ localize (lookup ../config.weapon.hands weapon.system.hands) }}
+                                            </div>
                                         </td>
                                     {{/unless}}
                                     {{#if weapon.system.hands}}
