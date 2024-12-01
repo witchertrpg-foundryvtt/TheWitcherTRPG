@@ -1,7 +1,30 @@
 {
     "TYPES": {
         "Item": {
-            "globalModifier": "Global Modifier (deprecated)"
+            "globalModifier": "Global Modifier (deprecated)",
+            "alchemical": "Alchemical",
+            "armor": "Armor",
+            "clue": "Clue",
+            "component": "Component",
+            "container": "Container",
+            "diagrams": "Diagrams",
+            "enhancement": "Enhancement",
+            "mount": "Mount",
+            "mutagen": "Mutagen",
+            "note": "Note",
+            "obstacle": "Obstacle",
+            "profession": "Profession",
+            "race": "Race",
+            "skill": "Skill",
+            "spell": "Spell",
+            "valuable": "Valuable",
+            "weapon": "Weapon"
+        },
+        "Actor": {
+            "character": "Character",
+            "monster": "Monster",
+            "loot": "Loot",
+            "mystery": "Mystery"
         }
     },
     "WITCHER": {
@@ -10,6 +33,7 @@
         "Percentage": "Percentage",
         "DC": "DC",
         "Attack": "Attack",
+        "NoEffects": "No Effects",
         "Actor": {
             "SkillTab": "Skills & Modifiers",
             "ProfessionTab": "Profession & Race",
@@ -1189,18 +1213,18 @@
             "magic": {
                 "1-6": "Magic sparks and crackles and you take 1 point of damage for every point you fumbled by, but the spell still goes off.",
                 "7-9": "The magic that is already partially through you ignites inside you. Not only does the spell fail but you suffer an elemental fumble effect as noted below.",
-                ">9": "Your magic explodes with a catastrophic effect. Not only do you suffer an elemental fumble effect, but any focusing item you are carrying explodes as if it were a bomb (doing 1d10 damage) with a 2 meter radius"
+                ">9": "Your magic explodes with a catastrophic effect. Not only do you suffer an elemental fumble effect, but any focusing item you are carrying explodes as if it were a bomb (doing [[1d10]] damage) with a 2 meter radius"
             },
             "meleeAttack": {
                 "6": "Your weapon glances off and you are staggered.",
                 "7": "Your weapon lodges in a nearby object and it takes 1 round to free.",
-                "8": "You damage your weapon severely. Your weapon takes 1d10 points of reliability damage.",
+                "8": "You damage your weapon severely. Your weapon takes [[1d10]] points of reliability damage.",
                 "9": "You manage to wound yourself. Roll for location.",
                 ">9": "You wound a nearby ally. Roll location on a random ally within range."
             },
             "armedDefense": {
-                "6": "Your weapon takes 1d6 extra points of reliability damage.",
-                "7": "Your weapon is knocked from your hand and flies 1d6 meters away in a random direction (see Scatter table).",
+                "6": "Your weapon takes [[1d6]] extra points of reliability damage.",
+                "7": "Your weapon is knocked from your hand and flies [[1d6]] meters away in a random direction (see Scatter table).",
                 "8": "You are knocked to the ground. You are now prone and must make a Stun save.",
                 "9": "Your weapon takes 2d6 extra points of reliability damage.",
                 ">9": "Your weapon ricochets back and hits you. Roll for location."
@@ -1214,8 +1238,8 @@
                 "6": "You are knocked off balance and are staggered.",
                 "7": "You trip on something and fall prone.",
                 "8": "You trip and fall prone. You must make a Stun save.",
-                "9": "You trip and hit your head. You are knocked prone, take 1d6 points of non-lethal damage to the head, and must make a Stun save.",
-                ">9": "You fail horribly and not only fall prone but also take 1d6 lethal damage to the head and must make a Stun save."
+                "9": "You trip and hit your head. You are knocked prone, take [[1d6]] points of non-lethal damage to the head, and must make a Stun save.",
+                ">9": "You fail horribly and not only fall prone but also take [[1d6]] lethal damage to the head and must make a Stun save."
             }
         },
         "Deprecations": {
