@@ -118,15 +118,20 @@
                                             </div> 
                                         </td>
                                     {{/unless}}
-                                    {{#if weapon.system.hands}}
-                                        <td></td>
-                                        <td></td>
-                                    {{/if}}
                                     <td>
                                         <div class="flex">
                                             <label class="label-info">
                                                 <b>{{localize "WITCHER.Weapon.Short.Concealment"}}: </b>
-                                            </label>{{weapon.system.conceal}}
+                                            </label>
+                                            {{#if (eq weapon.system.conceal "T")}}
+                                                {{localize "WITCHER.Item.Tiny"}}
+                                            {{else if (eq weapon.system.conceal "S")}}
+                                                {{localize "WITCHER.Item.Small"}}
+                                            {{else if (eq weapon.system.conceal "L")}}
+                                                {{localize "WITCHER.Item.Large"}}
+                                            {{else}}
+                                                {{localize "WITCHER.Item.CantHide"}}
+                                            {{/if}}
                                         </div>
                                     </td>
                                     <td>
@@ -187,14 +192,14 @@
                                             <span>&nbsp;{{localize "WITCHER.NoEffects"}}</span>
                                         {{/if}}
                                     </div>
+                                    </td>
+                                    <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a></td>
+                                </tr>
+                            </table>
                         </td>
-                        <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a></td>
                     </tr>
-        </table>
-        </td>
-        </tr>
-        </tbody>
-        {{/each}}
+                </tbody>
+            {{/each}}
         </table>
     </div>
     <div class="armor-section">
