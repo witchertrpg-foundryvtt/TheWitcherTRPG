@@ -4,12 +4,7 @@
         <div class="item-column">
             <label>{{localize "WITCHER.Type"}}:</label>
             <select name="system.type" id="type-select">
-                {{#select item.system.type}}
-                    <option value="weapon">{{localize "WITCHER.Diagram.Weapon"}}</option>
-                    <option value="rune">{{localize "WITCHER.Enhancement.Rune"}}</option>
-                    <option value="armor">{{localize "WITCHER.Enhancement.Armor"}}</option>
-                    <option value="glyph">{{localize "WITCHER.Enhancement.Glyph"}}</option>
-                {{/select}}
+                {{selectOptions selects.enhancementTypes selected=item.system.type localize=true}}
             </select>
         </div>
     </div>
@@ -25,11 +20,7 @@
             <tr>
                 <td>
                     <select name="system.avail" id="avail-select">
-                        {{#select item.system.avail}}
-                            {{#each config.Availability as |name value|}}
-                                <option value="{{value}}">{{localize name}}</option>
-                            {{/each}}
-                        {{/select}}
+                        {{selectOptions config.Availability selected=item.system.avail localize=true}}
                     </select>
                 </td>
                 <td><input type="text" name="system.stopping" value="{{item.system.stopping}}" data-dtype="Number" />
