@@ -4,6 +4,7 @@ import { WITCHER } from '../setup/config.js';
 import AbilityTemplate from './ability-template.js';
 import { applyActiveEffectToActorViaId } from '../scripts/activeEffects/applyActiveEffect.js';
 import { emitForGM } from '../scripts/socket/socketMessage.js';
+import RepairSystem from "../item/systems/repair.js";
 
 export default class WitcherItem extends Item {
     async _preCreate(data, options, user) {
@@ -431,5 +432,17 @@ export default class WitcherItem extends Item {
         };
 
         ChatMessage.create(chatData);
+    }
+
+    async repair() {
+        await RepairSystem.process(this.actor, this)
+    }
+
+    restoreReliability() {
+        RepairSystem.restoreReliability(this)
+    }
+
+    get canBeRepaired() {
+        return RepairSystem.canBeRepaired(this)
     }
 }

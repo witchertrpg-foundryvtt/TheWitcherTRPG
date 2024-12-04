@@ -102,12 +102,14 @@
                                     </td>
                                     {{#unless weapon.system.isAmmo}}
                                         <td>
-                                            <div class="flex"> 
-                                                <label class="label-info"> 
-                                                <b>{{localize "WITCHER.Weapon.Hands.title"}}: </b> 
+                                            <div class="flex">
+                                                <label class="label-info">
+                                                    <b>{{localize "WITCHER.Weapon.Hands.title"}}: </b>
                                                 </label>
                                                 {{ localize (lookup ../config.weapon.hands weapon.system.hands) }}
+
                                             </div> 
+
                                         </td>
                                     {{/unless}}
                                     <td>
@@ -180,6 +182,12 @@
                                     <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a></td>
                                 </tr>
                             </table>
+                        </td>
+                        <td>
+                            <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+                            {{#if weapon.canBeRepaired}}
+                            <a class="item-repair"><i class="fas fa-screwdriver-wrench"></i></a>
+                            {{/if}}
                         </td>
                     </tr>
                 </tbody>
@@ -396,7 +404,12 @@
                                                 {{/each}}
                                             </div>
                                         </td>
-                                        <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a></td>
+                                        <td>
+                                            <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+                                            {{#if armor.canBeRepaired}}
+                                            <a class="item-repair"><i class="fas fa-screwdriver-wrench"></i></a>
+                                            {{/if}}
+                                        </td>
                                     </tr>
                                 {{/if}}
                                 {{#if (eq type "enhancement")}}
@@ -421,7 +434,9 @@
                                                 </label>{{armor.system.effect}}
                                             </div>
                                         </td>
-                                        <td><a class="item-delete"><i class="fas fa-trash-alt"></i></a></td>
+                                        <td>
+                                            <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
                                     </tr>
                                 {{/if}}
                             </table>

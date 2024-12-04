@@ -8,6 +8,7 @@ export const registerSocketListeners = function () {
         applyStatusEffectToActor,
         applyActiveEffectToActor,
         applyActiveEffectToActorViaId,
+        restoreReliability: 'item',
         createRegionFromTemplateUuids: 'item'
     };
 

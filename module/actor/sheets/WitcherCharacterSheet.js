@@ -1,6 +1,7 @@
 import WitcherActorSheet from "./WitcherActorSheet.js";
 import { RollConfig } from "../../scripts/rollConfig.js";
 import { extendedRoll } from "../../scripts/rolls/extendedRoll.js";
+import RepairSystem from "../../item/systems/repair.js";
 
 export default class WitcherCharacterSheet extends WitcherActorSheet {
 
@@ -27,6 +28,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
 
         html.find(".alchemy-potion").on("click", this._alchemyCraft.bind(this));
         html.find(".crafting-craft").on("click", this._craftingCraft.bind(this));
+        html.find('.item-repair').on("click", this._repairItem.bind(this))
     }
 
     getData() {
@@ -304,5 +306,11 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
                 }
             }
         }).render(true)
+    }
+
+    async _repairItem(event) {
+        let itemId = event.currentTarget.closest(".item").dataset.itemId
+        let item = this.actor.items.get(itemId)
+        await item.repair()
     }
 }

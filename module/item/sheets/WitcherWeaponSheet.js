@@ -1,11 +1,22 @@
 import WitcherDamagePropertiesConfigurationSheet from './configurations/WitcherDamagePropertiesConfigurationSheet.js';
 import WitcherItemSheet from './WitcherItemSheet.js';
+import { associatedDiagramMixin } from '../mixins/associatedDiagramMixin.js';
 
 export default class WitcherWeaponSheet extends WitcherItemSheet {
     configuration = new WitcherDamagePropertiesConfigurationSheet(this.item);
 
     get template() {
         return `systems/TheWitcherTRPG/templates/sheets/weapon-sheet.hbs`;
+    }
+
+    /** @inheritdoc */
+    _canDragStart(selector) {
+        return true
+    }
+
+    /** @inheritdoc */
+    _canDragDrop(selector) {
+        return true
     }
 
     /** @override */
@@ -27,6 +38,8 @@ export default class WitcherWeaponSheet extends WitcherItemSheet {
         super.activateListeners(html);
 
         html.find('.damage-type').on('change', this._onDamageTypeEdit.bind(this));
+        
+        this._addAssociatedDiagramListeners(html)
     }
 
     _onDamageTypeEdit(event) {
@@ -42,4 +55,10 @@ export default class WitcherWeaponSheet extends WitcherItemSheet {
         newval.text = types.join(', ');
         this.item.update({ 'system.type': newval });
     }
+
+    async _onDrop(event) {
+        this._onDropDiagram(event, 'weapon', 'elderfolk-weapon')
+    }
 }
+
+Object.assign(WitcherWeaponSheet.prototype, associatedDiagramMixin)

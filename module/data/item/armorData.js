@@ -1,5 +1,6 @@
 import CommonItemData from "./commonItemData.js";
 import itemEffect from "./templates/itemEffectData.js";
+import {associatedDiagramUuid, unwrapAssociatedDiagram} from "./templates/associatedDiagramData.js";
 
 const fields = foundry.data.fields;
 
@@ -50,6 +51,8 @@ export default class ArmorData extends CommonItemData {
       enhancementItemIds: new fields.ArrayField(new fields.StringField({ initial: '' })),
 
       effects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
+
+      ...associatedDiagramUuid(),
     }
   }
 
@@ -74,6 +77,8 @@ export default class ArmorData extends CommonItemData {
         }
       });
     }
+
+    unwrapAssociatedDiagram(this)
   }
 
   /** @inheritdoc */
