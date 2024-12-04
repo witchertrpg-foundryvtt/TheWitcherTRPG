@@ -106,15 +106,7 @@
                                                 <label class="label-info"> 
                                                 <b>{{localize "WITCHER.Weapon.Hands.title"}}: </b> 
                                                 </label>
-                                                {{#if (eq weapon.system.hands "left")}}
-                                                    {{localize "WITCHER.Weapon.Hands.left"}}
-                                                {{else if (eq weapon.system.hands "right")}}
-                                                    {{localize "WITCHER.Weapon.Hands.right"}}
-                                                {{else if (eq weapon.system.hands "both")}}
-                                                    {{localize "WITCHER.Weapon.Hands.both"}}
-                                                {{else}}
-                                                    {{localize "WITCHER.Weapon.Hands.none"}}
-                                                {{/if}}
+                                                {{ localize (lookup ../config.weapon.hands weapon.system.hands) }}
                                             </div> 
                                         </td>
                                     {{/unless}}
@@ -123,15 +115,7 @@
                                             <label class="label-info">
                                                 <b>{{localize "WITCHER.Weapon.Short.Concealment"}}: </b>
                                             </label>
-                                            {{#if (eq weapon.system.conceal "T")}}
-                                                {{localize "WITCHER.Item.Tiny"}}
-                                            {{else if (eq weapon.system.conceal "S")}}
-                                                {{localize "WITCHER.Item.Small"}}
-                                            {{else if (eq weapon.system.conceal "L")}}
-                                                {{localize "WITCHER.Item.Large"}}
-                                            {{else}}
-                                                {{localize "WITCHER.Item.CantHide"}}
-                                            {{/if}}
+                                            {{ localize (lookup ../config.Concealment weapon.system.conceal) }}
                                         </div>
                                     </td>
                                     <td>
