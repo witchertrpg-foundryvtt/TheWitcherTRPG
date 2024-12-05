@@ -188,7 +188,9 @@
             },
             "RegionProperties": {
                 "createRegionFromTemplate": "Create Region from Template",
-                "applyMacroOnEnter": "Apply Macro on Enter"
+                "tokenEnter": "Apply Macro on Enter",
+                "tokenTurnStart": "Apply Macro on Turn start",
+                "tokenExit": "Apply Macro on Exit"
             },
             "ContextMenu": {
                 "Consume": "Consume",

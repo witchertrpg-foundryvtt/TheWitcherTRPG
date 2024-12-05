@@ -1,6 +1,6 @@
 import WitcherDamagePropertiesConfigurationSheet from './configurations/WitcherDamagePropertiesConfigurationSheet.js';
 import WitcherItemSheet from './WitcherItemSheet.js';
-import { associatedDiagramMixin } from '../mixins/associatedDiagramMixin.js';
+import { associatedDiagramMixin } from './mixins/associatedDiagramMixin.js';
 
 export default class WitcherWeaponSheet extends WitcherItemSheet {
     configuration = new WitcherDamagePropertiesConfigurationSheet(this.item);

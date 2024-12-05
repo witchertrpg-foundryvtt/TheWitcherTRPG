@@ -1,6 +1,6 @@
 import WitcherConfigurationSheet from './configurations/WitcherConfigurationSheet.js';
 import WitcherItemSheet from './WitcherItemSheet.js';
-import { associatedDiagramMixin } from '../mixins/associatedDiagramMixin.js';
+import { associatedDiagramMixin } from './mixins/associatedDiagramMixin.js';
 
 export default class WitcherArmorSheet extends WitcherItemSheet {
     configuration = new WitcherConfigurationSheet(this.item);
