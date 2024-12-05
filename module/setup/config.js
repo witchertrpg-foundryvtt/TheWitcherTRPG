@@ -541,6 +541,9 @@ WITCHER.spells = {
     },
     Hexes: {
         skill: WITCHER.skillMap.hexweave
+    },
+    MagicalGift: {
+        skill: WITCHER.skillMap.spellcast
     }
 };
 
