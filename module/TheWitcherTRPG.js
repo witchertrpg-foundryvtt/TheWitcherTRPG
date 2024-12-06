@@ -319,3 +319,20 @@ Handlebars.registerHelper({
         return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
     }
 });
+
+Handlebars.registerHelper('eachLimit', function (context, limit, options) {
+    if (!context || typeof context !== 'object') return '';
+  
+    const keys = Object.keys(context);
+    const result = [];
+    
+    for (let i = 0; i < limit; i++) {
+      const key = keys[i];
+      const lifeEvent = context[key];
+      const data = Handlebars.createFrame(options.data || {});
+      data.key = key;
+      
+      result.push(options.fn({ lifeEvent, key }, { data }));
+    }
+    return result.join('');
+  });
