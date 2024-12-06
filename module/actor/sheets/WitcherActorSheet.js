@@ -56,6 +56,12 @@ export default class WitcherActorSheet extends ActorSheet {
         context.system = actorData.system;
         context.items = context.actor.items.filter(i => !i.system.isStored);
 
+        context.system.general.lifeEvents = Object.entries(context.system.general.lifeEvents).map(([key, value]) => ({
+            key,
+            ...value,
+        }));
+        context.system.lifeEventCounter = context.system.lifeEventCounter || context.system.general.lifeEvents.length;
+
         this._prepareGeneralInformation(context);
         this._prepareCustomSkills(context);
         this._prepareWeapons(context);
@@ -345,7 +351,7 @@ export default class WitcherActorSheet extends ActorSheet {
 
     _onLifeEventDisplay(event) {
         event.preventDefault();
-        let section = event.currentTarget.closest('.lifeEvents');
+        let section = event.currentTarget.closest('.life-events-card');
         this.actor.update({
             [`system.general.lifeEvents.${section.dataset.event}.isOpened`]:
                 !this.actor.system.general.lifeEvents[section.dataset.event].isOpened
