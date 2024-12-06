@@ -1,7 +1,8 @@
 .editor {
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.308);
-    min-height: 100px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.05);
+    height: 250px;
+    padding: 5px;
 }
 
 .tox.tox-tinymce {
@@ -9,8 +10,58 @@
     min-width: 200px;
 }
 
-.lifeEvents {
-    margin: 10px;
+.life-events, .notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.life-events-header, .notes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 2px groove #eeede0;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.life-events-card {
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 2px groove #eeede0;
+}
+
+.life-events-header > h2, .notes-header > h2 {
+    margin: 0;
+    border-bottom: none;
+    opacity: 0.8;
+}
+
+.life-events-card-header {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    padding: 8px 10px;
+    align-items: center;
+}
+
+.life-events-card-header > h4 {
+    margin: 0;
+}
+
+.padding {
+    padding: 5px 10px;
+}
+
+.life-events-controls {
+    justify-self: center;
+}
+
+.life-events-decades {
+    display: flex;
+    text-align: end;
 }
 
 .add-item {
@@ -18,9 +69,29 @@
 }
 
 .bg-note {
-    width: 80%;
-    float: left;
-    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 2px groove #eeede0;
+}
+
+.note-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.note-header > a {
+    display: none;
+}
+
+.note-header:hover > a {
+    display: inline-block;
+    text-align: center;
+    text-shadow: none;
+    color: #d02323;
 }
 
 .item-delete {
@@ -30,4 +101,59 @@
 
 .modifier-display {
     min-width: 100px;
+}
+
+.background-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.general-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.general-homeland, .general-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 2px groove #eeede0;
+}
+
+.homeland-select {
+    display: flex;
+    gap: 5px;
+}
+
+textarea.life-events-details,
+textarea.inline-edit {
+    resize: vertical;
+    height: auto;
+}
+
+input.details,
+select.details,
+input.life-events-details,
+textarea.life-events-details,
+input.life-events-decades,
+textarea.inline-edit,
+input.inline-edit {
+    border: none;
+    transition: box-shadow 0.1s ease;
+    flex-grow: 1;
+}
+
+input.details:hover,
+select.details:hover,
+input.life-events-details:hover,
+textarea.life-events-details:hover,
+input.life-events-decades:hover,
+textarea.inline-edit:hover,
+input.inline-edit:hover {
+    box-shadow: 0 0 5px var(--color-shadow-primary);
 }
