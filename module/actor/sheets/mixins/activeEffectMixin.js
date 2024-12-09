@@ -73,7 +73,9 @@ export let activeEffectMixin = {
         event.stopPropagation();
         let section = event.currentTarget.closest('.effect-row');
         let editor = $(section).find('.effect-description');
-        editor.toggleClass('invisible');
+        if (editor.html().trim() !== "") {
+            editor.toggleClass('invisible');
+        }
     },
 
     activeEffectListener(html) {
