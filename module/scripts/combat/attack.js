@@ -1,3 +1,4 @@
+import WitcherActor from '../../actor/witcherActor.js';
 import { getRandomInt } from '../helper.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
@@ -44,6 +45,9 @@ export async function rollDamage(item, damage) {
         damage.formula = `(${damage.formula})*2`;
         messageData.flavor += `<div>${game.i18n.localize('WITCHER.Dialog.strikeStrong')}</div>`;
     }
+
+    damage.location = WitcherActor.getLocationObject(damage.location.name);
+
     messageData.flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.attackLocation')}:</b> ${damage.location.alias} = ${damage.location.locationFormula} </div>`;
     let damageTypeloc = damage.type ? 'WITCHER.DamageType.' + damage.type : '';
     messageData.flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.damageType')}:</b> ${game.i18n.localize(damageTypeloc)} </div>`;

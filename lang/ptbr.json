@@ -188,7 +188,7 @@
             },
             "RegionProperties": {
                 "createRegionFromTemplate": "Criar Região a partir do Modelo",
-                "applyMacroOnEnter": "Aplicar Macro ao Entrar"
+                "tokenEnter": "Aplicar Macro ao Entrar"
             },
             "ContextMenu": {
                 "Consume": "Consumir",
