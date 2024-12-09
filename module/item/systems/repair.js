@@ -2,6 +2,8 @@ import { extendedRoll } from "../../scripts/rolls/extendedRoll.js";
 import { RollConfig } from "../../scripts/rollConfig.js";
 import { emitForGM } from "../../scripts/socket/socketMessage.js";
 
+const DialogV2 = foundry.applications.api.DialogV2;
+
 const repairableItemTypes = ['weapon', 'armor']
 const durabilityLocations = [
     { label: ['WITCHER.Repair.damagedLocations.weapon'], reliability: 'reliable', maxReliability: 'maxReliability' },
@@ -124,47 +126,52 @@ class Repair {
 
     async renderDialog(data) {
         const template = await this.prepareDialogTemplate(data)
-        const buttons = {
-            Repair: {
+        const buttons = [
+            {
+                action: 'repair',
                 label: game.i18n.localize(`WITCHER.Repair.buttons.repair`),
-                icon: `<i class="fas fa-hammer"></i>`,
+                icon: `fas fa-hammer`,
                 callback: (_) => this.repairItem(data, {
                     simulate: false,
                     gmRepair: false
                 })
             },
-            SimRepair: {
+            {
+                action: 'sim-repair',
                 label: game.i18n.localize(`WITCHER.Repair.buttons.simulate`),
-                icon: `<i class="fas fa-scale-balanced"></i>`,
+                icon: `fas fa-scale-balanced`,
                 callback: (_) => this.repairItem(data, {
                     simulate: true,
                     gmRepair: false
                 })
             }
-        };
+        ]
         if (!data.artisan) {
-            buttons['RequestRepair'] = {
+            buttons.push({
+                action: 'request-repair',
                 label: game.i18n.localize(`WITCHER.Repair.buttons.request`),
-                icon: `<i class="fas fa-coins"></i>`,
+                icon: `fas fa-coins`,
                 callback: (_) => this.sendRepairInfoToChat(data, true)
-            }
+            })
         } else if (game.user.isGM) {
-            buttons['GmRepair'] = {
+            buttons.push({
+                action: 'gm-repair',
                 label: game.i18n.localize(`WITCHER.Repair.buttons.gmRepair`),
-                icon: `<i class="fas fa-crown"></i>`,
+                icon: `fas fa-crown`,
                 callback: (_) => this.repairItem(data, {
                     simulate: true,
                     gmRepair: true
                 })
-            }
+            })
         }
 
-        new Dialog({
-            title: `${game.i18n.localize('WITCHER.Repair.dialog.title')} ${data.item.name}`,
+        await DialogV2.wait({
+            modal: true,
+            window: { title: `${game.i18n.localize('WITCHER.Repair.dialog.title')} ${data.item.name}`, },
             content: template,
             buttons: buttons,
-            render: html => this.attachHtmlListeners(html, data)
-        }).render(true)
+            render: (event, dialog) => this.attachHtmlListeners(dialog, data)
+        })
     }
 
     async prepareDialogTemplate(data) {
@@ -224,7 +231,7 @@ class Repair {
     }
 
     attachHtmlListeners(html, data) {
-        html.find('.component-cost').on('change', this._onComponentCostChange.bind(this, data))
+        $(html).find('.component-cost').on('change', this._onComponentCostChange.bind(this, data))
     }
 
     _onComponentCostChange(data, event) {
