@@ -13,13 +13,13 @@ export default class WitcherItem extends Item {
         await super._preCreate(data, options, user);
     }
 
-    async createSpellVisuals(damage) {
+    async createSpellVisuals(roll, damage) {
         if (this.system.createTemplate && this.system.templateType && this.system.templateSize) {
             AbilityTemplate.fromItem(this)
                 ?.drawPreview()
                 .then(templates => {
                     if (this.system.regionProperties.createRegionFromTemplate) {
-                        this.createRegionFromTemplates(templates, damage);
+                        this.createRegionFromTemplates(templates, roll, damage);
                     }
 
                     return templates;

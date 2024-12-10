@@ -1,16 +1,22 @@
 import { emitForGM } from '../../scripts/socket/socketMessage.js';
 
 export let regionMixin = {
-    async createRegionFromTemplateUuids(templateUuids, damage) {
+    async createRegionFromTemplateUuids(templateUuids, roll, damage) {
         this.createRegionFromTemplates(
             templateUuids.map(uuid => fromUuidSync(uuid)),
+            roll,
             damage
         );
     },
 
-    async createRegionFromTemplates(templates, damage) {
+    async createRegionFromTemplates(templates, roll, damage) {
         if (!game.user.isGM) {
-            emitForGM('createRegionFromTemplateUuids', [this.uuid, templates.map(template => template.uuid), damage]);
+            emitForGM('createRegionFromTemplateUuids', [
+                this.uuid,
+                templates.map(template => template.uuid),
+                roll,
+                damage
+            ]);
             return;
         }
         templates.forEach(async template => {
@@ -37,6 +43,7 @@ export let regionMixin = {
                     behaviors: behaviors,
                     flags: {
                         TheWitcherTRPG: {
+                            roll: roll,
                             item: this,
                             itemUuid: this.uuid,
                             duration: damage.duration,
