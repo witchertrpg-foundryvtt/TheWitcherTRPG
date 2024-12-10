@@ -202,11 +202,7 @@ export default class WitcherActor extends Actor {
         this.system.attackStats.kick.value = `1d6+${4 + meleeBonus}`;
     }
 
-    rollSkillCheck(skillMapEntry) {
-        const tolerated = ['tolerated', 'toleratedFeared'];
-        const feared = ['feared', 'toleratedFeared', 'hatedFeared'];
-        const hated = ['hated', 'hatedFeared'];
-
+    rollSkillCheck(skillMapEntry, threshold = -1) {
         let attribute = skillMapEntry.attribute;
         let attributeLabel = game.i18n.localize(attribute.label);
         let attributeValue = this.system.stats[attribute.name].current;
@@ -233,44 +229,7 @@ export default class WitcherActor extends Actor {
         rollFormula += !displayRollDetails ? `${skillValue}` : `${skillValue}[${skillLabel}]`;
         rollFormula += this.addAllModifiers(skillMapEntry.name);
 
-        if (this.type == 'character') {
-            // core rulebook page 21
-            if (
-                attribute.name == 'emp' &&
-                (skillName == 'charisma' ||
-                    skillName == 'leadership' ||
-                    skillName == 'persuasion' ||
-                    skillName == 'seduction')
-            ) {
-                if (tolerated.includes(this.system.general.socialStanding)) {
-                    rollFormula += !displayRollDetails
-                        ? `-1`
-                        : `-1[${game.i18n.localize('WITCHER.socialStanding.tolerated')}]`;
-                } else if (hated.includes(this.system.general.socialStanding)) {
-                    rollFormula += !displayRollDetails
-                        ? `-2`
-                        : `-2[${game.i18n.localize('WITCHER.socialStanding.hated')}]`;
-                }
-            }
-            if (
-                attribute.name == 'emp' &&
-                skillName == 'charisma' &&
-                feared.includes(this.system.general.socialStanding)
-            ) {
-                rollFormula += !displayRollDetails
-                    ? `-1`
-                    : `-1[${game.i18n.localize('WITCHER.socialStanding.feared')}]`;
-            }
-            if (
-                attribute.name == 'will' &&
-                skillName == 'intimidation' &&
-                feared.includes(this.system.general.socialStanding)
-            ) {
-                rollFormula += !displayRollDetails
-                    ? `+1`
-                    : `+1[${game.i18n.localize('WITCHER.socialStanding.feared')}]`;
-            }
-        }
+        rollFormula += this.addSocialStanding(attribute, skillName);
 
         let armorEnc = this.getArmorEcumbrance();
         if (armorEnc > 0 && (skillName == 'hexweave' || skillName == 'ritcraft' || skillName == 'spellcast')) {
@@ -302,11 +261,61 @@ export default class WitcherActor extends Actor {
                         let config = new RollConfig();
                         config.showCrit = true;
                         config.showSuccess = true;
+                        config.threshold = threshold;
                         await extendedRoll(rollFormula, messageData, config);
                     }
                 }
             }
         }).render(true);
+    }
+
+    addSocialStanding(attribute, skillName) {
+        let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
+
+        const tolerated = ['tolerated', 'toleratedFeared'];
+        const feared = ['feared', 'toleratedFeared', 'hatedFeared'];
+        const hated = ['hated', 'hatedFeared'];
+
+        let socialModifiers = '';
+        if (this.type == 'character') {
+            // core rulebook page 21
+            if (attribute.name == 'emp') {
+                if (
+                    skillName == 'charisma' ||
+                    skillName == 'leadership' ||
+                    skillName == 'persuasion' ||
+                    skillName == 'seduction'
+                ) {
+                    if (tolerated.includes(this.system.general.socialStanding)) {
+                        socialModifiers += !displayRollDetails
+                            ? `-1`
+                            : `-1[${game.i18n.localize('WITCHER.socialStanding.tolerated')}]`;
+                    } else if (hated.includes(this.system.general.socialStanding)) {
+                        socialModifiers += !displayRollDetails
+                            ? `-2`
+                            : `-2[${game.i18n.localize('WITCHER.socialStanding.hated')}]`;
+                    }
+                }
+
+                if (skillName == 'charisma' && feared.includes(this.system.general.socialStanding)) {
+                    socialModifiers += !displayRollDetails
+                        ? `-1`
+                        : `-1[${game.i18n.localize('WITCHER.socialStanding.feared')}]`;
+                }
+            }
+
+            if (
+                attribute.name == 'will' &&
+                skillName == 'intimidation' &&
+                feared.includes(this.system.general.socialStanding)
+            ) {
+                socialModifiers += !displayRollDetails
+                    ? `+1`
+                    : `+1[${game.i18n.localize('WITCHER.socialStanding.feared')}]`;
+            }
+        }
+
+        return socialModifiers;
     }
 
     rollCustomSkillCheck(event) {
