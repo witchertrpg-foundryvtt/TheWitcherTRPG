@@ -9,6 +9,8 @@ import { locationMixin } from './mixins/locationMixin.js';
 import { weaponAttackMixin } from './mixins/weaponAttackMixin.js';
 import { verbalCombatMixin } from './mixins/verbalCombatMixin.js';
 
+const DialogV2 = foundry.applications.api.DialogV2;
+
 export default class WitcherActor extends Actor {
     prepareDerivedData() {
         super.prepareDerivedData();
@@ -202,7 +204,7 @@ export default class WitcherActor extends Actor {
         this.system.attackStats.kick.value = `1d6+${4 + meleeBonus}`;
     }
 
-    rollSkillCheck(skillMapEntry, threshold = -1) {
+    async rollSkillCheck(skillMapEntry, threshold = -1) {
         let attribute = skillMapEntry.attribute;
         let attributeLabel = game.i18n.localize(attribute.label);
         let attributeValue = this.system.stats[attribute.name].current;
@@ -238,35 +240,33 @@ export default class WitcherActor extends Actor {
                 : `-${armorEnc}[${game.i18n.localize('WITCHER.Armor.EncumbranceValue')}]`;
         }
 
-        new Dialog({
-            title: `${game.i18n.localize('WITCHER.Dialog.Skill')}: ${skillLabel}`,
+        return await DialogV2.prompt({
+            window: { title: `${game.i18n.localize('WITCHER.Dialog.Skill')}: ${skillLabel}` },
             content: `<label>${game.i18n.localize(
                 'WITCHER.Dialog.attackCustom'
             )}: <input name="customModifiers" value=0></label>`,
-            buttons: {
-                LocationRandom: {
-                    label: game.i18n.localize('WITCHER.Button.Continue'),
-                    callback: async html => {
-                        let customAtt = html.find('[name=customModifiers]')[0].value;
-                        if (customAtt < 0) {
-                            rollFormula += !displayRollDetails
-                                ? ` ${customAtt}`
-                                : ` ${customAtt}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-                        }
-                        if (customAtt > 0) {
-                            rollFormula += !displayRollDetails
-                                ? ` +${customAtt}`
-                                : ` +${customAtt}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-                        }
-                        let config = new RollConfig();
-                        config.showCrit = true;
-                        config.showSuccess = true;
-                        config.threshold = threshold;
-                        await extendedRoll(rollFormula, messageData, config);
+            ok: {
+                label: game.i18n.localize('WITCHER.Button.Continue'),
+                callback: (event, button, dialog) => {
+                    let customModifier = button.form.elements.customModifiers.value;
+                    if (customModifier < 0) {
+                        rollFormula += !displayRollDetails
+                            ? ` ${customModifier}`
+                            : ` ${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
                     }
+                    if (customModifier > 0) {
+                        rollFormula += !displayRollDetails
+                            ? ` +${customModifier}`
+                            : ` +${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
+                    }
+                    let config = new RollConfig();
+                    config.showCrit = true;
+                    config.showSuccess = true;
+                    config.threshold = threshold;
+                    return extendedRoll(rollFormula, messageData, config);
                 }
             }
-        }).render(true);
+        });
     }
 
     addSocialStanding(attribute, skillName) {
@@ -318,7 +318,7 @@ export default class WitcherActor extends Actor {
         return socialModifiers;
     }
 
-    rollCustomSkillCheck(event) {
+    async rollCustomSkillCheck(event) {
         let customSkill = this.items.find(item => item.id == event.currentTarget.closest('.item').dataset.itemId);
 
         let attribute = CONFIG.WITCHER.statMap[customSkill.system.attribute];
@@ -354,34 +354,32 @@ export default class WitcherActor extends Actor {
             }
         });
 
-        new Dialog({
-            title: `${game.i18n.localize('WITCHER.Dialog.Skill')}: ${skillLabel}`,
+        return DialogV2.prompt({
+            window: { title: `${game.i18n.localize('WITCHER.Dialog.Skill')}: ${skillLabel}` },
             content: `<label>${game.i18n.localize(
                 'WITCHER.Dialog.attackCustom'
             )}: <input name="customModifiers" value=0></label>`,
-            buttons: {
-                LocationRandom: {
-                    label: game.i18n.localize('WITCHER.Button.Continue'),
-                    callback: async html => {
-                        let customModifier = html.find('[name=customModifiers]')[0].value;
-                        if (customModifier < 0) {
-                            rollFormula += !displayRollDetails
-                                ? ` ${customModifier}`
-                                : ` ${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-                        }
-                        if (customModifier > 0) {
-                            rollFormula += !displayRollDetails
-                                ? ` +${customModifier}`
-                                : ` +${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-                        }
-                        let config = new RollConfig();
-                        config.showCrit = true;
-                        config.showSuccess = true;
-                        await extendedRoll(rollFormula, messageData, config);
+            ok: {
+                label: game.i18n.localize('WITCHER.Button.Continue'),
+                callback: (event, button, dialog) => {
+                    let customModifier = button.form.elements.customModifiers.value;
+                    if (customModifier < 0) {
+                        rollFormula += !displayRollDetails
+                            ? ` ${customModifier}`
+                            : ` ${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
                     }
+                    if (customModifier > 0) {
+                        rollFormula += !displayRollDetails
+                            ? ` +${customModifier}`
+                            : ` +${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
+                    }
+                    let config = new RollConfig();
+                    config.showCrit = true;
+                    config.showSuccess = true;
+                    return extendedRoll(rollFormula, messageData, config);
                 }
             }
-        }).render(true);
+        });
     }
 
     getArmorEcumbrance() {
@@ -418,11 +416,11 @@ export default class WitcherActor extends Actor {
         if (!item) return;
 
         if (item.type === 'weapon') {
-            this.rollWeapon(item);
+            return this.rollWeapon(item);
         }
 
         if (item.type === 'spell') {
-            this.castSpell(item);
+            return this.castSpell(item);
         }
 
         if (item.system.isConsumable) {
@@ -432,11 +430,11 @@ export default class WitcherActor extends Actor {
     }
 
     async rollWeapon(weapon) {
-        this.weaponAttack(weapon);
+        return this.weaponAttack(weapon);
     }
 
-    async rollSkill(skillName) {
-        this.rollSkillCheck(CONFIG.WITCHER.skillMap[skillName]);
+    async rollSkill(skillName, threshold = -1) {
+        return this.rollSkillCheck(CONFIG.WITCHER.skillMap[skillName], threshold);
     }
 
     getDefenseSuccessFlags(defenseSkill) {

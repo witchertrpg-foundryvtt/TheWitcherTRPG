@@ -282,6 +282,8 @@ export let castSpellMixin = {
                 damage.duration
             );
         }
+
+        return roll;
     },
 
     calcStaminaMulti(origStaCost, value) {
