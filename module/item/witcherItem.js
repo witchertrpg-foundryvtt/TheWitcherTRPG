@@ -3,7 +3,8 @@ import { RollConfig } from '../scripts/rollConfig.js';
 import { WITCHER } from '../setup/config.js';
 import AbilityTemplate from './ability-template.js';
 import { applyActiveEffectToActorViaId } from '../scripts/activeEffects/applyActiveEffect.js';
-import { emitForGM } from '../scripts/socket/socketMessage.js';
+import RepairSystem from '../item/systems/repair.js';
+import { regionMixin } from './mixins/regionMixin.js';
 
 export default class WitcherItem extends Item {
     async _preCreate(data, options, user) {
@@ -12,13 +13,13 @@ export default class WitcherItem extends Item {
         await super._preCreate(data, options, user);
     }
 
-    async createSpellVisuals(damage) {
+    async createSpellVisuals(roll, damage) {
         if (this.system.createTemplate && this.system.templateType && this.system.templateSize) {
             AbilityTemplate.fromItem(this)
                 ?.drawPreview()
                 .then(templates => {
                     if (this.system.regionProperties.createRegionFromTemplate) {
-                        this.createRegionFromTemplates(templates, damage);
+                        this.createRegionFromTemplates(templates, roll, damage);
                     }
 
                     return templates;
@@ -37,60 +38,6 @@ export default class WitcherItem extends Item {
                 );
             }, this.system.visualEffectDuration * 1000);
         }
-    }
-
-    async createRegionFromTemplateUuids(templateUuids, damage) {
-        this.createRegionFromTemplates(
-            templateUuids.map(uuid => fromUuidSync(uuid)),
-            damage
-        );
-    }
-
-    async createRegionFromTemplates(templates, damage) {
-        if (!game.user.isGM) {
-            emitForGM('createRegionFromTemplateUuids', [this.uuid, templates.map(template => template.uuid), damage]);
-            return;
-        }
-        templates.forEach(async template => {
-            let origShape = template.object.shape ?? template.object._computeShape();
-            let points = origShape.points ?? origShape.toPolygon().points;
-            let shape = {
-                hole: false,
-                type: 'polygon',
-                points: points.map((pt, ind) => (ind % 2 ? pt + template.y : pt + template.x))
-            };
-
-            let behaviors = [];
-            if (this.system.regionProperties.applyMacroOnEnter) {
-                let behavior = {
-                    name: 'Execute Macro on Enter',
-                    type: 'executeMacro',
-                    system: {
-                        events: ['tokenEnter'],
-                        uuid: this.system.regionProperties.applyMacroOnEnter
-                    }
-                };
-                behaviors.push(behavior);
-            }
-
-            let regions = await game.scenes.active.createEmbeddedDocuments('Region', [
-                {
-                    name: this.name,
-                    shapes: [shape],
-                    behaviors: behaviors,
-                    flags: {
-                        TheWitcherTRPG: {
-                            item: this,
-                            itemUuid: this.uuid,
-                            duration: damage.duration,
-                            actorUuid: this.parent.uuid
-                        }
-                    }
-                }
-            ]);
-
-            regions.forEach(region => region.update({ visibility: 2 }));
-        });
     }
 
     getItemAttackSkill() {
@@ -432,4 +379,18 @@ export default class WitcherItem extends Item {
 
         ChatMessage.create(chatData);
     }
+
+    async repair() {
+        await RepairSystem.process(this.actor, this);
+    }
+
+    restoreReliability() {
+        RepairSystem.restoreReliability(this);
+    }
+
+    get canBeRepaired() {
+        return RepairSystem.canBeRepaired(this);
+    }
 }
+
+Object.assign(WitcherItem.prototype, regionMixin);

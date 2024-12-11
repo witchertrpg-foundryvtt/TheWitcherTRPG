@@ -240,8 +240,6 @@ export let castSpellMixin = {
             });
         }
 
-        spellItem.createSpellVisuals(damage);
-
         const chatMessage = await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/spellItem.hbs', {
             spellItem,
             templateInfo,
@@ -264,6 +262,8 @@ export let castSpellMixin = {
         let roll = await extendedRoll(rollFormula, messageData, config);
         await roll.toMessage(messageData);
 
+        spellItem.createSpellVisuals(roll, damage);
+
         if (!roll.options.fumble) {
             spellItem.system.globalModifiers.forEach(modifier => applyModifierToActor(this.uuid, modifier));
             spellItem.system.selfEffects.forEach(effect =>
@@ -282,6 +282,8 @@ export let castSpellMixin = {
                 damage.duration
             );
         }
+
+        return roll;
     },
 
     calcStaminaMulti(origStaCost, value) {

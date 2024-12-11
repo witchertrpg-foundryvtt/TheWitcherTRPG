@@ -49,6 +49,11 @@
     flex-direction: column;
 }
 
+.effect-row:hover {
+    border-radius: 5px;
+    background-color: rgba(25, 25, 25, 0.05);
+}
+
 .effect-row:last-child {
     border-bottom: none;
 }
@@ -69,6 +74,13 @@
 
 .effect-name > h4 {
     margin-bottom: 0;
+}
+
+.effect-name,
+.effect-source,
+.effect-duration,
+a.effect-control {
+    text-shadow: none;
 }
 
 .effect-source,

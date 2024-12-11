@@ -15,11 +15,11 @@ import WitcherSpellSheet from '../item/sheets/WitcherSpellSheet.js';
 import WitcherAlchemicalSheet from '../item/sheets/WitcherAlchemicalSheet.js';
 import WitcherArmorSheet from '../item/sheets/WitcherArmorSheet.js';
 import WitcherValuableSheet from '../item/sheets/WitcherValuableSheet.js';
-import WitcherActiveEffect from '../activeEffect/witcherActiveEffect.js';
 import { WitcherActiveEffectConfig } from '../activeEffect/WitcherActiveEffectSheet.js';
 import WitcherRaceSheet from '../item/sheets/WitcherRaceSheet.js';
 import WitcherSkillItemSheet from '../item/sheets/WitcherSkillItemSheet.js';
 import WitcherMutagenSheet from '../item/sheets/WitcherMutagenSheet.js';
+import WitcherEnhancementSheet from '../item/sheets/WitcherEnhancementSheet.js';
 
 export const registerSheets = () => {
     Items.unregisterSheet('core', ItemSheet);
@@ -40,6 +40,10 @@ export const registerSheets = () => {
     Items.registerSheet('witcher', WitcherDiagramSheet, {
         makeDefault: true,
         types: ['diagrams']
+    });
+    Items.registerSheet('witcher', WitcherEnhancementSheet, {
+        makeDefault: true,
+        types: ['enhancement']
     });
     Items.registerSheet('witcher', WitcherGlobalModifierSheet, {
         makeDefault: true,
