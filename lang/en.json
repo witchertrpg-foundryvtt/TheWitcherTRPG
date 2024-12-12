@@ -190,6 +190,7 @@
                 "createRegionFromTemplate": "Create Region from Template",
                 "tokenEnter": "Apply Macro on Enter",
                 "tokenTurnStart": "Apply Macro on Turn start",
+                "tokenPreMove": "Apply Macro before Token moves",
                 "tokenExit": "Apply Macro on Exit"
             },
             "ContextMenu": {
