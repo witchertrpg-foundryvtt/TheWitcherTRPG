@@ -10,6 +10,7 @@ export async function extendedRoll(rollFormula, messageData, config, flags = [])
 
     //crit/fumble calculation
     if (config.showCrit && (isCrit(roll) || isFumble(roll))) {
+        await game.dice3d?.showForRoll(roll, game.user, true);
         let extraRollDescription = isCrit(roll)
             ? `${game.i18n.localize('WITCHER.Crit')}`
             : `${game.i18n.localize('WITCHER.Fumble')}`;
@@ -25,6 +26,7 @@ export async function extendedRoll(rollFormula, messageData, config, flags = [])
         //print crit/fumble roll
         let extraRollFormula = `1d10x10[${extraRollDescription}]`;
         let extraRoll = await new Roll(extraRollFormula).evaluate();
+        await game.dice3d?.showForRoll(extraRoll, game.user, true);
         let extraRollTotal = Number(extraRoll.total);
         messageData.flavor += `<div>${extraRollFormula} = <b>${extraRollTotal}</b></div>`;
 
