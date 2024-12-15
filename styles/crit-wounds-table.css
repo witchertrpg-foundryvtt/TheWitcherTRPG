@@ -72,6 +72,13 @@
 .critwound select,
 .critwound textarea {
     border: none;
+    transition: box-shadow 0.1s ease;
+}
+
+.critwound input:hover,
+.critwound select:hover,
+.critwound textarea:hover {
+    box-shadow: 0 0 5px var(--color-shadow-primary);
 }
 
 .critwounds-description {

@@ -345,7 +345,7 @@ export default class WitcherActorSheet extends ActorSheet {
 
     _onLifeEventDisplay(event) {
         event.preventDefault();
-        let section = event.currentTarget.closest('.lifeEvents');
+        let section = event.currentTarget.closest('.life-events-card');
         this.actor.update({
             [`system.general.lifeEvents.${section.dataset.event}.isOpened`]:
                 !this.actor.system.general.lifeEvents[section.dataset.event].isOpened

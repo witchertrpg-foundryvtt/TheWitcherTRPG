@@ -13,6 +13,7 @@ export default class CharacterData extends CommonActorData {
 
             general: new fields.SchemaField(general()),
             gender: new fields.StringField({ initial: '' }),
+            lifeEventCounter: new fields.NumberField({ initial: 20 }),
 
             improvementPoints: new fields.NumberField({ initial: 0 }),
             skillTraining1: new fields.SchemaField(skillTraining()),

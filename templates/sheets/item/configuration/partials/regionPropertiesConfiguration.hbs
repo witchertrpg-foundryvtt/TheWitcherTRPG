@@ -11,11 +11,38 @@
     </tr>
     <tr class="item-header-tablerow">
         <td>
-            <label for="applyMacroOnEnter">{{localize "WITCHER.Item.RegionProperties.applyMacroOnEnter"}}</label>
+            <label for="tokenEnter">{{localize "WITCHER.Item.RegionProperties.tokenEnter"}}</label>
         </td>
         <td>
-            <input type="text" id="applyMacroOnEnter" name="system.regionProperties.applyMacroOnEnter"
-                value='{{item.system.regionProperties.applyMacroOnEnter}}' />
+            <input type="text" id="tokenEnter" name="system.regionProperties.behaviours.tokenEnter"
+                value='{{item.system.regionProperties.behaviours.tokenEnter}}' />
+        </td>
+    </tr>
+    <tr class="item-header-tablerow">
+        <td>
+            <label for="tokenTurnStart">{{localize "WITCHER.Item.RegionProperties.tokenTurnStart"}}</label>
+        </td>
+        <td>
+            <input type="text" id="tokenTurnStart" name="system.regionProperties.behaviours.tokenTurnStart"
+                value='{{item.system.regionProperties.behaviours.tokenTurnStart}}' />
+        </td>
+    </tr>
+    <tr class="item-header-tablerow">
+        <td>
+            <label for="tokenPreMove">{{localize "WITCHER.Item.RegionProperties.tokenPreMove"}}</label>
+        </td>
+        <td>
+            <input type="text" id="tokenPreMove" name="system.regionProperties.behaviours.tokenPreMove"
+                value='{{item.system.regionProperties.behaviours.tokenPreMove}}' />
+        </td>
+    </tr>
+    <tr class="item-header-tablerow">
+        <td>
+            <label for="tokenExit">{{localize "WITCHER.Item.RegionProperties.tokenExit"}}</label>
+        </td>
+        <td>
+            <input type="text" id="tokenExit" name="system.regionProperties.behaviours.tokenExit"
+                value='{{item.system.regionProperties.behaviours.tokenExit}}' />
         </td>
     </tr>
 </table>

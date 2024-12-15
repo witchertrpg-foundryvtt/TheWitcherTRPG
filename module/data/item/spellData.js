@@ -2,7 +2,7 @@ import { migrateDamageProperties } from '../migrations/damagePropertiesMigration
 import CommonItemData from './commonItemData.js';
 import damageProperties from './templates/damagePropertiesData.js';
 import itemEffect from './templates/itemEffectData.js';
-import regionProperties from './templates/regionPropertiesData.js';
+import regionProperties from './templates/regions/regionPropertiesData.js';
 
 const fields = foundry.data.fields;
 

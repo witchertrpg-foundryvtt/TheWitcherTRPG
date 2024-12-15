@@ -59,6 +59,7 @@ async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/partials/spell-header.hbs',
         'systems/TheWitcherTRPG/templates/partials/item-image.hbs',
         'systems/TheWitcherTRPG/templates/partials/associated-item.hbs',
+        'systems/TheWitcherTRPG/templates/partials/associated-diagram.hbs',
         'systems/TheWitcherTRPG/templates/partials/effect-part.hbs',
 
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs',
@@ -71,8 +72,11 @@ async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/partials/investigation/obstacle-display.hbs',
 
         'systems/TheWitcherTRPG/templates/dialog/verbal-combat.hbs',
+        'systems/TheWitcherTRPG/templates/dialog/repair-dialog.hbs',
 
-        'systems/TheWitcherTRPG/templates/chat/damage/damageToLocation.hbs'
+
+        'systems/TheWitcherTRPG/templates/chat/damage/damageToLocation.hbs',
+        'systems/TheWitcherTRPG/templates/chat/item/repair.hbs'
     ];
     return loadTemplates(templatePath);
 }
@@ -300,3 +304,35 @@ Handlebars.registerHelper('formatModLabel', function (statCurrent, statMax) {
     let calc = statCurrent - statMax;
     return calc;
 });
+
+Handlebars.registerHelper({
+    eq: (v1, v2) => v1 === v2,
+    ne: (v1, v2) => v1 !== v2,
+    lt: (v1, v2) => v1 < v2,
+    gt: (v1, v2) => v1 > v2,
+    lte: (v1, v2) => v1 <= v2,
+    gte: (v1, v2) => v1 >= v2,
+    and() {
+        return Array.prototype.every.call(arguments, Boolean);
+    },
+    or() {
+        return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
+    }
+});
+
+Handlebars.registerHelper('eachLimit', function (context, limit, options) {
+    if (!context || typeof context !== 'object') return '';
+  
+    const keys = Object.keys(context);
+    const result = [];
+    
+    for (let i = 0; i < limit; i++) {
+      const key = keys[i];
+      const lifeEvent = context[key];
+      const data = Handlebars.createFrame(options.data || {});
+      data.key = key;
+      
+      result.push(options.fn({ lifeEvent, key }, { data }));
+    }
+    return result.join('');
+  });
