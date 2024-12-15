@@ -160,10 +160,6 @@ export default class WitcherActor extends Actor {
         this.calculateDerivedStat('resolve');
         this.calculateDerivedStat('focus');
         this.calculateDerivedStat('vigor');
-
-        const baseMax = Math.floor((this.system.stats.body.max + this.system.stats.will.max) / 2);
-        let unmodifiedMaxHp = baseMax * 5;
-        this.system.derivedStats.hp.unmodifiedMax = unmodifiedMaxHp;
     }
 
     calculateDerivedStat(stat) {
@@ -172,25 +168,29 @@ export default class WitcherActor extends Actor {
         this.system.derivedStats[stat].modifiers.forEach(item => (totalModifiers += Number(item.value)));
         totalModifiers += this.system.derivedStats[stat].totalModifiers;
 
-        let modifiedMax = this.system.derivedStats[stat].unmodifiedMax + totalModifiers;
-
         const base = Math.floor((this.system.stats.body.current + this.system.stats.will.current) / 2);
+        if (!this.system.customStat && (stat === 'hp' || stat === 'sta')) {
+            this.system.derivedStats[stat].unmodifiedMax = base * 5;
+        }
+
+        let modifiedMax = this.system.derivedStats[stat].unmodifiedMax + totalModifiers;
 
         if (stat === 'resolve' || stat === 'focus') {
             divider += 1;
         }
-        if (this.system.customStat != true) {
+
+        if (!this.system.customStat) {
             if (stat === 'hp' || stat === 'sta') {
                 modifiedMax = Math.floor((base * 5 + totalModifiers) / divider);
             } else if (stat === 'resolve') {
                 modifiedMax =
                     Math.floor((this.system.stats.will.current + this.system.stats.int.current) / divider) * 5 +
                     totalModifiers;
-            } else if (stat === 'focus') {
-                modifiedMax =
-                    Math.floor((this.system.stats.will.current + this.system.stats.int.current) / divider) * 3 +
-                    totalModifiers;
             }
+        } else if (stat === 'focus') {
+            modifiedMax =
+                Math.floor((this.system.stats.will.current + this.system.stats.int.current) / divider) * 3 +
+                totalModifiers;
         }
 
         this.system.derivedStats[stat].max = modifiedMax;
