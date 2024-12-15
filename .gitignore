@@ -5,3 +5,4 @@ generate-release-notes.js
 /foundry/
 /.vscode/
 /TheWitcherTRPG.lock
+/jsconfig.json
