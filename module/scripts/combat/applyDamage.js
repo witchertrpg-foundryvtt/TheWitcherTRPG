@@ -194,7 +194,7 @@ async function applyDamageToLocation(actor, dialogData, damage, totalDamage, inf
 
     createResultMessage(actor, damageResult);
 
-    actor?.update({
+    await actor?.update({
         [`system.derivedStats.${derivedStat}.value`]:
             actor.system.derivedStats[derivedStat].value - Math.floor(damageResult.totalDamage)
     });
@@ -227,7 +227,7 @@ async function applyDamageToAllLocations(actor, dialogData, damage, totalDamage,
     ChatMessage.applyRollMode(chatData, game.settings.get('core', 'rollMode'));
     let message = await ChatMessage.create(chatData);
 
-    actor?.update({
+    await actor?.update({
         [`system.derivedStats.${derivedStat}.value`]: actor.system.derivedStats[derivedStat].value - totalAppliedDamage
     });
 }
