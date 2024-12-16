@@ -11,16 +11,17 @@ export default class WitcherArmorSheet extends WitcherItemSheet {
 
     /** @inheritdoc */
     _canDragStart(selector) {
-        return true
+        return true;
     }
 
     /** @inheritdoc */
     _canDragDrop(selector) {
-        return true
+        return true;
     }
 
     activateListeners(html) {
-        this._addAssociatedDiagramListeners(html)
+        super.activateListeners(html);
+        this._addAssociatedDiagramListeners(html);
     }
 
     /** @override */
@@ -54,8 +55,8 @@ export default class WitcherArmorSheet extends WitcherItemSheet {
     }
 
     async _onDrop(event) {
-        this._onDropDiagram(event, 'armor', 'elderfolk-armor')
+        this._onDropDiagram(event, 'armor', 'elderfolk-armor');
     }
 }
 
-Object.assign(WitcherArmorSheet.prototype, associatedDiagramMixin)
+Object.assign(WitcherArmorSheet.prototype, associatedDiagramMixin);

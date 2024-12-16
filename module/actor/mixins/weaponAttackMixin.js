@@ -140,7 +140,7 @@ export let weaponAttackMixin = {
                                 weapon.update({ 'system.quantity': newQuantity });
                             }
 
-                            weapon.system.enhancementItems.forEach(element => {
+                            weapon.system.enhancementItems?.forEach(element => {
                                 if (element && JSON.stringify(element) != '{}') {
                                     let enhancement = this.items.get(element.id);
                                     allEffects.push(...enhancement.system.effects);
