@@ -41,7 +41,7 @@ function attackFumble(message) {
 
     if (CONFIG.WITCHER.meleeSkills.includes(attack.attackSkill)) {
         if (attack.attackSkill == "brawling") {
-            unarmedAttackDefense(fumbleAmount)
+            fumbleResult = unarmedAttackDefense(fumbleAmount)
         }
         else {
             if (fumbleAmount < 6) {
@@ -120,14 +120,19 @@ function defenseFumble(message) {
 
 }
 
-function unarmedAttackDefense(actor, fumbleAmount) {
-    if (fumbleAmount < 9) {
-        createResultMessage(actor, "unarmed." + fumbleAmount)
+function unarmedAttackDefense(fumbleAmount) {
+    let fumbleResult;
+    if (fumbleAmount < 6) {
+        fumbleResult = "nothing";
+    } 
+    else if (fumbleAmount >= 6 && fumbleAmount <= 9) {
+        fumbleResult = "unarmed." + fumbleAmount;
+    } 
+    else if (fumbleAmount > 9) {
+        fumbleResult = "unarmed.>9";
     }
 
-    if (fumbleAmount > 9) {
-        createResultMessage(actor, "unarmed.>9")
-    }
+    return fumbleResult;
 }
 
 async function createResultMessage(actor, result) {
