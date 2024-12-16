@@ -392,3 +392,7 @@ input.skill-value {
 	justify-content: left;
 	align-items: center;
 }
+
+dialog.scrollable .dialog-form {
+	overflow: hidden auto;
+}
