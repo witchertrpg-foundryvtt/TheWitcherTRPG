@@ -26,7 +26,6 @@ export default class SpellData extends CommonItemData {
             defence: new fields.StringField({ initial: '' }),
 
             components: new fields.StringField({ initial: '' }),
-            alternateComponents: new fields.StringField({ initial: '' }),
             preparationTime: new fields.StringField({ initial: '' }),
             difficultyCheck: new fields.StringField({ initial: '' }),
             sideEffect: new fields.StringField({ initial: '' }),
