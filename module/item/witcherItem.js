@@ -16,11 +16,17 @@ export default class WitcherItem extends Item {
     /** @inheritdoc */
     static migrateData(source) {
         this.migrateSpells(source);
+
+        return super.migrateData(source);
     }
 
     static migrateSpells(source) {
         if (source.system?.class === 'Hexes') {
             source.type = 'hex';
+        }
+
+        if (source.system?.class === 'Rituals') {
+            source.type = 'ritual';
         }
     }
 
