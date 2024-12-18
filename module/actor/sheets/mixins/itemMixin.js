@@ -13,6 +13,9 @@ export let itemMixin = {
 
         if (data && data.type === 'Item') {
             if (item) {
+                if (item.type === 'weapon' && this.actor.type === 'monster') {
+                    item.system.equipped = true;
+                }
                 this.actor.addItem(item, 1);
             }
         } else {

@@ -545,7 +545,7 @@ export default class WitcherActor extends Actor {
         if (foundItem && !forcecreate && !foundItem.system.isStored) {
             await foundItem.update({ 'system.quantity': Number(foundItem.system.quantity) + Number(numberOfItem) });
         } else {
-            let newItem = { ...addItem.toObject() };
+            let newItem = { ...addItem.toObject(false) };
 
             if (numberOfItem) {
                 newItem.system.quantity = Number(numberOfItem);
