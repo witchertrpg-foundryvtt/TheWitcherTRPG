@@ -6,3 +6,4 @@ generate-release-notes.js
 /.vscode/
 /TheWitcherTRPG.lock
 /jsconfig.json
+/packs

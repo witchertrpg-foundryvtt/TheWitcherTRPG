@@ -13,6 +13,17 @@ export default class WitcherItem extends Item {
         await super._preCreate(data, options, user);
     }
 
+    /** @inheritdoc */
+    static migrateData(source) {
+        this.migrateSpells(source);
+    }
+
+    static migrateSpells(source) {
+        if (source.system?.class === 'Hexes') {
+            source.type = 'hex';
+        }
+    }
+
     async createSpellVisuals(roll, damage) {
         if (this.system.createTemplate && this.system.templateType && this.system.templateSize) {
             AbilityTemplate.fromItem(this)

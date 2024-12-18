@@ -22,6 +22,7 @@ import MysteryActorData from '../data/investigation/mysteryActorData.js';
 import GlobalModifierData from '../data/item/globalModifierData.js';
 import ActiveEffectData from '../data/activeEffects/activeEffectData.js';
 import SkillItemData from '../data/item/skillItemData.js';
+import HexData from '../data/item/hexData.js';
 
 export const registerDataModels = () => {
     foundry.utils.mergeObject(CONFIG.Actor.dataModels, {
@@ -49,6 +50,7 @@ export const registerDataModels = () => {
         profession: ProfessionData,
         race: RaceData,
         spell: SpellData,
+        hex: HexData,
         valuable: ValuableData,
         weapon: WeaponData,
 

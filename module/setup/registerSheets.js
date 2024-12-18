@@ -20,6 +20,7 @@ import WitcherRaceSheet from '../item/sheets/WitcherRaceSheet.js';
 import WitcherSkillItemSheet from '../item/sheets/WitcherSkillItemSheet.js';
 import WitcherMutagenSheet from '../item/sheets/WitcherMutagenSheet.js';
 import WitcherEnhancementSheet from '../item/sheets/WitcherEnhancementSheet.js';
+import WitcherHexSheet from '../item/sheets/WitcherHexSheet.js';
 
 export const registerSheets = () => {
     Items.unregisterSheet('core', ItemSheet);
@@ -60,6 +61,10 @@ export const registerSheets = () => {
     Items.registerSheet('witcher', WitcherSpellSheet, {
         makeDefault: true,
         types: ['spell']
+    });
+    Items.registerSheet('witcher', WitcherHexSheet, {
+        makeDefault: true,
+        types: ['hex']
     });
     Items.registerSheet('witcher', WitcherValuableSheet, {
         makeDefault: true,
