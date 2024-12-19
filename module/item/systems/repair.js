@@ -170,6 +170,7 @@ class Repair {
             window: { title: `${game.i18n.localize('WITCHER.Repair.dialog.title')} ${data.item.name}`, },
             content: template,
             buttons: buttons,
+            classes: ['scrollable'],
             render: (event, dialog) => this.attachHtmlListeners(dialog, data)
         })
     }
