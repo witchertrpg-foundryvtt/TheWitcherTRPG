@@ -181,7 +181,7 @@
             "attackWith": "Attacke durchführen mit",
             "chooseAmmunition": "Munition wählen",
             "NoAmmunition": "Keine Munition verfügbar",
-			"NoThrowable": "Keine Wurfwaffe verfügbar",
+            "NoThrowable": "Keine Wurfwaffe verfügbar",
             "Ammunition": "Munition",
             "Throwable": "Warfwaffe",
             "ButtonRoll": "Probe",
@@ -190,7 +190,7 @@
             "Skill": "Durchführen eines Fähigkeitschecks",
             "profession.skill": "Durchführen einer Berufsfertigkeit"
         },
-	    "DamageType": {
+            "DamageType": {
             "name": "Schadensart",
             "bludgeoning": "Wucht",
             "slashing": "Hieb",
@@ -399,7 +399,7 @@
             "Stat.Cra": "HAN",
             "Stat.Will": "WIL",
             "Stat.Luck": "GLÜ",
-	        "Stat.Toxicity": "Toxizität",
+	    "Stat.Toxicity": "Toxizität",
             "StatTitle.LableLeft": "Eigensch.",
             "StatTitle.ModMax": "Mod / Max",
             "StatTitle.Derived": "Abgeleitet",
@@ -440,7 +440,7 @@
             "TotalSkill": "Gesamt Fertigkeiten",
             "TotalProfSkill": "Gesamt Berufsfertigkeiten",
             "SpecialSkillModifier": "besondere Fähigkeits-Modifikatoren",
-			"Lebenspfad": {
+            "Lifepath": {
                 "Bonus": "Lebenspfad Bonus",
                 "strongStrikeAttackBonus": "Harter Angriffs-Bonus",
                 "jointStrikeAttackBonus": "JGemeinsamer Angriffs-Bonus",
@@ -1231,7 +1231,7 @@
                 ">9": "Du erleidest einen furchtbaren Sturz und fällst nicht nur zu Boden, sondern nimmst auch 1W6 tödlichen Schaden am Kopf und musst einen Rettungswurf auf Betäubung ablegen."
             }
         },
-		"Deprecations": {
+        "Deprecations": {
             "globalModifier": {
                 "title": "Global Modifier Abschaffung",
                 "text": "Die folgenden Akteure müssen geändert werden. Wenn Sie dies nicht tun, bevor globale Modifikatoren entfernt werden, funktioniert Ihre Welt möglicherweise nicht mehr.",
@@ -1290,7 +1290,7 @@
                 "itemIsAlreadyRepaired": "Dieser Gegenstand ist bereits vollständig repariert.",
                 "noDiagram": "Für diesen Gegenstand wurde kein zugehöriges Diagramm gefunden",
                 "invalidDiagram": "Der Typ dieses Diagramms ist für diesen Gegenstand nicht gültig"
-			}
+            }
         }
-	}
+    }
 }
