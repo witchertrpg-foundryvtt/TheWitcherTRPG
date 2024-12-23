@@ -30,8 +30,6 @@ export default class WitcherSpellSheet extends WitcherItemSheet {
                 Spells: "WITCHER.Spell.Spells",
                 Invocations: "WITCHER.Spell.Invocations",
                 Witcher: "WITCHER.Spell.Witcher",
-                Rituals: "WITCHER.Spell.Rituals",
-                Hexes: "WITCHER.Spell.Hexes",
                 MagicalGift: "WITCHER.Spell.MagicalGift",
             },
             levelSpell: {
@@ -54,11 +52,6 @@ export default class WitcherSpellSheet extends WitcherItemSheet {
                 druid: "WITCHER.Spell.Druid",
                 preacher: "WITCHER.Spell.Preacher",
                 "arch priest": "WITCHER.Spell.Archpriest",
-            },
-            danger: {
-                Low: "WITCHER.Spell.DangerLow",
-                Medium: "WITCHER.Spell.DangerMedium",
-                High: "WITCHER.Spell.DangerHigh",
             },
             domain: {
                 basic: "WITCHER.Spell.Basic",

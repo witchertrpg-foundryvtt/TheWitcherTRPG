@@ -767,6 +767,11 @@
         "Spell": {
             "type": "Type",
             "Spells": "Spells",
+            "Ritual": {
+                "name": "Ritual",
+                "components": "Components",
+                "alternateComponents": "Alternate Components"
+            },
             "Invocations": "Invocations",
             "Witcher": "Witcher Signs",
             "Rituals": "Rituals",
@@ -794,11 +799,9 @@
             "Defence": "Defence",
             "PrepTime": "Prep Time",
             "DC": "Difficulty Check",
-            "Components": "Components",
             "Requirements": "Requirements To Lift",
             "Effect": "Effect",
             "SideEffect": "Side-Effect",
-            "AlternateComponents": "Alternate Components",
             "Signs": "Signs",
             "Sign": "Sign",
             "Element": "Element",

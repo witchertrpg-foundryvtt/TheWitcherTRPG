@@ -51,12 +51,11 @@
 
 <div class="global-modifier-column">
     <div>
-        <h2>{{localize "WITCHER.Actor.SpecialSkillModifier"}}<a class="add-special-skill-modifier"><i
-                    class="fas fa-plus"></i></a>
+        <h2>{{localize "WITCHER.Actor.SpecialSkillModifier"}}
         </h2>
     </div>
     {{#each system.specialSkillModifiers as |special index|}}
-        <div class="flex list-item" data-id="{{special.id}}">
+        <div class="flex list-item special-skill-row" data-id="{{special.id}}">
             <a class="remove-special-skill-modifier"><i class="fas fa-minus"></i></a>
             <select class="edit-special-skill-modifier">
                 {{selectOptions ../config.specialModifier blank='' selected=special.modifier nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
