@@ -1250,20 +1250,12 @@
             "title": "Crafting diagram"
         },
         "Repair": {
+            "action": "Repairing",
             "buttons": {
                 "repair": "Repair",
                 "simulate": "Simulate repair",
                 "request": "Request repair",
                 "gmRepair": "GM repair"
-            },
-            "dialog": {
-                "title": "Repairing",
-                "component": "Component",
-                "quantity": "Quantity",
-                "required": "Required",
-                "cost": "Cost",
-                "totalPrice": "Total price",
-                "unknown": "N/A"
             },
             "result": {
                 "success": "Repair successfull!",
@@ -1290,6 +1282,13 @@
                 "noDiagram": "No associated diagram found for this item",
                 "invalidDiagram": "The type of this diagram is not valid for this item"
             }
+        },
+        "ComponentsList": {
+            "component": "Component",
+            "quantity": "Quantity",
+            "required": "Required",
+            "cost": "Cost",
+            "totalPrice": "Total price"
         }
     }
 }

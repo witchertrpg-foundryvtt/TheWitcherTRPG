@@ -19,7 +19,8 @@
 @import "./item-header.css";
 @import "./activeEffect.css";
 @import "./special-skill-table.css";
-@import './repair.css';
+@import "./repair.css";
+@import './components-list.css';
 
 @font-face {
     font-family: 'Thewitcher';
