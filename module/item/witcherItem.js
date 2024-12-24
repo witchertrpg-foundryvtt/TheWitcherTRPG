@@ -5,6 +5,7 @@ import AbilityTemplate from './ability-template.js';
 import { applyActiveEffectToActorViaId } from '../scripts/activeEffects/applyActiveEffect.js';
 import RepairSystem from '../item/systems/repair.js';
 import { regionMixin } from './mixins/regionMixin.js';
+import { damageUtilMixin } from './mixins/damageUtilMixin.js';
 
 export default class WitcherItem extends Item {
     async _preCreate(data, options, user) {
@@ -411,3 +412,4 @@ export default class WitcherItem extends Item {
 }
 
 Object.assign(WitcherItem.prototype, regionMixin);
+Object.assign(WitcherItem.prototype, damageUtilMixin);

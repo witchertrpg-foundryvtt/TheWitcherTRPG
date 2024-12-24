@@ -12,6 +12,7 @@ import attackStats from './templates/character/attackStatsData.js';
 import pannels from './templates/character/pannelsData.js';
 import specialSkillModifier from './templates/character/specialSkillModifierData.js';
 import lifepathData from './templates/common/lifepathData.js';
+import damageTypeModification from './templates/character/general/damage/damageTypeModificationData.js';
 
 const fields = foundry.data.fields;
 
@@ -33,6 +34,7 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
 
             skills: new fields.SchemaField(skills()),
             attackStats: new fields.SchemaField(attackStats()),
+            damageTypeModification: new fields.SchemaField(damageTypeModification()),
 
             focus1: new fields.SchemaField(focus()),
             focus2: new fields.SchemaField(focus()),

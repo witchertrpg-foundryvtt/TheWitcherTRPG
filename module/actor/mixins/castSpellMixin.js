@@ -10,7 +10,7 @@ export let castSpellMixin = {
     async castSpell(spellItem) {
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
-        let damage = this.createBaseDamageObject(spellItem);
+        let damage = spellItem.createBaseDamageObject();
 
         let templateInfo = {
             actor: this

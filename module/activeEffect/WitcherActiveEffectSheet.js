@@ -49,7 +49,8 @@ export class WitcherActiveEffectConfig extends ActiveEffectConfig {
             ...this.getSkillGroupSuggestions(),
             ...this.getSkillSuggestions(),
             ...this.getLifepathSuggestions(),
-            ...this.getOtherSuggestions()
+            ...this.getOtherSuggestions(),
+            ...this.getDamageModifcators()
         };
     }
 
@@ -172,5 +173,29 @@ export class WitcherActiveEffectConfig extends ActiveEffectConfig {
                 value: 'system.attackStats.critEffectModifier'
             }
         };
+    }
+
+    getDamageModifcators() {
+        return Object.keys(this.object.parent.system.damageTypeModification)
+            .map(key => {
+                return [
+                    {
+                        label: `${game.i18n.localize('WITCHER.DamageType.' + key)} ${game.i18n.localize('WITCHER.Effect.wizard.flat')}`,
+                        value: 'system.damageTypeModification.' + key + '.flat',
+                        group: game.i18n.localize('WITCHER.Effect.wizard.resistances')
+                    },
+                    {
+                        label: `${game.i18n.localize('WITCHER.DamageType.' + key)} ${game.i18n.localize('WITCHER.Effect.wizard.multi')}`,
+                        value: 'system.damageTypeModification.' + key + '.multiplication',
+                        group: game.i18n.localize('WITCHER.Effect.wizard.resistances')
+                    },
+                    {
+                        label: `${game.i18n.localize('WITCHER.DamageType.' + key)} ${game.i18n.localize('WITCHER.Effect.wizard.applyAP')}`,
+                        value: 'system.damageTypeModification.' + key + '.applyAP',
+                        group: game.i18n.localize('WITCHER.Effect.wizard.resistances')
+                    }
+                ];
+            })
+            .flat();
     }
 }

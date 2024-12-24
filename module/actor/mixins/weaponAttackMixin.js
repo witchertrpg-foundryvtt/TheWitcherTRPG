@@ -105,7 +105,7 @@ export let weaponAttackMixin = {
                             let customDmg = html.find('[name=customDmg]')[0].value;
                             let attacknumber = 1;
 
-                            let damage = this.createBaseDamageObject(weapon);
+                            let damage = weapon.createBaseDamageObject();
                             damage = {
                                 ...damage,
                                 strike: strike,

@@ -1,16 +1,4 @@
 export let damageUtilMixin = {
-    createBaseDamageObject(item) {
-        return {
-            damageProperties: foundry.utils.deepClone(item.system.damageProperties),
-            item: item,
-            itemUuid: item.uuid,
-            crit: {
-                critLocationModifier: item.parent.system.attackStats.critLocationModifier,
-                critEffectModifier: item.parent.system.attackStats.critEffectModifier
-            }
-        };
-    },
-
     getDamageFlags() {
         return {
             origin: {
@@ -29,5 +17,20 @@ export let damageUtilMixin = {
             },
             damage: false
         };
+    },
+
+    getFlatDamageMod(damage) {
+        return this.system.damageTypeModification[damage.type]?.flat ?? 0;
+    },
+
+    getMultiDamageMod(damageObject) {
+        let damageMod = this.system.damageTypeModification[damageObject.type];
+        if (
+            damageMod?.applyAP &&
+            (damageObject.damageProperties.armorPiercing || damageObject.damageProperties.improvedArmorPiercing)
+        ) {
+            return 1;
+        }
+       return damageMod?.multiplication ?? 1;
     }
 };
