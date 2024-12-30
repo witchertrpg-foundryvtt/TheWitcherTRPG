@@ -1,4 +1,5 @@
 import { getInteractActor, getRandomInt } from '../helper.js';
+import { applyDamage } from './applyDamage.js';
 
 export function addCritMessageContextOptions(html, options) {
     let wasCritted = li => li.find('.crit-taken').length;
@@ -34,17 +35,27 @@ export function addCritMessageContextOptions(html, options) {
 async function applyCritDamage(actor, messageId) {
     let crit = game.messages.get(messageId).getFlag('TheWitcherTRPG', 'crit');
 
-    actor?.update({
-        [`system.derivedStats.hp.value`]: actor.system.derivedStats.hp.value - crit.critdamage
-    });
+    applyDamage(
+        actor,
+        null,
+        crit.critdamage,
+        { damageProperties: { bypassesNaturalArmor: true, bypassesWornArmor: true } },
+        actor.getLocationObject('torso'),
+        'hp'
+    );
 }
 
 async function applyBonusCritDamage(actor, messageId) {
     let crit = game.messages.get(messageId).getFlag('TheWitcherTRPG', 'crit');
 
-    actor?.update({
-        [`system.derivedStats.hp.value`]: actor.system.derivedStats.hp.value - crit.bonusdamage
-    });
+    applyDamage(
+        actor,
+        null,
+        crit.bonusdamage,
+        { damageProperties: { bypassesNaturalArmor: true, bypassesWornArmor: true } },
+        actor.getLocationObject('torso'),
+        'hp'
+    );
 }
 
 async function applyCritWound(actor, messageId) {
@@ -79,4 +90,11 @@ async function applyCritWound(actor, messageId) {
         location: crit.location.name
     });
     actor.update({ 'system.critWounds': critList });
+
+    const chatData = {
+        content: `<div>${game.i18n.localize(CONFIG.WITCHER.Crit[wound].label)}</div><div>${game.i18n.localize(CONFIG.WITCHER.Crit[wound].description)}</div>`,
+        speaker: ChatMessage.getSpeaker({ actor: actor }),
+        type: CONST.CHAT_MESSAGE_STYLES.OTHER
+    };
+    ChatMessage.create(chatData);
 }
