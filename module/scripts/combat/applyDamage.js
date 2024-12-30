@@ -133,7 +133,7 @@ async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat
     applyDamage(actor, dialogData, totalDamage, damage, location, derivedStat, infoTotalDmg);
 }
 
-async function applyDamage(actor, dialogData, totalDamage, damage, location, derivedStat, infoTotalDmg) {
+async function applyDamage(actor, dialogData, totalDamage, damage, location, derivedStat, infoTotalDmg = '') {
     let shield = actor.system.derivedStats.shield.value;
     if (totalDamage < shield) {
         actor.update({ 'system.derivedStats.shield.value': shield - totalDamage });
@@ -161,7 +161,7 @@ async function applyDamage(actor, dialogData, totalDamage, damage, location, der
     }
 
     damage.damageProperties.effects
-        .filter(effect => effect.statusEffect)
+        ?.filter(effect => effect.statusEffect)
         .filter(effect => effect.applied)
         .forEach(effect => applyStatusEffectToActor(actor.uuid, effect.statusEffect, damage.duration));
 
@@ -169,7 +169,9 @@ async function applyDamage(actor, dialogData, totalDamage, damage, location, der
         damage.damageProperties.damagedGlobalModifiers.forEach(modifier => applyModifierToActor(actor.uuid, modifier));
     }
 
-    applyActiveEffectToActorViaId(actor.uuid, damage.itemUuid, 'applyOnDamage', damage.duration);
+    if (damage.itemUuid) {
+        applyActiveEffectToActorViaId(actor.uuid, damage.itemUuid, 'applyOnDamage', damage.duration);
+    }
 }
 
 async function applyDamageToLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, location, derivedStat) {
@@ -598,4 +600,4 @@ async function applyAlwaysSpDamage(location, damageProperties, armorSet) {
     return spDamage;
 }
 
-export { ApplyNormalDamage, ApplyNonLethalDamage, applyDamageFromStatus };
+export { ApplyNormalDamage, ApplyNonLethalDamage, applyDamageFromStatus, applyDamage };
