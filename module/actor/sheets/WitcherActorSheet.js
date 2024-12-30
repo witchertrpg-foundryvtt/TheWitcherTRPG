@@ -54,7 +54,7 @@ export default class WitcherActorSheet extends ActorSheet {
 
         const actorData = this.actor.toObject(false);
         context.system = actorData.system;
-        context.items = context.actor.items.filter(i => !i.system.isStored);
+        context.items = context.actor.items.filter(i => !i.system.isStored).sort((a, b) => a.sort - b.sort);
 
         this._prepareGeneralInformation(context);
         this._prepareCustomSkills(context);
