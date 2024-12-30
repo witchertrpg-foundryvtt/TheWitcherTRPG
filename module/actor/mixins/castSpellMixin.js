@@ -10,7 +10,7 @@ export let castSpellMixin = {
     async castSpell(spellItem) {
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
-        let damage = this.createBaseDamageObject(spellItem);
+        let damage = spellItem.createBaseDamageObject();
 
         let templateInfo = {
             actor: this
@@ -24,7 +24,8 @@ export let castSpellMixin = {
             ? `${this.system.stats.will.current}`
             : `${this.system.stats.will.current}[${game.i18n.localize(CONFIG.WITCHER.statMap.will.label)}]`;
 
-        let usedSkill = CONFIG.WITCHER.spells[spellItem.system.class].skill;
+        let usedSkill =
+            CONFIG.WITCHER.magic[spellItem.type]?.skill ?? CONFIG.WITCHER.magic[spellItem.system.class].skill;
 
         rollFormula +=
             `+${this.system.skills.will[usedSkill.name].value}` +

@@ -1,12 +1,3 @@
-.repair {
-    margin-top: 10px;
-}
-
-table.repair td:nth-child(n+3),
-th:nth-child(n+2) {
-    text-align: center;
-}
-
 table.repair-info td:first-child {
     text-align: left;
 }
@@ -20,14 +11,13 @@ table.repair-info td {
     font-size: 1.15em;
 }
 
-tr.repair-price td {
-    font-weight: bold;
-    font-size: 1.15em;
-    border-top: 1px solid black;
-    text-align: right;
-    padding: 0.5em 0;
+
+.repair .components-list-container {
+    overflow-y: scroll;
+    max-height: calc(60vh - 50px);
 }
 
-tr.repair-price td.total-price {
-    text-align: center;
+.repair general {
+    overflow-y: scroll;
+    max-height: calc(25vh); 
 }

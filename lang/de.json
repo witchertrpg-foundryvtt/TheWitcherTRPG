@@ -181,6 +181,7 @@
             "attackWith": "Attacke durchführen mit",
             "chooseAmmunition": "Munition wählen",
             "NoAmmunition": "Keine Munition verfügbar",
+            "NoThrowable": "Keine Wurfwaffe verfügbar",
             "Ammunition": "Munition",
             "Throwable": "Warfwaffe",
             "ButtonRoll": "Probe",
@@ -189,7 +190,7 @@
             "Skill": "Durchführen eines Fähigkeitschecks",
             "profession.skill": "Durchführen einer Berufsfertigkeit"
         },
-	"DamageType": {
+            "DamageType": {
             "name": "Schadensart",
             "bludgeoning": "Wucht",
             "slashing": "Hieb",
@@ -439,8 +440,18 @@
             "TotalSkill": "Gesamt Fertigkeiten",
             "TotalProfSkill": "Gesamt Berufsfertigkeiten",
             "SpecialSkillModifier": "besondere Fähigkeits-Modifikatoren",
+            "Lifepath": {
+                "Bonus": "Lebenspfad Bonus",
+                "strongStrikeAttackBonus": "Harter Angriffs-Bonus",
+                "jointStrikeAttackBonus": "JGemeinsamer Angriffs-Bonus",
+                "shieldParryBonus": "Schildparade-Bonus",
+                "shieldParryThrownBonus": "Schildparade-Wurf-Bonus",
+                "ignoredArmorEncumbrance": "Ignoriert Rüstungsbelastung",
+                "ignoredEvWhenCasting": "Igrnoriert Behinderungswert beim Zaubern"
+            },
             "attackStats": {
-                "critLocationModifier": "Kritischer Trefferzone-modifikator"
+                "critLocationModifier": "Kritischer Trefferzone-modifikator",
+				"critEffectModifier": "Kritischer Effekt-modifikator"
 	    }
 	},
         "CritWound": {
@@ -1220,12 +1231,66 @@
                 ">9": "Du erleidest einen furchtbaren Sturz und fällst nicht nur zu Boden, sondern nimmst auch 1W6 tödlichen Schaden am Kopf und musst einen Rettungswurf auf Betäubung ablegen."
             }
         },
-		"Deprecations": {
+        "Deprecations": {
             "globalModifier": {
                 "title": "Global Modifier Abschaffung",
                 "text": "Die folgenden Akteure müssen geändert werden. Wenn Sie dies nicht tun, bevor globale Modifikatoren entfernt werden, funktioniert Ihre Welt möglicherweise nicht mehr.",
                 "item": "Die folgenden Gegenstände müssen entfernt werden. Wenn Sie dies nicht tun, bevor globale Modifikatoren entfernt werden, funktioniert Ihre Welt möglicherweise nicht mehr."
+            },
+            "specialSkillModifiers": {
+                "title": "spezielle Skill Modifier Abschaffung",
+                "text": "TDie folgenden Akteure müssen geändert werden. Wenn Sie dies nicht tun, bevor spezielle Skill Modifier entfernt werden, werden Daten verloren gehen. Die Funktionalität wurde in aktive Effekte verschoben."
+            }
+        },
+        "AssociatedDiagram": {
+            "actions": {
+                "add": "Herstellungsdiagramm hinzufügen",
+                "remove": "Entferne Herstellungsdiagramm"
+            },
+            "missing": "Zugehöriges Herstellungsdiagramm fehlt (hierher ziehen zum hinzufügen)",
+            "title": "Herstellungsdiagramm"
+        },
+        "Repair": {
+            "buttons": {
+                "repair": "Reparieren",
+                "simulate": "Simuliere Reperatur",
+                "request": "Reperatur anfragen",
+                "gmRepair": "GM Reperatur"
+            },
+            "dialog": {
+                "title": "Reparatur",
+                "component": "Komponenten",
+                "quantity": "Menge",
+                "required": "Erforderlich",
+                "cost": "Kosten",
+                "totalPrice": "Gesamtpreis",
+                "unknown": "N/A"
+            },
+            "result": {
+                "success": "Reparatur erfolgreich!",
+                "failure": "Reparatur fehlgeschlagen"
+            },
+            "params": {
+                "craftingDC": "Herstellung SG",
+                "repairDC": "Reparatur SG",
+                "repairMod": "Reparatur Modifikator",
+                "enchants": "Verbesserung Modifikator",
+                "damagedLocations": "Trefferzonen",
+                "components": "Komponenten"
+            },
+            "damagedLocations": {
+                "weapon": "Waffe Beständigkeit",
+                "shield": "Schild Beständigkeit"
+            },
+            "chat": {
+                "requestTitle": "bittet um Reparatur"
+            },
+            "alerts": {
+                "notEnoughComponents": "Nicht genügend Komponenten, um diesen Gegenstand zu reparieren",
+                "itemIsAlreadyRepaired": "Dieser Gegenstand ist bereits vollständig repariert.",
+                "noDiagram": "Für diesen Gegenstand wurde kein zugehöriges Diagramm gefunden",
+                "invalidDiagram": "Der Typ dieses Diagramms ist für diesen Gegenstand nicht gültig"
             }
         }
-	}
+    }
 }

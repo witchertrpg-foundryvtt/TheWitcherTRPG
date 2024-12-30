@@ -76,7 +76,9 @@ async function preloadHandlebarsTemplates() {
 
 
         'systems/TheWitcherTRPG/templates/chat/damage/damageToLocation.hbs',
-        'systems/TheWitcherTRPG/templates/chat/item/repair.hbs'
+        'systems/TheWitcherTRPG/templates/chat/item/repair.hbs',
+
+        'systems/TheWitcherTRPG/templates/partials/components-list.hbs'
     ];
     return loadTemplates(templatePath);
 }

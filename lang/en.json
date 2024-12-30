@@ -216,6 +216,33 @@
                 }
             }
         },
+        "Damage": {
+            "RemoveSP": "Remove SP before applying location modifier.",
+            "damageType": "What type of damage",
+            "ChangeLocation": "Change The Location",
+            "CurrentLocation": "Current location",
+            "resistSilver": "Apply Resistance to non-silver",
+            "resistMeteorite": "Apply Resistance to non-meteorite",
+            "initial": "Initial Damage",
+            "totalSP": "Total Stopping Power",
+            "improvedArmorPiercing": "(After Improved Armor Piercing)",
+            "afterSPReduct": "Damage after sp reduction",
+            "armorPiercing": "(Ignored due to Armor Piercing)",
+            "afterLocationModifier": "Damage after location modifier",
+            "afterResistances": "Damage after resistances/vulnerabilities",
+            "totalApplied": "Total Damage Applied",
+            "ablated": "Armor was ablated for ",
+            "crushingForce": "Armor was double ablated for ",
+            "NotEnough": "Not enough damage to pierce the armor",
+            "ToMuchShield": "All damage was absorbed by shield or cover",
+            "isVulnerable": "Vulnerable to the attack",
+            "oilDmg": "Add Oil Damages (+5)",
+            "shield": "Shield",
+            "silverDmg": "Add Silver Damages",
+            "silver": "Silver",
+            "oil": "Oil",
+            "activeEffect": "Active Effect"
+        },
         "Dialog": {
             "NoComponents": "Not enough components for craft",
             "CraftingDiagram": "You have a recipe in hand",
@@ -767,6 +794,11 @@
         "Spell": {
             "type": "Type",
             "Spells": "Spells",
+            "Ritual": {
+                "name": "Ritual",
+                "components": "Components",
+                "alternateComponents": "Alternate Components"
+            },
             "Invocations": "Invocations",
             "Witcher": "Witcher Signs",
             "Rituals": "Rituals",
@@ -794,11 +826,9 @@
             "Defence": "Defence",
             "PrepTime": "Prep Time",
             "DC": "Difficulty Check",
-            "Components": "Components",
             "Requirements": "Requirements To Lift",
             "Effect": "Effect",
             "SideEffect": "Side-Effect",
-            "AlternateComponents": "Alternate Components",
             "Signs": "Signs",
             "Sign": "Sign",
             "Element": "Element",
@@ -971,32 +1001,6 @@
             "shieldApplied": "gained shield:",
             "healed": "healed {target} for {heal}"
         },
-        "Damage": {
-            "RemoveSP": "Remove SP before applying location modifier.",
-            "damageType": "What type of damage",
-            "ChangeLocation": "Change The Location",
-            "CurrentLocation": "Current location",
-            "resistSilver": "Apply Resistance to non-silver",
-            "resistMeteorite": "Apply Resistance to non-meteorite",
-            "initial": "Initial Damage",
-            "totalSP": "Total Stopping Power",
-            "improvedArmorPiercing": "(After Improved Armor Piercing)",
-            "afterSPReduct": "Damage after sp reduction",
-            "armorPiercing": "(Ignored due to Armor Piercing)",
-            "afterLocationModifier": "Damage after location modifier",
-            "afterResistances": "Damage after resistances/vulnerabilities",
-            "totalApplied": "Total Damage Applied",
-            "ablated": "Armor was ablated for ",
-            "crushingForce": "Armor was double ablated for ",
-            "NotEnough": "Not enough damage to pierce the armor",
-            "ToMuchShield": "All damage was absorbed by shield or cover",
-            "isVulnerable": "Vulnerable to the attack",
-            "oilDmg": "Add Oil Damages (+5)",
-            "shield": "Shield",
-            "silverDmg": "Add Silver Damages",
-            "silver": "Silver",
-            "oil": "Oil"
-        },
         "Context": {
             "applyDmg": "Apply Damage",
             "applyNonLethal": "Apply Non-lethal Damage",
@@ -1085,7 +1089,11 @@
             },
             "wizard": {
                 "lifepath": "Lifepath",
-                "other": "Other"
+                "other": "Other",
+                "resistances": "Resistances",
+                "flat": "Flat Bonus",
+                "multi": "Multiplication",
+                "applyAP": "Apply AP to Multi"
             }
         },
         "globalModifier": {
@@ -1242,20 +1250,12 @@
             "title": "Crafting diagram"
         },
         "Repair": {
+            "action": "Repairing",
             "buttons": {
                 "repair": "Repair",
                 "simulate": "Simulate repair",
                 "request": "Request repair",
                 "gmRepair": "GM repair"
-            },
-            "dialog": {
-                "title": "Repairing",
-                "component": "Component",
-                "quantity": "Quantity",
-                "required": "Required",
-                "cost": "Cost",
-                "totalPrice": "Total price",
-                "unknown": "N/A"
             },
             "result": {
                 "success": "Repair successfull!",
@@ -1282,6 +1282,13 @@
                 "noDiagram": "No associated diagram found for this item",
                 "invalidDiagram": "The type of this diagram is not valid for this item"
             }
+        },
+        "ComponentsList": {
+            "component": "Component",
+            "quantity": "Quantity",
+            "required": "Required",
+            "cost": "Cost",
+            "totalPrice": "Total price"
         }
     }
 }

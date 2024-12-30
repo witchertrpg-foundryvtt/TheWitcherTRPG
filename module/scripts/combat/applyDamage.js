@@ -15,7 +15,7 @@ export function addDamageMessageContextOptions(html, options) {
             callback: async li => {
                 ApplyNormalDamage(
                     await getInteractActor(),
-                    li.find('.dice-total')[0].innerText,
+                    parseInt(li.find('.dice-total')[0].innerText),
                     li[0].dataset.messageId
                 );
             }
@@ -27,7 +27,7 @@ export function addDamageMessageContextOptions(html, options) {
             callback: async li => {
                 ApplyNonLethalDamage(
                     await getInteractActor(),
-                    li.find('.dice-total')[0].innerText,
+                    parseInt(li.find('.dice-total')[0].innerText),
                     li[0].dataset.messageId
                 );
             }
@@ -126,7 +126,7 @@ async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat
     }
 
     if (dialogData.addOilDmg) {
-        totalDamage = Number(totalDamage) + 5;
+        totalDamage += 5;
         infoTotalDmg += `+5[${game.i18n.localize('WITCHER.Damage.oil')}]`;
     }
 
@@ -276,14 +276,20 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
         };
     }
 
+    let flatDamageMod = actor.getFlatDamageMod(damage);
+
     totalDamage = Math.floor(location.locationFormula * totalDamage);
     silverDamage = Math.floor(location.locationFormula * silverDamage);
     let infoAfterLocation = totalDamage;
+    if (flatDamageMod) {
+        infoAfterLocation += `+${location.locationFormula * flatDamageMod}[${game.i18n.localize('WITCHER.Damage.activeEffect')}]`;
+    }
+
     if (silverDamage) {
         infoAfterLocation += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
     }
 
-    totalDamage = calculateResistances(totalDamage, damage, armorSet);
+    totalDamage = calculateResistances(actor, totalDamage, damage, armorSet);
 
     if (dialogData?.resistNonSilver || dialogData?.resistNonMeteorite) {
         totalDamage = Math.floor(0.5 * totalDamage);
@@ -522,26 +528,32 @@ function getArmorDiffBonus(OverArmor, UnderArmor) {
     return 0;
 }
 
-function calculateResistances(totalDamage, damage, armorSet) {
-    let damageProperties = damage.damageProperties;
+function calculateResistances(actor, totalDamage, damageObject, armorSet) {
+    let damageProperties = damageObject.damageProperties;
     if (damageProperties.armorPiercing || damageProperties.improvedArmorPiercing) {
         return totalDamage;
     }
 
+    let damageAfterResistances = totalDamage;
+
     if (
-        (armorSet['lightArmor']?.system[damage.type] ||
-            armorSet['mediumArmor']?.system[damage.type] ||
-            armorSet['heavyArmor']?.system[damage.type]) &&
+        (armorSet['lightArmor']?.system[damageObject.type] ||
+            armorSet['mediumArmor']?.system[damageObject.type] ||
+            armorSet['heavyArmor']?.system[damageObject.type]) &&
         !damageProperties.bypassesWornArmor
     ) {
-        return Math.floor(0.5 * totalDamage);
+        damageAfterResistances = Math.floor(0.5 * totalDamage);
     }
 
-    if (armorSet['naturalArmor']?.system[damage.type] && !damageProperties.bypassesNaturalArmor) {
-        return Math.floor(0.5 * totalDamage);
+    if (armorSet['naturalArmor']?.system[damageObject.type] && !damageProperties.bypassesNaturalArmor) {
+        damageAfterResistances = Math.floor(0.5 * totalDamage);
     }
 
-    return totalDamage;
+    let damageMulti = actor.getMultiDamageMod(damageObject);
+
+    damageAfterResistances = Math.floor(damageAfterResistances * damageMulti);
+
+    return damageAfterResistances;
 }
 
 async function applySpDamage(location, damageProperties, armorSet) {

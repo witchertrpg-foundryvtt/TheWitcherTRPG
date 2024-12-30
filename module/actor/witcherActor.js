@@ -419,7 +419,7 @@ export default class WitcherActor extends Actor {
             return this.rollWeapon(item);
         }
 
-        if (item.type === 'spell') {
+        if (item.type === 'spell' || item.type === 'hex' || item.type === 'ritual') {
             return this.castSpell(item);
         }
 

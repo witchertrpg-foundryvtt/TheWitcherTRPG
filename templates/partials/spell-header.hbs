@@ -28,25 +28,23 @@
                     </select>
                 </td>
             </tr>
-            {{#unless (eq item.system.class "Hexes")}}
-                <tr class="item-header-tablerow">
-                    <td>
-                        <label>{{localize "WITCHER.Actor.Profession.Level"}}</label>
-                    </td>
-                    <td>
-                        {{#unless (eq item.system.class "MagicalGift")}}
-                            <select name="system.level">
-                                {{selectOptions selects.levelSpell selected=item.system.level localize=true}}
-                            </select>
-                        {{/unless}}
-                        {{#if (eq item.system.class "MagicalGift")}}
-                            <select name="system.level">
-                                {{selectOptions selects.levelMagicalGift selected=item.system.level localize=true}}
-                            </select>
-                        {{/if}}
-                    </td>
-                </tr>
-            {{/unless}}
+            <tr class="item-header-tablerow">
+                <td>
+                    <label>{{localize "WITCHER.Actor.Profession.Level"}}</label>
+                </td>
+                <td>
+                    {{#unless (eq item.system.class "MagicalGift")}}
+                        <select name="system.level">
+                            {{selectOptions selects.levelSpell selected=item.system.level localize=true}}
+                        </select>
+                    {{/unless}}
+                    {{#if (eq item.system.class "MagicalGift")}}
+                        <select name="system.level">
+                            {{selectOptions selects.levelMagicalGift selected=item.system.level localize=true}}
+                        </select>
+                    {{/if}}
+                </td>
+            </tr>
             <tr class="item-header-tablerow">
                 {{#if (or (eq item.system.class "Spells") (eq item.system.class "Witcher"))}}
                     <td>

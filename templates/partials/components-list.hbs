@@ -1,0 +1,41 @@
+<div class="components-list-container">
+    <table class="components-list">
+        <thead>
+            <tr class="headerrow">
+                <th colspan="2" class="header">{{ localize "WITCHER.ComponentsList.component" }}</th>
+                <th class="header">{{ localize "WITCHER.ComponentsList.quantity" }}</th>
+                <th class="header">{{ localize "WITCHER.ComponentsList.required" }}</th>
+                {{#if showCost }}<th class="header">{{ localize "WITCHER.ComponentsList.cost" }}</th>{{/if}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each components}}
+            <tr class="tablerow item">
+                <td>
+                    <img src="{{ img }}" class="item-img" />
+                </td>
+                <td>{{ name }}</td>
+                <td>{{ quantity }} {{#if missingQuantity}}<span class="error-display">({{ missingQuantity
+                        }})</span>{{/if}}</td>
+                <td>{{ required }}</td>
+                {{#if ../showCost}}
+                <td>
+                    {{#if (and ../canEditCost (eq cost 0)) }}
+                    <input type="number" class="component-cost" data-dtype="Number" />
+                    {{else}}
+                    {{ cost }}
+                    {{/if}}
+                </td>
+                {{/if}}
+            </tr>
+            {{/each}}
+            {{#if showCost}}
+            <tr class="components-price">
+                <td colspan="4">{{ localize "WITCHER.ComponentsList.totalPrice" }}</td>
+                <td class="total-price"><span data-price="{{ totalPrice }}" id="total-price">{{ totalPrice }}</span>
+                </td>
+            </tr>
+            {{/if}}
+        </tbody>
+    </table>
+</div>

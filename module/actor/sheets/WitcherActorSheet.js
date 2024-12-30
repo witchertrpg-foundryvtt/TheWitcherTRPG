@@ -126,8 +126,8 @@ export default class WitcherActorSheet extends ActorSheet {
                 (s.system.class == 'Spells' || s.system.class == 'Invocations' || s.system.class == 'Witcher')
         );
 
-        context.hexes = context.spells.filter(s => s.system.class == 'Hexes');
-        context.rituals = context.spells.filter(s => s.system.class == 'Rituals');
+        context.hexes = context.actor.getList('hex');
+        context.rituals = context.actor.getList('ritual');
         context.magicalgift = context.spells.filter(s => s.system.class == 'MagicalGift');
     }
 
@@ -137,9 +137,7 @@ export default class WitcherActorSheet extends ActorSheet {
     _prepareItems(context) {
         let items = context.items;
 
-        context.enhancements = items.filter(
-            i => i.type == 'enhancement' && i.system.type != 'armor' && !i.system.applied
-        );
+        context.enhancements = items.filter(i => i.type == 'enhancement' && !i.system.applied);
         context.runeItems = context.enhancements.filter(e => e.system.type == 'rune');
         context.glyphItems = context.enhancements.filter(e => e.system.type == 'glyph');
         context.containers = items.filter(i => i.type == 'container');
@@ -149,7 +147,13 @@ export default class WitcherActorSheet extends ActorSheet {
     }
 
     _prepareWeapons(context) {
-        context.weapons = context.actor.getList('weapon');
+        context.weapons = context.items.filter(function (item) {
+            return (
+                item.type == 'weapon' ||
+                (item.type == 'enhancement' && item.system.type == 'weapon' && item.system.applied == false)
+            );
+        });
+
         context.weapons.forEach(weapon => {
             if (
                 weapon.system.enhancements > 0 &&

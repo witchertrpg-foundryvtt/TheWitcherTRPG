@@ -5,12 +5,30 @@ import AbilityTemplate from './ability-template.js';
 import { applyActiveEffectToActorViaId } from '../scripts/activeEffects/applyActiveEffect.js';
 import RepairSystem from '../item/systems/repair.js';
 import { regionMixin } from './mixins/regionMixin.js';
+import { damageUtilMixin } from './mixins/damageUtilMixin.js';
 
 export default class WitcherItem extends Item {
     async _preCreate(data, options, user) {
         //global modifiers are discontinued, so no new ones should be created
         if (data.type === 'globalModifier') return false;
         await super._preCreate(data, options, user);
+    }
+
+    /** @inheritdoc */
+    static migrateData(source) {
+        this.migrateSpells(source);
+
+        return super.migrateData(source);
+    }
+
+    static migrateSpells(source) {
+        if (source.system?.class === 'Hexes') {
+            source.type = 'hex';
+        }
+
+        if (source.system?.class === 'Rituals') {
+            source.type = 'ritual';
+        }
     }
 
     async createSpellVisuals(roll, damage) {
@@ -394,3 +412,4 @@ export default class WitcherItem extends Item {
 }
 
 Object.assign(WitcherItem.prototype, regionMixin);
+Object.assign(WitcherItem.prototype, damageUtilMixin);

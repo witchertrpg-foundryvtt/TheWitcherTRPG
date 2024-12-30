@@ -1,0 +1,20 @@
+table.components-list {
+    margin: 1rem 0;
+}
+
+table.components-list td:nth-child(n+3),
+th:nth-child(n+2) {
+    text-align: center;
+}
+
+tr.components-price td {
+    font-weight: bold;
+    font-size: 1.15em;
+    border-top: 1px solid black;
+    text-align: right;
+    padding: 0.5em 0;
+}
+
+tr.components-price td.total-price {
+    text-align: center;
+}

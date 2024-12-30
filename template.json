@@ -23,6 +23,8 @@
             "profession",
             "race",
             "spell",
+            "hex",
+            "ritual",
             "valuable",
             "weapon",
 
@@ -44,6 +46,8 @@
         "diagrams": {},
         "mutagen": {},
         "spell": {},
+        "hex": {},
+        "ritual": {},
         "profession": {},
         "note": {},
         "race": {},

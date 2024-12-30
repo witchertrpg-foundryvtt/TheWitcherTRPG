@@ -3,7 +3,7 @@
     {{#if isRequest}}
     <span>{{data.actor.name}} {{ localize "WITCHER.Repair.chat.requestTitle" }} {{data.item.name}}</span>
     {{else}}
-    <span>{{ localize "WITCHER.Repair.dialog.title" }} {{data.item.name}}</span>
+    <span>{{ localize "WITCHER.Repair.action" }} {{data.item.name}}</span>
     {{/if}}
 </h1>
 
@@ -49,12 +49,12 @@
             <td>
                 <img src="icons/svg/item-bag.svg" class="chat-icon" />
             </td>
-            <td colspan="2">{{ name }} <b>(1)</b></td>
+            <td>{{ name }} <b>(1)</b></td>
         </tr>
         {{/each}}
         {{#if isOrder}}
-        <tr class="tablerow repair-price">
-            <td colspan="2">{{ localize "WITCHER.Repair.dialog.totalPrice" }}: {{ data.repairPrice }}</td>
+        <tr class="tablerow components-price">
+            <td colspan="2">{{ localize "WITCHER.ComponentsList.totalPrice" }}: {{ data.repairPrice }}</td>
         </tr>
         {{/if}}
     </tbody>

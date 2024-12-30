@@ -1,6 +1,7 @@
 import { extendedRoll } from "../../scripts/rolls/extendedRoll.js";
 import { RollConfig } from "../../scripts/rollConfig.js";
 import { emitForGM } from "../../scripts/socket/socketMessage.js";
+import { costEditMixin } from "../mixins/costEditMixin.js";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -78,11 +79,7 @@ class Repair {
                                         .concat(missingComponents.map(async (component) => generalCompendium.getDocuments({ name: component.name })))
 
             const mappedComponents = (await Promise.all(componentPromises)).flat().reduce((map, comp) => {
-                map[comp.name] = {
-                    name: comp.name,
-                    img: comp.img,
-                    cost: comp.system.cost
-                }
+                map[comp.name] = comp
 
                 return map
             }, {})
@@ -170,43 +167,50 @@ class Repair {
             window: { title: `${game.i18n.localize('WITCHER.Repair.dialog.title')} ${data.item.name}`, },
             content: template,
             buttons: buttons,
-            render: (event, dialog) => this.attachHtmlListeners(dialog, data)
+            render: (_) => this.attachHtmlListeners((cost, data) => data.additionalCost = cost, data)
         })
     }
 
     async prepareDialogTemplate(data) {
         let templateData = {
-            ownedComponents: [],
-            missingComponents: [],
-            unknownComponents: [],
+            components: [],
             data: data,
             isRequest: data.artisan !== null,
             canEditCost: game.user.isGM
-        };
+        }
 
-        data.ownedComponents.forEach(oc => {
-            const missingQuanitity = oc.system.quantity < 1 ? 1 : 0
-
-            templateData.ownedComponents.push({
-                component: oc,
-                quantity: oc.system.quantity,
-                missingQuantity: missingQuanitity,
+        data.unknownComponents.forEach(oc => {
+            templateData.components.push({
+                img: 'icons/svg/item-bag.svg',
+                name: oc.name,
+                quantity: 0,
+                missingQuantity: 1,
+                required: 1,
+                cost: 0
             })
         })
 
         data.missingComponents.forEach(oc => {
-            templateData.missingComponents.push({
-                component: oc,
+            templateData.components.push({
+                img: oc.img,
+                name: oc.name,
                 quantity: 0,
                 missingQuantity: 1,
+                required: 1,
+                cost: oc.system.cost
             })
         })
 
-        data.unknownComponents.forEach(oc => {
-            templateData.unknownComponents.push({
-                component: oc,
-                quantity: 0,
-                missingQuantity: 1,
+        data.ownedComponents.forEach(oc => {
+            const missingQuanitity = oc.system.quantity < 1 ? 1 : 0
+
+            templateData.components.push({
+                img: oc.img,
+                name: oc.name,
+                quantity: oc.system.quantity,
+                missingQuantity: missingQuanitity,
+                required: 1,
+                cost: oc.system.cost
             })
         })
 
@@ -228,24 +232,6 @@ class Repair {
         } else {
             await this.commonRepair(data, options.simulate)
         }
-    }
-
-    attachHtmlListeners(html, data) {
-        $(html).find('.component-cost').on('change', this._onComponentCostChange.bind(this, data))
-    }
-
-    _onComponentCostChange(data, event) {
-        const totalPriceContainer = document.getElementById('total-price')
-        const additionalCost = Array.from(document.getElementsByClassName('component-cost')).reduce((sum, el) => {
-            const value = el.value ? parseInt(el.value) : 0
-            return sum + value
-        }, 0)
-        const initialPrice = parseInt(totalPriceContainer.getAttribute('data-price'))
-        const newPrice = initialPrice + additionalCost
-
-        totalPriceContainer.innerText = newPrice
-
-        data.additionalCost = additionalCost
     }
 
     async commonRepair(data, simulate) {
@@ -314,7 +300,7 @@ class Repair {
             data: data,
             isRequest: isRequest,
             isOrder: data.artisan !== null,
-            showComponents: data.ownedComponents.length || data.missingComponents.length
+            showComponents: data.ownedComponents.length || data.missingComponents.length,
         });
     }
 
@@ -427,9 +413,11 @@ class RepairData {
     get repairPrice() {
         const ownedPrice = this.ownedComponents.reduce((sum, comp) => sum + comp.system.cost, this.additionalCost)
 
-        return this.missingComponents.reduce((sum, comp) => sum + comp.cost, ownedPrice)
+        return this.missingComponents.reduce((sum, comp) => sum + comp.system.cost, ownedPrice)
     }
 }
+
+Object.assign(Repair.prototype, costEditMixin)
 
 let RepairSystem = Object.freeze(new Repair())
 
