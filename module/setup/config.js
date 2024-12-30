@@ -526,7 +526,7 @@ WITCHER.weapon = {
     }
 };
 
-WITCHER.spells = {
+WITCHER.magic = {
     Witcher: {
         skill: WITCHER.skillMap.spellcast
     },
@@ -536,10 +536,10 @@ WITCHER.spells = {
     Spells: {
         skill: WITCHER.skillMap.spellcast
     },
-    Rituals: {
+    ritual: {
         skill: WITCHER.skillMap.ritcraft
     },
-    Hexes: {
+    hex: {
         skill: WITCHER.skillMap.hexweave
     },
     MagicalGift: {

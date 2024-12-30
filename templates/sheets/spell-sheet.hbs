@@ -10,7 +10,7 @@
                 <th>{{localize "WITCHER.Spell.Range"}}</th>
             {{/unless}}
             <th>{{localize "WITCHER.Spell.Duration"}}</th>
-            {{#unless (or (eq item.system.class "Rituals")(eq item.system.class "MagicalGift"))}}
+            {{#unless (eq item.system.class "MagicalGift")}}
                 <th>{{localize "WITCHER.Spell.Defence"}}</th>
             {{/unless}}
             {{#if (eq item.system.class "Witcher")}}
