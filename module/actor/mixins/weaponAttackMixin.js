@@ -12,8 +12,7 @@ export let weaponAttackMixin = {
             ? `${weapon.system.damage}`
             : `${weapon.system.damage}[${game.i18n.localize('WITCHER.Diagram.Weapon')}]`;
 
-        let isMeleeAttack = weapon.doesWeaponNeedMeleeSkillToAttack();
-        if ((this.type == 'character' || this.system.addMeleeBonus) && isMeleeAttack) {
+        if (weapon.system.applyMeleeBonus && (this.type == 'character' || this.system.addMeleeBonus)) {
             if (this.system.attackStats.meleeBonus < 0) {
                 displayDmgFormula += `${this.system.attackStats.meleeBonus}`;
                 damageFormula += !displayRollDetails
@@ -53,12 +52,11 @@ export let weaponAttackMixin = {
         }
 
         let noThrowable = !this.isEnoughThrowableWeapon(weapon);
-        let meleeBonus = this.system.attackStats.meleeBonus;
+        let meleeBonus = weapon.system.applyMeleeBonus ? this.system.attackStats.meleeBonus : 0;
         let data = {
             item: weapon,
             attackSkill,
             displayDmgFormula,
-            isMeleeAttack,
             noAmmo,
             noThrowable,
             ammunitionOption,

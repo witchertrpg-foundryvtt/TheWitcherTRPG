@@ -89,22 +89,6 @@ export default class WitcherItem extends Item {
         };
     }
 
-    doesWeaponNeedMeleeSkillToAttack() {
-        if (this.system.attackSkill) {
-            //Check whether item attack skill is melee
-            //Since actor can throw bombs relying on Athletic which is also a melee attack skill
-            //We need specific logic for bomb throws
-            let meleeSkill = WITCHER.meleeSkills.includes(this.system.attackSkill);
-            let rangedSkill = WITCHER.rangedSkills.includes(this.system.attackSkill);
-
-            if (meleeSkill && rangedSkill) {
-                return meleeSkill && !this.system.usingAmmo && !this.system.isThrowable;
-            } else {
-                return meleeSkill;
-            }
-        }
-    }
-
     isAlchemicalCraft() {
         return this.system.alchemyDC && this.system.alchemyDC > 0;
     }
