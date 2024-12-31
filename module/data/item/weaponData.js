@@ -1,7 +1,7 @@
 import { migrateDamageProperties } from '../migrations/damagePropertiesMigration.js';
 import CommonItemData from './commonItemData.js';
-import damageProperties from './templates/damagePropertiesData.js';
-import defenseProperties from './templates/defensePropertiesData.js';
+import damageProperties from './templates/combat/damagePropertiesData.js';
+import defenseProperties from './templates/combat/defensePropertiesData.js';
 import weaponType from './templates/weaponTypeData.js';
 import { associatedDiagramUuid, unwrapAssociatedDiagram } from './templates/associatedDiagramData.js';
 
