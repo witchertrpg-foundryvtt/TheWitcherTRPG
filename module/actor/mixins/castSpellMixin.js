@@ -198,7 +198,7 @@ export let castSpellMixin = {
             if (spellItem.system.staminaIsVar) {
                 dmg = this.calcStaminaMulti(origStaCost, dmg);
 
-                spellItem.system.damageProperties.effects.forEach(effect => {
+                spellItem.system.damageProperties?.effects?.forEach(effect => {
                     if (effect.varEffect) {
                         effect.percentage = this.calcStaminaMulti(origStaCost, effect.percentage);
                     }
@@ -229,7 +229,7 @@ export let castSpellMixin = {
             }
         }
 
-        if (spellItem.system.selfEffects.length > 0) {
+        if (spellItem.system.selfEffects?.length > 0) {
             templateInfo.selfEffects = [];
             spellItem.system.selfEffects.forEach(effect => {
                 if (effect.name != '') {
@@ -252,8 +252,7 @@ export let castSpellMixin = {
             flags: {
                 TheWitcherTRPG: {
                     attack: spellItem.getSpellFlags(),
-                    damage: damage,
-                    effects: spellItem.system.damageProperties.effects
+                    damage: damage
                 }
             }
         };
@@ -266,8 +265,8 @@ export let castSpellMixin = {
         spellItem.createSpellVisuals(roll, damage);
 
         if (!roll.options.fumble) {
-            spellItem.system.globalModifiers.forEach(modifier => applyModifierToActor(this.uuid, modifier));
-            spellItem.system.selfEffects.forEach(effect =>
+            spellItem.system.globalModifiers?.forEach(modifier => applyModifierToActor(this.uuid, modifier));
+            spellItem.system.selfEffects?.forEach(effect =>
                 applyStatusEffectToActor(this.uuid, effect.statusEffect, damage.duration)
             );
             applyActiveEffectToActor(
