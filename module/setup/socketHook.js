@@ -8,8 +8,9 @@ export const registerSocketListeners = function () {
         applyStatusEffectToActor,
         applyActiveEffectToActor,
         applyActiveEffectToActorViaId,
-        restoreReliability: 'item',
-        createRegionFromTemplateUuids: 'item'
+        restoreReliability: 'uuid',
+        createRegionFromTemplateUuids: 'uuid',
+        addItem: 'uuid'
     };
 
     if (!game.socket || !game.user) return;
@@ -19,9 +20,9 @@ export const registerSocketListeners = function () {
 
         console.log('Received system socket message.', message);
 
-        if (callableFunctions[message.type] === 'item') {
-            let item = fromUuidSync(message.data.shift());
-            item[message.type](...message.data);
+        if (callableFunctions[message.type] === 'uuid') {
+            let fromUuid = fromUuidSync(message.data.shift());
+            fromUuid[message.type](...message.data);
             return;
         }
 

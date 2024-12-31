@@ -196,7 +196,8 @@
             "ContextMenu": {
                 "Consume": "Consume",
                 "NotConsumable": "The item is not configured as consumable",
-                "RemoveEnhancement": "Remove Enhancement"
+                "RemoveEnhancement": "Remove Enhancement",
+                "Gift": "Gift"
             },
             "Settings": {
                 "General": "General Settings",
