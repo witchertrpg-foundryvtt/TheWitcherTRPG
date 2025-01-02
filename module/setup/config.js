@@ -147,6 +147,45 @@ WITCHER.verbalCombatSkills = [
 ];
 WITCHER.empatheticVerbalCombatSkills = ['charisma', 'persuasion', 'seduction', 'leadership', 'deceit', 'socialetq'];
 
+WITCHER.defenseOptions = [
+    {
+        value: 'dodge',
+        label: 'WITCHER.Dialog.DefenseOptions.dodge',
+        skills: ['dodge']
+    },
+    {
+        value: 'reposition',
+        label: 'WITCHER.Dialog.DefenseOptions.reposition',
+        skills: ['athletics']
+    },
+    {
+        value: 'block',
+        label: 'WITCHER.Dialog.DefenseOptions.block',
+        skills: ['brawling'],
+        itemTypes: ['weapon', 'shield'],
+        block: true
+    },
+    {
+        value: 'parry',
+        label: 'WITCHER.Dialog.DefenseOptions.parry',
+        skills: ['brawling'],
+        itemTypes: ['weapon', 'shield'],
+        modifier: -3,
+        stagger: true
+    },
+    {
+        value: 'parryThrown',
+        label: 'WITCHER.Dialog.DefenseOptions.parryThrown',
+        itemTypes: ['weapon', 'shield'],
+        modifier: -5
+    },
+    {
+        value: 'magicResist',
+        label: 'WITCHER.Dialog.DefenseOptions.magicResist',
+        skills: ['resistmagic']
+    }
+];
+
 WITCHER.skillGroups = {
     allSkills: {
         label: 'WITCHER.Skills.SkillGroups.allSkills',
@@ -240,7 +279,6 @@ WITCHER.skillMap = {
         label: 'WITCHER.SkIntWilderness',
         name: 'wilderness'
     },
-
     brawling: {
         attribute: WITCHER.statMap.ref,
         label: 'WITCHER.SkRefBrawling',

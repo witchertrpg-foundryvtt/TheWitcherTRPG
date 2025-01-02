@@ -13,6 +13,9 @@
         <div class="tab" data-group="primary" data-tab="general">
             <label>{{localize "WITCHER.Weapon.MeleeBonus"}}</label>
             <input type="checkbox" name="system.applyMeleeBonus" {{checked item.system.applyMeleeBonus}} />
+            <div>
+                {{formGroup systemFields.defenseOptions value=item.system.defenseOptions options=config.defenseOptions localize=true}}
+            </div>
         </div>
         <div class="tab" data-group="primary" data-tab="damageProperties">
             {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs"}}

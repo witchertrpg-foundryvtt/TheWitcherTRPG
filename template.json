@@ -52,5 +52,9 @@
         "note": {},
         "race": {},
         "effect": {}
+    },
+    "ChatMessage": {
+        "types" :["attack"],
+        "attack": {}
     }
 }

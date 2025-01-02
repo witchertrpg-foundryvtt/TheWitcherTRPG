@@ -1,4 +1,5 @@
 import CommonItemData from './commonItemData.js';
+import defenseOptions from './templates/combat/defenseOptionsData.js';
 import component from './templates/componentData.js';
 import regionProperties from './templates/regions/regionPropertiesData.js';
 
@@ -30,7 +31,9 @@ export default class RitualData extends CommonItemData {
             templateSize: new fields.NumberField({ initial: 0 }),
             templateType: new fields.StringField({ initial: '' }),
             visualEffectDuration: new fields.NumberField(),
-            regionProperties: new fields.SchemaField(regionProperties())
+            regionProperties: new fields.SchemaField(regionProperties()),
+
+            ...defenseOptions()
         };
     }
 

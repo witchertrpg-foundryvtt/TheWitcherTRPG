@@ -1,5 +1,3 @@
-import { ExecuteDefense } from '../../scripts/combat/defenses.js';
-
 import { sanitizeMixin } from './mixins/sanitizeMixin.js';
 import { deathsaveMixin } from './mixins/deathSaveMixin.js';
 import { criticalWoundMixin } from './mixins/criticalWoundMixin.js';
@@ -217,7 +215,6 @@ export default class WitcherActorSheet extends ActorSheet {
 
         html.find('.init-roll').on('click', this._onInitRoll.bind(this));
         html.find('.crit-roll').on('click', this._onCritRoll.bind(this));
-        html.find('.defense-roll').on('click', this._onDefenseRoll.bind(this));
         html.find('.heal-button').on('click', this._onHeal.bind(this));
         html.find('.verbal-button').on('click', this._onVerbalCombat.bind(this));
 
@@ -250,10 +247,6 @@ export default class WitcherActorSheet extends ActorSheet {
             speaker: ChatMessage.getSpeaker({ actor: this.actor })
         };
         rollResult.toMessage(messageData);
-    }
-
-    async _onDefenseRoll(event) {
-        ExecuteDefense(this.actor);
     }
 
     async _onHeal() {
