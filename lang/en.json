@@ -55,7 +55,6 @@
             "Initiative": "Initiative",
             "SavingThrow": "Saving Throw",
             "Crit/Fumble": "Crit/Fumble",
-            "Defense": "Defense",
             "Adrenaline": "Adrenaline",
             "Stamina": "Stamina",
             "Resolve": "Resolve",
@@ -211,6 +210,12 @@
                 "DefenseProperties": "Defense Properties",
                 "ConsumableProperties": "Consumable Properties",
                 "RegionProperties": "Region Properties",
+                "Attacks": {
+                    "defendWith": {
+                        "label": "Defend against with:",
+                        "hint": "Configure how the target can defend against this"
+                    }
+                },
                 "Spell": {
                     "SelfProperties": "Apply to caster",
                     "CastProperties": "Apply to target"
@@ -256,12 +261,6 @@
             "CraftingItem": "Crafting an item",
             "Diagram": "Diagram",
             "after": "After",
-            "ButtonDodge": "Dodge",
-            "ButtonReposition": "Reposition",
-            "ButtonParry": "Parry",
-            "ButtonBlock": "Block",
-            "ButtonParryThrown": "Parry thrown weapon",
-            "ButtonMagicResist": "Magic Resist",
             "Defense": "Defense",
             "DefenseExtra": "Extra defense",
             "DefenseWith": "Defense with",
@@ -325,7 +324,15 @@
             "Enhancement": "Enhancement",
             "Apply": "Apply",
             "Skill": "Performing a Skill Check",
-            "profession.skill": "Performing a profession skill"
+            "profession.skill": "Performing a profession skill",
+            "DefenseOptions": {
+                "dodge": "Dodge",
+                "reposition": "Reposition",
+                "parry": "Parry",
+                "block": "Block",
+                "parryThrown": "Parry thrown weapon",
+                "magicResist": "Magic Resist"
+            }
         },
         "DamageType": {
             "name": "Damage Type",

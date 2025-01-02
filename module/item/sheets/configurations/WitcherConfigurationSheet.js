@@ -21,16 +21,18 @@ export default class WitcherConfigurationSheet extends ItemSheet {
 
     /** @override */
     getData() {
-        const data = super.getData();
-        data.config = CONFIG.WITCHER;
+        const context = super.getData();
+        context.config = CONFIG.WITCHER;
 
         this.options.classes.push(`item-${this.item.type}`);
-        data.data = data.item?.system;
+        context.data = context.item?.system;
 
         // Prepare active effects for easier access
-        data.effects = this.prepareActiveEffectCategories(this.item.effects);
+        context.effects = this.prepareActiveEffectCategories(this.item.effects);
 
-        return data;
+        context.systemFields = this.document.system.schema.fields;
+
+        return context;
     }
 
     activateListeners(html) {

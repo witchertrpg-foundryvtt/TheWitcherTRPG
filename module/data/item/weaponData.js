@@ -4,6 +4,7 @@ import damageProperties from './templates/combat/damagePropertiesData.js';
 import defenseProperties from './templates/combat/defensePropertiesData.js';
 import weaponType from './templates/weaponTypeData.js';
 import { associatedDiagramUuid, unwrapAssociatedDiagram } from './templates/associatedDiagramData.js';
+import defenseOptions from './templates/combat/defenseOptionsData.js';
 
 const fields = foundry.data.fields;
 
@@ -44,7 +45,8 @@ export default class WeaponData extends CommonItemData {
             damageProperties: new fields.SchemaField(damageProperties()),
             defenseProperties: new fields.SchemaField(defenseProperties()),
 
-            ...associatedDiagramUuid()
+            ...associatedDiagramUuid(),
+            ...defenseOptions()
         };
     }
 

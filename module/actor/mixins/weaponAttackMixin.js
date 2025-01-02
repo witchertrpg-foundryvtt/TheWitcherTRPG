@@ -31,6 +31,11 @@ export let weaponAttackMixin = {
         let attackSkill = weapon.getItemAttackSkill();
         let messageData = {
             speaker: ChatMessage.getSpeaker({ actor: this }),
+            type: 'attack',
+            system: {
+                attacker: this.uuid,
+                defenseOptions: weapon.system.defenseOptions
+            },
             flavor: `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`
         };
 

@@ -503,6 +503,11 @@ export default class WitcherActor extends Actor {
     }
 
     getList(name) {
+        if (name === 'shield') {
+            this.items
+                .filter(item => item.type == 'armor' && item.system.location == 'Shield')
+                .sort((a, b) => a.sort - b.sort);
+        }
         return this.items.filter(i => i.type == name && !i.system.isStored).sort((a, b) => a.sort - b.sort);
     }
 

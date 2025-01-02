@@ -24,6 +24,8 @@ import ActiveEffectData from '../data/activeEffects/activeEffectData.js';
 import SkillItemData from '../data/item/skillItemData.js';
 import HexData from '../data/item/hexData.js';
 import RitualData from '../data/item/ritualData.js';
+import AttackMessageData from '../data/chatMessage/attackMessageData.js';
+import WitcherChatMessage from '../chatMessage/WitcherChatMessage.js';
 
 export const registerDataModels = () => {
     foundry.utils.mergeObject(CONFIG.Actor.dataModels, {
@@ -63,4 +65,7 @@ export const registerDataModels = () => {
     });
 
     CONFIG.ActiveEffect.dataModels.base = ActiveEffectData;
+
+    CONFIG.ChatMessage.documentClass = WitcherChatMessage;
+    CONFIG.ChatMessage.dataModels['attack'] = AttackMessageData;
 };

@@ -242,7 +242,7 @@ Hooks.once('polyglot.init', LanguageProvider => {
 Hooks.on('getChatLogEntryContext', ApplyDamage.addDamageMessageContextOptions);
 Hooks.on('getChatLogEntryContext', VerbalCombat.addVerbalCombatMessageContextOptions);
 Hooks.on('getChatLogEntryContext', VerbalCombatDefense.addVerbalCombatDefenseMessageContextOptions);
-Hooks.on('getChatLogEntryContext', Defense.addDefenseMessageContextOptions);
+Hooks.on('getChatLogEntryContext', Defense.addDefenseOptionsContextMenu);
 Hooks.on('getChatLogEntryContext', Crit.addCritMessageContextOptions);
 Hooks.on('getChatLogEntryContext', Fumble.addFumbleContextOptions);
 

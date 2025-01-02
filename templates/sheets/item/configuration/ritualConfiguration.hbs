@@ -9,6 +9,9 @@
     <section class="sheet-body">
         <div class="tab" data-group="primary" data-tab="general">
             <h3>{{localize "WITCHER.Item.Settings.General"}}</h3>
+            <div>
+                {{formGroup systemFields.defenseOptions value=item.system.defenseOptions options=config.defenseOptions localize=true}}
+            </div>
         </div>
         <div class="tab effects" data-group="primary" data-tab="effects">
             {{> systems/TheWitcherTRPG/templates/partials/effect-part.hbs}}

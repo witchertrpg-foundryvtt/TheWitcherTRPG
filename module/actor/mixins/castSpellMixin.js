@@ -249,6 +249,11 @@ export let castSpellMixin = {
         let messageData = {
             speaker: ChatMessage.getSpeaker({ actor: this }),
             flavor: chatMessage,
+            type: 'attack',
+            system: {
+                attacker: this.uuid,
+                defenseOptions: spellItem.system.defenseOptions
+            },
             flags: {
                 TheWitcherTRPG: {
                     attack: spellItem.getSpellFlags(),
@@ -260,6 +265,7 @@ export let castSpellMixin = {
         let config = new RollConfig({ showResult: false });
 
         let roll = await extendedRoll(rollFormula, messageData, config);
+        messageData.system.attackRoll = roll.total;
         await roll.toMessage(messageData);
 
         spellItem.createSpellVisuals(roll, damage);
