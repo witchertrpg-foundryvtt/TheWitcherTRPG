@@ -57,6 +57,7 @@
             "Crit/Fumble": "Crit/Fumble",
             "Adrenaline": "Adrenaline",
             "Stamina": "Stamina",
+            "RecoveryStamina": "Recovery Stamina",
             "Resolve": "Resolve",
             "Hp": "HP",
             "Shield": "Shield",
@@ -325,6 +326,10 @@
             "Apply": "Apply",
             "Skill": "Performing a Skill Check",
             "profession.skill": "Performing a profession skill",
+            "staDialog": "How do you want recover stamina?",
+            "recoveryAction": "Recovery Action",
+            "fullRecovery": "Full Recovery",
+            "fullStaInfo": "Your stamina is already full",
             "DefenseOptions": {
                 "dodge": "Dodge",
                 "reposition": "Reposition",
