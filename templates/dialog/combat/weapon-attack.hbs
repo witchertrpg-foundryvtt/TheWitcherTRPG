@@ -58,7 +58,7 @@
                     <label>{{localize "WITCHER.Dialog.attackLocation"}}:</label>
                 </td>
                 <td>
-                    <select name="location" {{#if item.system.isThrowable}}disabled{{/if}}>
+                    <select name="location">
                         <option value="randomHuman"> {{localize "WITCHER.Dialog.attackRandomHuman"}} </option>
                         <option value="randomMonster"> {{localize "WITCHER.Dialog.attackRandomMonster"}} </option>
                         <option value="head"> {{localize "WITCHER.Dialog.attackHead"}} </option>
@@ -76,7 +76,7 @@
                     <label>{{localize "WITCHER.Dialog.attackStrike"}}:</label>
                 </td>
                 <td>
-                    <select name="strike" {{#if item.system.isThrowable}}disabled{{/if}}>
+                    <select name="strike">
                         <option value="normal"> {{localize "WITCHER.Dialog.strikeNormal"}} </option>
                         <option value="fast"> {{localize "WITCHER.Dialog.strikeFast"}} </option>
                         <option value="strong"> {{localize "WITCHER.Dialog.strikeStrong"}} </option>
@@ -223,7 +223,7 @@
         </table>
         <table>
             <tr>
-                {{#if isMeleeAttack}}
+                {{#if meleeBonus}}
                     <td>
                         <label>{{localize "WITCHER.Dialog.attackMeleeBonus"}}:</label>
                     </td>

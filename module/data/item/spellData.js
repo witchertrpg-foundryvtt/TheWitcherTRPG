@@ -1,6 +1,7 @@
 import { migrateDamageProperties } from '../migrations/damagePropertiesMigration.js';
 import CommonItemData from './commonItemData.js';
-import damageProperties from './templates/damagePropertiesData.js';
+import damageProperties from './templates/combat/damagePropertiesData.js';
+import defenseOptions from './templates/combat/defenseOptionsData.js';
 import itemEffect from './templates/itemEffectData.js';
 import regionProperties from './templates/regions/regionPropertiesData.js';
 
@@ -25,11 +26,6 @@ export default class SpellData extends CommonItemData {
             duration: new fields.StringField({ initial: '' }),
             defence: new fields.StringField({ initial: '' }),
 
-            components: new fields.StringField({ initial: '' }),
-            preparationTime: new fields.StringField({ initial: '' }),
-            difficultyCheck: new fields.StringField({ initial: '' }),
-            sideEffect: new fields.StringField({ initial: '' }),
-
             createTemplate: new fields.BooleanField({ initial: false }),
             templateSize: new fields.NumberField({ initial: 0 }),
             templateType: new fields.StringField({ initial: '' }),
@@ -49,7 +45,9 @@ export default class SpellData extends CommonItemData {
 
             globalModifiers: new fields.ArrayField(new fields.StringField({ initial: '' })),
             selfEffects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
-            onCastEffects: new fields.ArrayField(new fields.SchemaField(itemEffect()))
+            onCastEffects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
+
+            ...defenseOptions()
         };
     }
 

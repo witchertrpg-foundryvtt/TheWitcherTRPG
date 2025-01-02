@@ -7,7 +7,8 @@ export let damageUtilMixin = {
             crit: {
                 critLocationModifier: this.parent.system.attackStats.critLocationModifier,
                 critEffectModifier: this.parent.system.attackStats.critEffectModifier
-            }
+            },
+            defenseOptions: foundry.utils.deepClone(this.system.defenseOptions)
         };
     }
 };

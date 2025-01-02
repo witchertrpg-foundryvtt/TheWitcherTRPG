@@ -1,5 +1,3 @@
-import { ExecuteDefense } from '../../scripts/combat/defenses.js';
-
 import { sanitizeMixin } from './mixins/sanitizeMixin.js';
 import { deathsaveMixin } from './mixins/deathSaveMixin.js';
 import { criticalWoundMixin } from './mixins/criticalWoundMixin.js';
@@ -54,7 +52,7 @@ export default class WitcherActorSheet extends ActorSheet {
 
         const actorData = this.actor.toObject(false);
         context.system = actorData.system;
-        context.items = context.actor.items.filter(i => !i.system.isStored);
+        context.items = context.actor.items.filter(i => !i.system.isStored).sort((a, b) => a.sort - b.sort);
 
         this._prepareGeneralInformation(context);
         this._prepareCustomSkills(context);
@@ -217,6 +215,7 @@ export default class WitcherActorSheet extends ActorSheet {
 
         html.find('.init-roll').on('click', this._onInitRoll.bind(this));
         html.find('.crit-roll').on('click', this._onCritRoll.bind(this));
+        html.find('.recover-sta').on('click', this._onRecoverSta.bind(this));
         html.find('.defense-roll').on('click', this._onDefenseRoll.bind(this));
         html.find('.heal-button').on('click', this._onHeal.bind(this));
         html.find('.verbal-button').on('click', this._onVerbalCombat.bind(this));
@@ -250,6 +249,37 @@ export default class WitcherActorSheet extends ActorSheet {
             speaker: ChatMessage.getSpeaker({ actor: this.actor })
         };
         rollResult.toMessage(messageData);
+    }
+
+    async _onRecoverSta(event) {
+        const DialogV2 = foundry.applications.api.DialogV2;
+
+        await new DialogV2({
+            window: { title: `${game.i18n.localize('WITCHER.Dialog.staDialog')}` },
+            modal: true,
+            buttons: [{
+                action: 'Recovery Action',
+                label: `${game.i18n.localize('WITCHER.Dialog.recoveryAction')}`,
+                callback: async () => {
+                    if(this.actor.system.derivedStats.sta.value >= this.actor.system.derivedStats.sta.max){
+                        ui.notifications.info(game.i18n.localize('WITCHER.Dialog.fullStaInfo'));
+                        return;
+                    }
+                    this.actor.update({ 'system.derivedStats.sta.value': this.actor.system.derivedStats.sta.value + this.actor.system.coreStats.rec.current })
+                }
+            },
+            {
+                action: 'Full Recovery',
+                label: `${game.i18n.localize('WITCHER.Dialog.fullRecovery')}`,
+                callback: async () => {
+                    if (this.actor.system.derivedStats.sta.value >= this.actor.system.derivedStats.sta.max) {
+                        ui.notifications.info(game.i18n.localize('WITCHER.Dialog.fullStaInfo'));
+                        return;
+                    }
+                    this.actor.update({ 'system.derivedStats.sta.value': this.actor.system.derivedStats.sta.max });          
+                }
+            }],
+        }).render({ force: true });
     }
 
     async _onDefenseRoll(event) {

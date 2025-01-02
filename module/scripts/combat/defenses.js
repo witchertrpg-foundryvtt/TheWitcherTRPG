@@ -5,145 +5,134 @@ import { applyModifierToActor } from '../globalModifier/applyGlobalModifier.js';
 import { applyStatusEffectToActor } from '../statusEffects/applyStatusEffect.js';
 import { applyActiveEffectToActorViaId } from '../activeEffects/applyActiveEffect.js';
 
-export function addDefenseMessageContextOptions(html, options) {
-    let canDefend = li => li.find('.attack-message').length || li.find('.defense').length;
+const DialogV2 = foundry.applications.api.DialogV2;
+
+export function addDefenseOptionsContextMenu(html, options) {
+    let canDefend = li => {
+        return game.messages.get(li[0].dataset.messageId).system.defenseOptions;
+    };
     options.push({
         name: `${game.i18n.localize('WITCHER.Context.Defense')}`,
         icon: '<i class="fas fa-shield-alt"></i>',
         condition: canDefend,
         callback: async li => {
-            ExecuteDefense(await getInteractActor(), li[0].dataset.messageId, li.find('.dice-total')[0].innerText);
+            executeDefense(await getInteractActor(), li[0].dataset.messageId);
         }
     });
     return options;
 }
 
-function ExecuteDefense(actor, messageId, totalAttack) {
+async function executeDefense(actor, messageId) {
     if (!actor) return;
 
-    let attackDamageObject = game.messages.get(messageId)?.getFlag('TheWitcherTRPG', 'damage');
-
-    let weapons = actor.items.filter(function (item) {
-        return (
-            item.type == 'weapon' && !item.system.isAmmo && CONFIG.WITCHER.meleeSkills.includes(item.system.attackSkill)
-        );
-    });
-    let shields = actor.items.filter(function (item) {
-        return item.type == 'armor' && item.system.location == 'Shield';
-    });
-
-    let options = `<option value="brawling"> ${game.i18n.localize('WITCHER.SkRefBrawling')} </option>`;
-    weapons.forEach(
-        item =>
-            (options += `<option value="${item.system.attackSkill}" data-itemId="${item.id}"> ${item.name} (${game.i18n.localize(item.getItemAttackSkill().alias)})</option>`)
-    );
-    shields.forEach(
-        item =>
-            (options += `<option value="melee" data-itemId="${item.id}"> ${item.name} (${game.i18n.localize('WITCHER.SkRefMelee')})</option>`)
-    );
+    let message = game.messages.get(messageId);
+    let attackDamageObject = message?.getFlag('TheWitcherTRPG', 'damage');
 
     const content = `
     <div class="flex">
         <label>${game.i18n.localize('WITCHER.Dialog.DefenseExtra')}: <input type="checkbox" name="isExtraDefense"></label> <br />
     </div>
-    <label>${game.i18n.localize('WITCHER.Dialog.DefenseWith')}: </label><select name="form">${options}</select><br />
     <label>${game.i18n.localize('WITCHER.Dialog.attackCustom')}: <input type="Number" class="small" name="customDef" value=0></label> <br />`;
 
-    new Dialog({
-        title: `${game.i18n.localize('WITCHER.Dialog.DefenseTitle')}`,
+    let buttons = Array.from(
+        message?.system.defenseOptions.map(option => {
+            return {
+                label: CONFIG.WITCHER.defenseOptions.find(defense => defense.value === option).label,
+                action: option,
+                callback: (event, button, dialog) => {
+                    return {
+                        defenseAction: option,
+                        extraDefense: button.form.elements.isExtraDefense.checked,
+                        customDef: button.form.elements.customDef.value
+                    };
+                }
+            };
+        })
+    );
+
+    let { defenseAction, extraDefense, customDef } = await DialogV2.wait({
+        window: { title: `${game.i18n.localize('WITCHER.Dialog.DefenseTitle')}` },
         content,
-        buttons: {
-            Dodge: {
-                label: `${game.i18n.localize('WITCHER.Dialog.ButtonDodge')}`,
-                callback: async html => {
-                    defense(actor, { skillName: 'dodge' }, { totalAttack, attackDamageObject }, html, 'ButtonDodge');
-                }
-            },
-            Reposition: {
-                label: `${game.i18n.localize('WITCHER.Dialog.ButtonReposition')}`,
-                callback: async html => {
-                    defense(
-                        actor,
-                        { skillName: 'athletics' },
-                        { totalAttack, attackDamageObject },
-                        html,
-                        'ButtonReposition'
-                    );
-                }
-            },
-            Block: {
-                label: `${game.i18n.localize('WITCHER.Dialog.ButtonBlock')}`,
-                callback: async html => {
-                    let defenseSkill = html.find('[name=form]')[0].value;
-                    let selectedOption = html.find('[name=form]')[0].selectedOptions[0];
-                    defense(
-                        actor,
-                        { skillName: defenseSkill, block: true },
-                        { totalAttack, attackDamageObject },
-                        html,
-                        'ButtonBlock',
-                        selectedOption.dataset.itemid
-                    );
-                }
-            },
-            Parry: {
-                label: `${game.i18n.localize('WITCHER.Dialog.ButtonParry')}`,
-                callback: async html => {
-                    let attacker = game.messages.get(messageId)?.getFlag('TheWitcherTRPG', 'attack').owner;
-                    let selectedOption = html.find('[name=form]')[0].selectedOptions[0];
-                    let defenseSkill = selectedOption.value;
-                    defense(
-                        actor,
-                        { skillName: defenseSkill, modifier: -3, stagger: true },
-                        { totalAttack, attackDamageObject, attacker },
-                        html,
-                        'ButtonParry',
-                        selectedOption.dataset.itemid
-                    );
-                }
-            },
-            ParryAgainstThrown: {
-                label: `${game.i18n.localize('WITCHER.Dialog.ButtonParryThrown')}`,
-                callback: async html => {
-                    let selectedOption = html.find('[name=form]')[0].selectedOptions[0];
-                    let defenseSkill = selectedOption.value;
-                    defense(
-                        actor,
-                        { skillName: defenseSkill, modifier: -5 },
-                        { totalAttack, attackDamageObject },
-                        html,
-                        'ButtonParryThrown',
-                        selectedOption.dataset.itemid
-                    );
-                }
-            },
-            MagicResist: {
-                label: `${game.i18n.localize('WITCHER.Dialog.ButtonMagicResist')}`,
-                callback: async html => {
-                    defense(
-                        actor,
-                        { skillName: 'resistmagic' },
-                        { totalAttack, attackDamageObject },
-                        html,
-                        'ButtonMagicResist'
-                    );
+        buttons: buttons
+    });
+
+    let selectedDefense = CONFIG.WITCHER.defenseOptions.find(defense => defense.value === defenseAction);
+
+    let chooser = [];
+    if (selectedDefense.skills) {
+        selectedDefense.skills.forEach(skill =>
+            chooser.push({ value: skill, label: CONFIG.WITCHER.skillMap[skill].label })
+        );
+    }
+
+    if (selectedDefense.itemTypes) {
+        selectedDefense.itemTypes.forEach(itemType =>
+            actor
+                .getList(itemType)
+                .forEach(item =>
+                    chooser.push({ value: item.system.attackSkill ?? 'melee', label: item.name, itemId: item.id })
+                )
+        );
+    }
+
+    let skillName;
+    let itemId;
+
+    if (chooser.length == 1) {
+        skillName = chooser[0].value;
+        itemId = chooser[0].itemId;
+    } else {
+        let options = '';
+        chooser.forEach(
+            option =>
+                (options += `<option value="${option.value}" data-itemId="${option.itemId}"> ${game.i18n.localize(option.label)}</option>`)
+        );
+
+        let chooserContent = `<label>${game.i18n.localize('WITCHER.Dialog.DefenseWith')}: </label><select name="choosenDefense">${options}</select><br />`;
+        ({ skillName, itemId } = await DialogV2.prompt({
+            window: { title: `${game.i18n.localize('WITCHER.Dialog.DefenseWith')}` },
+            content: chooserContent,
+            ok: {
+                callback: (event, button, dialog) => {
+                    return {
+                        skillName: button.form.elements.choosenDefense.value,
+                        itemId: button.form.elements.choosenDefense.selectedOptions[0].dataset.itemid
+                    };
                 }
             }
-        }
-    }).render(true);
+        }));
+    }
+
+    return defense(
+        actor,
+        {
+            skillName,
+            modifier: selectedDefense.modifier,
+            stagger: selectedDefense.stagger,
+            block: selectedDefense.block
+        },
+        {
+            totalAttack: message.system.attackRoll,
+            attackDamageObject,
+            attacker: message.system.attacker
+        },
+        { extraDefense, customDef },
+        defenseAction,
+        itemId
+    );
 }
 
 async function defense(
     actor,
     { skillName, modifier = 0, stagger = false, block = false },
     { totalAttack, attackDamageObject, attacker },
-    html,
-    buttonName,
+    { extraDefense = false, customDef = 0 },
+    defenseAction,
     defenseItemId
 ) {
     let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
-    if (!handleExtraDefense(html, actor)) {
+    if (!handleExtraDefense(extraDefense, actor)) {
         return;
     }
     let skillMapEntry = CONFIG.WITCHER.skillMap[skillName];
@@ -165,9 +154,9 @@ async function defense(
     if (modifier < 0) {
         rollFormula += !displayRollDetails
             ? `${modifier}`
-            : `${modifier}[${game.i18n.localize('WITCHER.Dialog.' + buttonName)}]`;
+            : `${modifier}[${game.i18n.localize('WITCHER.Dialog.DefenseOptions.' + defenseAction)}]`;
 
-        if (buttonName == 'ButtonParry' || buttonName == 'ButtonParryThrown') {
+        if (defenseAction == 'parry' || defenseAction == 'parryThrown') {
             let weapon = actor.items.get(defenseItemId);
             if (weapon?.system.defenseProperties?.parrying) {
                 rollFormula += !displayRollDetails
@@ -179,22 +168,16 @@ async function defense(
     if (modifier > 0) {
         rollFormula += !displayRollDetails
             ? `+${modifier}`
-            : `+${modifier}[${game.i18n.localize('WITCHER.Dialog.' + buttonName)}]`;
+            : `+${modifier}[${game.i18n.localize('WITCHER.Dialog.DefenseOptions.' + defenseAction)}]`;
     }
 
-    let customDef = html.find('[name=customDef]')[0].value;
     if (customDef != '0') {
         rollFormula += !displayRollDetails
             ? `+${customDef}`
             : ` +${customDef}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
     }
 
-    rollFormula = handleSpecialModifier(
-        actor,
-        rollFormula,
-        buttonName.replace('Button', '').toLowerCase(),
-        actor.items.get(defenseItemId)?.type
-    );
+    rollFormula = handleSpecialModifier(actor, rollFormula, defenseAction, actor.items.get(defenseItemId)?.type);
     rollFormula += actor.addAllModifiers(skillName);
 
     if (skillName != 'resistmagic' && actor.statuses.find(status => status == 'stun')) {
@@ -205,7 +188,7 @@ async function defense(
         speaker: ChatMessage.getSpeaker({ actor: actor }),
         flavor: `<h1>${game.i18n.localize('WITCHER.Dialog.Defense')}</h1>`
     };
-    messageData.flavor = `<h1>${game.i18n.localize('WITCHER.Dialog.Defense')}: ${game.i18n.localize('WITCHER.Dialog.' + buttonName)}</h1><p>${displayFormula}</p>`;
+    messageData.flavor = `<h1>${game.i18n.localize('WITCHER.Dialog.Defense')}: ${game.i18n.localize('WITCHER.Dialog.DefenseOptions.' + defenseAction)}</h1><p>${displayFormula}</p>`;
 
     let roll = await extendedRoll(
         rollFormula,
@@ -216,7 +199,7 @@ async function defense(
     if (crit) {
         messageData.flavor += `<h3 class='center-important crit-taken'>${game.i18n.localize('WITCHER.Defense.Crit')}: ${game.i18n.localize(CONFIG.WITCHER.CritGravity[crit.severity])}</h3>`;
         crit.location = await handleCritLocation(actor, attackDamageObject);
-        attackDamageObject.location = crit.location
+        attackDamageObject.location = crit.location;
         crit.critEffectModifier = attackDamageObject.crit.critEffectModifier;
     }
 
@@ -261,9 +244,8 @@ function handleSpecialModifier(actor, formula, action, additionalTag) {
     return formula;
 }
 
-function handleExtraDefense(html, actor) {
-    let isExtraDefense = html.find('[name=isExtraDefense]').prop('checked');
-    if (isExtraDefense) {
+function handleExtraDefense(extraDefense, actor) {
+    if (extraDefense) {
         let newSta = actor.system.derivedStats.sta.value - 1;
         if (newSta < 0) {
             ui.notifications.error(game.i18n.localize('WITCHER.Spell.notEnoughSta'));
@@ -424,4 +406,4 @@ function handleDefenseResults(
     }
 }
 
-export { ExecuteDefense };
+export { executeDefense };

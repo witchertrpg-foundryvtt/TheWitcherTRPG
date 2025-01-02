@@ -1,4 +1,4 @@
-import itemEffect from "./itemEffectData.js";
+import itemEffect from "../itemEffectData.js";
 
 const fields = foundry.data.fields;
 

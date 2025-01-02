@@ -69,6 +69,9 @@
                     {{selectOptions config.spellDamageTypes selected=item.system.damageType localize=true}}
                 </select>
             </div>
+            <div>
+                {{formGroup systemFields.defenseOptions value=item.system.defenseOptions options=config.defenseOptions localize=true}}
+            </div>
 
         </div>
         <div class="tab" data-group="primary" data-tab="damageProperties">

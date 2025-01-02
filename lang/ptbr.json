@@ -58,6 +58,7 @@
             "Defense": "Defesa",
             "Adrenaline": "Adrenalina",
             "Stamina": "Estamina",
+            "RecoveryStamina": "Recuperar Estamina",
             "Resolve": "Desterminação",
             "Hp": "PV",
             "Shield": "Escudo",
@@ -188,12 +189,16 @@
             },
             "RegionProperties": {
                 "createRegionFromTemplate": "Criar Região a partir do Modelo",
-                "tokenEnter": "Aplicar Macro ao Entrar"
+                "tokenEnter": "Aplicar Macro ao Entrar",
+                "tokenTurnStart": "Aplicar Macro no começo do Turno",
+                "tokenPreMove": "Aplicar Macro antes do Token se mover",
+                "tokenExit": "Aplicar Macro ao Sair"
             },
             "ContextMenu": {
                 "Consume": "Consumir",
                 "NotConsumable": "O item não está configurado como consumível",
-                "RemoveEnhancement": "Remover Melhorias"
+                "RemoveEnhancement": "Remover Melhorias",
+                "Gift": "Presentear"
             },
             "Settings": {
                 "General": "Configurações Gerais",
@@ -294,7 +299,11 @@
             "Enhancement": "Melhoria",
             "Apply": "Aplicar",
             "Skill": "Executando um Teste de Perícia",
-            "profession.skill": "Executando um Teste de Profissão"
+            "profession.skill": "Executando um Teste de Profissão",
+            "staDialog": "Como você quer recuperar sua estamina?",
+            "recoveryAction": "Ação de Recuperação",
+            "fullRecovery": "Recuperação Total",
+            "fullStaInfo": "Sua estamina já está cheia"
         },
         "DamageType": {
             "name": "Tipo de Dano",
@@ -826,7 +835,8 @@
                 "Variable": "EST V.",
                 "Shield": "Escudo",
                 "Heal": "Cura"
-            }
+            },
+            "Ritual": {}
         },
         "Chat": {
             "SaveText": "Para ter sucesso você precisa rolar abaixo",
@@ -992,7 +1002,8 @@
             "shield": "Escudo",
             "silverDmg": "Adicionar Dano de Prata",
             "silver": "Prata",
-            "oil": "Óleo"
+            "oil": "Óleo",
+            "activeEffect": "Efeito Ativo"
         },
         "Context": {
             "applyDmg": "Aplicar Dano",
@@ -1067,7 +1078,8 @@
             "ImplyEffect": "Insinuar permite que você sugira algo de bom ou ruim sobre seu argumento atual. Se você conseguir, você reduz as defesas do seu oponente em -4. Você só pode usar Insinuar uma vez por combate.",
             "Bribe": "Suborno",
             "BribeEffect": "Para cada 50 coroas que oferece, você ganha +1 para as suas jogadas empáticas de Combate Verbal pelo resto do combate, se você tiver sucesso em sua jogada de Apostar.",
-            "None": "NENHUM"
+            "None": "NENHUM",
+            "Defenses": "Defesas"
         },
         "Effect": {
             "Rolled": "Rolado",
@@ -1082,7 +1094,11 @@
             },
             "wizard": {
                 "lifepath": "Caminho de Vida",
-                "other": "Outro"
+                "other": "Outro",
+                "resistances": "Resistências",
+                "flat": "Bonus Fixo",
+                "multi": "Multiplicação",
+                "applyAP": "Aplicar PA na Multiplicação"
             }
         },
         "globalModifier": {
@@ -1229,6 +1245,55 @@
                 "title": "Descontinuação do Modificador de Perícia Especial",
                 "text": "Os seguintes atores precisam ser modificados. Se você não fizer isso, antes que os modificadores de habilidade especial sejam removidos, os dados serão perdidos. A funcionalidade foi movida para efeitos ativos."
             }
+        },
+        "AssociatedDiagram": {
+            "actions": {
+                "add": "Adicionar diagrama",
+                "remove": "Remover diagrama"
+            },
+            "missing": "O diagrama associado está em falta (Arraste aqui para adicionar)",
+            "title": "Diagrama de Criação"
+        },
+        "Repair": {
+            "action": "Reparando",
+            "buttons": {
+                "repair": "Reparar",
+                "simulate": "Simular Reparação",
+                "request": "Solicitar reparo",
+                "gmRepair": "Reparo do GM"
+            },
+            "result": {
+                "success": "Reparo bem-sucedido!",
+                "failure": "Falha no reparo"
+            },
+            "params": {
+                "craftingDC": "Criação ND",
+                "repairDC": "Reparo ND",
+                "repairMod": "Mod de Reparo",
+                "enchants": "Mod de Melhorias",
+                "damagedLocations": "Locais Danificados",
+                "components": "Componentes"
+            },
+            "damagedLocations": {
+                "weapon": "Durabilidade do Equipamento",
+                "shield": "Durabilidade do Escudo"
+            },
+            "chat": {
+                "requestTitle": "está pedindo reparo em"
+            },
+            "alerts": {
+                "notEnoughComponents": "Componentes insuficientes para reparar este item",
+                "itemIsAlreadyRepaired": "Este item já está reparado",
+                "noDiagram": "Nenhum diagrama associado foi encontrado para esse item",
+                "invalidDiagram": "Este tipo de diagrama não é válido para este item"
+            }
+        },
+        "ComponentsList": {
+          "component": "Componente",
+          "quantity": "Quantidade",
+          "required": "Requerido",
+          "cost": "Custo",
+          "totalPrice": "Preço Total"
         }
     }
 }

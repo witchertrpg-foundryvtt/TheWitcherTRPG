@@ -147,6 +147,12 @@ input.profession-skill-input {
     justify-content: flex-start;
 }
 
+.monster-profession-flex {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+}
+
 .profession-card .editor {
     height: 150px;
     border-radius: 0 0 5px 5px;

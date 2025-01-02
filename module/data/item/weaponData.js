@@ -1,16 +1,15 @@
-import { migrateDamageProperties } from "../migrations/damagePropertiesMigration.js";
-import CommonItemData from "./commonItemData.js";
-import damageProperties from "./templates/damagePropertiesData.js";
-import defenseProperties from "./templates/defensePropertiesData.js";
-import weaponType from "./templates/weaponTypeData.js";
-import {associatedDiagramUuid, unwrapAssociatedDiagram} from "./templates/associatedDiagramData.js";
+import { migrateDamageProperties } from '../migrations/damagePropertiesMigration.js';
+import CommonItemData from './commonItemData.js';
+import damageProperties from './templates/combat/damagePropertiesData.js';
+import defenseProperties from './templates/combat/defensePropertiesData.js';
+import weaponType from './templates/weaponTypeData.js';
+import { associatedDiagramUuid, unwrapAssociatedDiagram } from './templates/associatedDiagramData.js';
+import defenseOptions from './templates/combat/defenseOptionsData.js';
 
 const fields = foundry.data.fields;
 
 export default class WeaponData extends CommonItemData {
-
     static defineSchema() {
-
         const commonData = super.defineSchema();
         return {
             // Using destructuring to effectively append our additional data here
@@ -28,6 +27,11 @@ export default class WeaponData extends CommonItemData {
             maxReliability: new fields.NumberField({ initial: 0 }),
 
             damage: new fields.StringField({ initial: '' }),
+            applyMeleeBonus: new fields.BooleanField({
+                initial: source => {
+                    return CONFIG.WITCHER.meleeSkills.includes(source.attackSkill);
+                }
+            }),
             range: new fields.StringField({ initial: '' }),
             accuracy: new fields.NumberField({ initial: 0 }),
             attackSkill: new fields.StringField({ initial: '' }),
@@ -42,8 +46,8 @@ export default class WeaponData extends CommonItemData {
             defenseProperties: new fields.SchemaField(defenseProperties()),
 
             ...associatedDiagramUuid(),
-        }
-
+            ...defenseOptions()
+        };
     }
 
     prepareDerivedData() {
@@ -51,7 +55,7 @@ export default class WeaponData extends CommonItemData {
 
         let enhancementItemIds = this.enhancementItemIds;
         if (enhancementItemIds?.length > 0) {
-            this.enhancementItems = []
+            this.enhancementItems = [];
 
             let items = this.parent.actor.items;
 
@@ -62,29 +66,29 @@ export default class WeaponData extends CommonItemData {
                         name: item.name,
                         img: item.img,
                         system: item.system,
-                        id: itemId,
-                    })
+                        id: itemId
+                    });
                 }
             });
         }
 
-        unwrapAssociatedDiagram(this)
+        unwrapAssociatedDiagram(this);
     }
 
     /** @inheritdoc */
     static migrateData(source) {
         super.migrateData(source);
 
-        if ("enhancementItems" in source) {
-            source.enhancementItemIds = source.enhancementItemIds ?? []
+        if ('enhancementItems' in source) {
+            source.enhancementItemIds = source.enhancementItemIds ?? [];
             source.enhancementItems.forEach(enhancement => {
                 if (Object.keys(enhancement).length !== 0) {
-                    source.enhancementItemIds.push(enhancement._id)
+                    source.enhancementItemIds.push(enhancement._id);
                 }
             });
         }
 
-        this.effects?.forEach(effect => effect.percentage = parseInt(effect.percentage))
+        this.effects?.forEach(effect => (effect.percentage = parseInt(effect.percentage)));
 
         migrateDamageProperties(source);
     }
