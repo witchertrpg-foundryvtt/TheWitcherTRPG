@@ -28,3 +28,40 @@ async function executeDefense(actor, messageId) {
         message.system.attacker
     );
 }
+
+export function addCritMessageContextOptions(html, options) {
+    let wasCritted = li => li.find('.crit-taken').length;
+    options.push(
+        {
+            name: `${game.i18n.localize('WITCHER.Context.applyCritDmg')}`,
+            icon: '<i class="fas fa-user-minus"></i>',
+            condition: wasCritted,
+            callback: async li => {
+                (await getInteractActor()).applyCritDamage(
+                    game.messages.get(li[0].dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
+                );
+            }
+        },
+        {
+            name: `${game.i18n.localize('WITCHER.Context.applyBonusCritDmg')}`,
+            icon: '<i class="fas fa-user-minus"></i>',
+            condition: wasCritted,
+            callback: async li => {
+                (await getInteractActor()).applyCritDamage(
+                    game.messages.get(li[0].dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
+                );
+            }
+        },
+        {
+            name: `${game.i18n.localize('WITCHER.Context.applyCritWound')}`,
+            icon: '<i class="fas fa-user-minus"></i>',
+            condition: wasCritted,
+            callback: async li => {
+                (await getInteractActor()).applyCritDamage(
+                    game.messages.get(li[0].dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
+                );
+            }
+        }
+    );
+    return options;
+}
