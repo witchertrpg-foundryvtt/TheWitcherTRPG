@@ -8,6 +8,8 @@ import { castSpellMixin } from './mixins/castSpellMixin.js';
 import { locationMixin } from './mixins/locationMixin.js';
 import { weaponAttackMixin } from './mixins/weaponAttackMixin.js';
 import { verbalCombatMixin } from './mixins/verbalCombatMixin.js';
+import { defenseMixin } from './mixins/defenseMixin.js';
+import { damageMixin } from './mixins/damageMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -725,6 +727,8 @@ export default class WitcherActor extends Actor {
 Object.assign(WitcherActor.prototype, modifierMixin);
 Object.assign(WitcherActor.prototype, damageUtilMixin);
 Object.assign(WitcherActor.prototype, weaponAttackMixin);
+Object.assign(WitcherActor.prototype, defenseMixin);
+Object.assign(WitcherActor.prototype, damageMixin);
 Object.assign(WitcherActor.prototype, castSpellMixin);
 Object.assign(WitcherActor.prototype, verbalCombatMixin);
 Object.assign(WitcherActor.prototype, locationMixin);
