@@ -96,8 +96,11 @@ export let weaponAttackMixin = {
             damageType,
             customDmg
         } = await DialogV2.prompt({
-            window: { title: `${game.i18n.localize('WITCHER.Dialog.attackWith')}: ${weapon.name}` },
-            position: { width: 500 },
+            window: {
+                title: `${game.i18n.localize('WITCHER.Dialog.attackWith')}: ${weapon.name}`,
+                contentClasses: ['scrollable']
+            },
+            position: { width: 600 },
             content: dialogTemplate,
             modal: true,
             ok: {
