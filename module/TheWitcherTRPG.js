@@ -6,7 +6,6 @@ import * as VerbalCombatDefense from './scripts/verbalCombat/verbalCombatDefense
 import * as Combat from './scripts/combat/combat.js';
 import * as ApplyDamage from './scripts/combat/applyDamage.js';
 import * as ApplyStatusEffects from './scripts/statusEffects/applyStatusEffect.js';
-import * as Crit from './scripts/combat/applyCrit.js';
 import * as Fumble from './scripts/rolls/fumble.js';
 import { registerSettings } from './setup/settings.js';
 
@@ -242,7 +241,7 @@ Hooks.on('getChatLogEntryContext', ApplyDamage.addDamageMessageContextOptions);
 Hooks.on('getChatLogEntryContext', VerbalCombat.addVerbalCombatMessageContextOptions);
 Hooks.on('getChatLogEntryContext', VerbalCombatDefense.addVerbalCombatDefenseMessageContextOptions);
 Hooks.on('getChatLogEntryContext', Combat.addDefenseOptionsContextMenu);
-Hooks.on('getChatLogEntryContext', Crit.addCritMessageContextOptions);
+Hooks.on('getChatLogEntryContext', Combat.addCritMessageContextOptions);
 Hooks.on('getChatLogEntryContext', Fumble.addFumbleContextOptions);
 
 /**
