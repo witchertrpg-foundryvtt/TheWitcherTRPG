@@ -3,7 +3,7 @@ import * as Chat from './scripts/chat.js';
 import * as Attack from './scripts/combat/attack.js';
 import * as VerbalCombat from './scripts/verbalCombat/verbalCombat.js';
 import * as VerbalCombatDefense from './scripts/verbalCombat/verbalCombatDefense.js';
-import * as Defense from './scripts/combat/defenses.js';
+import * as Combat from './scripts/combat/combat.js';
 import * as ApplyDamage from './scripts/combat/applyDamage.js';
 import * as ApplyStatusEffects from './scripts/statusEffects/applyStatusEffect.js';
 import * as Crit from './scripts/combat/applyCrit.js';
@@ -73,7 +73,6 @@ async function preloadHandlebarsTemplates() {
 
         'systems/TheWitcherTRPG/templates/dialog/verbal-combat.hbs',
         'systems/TheWitcherTRPG/templates/dialog/repair-dialog.hbs',
-
 
         'systems/TheWitcherTRPG/templates/chat/damage/damageToLocation.hbs',
         'systems/TheWitcherTRPG/templates/chat/item/repair.hbs',
@@ -242,7 +241,7 @@ Hooks.once('polyglot.init', LanguageProvider => {
 Hooks.on('getChatLogEntryContext', ApplyDamage.addDamageMessageContextOptions);
 Hooks.on('getChatLogEntryContext', VerbalCombat.addVerbalCombatMessageContextOptions);
 Hooks.on('getChatLogEntryContext', VerbalCombatDefense.addVerbalCombatDefenseMessageContextOptions);
-Hooks.on('getChatLogEntryContext', Defense.addDefenseOptionsContextMenu);
+Hooks.on('getChatLogEntryContext', Combat.addDefenseOptionsContextMenu);
 Hooks.on('getChatLogEntryContext', Crit.addCritMessageContextOptions);
 Hooks.on('getChatLogEntryContext', Fumble.addFumbleContextOptions);
 
@@ -324,17 +323,17 @@ Handlebars.registerHelper({
 
 Handlebars.registerHelper('eachLimit', function (context, limit, options) {
     if (!context || typeof context !== 'object') return '';
-  
+
     const keys = Object.keys(context);
     const result = [];
-    
+
     for (let i = 0; i < limit; i++) {
-      const key = keys[i];
-      const lifeEvent = context[key];
-      const data = Handlebars.createFrame(options.data || {});
-      data.key = key;
-      
-      result.push(options.fn({ lifeEvent, key }, { data }));
+        const key = keys[i];
+        const lifeEvent = context[key];
+        const data = Handlebars.createFrame(options.data || {});
+        data.key = key;
+
+        result.push(options.fn({ lifeEvent, key }, { data }));
     }
     return result.join('');
-  });
+});
