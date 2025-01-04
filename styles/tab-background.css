@@ -10,7 +10,7 @@
     min-width: 200px;
 }
 
-.life-events, .notes {
+.life-events, .character-notes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
