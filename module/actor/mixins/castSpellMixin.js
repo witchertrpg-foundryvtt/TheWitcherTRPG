@@ -265,7 +265,6 @@ export let castSpellMixin = {
         let config = new RollConfig({ showResult: false });
 
         let roll = await extendedRoll(rollFormula, messageData, config);
-        messageData.system.attackRoll = roll.total;
         await roll.toMessage(messageData);
 
         spellItem.createSpellVisuals(roll, damage);

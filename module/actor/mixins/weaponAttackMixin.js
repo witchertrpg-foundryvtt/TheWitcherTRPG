@@ -1,4 +1,3 @@
-import { RollConfig } from '../../scripts/rollConfig.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import { rollDamage } from '../../scripts/combat/attack.js';
 
@@ -344,7 +343,7 @@ export let weaponAttackMixin = {
                         damage: damage
                     }
                 };
-                await extendedRoll(attFormula, messageData, new RollConfig());
+                await extendedRoll(attFormula, messageData);
             }
         }
     }
