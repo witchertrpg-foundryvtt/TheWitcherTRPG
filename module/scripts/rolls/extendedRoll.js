@@ -1,10 +1,12 @@
+import { RollConfig } from "../rollConfig.js";
+
 /**
  * @param {string} rollFormula rollFormula to apply
  * @param {*} messageData messageData to display
  * @param {RollConfig} config Configuration for Extended roll
  * @param {Flag} flags an object/array of objects of flags to be set
  */
-export async function extendedRoll(rollFormula, messageData, config, flags = []) {
+export async function extendedRoll(rollFormula, messageData, config = new RollConfig(), flags = []) {
     let roll = await new Roll(rollFormula).evaluate();
     let rollTotal = Number(roll.total);
 
@@ -54,6 +56,10 @@ export async function extendedRoll(rollFormula, messageData, config, flags = [])
         //print add/subtract roll info
         extraRoll = await new Roll(extraRollFormula, null, options).evaluate();
         roll = extraRoll;
+    }
+
+    if (messageData.type === 'attack') {
+        messageData.system.attackRoll = roll.total;
     }
 
     //calculate overall success/failure for the attack/defense

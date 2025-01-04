@@ -1,4 +1,3 @@
-import { RollConfig } from '../../scripts/rollConfig.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
@@ -343,7 +342,7 @@ export let weaponAttackMixin = {
                         damage: damage
                     }
                 };
-                await extendedRoll(attFormula, messageData, new RollConfig());
+                await extendedRoll(attFormula, messageData);
             }
         }
     }
