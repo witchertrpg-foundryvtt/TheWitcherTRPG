@@ -1,5 +1,6 @@
 import { RollConfig } from '../../scripts/rollConfig.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
+import { rollDamage } from '../../scripts/combat/attack.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
