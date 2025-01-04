@@ -26,7 +26,7 @@
 }
 
 .monster-left-sidebar {
-    flex-basis: 180px;
+    width: 180px;
     flex: none;
 }
 
@@ -116,6 +116,7 @@
 
 .monster-custom-details {
     margin-left: 15px;
+    flex-direction: column;
 }
 
 .monster-HPSTA {
