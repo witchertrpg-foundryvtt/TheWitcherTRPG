@@ -25,7 +25,7 @@ import SkillItemData from '../data/item/skillItemData.js';
 import HexData from '../data/item/hexData.js';
 import RitualData from '../data/item/ritualData.js';
 import AttackMessageData from '../data/chatMessage/attackMessageData.js';
-import WitcherChatMessage from '../chatMessage/WitcherChatMessage.js';
+import WitcherChatMessage from '../chatMessage/witcherChatMessage.js';
 
 export const registerDataModels = () => {
     foundry.utils.mergeObject(CONFIG.Actor.dataModels, {
