@@ -27,7 +27,7 @@ async function globalModifiers() {
 async function specialModifiers() {
     let affectedActors = game.actors
         .filter(actor => actor.isOwner)
-        .filter(actor => actor.system.specialSkillModifiers.length > 0);
+        .filter(actor => actor.system.specialSkillModifiers?.length > 0);
 
     if (affectedActors.length > 0) {
         const dialogTemplate = await renderTemplate(
