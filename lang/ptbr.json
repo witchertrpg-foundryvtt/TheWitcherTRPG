@@ -1,7 +1,32 @@
 {
     "TYPES": {
         "Item": {
-            "globalModifier": "Modificador Global (Descontinuado)"
+            "globalModifier": "Modificador Global (descontinuado)",
+            "alchemical": "Alquímico",
+            "armor": "Armadura",
+            "clue": "Pista",
+            "component": "Componente",
+            "container": "Contêiner",
+            "diagrams": "Diagramas",
+            "enhancement": "Melhoria",
+            "hex": "Hex",
+            "mount": "Montaria",
+            "mutagen": "Mutagênico",
+            "note": "Nota",
+            "obstacle": "Obstáculo",
+            "profession": "Profissão",
+            "race": "Raça",
+            "ritual": "Ritual",
+            "skill": "Perícia",
+            "spell": "Magia",
+            "valuable": "Valiosos",
+            "weapon": "Arma"
+        },
+        "Actor": {
+            "character": "Personagem",
+            "monster": "Monstro",
+            "loot": "Saque",
+            "mystery": "Mistério"
         }
     },
     "WITCHER": {
@@ -55,7 +80,6 @@
             "Initiative": "Iniciativa",
             "SavingThrow": "Salva Guarda",
             "Crit/Fumble": "Crít/Vacilo",
-            "Defense": "Defesa",
             "Adrenaline": "Adrenalina",
             "Stamina": "Estamina",
             "RecoveryStamina": "Recuperar Estamina",
@@ -212,11 +236,44 @@
                 "DefenseProperties": "Propriedades da Defesa",
                 "ConsumableProperties": "Propriedades de Consumíveis",
                 "RegionProperties": "Propriedades de Região",
+                "Attacks": {
+                    "defendWith": {
+                        "label": "Defende-se com:",
+                        "hint": "Configure como o alvo pode se defender contra isso"
+                    }
+                },
                 "Spell": {
                     "SelfProperties": "Aplicar ao conjurador",
                     "CastProperties": "Aplicar ao alvo"
                 }
             }
+        },
+        "Damage": {
+            "RemoveSP": "Remova PP antes de aplicar o modificador de local.",
+            "damageType": "Que tipo de Dano",
+            "ChangeLocation": "Alterar o Local",
+            "CurrentLocation": "Local Atual",
+            "resistSilver": "Aplicar Resistência a não-prata",
+            "resistMeteorite": "Aplicar Resistência a não-meteoritos",
+            "initial": "Dano Inicial",
+            "totalSP": "Poder de Parada Total",
+            "improvedArmorPiercing": "(Após Perfuração Melhorada)",
+            "afterSPReduct": "Dano após redução de PP",
+            "armorPiercing": "(Ignorado devido a Perfura Armadura)",
+            "afterLocationModifier": "Dano após modificador de local",
+            "afterResistances": "Danos após resistências/vulnerabilidades",
+            "totalApplied": "Dano Total Aplicado",
+            "ablated": "A armadura foi ablada por ",
+            "crushingForce": "A armadura foi esmagada por ",
+            "NotEnough": "Não há dano suficiente para perfurar a armadura",
+            "ToMuchShield": "Todo o dano foi absorvido pelo escudo ou cobertura",
+            "isVulnerable": "Vulnerável ao Ataque",
+            "oilDmg": "Adicionar Dano de Óleo (+5)",
+            "shield": "Escudo",
+            "silverDmg": "Adicionar Dano de Prata",
+            "silver": "Prata",
+            "oil": "Óleo",
+            "activeEffect": "Efeito Ativo"
         },
         "Dialog": {
             "NoComponents": "Componentes insuficientes para criação",
@@ -230,12 +287,6 @@
             "CraftingItem": "Criando um item",
             "Diagram": "Diagrama",
             "after": "Depois",
-            "ButtonDodge": "Esquivar/Escapar",
-            "ButtonReposition": "Reposicionar",
-            "ButtonParry": "Aparar",
-            "ButtonBlock": "Bloquear",
-            "ButtonParryThrown": "Aparar Projétil",
-            "ButtonMagicResist": "Resistir a Magia",
             "Defense": "Defesa",
             "DefenseExtra": "Defesa extra",
             "DefenseWith": "Defender com",
@@ -303,7 +354,15 @@
             "staDialog": "Como você quer recuperar sua estamina?",
             "recoveryAction": "Ação de Recuperação",
             "fullRecovery": "Recuperação Total",
-            "fullStaInfo": "Sua estamina já está cheia"
+            "fullStaInfo": "Sua estamina já está cheia",
+            "DefenseOptions": {
+                "dodge": "Esquivar",
+                "reposition": "Reposicionar",
+                "parry": "Aparar",
+                "block": "Bloquear",
+                "parryThrown": "Aparar Arremessáveis",
+                "magicResist": "Resistir Magia"
+            }
         },
         "DamageType": {
             "name": "Tipo de Dano",
@@ -773,6 +832,11 @@
         "Spell": {
             "type": "Tipo",
             "Spells": "Feitiços",
+            "Ritual": {
+                "name": "Ritual",
+                "components": "Componentes",
+                "alternateComponents": "Componentes Alternativos"
+            },
             "Invocations": "Invocações",
             "Witcher": "Sinais de Bruxo",
             "Rituals": "Rituais",
@@ -800,11 +864,9 @@
             "Defence": "Defesa",
             "PrepTime": "Tempo de Preparação",
             "DC": "Nível de Dificuldade",
-            "Components": "Componentes",
             "Requirements": "Como se Livrar",
             "Effect": "Efeito",
             "SideEffect": "Efeito Colateral",
-            "AlternateComponents": "Componentes Alternativos",
             "Signs": "Sinais",
             "Sign": "Sinal",
             "Element": "Elemento",
@@ -835,8 +897,7 @@
                 "Variable": "EST V.",
                 "Shield": "Escudo",
                 "Heal": "Cura"
-            },
-            "Ritual": {}
+            }
         },
         "Chat": {
             "SaveText": "Para ter sucesso você precisa rolar abaixo",
@@ -978,33 +1039,6 @@
             "shieldApplied": "ganhou escudo:",
             "healed": "curado {target} para {heal}"
         },
-        "Damage": {
-            "RemoveSP": "Remova PP antes de aplicar o modificador de local.",
-            "damageType": "Que tipo de Dano",
-            "ChangeLocation": "Alterar o Local",
-            "CurrentLocation": "Local Atual",
-            "resistSilver": "Aplicar Resistência a não-prata",
-            "resistMeteorite": "Aplicar Resistência a não-meteoritos",
-            "initial": "Dano Inicial",
-            "totalSP": "Poder de Parada Total",
-            "improvedArmorPiercing": "(Após Perfuração Melhorada)",
-            "afterSPReduct": "Dano após redução de PP",
-            "armorPiercing": "(Ignorado devido a Perfura Armadura)",
-            "afterLocationModifier": "Dano após modificador de local",
-            "afterResistances": "Danos após resistências/vulnerabilidades",
-            "totalApplied": "Dano Total Aplicado",
-            "ablated": "A armadura foi ablada por ",
-            "crushingForce": "A armadura foi esmagada por ",
-            "NotEnough": "Não há dano suficiente para perfurar a armadura",
-            "ToMuchShield": "Todo o dano foi absorvido pelo escudo ou cobertura",
-            "isVulnerable": "Vulnerável ao Ataque",
-            "oilDmg": "Adicionar Dano de Óleo (+5)",
-            "shield": "Escudo",
-            "silverDmg": "Adicionar Dano de Prata",
-            "silver": "Prata",
-            "oil": "Óleo",
-            "activeEffect": "Efeito Ativo"
-        },
         "Context": {
             "applyDmg": "Aplicar Dano",
             "applyNonLethal": "Aplicar Dano Não-letal",
@@ -1078,8 +1112,7 @@
             "ImplyEffect": "Insinuar permite que você sugira algo de bom ou ruim sobre seu argumento atual. Se você conseguir, você reduz as defesas do seu oponente em -4. Você só pode usar Insinuar uma vez por combate.",
             "Bribe": "Suborno",
             "BribeEffect": "Para cada 50 coroas que oferece, você ganha +1 para as suas jogadas empáticas de Combate Verbal pelo resto do combate, se você tiver sucesso em sua jogada de Apostar.",
-            "None": "NENHUM",
-            "Defenses": "Defesas"
+            "None": "NENHUM"
         },
         "Effect": {
             "Rolled": "Rolado",
@@ -1206,18 +1239,18 @@
             "magic": {
                 "1-6": "Faíscas e estalos mágicos e você sofre 1 ponto de dano por cada ponto com que você vacilou, mas o feitiço ainda dispara.",
                 "7-9": "A magia que já está parcialmente atravessando você se incendeia. Não somente a magia falha, mas você sofre um efeito de vacilo elemental, conforme indicado abaixo.",
-                ">9": "Sua mágica explode com um efeito catastrófico. Você não sofre apenas um efeito de vacilo elemental, mas qualquer item de foco que você está carregando explode como se fosse uma bomba (causando 1d10 de dano) com um raio de 2 metros."
+                ">9": "Sua mágica explode com um efeito catastrófico. Você não sofre apenas um efeito de vacilo elemental, mas qualquer item de foco que você está carregando explode como se fosse uma bomba (causando [[1d10]] de dano) com um raio de 2 metros."
             },
             "meleeAttack": {
                 "6": "Sua arma quase desviou para longe e você está desequilibrado.",
                 "7": "Sua arma prendeu em um objeto próximo e leva 1 rodada para soltar",
-                "8": "Você danificou severamente a sua arma. Ela leva 1d10 pontos de dano de Durabilidade.",
-                "9": "Vvocê conseguiu se machucar. Jogue para saber o local.",
+                "8": "Você danificou severamente a sua arma. Ela leva [[1d10]] pontos de dano de Durabilidade.",
+                "9": "Você conseguiu se machucar. Jogue para saber o local.",
                 ">9": "Você feriu um aliado aleatório que está dentro do alcance. Faça uma jogada para saber onde o feriu."
             },
             "armedDefense": {
-                "6": "Sua arma leva 1d6 pontos extras de dano de Durabilidade.",
-                "7": "Sua arma é derrubada da sua mão e voa 1d6 metros em uma direção aleatória (veja Tabela de Dispersão).",
+                "6": "Sua arma leva [[1d6]] pontos extras de dano de Durabilidade.",
+                "7": "Sua arma é derrubada da sua mão e voa [[1d6]] metros em uma direção aleatória (veja Tabela de Dispersão).",
                 "8": "Você é derrubado ao chão. Você está agora prostrado e deve fazer um teste de resistência a Atordoamento.",
                 "9": "Sua arma leva 2d6 pontos extras de dano de Durabilidade.",
                 ">9": "Sua arma ricocheteia e bate em você. Jogue para saber o local."
@@ -1230,9 +1263,9 @@
             "unarmed": {
                 "6": "Você perde o equilíbrio e está Desequilibrado.",
                 "7": "Você tropeça em algo e fica prostrado.",
-                "8": "você tropeça e fica prostrado. Você deve fazer um teste de resistência a Atordoamento.",
-                "9": "Você tropeça e bate a sua cabeça. Você é derrubado, recebe 1d6 pontos de dano não-letal na cabeça e deve fazer um teste de resistência a Atordoamento.",
-                ">9": "Você não apenas fica prostrado, mas também recebe 1d6 de dano letal na cabeça e precisa fazer um teste de resistência a Atordoameto."
+                "8": "Você tropeça e fica prostrado. Você deve fazer um teste de resistência a Atordoamento.",
+                "9": "Você tropeça e bate a sua cabeça. Você é derrubado, recebe [[1d6]] pontos de dano não-letal na cabeça e deve fazer um teste de resistência a Atordoamento.",
+                ">9": "Você não apenas fica prostrado, mas também recebe [[1d6]] de dano letal na cabeça e precisa fazer um teste de resistência a Atordoameto."
             }
         },
         "Deprecations": {
