@@ -186,11 +186,11 @@ export default class WitcherActor extends Actor {
                 modifiedMax =
                     Math.floor((this.system.stats.will.current + this.system.stats.int.current) / divider) * 5 +
                     totalModifiers;
+            } else if (stat === 'focus') {
+                modifiedMax =
+                    Math.floor((this.system.stats.will.current + this.system.stats.int.current) / divider) * 3 +
+                    totalModifiers;
             }
-        } else if (stat === 'focus') {
-            modifiedMax =
-                Math.floor((this.system.stats.will.current + this.system.stats.int.current) / divider) * 3 +
-                totalModifiers;
         }
 
         this.system.derivedStats[stat].max = modifiedMax;
