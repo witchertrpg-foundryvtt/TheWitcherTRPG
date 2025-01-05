@@ -49,7 +49,6 @@ export let damageMixin = {
 
         const critList = this.system.critWounds;
         critList.push({
-            id: foundry.utils.randomID(),
             configEntry: wound,
             location: crit.location.name
         });
