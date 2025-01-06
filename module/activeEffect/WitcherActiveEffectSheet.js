@@ -176,7 +176,9 @@ export class WitcherActiveEffectConfig extends ActiveEffectConfig {
     }
 
     getDamageModifcators() {
-        return Object.keys(this.object.parent.system.damageTypeModification)
+        return Object.keys(
+            this.object.parent.system.damageTypeModification ?? this.object.parent.parent.system.damageTypeModification
+        )
             .map(key => {
                 return [
                     {
