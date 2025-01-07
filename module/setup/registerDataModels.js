@@ -20,12 +20,13 @@ import ClueData from '../data/investigation/clueData.js';
 import ObstacleData from '../data/investigation/obstacleData.js';
 import MysteryActorData from '../data/investigation/mysteryActorData.js';
 import GlobalModifierData from '../data/item/globalModifierData.js';
-import ActiveEffectData from '../data/activeEffects/activeEffectData.js';
+import WitcherActiveEffectData from '../data/activeEffects/witcherActiveEffectData.js';
 import SkillItemData from '../data/item/skillItemData.js';
 import HexData from '../data/item/hexData.js';
 import RitualData from '../data/item/ritualData.js';
 import AttackMessageData from '../data/chatMessage/attackMessageData.js';
 import WitcherChatMessage from '../chatMessage/witcherChatMessage.js';
+import WitcherTemporaryItemImprovementData from '../data/activeEffects/witcherTemporaryItemImprovementData.js';
 
 export const registerDataModels = () => {
     foundry.utils.mergeObject(CONFIG.Actor.dataModels, {
@@ -64,7 +65,8 @@ export const registerDataModels = () => {
         skill: SkillItemData
     });
 
-    CONFIG.ActiveEffect.dataModels.base = ActiveEffectData;
+    CONFIG.ActiveEffect.dataModels.base = WitcherActiveEffectData;
+    CONFIG.ActiveEffect.dataModels['temporaryItemImprovement'] = WitcherTemporaryItemImprovementData;
 
     CONFIG.ChatMessage.documentClass = WitcherChatMessage;
     CONFIG.ChatMessage.dataModels['attack'] = AttackMessageData;

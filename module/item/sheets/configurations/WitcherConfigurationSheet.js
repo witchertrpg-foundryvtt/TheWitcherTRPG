@@ -64,12 +64,19 @@ export default class WitcherConfigurationSheet extends ItemSheet {
                 type: 'inactive',
                 label: game.i18n.localize('WITCHER.activeEffect.inactive'),
                 effects: []
+            },
+            temporaryItemImprovement: {
+                type: 'temporaryItemImprovement',
+                label: game.i18n.localize('WITCHER.activeEffect.temporaryItemImprovement'),
+                effects: []
             }
         };
 
         // Iterate over active effects, classifying them into categories
         for (let e of effects) {
             if (e.disabled) categories.inactive.effects.push(e);
+            else if (e.isTemporaryItemImprovement && !e.isAppliedTemporaryItemImprovement)
+                categories.temporaryItemImprovement.effects.push(e);
             else if (e.isTemporary) categories.temporary.effects.push(e);
             else categories.passive.effects.push(e);
         }
@@ -91,11 +98,15 @@ export default class WitcherConfigurationSheet extends ItemSheet {
             case 'create':
                 return owner.createEmbeddedDocuments('ActiveEffect', [
                     {
-                        'name': owner.name,
-                        'icon': owner.img,
-                        'origin': owner.uuid,
-                        'duration.rounds': li.dataset.effectType === 'temporary' ? 1 : undefined,
-                        'disabled': li.dataset.effectType === 'inactive'
+                        type:
+                            li.dataset.effectType === 'temporaryItemImprovement' ? 'temporaryItemImprovement' : 'base',
+                        name: owner.name,
+                        icon: owner.img,
+                        origin: owner.uuid,
+                        duration: {
+                            rounds: li.dataset.effectType === 'temporary' ? 1 : undefined
+                        },
+                        disabled: li.dataset.effectType === 'inactive'
                     }
                 ]);
             case 'edit':

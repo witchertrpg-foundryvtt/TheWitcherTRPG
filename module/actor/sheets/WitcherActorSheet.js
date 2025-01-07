@@ -63,7 +63,13 @@ export default class WitcherActorSheet extends ActorSheet {
         this._prepareCritWounds(context);
 
         // Prepare active effects for easier access
-        context.effects = this.prepareActiveEffectCategories(this.actor.allApplicableEffects());
+        let temporaryItemImprovements = context.items
+            .map(item => item.effects.filter(effect => effect.isAppliedTemporaryItemImprovement))
+            .flat();
+
+        context.effects = this.prepareActiveEffectCategories(
+            Array.from(this.actor.allApplicableEffects()).concat(temporaryItemImprovements)
+        );
 
         context.isGM = game.user.isGM;
         return context;
