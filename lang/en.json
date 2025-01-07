@@ -1106,7 +1106,10 @@
                 "resistances": "Resistances",
                 "flat": "Flat Bonus",
                 "multi": "Multiplication",
-                "applyAP": "Apply AP to Multi"
+                "applyAP": "Apply AP to Multi",
+                "Item": {
+                    "damage": "Damage"
+                }
             }
         },
         "globalModifier": {
@@ -1129,7 +1132,8 @@
             "toggle": "Toggle",
             "temporary": "Temporary",
             "passive": "Passive",
-            "inactive": "Inactive"
+            "inactive": "Inactive",
+            "temporaryItemImprovement": "Temporary Item Improvement"
         },
         "character.socialStanding": "Social Standing",
         "socialStanding": {

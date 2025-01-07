@@ -4,11 +4,13 @@
             <h4 class="item-name header-name flexrow">{{localize section.label}}</h4>
             <h4 class="header-source">{{localize "WITCHER.activeEffect.source"}}</h4>
             <h4 class="header-source">{{localize "EFFECT.TabDuration"}}</h4>
-            <div class="item-controls header-controls flexrow">
-                <a class="effect-control" data-action="create" title="{{localize 'DOCUMENT.Create' type="Effect"}}">
-                    <i class="fas fa-plus"></i> {{localize "DOCUMENT.New" type="Effect"}}
-                </a>
-            </div>
+            {{#unless (and (eq section.type 'temporaryItemImprovement') ../actor)}}
+                <div class="item-controls header-controls flexrow">
+                    <a class="effect-control" data-action="create" title="{{localize 'DOCUMENT.Create' type="Effect"}}">
+                        <i class="fas fa-plus"></i> {{localize "DOCUMENT.New" type="Effect"}}
+                    </a>
+                </div>
+            {{/unless}}
         </li>
 
         <ol class="item-list effect-list">

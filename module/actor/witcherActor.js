@@ -412,6 +412,14 @@ export default class WitcherActor extends Actor {
         return Math.max(encumbranceModifier, 0);
     }
 
+    async applyStatus(effects) {
+        effects.forEach(effect => {
+            if (!this.statuses.find(status => status == effect.statusEffect)) {
+                this.toggleStatusEffect(effect.statusEffect);
+            }
+        });
+    }
+
     async useItem(itemId) {
         let item = this.items.get(itemId);
 
@@ -557,6 +565,7 @@ export default class WitcherActor extends Actor {
             if (numberOfItem) {
                 newItem.system.quantity = Number(numberOfItem);
             }
+
             await this.createEmbeddedDocuments('Item', [newItem]);
         }
     }
@@ -721,6 +730,19 @@ export default class WitcherActor extends Actor {
             locationFormula: locationFormula,
             modifier: modifier
         };
+    }
+
+    /**
+     * An array of ActiveEffect instances which are present on the Actor or Items which have a limited duration.
+     * @type {ActiveEffect[]}
+     */
+    get temporaryEffects() {
+        let temporaryEffects = super.temporaryEffects;
+
+        let temporaryItemImprovements = this.items
+            .map(item => item.effects.filter(effect => effect.isAppliedTemporaryItemImprovement))
+            .flat();
+        return temporaryEffects.concat(temporaryItemImprovements);
     }
 }
 

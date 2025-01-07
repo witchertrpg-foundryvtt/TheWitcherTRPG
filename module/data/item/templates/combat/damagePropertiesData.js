@@ -1,4 +1,4 @@
-import itemEffect from "../itemEffectData.js";
+import itemEffect from '../itemEffectData.js';
 
 const fields = foundry.data.fields;
 
@@ -25,6 +25,9 @@ export default function damageProperties() {
 
         variableDamage: new fields.BooleanField({ initial: false }),
 
-        effects: new fields.ArrayField(new fields.SchemaField(itemEffect()))
+        effects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
+
+        oilEffect: new fields.StringField({ initial: '' }),
+        silverDamage: new fields.StringField({ initial: '' })
     };
 }

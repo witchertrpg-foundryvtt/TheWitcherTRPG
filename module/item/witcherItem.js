@@ -2,10 +2,10 @@ import { extendedRoll } from '../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../scripts/rollConfig.js';
 import { WITCHER } from '../setup/config.js';
 import AbilityTemplate from './ability-template.js';
-import { applyActiveEffectToActorViaId } from '../scripts/activeEffects/applyActiveEffect.js';
 import RepairSystem from '../item/systems/repair.js';
 import { regionMixin } from './mixins/regionMixin.js';
 import { damageUtilMixin } from './mixins/damageUtilMixin.js';
+import { consumeMixin } from './mixins/consumeMixin.js';
 
 export default class WitcherItem extends Item {
     async _preCreate(data, options, user) {
@@ -326,62 +326,6 @@ export default class WitcherItem extends Item {
         }
     }
 
-    async consume() {
-        let properties = this.system.consumeProperties;
-        let messageInfos = {};
-        if (properties.doesHeal) {
-            let heal = parseInt(await this.calculateHealValue(properties.heal, this.actor));
-            this.actor?.update({ 'system.derivedStats.hp.value': this.actor.system.derivedStats.hp.value + heal });
-            messageInfos.heal = heal;
-        }
-
-        if (properties.appliesGlobalModifier) {
-            properties.consumeGlobalModifiers.forEach(modifier => this.actor._activateGlobalModifier(modifier));
-        }
-
-        this.applyStatus(this.actor, properties.effects);
-        applyActiveEffectToActorViaId(this.actor.uuid, this.uuid, 'applySelf');
-        this.createConsumeMessage(messageInfos);
-    }
-
-    async calculateHealValue(value, actor) {
-        let heal = value;
-        if (value.includes && value.includes('d')) {
-            heal = (await new Roll(value).evaluate()).total;
-        }
-        return parseInt(actor?.system.derivedStats.hp.value) + parseInt(heal) > actor?.system.derivedStats.hp.max
-            ? parseInt(actor?.system.derivedStats.hp.max) - parseInt(actor?.system.derivedStats.hp.value)
-            : heal;
-    }
-
-    async applyStatus(actor, effects) {
-        effects.forEach(effect => {
-            if (!actor.statuses.find(status => status == effect.statusEffect)) {
-                actor.toggleStatusEffect(effect.statusEffect);
-            }
-        });
-    }
-
-    async createConsumeMessage(messageInfos) {
-        const messageTemplate = 'systems/TheWitcherTRPG/templates/chat/item/consume.hbs';
-
-        let statusEffects = this.system.consumeProperties.effects.map(effect => {
-            return {
-                name: effect.name,
-                statusEffect: CONFIG.WITCHER.statusEffects.find(configEffect => configEffect.id == effect.statusEffect)
-            };
-        });
-
-        const content = await renderTemplate(messageTemplate, { item: this, messageInfos, statusEffects });
-        const chatData = {
-            content: content,
-            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
-        };
-
-        ChatMessage.create(chatData);
-    }
-
     async repair() {
         await RepairSystem.process(this.actor, this);
     }
@@ -393,7 +337,62 @@ export default class WitcherItem extends Item {
     get canBeRepaired() {
         return RepairSystem.canBeRepaired(this);
     }
+
+    /* -------------------------------------------- */
+    /*  Active Effects                              */
+    /* -------------------------------------------- */
+
+    prepareEmbeddedDocuments() {
+        super.prepareEmbeddedDocuments();
+        this.applyActiveEffects();
+    }
+
+    /**
+     * Get all ActiveEffects that may apply to this Item.
+     * @yields {ActiveEffect5e}
+     * @returns {Generator<ActiveEffect5e, void, void>}
+     */
+    *allApplicableEffects() {
+        for (const effect of this.effects) {
+            if (effect.isAppliedTemporaryItemImprovement) yield effect;
+        }
+    }
+
+    /* -------------------------------------------- */
+
+    /**
+     * Apply any transformation to the Item data which are caused by Effects.
+     */
+    applyActiveEffects() {
+        const overrides = {};
+
+        // Organize non-disabled effects by their application priority
+        const changes = [];
+        for (const effect of this.allApplicableEffects()) {
+            if (!effect.active) continue;
+            changes.push(
+                ...effect.changes.map(change => {
+                    const c = foundry.utils.deepClone(change);
+                    c.effect = effect;
+                    c.priority ??= c.mode * 10;
+                    return c;
+                })
+            );
+        }
+        changes.sort((a, b) => a.priority - b.priority);
+
+        // Apply all changes
+        for (const change of changes) {
+            if (!change.key) continue;
+            const changes = change.effect.apply(this, change);
+            Object.assign(overrides, changes);
+        }
+
+        // Expand the set of final overrides
+        this.overrides = foundry.utils.expandObject(overrides);
+    }
 }
 
+Object.assign(WitcherItem.prototype, consumeMixin);
 Object.assign(WitcherItem.prototype, regionMixin);
 Object.assign(WitcherItem.prototype, damageUtilMixin);

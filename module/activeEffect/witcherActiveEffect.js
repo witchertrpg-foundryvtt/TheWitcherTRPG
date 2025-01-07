@@ -16,4 +16,16 @@ export default class WitcherActiveEffect extends ActiveEffect {
     get isDisabled() {
         return this.disabled || !(this.parent?.system?.equipped ?? true);
     }
+
+    /**
+     * Is this effect an temporary Item Improvement on an item
+     * @type {boolean}
+     */
+    get isAppliedTemporaryItemImprovement() {
+        return this.system.isTransferred;
+    }
+
+    get isTemporaryItemImprovement() {
+        return this.type === 'temporaryItemImprovement';
+    }
 }

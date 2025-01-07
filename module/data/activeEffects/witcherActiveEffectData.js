@@ -1,6 +1,6 @@
 const fields = foundry.data.fields;
 
-export default class ActiveEffectData extends foundry.abstract.TypeDataModel {
+export default class WitcherActiveEffectData extends foundry.abstract.TypeDataModel {
     static defineSchema() {
         return {
             applySelf: new fields.BooleanField({ initial: false }),
