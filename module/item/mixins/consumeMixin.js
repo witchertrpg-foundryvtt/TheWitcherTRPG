@@ -67,9 +67,7 @@ export let consumeMixin = {
                 },
                 duration: {
                     ...temp.duration,
-                    combat: ui.combat.combats.find(combat => combat.isActive)?.id,
-                    startRound: ui.combat.combats.find(combat => combat.isActive)?.current.round,
-                    startTurn: ui.combat.combats.find(combat => combat.isActive)?.current.turn
+                    combat: ui.combat.combats.find(combat => combat.isActive)?.id
                 }
             };
         });

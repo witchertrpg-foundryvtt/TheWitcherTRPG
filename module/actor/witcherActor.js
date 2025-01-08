@@ -10,10 +10,24 @@ import { weaponAttackMixin } from './mixins/weaponAttackMixin.js';
 import { verbalCombatMixin } from './mixins/verbalCombatMixin.js';
 import { defenseMixin } from './mixins/defenseMixin.js';
 import { damageMixin } from './mixins/damageMixin.js';
+import { activeEffectMixin } from './mixins/activeEffectMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
 export default class WitcherActor extends Actor {
+    /**
+     * An array of ActiveEffect instances which are present on the Actor or Items which have a limited duration.
+     * @type {ActiveEffect[]}
+     */
+    get temporaryEffects() {
+        let temporaryEffects = super.temporaryEffects;
+
+        let temporaryItemImprovements = this.items
+            .map(item => item.effects.filter(effect => effect.isAppliedTemporaryItemImprovement))
+            .flat();
+        return temporaryEffects.concat(temporaryItemImprovements);
+    }
+
     prepareDerivedData() {
         super.prepareDerivedData();
 
@@ -731,19 +745,6 @@ export default class WitcherActor extends Actor {
             modifier: modifier
         };
     }
-
-    /**
-     * An array of ActiveEffect instances which are present on the Actor or Items which have a limited duration.
-     * @type {ActiveEffect[]}
-     */
-    get temporaryEffects() {
-        let temporaryEffects = super.temporaryEffects;
-
-        let temporaryItemImprovements = this.items
-            .map(item => item.effects.filter(effect => effect.isAppliedTemporaryItemImprovement))
-            .flat();
-        return temporaryEffects.concat(temporaryItemImprovements);
-    }
 }
 
 Object.assign(WitcherActor.prototype, modifierMixin);
@@ -754,3 +755,4 @@ Object.assign(WitcherActor.prototype, damageMixin);
 Object.assign(WitcherActor.prototype, castSpellMixin);
 Object.assign(WitcherActor.prototype, verbalCombatMixin);
 Object.assign(WitcherActor.prototype, locationMixin);
+Object.assign(WitcherActor.prototype, activeEffectMixin);
