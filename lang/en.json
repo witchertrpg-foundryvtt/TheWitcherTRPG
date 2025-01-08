@@ -180,6 +180,7 @@
                 "bypassesWornArmor": "Bypasses worn armor",
                 "bypassesNaturalArmor": "Bypasses natural armor",
                 "variableDamage": "Variable Damage",
+                "silverDamage": "Silver Damage Formula",
                 "defenseDifferenceMultiplier": "Damage is multiplied by difference of defense (not functional)",
                 "defenseMultiplierCap": "Multiplier is capped at (not functional)"
             },
@@ -228,8 +229,8 @@
             "damageType": "What type of damage",
             "ChangeLocation": "Change The Location",
             "CurrentLocation": "Current location",
-            "resistSilver": "Apply Resistance to non-silver",
-            "resistMeteorite": "Apply Resistance to non-meteorite",
+            "resistNonSilver": "Apply Resistance to non-silver",
+            "resistNonMeteorite": "Apply Resistance to non-meteorite",
             "initial": "Initial Damage",
             "totalSP": "Total Stopping Power",
             "improvedArmorPiercing": "(After Improved Armor Piercing)",
