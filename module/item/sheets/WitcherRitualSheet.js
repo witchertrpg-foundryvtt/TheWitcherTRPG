@@ -4,10 +4,6 @@ import WitcherItemSheet from './WitcherItemSheet.js';
 export default class WitcherRitualSheet extends WitcherItemSheet {
     configuration = new WitcherConfigurationSheet(this.item);
 
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/ritual-sheet.hbs`;
-    }
-
     /** @inheritdoc */
     _canDragStart(selector) {
         return true;

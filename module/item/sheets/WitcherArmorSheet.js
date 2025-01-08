@@ -5,10 +5,6 @@ import { associatedDiagramMixin } from './mixins/associatedDiagramMixin.js';
 export default class WitcherArmorSheet extends WitcherItemSheet {
     configuration = new WitcherConfigurationSheet(this.item);
 
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/armor-sheet.hbs`;
-    }
-
     /** @inheritdoc */
     _canDragStart(selector) {
         return true;

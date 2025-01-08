@@ -21,6 +21,7 @@
             "mutagen",
             "note",
             "profession",
+            "homeland",
             "race",
             "spell",
             "hex",
@@ -49,6 +50,7 @@
         "hex": {},
         "ritual": {},
         "profession": {},
+        "homeland": {},
         "note": {},
         "race": {},
         "effect": {}

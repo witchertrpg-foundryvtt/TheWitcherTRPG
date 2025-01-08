@@ -6,9 +6,6 @@ export default class WitcherSpellSheet extends WitcherItemSheet {
 
     configuration = new WitcherSpellConfigurationSheet(this.item);
 
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/spell-sheet.hbs`;
-    }
 
     /** @inheritdoc */
     _canDragDrop(selector) {

@@ -27,6 +27,7 @@ import RitualData from '../data/item/ritualData.js';
 import AttackMessageData from '../data/chatMessage/attackMessageData.js';
 import WitcherChatMessage from '../chatMessage/witcherChatMessage.js';
 import WitcherTemporaryItemImprovementData from '../data/activeEffects/witcherTemporaryItemImprovementData.js';
+import HomelandData from '../data/item/homelandData.js';
 
 export const registerDataModels = () => {
     foundry.utils.mergeObject(CONFIG.Actor.dataModels, {
@@ -52,6 +53,7 @@ export const registerDataModels = () => {
         mutagen: MutagenData,
         note: NoteData,
         profession: ProfessionData,
+        homeland: HomelandData,
         race: RaceData,
         spell: SpellData,
         hex: HexData,

@@ -4,9 +4,6 @@ import WitcherConsumableConfigurationSheet from './configurations/WitcherConsuma
 export default class WitcherMutagenSheet extends WitcherItemSheet {
     configuration = new WitcherConsumableConfigurationSheet(this.item);
 
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/mutagen-sheet.hbs`;
-    }
 
     /** @override */
     getData() {

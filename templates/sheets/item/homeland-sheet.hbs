@@ -1,0 +1,16 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{#if showConfig}}
+        <a class="configure-item"><i class="fas fa-gear"></i></a>
+    {{/if}}
+    <header class="sheet-header">
+        <div>
+            <select name="system.value" class="details" id="homeland-select">
+                {{selectOptions config.homelands selected=item.system.value localize=true}}
+            </select>
+            {{#if (eq item.system.value "other")}}
+                <input class="details hometailOther" name="system.otherValue" type="text"
+                    value="{{item.system.otherValue}}" />
+            {{/if}}
+        </div>
+    </header>
+</form>

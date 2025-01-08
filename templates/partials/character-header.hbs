@@ -68,11 +68,21 @@
                 -
             </span>
             <span>
-                {{#if (eq system.general.homeland.value 'other')}}
-                    {{system.general.homeland.otherValue}}
-                    -
-                {{else}}
-                    {{localize (concat 'WITCHER.Homelands.' system.general.homeland.value)}}
+                {{#unless homeland}}
+                    {{#if (eq system.general.homeland.value 'other')}}
+                        {{system.general.homeland.otherValue}}
+                        -
+                    {{else}}
+                        {{localize (concat 'WITCHER.Homelands.' system.general.homeland.value)}}
+                    {{/if}}
+                {{/unless}}
+                {{#if homeland}}
+                    {{#if (eq homeland.system.value 'other')}}
+                        {{homeland.system.otherValue}}
+                        -
+                    {{else}}
+                        {{localize (concat 'WITCHER.Homelands.' homeland.system.value)}}
+                    {{/if}}
                 {{/if}}
                 <select name='system.general.socialStanding'>
                     {{selectOptions config.socialStanding selected=system.general.socialStanding localize=true}}
@@ -95,13 +105,16 @@
                                             {{details.current}}</a>
                                         {{#if (gt details.current details.max)}}
                                             <h4 class='header-stat stat-mod stat-mod-plus'>
-                                                {{formatModLabel details.current details.max}}</h4>
+                                                {{formatModLabel details.current details.max}}
+                                            </h4>
                                         {{else if (eq details.current details.max)}}
                                             <h4 class='header-stat stat-mod stat-mod-zero'>
-                                                {{formatModLabel details.current details.max}}</h4>
+                                                {{formatModLabel details.current details.max}}
+                                            </h4>
                                         {{else}}
                                             <h4 class='header-stat stat-mod stat-mod-minus'>
-                                                {{formatModLabel details.current details.max}}</h4>
+                                                {{formatModLabel details.current details.max}}
+                                            </h4>
                                         {{/if}}
                                         <input class='header-stat stat-max' name='system.stats.{{stat}}.max'
                                             type='number' value='{{details.max}}' placeholder='0' data-dtype='Number' />

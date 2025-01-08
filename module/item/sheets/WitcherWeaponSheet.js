@@ -5,10 +5,6 @@ import { associatedDiagramMixin } from './mixins/associatedDiagramMixin.js';
 export default class WitcherWeaponSheet extends WitcherItemSheet {
     configuration = new WitcherDamagePropertiesConfigurationSheet(this.item);
 
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/weapon-sheet.hbs`;
-    }
-
     /** @inheritdoc */
     _canDragStart(selector) {
         return true
