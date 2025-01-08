@@ -1,10 +1,9 @@
 import WitcherActorSheet from './WitcherActorSheet.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
-import RepairSystem from '../../item/systems/repair.js';
 
 export default class WitcherCharacterSheet extends WitcherActorSheet {
-    uniqueTypes = ['profession', 'race'];
+    uniqueTypes = ['profession', 'race', 'homeland'];
 
     /** @override */
     static get defaultOptions() {
@@ -53,7 +52,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         let actor = context.actor;
 
         context.profession = actor.getList('profession')[0];
-
+        context.homeland = actor.getList('homeland')[0];
         context.race = actor.getList('race')[0];
 
         context.totalStats = this.calc_total_stats(context);

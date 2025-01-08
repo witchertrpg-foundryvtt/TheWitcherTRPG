@@ -3,14 +3,25 @@
         <div class="background scrollable general-section">
             <div class="general-homeland">
                 {{localize "WITCHER.Homeland"}}
-                <div class="homeland-select">
-                    <select name="system.general.homeland.value" class="details" id="homeland-select">
-                        {{selectOptions config.homelands selected=system.general.homeland.value localize=true}}
-                    </select>
-                    {{#if (eq system.general.homeland.value "other")}}
-                        <input class="details hometailOther" name="system.general.homeland.otherValue" type="text" value="{{system.general.homeland.otherValue}}" />
-                    {{/if}}
-                </div>
+                {{#unless homeland}}
+                    <div class="homeland-select">
+                        <select name="system.general.homeland.value" class="details" id="homeland-select">
+                            {{selectOptions config.homelands selected=system.general.homeland.value localize=true}}
+                        </select>
+                        {{#if (eq system.general.homeland.value "other")}}
+                            <input class="details hometailOther" name="system.general.homeland.otherValue" type="text"
+                                value="{{system.general.homeland.otherValue}}" />
+                        {{/if}}
+                    </div>
+                {{/unless}}
+                {{#if homeland}}
+                    <div class="homeland-select">
+                        <label> {{localize (lookup config.homelands homeland.system.value)}} </label>
+                        {{#if (eq homeland.system.value "other")}}
+                            <label class="details hometailOther">{{homeland.system.otherValue}}</label>
+                        {{/if}}
+                    </div>
+                {{/if}}
             </div>
             {{#each system.general.details as |details dt|}}
                 <div class="general-info">
@@ -30,18 +41,23 @@
             <div class="life-events-section">
                 <div class="life-events-header">
                     <h2>{{localize "WITCHER.LifeEvents"}}</h2>
-                    <h2 class="life-events-decades"><input id="item-count" class="life-events-decades" name="system.lifeEventCounter" min="1" max="20" value="{{system.lifeEventCounter}}" type="number">/20</h2>
+                    <h2 class="life-events-decades"><input id="item-count" class="life-events-decades"
+                            name="system.lifeEventCounter" min="1" max="20" value="{{system.lifeEventCounter}}"
+                            type="number">/20</h2>
                 </div>
                 <div class="life-events">
                     {{#eachLimit system.general.lifeEvents system.lifeEventCounter}}
-                        <div class="tablerow life-events-card {{this.lifeEvent.key}}" data-event="{{this.lifeEvent.key}}">
+                        <div class="tablerow life-events-card {{this.lifeEvent.key}}"
+                            data-event="{{this.lifeEvent.key}}">
                             <div class="life-events-card-header">
                                 <h4>{{this.lifeEvent.key}}</h4>
                                 {{#unless this.lifeEvent.isOpened}}
                                     <h4>{{this.lifeEvent.value}}</h4>
                                 {{/unless}}
                                 {{#if this.lifeEvent.isOpened}}
-                                    <input class="input life-events-details" id="life-events-input" name="system.general.lifeEvents.{{this.lifeEvent.key}}.value" type="text" value="{{this.lifeEvent.value}}" />
+                                    <input class="input life-events-details" id="life-events-input"
+                                        name="system.general.lifeEvents.{{this.lifeEvent.key}}.value" type="text"
+                                        value="{{this.lifeEvent.value}}" />
                                 {{/if}}
                                 <div class="life-events-controls">
                                     {{#unless this.lifeEvent.isOpened}}
@@ -54,7 +70,8 @@
                             </div>
                             {{#if this.lifeEvent.isOpened}}
                                 <div>
-                                    <textarea class="life-events-details" name="system.general.lifeEvents.{{this.lifeEvent.key}}.details">{{this.lifeEvent.details}}</textarea>
+                                    <textarea class="life-events-details"
+                                        name="system.general.lifeEvents.{{this.lifeEvent.key}}.details">{{this.lifeEvent.details}}</textarea>
                                 </div>
                             {{/if}}
                         </div>
@@ -70,22 +87,24 @@
         </div>
         <div class="notes">
             {{#each oldNotes as |note id|}}
-            <div class="item bg-note" data-item-id="{{note._id}}">
-                <div class="note-header">
-                    <input class="inline-edit" data-field="name" type="text" value="{{note.name}}" placeholder="name" />
-                    <a class="item-delete"><i class="fas fa-trash"></i></a>
+                <div class="item bg-note" data-item-id="{{note._id}}">
+                    <div class="note-header">
+                        <input class="inline-edit" data-field="name" type="text" value="{{note.name}}"
+                            placeholder="name" />
+                        <a class="item-delete"><i class="fas fa-trash"></i></a>
+                    </div>
+                    <textarea class="inline-edit" rows="5"
+                        data-field="system.description">{{system.description}}</textarea>
                 </div>
-                <textarea class="inline-edit" rows="5" data-field="system.description">{{system.description}}</textarea>
-            </div>
             {{/each}}
             {{#each notes as |note|}}
-            <div class="item bg-note">
-                <div class="flex">
-                    <input type="text" name="system.notes.{{@index}}.title" value="{{note.title}}" />
-                    <a class="delete-note" data-note-index="{{@index}}"><i class="fas fa-trash-alt"></i></a>
+                <div class="item bg-note">
+                    <div class="flex">
+                        <input type="text" name="system.notes.{{@index}}.title" value="{{note.title}}" />
+                        <a class="delete-note" data-note-index="{{@index}}"><i class="fas fa-trash-alt"></i></a>
+                    </div>
+                    {{editor note.details target=(concat "system.notes." @index ".details") button=true }}
                 </div>
-                {{editor note.details target=(concat "system.notes." @index ".details") button=true }}
-            </div>
             {{/each}}
         </div>
     </div>

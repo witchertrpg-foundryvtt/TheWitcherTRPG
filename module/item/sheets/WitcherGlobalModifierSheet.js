@@ -3,7 +3,7 @@ import { WITCHER } from '../../setup/config.js';
 
 export default class WitcherGlobalModifierSheet extends WitcherItemSheet {
     get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/globalModifier-sheet.hbs`;
+        return `systems/TheWitcherTRPG/templates/sheets/item/globalModifier-sheet.hbs`;
     }
 
     /** @override */

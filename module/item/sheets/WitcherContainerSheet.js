@@ -15,10 +15,6 @@ export default class WitcherContainerSheet extends WitcherItemSheet {
     "container"
   ]
 
-  get template() {
-    return `systems/TheWitcherTRPG/templates/sheets/container-sheet.hbs`;
-  }
-
   activateListeners(html) {
     super.activateListeners(html);
     html.find(".remove-item").on("click", this._onRemoveItem.bind(this));
