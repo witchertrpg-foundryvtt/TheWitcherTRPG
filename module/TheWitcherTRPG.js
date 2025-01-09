@@ -1,6 +1,5 @@
 import { WITCHER } from './setup/config.js';
 import * as Chat from './scripts/chat.js';
-import * as Attack from './scripts/combat/attack.js';
 import * as VerbalCombat from './scripts/verbalCombat/verbalCombat.js';
 import * as VerbalCombatDefense from './scripts/verbalCombat/verbalCombatDefense.js';
 import * as Combat from './scripts/combat/combat.js';
@@ -108,7 +107,7 @@ Hooks.on('renderChatLog', (app, html, data) => {
 });
 
 Hooks.on('renderChatMessage', (message, html, data) => {
-    Attack.chatMessageListeners(message, html);
+    Combat.attackChatMessageListeners(message, html);
     VerbalCombat.chatMessageListeners(message, html);
     ApplyStatusEffects.chatMessageListeners(message, html);
 });

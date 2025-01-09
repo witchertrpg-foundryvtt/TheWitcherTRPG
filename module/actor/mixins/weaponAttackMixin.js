@@ -1,6 +1,5 @@
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
-import { rollDamage } from '../../scripts/combat/attack.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -336,7 +335,7 @@ export let weaponAttackMixin = {
 
             messageData.flavor += `<button class="damage">${game.i18n.localize('WITCHER.table.Damage')}</button>`;
             if (weapon.system.rollOnlyDmg) {
-                rollDamage(weapon, damage);
+                weapon.rollDamage(damage);
             } else {
                 messageData.flags = {
                     TheWitcherTRPG: {
