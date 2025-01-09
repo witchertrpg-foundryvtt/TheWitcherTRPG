@@ -1,4 +1,4 @@
-import { RollConfig } from "../rollConfig.js";
+import { RollConfig } from '../rollConfig.js';
 
 /**
  * @param {string} rollFormula rollFormula to apply
@@ -58,9 +58,7 @@ export async function extendedRoll(rollFormula, messageData, config = new RollCo
         roll = extraRoll;
     }
 
-    if (messageData.type === 'attack') {
-        messageData.system.attackRoll = roll.total;
-    }
+    messageData.system.rollTotal = roll.total;
 
     //calculate overall success/failure for the attack/defense
     if (config.showSuccess && config.threshold >= 0) {

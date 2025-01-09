@@ -11,6 +11,7 @@ import { itemContextMenu } from './interactions/itemContextMenu.js';
 import { activeEffectMixin } from './mixins/activeEffectMixin.js';
 import { specialSkillModifierMixin } from './mixins/specialSkillModifierMixin.js';
 import { customSkillMixin } from './mixins/customSkillMixin.js';
+import ChatMessageData from '../../chatMessage/chatMessageData.js';
 
 Array.prototype.sum = function (prop) {
     var total = 0;
@@ -251,9 +252,7 @@ export default class WitcherActorSheet extends ActorSheet {
 
     async _onCritRoll(event) {
         let rollResult = await new Roll('1d10x10').evaluate({ async: true });
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this.actor })
-        };
+        let messageData = new ChatMessageData(this.actor);
         rollResult.toMessage(messageData);
     }
 

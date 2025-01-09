@@ -9,6 +9,8 @@ export default class BaseMessageData extends foundry.abstract.DataModel {
     });
 
     static defineSchema() {
-        return {};
+        return {
+            rollTotal: new fields.NumberField()
+        };
     }
 }

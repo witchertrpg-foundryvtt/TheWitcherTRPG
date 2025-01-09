@@ -1,3 +1,4 @@
+import ChatMessageData from '../../chatMessage/chatMessageData.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 
@@ -61,9 +62,7 @@ export let verbalCombatMixin = {
                                 : `+${customAtt}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
                         }
 
-                        let messageData = {
-                            speaker: ChatMessage.getSpeaker({ actor: this })
-                        };
+                        let messageData = new ChatMessageData(this);
                         messageData.flavor = `
             <div class="verbal-combat-attack-message">
               <h2>${game.i18n.localize('WITCHER.verbalCombat.Title')}: ${game.i18n.localize(vcName)}</h2>

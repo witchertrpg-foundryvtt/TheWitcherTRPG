@@ -11,6 +11,7 @@ import { verbalCombatMixin } from './mixins/verbalCombatMixin.js';
 import { defenseMixin } from './mixins/defenseMixin.js';
 import { damageMixin } from './mixins/damageMixin.js';
 import { activeEffectMixin } from './mixins/activeEffectMixin.js';
+import ChatMessageData from '../chatMessage/chatMessageData.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -231,10 +232,7 @@ export default class WitcherActor extends Actor {
 
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this }),
-            flavor: `${attributeLabel}: ${skillLabel} Check`
-        };
+        let messageData = new ChatMessageData(this, `${attributeLabel}: ${skillLabel} Check`);
 
         let rollFormula = '1d10 +';
         if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
@@ -346,10 +344,7 @@ export default class WitcherActor extends Actor {
 
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this }),
-            flavor: `${attributeLabel}: ${skillLabel} Check`
-        };
+        let messageData = new ChatMessageData(this, `${attributeLabel}: ${skillLabel} Check`);
 
         let rollFormula;
         if (this.system.dontAddAttr) {

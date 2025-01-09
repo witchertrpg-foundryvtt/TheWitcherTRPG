@@ -1,3 +1,4 @@
+import ChatMessageData from '../../../chatMessage/chatMessageData.js';
 import { RollConfig } from '../../../scripts/rollConfig.js';
 import { extendedRoll } from '../../../scripts/rolls/extendedRoll.js';
 
@@ -22,15 +23,12 @@ export let deathsaveMixin = {
         }
         stunBase -= this.actor.system.deathSaves;
 
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            flavor: `
+        let messageData = new ChatMessageData(this.actor, `
           <h2>${game.i18n.localize('WITCHER.DeathSave')}</h2>
           <div class="roll-summary">
               <div class="dice-formula">${game.i18n.localize('WITCHER.Chat.SaveText')} <b>${stunBase}</b></div>
           </div>
-          <hr />`
-        };
+          <hr />`);
 
         let config = new RollConfig();
         config.reversal = true;

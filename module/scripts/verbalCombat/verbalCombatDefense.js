@@ -1,6 +1,7 @@
 import { extendedRoll } from '../rolls/extendedRoll.js';
 import { getInteractActor } from '../helper.js';
 import { RollConfig } from '../rollConfig.js';
+import ChatMessageData from '../../chatMessage/chatMessageData.js';
 
 export function addVerbalCombatDefenseMessageContextOptions(html, options) {
     let canDefend = li => li.find('.verbal-combat-attack-message').length;
@@ -87,9 +88,7 @@ async function executeDefenseCallback(actor, totalAttack, html) {
             : `+${customAtt}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
     }
 
-    let messageData = {
-        speaker: ChatMessage.getSpeaker({ actor: actor })
-    };
+    let messageData = new ChatMessageData(actor);
     messageData.flavor = `
             <div class="verbal-combat-attack-message">
               <h2>${game.i18n.localize('WITCHER.verbalCombat.Title')}: ${game.i18n.localize(vcName)}</h2>

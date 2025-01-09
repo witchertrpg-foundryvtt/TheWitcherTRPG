@@ -1,3 +1,4 @@
+import ChatMessageData from '../../chatMessage/chatMessageData.js';
 import { applyActiveEffectToActor, applyActiveEffectToTargets } from '../../scripts/activeEffects/applyActiveEffect.js';
 import { applyModifierToActor, applyModifierToTargets } from '../../scripts/globalModifier/applyGlobalModifier.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
@@ -246,21 +247,21 @@ export let castSpellMixin = {
             templateInfo,
             damage
         });
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this }),
-            flavor: chatMessage,
-            type: 'attack',
-            system: {
+        let messageData = new ChatMessageData(
+            this,
+            chatMessage,
+            'attack',
+            {
                 attacker: this.uuid,
                 defenseOptions: spellItem.system.defenseOptions
             },
-            flags: {
+            {
                 TheWitcherTRPG: {
                     attack: spellItem.getSpellFlags(),
                     damage: damage
                 }
             }
-        };
+        );
 
         let config = new RollConfig({ showResult: false });
 

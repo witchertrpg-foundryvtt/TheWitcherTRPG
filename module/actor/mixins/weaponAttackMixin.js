@@ -1,3 +1,4 @@
+import ChatMessageData from '../../chatMessage/chatMessageData.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import { rollDamage } from '../../scripts/combat/attack.js';
 
@@ -29,15 +30,15 @@ export let weaponAttackMixin = {
         }
 
         let attackSkill = weapon.getItemAttackSkill();
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this }),
-            type: 'attack',
-            system: {
+        let messageData = new ChatMessageData(
+            this,
+            `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`,
+            'attack',
+            {
                 attacker: this.uuid,
                 defenseOptions: weapon.system.defenseOptions
-            },
-            flavor: `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`
-        };
+            }
+        );
 
         let ammunitions = ``;
         let noAmmo = 0;

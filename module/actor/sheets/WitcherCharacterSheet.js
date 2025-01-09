@@ -1,6 +1,7 @@
 import WitcherActorSheet from './WitcherActorSheet.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
+import ChatMessageData from '../../chatMessage/chatMessageData.js';
 
 export default class WitcherCharacterSheet extends WitcherActorSheet {
     uniqueTypes = ['profession', 'race', 'homeland'];
@@ -166,10 +167,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
 
         let content = `<label>${game.i18n.localize('WITCHER.Dialog.Crafting')} ${item.name}</label> <br />`;
 
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            flavor: `<h1>Crafting</h1>`
-        };
+        let messageData = new ChatMessageData(this.actor, `<h1>Crafting</h1>`);
 
         let areCraftComponentsEnough = true;
 
@@ -266,10 +264,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
 
         let content = `<label>${game.i18n.localize('WITCHER.Dialog.Crafting')} ${item.name}</label> <br />`;
 
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            flavor: `<h1>Crafting</h1>`
-        };
+        let messageData = new ChatMessageData(this.actor, `<h1>Crafting</h1>`);
 
         let areCraftComponentsEnough = true;
         content += `<div class="components-display">`;

@@ -4,6 +4,7 @@ import { applyModifierToActor } from '../../scripts/globalModifier/applyGlobalMo
 import { applyStatusEffectToActor } from '../../scripts/statusEffects/applyStatusEffect.js';
 import { applyActiveEffectToActorViaId } from '../../scripts/activeEffects/applyActiveEffect.js';
 import { getRandomInt } from '../../scripts/helper.js';
+import ChatMessageData from '../../chatMessage/chatMessageData.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -161,10 +162,7 @@ export let defenseMixin = {
             rollFormula = '10[Stun]';
         }
 
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this }),
-            flavor: `<h1>${game.i18n.localize('WITCHER.Dialog.Defense')}</h1>`
-        };
+        let messageData = new ChatMessageData(this);
         messageData.flavor = `<h1>${game.i18n.localize('WITCHER.Dialog.Defense')}: ${game.i18n.localize('WITCHER.Dialog.DefenseOptions.' + defenseAction)}</h1><p>${displayFormula}</p>`;
 
         let roll = await extendedRoll(
