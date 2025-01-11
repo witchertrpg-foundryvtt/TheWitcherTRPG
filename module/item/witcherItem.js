@@ -73,6 +73,7 @@ export default class WitcherItem extends Item {
             },
             attackSkill: this.system.attackSkill,
             item: this,
+            itemUuid: this.uuid,
             owner: this.parent.uuid
         };
     }
@@ -85,6 +86,7 @@ export default class WitcherItem extends Item {
             },
             spell: this,
             item: this,
+            itemUuid: this.uuid,
             owner: this.parent.uuid
         };
     }

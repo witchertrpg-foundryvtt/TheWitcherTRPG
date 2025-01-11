@@ -19,7 +19,7 @@ export const attackChatMessageListeners = async (message, html) => {
 };
 
 function onDamage(message) {
-    let item = message.getFlag('TheWitcherTRPG', 'attack').item;
+    let item = fromUuidSync(message.getFlag('TheWitcherTRPG', 'attack').itemUuid);
     let damage = message.getFlag('TheWitcherTRPG', 'damage');
 
     item.rollDamage(damage);
