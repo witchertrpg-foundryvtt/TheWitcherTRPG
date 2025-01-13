@@ -78,7 +78,7 @@ async function createApplyDamageDialog(actor, damageObject) {
 
     content += `<label>${game.i18n.localize('WITCHER.Damage.isVulnerable')}: <input type="checkbox" name="vulnerable"></label><br />
     <label>${game.i18n.localize('WITCHER.Damage.oilDmg')}: <input type="checkbox" name="oilDmg"></label><br />
-    <label>${game.i18n.localize('WITCHER.Damage.silverDmg') + " (Deprecated)"}: <select name="silverDmg">${silverOptions}</select></label><br />`;
+    <label>${game.i18n.localize('WITCHER.Damage.silverDmg') + ' (Deprecated)'}: <select name="silverDmg">${silverOptions}</select></label><br />`;
 
     let { newLocation, resistNonSilver, resistNonMeteorite, isVulnerable, addOilDmg, silverDmg } =
         await DialogV2.prompt({
@@ -183,8 +183,8 @@ async function applyDamage(actor, dialogData, totalDamage, damageObject, derived
     }
 }
 
-async function applyDamageToLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, derivedStat) {
-    let damageResult = await calculateDamageWithLocation(actor, dialogData, damage, totalDamage, infoTotalDmg);
+async function applyDamageToLocation(actor, dialogData, damageObject, totalDamage, infoTotalDmg, derivedStat) {
+    let damageResult = await calculateDamageWithLocation(actor, dialogData, damageObject, totalDamage, infoTotalDmg);
 
     if (damageResult.blockedBySp) {
         createDamageBlockedBySp(
@@ -236,9 +236,9 @@ async function applyDamageToAllLocations(actor, dialogData, damage, totalDamage,
     });
 }
 
-async function calculateDamageWithLocation(actor, dialogData, damage, totalDamage, infoTotalDmg) {
-    let damageProperties = damage.damageProperties;
-    let location = damage.location;
+async function calculateDamageWithLocation(actor, dialogData, damageObject, totalDamage, infoTotalDmg) {
+    let damageProperties = damageObject.damageProperties;
+    let location = damageObject.location;
 
     let locationArmor = getLocationArmor(actor, location, damageProperties);
     let armorSet = locationArmor.armorSet;
@@ -267,7 +267,7 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
         infoAfterSPReduction += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
     }
 
-    let spDamage = applyAlwaysSpDamage(location, damageProperties, armorSet);
+    let spDamage = await applyAlwaysSpDamage(location, damageProperties, armorSet);
 
     if (totalDamage <= 0 && silverDamage <= 0) {
         return {
@@ -281,7 +281,7 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
         };
     }
 
-    let flatDamageMod = actor.getFlatDamageMod(damage);
+    let flatDamageMod = actor.getFlatDamageMod(damageObject);
 
     totalDamage = Math.floor(location.locationFormula * totalDamage);
     silverDamage = Math.floor(location.locationFormula * silverDamage);
@@ -294,7 +294,7 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
         infoAfterLocation += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
     }
 
-    totalDamage = calculateResistances(actor, totalDamage, damage, armorSet);
+    totalDamage = calculateResistances(actor, totalDamage, damageObject, armorSet);
 
     if (dialogData?.resistNonSilver || dialogData?.resistNonMeteorite) {
         totalDamage = Math.floor(0.5 * totalDamage);
