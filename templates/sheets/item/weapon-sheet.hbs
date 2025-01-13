@@ -20,18 +20,6 @@
                 <label>{{localize "WITCHER.Weapon.isAmmunition"}}</label>
                 <input type="checkbox" name="system.isAmmo" {{checked item.system.isAmmo}} />
             </div>
-            <div class="item-option-tickbox">
-                <label>{{localize "WITCHER.Weapon.isThrowable"}}</label>
-                <input type="checkbox" name="system.isThrowable" {{checked item.system.isThrowable}} />
-            </div>
-        </div>
-        <div class="item-column">
-            {{#unless item.system.isAmmo}}
-                <label>{{localize "WITCHER.Weapon.AttackSkill"}}:</label>
-                <select name="system.attackSkill">
-                    {{selectOptions config.attackSkills selected=item.system.attackSkill valueAttr="name" nameAttr="name" labelAttr="label" localize=true}}
-                </select>
-            {{/unless}}
         </div>
     </div>
     <table class="item-table">

@@ -5,6 +5,7 @@ import defenseProperties from './templates/combat/defensePropertiesData.js';
 import weaponType from './templates/weaponTypeData.js';
 import { associatedDiagramUuid, unwrapAssociatedDiagram } from './templates/associatedDiagramData.js';
 import defenseOptions from './templates/combat/defenseOptionsData.js';
+import attackOptions from './templates/combat/attackOptionsData.js';
 
 const fields = foundry.data.fields;
 
@@ -16,7 +17,6 @@ export default class WeaponData extends CommonItemData {
             ...commonData,
             type: new fields.SchemaField(weaponType()),
             isAmmo: new fields.BooleanField({ initial: false }),
-            isThrowable: new fields.BooleanField({ initial: false }),
 
             conceal: new fields.StringField({ initial: '' }),
             avail: new fields.StringField({ initial: '' }),
@@ -27,14 +27,8 @@ export default class WeaponData extends CommonItemData {
             maxReliability: new fields.NumberField({ initial: 0 }),
 
             damage: new fields.StringField({ initial: '' }),
-            applyMeleeBonus: new fields.BooleanField({
-                initial: source => {
-                    return CONFIG.WITCHER.meleeSkills.includes(source.attackSkill);
-                }
-            }),
             range: new fields.StringField({ initial: '' }),
             accuracy: new fields.NumberField({ initial: 0 }),
-            attackSkill: new fields.StringField({ initial: '' }),
             rateOfFire: new fields.NumberField({ initial: 1 }),
             usingAmmo: new fields.BooleanField({ initial: false }),
             rollOnlyDmg: new fields.BooleanField({ initial: false }),
@@ -42,11 +36,12 @@ export default class WeaponData extends CommonItemData {
             enhancements: new fields.NumberField({ initial: 0 }),
             enhancementItemIds: new fields.ArrayField(new fields.StringField({ initial: '' })),
 
+            ...attackOptions(),
             damageProperties: new fields.SchemaField(damageProperties()),
+            ...defenseOptions(),
             defenseProperties: new fields.SchemaField(defenseProperties()),
 
-            ...associatedDiagramUuid(),
-            ...defenseOptions()
+            ...associatedDiagramUuid()
         };
     }
 

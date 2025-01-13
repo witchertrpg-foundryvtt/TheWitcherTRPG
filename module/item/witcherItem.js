@@ -58,10 +58,38 @@ export default class WitcherItem extends Item {
         }
     }
 
-    getItemAttackSkill() {
+    getItemAttackSkill(
+        options = {
+            alt: false,
+            ctrl: false,
+            shift: false
+        }
+    ) {
+        let mapKeyToNumber;
+        if (Object.values(options).every(key => !key) || this.system.attackOptions.size < 2) {
+            mapKeyToNumber = 0;
+        } else {
+            switch (true) {
+                case options.ctrl:
+                    mapKeyToNumber = 3;
+                    break;
+                case options.alt:
+                    mapKeyToNumber = 2;
+                    break;
+                case options.shift:
+                    mapKeyToNumber = 1;
+                    break;
+            }
+
+            mapKeyToNumber = Math.min(mapKeyToNumber, this.system.attackOptions.size - 1);
+        }
+
+        let attackOption = [...this.system.attackOptions][mapKeyToNumber];
+
+        let attackSkill = this.system[attackOption + 'AttackSkill'];
         return {
-            name: this.system.attackSkill,
-            alias: WITCHER.skillMap[this.system.attackSkill].label
+            name: attackSkill,
+            alias: WITCHER.skillMap[attackSkill]?.label
         };
     }
 

@@ -241,8 +241,12 @@ export let itemMixin = {
         editor.toggleClass('invisible');
     },
 
-    async _onItemRoll(event, itemId = null) {
-        this.actor.useItem(itemId ?? event.currentTarget.closest('.item').dataset.itemId);
+    async _onItemRoll(event) {
+        this.actor.useItem(event.currentTarget.closest('.item').dataset.itemId, {
+            alt: event?.altKey,
+            ctrl: event?.ctrlKey,
+            shift: event?.shiftKey
+        });
     },
 
     _onSpellDisplay(event) {

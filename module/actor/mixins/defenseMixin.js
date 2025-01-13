@@ -132,7 +132,7 @@ export let defenseMixin = {
         if (modifier < 0) {
             rollFormula += !displayRollDetails
                 ? `${modifier}`
-                : `${modifier}[${game.i18n.localize('WITCHER.Dialog.DefenseOptions.' + defenseAction)}]`;
+                : `${modifier}[${game.i18n.localize('WITCHER.defense.DefenseOptions.' + defenseAction)}]`;
 
             if (defenseAction == 'parry' || defenseAction == 'parryThrown') {
                 let weapon = this.items.get(defenseItemId);
@@ -146,7 +146,7 @@ export let defenseMixin = {
         if (modifier > 0) {
             rollFormula += !displayRollDetails
                 ? `+${modifier}`
-                : `+${modifier}[${game.i18n.localize('WITCHER.Dialog.DefenseOptions.' + defenseAction)}]`;
+                : `+${modifier}[${game.i18n.localize('WITCHER.Defense.defenseOptions.' + defenseAction)}]`;
         }
 
         if (customDef != '0') {
@@ -163,7 +163,7 @@ export let defenseMixin = {
         }
 
         let messageData = new ChatMessageData(this);
-        messageData.flavor = `<h1>${game.i18n.localize('WITCHER.Dialog.Defense')}: ${game.i18n.localize('WITCHER.Dialog.DefenseOptions.' + defenseAction)}</h1><p>${displayFormula}</p>`;
+        messageData.flavor = `<h1>${game.i18n.localize('WITCHER.Defense.name')}: ${game.i18n.localize('WITCHER.Defense.defenseOptions.' + defenseAction)}</h1><p>${displayFormula}</p>`;
 
         let roll = await extendedRoll(
             rollFormula,

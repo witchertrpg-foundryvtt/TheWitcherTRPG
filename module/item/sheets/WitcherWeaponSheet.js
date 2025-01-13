@@ -7,12 +7,12 @@ export default class WitcherWeaponSheet extends WitcherItemSheet {
 
     /** @inheritdoc */
     _canDragStart(selector) {
-        return true
+        return true;
     }
 
     /** @inheritdoc */
     _canDragDrop(selector) {
-        return true
+        return true;
     }
 
     /** @override */
@@ -27,15 +27,33 @@ export default class WitcherWeaponSheet extends WitcherItemSheet {
             )
         ];
 
+        this.createAttackOptions(data);
+
         return data;
+    }
+
+    createAttackOptions(data) {
+        data.config.meleeAttackOptions = CONFIG.WITCHER.meleeSkills.map(skill => {
+            return {
+                value: skill,
+                label: CONFIG.WITCHER.skillMap[skill].label
+            };
+        });
+
+        data.config.rangedAttackOptions = CONFIG.WITCHER.rangedSkills.map(skill => {
+            return {
+                value: skill,
+                label: CONFIG.WITCHER.skillMap[skill].label
+            };
+        });
     }
 
     activateListeners(html) {
         super.activateListeners(html);
 
         html.find('.damage-type').on('change', this._onDamageTypeEdit.bind(this));
-        
-        this._addAssociatedDiagramListeners(html)
+
+        this._addAssociatedDiagramListeners(html);
     }
 
     _onDamageTypeEdit(event) {
@@ -53,8 +71,8 @@ export default class WitcherWeaponSheet extends WitcherItemSheet {
     }
 
     async _onDrop(event) {
-        this._onDropDiagram(event, 'weapon', 'elderfolk-weapon')
+        this._onDropDiagram(event, 'weapon', 'elderfolk-weapon');
     }
 }
 
-Object.assign(WitcherWeaponSheet.prototype, associatedDiagramMixin)
+Object.assign(WitcherWeaponSheet.prototype, associatedDiagramMixin);

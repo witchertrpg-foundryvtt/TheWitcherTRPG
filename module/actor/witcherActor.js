@@ -429,13 +429,13 @@ export default class WitcherActor extends Actor {
         });
     }
 
-    async useItem(itemId) {
+    async useItem(itemId, options) {
         let item = this.items.get(itemId);
 
         if (!item) return;
 
         if (item.type === 'weapon') {
-            return this.rollWeapon(item);
+            return this.rollWeapon(item, options);
         }
 
         if (item.type === 'spell' || item.type === 'hex' || item.type === 'ritual') {
@@ -448,8 +448,8 @@ export default class WitcherActor extends Actor {
         }
     }
 
-    async rollWeapon(weapon) {
-        return this.weaponAttack(weapon);
+    async rollWeapon(weapon, options) {
+        return this.weaponAttack(weapon, options);
     }
 
     async rollSkill(skillName, threshold = -1) {

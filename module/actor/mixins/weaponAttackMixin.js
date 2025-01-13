@@ -4,7 +4,7 @@ import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 const DialogV2 = foundry.applications.api.DialogV2;
 
 export let weaponAttackMixin = {
-    async weaponAttack(weapon) {
+    async weaponAttack(weapon, options) {
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
         let displayDmgFormula = `${weapon.system.damage}`;
@@ -28,7 +28,7 @@ export let weaponAttackMixin = {
             damageFormula = this.handleSpecialModifier(damageFormula, 'melee-damage');
         }
 
-        let attackSkill = weapon.getItemAttackSkill();
+        let attackSkill = weapon.getItemAttackSkill(options);
         let messageData = new ChatMessageData(
             this,
             `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`,
@@ -330,7 +330,7 @@ export let weaponAttackMixin = {
                 }
             }
 
-            messageData.flavor = `<div class="attack-message"><h1><img src="${weapon.img}" class="item-img" />${game.i18n.localize('WITCHER.Attack')}: ${weapon.name}</h1>`;
+            messageData.flavor = `<div class="attack-message"><h1><img src="${weapon.img}" class="item-img" />${game.i18n.localize('WITCHER.Attack.name')}: ${weapon.name}</h1>`;
             messageData.flavor += `<span>  ${game.i18n.localize('WITCHER.Armor.Location')}: ${touchedLocation.alias} </span>`;
 
             messageData.flavor += `<button class="damage">${game.i18n.localize('WITCHER.table.Damage')}</button>`;
