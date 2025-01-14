@@ -11,6 +11,7 @@ import { itemContextMenu } from './interactions/itemContextMenu.js';
 import { activeEffectMixin } from './mixins/activeEffectMixin.js';
 import { specialSkillModifierMixin } from './mixins/specialSkillModifierMixin.js';
 import { customSkillMixin } from './mixins/customSkillMixin.js';
+import ChatMessageData from '../../chatMessage/chatMessageData.js';
 
 Array.prototype.sum = function (prop) {
     var total = 0;
@@ -63,7 +64,13 @@ export default class WitcherActorSheet extends ActorSheet {
         this._prepareCritWounds(context);
 
         // Prepare active effects for easier access
-        context.effects = this.prepareActiveEffectCategories(this.actor.allApplicableEffects());
+        let temporaryItemImprovements = context.items
+            .map(item => item.effects.filter(effect => effect.isAppliedTemporaryItemImprovement))
+            .flat();
+
+        context.effects = this.prepareActiveEffectCategories(
+            Array.from(this.actor.allApplicableEffects()).concat(temporaryItemImprovements)
+        );
 
         context.isGM = game.user.isGM;
         return context;
@@ -245,9 +252,7 @@ export default class WitcherActorSheet extends ActorSheet {
 
     async _onCritRoll(event) {
         let rollResult = await new Roll('1d10x10').evaluate({ async: true });
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this.actor })
-        };
+        let messageData = new ChatMessageData(this.actor);
         rollResult.toMessage(messageData);
     }
 
@@ -257,28 +262,33 @@ export default class WitcherActorSheet extends ActorSheet {
         await new DialogV2({
             window: { title: `${game.i18n.localize('WITCHER.Dialog.staDialog')}` },
             modal: true,
-            buttons: [{
-                action: 'Recovery Action',
-                label: `${game.i18n.localize('WITCHER.Dialog.recoveryAction')}`,
-                callback: async () => {
-                    if(this.actor.system.derivedStats.sta.value >= this.actor.system.derivedStats.sta.max){
-                        ui.notifications.info(game.i18n.localize('WITCHER.Dialog.fullStaInfo'));
-                        return;
+            buttons: [
+                {
+                    action: 'Recovery Action',
+                    label: `${game.i18n.localize('WITCHER.Dialog.recoveryAction')}`,
+                    callback: async () => {
+                        if (this.actor.system.derivedStats.sta.value >= this.actor.system.derivedStats.sta.max) {
+                            ui.notifications.info(game.i18n.localize('WITCHER.Dialog.fullStaInfo'));
+                            return;
+                        }
+                        this.actor.update({
+                            'system.derivedStats.sta.value':
+                                this.actor.system.derivedStats.sta.value + this.actor.system.coreStats.rec.current
+                        });
                     }
-                    this.actor.update({ 'system.derivedStats.sta.value': this.actor.system.derivedStats.sta.value + this.actor.system.coreStats.rec.current })
-                }
-            },
-            {
-                action: 'Full Recovery',
-                label: `${game.i18n.localize('WITCHER.Dialog.fullRecovery')}`,
-                callback: async () => {
-                    if (this.actor.system.derivedStats.sta.value >= this.actor.system.derivedStats.sta.max) {
-                        ui.notifications.info(game.i18n.localize('WITCHER.Dialog.fullStaInfo'));
-                        return;
+                },
+                {
+                    action: 'Full Recovery',
+                    label: `${game.i18n.localize('WITCHER.Dialog.fullRecovery')}`,
+                    callback: async () => {
+                        if (this.actor.system.derivedStats.sta.value >= this.actor.system.derivedStats.sta.max) {
+                            ui.notifications.info(game.i18n.localize('WITCHER.Dialog.fullStaInfo'));
+                            return;
+                        }
+                        this.actor.update({ 'system.derivedStats.sta.value': this.actor.system.derivedStats.sta.max });
                     }
-                    this.actor.update({ 'system.derivedStats.sta.value': this.actor.system.derivedStats.sta.max });          
                 }
-            }],
+            ]
         }).render({ force: true });
     }
 
@@ -355,6 +365,10 @@ export default class WitcherActorSheet extends ActorSheet {
                         let newCritList = [];
                         critList.forEach(crit => {
                             crit.daysHealed += 1;
+                            if (sterFluid && !crit.sterilized) {
+                                crit.daysHealed += 2;
+                                crit.sterilized = true;
+                            }
                             if (crit.healingTime <= 0 || crit.daysHealed < crit.healingTime) {
                                 newCritList.push(crit);
                             }

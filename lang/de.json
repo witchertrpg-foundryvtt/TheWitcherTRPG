@@ -188,9 +188,21 @@
             "Enhancement": "Verbesserung",
             "Apply": "Einsetzen",
             "Skill": "Durchführen eines Fähigkeitschecks",
-            "profession.skill": "Durchführen einer Berufsfertigkeit"
+            "profession.skill": "Durchführen einer Berufsfertigkeit",
+            "staDialog": "Wie möchtest du Ausdauer regenerieren?",
+            "recoveryAction": "Erholungsaktion",
+            "fullRecovery": "Vollständige Erholung",
+            "fullStaInfo": "Deine Ausdauer ist bereits voll",
+            "DefenseOptions": {
+                "dodge": "Ausweichen",
+                "reposition": "Neu Positionieren",
+                "parry": "Parieren",
+                "block": "Blocken",
+                "parryThrown": "Wurfwaffe parieren",
+                "magicResist": "Magie widerstehen"
+            }
         },
-            "DamageType": {
+        "DamageType": {
             "name": "Schadensart",
             "bludgeoning": "Wucht",
             "slashing": "Hieb",
@@ -199,7 +211,7 @@
             "electricity": "Elektrizität",
             "fire": "Feuer",
             "ice": "Eis"
-	},	
+	    },	
         "Weapon": {
             "Type": "Art",
             "Short.WeaponAccuracy": "WG",
@@ -263,7 +275,7 @@
             "LocationHead": "Kopf",
             "LocationTorso": "Körper",
             "LocationLeg": "Beine",
-            "LocationArm": "Arrme",
+            "LocationArm": "Arme",
             "LocationFull": "Volle Rüstung",
             "LocationShield": "Schild",
             "LocationLeft": "L.",
@@ -272,6 +284,7 @@
             "tooMuch": "Es sind zu viele Rüstungen desselben Typs vorhanden"
         },
         "Location": {
+            "Random": "Zufall",
             "All": "unbestimmt",
             "Left": "Links",
             "Right": "Rechts",
@@ -399,7 +412,7 @@
             "Stat.Cra": "HAN",
             "Stat.Will": "WIL",
             "Stat.Luck": "GLÜ",
-	    "Stat.Toxicity": "Toxizität",
+	        "Stat.Toxicity": "Toxizität",
             "StatTitle.LableLeft": "Eigensch.",
             "StatTitle.ModMax": "Mod / Max",
             "StatTitle.Derived": "Abgeleitet",
@@ -777,6 +790,11 @@
         "Spell": {
             "type": "Typ",
             "Spells": "Zaubersprüche",
+            "Ritual": {
+                "name": "Ritual",
+                "components": "Komponenten",
+                "alternateComponents": "Alternative Komponenten"
+            },
             "Invocations": "Priester Anrufungen",
             "Witcher": "Hexer Zeichen",
             "Rituals": "Rituale",
@@ -1005,8 +1023,9 @@
             "oilDmg": "Addiere Öl-Schaden (+5)",
             "shield": "Schild",
             "silverDmg": "Addiere Silberschaden",
-            "silver": "Silner",
-            "oil": "Öl"
+            "silver": "Silber",
+            "oil": "Öl",
+            "activeEffect": "Aktiver Effekt"
         },
         "Context": {
             "applyDmg": "Schaden anwenden",
@@ -1095,7 +1114,12 @@
                 "belongsToItem": "Dieser Effekt gehört zu einem Gegenstand"
             },
             "wizard": {
-                "other": "Andere"
+                "lifepath": "Lebenspfad",
+                "other": "Andere",
+                "resistances": "Widerstände",
+                "flat": "Pauschalbonus",
+                "multi": "Multiplikation",
+                "applyAP": "Wende AP auf Multiplikator an"
             }
         },
         "globalModifier": {
@@ -1164,6 +1188,7 @@
             }
         },
         "statusEffects": {
+            "applyCombat": "Wende Kampfeffekt an für ",
             "healing": "Heilung",
             "buffed": "Buffed",
             "fire": "Feuer",
@@ -1251,6 +1276,7 @@
             "title": "Herstellungsdiagramm"
         },
         "Repair": {
+            "action": "Reparieren",
             "buttons": {
                 "repair": "Reparieren",
                 "simulate": "Simuliere Reperatur",
@@ -1291,6 +1317,13 @@
                 "noDiagram": "Für diesen Gegenstand wurde kein zugehöriges Diagramm gefunden",
                 "invalidDiagram": "Der Typ dieses Diagramms ist für diesen Gegenstand nicht gültig"
             }
+        },
+        "ComponentsList": {
+            "component": "Komponente",
+            "quantity": "Menge",
+            "required": "Benötigt",
+            "cost": "Kosten",
+            "totalPrice": "Gesamtpreis"
         }
     }
 }

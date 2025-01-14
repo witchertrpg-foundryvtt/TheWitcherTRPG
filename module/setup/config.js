@@ -147,27 +147,57 @@ WITCHER.verbalCombatSkills = [
 ];
 WITCHER.empatheticVerbalCombatSkills = ['charisma', 'persuasion', 'seduction', 'leadership', 'deceit', 'socialetq'];
 
+WITCHER.attackOptions = [
+    {
+        value: 'melee',
+        actionType: ['attack'],
+        label: 'WITCHER.Attack.attackOptions.melee',
+        skills: ['brawling', 'melee', 'smallblades', 'staffspear', 'swordsmanship']
+    },
+    {
+        value: 'ranged',
+        actionType: ['attack'],
+        label: 'WITCHER.Attack.attackOptions.ranged',
+        skills: ['athletics', 'archery', 'crossbow']
+    },
+    {
+        value: 'spell',
+        actionType: ['attack'],
+        label: 'WITCHER.Attack.attackOptions.spell',
+        skills: ['spellcast', 'ritcraft', 'hexweave']
+    },
+    {
+        value: 'itemUse',
+        actionType: ['attack'],
+        label: 'WITCHER.Attack.attackOptions.itemUse',
+        skills: ['trapcraft']
+    }
+];
 WITCHER.defenseOptions = [
     {
         value: 'dodge',
-        label: 'WITCHER.Dialog.DefenseOptions.dodge',
+        actionType: ['defense'],
+        label: 'WITCHER.Defense.defenseOptions.dodge',
         skills: ['dodge']
     },
     {
         value: 'reposition',
-        label: 'WITCHER.Dialog.DefenseOptions.reposition',
+        actionType: ['defense'],
+        label: 'WITCHER.Defense.defenseOptions.reposition',
         skills: ['athletics']
     },
     {
         value: 'block',
-        label: 'WITCHER.Dialog.DefenseOptions.block',
+        actionType: ['defense'],
+        label: 'WITCHER.Defense.defenseOptions.block',
         skills: ['brawling'],
         itemTypes: ['weapon', 'shield'],
         block: true
     },
     {
         value: 'parry',
-        label: 'WITCHER.Dialog.DefenseOptions.parry',
+        actionType: ['defense'],
+        label: 'WITCHER.Defense.defenseOptions.parry',
         skills: ['brawling'],
         itemTypes: ['weapon', 'shield'],
         modifier: -3,
@@ -175,13 +205,15 @@ WITCHER.defenseOptions = [
     },
     {
         value: 'parryThrown',
-        label: 'WITCHER.Dialog.DefenseOptions.parryThrown',
+        actionType: ['defense'],
+        label: 'WITCHER.Defense.defenseOptions.parryThrown',
         itemTypes: ['weapon', 'shield'],
         modifier: -5
     },
     {
         value: 'magicResist',
-        label: 'WITCHER.Dialog.DefenseOptions.magicResist',
+        actionType: ['defense'],
+        label: 'WITCHER.Defense.defenseOptions.magicResist',
         skills: ['resistmagic']
     }
 ];

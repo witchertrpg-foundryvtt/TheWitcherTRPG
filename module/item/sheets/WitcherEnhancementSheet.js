@@ -1,9 +1,6 @@
 import WitcherItemSheet from './WitcherItemSheet.js';
 
 export default class WitcherEnhancementSheet extends WitcherItemSheet {
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/enhancement-sheet.hbs`;
-    }
 
     /** @override */
     getData() {

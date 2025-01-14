@@ -21,14 +21,21 @@ export let activeEffectMixin = {
                 type: 'inactive',
                 label: game.i18n.localize('WITCHER.activeEffect.inactive'),
                 effects: []
+            },
+            temporaryItemImprovement: {
+                type: 'temporaryItemImprovement',
+                label: game.i18n.localize('WITCHER.activeEffect.temporaryItemImprovement'),
+                effects: []
             }
         };
 
         // Iterate over active effects, classifying them into categories
         for (let e of effects) {
             if (e.isDisabled) categories.inactive.effects.push(e);
+            else if (e.isTemporaryItemImprovement && !e.isAppliedTemporaryItemImprovement)
+                categories.temporaryItemImprovement.effects.push(e);
             else if (e.isTemporary) categories.temporary.effects.push(e);
-            else categories.passive.effects.push(e);
+            else if (e.type !== 'temporaryItemImprovement') categories.passive.effects.push(e);
         }
         return categories;
     },
@@ -54,6 +61,9 @@ export let activeEffectMixin = {
                         }),
                         icon: 'icons/svg/aura.svg',
                         origin: caller.uuid,
+                        duration: {
+                            rounds: li.dataset.effectType === 'temporary' ? 1 : undefined
+                        },
                         disabled: li.dataset.effectType === 'inactive'
                     }
                 ]);
@@ -73,7 +83,7 @@ export let activeEffectMixin = {
         event.stopPropagation();
         let section = event.currentTarget.closest('.effect-row');
         let editor = $(section).find('.effect-description');
-        if (editor.html().trim() !== "") {
+        if (editor.html().trim() !== '') {
             editor.toggleClass('invisible');
         }
     },

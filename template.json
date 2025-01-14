@@ -21,6 +21,7 @@
             "mutagen",
             "note",
             "profession",
+            "homeland",
             "race",
             "spell",
             "hex",
@@ -49,12 +50,17 @@
         "hex": {},
         "ritual": {},
         "profession": {},
+        "homeland": {},
         "note": {},
         "race": {},
         "effect": {}
     },
     "ChatMessage": {
-        "types" :["attack"],
+        "types": ["attack"],
         "attack": {}
+    },
+    "ActiveEffect": {
+        "types": ["temporaryItemImprovement"],
+        "temporaryItemImprovement": {}
     }
 }

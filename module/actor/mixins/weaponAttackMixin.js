@@ -1,11 +1,10 @@
-import { RollConfig } from '../../scripts/rollConfig.js';
+import ChatMessageData from '../../chatMessage/chatMessageData.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
-import { rollDamage } from '../../scripts/combat/attack.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
 export let weaponAttackMixin = {
-    async weaponAttack(weapon) {
+    async weaponAttack(weapon, options) {
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
         let displayDmgFormula = `${weapon.system.damage}`;
@@ -29,16 +28,16 @@ export let weaponAttackMixin = {
             damageFormula = this.handleSpecialModifier(damageFormula, 'melee-damage');
         }
 
-        let attackSkill = weapon.getItemAttackSkill();
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this }),
-            type: 'attack',
-            system: {
+        let attackSkill = weapon.getItemAttackSkill(options);
+        let messageData = new ChatMessageData(
+            this,
+            `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`,
+            'attack',
+            {
                 attacker: this.uuid,
                 defenseOptions: weapon.system.defenseOptions
-            },
-            flavor: `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`
-        };
+            }
+        );
 
         let ammunitions = ``;
         let noAmmo = 0;
@@ -331,12 +330,12 @@ export let weaponAttackMixin = {
                 }
             }
 
-            messageData.flavor = `<div class="attack-message"><h1><img src="${weapon.img}" class="item-img" />${game.i18n.localize('WITCHER.Attack')}: ${weapon.name}</h1>`;
+            messageData.flavor = `<div class="attack-message"><h1><img src="${weapon.img}" class="item-img" />${game.i18n.localize('WITCHER.Attack.name')}: ${weapon.name}</h1>`;
             messageData.flavor += `<span>  ${game.i18n.localize('WITCHER.Armor.Location')}: ${touchedLocation.alias} </span>`;
 
             messageData.flavor += `<button class="damage">${game.i18n.localize('WITCHER.table.Damage')}</button>`;
             if (weapon.system.rollOnlyDmg) {
-                rollDamage(weapon, damage);
+                weapon.rollDamage(damage);
             } else {
                 messageData.flags = {
                     TheWitcherTRPG: {
@@ -344,7 +343,7 @@ export let weaponAttackMixin = {
                         damage: damage
                     }
                 };
-                await extendedRoll(attFormula, messageData, new RollConfig());
+                await extendedRoll(attFormula, messageData);
             }
         }
     }

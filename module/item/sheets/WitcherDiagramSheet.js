@@ -4,7 +4,7 @@ import WitcherItemSheet from "./WitcherItemSheet.js";
 export default class WitcherDiagramSheet extends WitcherItemSheet {
 
   get template() {
-    return `systems/TheWitcherTRPG/templates/sheets/diagrams-sheet.hbs`;
+    return `systems/TheWitcherTRPG/templates/sheets/item/diagrams-sheet.hbs`;
   }
 
   /** @inheritdoc */

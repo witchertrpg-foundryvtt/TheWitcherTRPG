@@ -35,7 +35,46 @@
         "Percentage": "Percentage",
         "NoEffects": "No Effects",
         "DC": "DC",
-        "Attack": "Attack",
+        "Attack": {
+            "name": "Attack",
+            "attackOptions": {
+                "label": "Attack is:",
+                "hint": "Configure the attack options",
+                "melee": "Melee",
+                "ranged": "Ranged",
+                "spell": "Spell",
+                "itemUse": "Item Use"
+            },
+            "meleeAttackSkill": {
+                "label": "Melee Attack Skill",
+                "hint": ""
+            },
+            "rangedAttackSkill": {
+                "label": "Ranged Attack Skill",
+                "hint": ""
+            },
+            "spellAttackSkill": {
+                "label": "Spell Attack Skill",
+                "hint": ""
+            },
+            "itemUseAttackSkill": {
+                "label": "Item Use Attack Skill",
+                "hint": ""
+            }
+        },
+        "Defense": {
+            "name": "Defense",
+            "Crit": "You received a crit",
+            "defenseOptions": {
+                "name": "Defense Options",
+                "dodge": "Dodge",
+                "reposition": "Reposition",
+                "parry": "Parry",
+                "block": "Block",
+                "parryThrown": "Parry thrown weapon",
+                "magicResist": "Magic Resist"
+            }
+        },
         "Actor": {
             "SkillTab": "Skills & Modifiers",
             "ProfessionTab": "Profession & Race",
@@ -205,6 +244,7 @@
                 "bypassesWornArmor": "Bypasses worn armor",
                 "bypassesNaturalArmor": "Bypasses natural armor",
                 "variableDamage": "Variable Damage",
+                "silverDamage": "Silver Damage Formula",
                 "defenseDifferenceMultiplier": "Damage is multiplied by difference of defense (not functional)",
                 "defenseMultiplierCap": "Multiplier is capped at (not functional)"
             },
@@ -253,8 +293,8 @@
             "damageType": "What type of damage",
             "ChangeLocation": "Change The Location",
             "CurrentLocation": "Current location",
-            "resistSilver": "Apply Resistance to non-silver",
-            "resistMeteorite": "Apply Resistance to non-meteorite",
+            "resistNonSilver": "Apply Resistance to non-silver",
+            "resistNonMeteorite": "Apply Resistance to non-meteorite",
             "initial": "Initial Damage",
             "totalSP": "Total Stopping Power",
             "improvedArmorPiercing": "(After Improved Armor Piercing)",
@@ -287,7 +327,6 @@
             "CraftingItem": "Crafting an item",
             "Diagram": "Diagram",
             "after": "After",
-            "Defense": "Defense",
             "DefenseExtra": "Extra defense",
             "DefenseWith": "Defense with",
             "DefenseTitle": "Performing a defense action",
@@ -354,15 +393,7 @@
             "staDialog": "How do you want to recover stamina?",
             "recoveryAction": "Recovery Action",
             "fullRecovery": "Full Recovery",
-            "fullStaInfo": "Your stamina is already full",
-            "DefenseOptions": {
-                "dodge": "Dodge",
-                "reposition": "Reposition",
-                "parry": "Parry",
-                "block": "Block",
-                "parryThrown": "Parry thrown weapon",
-                "magicResist": "Magic Resist"
-            }
+            "fullStaInfo": "Your stamina is already full"
         },
         "DamageType": {
             "name": "Damage Type",
@@ -401,6 +432,8 @@
             "Concealment": "Concealment",
             "AttackSkill": "Attack Skill",
             "MeleeBonus": "Melee Bonus",
+            "rangedMeleeBonus": "Ranged Melee Bonus",
+            "rangedMeleeBonusHint": "Some ranged weapons also apply the melee bonus",
             "isAmmunition": "Is an ammunition",
             "isThrowable": "Is a throwable weapon",
             "Broken": "Your weapon is now broken",
@@ -1052,9 +1085,6 @@
             "applyCritWound": "Apply Critical Wound",
             "fumble": "Fumble"
         },
-        "Defense": {
-            "Crit": "You received a crit"
-        },
         "Heal": {
             "button": "Heal",
             "dialogTitle": "Heal After Rest",
@@ -1131,7 +1161,10 @@
                 "resistances": "Resistances",
                 "flat": "Flat Bonus",
                 "multi": "Multiplication",
-                "applyAP": "Apply AP to Multi"
+                "applyAP": "Apply AP to Multi",
+                "Item": {
+                    "damage": "Damage"
+                }
             }
         },
         "globalModifier": {
@@ -1154,7 +1187,8 @@
             "toggle": "Toggle",
             "temporary": "Temporary",
             "passive": "Passive",
-            "inactive": "Inactive"
+            "inactive": "Inactive",
+            "temporaryItemImprovement": "Temporary Item Improvement"
         },
         "character.socialStanding": "Social Standing",
         "socialStanding": {

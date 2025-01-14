@@ -8,10 +8,27 @@ import { castSpellMixin } from './mixins/castSpellMixin.js';
 import { locationMixin } from './mixins/locationMixin.js';
 import { weaponAttackMixin } from './mixins/weaponAttackMixin.js';
 import { verbalCombatMixin } from './mixins/verbalCombatMixin.js';
+import { defenseMixin } from './mixins/defenseMixin.js';
+import { damageMixin } from './mixins/damageMixin.js';
+import { activeEffectMixin } from './mixins/activeEffectMixin.js';
+import ChatMessageData from '../chatMessage/chatMessageData.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
 export default class WitcherActor extends Actor {
+    /**
+     * An array of ActiveEffect instances which are present on the Actor or Items which have a limited duration.
+     * @type {ActiveEffect[]}
+     */
+    get temporaryEffects() {
+        let temporaryEffects = super.temporaryEffects;
+
+        let temporaryItemImprovements = this.items
+            .map(item => item.effects.filter(effect => effect.isAppliedTemporaryItemImprovement))
+            .flat();
+        return temporaryEffects.concat(temporaryItemImprovements);
+    }
+
     prepareDerivedData() {
         super.prepareDerivedData();
 
@@ -215,10 +232,7 @@ export default class WitcherActor extends Actor {
 
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this }),
-            flavor: `${attributeLabel}: ${skillLabel} Check`
-        };
+        let messageData = new ChatMessageData(this, `${attributeLabel}: ${skillLabel} Check`);
 
         let rollFormula = '1d10 +';
         if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
@@ -330,10 +344,7 @@ export default class WitcherActor extends Actor {
 
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
-        let messageData = {
-            speaker: ChatMessage.getSpeaker({ actor: this }),
-            flavor: `${attributeLabel}: ${skillLabel} Check`
-        };
+        let messageData = new ChatMessageData(this, `${attributeLabel}: ${skillLabel} Check`);
 
         let rollFormula;
         if (this.system.dontAddAttr) {
@@ -410,13 +421,21 @@ export default class WitcherActor extends Actor {
         return Math.max(encumbranceModifier, 0);
     }
 
-    async useItem(itemId) {
+    async applyStatus(effects) {
+        effects.forEach(effect => {
+            if (!this.statuses.find(status => status == effect.statusEffect)) {
+                this.toggleStatusEffect(effect.statusEffect);
+            }
+        });
+    }
+
+    async useItem(itemId, options) {
         let item = this.items.get(itemId);
 
         if (!item) return;
 
         if (item.type === 'weapon') {
-            return this.rollWeapon(item);
+            return this.rollWeapon(item, options);
         }
 
         if (item.type === 'spell' || item.type === 'hex' || item.type === 'ritual') {
@@ -429,8 +448,8 @@ export default class WitcherActor extends Actor {
         }
     }
 
-    async rollWeapon(weapon) {
-        return this.weaponAttack(weapon);
+    async rollWeapon(weapon, options) {
+        return this.weaponAttack(weapon, options);
     }
 
     async rollSkill(skillName, threshold = -1) {
@@ -504,7 +523,7 @@ export default class WitcherActor extends Actor {
 
     getList(name) {
         if (name === 'shield') {
-            this.items
+            return this.items
                 .filter(item => item.type == 'armor' && item.system.location == 'Shield')
                 .sort((a, b) => a.sort - b.sort);
         }
@@ -555,6 +574,7 @@ export default class WitcherActor extends Actor {
             if (numberOfItem) {
                 newItem.system.quantity = Number(numberOfItem);
             }
+
             await this.createEmbeddedDocuments('Item', [newItem]);
         }
     }
@@ -725,6 +745,9 @@ export default class WitcherActor extends Actor {
 Object.assign(WitcherActor.prototype, modifierMixin);
 Object.assign(WitcherActor.prototype, damageUtilMixin);
 Object.assign(WitcherActor.prototype, weaponAttackMixin);
+Object.assign(WitcherActor.prototype, defenseMixin);
+Object.assign(WitcherActor.prototype, damageMixin);
 Object.assign(WitcherActor.prototype, castSpellMixin);
 Object.assign(WitcherActor.prototype, verbalCombatMixin);
 Object.assign(WitcherActor.prototype, locationMixin);
+Object.assign(WitcherActor.prototype, activeEffectMixin);

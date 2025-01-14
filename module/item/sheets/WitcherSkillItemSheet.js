@@ -10,7 +10,7 @@ export default class WitcherSkillItemSheet extends ItemSheet {
     }
 
     get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/skill-item-sheet.hbs`;
+        return `systems/TheWitcherTRPG/templates/sheets/item/skill-item-sheet.hbs`;
     }
 
     /** @override */

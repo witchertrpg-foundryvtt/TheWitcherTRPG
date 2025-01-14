@@ -16,11 +16,14 @@ export default class AttackMessageData extends BaseMessageData {
             ...commonData,
 
             attacker: new fields.DocumentUUIDField(),
-            attackRoll: new fields.NumberField(),
             defenseOptions: new fields.SetField(new fields.StringField(), {
                 label: 'WITCHER.Item.Settings.Attacks.defendWith.label',
                 hint: 'WITCHER.Item.Settings.Attacks.defendWith.hint'
             })
         };
+    }
+
+    get attackRoll() {
+        return this.rollTotal;
     }
 }

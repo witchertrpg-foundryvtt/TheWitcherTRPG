@@ -1,9 +1,8 @@
-
 const fields = foundry.data.fields;
 
 export default function critWound() {
     return {
-        id: new fields.StringField({ initial: '' }),
+        id: new fields.StringField({ initial: () => foundry.utils.randomID() }),
 
         configEntry: new fields.StringField({ initial: '' }),
 
@@ -16,5 +15,6 @@ export default function critWound() {
 
         daysHealed: new fields.NumberField({ initial: 0 }),
         healingTime: new fields.NumberField({ initial: 0 }),
+        sterilized: new fields.BooleanField({ initial: false })
     };
 }

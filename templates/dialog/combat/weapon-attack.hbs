@@ -87,124 +87,126 @@
         </table>
     </div>
     <h2>{{localize "WITCHER.Dialog.attackModifiers"}}</h2>
-    <div class="flex">
-        <table>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackOutsideLOS"}} (+3)</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="outsideLOS">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackIsAmbush"}} (+5)</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="isAmbush">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackIsPinned"}} (+4)</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="isPinned">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackIsSilhouetted"}} (+2)</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="isSilhouetted">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackIsAiming"}} (+1/round)</label>
-                </td>
-                <td>
-                    <input type="number" class="small" name="customAim" value=0>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackCustom"}}:</label>
-                </td>
-                <td>
-                    <input type="number" class="small" name="customAtt" value=0>
-                </td>
-            </tr>
-            <tr>
-                <td>
+    <details>
+        <div class="flex">
+            <table>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackOutsideLOS"}} (+3)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="outsideLOS">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsAmbush"}} (+5)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isAmbush">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsPinned"}} (+4)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isPinned">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsSilhouetted"}} (+2)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isSilhouetted">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsAiming"}} (+1/round)</label>
+                    </td>
+                    <td>
+                        <input type="number" class="small" name="customAim" value=0>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackCustom"}}:</label>
+                    </td>
+                    <td>
+                        <input type="number" class="small" name="customAtt" value=0>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
 
-                </td>
-                <td>
+                    </td>
+                    <td>
 
-                </td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackTargetOutsideLOS"}} (-3)</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="targetOutsideLOS">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackIsActivelyDodging"}} (-2)</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="isActivelyDodging">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackIsMoving"}} (-3)</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="isMoving">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackIsProne"}} (-2)</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="isProne">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackIsBlinded"}} (-3)</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="isBlinded">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackIsRicochet"}} (-5)</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="isRicochet">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackIsFastDraw"}} (-3)</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="isFastDraw">
-                </td>
-            </tr>
-        </table>
-    </div>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackTargetOutsideLOS"}} (-3)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="targetOutsideLOS">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsActivelyDodging"}} (-2)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isActivelyDodging">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsMoving"}} (-3)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isMoving">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsProne"}} (-2)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isProne">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsBlinded"}} (-3)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isBlinded">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsRicochet"}} (-5)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isRicochet">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsFastDraw"}} (-3)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isFastDraw">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </details>
     <h2 class="flex">
         <img class="item-img" src="{{item.img}}" title="{{item.name}}" />
         {{item.name}} <br />

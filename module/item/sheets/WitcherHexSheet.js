@@ -4,9 +4,6 @@ import WitcherItemSheet from './WitcherItemSheet.js';
 export default class WitcherHexSheet extends WitcherItemSheet {
     configuration = new WitcherConfigurationSheet(this.item);
 
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/hex-sheet.hbs`;
-    }
 
     /** @override */
     getData() {
