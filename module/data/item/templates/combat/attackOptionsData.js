@@ -4,11 +4,11 @@ export default function attackOptions() {
     return {
         attackOptions: new fields.SetField(new fields.StringField({ required: true, blank: false }), {
             initial: source => {
-                let options = new Set([]);
+                let options = [];
 
-                if (CONFIG.WITCHER.meleeSkills.includes(source.attackSkill)) options.add('melee');
+                if (CONFIG.WITCHER.meleeSkills.includes(source.attackSkill)) options.push('melee');
                 if (CONFIG.WITCHER.rangedSkills.includes(source.attackSkill) || source.isThrowable)
-                    options.add('ranged');
+                    options.push('ranged');
                 return options;
             },
             label: 'WITCHER.Attack.attackOptions.label',
