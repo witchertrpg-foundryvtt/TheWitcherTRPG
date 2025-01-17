@@ -109,8 +109,8 @@ async function createApplyDamageDialog(actor, damageObject) {
     };
 }
 
-async function applyDamageFromStatus(actor, totalDamage, damageObject, location, derivedStat) {
-    await applyDamage(actor, null, totalDamage, damageObject, location, derivedStat, totalDamage);
+async function applyDamageFromStatus(actor, totalDamage, damageObject, derivedStat) {
+    await applyDamage(actor, null, totalDamage, damageObject, derivedStat, totalDamage);
 }
 
 async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat) {
@@ -156,7 +156,7 @@ async function applyDamage(actor, dialogData, totalDamage, damageObject, derived
         totalDamage -= shield;
     }
 
-    if (damageObject.damageProperties.oilEffect === actor.system.category) {
+    if (actor.system.category && (damageObject.damageProperties.oilEffect === actor.system.category)) {
         totalDamage += 5;
         infoTotalDmg += `+5[${game.i18n.localize('WITCHER.Damage.oil')}]`;
     }
@@ -208,9 +208,11 @@ async function applyDamageToAllLocations(actor, dialogData, damage, totalDamage,
     let locations = actor.getAllLocations().map(location => actor.getLocationObject(location));
 
     let resultPromises = [];
-    locations.forEach(location =>
-        resultPromises.push(calculateDamageWithLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, location))
-    );
+    locations.forEach(location => {
+        damage.location = location
+
+        resultPromises.push(calculateDamageWithLocation(actor, dialogData, damage, totalDamage, infoTotalDmg))
+    });
 
     let results = await Promise.all(resultPromises);
 
