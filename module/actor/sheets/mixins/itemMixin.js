@@ -24,7 +24,7 @@ export let itemMixin = {
     },
 
     _isUniqueItem(itemData) {
-        return false;
+        return this.uniqueTypes.includes(itemData.type);
     },
 
     async _onItemAdd(event) {
