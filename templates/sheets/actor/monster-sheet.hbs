@@ -132,6 +132,7 @@
     <div class="monster-main">
         <div class="monster-header-center">
             <div class="monster-center-top">
+                <a class="configure-actor"><i class="fas fa-gear"></i></a>
                 <div class="monster-type">
                     <label>{{localize "WITCHER.Monster.Type.Lable"}}</label>
                     <select name="system.category">
@@ -154,7 +155,6 @@
                     <label>{{localize "WITCHER.Monster.Bounty"}}</label>
                     <input name="system.bounty" type="text" value="{{system.bounty}}" />
                 </div>
-                <a class="change-skill-list"><i class="fas fa-list"></i></a>
             </div>
             <div class="img-view">
                 {{#if (eq system.category "Humanoid")}}
@@ -314,7 +314,7 @@
             <nav class="sheet-tabs tabs" data-group="primary">
                 <a data-tab="skills"> {{localize "WITCHER.Monster.SkillTab"}}</a>
                 {{#if (eq system.category "Humanoid")}}
-                <a data-tab="profession"> {{localize "WITCHER.Profession"}}</a>
+                    <a data-tab="profession"> {{localize "WITCHER.Profession"}}</a>
                 {{/if}}
                 <a data-tab="inventory">{{localize "WITCHER.Monster.InventoryTab"}} </a>
                 <a data-tab="details"> {{localize "WITCHER.Monster.DetailsTab"}}</a>
@@ -328,9 +328,9 @@
                     {{> "systems/TheWitcherTRPG/templates/partials/monster/monster-skill-tab.hbs"}}
                 </div>
                 {{#if (eq system.category "Humanoid")}}
-                <div class="tab" data-group="primary" data-tab="profession">
-                    {{> "systems/TheWitcherTRPG/templates/partials/monster/monster-profession-skill-display.hbs"}}
-                </div>
+                    <div class="tab" data-group="primary" data-tab="profession">
+                        {{> "systems/TheWitcherTRPG/templates/partials/monster/monster-profession-skill-display.hbs"}}
+                    </div>
                 {{/if}}
                 <div class="tab" data-group="primary" data-tab="inventory">
                     {{>"systems/TheWitcherTRPG/templates/partials/monster/monster-inventory-tab.hbs"}}

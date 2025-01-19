@@ -474,14 +474,6 @@
             "ChooseTitle": "Choose an Enhancement",
             "NoEnhancement": "No Enhancement available"
         },
-        "Mount": {
-            "Dex": "Dex + Atl",
-            "Dexterity": "Dex",
-            "ControlMod": "Control Mod",
-            "Control": "Control",
-            "Speed": "Speed",
-            "Hp": "HP"
-        },
         "Diagram": {
             "alchemyDC": "Alchemy DC.",
             "craftingDC": "Craft DC.",
@@ -506,16 +498,6 @@
             "Master": "Master",
             "GrandMaster": "Grand Master",
             "Witcher": "Witcher"
-        },
-        "Mutagen": {
-            "MutSource": "Mutagen Source",
-            "AlchemyDC": "Alchemy DC",
-            "MinorMutation": "Minor Mutation",
-            "Type": "Type",
-            "Source": "Source",
-            "Red": "Red",
-            "Green": "Green",
-            "Blue": "Blue"
         },
         "Valuable": {
             "Conceal": "Conceal",
@@ -782,6 +764,8 @@
                 "Vampire": "Vampire"
             },
             "Resistances": "Resistances",
+            "resistantNonSilver": "Resistant to non-silver damage",
+            "resistantNonMeteorite": "Resistant to non-meteorite damage",
             "Immunities": "Immunities",
             "ImmunitiesStatusEffects": "Immunities to Status Effects",
             "Susceptibilities": "Susceptibilities",
@@ -790,6 +774,24 @@
             "exportLootGenerated": "Item was successfully generated with help of roll table. It was added to the Loot sheet",
             "exportLootInvalidItemError": "Item doesn't exists in the compendium. Use standard loot generator instead",
             "exportLootToManyRollTablesError": "Too many roll tables for the item found in the compendium. Use standard loot generator instead"
+        },
+        "Mount": {
+            "Dex": "Dex + Atl",
+            "Dexterity": "Dex",
+            "ControlMod": "Control Mod",
+            "Control": "Control",
+            "Speed": "Speed",
+            "Hp": "HP"
+        },
+        "Mutagen": {
+            "MutSource": "Mutagen Source",
+            "AlchemyDC": "Alchemy DC",
+            "MinorMutation": "Minor Mutation",
+            "Type": "Type",
+            "Source": "Source",
+            "Red": "Red",
+            "Green": "Green",
+            "Blue": "Blue"
         },
         "Loot": {
             "Name": "Loot",
