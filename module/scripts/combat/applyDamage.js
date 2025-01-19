@@ -72,8 +72,8 @@ async function createApplyDamageDialog(actor, damageObject) {
       <label>${game.i18n.localize('WITCHER.Damage.ChangeLocation')}: <select name="changeLocation">${locationOptions}</select></label> <br />`;
 
     if (actor.type == 'monster') {
-        content += `<label>${game.i18n.localize('WITCHER.Damage.resistNonSilver')}: <input type="checkbox" name="resistNonSilver"></label><br />
-                    <label>${game.i18n.localize('WITCHER.Damage.resistNonMeteorite')}: <input type="checkbox" name="resistNonMeteorite"></label><br />`;
+        content += `<label>${game.i18n.localize('WITCHER.Damage.resistNonSilver')}: <input type="checkbox" name="resistNonSilver" ${actor.system.resistantNonSilver ? 'checked' : 'unchecked'}></label><br />
+                    <label>${game.i18n.localize('WITCHER.Damage.resistNonMeteorite')}: <input type="checkbox" name="resistNonMeteorite" ${actor.system.resistantNonMeteorite ? 'checked' : 'unchecked'}></label><br />`;
     }
 
     content += `<label>${game.i18n.localize('WITCHER.Damage.isVulnerable')}: <input type="checkbox" name="vulnerable"></label><br />
@@ -109,8 +109,8 @@ async function createApplyDamageDialog(actor, damageObject) {
     };
 }
 
-async function applyDamageFromStatus(actor, totalDamage, damageObject, location, derivedStat) {
-    await applyDamage(actor, null, totalDamage, damageObject, location, derivedStat, totalDamage);
+async function applyDamageFromStatus(actor, totalDamage, damageObject, derivedStat) {
+    await applyDamage(actor, null, totalDamage, damageObject, derivedStat, totalDamage);
 }
 
 async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat) {
@@ -156,7 +156,7 @@ async function applyDamage(actor, dialogData, totalDamage, damageObject, derived
         totalDamage -= shield;
     }
 
-    if (damageObject.damageProperties.oilEffect === actor.system.category) {
+    if (actor.system.category && (damageObject.damageProperties.oilEffect === actor.system.category)) {
         totalDamage += 5;
         infoTotalDmg += `+5[${game.i18n.localize('WITCHER.Damage.oil')}]`;
     }
@@ -208,9 +208,11 @@ async function applyDamageToAllLocations(actor, dialogData, damage, totalDamage,
     let locations = actor.getAllLocations().map(location => actor.getLocationObject(location));
 
     let resultPromises = [];
-    locations.forEach(location =>
-        resultPromises.push(calculateDamageWithLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, location))
-    );
+    locations.forEach(location => {
+        damage.location = location
+
+        resultPromises.push(calculateDamageWithLocation(actor, dialogData, damage, totalDamage, infoTotalDmg))
+    });
 
     let results = await Promise.all(resultPromises);
 

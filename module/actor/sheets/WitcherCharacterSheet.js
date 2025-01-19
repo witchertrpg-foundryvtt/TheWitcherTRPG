@@ -18,10 +18,6 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         });
     }
 
-    _isUniqueItem(itemData) {
-        return this.uniqueTypes.includes(itemData.type);
-    }
-
     activateListeners(html) {
         super.activateListeners(html);
 

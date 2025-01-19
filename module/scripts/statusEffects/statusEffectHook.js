@@ -33,15 +33,15 @@ async function applyCombatEffects(actor, status) {
             damageToAllLocations: status.combat.turn?.damage.allLocations,
             effects: [],
             bypassesNaturalArmor: status.combat.turn?.damage.ignoreArmor,
-            bypassesWornArmor: status.combat.turn?.damage.ignoreArmor
-        }
+            bypassesWornArmor: status.combat.turn?.damage.ignoreArmor,
+        },
+        location: actor.getLocationObject('torso')
     };
     if (status.combat.turn?.damage.nonLethal) {
         await applyDamageFromStatus(
             actor,
             status.combat.turn?.damage.damage,
             damage,
-            actor.getLocationObject('torso'),
             'sta'
         );
     } else {
@@ -49,7 +49,6 @@ async function applyCombatEffects(actor, status) {
             actor,
             status.combat.turn?.damage.damage,
             damage,
-            actor.getLocationObject('torso'),
             'hp'
         );
     }

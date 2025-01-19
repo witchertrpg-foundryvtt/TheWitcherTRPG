@@ -47,10 +47,10 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
 
         html.find('.export-loot').on('click', this.exportLoot.bind(this));
 
-        html.find('.change-skill-list').on('click', this.onChangeSkillList.bind(this));
+        html.find('.configure-actor').on('click', this.configureActor.bind(this));
     }
 
-    onChangeSkillList() {
+    configureActor() {
         let width = 600;
         let content = ``;
         let leftPanelSkills = ``;
@@ -90,6 +90,12 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
             `<input type="checkbox" name="addMeleeBonus" ${this.actor.system.addMeleeBonus ? 'checked' : 'unchecked'}> ${game.i18n.localize('WITCHER.Monster.addMeleeBonus')}<br />` +
             `<input type="checkbox" name="hasTailWing" ${this.actor.system.hasTailWing ? 'checked' : 'unchecked'}> ${game.i18n.localize('WITCHER.Monster.hasTailWing')}<br />`;
         content += skillConfig;
+
+        let resitantConfig =
+            `<hr>` +
+            `<input type="checkbox" name="resistantNonSilver" ${this.actor.system.resistantNonSilver ? 'checked' : 'unchecked'}> ${game.i18n.localize('WITCHER.Monster.resistantNonSilver')}<br />` +
+            `<input type="checkbox" name="resistantNonMeteorite" ${this.actor.system.resistantNonMeteorite ? 'checked' : 'unchecked'}> ${game.i18n.localize('WITCHER.Monster.resistantNonMeteorite')}<br />`;
+        content += resitantConfig;
 
         new Dialog(
             {
@@ -263,7 +269,11 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
 
                                 'system.addMeleeBonus': html.find('[name=addMeleeBonus]').prop('checked'),
                                 'system.dontAddAttr': html.find('[name=dontAddAttr]').prop('checked'),
-                                'system.hasTailWing': html.find('[name=hasTailWing]').prop('checked')
+                                'system.hasTailWing': html.find('[name=hasTailWing]').prop('checked'),
+                                'system.resistantNonSilver': html.find('[name=resistantNonSilver]').prop('checked'),
+                                'system.resistantNonMeteorite': html
+                                    .find('[name=resistantNonMeteorite]')
+                                    .prop('checked')
                             });
                         }
                     }
