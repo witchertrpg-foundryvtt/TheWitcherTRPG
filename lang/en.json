@@ -950,7 +950,11 @@
             "SaveText": "To succeed you need to roll below",
             "FullDmg": "Full Damage",
             "Success": "Success",
-            "Fail": "Fail"
+            "Fail": "Fail",
+            "Resting": "spent the day resting and recover:",
+            "Active": "spent the day being active and recover:",
+            "WoundHealing": "on Critical Healing Threshold",
+            "fullStamina": "Full Stamina"
         },
         "Currency": {
             "bizant": "Bizant",
@@ -1110,7 +1114,9 @@
             "recovered": " has recovered from an",
             "restful": "restful",
             "active": "active",
-            "day": "day"
+            "day": "day",
+            "totalRecover": "Total Recover:",
+            "criticalWounds": "Critical wounds will heal 2 additional days faster"
         },
         "Apply.Mod": "Apply a modifier",
         "ReputationTitle": "Executing a reputation roll",
