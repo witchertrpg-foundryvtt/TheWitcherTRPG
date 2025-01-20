@@ -1,0 +1,16 @@
+<div class="dialog-heal-rest">
+    <h1>{{localize 'WITCHER.Heal.title'}}</h1>
+    <div class="dialog-rest-checkbox">
+        <span><input id="R" type="checkbox" {{#if isResting}}checked{{/if}} />{{localize 'WITCHER.Heal.resting'}}</span>
+        <span><input id="HH" type="checkbox" {{#if isHealingHand}}checked{{/if}} />{{localize 'WITCHER.Heal.healinghand'}}</span>
+        <span><input id="SF" type="checkbox" {{#if isSterilized}}checked{{/if}} />{{localize 'WITCHER.Heal.sterilized'}}</span>
+        <span><input id="HT" type="checkbox" {{#if isHealingTent}}checked{{/if}} />{{localize 'WITCHER.Heal.healingTent'}}</span>
+    </div>
+    <div>
+    <h1 id="extra-info">
+        {{localize 'WITCHER.Heal.totalCure'}} + {{totalRec}}
+    </h1>
+    <span id="sterilized-info" class="invisible">
+        {{localize 'WITCHER.Heal.criticalWounds'}}
+    </span>
+</div>
