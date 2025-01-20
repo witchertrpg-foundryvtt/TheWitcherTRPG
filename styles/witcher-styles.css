@@ -21,6 +21,7 @@
 @import "./special-skill-table.css";
 @import "./repair.css";
 @import './components-list.css';
+@import './dialog.css';
 
 @font-face {
     font-family: 'Thewitcher';
