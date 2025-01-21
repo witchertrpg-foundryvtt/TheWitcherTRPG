@@ -39,6 +39,8 @@ export default class WitcherActorSheet extends ActorSheet {
     statMap = CONFIG.WITCHER.statMap;
     skillMap = CONFIG.WITCHER.skillMap;
 
+    uniqueTypes = ['profession', 'race', 'homeland'];
+
     /** @override */
     getData() {
         const context = super.getData();
