@@ -250,6 +250,8 @@
                 "bypassesNaturalArmor": "Bypasses natural armor",
                 "variableDamage": "Variable Damage",
                 "silverDamage": "Silver Damage Formula",
+                "isMeteorite": "Meteorite Weapon",
+                "isNonLethal": "Non-Lethal Weapon",
                 "defenseDifferenceMultiplier": "Damage is multiplied by difference of defense (not functional)",
                 "defenseMultiplierCap": "Multiplier is capped at (not functional)"
             },
