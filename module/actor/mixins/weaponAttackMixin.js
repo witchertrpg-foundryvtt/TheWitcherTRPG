@@ -29,6 +29,7 @@ export let weaponAttackMixin = {
         }
 
         let attackSkill = weapon.getItemAttackSkill(options);
+        console.log(attackSkill);
         let messageData = new ChatMessageData(
             this,
             `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`,
@@ -135,11 +136,8 @@ export let weaponAttackMixin = {
 
         let attacknumber = 1;
         let damage = weapon.createBaseDamageObject();
-        damage = {
-            ...damage,
-            strike: strike,
-            type: damageType
-        };
+        damage.strike = strike;
+        damage.type = damageType;
 
         if (isExtraAttack) {
             let newSta = this.system.derivedStats.sta.value - 3;
@@ -160,7 +158,7 @@ export let weaponAttackMixin = {
             damage.ammunition = item;
         }
 
-        if (weapon.isWeaponThrowable()) {
+        if (weapon.isWeaponThrowable() && attackSkill.attackOption === 'ranged') {
             let newQuantity = weapon.system.quantity - 1;
             if (newQuantity < 0) {
                 return;

@@ -88,6 +88,7 @@ export default class WitcherItem extends Item {
 
         let attackSkill = this.system[attackOption + 'AttackSkill'];
         return {
+            attackOption,
             name: attackSkill,
             alias: WITCHER.skillMap[attackSkill]?.label
         };
