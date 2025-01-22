@@ -41,6 +41,9 @@ export default class WitcherActorSheet extends ActorSheet {
 
     uniqueTypes = ['profession', 'race', 'homeland'];
 
+    //overwrite in sub-classes
+    configuration = undefined;
+
     /** @override */
     getData() {
         const context = super.getData();
@@ -86,6 +89,10 @@ export default class WitcherActorSheet extends ActorSheet {
     /** @inheritdoc */
     _canDragDrop(selector) {
         return true;
+    }
+
+    async _renderConfigureDialog() {
+        this.configuration?._render(true);
     }
 
     _prepareCustomSkills(context) {
@@ -230,6 +237,8 @@ export default class WitcherActorSheet extends ActorSheet {
         html.find('.verbal-button').on('click', this._onVerbalCombat.bind(this));
 
         html.find('input').focusin(ev => this._onFocusIn(ev));
+
+        html.find('.configure-actor').on('click', this._renderConfigureDialog.bind(this));
 
         //mixins
         this.statListener(html);

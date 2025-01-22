@@ -151,6 +151,11 @@
             "attackStats": {
                 "critLocationModifier": "Crit Location Modifier",
                 "critEffectModifier": "Crit Effect Modifier"
+            },
+            "settings": {
+                "actor": "Actor Settings",
+                "general": "General",
+                "skills": "Skills"
             }
         },
         "Alchemy": {

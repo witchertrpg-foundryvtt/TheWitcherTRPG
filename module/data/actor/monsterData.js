@@ -41,18 +41,24 @@ export default class MonsterData extends CommonActorData {
 
             common: new fields.StringField({ initial: '' }),
             commonSkillValue: new fields.StringField({ initial: '' }),
-            showCommonerSuperstition: new fields.BooleanField({ initial: true }),
+            showCommonerSuperstition: new fields.BooleanField({
+                initial: true,
+                label: 'WITCHER.Monster.CommonerSuperstition'
+            }),
             academicKnowledge: new fields.StringField({ initial: '' }),
             academicKnowledgeSkillValue: new fields.StringField({ initial: '' }),
-            showAcademicKnowledge: new fields.BooleanField({ initial: true }),
+            showAcademicKnowledge: new fields.BooleanField({
+                initial: true,
+                label: 'WITCHER.Monster.AcademicKnowledge'
+            }),
             monsterLore: new fields.StringField({ initial: '' }),
             monsterLoreSkillValue: new fields.StringField({ initial: '' }),
-            showMonsterLore: new fields.BooleanField({ initial: true }),
+            showMonsterLore: new fields.BooleanField({ initial: true, label: 'WITCHER.Monster.WitcherKnowledge' }),
 
             customStat: new fields.BooleanField({ initial: false }),
-            addMeleeBonus: new fields.BooleanField({ initial: false }),
-            dontAddAttr: new fields.BooleanField({ initial: false }),
-            hasTailWing: new fields.BooleanField({ initial: false })
+            addMeleeBonus: new fields.BooleanField({ initial: false, label: 'WITCHER.Monster.addMeleeBonus' }),
+            dontAddAttr: new fields.BooleanField({ initial: false, label: 'WITCHER.Monster.dontAddAttr' }),
+            hasTailWing: new fields.BooleanField({ initial: false, label: 'WITCHER.Monster.hasTailWing' })
         };
     }
 }

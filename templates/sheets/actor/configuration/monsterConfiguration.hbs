@@ -1,0 +1,30 @@
+<form class="{{ cssClass }}" autocomplete="off">
+    <h1>{{localize "WITCHER.Actor.settings.actor"}}</h1>
+    {{! Sheet Tab Navigation }}
+    <nav class="sheet-tabs tabs flexrow" data-group="primary">
+        <a data-tab="general">{{localize "WITCHER.Actor.settings.general"}}</a>
+        <a data-tab="skills">{{localize "WITCHER.Actor.settings.skills"}}</a>
+    </nav>
+
+    {{! Sheet Body }}
+    <section class="sheet-body">
+        <div class="tab" data-group="primary" data-tab="general">
+            <hr />
+            {{formGroup systemFields.showCommonerSuperstition value=system.showCommonerSuperstition localize=true}}
+            {{formGroup systemFields.showAcademicKnowledge value=system.showAcademicKnowledge localize=true}}
+            {{formGroup systemFields.showMonsterLore value=system.showMonsterLore localize=true}}
+
+            <hr />
+            {{formGroup systemFields.dontAddAttr value=system.dontAddAttr localize=true}}
+            {{formGroup systemFields.addMeleeBonus value=system.addMeleeBonus localize=true}}
+            {{formGroup systemFields.hasTailWing value=system.hasTailWing localize=true}}
+
+            <hr />
+            {{formGroup systemFields.resistantNonSilver value=system.resistantNonSilver localize=true}}
+            {{formGroup systemFields.resistantNonMeteorite value=system.resistantNonMeteorite localize=true}}
+        </div>
+        <div class="tab" data-group="primary" data-tab="skills">
+            {{>"systems/TheWitcherTRPG/templates/sheets/actor/configuration/partials/skillConfiguration.hbs"}}
+        </div>
+    </section>
+</form>
