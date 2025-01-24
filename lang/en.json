@@ -269,7 +269,12 @@
                 "Consume": "Consume",
                 "NotConsumable": "The item is not configured as consumable",
                 "RemoveEnhancement": "Remove Enhancement",
-                "Gift": "Gift"
+                "Gift": "Gift",
+                "dismantle": "Dismantle"
+            },
+            "dismantle": {
+                "addedItems": "The following items where added to the actor",
+                "notFound": "These items are not linked and could not be automatically added."
             },
             "Settings": {
                 "General": "General Settings",

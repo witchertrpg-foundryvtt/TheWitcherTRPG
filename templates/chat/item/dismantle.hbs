@@ -1,0 +1,21 @@
+<div class="witcherTRPG">
+    <h3>
+        {{ item.name }}
+    </h3>
+
+    {{#if foundItems}}
+    <h4>{{ localize "WITCHER.Item.dismantle.addedItems" }}</h4>
+    {{#each foundItems as |component|}}
+    <img src="{{ component.item.img }}" class="chat-icon" />
+    {{ component.item.name }}
+    {{/each}}
+    <br />
+    {{/if}}
+
+    {{#if unfoundItems}}
+    <h4>{{ localize "WITCHER.Item.dismantle.notFound" }}</h4>
+    {{#each unfoundItems as |component|}}
+    {{ component.name }}
+    {{/each}}
+    {{/if}}
+</div>
