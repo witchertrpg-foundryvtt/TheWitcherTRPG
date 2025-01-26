@@ -253,6 +253,8 @@ export let castSpellMixin = {
             'attack',
             {
                 attacker: this.uuid,
+                attack: spellItem.getSpellFlags(),
+                damage: damage,
                 defenseOptions: spellItem.system.defenseOptions
             },
             {
