@@ -90,6 +90,8 @@
                 value="{{item.system.damageProperties.silverDamage}}" />
         </td>
     </tr>
+        {{formGroup systemFields.damageProperties.fields.isMeteorite value=item.system.damageProperties.isMeteorite localize=true}}
+        {{formGroup systemFields.damageProperties.fields.isNonLethal value=item.system.damageProperties.isNonLethal localize=true}}
     <tr class=" item-header-tablerow">
         <td>
             <label

@@ -1,5 +1,7 @@
 # Foundry VTT - The Witcher TRPG #
 
+For easier bug reporting we opened a discord server: https://discord.gg/2RTQP52UKE 
+
 ## Character Sheet ##
 This Sheet represent a Player character with all of it's stats
 

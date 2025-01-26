@@ -7,7 +7,8 @@ export let itemContextMenu = {
         ContextMenu.create(this, html, '.item', [
             this.consumableItem(),
             this.removableEnhancement(),
-            this.giftableItem()
+            this.giftableItem(),
+            this.dismantableItem()
         ]);
     },
 
@@ -150,5 +151,26 @@ export let itemContextMenu = {
         }
 
         this.actor.removeItem(item.id, 1);
+    },
+
+    dismantableItem() {
+        return {
+            name: 'WITCHER.Item.ContextMenu.dismantle',
+            icon: '<i class="fa-solid fa-recycle"></i>',
+            callback: this.dismantleItem.bind(this),
+            condition: this.isItemDismantable.bind(this)
+        };
+    },
+
+    isItemDismantable(itemHtml) {
+        let item = this.actor.items.get(itemHtml[0].dataset.itemId);
+
+        return item.canBeDismantled();
+    },
+
+    async dismantleItem(itemHtml) {
+        let item = this.actor.items.get(itemHtml[0].dataset.itemId);
+
+        item.dismantle();
     }
 };

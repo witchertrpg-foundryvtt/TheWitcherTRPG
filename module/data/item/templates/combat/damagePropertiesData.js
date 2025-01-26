@@ -28,6 +28,8 @@ export default function damageProperties() {
         effects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
 
         oilEffect: new fields.StringField({ initial: '' }),
-        silverDamage: new fields.StringField({ initial: '' })
+        silverDamage: new fields.StringField({ initial: '' }),
+        isMeteorite: new fields.BooleanField({ initial: false, label: 'WITCHER.Item.DamageProperties.isMeteorite' }),
+        isNonLethal: new fields.BooleanField({ initial: false, label: 'WITCHER.Item.DamageProperties.isNonLethal' })
     };
 }

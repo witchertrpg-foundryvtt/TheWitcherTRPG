@@ -1,0 +1,14 @@
+<div class="skill-column">
+    {{#each skillConfig as |skills attr|}}
+    <details>
+        <summary>
+            <h1>{{localize (lookup ../config.statLabels attr)}}</h1>
+        </summary>
+        <table class="table-skills">
+            {{#each skills as |skillProperties|}}
+            {{formGroup skillProperties.isVisible value=skillProperties.isVisibleValue localize=true}}
+            {{/each}}
+        </table>
+    </details>
+    {{/each}}
+</div>

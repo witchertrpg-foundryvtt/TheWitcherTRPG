@@ -8,11 +8,13 @@
             "container": "Behälter",
             "diagrams": "Diagramm",
             "enhancement": "Verbesserung",
+			"hex": "Verhexungen",
+            "homeland": "Herkunft",
             "globalModifier": "Globaler Modifikator (abgekündigt)",
             "mount": "Reittier",
             "mutagen": "Mutagen",
             "note": "Notiz",
-            "obstacle": "Hinderniss",
+            "obstacle": "Hindernis",
             "profession": "Beruf",
             "race": "Rasse",
             "spell": "Zauber",
@@ -30,8 +32,168 @@
         "Name": "Name",
         "Type": "Typ",
         "Percentage": "Prozent",
+        "NoEffects": "Keine Effekte",
         "DC": "DC",
-        "Attack": "Angriff",
+        "Attack": {
+            "name": "Angriff",
+            "attackOptions": {
+                "label": "Angriff ist:",
+                "hint": "Angriffsmöglichkeiten einstellen",
+                "melee": "Nahkampf",
+                "ranged": "Fernkampf",
+                "spell": "Zauber",
+                "itemUse": "Gegenstand benutzen"
+            },
+            "meleeAttackSkill": {
+                "label": "Nahkampffertigkeiten",
+                "hint": ""
+            },
+            "rangedAttackSkill": {
+                "label": "Fernkampffertigkeiten",
+                "hint": ""
+            },
+            "spellAttackSkill": {
+                "label": "Zauberfertigkeiten",
+                "hint": ""
+            },
+            "itemUseAttackSkill": {
+                "label": "Fertigkeiten für Gegenstandsnutzung",
+                "hint": ""
+            }
+        },
+        "Defense": {
+            "name": "Verteidigung",
+            "Crit": "Du hast einen kritischen Treffer erlitten",
+            "defenseOptions": {
+                "name": "Verteidigungsmöglichkeiten",
+                "dodge": "Ausweichen",
+                "reposition": "Neu Positionieren",
+                "parry": "Parieren",
+                "block": "Blocken",
+                "parryThrown": "Wurfwaffe parieren",
+                "magicResist": "Magie widerstehen"
+            }
+        },
+        "Actor": {
+            "SkillTab": "Fertigkeiten & Modikatoren",
+            "ProfessionTab": "Profession & Volk",
+            "InventoryTab": "Ausrüstung & Inventar",
+            "MagicTab": "Magie & Sprüche",
+            "BackgroundTab": "Hintergrund",
+            "Name": "Charakter Name",
+            "Race": "Volk",
+            "Gender": "Geschlecht",
+            "Age": "Alter",
+            "Perks": "Vorteile",
+            "Adda.Profession": "Profession hinzufügen",
+            "Adda.Race": "Spezies hinzufügen",
+            "TotalStats": "Gesamt",
+            "Stat.Int": "INT",
+            "Stat.Ref": "REF",
+            "Stat.Dex": "GES",
+            "Stat.Body": "KRA",
+            "Stat.Spd": "SCH",
+            "Stat.Emp": "EMP",
+            "Stat.Cra": "HAN",
+            "Stat.Will": "WIL",
+            "Stat.Luck": "GLÜ",
+	        "Stat.Toxicity": "Toxizität",
+            "StatTitle.LableLeft": "Eigensch.",
+            "StatTitle.ModMax": "Mod / Max",
+            "StatTitle.Derived": "Abgeleitet",
+            "CoreStat.Stun": "Betä",
+            "CoreStat.Run": "Renn",
+            "CoreStat.Leap": "Spri",
+            "CoreStat.Enc": "Bela",
+            "CoreStat.Rec": "Erho",
+            "CoreStat.woundTreshold": "WS",
+            "DerStat.Vigor": "Elan",
+            "DerStat.HP": "Max LP",
+            "DerStat.Shield": "Schild",
+            "DerStat.Sta": "AUS",
+            "DerStat.Resolve": "Entschlossenheit",
+            "DerStat.Focus": "Fokus",
+            "DerStat.Punch": "Schlag",
+            "DerStat.Kick": "Tritt",
+            "Initiative": "Initiative",
+            "SavingThrow": "Rettungswurf",
+            "Crit/Fumble": "Krit/Patzer",
+            "Defense": "Verteidigung",
+            "Adrenaline": "Adrenalin",
+            "Stamina": "Ausdauer",
+            "Resolve": "Entschlossenheit",
+            "Hp": "LP",
+            "Shield": "Schild",
+            "Skill.Intelligence": "Intelligenz",
+            "Skill.Reflex": "Reflexe",
+            "Skill.Willpower": "Willenskraft",
+            "Skill.Dexterity": "Geschicklichkeit",
+            "Skill.Crafting": "Handwerk",
+            "Skill.Body": "Body",
+            "Skill.Empathy": "Empathy",
+            "Profession.Level": "Level",
+            "ImprovementPoints": "Steigerungspunkte",
+            "CurrentIP": "Aktuelle SP:",
+            "SkillName": "Fertigkeitsname...",
+            "TotalSkill": "Gesamt Fertigkeiten",
+            "TotalProfSkill": "Gesamt Berufsfertigkeiten",
+            "SpecialSkillModifier": "besondere Fähigkeits-Modifikatoren",
+            "Lifepath": {
+                "Bonus": "Lebenspfad Bonus",
+                "strongStrikeAttackBonus": "Harter Angriffs-Bonus",
+                "jointStrikeAttackBonus": "Gemeinsamer Angriffs-Bonus",
+                "shieldParryBonus": "Schildparade-Bonus",
+                "shieldParryThrownBonus": "Schildparade-Wurf-Bonus",
+                "ignoredArmorEncumbrance": "Ignoriert Rüstungsbelastung",
+                "ignoredEvWhenCasting": "Igrnoriert Behinderungswert beim Zaubern"
+            },
+            "attackStats": {
+                "critLocationModifier": "Kritischer Trefferzone-modifikator",
+                "critEffectModifier": "Kritischer Effekt-modifikator"
+            }
+        },
+        "Alchemy": {
+            "Duration": "Dauer",
+            "Toxicity": "Gift.",
+            "Alchemical": "Alchemika",
+            "Potion": "Trank",
+            "Decoction": "Mixtur",
+            "Oil": "Öl"
+        },
+        "Armor": {
+            "ArmorEnhancement": "Rüstungsverbesserung",
+            "Reliable": "Best.",
+            "EncumbranceValue": "Behinderungswert",
+            "Resistances": "Widerstände",
+            "Res": "Res",
+            "unavailable": "N/A",
+            "bludgeoning": "Wuchtschaden",
+            "slashing": "Hiebschaden",
+            "piercing": "Stichschaden",
+            "elemental": "Elementar",
+            "Type": "Typ",
+            "StoppingPower": "Aktuelle Abwehrkraft",
+            "MaxStoppingPower": "Maximale Abwehrkraft",
+            "Short.ArmorEnhancement": "RV",
+            "Short.EncumbranceValue": "BW",
+            "Short.StoppingPower": "AK",
+            "Short.MaxStoppingPower": "Max. AK",
+            "Light": "Leichte Rüstung",
+            "Medium": "Mittelschwere Rüstung",
+            "Heavy": "Schwere Rüstung",
+            "Natural": "Natürliche Rüstung",
+            "LayerBonus": "Schichtbonus",
+            "LocationHead": "Kopf",
+            "LocationTorso": "Körper",
+            "LocationLeg": "Beine",
+            "LocationArm": "Arme",
+            "LocationFull": "Volle Rüstung",
+            "LocationShield": "Schild",
+            "LocationLeft": "L.",
+            "LocationRight": "R.",
+            "Location": "Körperzone",
+            "tooMuch": "Es sind zu viele Rüstungen desselben Typs vorhanden"
+        },
         "Item": {
             "ClickableImage": "Zoombar",
             "Short.Availability": "Vork.",
@@ -92,20 +254,69 @@
             "DefenseProperties": {
                 "parrying": "Negiert Parier Mali"
             },
+            "RegionProperties": {
+                "createRegionFromTemplate": "Erzeuge Gebiet aus Vorlage",
+                "tokenEnter": "Wende Makro bei Betreten an",
+                "tokenTurnStart": "Wende Makro bei Rundenbeginn an",
+                "tokenPreMove": "Wende Makro vor Tokenbewegung an",
+                "tokenExit": "Wende Makro bei Verlassen an"
+            },
             "ContextMenu": {
                 "Consume": "Konsumieren",
                 "NotConsumable": "Der Gegenstand ist nicht als konsumierbar konfiguriert",
-                "RemoveEnhancement": "Verbesserung ausbauen"
+                "RemoveEnhancement": "Verbesserung ausbauen",
+                "Gift": "Gabe"
             },
             "Settings": {
+                "General": "Allgemeine Einstellungen",
                 "Alchemical": "Einstellungen für alchemistische Gegenstände",
                 "Armor": "Einstellungen für Rüstung",
+                "Mutagen": "Einstellungen für Mutagen",
+                "Race": "Einstellungen für Rasse",
                 "Valuable": "Einstellungen für Ausrüstung",
                 "Weapon": "Einstellungen für Waffen",
                 "DamageProperties": "Schaden Eigenschaften",
-                "DefenseProperties": "Verteidung Eigenschaften",
-                "ConsumableProperties": "Verzehr Eigenschaften"
+                "DefenseProperties": "Verteidigung Eigenschaften",
+                "ConsumableProperties": "Verzehr Eigenschaften",
+                "RegionProperties": "Gebiet Eigenschaften",
+                "Attacks": {
+                    "defendWith": {
+                        "label": "Verteidgung mit:",
+                        "hint": "Einstellungen, wie das Ziel sich dagegen verteidigen kann"
+                    }
+                },
+                "Spell": {
+                    "SelfProperties": "Auf Anwender wirken",
+                    "CastProperties": "Auf Zeil wirken"
+                }
             }
+        },
+        "Damage": {
+            "RemoveSP": "Subtrahiere AK, vor  Trefferzonenmodifikator.",
+            "damageType": "Welche Art von Schaden",
+            "ChangeLocation": "Ändere die Trefferzone",
+            "CurrentLocation": "Aktuelle Trefferzone",
+            "resistSilver": "Resistenz gegen Nicht-Silber anwenden",
+            "resistMeteorite": "Resistenz gegen Nicht-Meteorit anwenden",
+            "initial": "Ursprünglicher Schaden",
+            "totalSP": "Gesamtabwehrkraft",
+            "improvedArmorPiercing": "(Nach verbessertem Panzerbrechen)",
+            "afterSPReduct": "Schaden nach AK-Reduzierung",
+            "armorPiercing": "(Ignoriert aufgrund von Panzerbrechen)",
+            "afterLocationModifier": "Schaden nach Trefferzonenmodifikator",
+            "afterResistances": "Schaden nach Resistenzen/Anfälligkeiten",
+            "totalApplied": "Angewandter Gesamtschaden",
+            "ablated": "Rüstung wurde abgetragen um ",
+            "crushingForce": "Rüstung wurde doppelt abgetragen um ",
+            "NotEnough": "Nicht genug Schaden um Rüstung zu überwinden",
+            "ToMuchShield": "Gesamter Schaden wurde durch Schild oder Rüstung absorbiert",
+            "isVulnerable": "Anfällig gegenüber der Attacke",
+            "oilDmg": "Addiere Öl-Schaden (+5)",
+            "shield": "Schild",
+            "silverDmg": "Addiere Silberschaden",
+            "silver": "Silber",
+            "oil": "Öl",
+            "activeEffect": "Aktiver Effekt"
         },
         "Dialog": {
             "NoComponents": "Nicht genügend Komponenten zum herstellen",
@@ -239,6 +450,8 @@
             "Concealment": "Verbergen",
             "AttackSkill": "Angriffsfähigkeit",
             "MeleeBonus": "Nahkampf Bonus",
+            "rangedMeleeBonus": "Fernkampf Bonus",
+            "rangedMeleeBonusHint": "Manche Fernkampfwaffen addieren ebenfalls den Nahkampf Bonus",
             "isAmmunition": "Ist Munition",
             "isThrowable": "Ist Wurfwaffe",
             "Broken": "Deine Waffe ist zerbrochen.",
@@ -248,40 +461,6 @@
             "improvedArmorPiercing": "Verbessertes Panzerbrechen",
             "ablating": "Abtragung",
             "crushingForce": "Vernichtende Wucht"
-        },
-        "Armor": {
-            "ArmorEnhancement": "Rüstungsverbesserung",
-            "Reliable": "Best.",
-            "EncumbranceValue": "Behinderungswert",
-            "Resistances": "Widerstände",
-            "Res": "Res",
-            "unavailable": "N/A",
-            "bludgeoning": "Wuchtschaden",
-            "slashing": "Hiebschaden",
-            "piercing": "Stichschaden",
-            "elemental": "Elementar",
-            "Type": "Typ",
-            "StoppingPower": "Aktuelle Abwehrkraft",
-            "MaxStoppingPower": "Maximale Abwehrkraft",
-            "Short.ArmorEnhancement": "RV",
-            "Short.EncumbranceValue": "BW",
-            "Short.StoppingPower": "AK",
-            "Short.MaxStoppingPower": "Max. AK",
-            "Light": "Leichte Rüstung",
-            "Medium": "Mittelschwere Rüstung",
-            "Heavy": "Schwere Rüstung",
-            "Natural": "Natürliche Rüstung",
-            "LayerBonus": "Schichtbonus",
-            "LocationHead": "Kopf",
-            "LocationTorso": "Körper",
-            "LocationLeg": "Beine",
-            "LocationArm": "Arme",
-            "LocationFull": "Volle Rüstung",
-            "LocationShield": "Schild",
-            "LocationLeft": "L.",
-            "LocationRight": "R.",
-            "Location": "Körperzone",
-            "tooMuch": "Es sind zu viele Rüstungen desselben Typs vorhanden"
         },
         "Location": {
             "Random": "Zufall",
@@ -313,22 +492,6 @@
             "ChooseTitle": "Wähle eine Verbesserung",
             "NoEnhancement": "Keine Verbesserung verfügbar"
         },
-        "Mount": {
-            "Dex": "Ges + Atl",
-            "Dexterity": "Ges",
-            "ControlMod": "Zügeln Mod",
-            "Control": "Zügeln",
-            "Speed": "Geschwindigkeit",
-            "Hp": "LP"
-        },
-        "Alchemy": {
-            "Duration": "Dauer",
-            "Toxicity": "Gift.",
-            "Alchemical": "Alchemika",
-            "Potion": "Trank",
-            "Decoction": "Mixtur",
-            "Oil": "Öl"
-        },
         "Diagram": {
             "alchemyDC": "Alchemie-SG.",
             "craftingDC": "Herstellen-SG.",
@@ -353,16 +516,6 @@
             "Master": "Meister",
             "GrandMaster": "Großmeister",
             "Witcher": "Hexer"
-        },
-        "Mutagen": {
-            "MutSource": "Quelle des Mutagens",
-            "AlchemyDC": "Alchemie-SG",
-            "MinorMutation": "Geringe Mutation",
-            "Type": "Typ",
-            "Source": "Quelle",
-            "Red": "Rot",
-            "Green": "Grün",
-            "Blue": "Blau"
         },
         "Valuable": {
             "Conceal": "Verbergen",
@@ -389,84 +542,6 @@
         "StSpd": "Geschwindigkeit",
         "StVigor": "Elan",
         "StReputation": "Ruf",
-        "Actor": {
-            "SkillTab": "Fertigkeiten & Modikatoren",
-            "ProfessionTab": "Profession & Volk",
-            "InventoryTab": "Ausrüstung & Inventar",
-            "MagicTab": "Magie & Sprüche",
-            "BackgroundTab": "Hintergrund",
-            "Name": "Charakter Name",
-            "Race": "Volk",
-            "Gender": "Geschlecht",
-            "Age": "Alter",
-            "Perks": "Vorteile",
-            "Adda.Profession": "Profession hinzufügen",
-            "Adda.Race": "Spezies hinzufügen",
-            "TotalStats": "Gesamt",
-            "Stat.Int": "INT",
-            "Stat.Ref": "REF",
-            "Stat.Dex": "GES",
-            "Stat.Body": "KRA",
-            "Stat.Spd": "SCH",
-            "Stat.Emp": "EMP",
-            "Stat.Cra": "HAN",
-            "Stat.Will": "WIL",
-            "Stat.Luck": "GLÜ",
-	        "Stat.Toxicity": "Toxizität",
-            "StatTitle.LableLeft": "Eigensch.",
-            "StatTitle.ModMax": "Mod / Max",
-            "StatTitle.Derived": "Abgeleitet",
-            "CoreStat.Stun": "Betä",
-            "CoreStat.Run": "Renn",
-            "CoreStat.Leap": "Spri",
-            "CoreStat.Enc": "Bela",
-            "CoreStat.Rec": "Erho",
-            "CoreStat.woundTreshold": "WS",
-            "DerStat.Vigor": "Elan",
-            "DerStat.HP": "Max LP",
-            "DerStat.Shield": "Schild",
-            "DerStat.Sta": "AUS",
-            "DerStat.Resolve": "Entschlossenheit",
-            "DerStat.Focus": "Fokus",
-            "DerStat.Punch": "Schlag",
-            "DerStat.Kick": "Tritt",
-            "Initiative": "Initiative",
-            "SavingThrow": "Rettungswurf",
-            "Crit/Fumble": "Krit/Patzer",
-            "Defense": "Verteidigung",
-            "Adrenaline": "Adrenalin",
-            "Stamina": "Ausdauer",
-            "Resolve": "Entschlossenheit",
-            "Hp": "LP",
-            "Shield": "Schild",
-            "Skill.Intelligence": "Intelligenz",
-            "Skill.Reflex": "Reflexe",
-            "Skill.Willpower": "Willenskraft",
-            "Skill.Dexterity": "Geschicklichkeit",
-            "Skill.Crafting": "Handwerk",
-            "Skill.Body": "Body",
-            "Skill.Empathy": "Empathy",
-            "Profession.Level": "Level",
-            "ImprovementPoints": "Steigerungspunkte",
-            "CurrentIP": "Aktuelle SP:",
-            "SkillName": "Fertigkeitsname...",
-            "TotalSkill": "Gesamt Fertigkeiten",
-            "TotalProfSkill": "Gesamt Berufsfertigkeiten",
-            "SpecialSkillModifier": "besondere Fähigkeits-Modifikatoren",
-            "Lifepath": {
-                "Bonus": "Lebenspfad Bonus",
-                "strongStrikeAttackBonus": "Harter Angriffs-Bonus",
-                "jointStrikeAttackBonus": "JGemeinsamer Angriffs-Bonus",
-                "shieldParryBonus": "Schildparade-Bonus",
-                "shieldParryThrownBonus": "Schildparade-Wurf-Bonus",
-                "ignoredArmorEncumbrance": "Ignoriert Rüstungsbelastung",
-                "ignoredEvWhenCasting": "Igrnoriert Behinderungswert beim Zaubern"
-            },
-            "attackStats": {
-                "critLocationModifier": "Kritischer Trefferzone-modifikator",
-				"critEffectModifier": "Kritischer Effekt-modifikator"
-	    }
-	},
         "CritWound": {
             "Header": "Krit Wunden",
             "HealingTime.Label": "Tage bis geheilt",
@@ -707,6 +782,8 @@
                 "Vampire": "Vampire"
             },
             "Resistances": "Resistenzen",
+            "resistantNonSilver": "Resistent gegen Nicht-Silber Schaden",
+            "resistantNonMeteorite": "Resistent gegen Nicht-Meteorit Schaden",
             "Immunities": "Immunitäten",
             "ImmunitiesStatusEffects": "Immunitäten gegen Statuseffekte",
             "Susceptibilities": "Anfälligkeiten",
@@ -715,6 +792,24 @@
             "exportLootGenerated": "Gegenstand wurde mithilfe der Würfeltabelle erfolgreich generiert. Es wurde dem Beutebogen hinzugefügt",
             "exportLootInvalidItemError": "Der Gegenstand ist im Kompendium nicht vorhanden. Verwende stattdessen den Standard-Beutegenerator",
             "exportLootToManyRollTablesError": "Zu viele Würfeltabellen für den Gegenstand im Kompendium gefundenen. Verwende stattdessen den Standard-Beutegenerator"
+        },
+        "Mount": {
+            "Dex": "Ges + Atl",
+            "Dexterity": "Ges",
+            "ControlMod": "Zügeln Mod",
+            "Control": "Zügeln",
+            "Speed": "Geschwindigkeit",
+            "Hp": "LP"
+        },
+        "Mutagen": {
+            "MutSource": "Quelle des Mutagens",
+            "AlchemyDC": "Alchemie-SG",
+            "MinorMutation": "Geringe Mutation",
+            "Type": "Typ",
+            "Source": "Quelle",
+            "Red": "Rot",
+            "Green": "Grün",
+            "Blue": "Blau"
         },
         "Loot": {
             "Name": "Beute",
@@ -921,7 +1016,7 @@
                 "Name": "Abgeleitete Werte"
             }
         },
-	"SkIntAwareness": "Aufmerksamkeit",
+        "SkIntAwareness": "Aufmerksamkeit",
         "SkIntBusiness": "Geschäftsinn",
         "SkIntDeduction": "Schlussfolgerunden",
         "SkIntEducation": "Bildung",
@@ -999,33 +1094,6 @@
         "Combat": {
             "shieldApplied": "Schild erhalten:",
             "healed": "{target} geheilt um {heal}"
-        },
-        "Damage": {
-            "RemoveSP": "Subtrahiere AK, vor  Trefferzonenmodifikator.",
-            "damageType": "Welche Art von Schaden",
-            "ChangeLocation": "Ändere die Trefferzone",
-            "CurrentLocation": "Aktuelle Trefferzone",
-            "resistSilver": "Resistenz gegen Nicht-Silber anwenden",
-            "resistMeteorite": "Resistenz gegen Nicht-Meteorit anwenden",
-            "initial": "Ursprünglicher Schaden",
-            "totalSP": "Gesamtabwehrkraft",
-            "improvedArmorPiercing": "(Nach verbessertem Panzerbrechen)",
-            "afterSPReduct": "Schaden nach AK-Reduzierung",
-            "armorPiercing": "(Ignoriert aufgrund von Panzerbrechen)",
-            "afterLocationModifier": "Schaden nach Trefferzonenmodifikator",
-            "afterResistances": "Schaden nach Resistenzen/Anfälligkeiten",
-            "totalApplied": "Angewandter Gesamtschaden",
-            "ablated": "Rüstung wurde abgetragen um ",
-            "crushingForce": "Rüstung wurde doppelt abgetragen um ",
-            "NotEnough": "Nicht genug Schaden um Rüstung zu überwinden",
-            "ToMuchShield": "Gesamter Schaden wurde durch Schild oder Rüstung absorbiert",
-            "isVulnerable": "Anfällig gegenüber der Attacke",
-            "oilDmg": "Addiere Öl-Schaden (+5)",
-            "shield": "Schild",
-            "silverDmg": "Addiere Silberschaden",
-            "silver": "Silber",
-            "oil": "Öl",
-            "activeEffect": "Aktiver Effekt"
         },
         "Context": {
             "applyDmg": "Schaden anwenden",
@@ -1119,7 +1187,10 @@
                 "resistances": "Widerstände",
                 "flat": "Pauschalbonus",
                 "multi": "Multiplikation",
-                "applyAP": "Wende AP auf Multiplikator an"
+                "applyAP": "Wende AP auf Multiplikator an",
+                "Item": {
+                    "damage": "Schaden"
+                }
             }
         },
         "globalModifier": {
@@ -1129,8 +1200,8 @@
             "specialEffect": {
                 "wolfstrike": "Wolfsschule Harter Angriff",
                 "viperstrike": "Schlangenschule Beidhändiger Angriff",
-                "manticoreparry": "Mantikorschule Parrieren",
-                "manticoreparrythrown": "Mantikorschule Wurfwaffe parrieren",
+                "manticoreparry": "Mantikorschule Parieren",
+                "manticoreparrythrown": "Mantikorschule Wurfwaffe parieren",
                 "armorEncumbarance": "-1 Behinderungswert",
                 "armoredCaster": "Gepanzerter Zauberer",
                 "meleeDamage": "+1 Nahkampfschaden"
@@ -1142,7 +1213,8 @@
             "toggle": "An/Aus",
             "temporary": "Temporär",
             "passive": "Passive",
-            "inactive": "Inaktive"
+            "inactive": "Inaktive",
+            "temporaryItemImprovement": "Temporäre Gegenstandsverbesserung"
         },
         "character.socialStanding": "Gesellschaftlicher Stand",
         "socialStanding": {

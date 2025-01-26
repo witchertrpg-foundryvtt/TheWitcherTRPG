@@ -2,10 +2,11 @@ import { extendedRoll } from '../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../scripts/rollConfig.js';
 import { WITCHER } from '../setup/config.js';
 import AbilityTemplate from './ability-template.js';
-import RepairSystem from '../item/systems/repair.js';
 import { regionMixin } from './mixins/regionMixin.js';
 import { damageUtilMixin } from './mixins/damageUtilMixin.js';
 import { consumeMixin } from './mixins/consumeMixin.js';
+import { repairMixin } from './mixins/repairMixin.js';
+import { dismantlingMixin } from './mixins/dismantlingMixin.js';
 
 export default class WitcherItem extends Item {
     async _preCreate(data, options, user) {
@@ -88,6 +89,7 @@ export default class WitcherItem extends Item {
 
         let attackSkill = this.system[attackOption + 'AttackSkill'];
         return {
+            attackOption,
             name: attackSkill,
             alias: WITCHER.skillMap[attackSkill]?.label
         };
@@ -356,18 +358,6 @@ export default class WitcherItem extends Item {
         }
     }
 
-    async repair() {
-        await RepairSystem.process(this.actor, this);
-    }
-
-    restoreReliability() {
-        RepairSystem.restoreReliability(this);
-    }
-
-    get canBeRepaired() {
-        return RepairSystem.canBeRepaired(this);
-    }
-
     /* -------------------------------------------- */
     /*  Active Effects                              */
     /* -------------------------------------------- */
@@ -424,5 +414,7 @@ export default class WitcherItem extends Item {
 }
 
 Object.assign(WitcherItem.prototype, consumeMixin);
+Object.assign(WitcherItem.prototype, repairMixin);
+Object.assign(WitcherItem.prototype, dismantlingMixin);
 Object.assign(WitcherItem.prototype, regionMixin);
 Object.assign(WitcherItem.prototype, damageUtilMixin);

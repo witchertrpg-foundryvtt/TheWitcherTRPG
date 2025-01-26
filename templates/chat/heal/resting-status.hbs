@@ -1,0 +1,23 @@
+{{#if isResting}}
+    <p>{{actor.name}} {{localize 'WITCHER.Chat.Resting'}}</p>
+{{else}}
+    <p>{{actor.name}} {{localize 'WITCHER.Chat.Active'}}</p>
+{{/if}}
+
+<h4>
+    <i class='fa-solid fa-heart' alt='teste'></i>
+    {{totalRec}}
+    {{localize 'WITCHER.Actor.Hp'}}
+</h4>
+<h4>
+    <i class='fa-solid fa-bolt'></i>
+    {{localize 'WITCHER.Chat.fullStamina'}}
+</h4>
+
+{{#if actualWoundList}}
+    <h4>
+        <i class='fa-solid fa-kit-medical'></i>
+        {{daysHealed}}
+        {{localize 'WITCHER.Chat.WoundHealing'}}
+    </h4>
+{{/if}}

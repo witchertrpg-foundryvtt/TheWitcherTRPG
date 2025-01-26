@@ -6,6 +6,7 @@ import { skillModifierMixin } from './mixins/skillModifierMixin.js';
 import { skillMixin } from './mixins/skillMixin.js';
 import { statMixin } from './mixins/statMixin.js';
 import { itemMixin } from './mixins/itemMixin.js';
+import { healMixin } from './mixins/healMixin.js';
 
 import { itemContextMenu } from './interactions/itemContextMenu.js';
 import { activeEffectMixin } from './mixins/activeEffectMixin.js';
@@ -40,6 +41,9 @@ export default class WitcherActorSheet extends ActorSheet {
     skillMap = CONFIG.WITCHER.skillMap;
 
     uniqueTypes = ['profession', 'race', 'homeland'];
+
+    //overwrite in sub-classes
+    configuration = undefined;
 
     /** @override */
     getData() {
@@ -86,6 +90,10 @@ export default class WitcherActorSheet extends ActorSheet {
     /** @inheritdoc */
     _canDragDrop(selector) {
         return true;
+    }
+
+    async _renderConfigureDialog() {
+        this.configuration?._render(true);
     }
 
     _prepareCustomSkills(context) {
@@ -226,10 +234,11 @@ export default class WitcherActorSheet extends ActorSheet {
         html.find('.crit-roll').on('click', this._onCritRoll.bind(this));
         html.find('.recover-sta').on('click', this._onRecoverSta.bind(this));
         html.find('.defense-roll').on('click', this._onDefenseRoll.bind(this));
-        html.find('.heal-button').on('click', this._onHeal.bind(this));
         html.find('.verbal-button').on('click', this._onVerbalCombat.bind(this));
 
         html.find('input').focusin(ev => this._onFocusIn(ev));
+
+        html.find('.configure-actor').on('click', this._renderConfigureDialog.bind(this));
 
         //mixins
         this.statListener(html);
@@ -244,6 +253,7 @@ export default class WitcherActorSheet extends ActorSheet {
         this.criticalWoundListener(html);
         this.noteListener(html);
         this.specialSkillModifierListener(html);
+        this.healListeners(html);
 
         this.itemContextMenu(html);
     }
@@ -298,93 +308,6 @@ export default class WitcherActorSheet extends ActorSheet {
         ExecuteDefense(this.actor);
     }
 
-    async _onHeal() {
-        let dialogTemplate = `
-      <h1>${game.i18n.localize('WITCHER.Heal.title')}</h1>
-      <div class="flex">
-        <div>
-          <div><input id="R" type="checkbox" unchecked/> ${game.i18n.localize('WITCHER.Heal.resting')}</div>
-          <div><input id="SF" type="checkbox" unchecked/> ${game.i18n.localize('WITCHER.Heal.sterilized')}</div>
-        </div>
-        <div>
-          <div><input id="HH" type="checkbox" unchecked/> ${game.i18n.localize('WITCHER.Heal.healinghand')}</div>
-            <div><input id="HT" type="checkbox" unchecked/> ${game.i18n.localize('WITCHER.Heal.healingTent')}</div>
-        </div>
-      </div>`;
-        new Dialog({
-            title: game.i18n.localize('WITCHER.Heal.dialogTitle'),
-            content: dialogTemplate,
-            buttons: {
-                t1: {
-                    label: game.i18n.localize('WITCHER.Heal.button'),
-                    callback: async html => {
-                        let rested = html.find('#R')[0].checked;
-                        let sterFluid = html.find('#SF')[0].checked;
-                        let healHand = html.find('#HH')[0].checked;
-                        let healTent = html.find('#HT')[0].checked;
-
-                        let actor = this.actor;
-                        let rec = actor.system.coreStats.rec.current;
-                        let curHealth = actor.system.derivedStats.hp.value;
-                        let total_rec = 0;
-                        let maxHealth = actor.system.derivedStats.hp.max;
-                        //Calculate healed amount
-                        if (rested) {
-                            console.log('Spent Day Resting');
-                            total_rec += rec;
-                        } else {
-                            console.log('Spent Day Active');
-                            total_rec += Math.floor(rec / 2);
-                        }
-                        if (sterFluid) {
-                            console.log('Add Sterilising Fluid Bonus');
-                            total_rec += 2;
-                        }
-                        if (healHand) {
-                            console.log('Add Healing Hands Bonus');
-                            total_rec += 3;
-                        }
-                        if (healTent) {
-                            console.log('Add Healing Tent Bonus');
-                            total_rec += 2;
-                        }
-                        //Update actor health
-                        await actor.update({
-                            'system.derivedStats.hp.value': Math.min(curHealth + total_rec, maxHealth)
-                        });
-                        setTimeout(() => {
-                            let newSTA = actor.system.derivedStats.sta.max;
-                            //Delay stamina refill to allow actor sheet to update max STA value if previously Seriously Wounded or in Death State, otherwise it would refill to the weakened max STA value
-                            actor.update({ 'system.derivedStats.sta.value': newSTA });
-                        }, 400);
-
-                        ui.notifications.info(
-                            `${actor.name} ${game.i18n.localize('WITCHER.Heal.recovered')} ${rested ? game.i18n.localize('WITCHER.Heal.restful') : game.i18n.localize('WITCHER.Heal.active')} ${game.i18n.localize('WITCHER.Heal.day')}`
-                        );
-
-                        //Remove add one day for each Crit wound and removes it if equals to max days.
-                        const critList = Object.values(this.actor.system.critWounds).map(details => details);
-                        let newCritList = [];
-                        critList.forEach(crit => {
-                            crit.daysHealed += 1;
-                            if (sterFluid && !crit.sterilized) {
-                                crit.daysHealed += 2;
-                                crit.sterilized = true;
-                            }
-                            if (crit.healingTime <= 0 || crit.daysHealed < crit.healingTime) {
-                                newCritList.push(crit);
-                            }
-                        });
-                        this.actor.update({ 'system.critWounds': newCritList });
-                    }
-                },
-                t2: {
-                    label: `${game.i18n.localize('WITCHER.Button.Cancel')}`
-                }
-            }
-        }).render(true);
-    }
-
     async _onVerbalCombat() {
         this.actor.verbalCombat();
     }
@@ -416,5 +339,6 @@ Object.assign(WitcherActorSheet.prototype, deathsaveMixin);
 Object.assign(WitcherActorSheet.prototype, criticalWoundMixin);
 Object.assign(WitcherActorSheet.prototype, noteMixin);
 Object.assign(WitcherActorSheet.prototype, specialSkillModifierMixin);
+Object.assign(WitcherActorSheet.prototype, healMixin);
 
 Object.assign(WitcherActorSheet.prototype, itemContextMenu);

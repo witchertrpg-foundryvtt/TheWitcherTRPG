@@ -37,7 +37,8 @@ export function addDamageMessageContextOptions(html, options) {
 }
 
 async function ApplyNormalDamage(actor, totalDamage, messageId) {
-    applyDamageFromMessage(actor, totalDamage, messageId, 'hp');
+    let damageObject = game.messages.get(messageId).getFlag('TheWitcherTRPG', 'damage');
+    applyDamageFromMessage(actor, totalDamage, messageId, damageObject.damageProperties.isNonLethal ? 'sta' : 'hp');
 }
 
 async function ApplyNonLethalDamage(actor, totalDamage, messageId) {
@@ -156,7 +157,7 @@ async function applyDamage(actor, dialogData, totalDamage, damageObject, derived
         totalDamage -= shield;
     }
 
-    if (actor.system.category && (damageObject.damageProperties.oilEffect === actor.system.category)) {
+    if (actor.system.category && damageObject.damageProperties.oilEffect === actor.system.category) {
         totalDamage += 5;
         infoTotalDmg += `+5[${game.i18n.localize('WITCHER.Damage.oil')}]`;
     }
@@ -209,9 +210,9 @@ async function applyDamageToAllLocations(actor, dialogData, damage, totalDamage,
 
     let resultPromises = [];
     locations.forEach(location => {
-        damage.location = location
+        damage.location = location;
 
-        resultPromises.push(calculateDamageWithLocation(actor, dialogData, damage, totalDamage, infoTotalDmg))
+        resultPromises.push(calculateDamageWithLocation(actor, dialogData, damage, totalDamage, infoTotalDmg));
     });
 
     let results = await Promise.all(resultPromises);
@@ -253,7 +254,7 @@ async function calculateDamageWithLocation(actor, dialogData, damageObject, tota
     }
 
     let silverDamage = 0;
-    if (damageObject.damageProperties?.silverDamage) {
+    if (damageProperties?.silverDamage) {
         let silverRoll = await new Roll(damageObject.damageProperties.silverDamage).evaluate();
         silverDamage = silverRoll.total;
         infoTotalDmg += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
@@ -298,7 +299,10 @@ async function calculateDamageWithLocation(actor, dialogData, damageObject, tota
 
     totalDamage = calculateResistances(actor, totalDamage, damageObject, armorSet);
 
-    if (dialogData?.resistNonSilver || dialogData?.resistNonMeteorite) {
+    if (
+        (dialogData?.resistNonSilver && !damageProperties?.silverDamage) ||
+        (dialogData?.resistNonMeteorite && !damageProperties?.isMeteorite)
+    ) {
         totalDamage = Math.floor(0.5 * totalDamage);
     }
 

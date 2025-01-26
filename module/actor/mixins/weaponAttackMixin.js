@@ -135,11 +135,8 @@ export let weaponAttackMixin = {
 
         let attacknumber = 1;
         let damage = weapon.createBaseDamageObject();
-        damage = {
-            ...damage,
-            strike: strike,
-            type: damageType
-        };
+        damage.strike = strike;
+        damage.type = damageType;
 
         if (isExtraAttack) {
             let newSta = this.system.derivedStats.sta.value - 3;
@@ -160,7 +157,7 @@ export let weaponAttackMixin = {
             damage.ammunition = item;
         }
 
-        if (weapon.isWeaponThrowable()) {
+        if (weapon.isWeaponThrowable() && attackSkill.attackOption === 'ranged') {
             let newQuantity = weapon.system.quantity - 1;
             if (newQuantity < 0) {
                 return;
