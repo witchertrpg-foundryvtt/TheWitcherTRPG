@@ -59,27 +59,6 @@
         </div>
         <hr />
 
-        <details class="monster-custom-details monster-custom margin-right">
-            <summary>
-                <label>{{localize "WITCHER.Monster.CustomHP/STA"}}</label>
-                <input class="small" type="checkbox" name="system.customStat" {{checked system.customStat}} />
-            </summary>
-            <div class="monster-HPSTA margin-right">
-                <label>{{localize "WITCHER.Actor.Hp"}}</label>
-                <input class="small" name="system.derivedStats.hp.unmodifiedMax" type="number"
-                    value="{{system.derivedStats.hp.unmodifiedMax}}" data-dtype="Number" />
-            </div>
-            <div class="monster-HPSTA margin-right">
-                <label>{{localize "WITCHER.Actor.DerStat.Sta"}}</label>
-                <input class="small" name="system.derivedStats.sta.unmodifiedMax" type="number"
-                    value="{{system.derivedStats.sta.unmodifiedMax}}" data-dtype="Number" />
-            </div>
-            <div class="monster-HPSTA margin-right">
-                <label>{{localize "WITCHER.Actor.DerStat.Resolve"}}</label>
-                <input class="small" name="system.derivedStats.resolve.unmodifiedMax" type="number"
-                    value="{{system.derivedStats.resolve.unmodifiedMax}}" data-dtype="Number" />
-            </div>
-        </details>
         <div class="monster-HPSTA margin-right">
             <label>{{localize "WITCHER.Actor.Hp"}}</label>
             <input class="small" name="system.derivedStats.hp.value" type="number"
