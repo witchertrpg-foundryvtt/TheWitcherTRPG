@@ -9,7 +9,7 @@ export let repairMixin = {
         RepairSystem.restoreReliability(this);
     },
 
-    get canBeRepaired() {
+    canBeRepaired() {
         return RepairSystem.canBeRepaired(this);
     }
 };
