@@ -581,6 +581,10 @@ export default class WitcherActor extends Actor {
         );
     }
 
+    findComponentByUuid(uuid) {
+        return this.getList('component').find(c => c?._stats.compendiumSource === uuid)
+    }
+
     async addItem(addItem, numberOfItem, forcecreate = false) {
         let foundItem = this.items.find(item => item.name == addItem.name && item.type == addItem.type);
         if (foundItem && !forcecreate && !foundItem.system.isStored) {

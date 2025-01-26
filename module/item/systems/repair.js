@@ -39,62 +39,35 @@ class Repair {
 
         let ownedComponents = []
         let missingComponents = []
+        let unknownComponents = []
         const executor = artisan ?? actor
 
-        diagram.system.craftingComponents.forEach(craftingComponent => {
-            const ownedComponent = executor.findNeededComponent(craftingComponent.name)[0]
+        for (const craftingComponent of diagram.system.craftingComponents) {
+            const uuid = craftingComponent.uuid
 
-            if (ownedComponent) {
-                ownedComponents.push(ownedComponent)
+            if (uuid) {
+                const ownedComponent = executor.findComponentByUuid(uuid)
+                if (ownedComponent) {
+                    ownedComponents.push(ownedComponent)
+                } else {
+                    const component = await fromUuid(uuid)
+                    missingComponents.push(component)
+                }
             } else {
-                missingComponents.push(craftingComponent)
+                unknownComponents.push(craftingComponent)
             }
-        })
-
-        const components = await this.compendiumLookup(missingComponents)
+        }
 
         return new RepairData(
             actor,
             item,
             diagram,
             ownedComponents,
-            components.missing,
-            components.unknown,
+            missingComponents,
+            unknownComponents,
             this.prepareDamageLocationsData(item),
             artisan
         )
-    }
-
-    async compendiumLookup(missingComponents) {
-        const craftingCompendium = game.packs.get("wtrpg-complete-compendium.crafting")
-        const generalCompendium = game.packs.get("wtrpg-complete-compendium.gear")
-
-        let result = {
-            missing: [],
-            unknown: []
-        }
-
-        if (craftingCompendium && generalCompendium) {
-            const componentPromises = missingComponents.map(async (component) => craftingCompendium.getDocuments({ name: component.name }))
-                                        .concat(missingComponents.map(async (component) => generalCompendium.getDocuments({ name: component.name })))
-
-            const mappedComponents = (await Promise.all(componentPromises)).flat().reduce((map, comp) => {
-                map[comp.name] = comp
-
-                return map
-            }, {})
-
-            result.missing = Object.values(mappedComponents)
-            result.unknown = []
-
-            if (Object.keys(mappedComponents).length !== missingComponents.length) {
-                result.unknown = missingComponents.filter(c => !(c.name in mappedComponents))
-            }
-        } else {
-            result.unknown = missingComponents
-        }
-        
-        return result
     }
 
     prepareDamageLocationsData(item) {
@@ -164,7 +137,7 @@ class Repair {
 
         await DialogV2.wait({
             modal: true,
-            window: { title: `${game.i18n.localize('WITCHER.Repair.dialog.title')} ${data.item.name}`, },
+            window: { title: `${game.i18n.localize('WITCHER.Repair.action')} ${data.item.name}`, },
             content: template,
             buttons: buttons,
             render: (_) => this.attachHtmlListeners((cost, data) => data.additionalCost = cost, data)
@@ -197,7 +170,7 @@ class Repair {
                 quantity: 0,
                 missingQuantity: 1,
                 required: 1,
-                cost: oc.system.cost
+                cost: oc.system?.cost ?? 0
             })
         })
 
@@ -291,7 +264,8 @@ class Repair {
 
         return {
             speaker: ChatMessage.getSpeaker({ actor: data.executor }),
-            flavor: template
+            flavor: template,
+            system: {}
         }
     }
 
@@ -413,7 +387,7 @@ class RepairData {
     get repairPrice() {
         const ownedPrice = this.ownedComponents.reduce((sum, comp) => sum + comp.system.cost, this.additionalCost)
 
-        return this.missingComponents.reduce((sum, comp) => sum + comp.system.cost, ownedPrice)
+        return this.missingComponents.reduce((sum, comp) => sum + comp.system?.cost, ownedPrice)
     }
 }
 
