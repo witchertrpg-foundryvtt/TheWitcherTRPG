@@ -1,6 +1,5 @@
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
-import { applyModifierToActor } from '../../scripts/globalModifier/applyGlobalModifier.js';
 import { applyStatusEffectToActor } from '../../scripts/statusEffects/applyStatusEffect.js';
 import { applyActiveEffectToActorViaId } from '../../scripts/activeEffects/applyActiveEffect.js';
 import { getRandomInt } from '../../scripts/helper.js';
@@ -49,9 +48,15 @@ export let defenseMixin = {
 
         if (selectedDefense.itemTypes) {
             selectedDefense.itemTypes.forEach(itemType =>
-                this.getList(itemType).forEach(item =>
-                    chooser.push({ value: item.system.attackSkill ?? 'melee', label: item.name, itemId: item.id })
-                )
+                this.getList(itemType)
+                    .filter(item => !item.system.isAmmo)
+                    .forEach(item =>
+                        chooser.push({
+                            value: item.system.meleeAttackSkill ?? 'melee',
+                            label: item.name,
+                            itemId: item.id
+                        })
+                    )
             );
         }
 
@@ -132,7 +137,7 @@ export let defenseMixin = {
         if (modifier < 0) {
             rollFormula += !displayRollDetails
                 ? `${modifier}`
-                : `${modifier}[${game.i18n.localize('WITCHER.defense.DefenseOptions.' + defenseAction)}]`;
+                : `${modifier}[${game.i18n.localize('WITCHER.Defense.defenseOptions.' + defenseAction)}]`;
 
             if (defenseAction == 'parry' || defenseAction == 'parryThrown') {
                 let weapon = this.items.get(defenseItemId);
@@ -334,12 +339,6 @@ export let defenseMixin = {
 
     handleDefenseResults(roll, { totalAttack, attackDamageObject, attacker }, defenseItemId, { stagger, block }) {
         if (roll.total < totalAttack) {
-            if (attackDamageObject.damageProperties.appliesGlobalModifierToHit) {
-                attackDamageObject.damageProperties.hitGlobalModifiers.forEach(modifier =>
-                    applyModifierToActor(this.uuid, modifier)
-                );
-            }
-
             applyActiveEffectToActorViaId(
                 this.uuid,
                 attackDamageObject.itemUuid,
