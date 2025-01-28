@@ -1,121 +1,20 @@
 <h3>{{localize "WITCHER.Item.Settings.DamageProperties"}}</h3>
-<table class="information">
-    <tr class="item-header-tablerow">
-        <td>
-            <label for="armorPiercing">{{localize "WITCHER.Weapon.armorPiercing"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" id="armorPiercing" name="system.damageProperties.armorPiercing"
-                {{checked item.system.damageProperties.armorPiercing}} />
-        </td>
-    </tr>
-    <tr class="item-header-tablerow">
-        <td>
-            <label for="improvedArmorPiercing">{{localize "WITCHER.Weapon.improvedArmorPiercing"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" id="improvedArmorPiercing" name="system.damageProperties.improvedArmorPiercing"
-                {{checked item.system.damageProperties.improvedArmorPiercing}} />
-        </td>
-    </tr>
-    <tr class="item-header-tablerow">
-        <td>
-            <label for="ablating">{{localize "WITCHER.Weapon.ablating"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" id="ablating" name="system.damageProperties.ablating"
-                {{checked item.system.damageProperties.ablating}} />
-        </td>
-    </tr>
-    <tr class="item-header-tablerow">
-        <td>
-            <label for="crushingForce">{{localize "WITCHER.Weapon.crushingForce"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" id="crushingForce" name="system.damageProperties.crushingForce"
-                {{checked item.system.damageProperties.crushingForce}} />
-        </td>
-    </tr>
-    <tr class="item-header-tablerow">
-        <td>
-            <label for="damageIsAblation">{{localize "WITCHER.Item.DamageProperties.damageIsAblation"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" id="damageIsAblation" name="system.damageProperties.damageIsAblation"
-                {{checked item.system.damageProperties.damageIsAblation}} />
-        </td>
-    </tr>
-    <tr class="item-header-tablerow">
-        <td>
-            <label for="damageToAllLocations">{{localize "WITCHER.Item.DamageProperties.damageToAllLocations"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" id="damageToAllLocations" name="system.damageProperties.damageToAllLocations"
-                {{checked item.system.damageProperties.damageToAllLocations}} />
-        </td>
-    </tr>
-    <tr class="item-header-tablerow">
-        <td>
-            <label for="bypassesWornArmor">{{localize "WITCHER.Item.DamageProperties.bypassesWornArmor"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" id="bypassesWornArmor" name="system.damageProperties.bypassesWornArmor"
-                {{checked item.system.damageProperties.bypassesWornArmor}} />
-        </td>
-    </tr>
-    <tr class="item-header-tablerow">
-        <td>
-            <label for="bypassesNaturalArmor">{{localize "WITCHER.Item.DamageProperties.bypassesNaturalArmor"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" id="bypassesNaturalArmor" name="system.damageProperties.bypassesNaturalArmor"
-                {{checked item.system.damageProperties.bypassesNaturalArmor}} />
-        </td>
-    </tr>
-    <tr class="item-header-tablerow">
-        <td>
-            <label for="variableDamage">{{localize "WITCHER.Item.DamageProperties.variableDamage"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" id="variableDamage" name="system.damageProperties.variableDamage"
-                {{checked item.system.damageProperties.variableDamage}} />
-        </td>
-    </tr>
-    <tr class="item-header-tablerow">
-        <td>
-            <label for="silverDamage">{{localize "WITCHER.Item.DamageProperties.silverDamage"}}</label>
-        </td>
-        <td>
-            <input type="text" id="variableDamage" name="system.damageProperties.silverDamage"
-                value="{{item.system.damageProperties.silverDamage}}" />
-        </td>
-    </tr>
-        {{formGroup systemFields.damageProperties.fields.isMeteorite value=item.system.damageProperties.isMeteorite localize=true}}
-        {{formGroup systemFields.damageProperties.fields.isNonLethal value=item.system.damageProperties.isNonLethal localize=true}}
-    <tr class=" item-header-tablerow">
-        <td>
-            <label
-                for="defenseDifferenceMultiplier">{{localize "WITCHER.Item.DamageProperties.defenseDifferenceMultiplier"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" id="defenseDifferenceMultiplier"
-                name="system.damageProperties.defenseDifferenceMultiplier"
-                {{checked item.system.damageProperties.defenseDifferenceMultiplier}} />
-        </td>
-    </tr>
-    {{#if item.system.damageProperties.defenseDifferenceMultiplier}}
-        <tr class="item-header-tablerow">
-            <td>
-                <label
-                    for="defenseMultiplierCap">{{localize "WITCHER.Item.DamageProperties.defenseMultiplierCap"}}</label>
-            </td>
-            <td>
-                <input type="text" id="defenseMultiplierCap" name="system.damageProperties.defenseMultiplierCap"
-                    value="{{item.system.damageProperties.defenseMultiplierCap}}" />
-            </td>
-        </tr>
-    {{/if}}
-</table>
+{{formGroup systemFields.damageProperties.fields.armorPiercing value=item.system.damageProperties.armorPiercing localize=true}}
+{{formGroup systemFields.damageProperties.fields.improvedArmorPiercing value=item.system.damageProperties.improvedArmorPiercing localize=true}}
+{{formGroup systemFields.damageProperties.fields.ablating value=item.system.damageProperties.ablating localize=true}}
+{{formGroup systemFields.damageProperties.fields.crushingForce value=item.system.damageProperties.crushingForce localize=true}}
+{{formGroup systemFields.damageProperties.fields.damageIsAblation value=item.system.damageProperties.damageIsAblation localize=true}}
+{{formGroup systemFields.damageProperties.fields.damageToAllLocations value=item.system.damageProperties.damageToAllLocations localize=true}}
+{{formGroup systemFields.damageProperties.fields.bypassesWornArmor value=item.system.damageProperties.bypassesWornArmor localize=true}}
+{{formGroup systemFields.damageProperties.fields.bypassesNaturalArmor value=item.system.damageProperties.bypassesNaturalArmor localize=true}}
+{{formGroup systemFields.damageProperties.fields.variableDamage value=item.system.damageProperties.variableDamage localize=true}}
+{{formGroup systemFields.damageProperties.fields.silverDamage value=item.system.damageProperties.silverDamage localize=true}}
+{{formGroup systemFields.damageProperties.fields.isMeteorite value=item.system.damageProperties.isMeteorite localize=true}}
+{{formGroup systemFields.damageProperties.fields.isNonLethal value=item.system.damageProperties.isNonLethal localize=true}}
+{{formGroup systemFields.damageProperties.fields.defenseDifferenceMultiplier value=item.system.damageProperties.defenseDifferenceMultiplier localize=true}}
+{{#if item.system.damageProperties.defenseDifferenceMultiplier}}
+{{formGroup systemFields.damageProperties.fields.defenseMultiplierCap value=item.system.damageProperties.defenseMultiplierCap localize=true}}
+{{/if}}
 
 {{#if item.system.damageProperties.hitGlobalModifiers}}
     <table>

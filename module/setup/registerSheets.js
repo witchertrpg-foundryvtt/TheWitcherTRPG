@@ -16,6 +16,7 @@ import WitcherAlchemicalSheet from '../item/sheets/WitcherAlchemicalSheet.js';
 import WitcherArmorSheet from '../item/sheets/WitcherArmorSheet.js';
 import WitcherValuableSheet from '../item/sheets/WitcherValuableSheet.js';
 import { WitcherActiveEffectConfig } from '../activeEffect/WitcherActiveEffectSheet.js';
+import WitcherProfessionSheet from '../item/sheets/WitcherProfessionSheet.js';
 import WitcherRaceSheet from '../item/sheets/WitcherRaceSheet.js';
 import WitcherSkillItemSheet from '../item/sheets/WitcherSkillItemSheet.js';
 import WitcherMutagenSheet from '../item/sheets/WitcherMutagenSheet.js';
@@ -55,6 +56,10 @@ export const registerSheets = () => {
     Items.registerSheet('witcher', WitcherMutagenSheet, {
         makeDefault: true,
         types: ['mutagen']
+    });
+    Items.registerSheet('witcher', WitcherProfessionSheet, {
+        makeDefault: true,
+        types: ['profession']
     });
     Items.registerSheet('witcher', WitcherRaceSheet, {
         makeDefault: true,
