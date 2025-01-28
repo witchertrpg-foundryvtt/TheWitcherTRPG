@@ -44,11 +44,10 @@ async function executeDefense(actor, messageId) {
     if (!actor) return;
 
     let message = game.messages.get(messageId);
-    let attackDamageObject = message?.getFlag('TheWitcherTRPG', 'damage');
 
     actor.prepareAndExecuteDefense(
         message.system.defenseOptions,
-        attackDamageObject,
+        message.system.damage,
         message.system.attackRoll,
         message.system.attacker
     );
