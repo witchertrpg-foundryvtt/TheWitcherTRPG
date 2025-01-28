@@ -346,9 +346,7 @@ export let defenseMixin = {
                 attackDamageObject.duration
             );
 
-            if (this.statuses.find(status => status == 'stun')) {
-                this.toggleStatusEffect('stun');
-            }
+            this.applyStatus(['stun']);
         } else {
             if (stagger) {
                 applyStatusEffectToActor(attacker, 'staggered', 1);
