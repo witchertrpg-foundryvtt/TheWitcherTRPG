@@ -283,6 +283,7 @@
                 "Mutagen": "Mutagen Settings",
                 "Race": "Race Settings",
                 "Valuable": "Valuable Settings",
+                "profession": "Profession Settings",
                 "Weapon": "Weapon Settings",
                 "DamageProperties": "Damage Properties",
                 "DefenseProperties": "Defense Properties",
@@ -416,6 +417,17 @@
             "electricity": "Electricity",
             "fire": "Fire",
             "ice": "Ice"
+        },
+        "profession": {
+            "skillPath": {
+                "skill": {
+                    "skillAttack": {
+                        "isAttack": "Is Attack",
+                        "usesWeapon": "Uses Weapon",
+                        "damageFormulaOverrides": "Overrides Damage Formula"
+                    }
+                }
+            }
         },
         "Weapon": {
             "Type": "Type",
