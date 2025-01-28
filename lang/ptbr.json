@@ -33,9 +33,48 @@
         "Name": "Nome",
         "Type": "Tipo",
         "Percentage": "Porcentagem",
-        "DC": "ND",
-        "Attack": "Ataque",
         "NoEffects": "Sem Efeitos",
+        "DC": "ND",
+        "Attack": {
+            "name": "Ataque",
+            "attackOptions": {
+                "label": "Ataque é:",
+                "hint": "Configure o tipo de ataque",
+                "melee": "Curta Distância",
+                "ranged": "À Distância",
+                "spell": "Magia",
+                "itemUse": "Usa Item"
+            },
+            "meleeAttackSkill": {
+                "label": "Perícia de Ataque Curta Distância",
+                "hint": ""
+            },
+            "rangedAttackSkill": {
+                "label": "Perícia de Ataque à Distância",
+                "hint": ""
+            },
+            "spellAttackSkill": {
+                "label": "Perícia de Ataque Mágico",
+                "hint": ""
+            },
+            "itemUseAttackSkill": {
+                "label": "Perícia de Ataque com Uso de Item",
+                "hint": ""
+            }
+        },
+        "Defense": {
+            "name": "Defesa",
+            "Crit": "Você recebeu um crítico",
+            "defenseOptions": {
+                "name": "Opções de Defesa",
+                "dodge": "Esquivar",
+                "reposition": "Reposicionar",
+                "parry": "Aparar",
+                "block": "Bloquear",
+                "parryThrown": "Aparar Projéteis",
+                "magicResist": "Resistir a Magia"
+            }
+        },
         "Actor": {
             "SkillTab": "Perícias & Modificadores",
             "ProfessionTab": "Profissão & Raça",
@@ -112,6 +151,11 @@
             "attackStats": {
                 "critLocationModifier": "Modificador de Local Crítico",
                 "critEffectModifier": "Modificador de Efeito Crítico"
+            },
+            "settings": {
+                "actor": "Configurações do Ator",
+                "general": "Geral",
+                "skills": "Perícias"
             }
         },
         "Alchemy": {
@@ -205,6 +249,9 @@
                 "bypassesWornArmor": "Ignora a armadura vestida",
                 "bypassesNaturalArmor": "Ignora a armadura natural",
                 "variableDamage": "Dano Variável",
+                "silverDamage": "Fórmula Dano de Prata",
+                "isMeteorite": "Arma de Meteorito",
+                "isNonLethal": "Arma Não-Letal",
                 "defenseDifferenceMultiplier": "O dano é multiplicado pela diferença da defesa (não é funcional)",
                 "defenseMultiplierCap": "O multiplicador é limitado a (não é funcional)"
             },
@@ -222,7 +269,12 @@
                 "Consume": "Consumir",
                 "NotConsumable": "O item não está configurado como consumível",
                 "RemoveEnhancement": "Remover Melhorias",
-                "Gift": "Presentear"
+                "Gift": "Presentear",
+                "dismantle": "Desmontar"
+            },
+            "dismantle": {
+                "addedItems": "Os seguintes itens foram adicionados ao ator",
+                "notFound": "Estes itens não estão vinculado e não puderam ser adicionados"
             },
             "Settings": {
                 "General": "Configurações Gerais",
@@ -253,8 +305,8 @@
             "damageType": "Que tipo de Dano",
             "ChangeLocation": "Alterar o Local",
             "CurrentLocation": "Local Atual",
-            "resistSilver": "Aplicar Resistência a não-prata",
-            "resistMeteorite": "Aplicar Resistência a não-meteoritos",
+            "resistNonSilver": "Aplicar Resistência a Não-Prata",
+            "resistNonMeteorite": "Aplicar Resistência a Não-Meteorito",
             "initial": "Dano Inicial",
             "totalSP": "Poder de Parada Total",
             "improvedArmorPiercing": "(Após Perfuração Melhorada)",
@@ -287,7 +339,6 @@
             "CraftingItem": "Criando um item",
             "Diagram": "Diagrama",
             "after": "Depois",
-            "Defense": "Defesa",
             "DefenseExtra": "Defesa extra",
             "DefenseWith": "Defender com",
             "DefenseTitle": "Executando uma ação de Defesa",
@@ -354,15 +405,7 @@
             "staDialog": "Como você quer recuperar sua estamina?",
             "recoveryAction": "Ação de Recuperação",
             "fullRecovery": "Recuperação Total",
-            "fullStaInfo": "Sua estamina já está cheia",
-            "DefenseOptions": {
-                "dodge": "Esquivar",
-                "reposition": "Reposicionar",
-                "parry": "Aparar",
-                "block": "Bloquear",
-                "parryThrown": "Aparar Arremessáveis",
-                "magicResist": "Resistir Magia"
-            }
+            "fullStaInfo": "Sua estamina já está cheia"
         },
         "DamageType": {
             "name": "Tipo de Dano",
@@ -373,6 +416,17 @@
             "electricity": "Elétrico",
             "fire": "Fogo",
             "ice": "Gelo"
+        },
+        "profession": {
+            "skillPath": {
+                "skill": {
+                    "skillAttack": {
+                        "isAttack": "É Ataque",
+                        "usesWeapon": "Usa Arma",
+                        "damageFormulaOverrides": "Sobrescrever Fórmula de Dano"
+                    }
+                }
+            }
         },
         "Weapon": {
             "Type": "Tipo",
@@ -401,6 +455,8 @@
             "Concealment": "Porte",
             "AttackSkill": "Perícia de Ataque",
             "MeleeBonus": "Bônus de Curta Distância",
+            "rangedMeleeBonus": "Bônus de Curta Distância para Ataques à Distância",
+            "rangedMeleeBonusHint": "Algumas armas à distância tammbém aplicam bónus de curta distância",
             "isAmmunition": "É uma Munição",
             "isThrowable": "É um Arremessável",
             "Broken": "Sua arma agora está Quebrada",
@@ -441,14 +497,6 @@
             "ChooseTitle": "Escolha uma Melhoria",
             "NoEnhancement": "Nenhuma Melhoria disponível"
         },
-        "Mount": {
-            "Dex": "Des + Atl",
-            "Dexterity": "Des",
-            "ControlMod": "Mod. de Controle",
-            "Control": "Controle",
-            "Speed": "Velocidade",
-            "Hp": "PV"
-        },
         "Diagram": {
             "alchemyDC": "ND de Alquimia",
             "craftingDC": "ND de Criar",
@@ -473,16 +521,6 @@
             "Master": "Mestre",
             "GrandMaster": "Grão-Mestre",
             "Witcher": "Bruxo"
-        },
-        "Mutagen": {
-            "MutSource": "Fonte de Mutagênico",
-            "AlchemyDC": "ND de Alquimia",
-            "MinorMutation": "Mutação Menor",
-            "Type": "Tipo",
-            "Source": "Fonte",
-            "Red": "Vermelho",
-            "Green": "Verde",
-            "Blue": "Azul"
         },
         "Valuable": {
             "Conceal": "Porte",
@@ -749,6 +787,8 @@
                 "Vampire": "Vampiros"
             },
             "Resistances": "Resistências",
+            "resistantNonSilver": "Resistência a não-prata",
+            "resistantNonMeteorite": "Resistência a não-meteorito",
             "Immunities": "Imunidades",
             "ImmunitiesStatusEffects": "Imunidades a Efeitos de Status",
             "Susceptibilities": "Vulnerabilidades",
@@ -757,6 +797,24 @@
             "exportLootGenerated": "O item foi gerado com sucesso com a ajuda da tabela de rolagem. Foi adicionado à folha de saque",
             "exportLootInvalidItemError": "O item não existe no compêndio. Use o gerador de saque padrão",
             "exportLootToManyRollTablesError": "Muitas tabelas de rolagem para o item encontrado no compêndio. Use o gerador de saque padrão"
+        },
+        "Mount": {
+            "Dex": "Des + Atl",
+            "Dexterity": "Des",
+            "ControlMod": "Mod. de Controle",
+            "Control": "Controle",
+            "Speed": "Velocidade",
+            "Hp": "PV"
+        },
+        "Mutagen": {
+            "MutSource": "Fonte de Mutagênico",
+            "AlchemyDC": "ND de Alquimia",
+            "MinorMutation": "Mutação Menor",
+            "Type": "Tipo",
+            "Source": "Fonte",
+            "Red": "Vermelho",
+            "Green": "Verde",
+            "Blue": "Azul"
         },
         "Loot": {
             "Name": "Saque",
@@ -903,7 +961,11 @@
             "SaveText": "Para ter sucesso você precisa rolar abaixo",
             "FullDmg": "Dano Total",
             "Success": "Sucesso",
-            "Fail": "Falha"
+            "Fail": "Falha",
+            "Resting": "passou o dia descasando e recuperou:",
+            "Active": "passou o dia ativo e recuperou",
+            "WoundHealing": "no Limite de Cura Crítica",
+            "fullStamina": "Estamina Cheia"
         },
         "Currency": {
             "bizant": "Bizante",
@@ -1052,9 +1114,6 @@
             "applyCritWound": "Aplicar Ferimento Crítico",
             "fumble": "Vacilo"
         },
-        "Defense": {
-            "Crit": "Você recebeu um crítico"
-        },
         "Heal": {
             "button": "Curar",
             "dialogTitle": "Curar após Descansar",
@@ -1066,7 +1125,9 @@
             "recovered": " se recuperou de um",
             "restful": "repousante",
             "active": "ativo",
-            "day": "dia"
+            "day": "dia",
+            "totalRecover": "Recuperação Total",
+            "criticalWounds": "Ferimentos críticos irão curar 2 dias mais rápido"
         },
         "Apply.Mod": "Aplicar um Modificador",
         "ReputationTitle": "Executando um teste de Reputação",
@@ -1079,7 +1140,7 @@
             "DialogTitle": "Executando uma ação de Combate Verbal",
             "EmpatheticAttacks": "Ataques Empáticos",
             "AntagonisticAttacks": "Ataques Antagônicos",
-            "Defences": "Defesas",
+            "Defenses": "Defesas",
             "EmpatheticTools": "Ferramentas Empáticas",
             "AntagonisticTools": "Ferramentas Antagônicas",
             "Seduce": "Seduzir",
@@ -1131,7 +1192,10 @@
                 "resistances": "Resistências",
                 "flat": "Bonus Fixo",
                 "multi": "Multiplicação",
-                "applyAP": "Aplicar PA na Multiplicação"
+                "applyAP": "Aplicar PA na Multiplicação",
+                "Item": {
+                    "damage": "Dano"
+                }
             }
         },
         "globalModifier": {
@@ -1154,7 +1218,8 @@
             "toggle": "Alternar",
             "temporary": "Temporário",
             "passive": "Passivo",
-            "inactive": "Inativo"
+            "inactive": "Inativo",
+            "temporaryItemImprovement": "Melhoria Temporária de Item"
         },
         "character.socialStanding": "Posição Social",
         "socialStanding": {
@@ -1322,11 +1387,12 @@
             }
         },
         "ComponentsList": {
-          "component": "Componente",
-          "quantity": "Quantidade",
-          "required": "Requerido",
-          "cost": "Custo",
-          "totalPrice": "Preço Total"
+            "component": "Componente",
+            "quantity": "Quantidade",
+            "required": "Requerido",
+            "cost": "Custo",
+            "totalPrice": "Preço Total"
         }
     }
 }
+
