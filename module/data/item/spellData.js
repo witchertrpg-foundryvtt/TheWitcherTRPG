@@ -17,6 +17,7 @@ export default class SpellData extends CommonItemData {
             level: new fields.StringField({ initial: '' }),
             source: new fields.StringField({ initial: '' }),
             domain: new fields.StringField({ initial: '' }),
+            sideEffect: new fields.StringField({ initial: '' }), //needed for magical gifts
 
             stamina: new fields.NumberField({ initial: 0 }),
             staminaIsVar: new fields.BooleanField({ initial: false }),
