@@ -7,7 +7,7 @@ export let consumeMixin = {
         let properties = this.system.consumeProperties;
         let messageInfos = {};
         if (properties.doesHeal) {
-            let heal = parseInt(await this.calculateHealValue(properties.heal, this.actor));
+            let heal = parseInt(await this.calculateHealValue(properties.heal));
             this.actor?.update({ 'system.derivedStats.hp.value': this.actor.system.derivedStats.hp.value + heal });
             messageInfos.heal = heal;
         }
@@ -17,25 +17,31 @@ export let consumeMixin = {
         }
 
         this.actor.applyStatus(properties.effects);
+        this.removeEffects();
         let weapon = await applyActiveEffectToActorViaId(this.actor.uuid, this.uuid, 'applySelf');
         messageInfos.appliedToWeapon = weapon;
         this.applyTemporaryItemImprovements();
         this.createConsumeMessage(messageInfos);
     },
 
-    async calculateHealValue(value, actor) {
+    async calculateHealValue(value) {
         let heal = value;
         if (value.includes && value.includes('d')) {
             heal = (await new Roll(value).evaluate()).total;
         }
-        return parseInt(actor?.system.derivedStats.hp.value) + parseInt(heal) > actor?.system.derivedStats.hp.max
-            ? parseInt(actor?.system.derivedStats.hp.max) - parseInt(actor?.system.derivedStats.hp.value)
+        return parseInt(this.actor?.system.derivedStats.hp.value) + parseInt(heal) >
+            this.actor?.system.derivedStats.hp.max
+            ? parseInt(this.actor?.system.derivedStats.hp.max) - parseInt(this.actor?.system.derivedStats.hp.value)
             : heal;
+    },
+
+    async removeEffects() {
+        this.actor.removeStatus(this.system.consumeProperties.removesEffects);
     },
 
     async applyTemporaryItemImprovements() {
         let temps = this.effects.filter(effect => effect.type === 'temporaryItemImprovement');
-        if (!temps) return;
+        if (!temps || temps.length == 0) return;
 
         let weapons = this.parent.items.filter(item => item.type === 'weapon');
 

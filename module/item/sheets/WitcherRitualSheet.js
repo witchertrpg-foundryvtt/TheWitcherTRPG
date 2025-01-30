@@ -66,14 +66,14 @@ export default class WitcherRitualSheet extends WitcherItemSheet {
     _onEditComponent(event) {
         event.preventDefault();
         let element = event.currentTarget;
-        let itemId = element.closest('.list-item').dataset.id;
+        let itemId = element.closest('.list-item').dataset.uuid;
         let targetField = element.closest('.list-item').dataset.target;
 
         let field = element.dataset.field;
         let value = element.value;
 
         let components = this.item.system[targetField];
-        let objIndex = components.findIndex(obj => obj.id == itemId);
+        let objIndex = components.findIndex(obj => obj.uuid == itemId);
         components[objIndex][field] = value;
         this.item.update({ [`system.${targetField}`]: components });
     }

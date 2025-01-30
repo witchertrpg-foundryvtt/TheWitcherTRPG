@@ -11,5 +11,6 @@ export default function consumeProperties() {
         consumeGlobalModifiers: new fields.ArrayField(new fields.StringField({ initial: '' })),
 
         effects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
+        removesEffects: new fields.ArrayField(new fields.SchemaField(itemEffect()))
     };
 }

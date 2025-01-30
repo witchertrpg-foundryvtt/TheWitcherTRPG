@@ -59,7 +59,7 @@ export default class WitcherItem extends Item {
         }
     }
 
-    getItemAttackSkill(
+    getItemAttack(
         options = {
             alt: false,
             ctrl: false,
@@ -90,21 +90,9 @@ export default class WitcherItem extends Item {
         let attackSkill = this.system[attackOption + 'AttackSkill'];
         return {
             attackOption,
-            name: attackSkill,
-            alias: WITCHER.skillMap[attackSkill]?.label
-        };
-    }
-
-    getAttackSkillFlags() {
-        return {
-            origin: {
-                name: this.name,
-                uuid: this.uuid
-            },
-            attackSkill: this.system.attackSkill,
-            item: this,
-            itemUuid: this.uuid,
-            owner: this.parent.uuid
+            skill: attackSkill,
+            alias: WITCHER.skillMap[attackSkill]?.label,
+            itemUuid: this.uuid
         };
     }
 
@@ -117,7 +105,8 @@ export default class WitcherItem extends Item {
             spell: this,
             item: this,
             itemUuid: this.uuid,
-            owner: this.parent.uuid
+            owner: this.parent.uuid,
+            skill: 'skill'
         };
     }
 
@@ -283,7 +272,7 @@ export default class WitcherItem extends Item {
             craftedItemName = this.system.associatedItem?.name;
             if (result) {
                 let craftedItem = await fromUuid(this.system.associatedItemUuid);
-                Item.create(craftedItem, { parent: this.actor });
+                this.actor.addItem(craftedItem, this.system.resultQuantity);
             }
         } else {
             craftedItemName = game.i18n.localize('WITCHER.craft.SuccessfulCraftForNothing');

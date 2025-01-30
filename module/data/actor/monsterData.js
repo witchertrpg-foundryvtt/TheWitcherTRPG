@@ -55,7 +55,7 @@ export default class MonsterData extends CommonActorData {
             monsterLoreSkillValue: new fields.StringField({ initial: '' }),
             showMonsterLore: new fields.BooleanField({ initial: true, label: 'WITCHER.Monster.WitcherKnowledge' }),
 
-            customStat: new fields.BooleanField({ initial: false }),
+            customStat: new fields.BooleanField({ initial: false, label: 'WITCHER.Monster.CustomHP/STA' }),
             addMeleeBonus: new fields.BooleanField({ initial: false, label: 'WITCHER.Monster.addMeleeBonus' }),
             dontAddAttr: new fields.BooleanField({ initial: false, label: 'WITCHER.Monster.dontAddAttr' }),
             hasTailWing: new fields.BooleanField({ initial: false, label: 'WITCHER.Monster.hasTailWing' })

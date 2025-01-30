@@ -37,15 +37,15 @@ export function addDamageMessageContextOptions(html, options) {
 }
 
 async function ApplyNormalDamage(actor, totalDamage, messageId) {
-    let damageObject = game.messages.get(messageId).getFlag('TheWitcherTRPG', 'damage');
-    applyDamageFromMessage(actor, totalDamage, messageId, damageObject.damageProperties.isNonLethal ? 'sta' : 'hp');
+    let damage = game.messages.get(messageId).getFlag('TheWitcherTRPG', 'damage');
+    applyDamageFromMessage(actor, totalDamage, messageId, damage.properties.isNonLethal ? 'sta' : 'hp');
 }
 
 async function ApplyNonLethalDamage(actor, totalDamage, messageId) {
     applyDamageFromMessage(actor, totalDamage, messageId, 'sta');
 }
 
-async function createApplyDamageDialog(actor, damageObject) {
+async function createApplyDamageDialog(actor, damage) {
     const locationOptions = `
     <option value="Empty"></option>
     <option value="head"> ${game.i18n.localize('WITCHER.Dialog.attackHead')} </option>
@@ -66,8 +66,8 @@ async function createApplyDamageDialog(actor, damageObject) {
     <option value="5d6">5d6</option>
     `;
 
-    let location = damageObject.location;
-    let damageTypeloc = `WITCHER.DamageType.${damageObject.type}`;
+    let location = damage.location;
+    let damageTypeloc = `WITCHER.DamageType.${damage.type}`;
     let content = `<label>${game.i18n.localize('WITCHER.Damage.damageType')}: <b>${game.i18n.localize(damageTypeloc)}</b></label> <br />
       <label>${game.i18n.localize('WITCHER.Damage.CurrentLocation')}: <b>${location.alias}</b></label> <br />
       <label>${game.i18n.localize('WITCHER.Damage.ChangeLocation')}: <select name="changeLocation">${locationOptions}</select></label> <br />`;
@@ -110,33 +110,33 @@ async function createApplyDamageDialog(actor, damageObject) {
     };
 }
 
-async function applyDamageFromStatus(actor, totalDamage, damageObject, derivedStat) {
-    await applyDamage(actor, null, totalDamage, damageObject, derivedStat, totalDamage);
+async function applyDamageFromStatus(actor, totalDamage, damage, derivedStat) {
+    await applyDamage(actor, null, totalDamage, damage, derivedStat, totalDamage);
 }
 
 async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat) {
-    let damageObject = game.messages.get(messageId).getFlag('TheWitcherTRPG', 'damage');
+    let damage = game.messages.get(messageId).getFlag('TheWitcherTRPG', 'damage');
 
     let infoTotalDmg = totalDamage;
 
-    let dialogData = await createApplyDamageDialog(actor, damageObject);
+    let dialogData = await createApplyDamageDialog(actor, damage);
 
     if (dialogData.newLocation != 'Empty') {
-        damageObject.location = actor.getLocationObject(dialogData.newLocation);
+        damage.location = actor.getLocationObject(dialogData.newLocation);
     }
 
     if (dialogData.addOilDmg) {
-        damageObject.damageProperties.oilEffect = actor.system.category;
+        damage.properties.oilEffect = actor.system.category;
     }
 
     if (dialogData.silverDmg) {
-        damageObject.damageProperties.silverDamage = dialogData.silverDmg;
+        damage.properties.silverDamage = dialogData.silverDmg;
     }
 
-    applyDamage(actor, dialogData, totalDamage, damageObject, derivedStat, infoTotalDmg);
+    applyDamage(actor, dialogData, totalDamage, damage, derivedStat, infoTotalDmg);
 }
 
-async function applyDamage(actor, dialogData, totalDamage, damageObject, derivedStat, infoTotalDmg = '') {
+async function applyDamage(actor, dialogData, totalDamage, damage, derivedStat, infoTotalDmg = '') {
     let shield = actor.system.derivedStats.shield.value;
     if (totalDamage < shield) {
         actor.update({ 'system.derivedStats.shield.value': shield - totalDamage });
@@ -157,35 +157,35 @@ async function applyDamage(actor, dialogData, totalDamage, damageObject, derived
         totalDamage -= shield;
     }
 
-    if (actor.system.category && damageObject.damageProperties.oilEffect === actor.system.category) {
+    if (actor.system.category && damage.properties.oilEffect === actor.system.category) {
         totalDamage += 5;
         infoTotalDmg += `+5[${game.i18n.localize('WITCHER.Damage.oil')}]`;
     }
 
-    if (damageObject.damageProperties.damageToAllLocations) {
-        await applyDamageToAllLocations(actor, dialogData, damageObject, totalDamage, infoTotalDmg, derivedStat);
+    if (damage.properties.damageToAllLocations) {
+        await applyDamageToAllLocations(actor, dialogData, damage, totalDamage, infoTotalDmg, derivedStat);
     } else {
-        await applyDamageToLocation(actor, dialogData, damageObject, totalDamage, infoTotalDmg, derivedStat);
+        await applyDamageToLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, derivedStat);
     }
 
-    damageObject.damageProperties.effects
+    damage.properties.effects
         ?.filter(effect => effect.statusEffect)
         .filter(effect => effect.applied)
-        .forEach(effect => applyStatusEffectToActor(actor.uuid, effect.statusEffect, damageObject.duration));
+        .forEach(effect => applyStatusEffectToActor(actor.uuid, effect.statusEffect, damage.duration));
 
-    if (damageObject.damageProperties.appliesGlobalModifierToDamaged) {
-        damageObject.damageProperties.damagedGlobalModifiers.forEach(modifier =>
+    if (damage.properties.appliesGlobalModifierToDamaged) {
+        damage.properties.damagedGlobalModifiers.forEach(modifier =>
             applyModifierToActor(actor.uuid, modifier)
         );
     }
 
-    if (damageObject.itemUuid) {
-        applyActiveEffectToActorViaId(actor.uuid, damageObject.itemUuid, 'applyOnDamage', damageObject.duration);
+    if (damage.itemUuid) {
+        applyActiveEffectToActorViaId(actor.uuid, damage.itemUuid, 'applyOnDamage', damage.duration);
     }
 }
 
-async function applyDamageToLocation(actor, dialogData, damageObject, totalDamage, infoTotalDmg, derivedStat) {
-    let damageResult = await calculateDamageWithLocation(actor, dialogData, damageObject, totalDamage, infoTotalDmg);
+async function applyDamageToLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, derivedStat) {
+    let damageResult = await calculateDamageWithLocation(actor, dialogData, damage, totalDamage, infoTotalDmg);
 
     if (damageResult.blockedBySp) {
         createDamageBlockedBySp(
@@ -239,23 +239,23 @@ async function applyDamageToAllLocations(actor, dialogData, damage, totalDamage,
     });
 }
 
-async function calculateDamageWithLocation(actor, dialogData, damageObject, totalDamage, infoTotalDmg) {
-    let damageProperties = damageObject.damageProperties;
-    let location = damageObject.location;
+async function calculateDamageWithLocation(actor, dialogData, damage, totalDamage, infoTotalDmg) {
+    let properties = damage.properties;
+    let location = damage.location;
 
-    let locationArmor = getLocationArmor(actor, location, damageProperties);
+    let locationArmor = getLocationArmor(actor, location, properties);
     let armorSet = locationArmor.armorSet;
     let totalSP = locationArmor.totalSP;
     let displaySP = locationArmor.displaySP;
 
-    if (damageProperties.improvedArmorPiercing) {
+    if (properties.improvedArmorPiercing) {
         totalSP = Math.ceil(totalSP / 2);
         displaySP = Math.ceil(displaySP / 2);
     }
 
     let silverDamage = 0;
-    if (damageProperties?.silverDamage) {
-        let silverRoll = await new Roll(damageObject.damageProperties.silverDamage).evaluate();
+    if (properties?.silverDamage) {
+        let silverRoll = await new Roll(damage.properties.silverDamage).evaluate();
         silverDamage = silverRoll.total;
         infoTotalDmg += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
     }
@@ -270,7 +270,7 @@ async function calculateDamageWithLocation(actor, dialogData, damageObject, tota
         infoAfterSPReduction += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
     }
 
-    let spDamage = await applyAlwaysSpDamage(location, damageProperties, armorSet);
+    let spDamage = await applyAlwaysSpDamage(location, properties, armorSet);
 
     if (totalDamage <= 0 && silverDamage <= 0) {
         return {
@@ -284,7 +284,7 @@ async function calculateDamageWithLocation(actor, dialogData, damageObject, tota
         };
     }
 
-    let flatDamageMod = actor.getFlatDamageMod(damageObject);
+    let flatDamageMod = actor.getFlatDamageMod(damage);
 
     totalDamage = Math.floor(location.locationFormula * totalDamage);
     silverDamage = Math.floor(location.locationFormula * silverDamage);
@@ -297,11 +297,11 @@ async function calculateDamageWithLocation(actor, dialogData, damageObject, tota
         infoAfterLocation += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
     }
 
-    totalDamage = calculateResistances(actor, totalDamage, damageObject, armorSet);
+    totalDamage = calculateResistances(actor, totalDamage, damage, armorSet);
 
     if (
-        (dialogData?.resistNonSilver && !damageProperties?.silverDamage) ||
-        (dialogData?.resistNonMeteorite && !damageProperties?.isMeteorite)
+        (dialogData?.resistNonSilver && !properties?.silverDamage) ||
+        (dialogData?.resistNonMeteorite && !properties?.isMeteorite)
     ) {
         totalDamage = Math.floor(0.5 * totalDamage);
     }
@@ -316,13 +316,13 @@ async function calculateDamageWithLocation(actor, dialogData, damageObject, tota
         totalDamage *= 2;
     }
 
-    spDamage += await applySpDamage(location, damageProperties, armorSet);
+    spDamage += await applySpDamage(location, properties, armorSet);
 
     return {
         totalDamage,
         infoTotalDmg,
         displaySP,
-        damageProperties,
+        properties,
         infoAfterSPReduction,
         infoAfterLocation,
         infoAfterResistance,
@@ -365,7 +365,7 @@ async function createResultMessage(actor, damageResult) {
     ChatMessage.create(chatData);
 }
 
-function getLocationArmor(actor, location, damageProperties) {
+function getLocationArmor(actor, location, properties) {
     let armors = actor.getList('armor').filter(a => a.system.equipped);
 
     let headArmors = armors.filter(h => h.system.location == 'Head' || h.system.location == 'FullCover');
@@ -402,14 +402,14 @@ function getLocationArmor(actor, location, damageProperties) {
             break;
     }
 
-    if (damageProperties.bypassesNaturalArmor) {
+    if (properties.bypassesNaturalArmor) {
         //reset SP when bypassing monster natural armor
         totalSP = 0;
         displaySP = '';
     }
 
-    displaySP += getArmorSp(armorSet, location.name + 'Stopping', damageProperties).displaySP;
-    totalSP += getArmorSp(armorSet, location.name + 'Stopping', damageProperties).totalSP;
+    displaySP += getArmorSp(armorSet, location.name + 'Stopping', properties).displaySP;
+    totalSP += getArmorSp(armorSet, location.name + 'Stopping', properties).totalSP;
 
     if (!displaySP) {
         displaySP = '0';
@@ -458,26 +458,26 @@ function getArmors(armors) {
     };
 }
 
-function getArmorSp(armorSet, location, damageProperties) {
+function getArmorSp(armorSet, location, properties) {
     return getStackedArmorSp(
         armorSet['lightArmor']?.system[location],
         armorSet['mediumArmor']?.system[location],
         armorSet['heavyArmor']?.system[location],
         armorSet['naturalArmor']?.system[location],
-        damageProperties
+        properties
     );
 }
 
-function getStackedArmorSp(lightArmorSP, mediumArmorSP, heavyArmorSP, naturalArmorSP, damageProperties) {
+function getStackedArmorSp(lightArmorSP, mediumArmorSP, heavyArmorSP, naturalArmorSP, properties) {
     let totalSP = 0;
     let displaySP = '';
 
-    if (heavyArmorSP && !damageProperties.bypassesWornArmor) {
+    if (heavyArmorSP && !properties.bypassesWornArmor) {
         totalSP = heavyArmorSP;
         displaySP = heavyArmorSP;
     }
 
-    if (mediumArmorSP && !damageProperties.bypassesWornArmor) {
+    if (mediumArmorSP && !properties.bypassesWornArmor) {
         if (heavyArmorSP) {
             let diff = getArmorDiffBonus(heavyArmorSP, mediumArmorSP);
             totalSP = Number(totalSP) + Number(diff);
@@ -488,7 +488,7 @@ function getStackedArmorSp(lightArmorSP, mediumArmorSP, heavyArmorSP, naturalArm
         }
     }
 
-    if (lightArmorSP && !damageProperties.bypassesWornArmor) {
+    if (lightArmorSP && !properties.bypassesWornArmor) {
         if (mediumArmorSP) {
             let diff = getArmorDiffBonus(mediumArmorSP, lightArmorSP);
             totalSP = Number(totalSP) + Number(diff);
@@ -503,7 +503,7 @@ function getStackedArmorSp(lightArmorSP, mediumArmorSP, heavyArmorSP, naturalArm
         }
     }
 
-    if (naturalArmorSP && !damageProperties.bypassesNaturalArmor) {
+    if (naturalArmorSP && !properties.bypassesNaturalArmor) {
         totalSP += naturalArmorSP;
         displaySP += ` +${naturalArmorSP} [${game.i18n.localize('WITCHER.Armor.Natural')}]`;
     }
@@ -539,46 +539,46 @@ function getArmorDiffBonus(OverArmor, UnderArmor) {
     return 0;
 }
 
-function calculateResistances(actor, totalDamage, damageObject, armorSet) {
-    let damageProperties = damageObject.damageProperties;
-    if (damageProperties.armorPiercing || damageProperties.improvedArmorPiercing) {
+function calculateResistances(actor, totalDamage, damage, armorSet) {
+    let properties = damage.properties;
+    if (properties.armorPiercing || properties.improvedArmorPiercing) {
         return totalDamage;
     }
 
     let damageAfterResistances = totalDamage;
 
     if (
-        (armorSet['lightArmor']?.system[damageObject.type] ||
-            armorSet['mediumArmor']?.system[damageObject.type] ||
-            armorSet['heavyArmor']?.system[damageObject.type]) &&
-        !damageProperties.bypassesWornArmor
+        (armorSet['lightArmor']?.system[damage.type] ||
+            armorSet['mediumArmor']?.system[damage.type] ||
+            armorSet['heavyArmor']?.system[damage.type]) &&
+        !properties.bypassesWornArmor
     ) {
         damageAfterResistances = Math.floor(0.5 * totalDamage);
     }
 
-    if (armorSet['naturalArmor']?.system[damageObject.type] && !damageProperties.bypassesNaturalArmor) {
+    if (armorSet['naturalArmor']?.system[damage.type] && !properties.bypassesNaturalArmor) {
         damageAfterResistances = Math.floor(0.5 * totalDamage);
     }
 
-    let damageMulti = actor.getMultiDamageMod(damageObject);
+    let damageMulti = actor.getMultiDamageMod(damage);
 
     damageAfterResistances = Math.floor(damageAfterResistances * damageMulti);
 
     return damageAfterResistances;
 }
 
-async function applySpDamage(location, damageProperties, armorSet) {
-    if (damageProperties.bypassesWornArmor) {
+async function applySpDamage(location, properties, armorSet) {
+    if (properties.bypassesWornArmor) {
         //damage bypasses armor so no SP damage
         return 0;
     }
 
     let spDamage =
-        damageProperties.crushingForce || damageProperties.ablating
+        properties.crushingForce || properties.ablating
             ? Math.floor((await new Roll('1d6/2+1').evaluate()).total)
             : 1;
 
-    if (damageProperties.crushingForce) {
+    if (properties.crushingForce) {
         spDamage *= 2;
     }
 
@@ -594,8 +594,8 @@ async function applySpDamage(location, damageProperties, armorSet) {
     return spDamage;
 }
 
-async function applyAlwaysSpDamage(location, damageProperties, armorSet) {
-    let spDamage = damageProperties.spDamage ?? 0;
+async function applyAlwaysSpDamage(location, properties, armorSet) {
+    let spDamage = properties.spDamage ?? 0;
 
     let lightArmorSP = armorSet['lightArmor']?.system[location.name + 'Stopping'] - spDamage;
     armorSet['lightArmor']?.update({ [`system.${location.name}Stopping`]: lightArmorSP > 0 ? lightArmorSP : 0 });

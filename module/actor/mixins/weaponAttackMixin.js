@@ -28,16 +28,8 @@ export let weaponAttackMixin = {
             damageFormula = this.handleSpecialModifier(damageFormula, 'melee-damage');
         }
 
-        let attackSkill = weapon.getItemAttackSkill(options);
-        let messageData = new ChatMessageData(
-            this,
-            `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`,
-            'attack',
-            {
-                attacker: this.uuid,
-                defenseOptions: weapon.system.defenseOptions
-            }
-        );
+        let attack = weapon.getItemAttack(options);
+        let messageDataFlavor = `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`;
 
         let ammunitions = ``;
         let noAmmo = 0;
@@ -60,7 +52,7 @@ export let weaponAttackMixin = {
         let meleeBonus = weapon.system.applyMeleeBonus ? this.system.attackStats.meleeBonus : 0;
         let data = {
             item: weapon,
-            attackSkill,
+            attackSkill: attack,
             displayDmgFormula,
             noAmmo,
             noThrowable,
@@ -157,7 +149,7 @@ export let weaponAttackMixin = {
             damage.ammunition = item;
         }
 
-        if (weapon.isWeaponThrowable() && attackSkill.attackOption === 'ranged') {
+        if (weapon.isWeaponThrowable() && attack.attackOption === 'ranged') {
             let newQuantity = weapon.system.quantity - 1;
             if (newQuantity < 0) {
                 return;
@@ -177,7 +169,7 @@ export let weaponAttackMixin = {
         }
         for (let i = 0; i < attacknumber; i++) {
             let attFormula = '1d10+';
-            let skill = CONFIG.WITCHER.skillMap[attackSkill.name];
+            let skill = CONFIG.WITCHER.skillMap[attack.skill];
             if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
                 attFormula += '(';
             }
@@ -186,7 +178,7 @@ export let weaponAttackMixin = {
                 : `${this.system.stats[skill.attribute.name].current}[${game.i18n.localize(skill.attribute.label)}]+${this.system.skills[skill.attribute.name][skill.name].value}[${game.i18n.localize(skill.label)}]`;
 
             attFormula = this.handleSpecialModifier(attFormula, strike);
-            attFormula += this.addAllModifiers(attackSkill.name);
+            attFormula += this.addAllModifiers(attack.name);
 
             if (weapon.system.accuracy < 0) {
                 attFormula += !displayRollDetails
@@ -327,19 +319,21 @@ export let weaponAttackMixin = {
                 }
             }
 
-            messageData.flavor = `<div class="attack-message"><h1><img src="${weapon.img}" class="item-img" />${game.i18n.localize('WITCHER.Attack.name')}: ${weapon.name}</h1>`;
-            messageData.flavor += `<span>  ${game.i18n.localize('WITCHER.Armor.Location')}: ${touchedLocation.alias} </span>`;
+            messageDataFlavor = `<div class="attack-message"><h1><img src="${weapon.img}" class="item-img" />${game.i18n.localize('WITCHER.Attack.name')}: ${weapon.name}</h1>`;
+            messageDataFlavor += `<span>  ${game.i18n.localize('WITCHER.Armor.Location')}: ${touchedLocation.alias} </span>`;
 
-            messageData.flavor += `<button class="damage">${game.i18n.localize('WITCHER.table.Damage')}</button>`;
+            messageDataFlavor += `<button class="damage">${game.i18n.localize('WITCHER.table.Damage')}</button>`;
+
             if (weapon.system.rollOnlyDmg) {
                 weapon.rollDamage(damage);
             } else {
-                messageData.flags = {
-                    TheWitcherTRPG: {
-                        attack: weapon.getAttackSkillFlags(),
-                        damage: damage
-                    }
-                };
+                let messageData = new ChatMessageData(this, messageDataFlavor, 'attack', {
+                    attacker: this.uuid,
+                    attack: attack,
+                    damage: damage,
+                    defenseOptions: weapon.system.defenseOptions
+                });
+
                 await extendedRoll(attFormula, messageData);
             }
         }

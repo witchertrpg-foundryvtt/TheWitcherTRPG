@@ -20,6 +20,12 @@
                 {{/if}}
             </th>
             <th data-type="associatedItem">
+                {{#if item.system.associatedItem.name}}
+                       <input class="inline-edit item-quantity" name="system.resultQuantity" type="text"
+                                value="{{item.system.resultQuantity}}" data-dtype="Number" />
+                {{/if}}
+            </th>
+            <th data-type="associatedItem">
                 <div class="description" data-type="associatedItem">
                     {{#if item.system.associatedItem.name}}
                         <label data-type="associatedItem"

@@ -64,7 +64,7 @@
 {{#if item.system.isConsumable}}
     <table class="item-bottom-table">
         <tr>
-            <th><a class="add-effect" data-target='system.consumeProperties.effects'
+            <th><a class="add-effect" data-target='effects'
                     title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
             </th>
             <th>{{localize "WITCHER.Item.Effect"}}</th>
@@ -78,6 +78,27 @@
                 <td>
                     <input class="edit-effect item-effect" placeholder="{{localize "WITCHER.table.Name"}}"
                         data-field="name" type="text" value="{{effect.name}}" />
+                </td>
+                <td>
+                    <select class="edit-effect item-effect" data-field="statusEffect">
+                        {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                    </select>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+        <table class="item-bottom-table">
+        <tr>
+            <th><a class="add-effect" data-target='removesEffects'
+                    title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
+            </th>
+            <th>{{localize "WITCHER.Item.RemoveEffect"}}</th>
+        </tr>
+        {{#each item.system.consumeProperties.removesEffects as |effect name|}}
+            <tr class="list-item" data-id="{{effect.id}}" data-target='removesEffects'>
+                <td>
+                    <a class="remove-effect" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                            class="fas fa-minus"></i></a>
                 </td>
                 <td>
                     <select class="edit-effect item-effect" data-field="statusEffect">

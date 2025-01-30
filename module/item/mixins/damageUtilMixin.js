@@ -5,7 +5,7 @@ import { getRandomInt } from '../../scripts/helper.js';
 export let damageUtilMixin = {
     createBaseDamageObject() {
         return {
-            damageProperties: foundry.utils.deepClone(this.system.damageProperties),
+            properties: foundry.utils.deepClone(this.system.properties),
             item: this,
             itemUuid: this.uuid,
             crit: {
@@ -20,7 +20,7 @@ export let damageUtilMixin = {
         let messageData = new ChatMessageData(this.parent);
         messageData.flavor = `<div class="damage-message" <h1><img src="${this.img}" class="item-img" />${game.i18n.localize('WITCHER.table.Damage')}: ${this.name} </h1>`;
 
-        if (damage.damageProperties.variableDamage) {
+        if (damage.properties.variableDamage) {
             damage.formula = await this.createVariableDamageDialog(damage.formula);
         }
 
@@ -41,10 +41,10 @@ export let damageUtilMixin = {
         messageData.flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.damageType')}:</b> ${game.i18n.localize(damageTypeloc)} </div>`;
         messageData.flavor += `<div>${game.i18n.localize('WITCHER.Damage.RemoveSP')}</div>`;
 
-        if (damage.damageProperties.effects && damage.damageProperties.effects.length > 0) {
+        if (damage.properties.effects && damage.properties.effects.length > 0) {
             messageData.flavor += `<b>${game.i18n.localize('WITCHER.Item.Effect')}:</b>`;
 
-            damage.damageProperties.effects.forEach((effect, index, effectArray) => {
+            damage.properties.effects.forEach((effect, index, effectArray) => {
                 messageData.flavor += `<div class="flex gap">`;
                 if (effect.name != '') {
                     messageData.flavor += `<span>${effect.name}</span>`;
@@ -86,7 +86,7 @@ export let damageUtilMixin = {
             ok: {
                 callback: (event, button, dialog) => button.form.elements.newDamage.value
             },
-            title: `${game.i18n.localize('WITCHER.Item.DamageProperties.variableDamage')}`,
+            title: `${game.i18n.localize('WITCHER.Item.properties.variableDamage')}`,
             content: dialogTemplate
         });
 

@@ -1,4 +1,7 @@
+import defenseOptions from '../item/templates/combat/defenseOptionsData.js';
 import BaseMessageData from './baseMessageData.js';
+import attackData from './templates/attackData.js';
+import damageData from './templates/damageData.js';
 
 const fields = foundry.data.fields;
 
@@ -16,10 +19,9 @@ export default class AttackMessageData extends BaseMessageData {
             ...commonData,
 
             attacker: new fields.DocumentUUIDField(),
-            defenseOptions: new fields.SetField(new fields.StringField(), {
-                label: 'WITCHER.Item.Settings.Attacks.defendWith.label',
-                hint: 'WITCHER.Item.Settings.Attacks.defendWith.hint'
-            })
+            attack: new fields.SchemaField(attackData()),
+            ...defenseOptions(),
+            damage: new fields.SchemaField(damageData())
         };
     }
 

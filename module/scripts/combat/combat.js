@@ -19,8 +19,8 @@ export const attackChatMessageListeners = async (message, html) => {
 };
 
 function onDamage(message) {
-    let item = fromUuidSync(message.getFlag('TheWitcherTRPG', 'attack').itemUuid);
-    let damage = message.getFlag('TheWitcherTRPG', 'damage');
+    let item = fromUuidSync(message.system.attack.itemUuid);
+    let damage = message.system.damage;
 
     item.rollDamage(damage);
 }
@@ -44,11 +44,10 @@ async function executeDefense(actor, messageId) {
     if (!actor) return;
 
     let message = game.messages.get(messageId);
-    let attackDamageObject = message?.getFlag('TheWitcherTRPG', 'damage');
 
     actor.prepareAndExecuteDefense(
         message.system.defenseOptions,
-        attackDamageObject,
+        message.system.damage,
         message.system.attackRoll,
         message.system.attacker
     );

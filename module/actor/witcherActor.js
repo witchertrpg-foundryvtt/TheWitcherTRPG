@@ -422,8 +422,25 @@ export default class WitcherActor extends Actor {
     }
 
     async applyStatus(effects) {
+        effects
+            .filter(effect => !!effect.statusEffect)
+            .forEach(effect => {
+                if (!this.statuses.find(status => status == effect.statusEffect)) {
+                    this.toggleStatusEffect(effect.statusEffect);
+                }
+
+                if (this.system.statusEffectImmunities?.find(immunity => immunity == statusEffectId)) {
+                    //untoggle it so people see it was tried to be applied but failed
+                    setTimeout(() => {
+                        this.toggleStatusEffect(statusEffectId);
+                    }, 1000);
+                }
+            });
+    }
+
+    async removeStatus(effects) {
         effects.forEach(effect => {
-            if (!this.statuses.find(status => status == effect.statusEffect)) {
+            if (this.statuses.find(status => status == effect.statusEffect)) {
                 this.toggleStatusEffect(effect.statusEffect);
             }
         });
@@ -562,6 +579,10 @@ export default class WitcherActor extends Actor {
                             (game.i18n.localize('WITCHER.Inventory.Fulgur') == componentName &&
                                 item.system.substanceType == 'fulgur'))))
         );
+    }
+
+    findComponentByUuid(uuid) {
+        return this.getList('component').find(c => c?._stats.compendiumSource === uuid)
     }
 
     async addItem(addItem, numberOfItem, forcecreate = false) {
