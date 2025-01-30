@@ -76,6 +76,14 @@ export let itemMixin = {
         await Item.create(itemData, { parent: this.actor });
     },
 
+    async _onItemEquip(event) {
+        event.preventDefault();
+        let itemId = event.currentTarget.closest('.item').dataset.itemId;
+        let item = this.actor.items.get(itemId);
+
+        await item.update({ 'system.equipped': !item.system.equipped });
+    },
+
     _onItemInlineEdit(event) {
         event.preventDefault();
         event.stopPropagation();
@@ -241,6 +249,26 @@ export let itemMixin = {
         editor.toggleClass('invisible');
     },
 
+    _onDisplayList(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        let section = event.currentTarget.closest('.weapon-section');
+        let editor = section.querySelector('.weapon-list');
+        editor.classList.toggle('invisible');
+
+        let icon = event.currentTarget.querySelector('.fa-chevron-up');
+        icon.classList.toggle('rotate-180');
+    },
+
+    _onEnhancementInfo(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        let section = event.currentTarget.closest('.weapon-enhancement');
+        let editor = $(section).find('.enhancement-info');
+        editor.toggleClass('invisible');
+    },
+
     async _onItemRoll(event) {
         this.actor.useItem(event.currentTarget.closest('.item').dataset.itemId, {
             alt: event?.altKey,
@@ -269,6 +297,7 @@ export let itemMixin = {
 
     itemListener(html) {
         html.find('.add-item').on('click', this._onItemAdd.bind(this));
+        html.find('.item-equip').on('click', this._onItemEquip.bind(this));
         html.find('.item-edit').on('click', this._onItemEdit.bind(this));
         html.find('.item-show').on('click', this._onItemShow.bind(this));
         html.find('.item-delete').on('click', this._onItemDelete.bind(this));
@@ -278,11 +307,15 @@ export let itemMixin = {
         html.find('.enhancement-weapon-slot').on('click', this._chooseEnhancement.bind(this));
         html.find('.enhancement-armor-slot').on('click', this._chooseEnhancement.bind(this));
 
+        html.find('.weapon-list-display').on('click', this._onDisplayList.bind(this));
+
         html.find('.item-weapon-display').on('click', this._onItemDisplayInfo.bind(this));
         html.find('.item-armor-display').on('click', this._onItemDisplayInfo.bind(this));
         html.find('.item-valuable-display').on('click', this._onItemDisplayInfo.bind(this));
         html.find('.item-spell-display').on('click', this._onItemDisplayInfo.bind(this));
         html.find('.item-substance-display').on('click', this._onSubstanceDisplay.bind(this));
+
+        html.find('.enhancement-label').on('click', this._onEnhancementInfo.bind(this));
 
         html.find('.spell-display').on('click', this._onSpellDisplay.bind(this));
 
@@ -290,3 +323,4 @@ export let itemMixin = {
         html.find('.spell-roll').on('click', this._onItemRoll.bind(this));
     }
 };
+
