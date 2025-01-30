@@ -196,6 +196,8 @@
             "tooMuch": "There is too much armor equipped of the same type"
         },
         "Item": {
+            "Equipped": "Equipped",
+            "NonEquipped": "Non Equipped",
             "ClickableImage": "Zoomable",
             "Short.Availability": "Avail.",
             "Weight": "Weight",
@@ -266,11 +268,13 @@
                 "tokenExit": "Apply Macro on Exit"
             },
             "ContextMenu": {
+                "Edit": "Edit",
                 "Consume": "Consume",
                 "NotConsumable": "The item is not configured as consumable",
                 "RemoveEnhancement": "Remove Enhancement",
                 "Gift": "Gift",
-                "dismantle": "Dismantle"
+                "dismantle": "Dismantle",
+                "Delete": "Delete"
             },
             "dismantle": {
                 "addedItems": "The following items where added to the actor",
@@ -458,6 +462,7 @@
             "rangedMeleeBonus": "Ranged Melee Bonus",
             "rangedMeleeBonusHint": "Some ranged weapons also apply the melee bonus",
             "isAmmunition": "Is an ammunition",
+            "Ammunition": "Ammunition",
             "isThrowable": "Is a throwable weapon",
             "Broken": "Your weapon is now broken",
             "onlyDmg": "Roll Only Damages",

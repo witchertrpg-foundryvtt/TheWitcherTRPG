@@ -3,20 +3,58 @@ table th {
     text-align: left;
 }
 
+.enhancement-img,
 .enhancement-slot {
     height: 30px;
     width: 30px;
-    border: solid black 1px;
+    border-radius: 5px;
+    border: 1px solid rgba(25, 24, 19, 0.6);
+}
+
+.enhancement-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.enhancement-label:hover {
+    cursor: pointer;
+    text-shadow: none;
+    background-color: rgba(25, 25, 25, 0.1);
+}
+
+.enhancement-effects-name {
+    margin-top: 5px;
+}
+
+.enhancement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.item-tags {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.item-tag,
+.label-info {
+    background-color: rgba(25, 25, 25, 0.1);
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px groove #eeede0;
 }
 
 .item-enhancement {
     height: 30px;
     width: 30px;
-    margin: 5px;
 }
 
 .no-margin {
-    margin: 0px;;
+    margin: 0px;
 }
 
 .currency {
@@ -25,16 +63,16 @@ table th {
     flex-direction: column;
 }
 
-.wrapper { 
+.wrapper {
     position: relative;
 }
 
-.weightbar{
+.weightbar {
     background-color: grey;
     width: 100%;
     height: 12px;
 }
-  
+
 .weight-value {
     color: white;
     position: absolute;
@@ -59,15 +97,155 @@ table th {
 }
 
 .item-img-wrapper .item-show:hover {
-  background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .item-img-wrapper .item-show .fa {
-  display: none;
-  color: rgb(200, 200, 200);
-  font-size: 28px;
+    display: none;
+    color: rgb(200, 200, 200);
+    font-size: 28px;
 }
 
 .item-img-wrapper .item-show:hover .fa {
-  display: inline-block;
+    display: inline-block;
+}
+
+.weapon-header {
+    display: grid;
+    grid-template-columns: 33px 2fr 1fr;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 2px groove #eeede0;
+    margin: 5px 0;
+    gap: 20px;
+}
+
+.weapon-header h3 {
+    margin: 0;
+    border: none;
+}
+
+.weapon-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.weapon-label > span {
+    width: 70px;
+    text-align: center;
+    padding: 5px;
+}
+
+.weapon-header .weapon-label > span {
+    border-left: 1px solid #9a9991;
+    box-sizing: border-box;
+}
+
+.weapon-details .weapon-label > span:hover {
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  box-shadow: -2px 8px 8px -10px #9a9991;
+  transition: all 0.3s ease;
+}
+
+.weapon-info h3,
+.item-description h3 {
+    border-bottom: 1px solid #9a9991;
+}
+
+.weapon-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}
+
+.weapon-details {
+    display: grid;
+    grid-template-columns: 40px 2fr 1fr;
+    padding: 0 7px;
+    border-bottom: 1px solid rgba(25, 24, 19, 0.2);
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.weapon-details:last-child {
+    border: none;
+}
+
+.weapon-details:hover {
+    border-radius: 5px;
+    background-color: rgba(25, 25, 25, 0.05);
+}
+
+.item-weapon-display {
+    display: flex;
+}
+
+.item-weapon-display > span {
+    display: none;
+}
+
+.weapon-details:hover > .item-weapon-display > img {
+    display: none;
+}
+
+.weapon-details:hover > .item-weapon-display > span {
+    display: flex;
+}
+
+.weapon-image {
+    flex-wrap: wrap;
+    place-content: center;
+    text-shadow: none;
+    color: var(--color-text-dark-primary);
+    font-size: 24px;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(25, 24, 19, 0.6);
+}
+
+.weapon-item {
+    flex-direction: column;
+}
+
+.weapon-enhancement {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.weapon-controls {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.reliable-details {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.reliable-details > span {
+  width: 25px;
+}
+
+a.item-equip,
+a.item-repair {
+  color: rgba(25, 25, 25, 0.4);
+  text-shadow: none;
+}
+
+a.equipped {
+  color: var(--color-text-dark-primary);
+  text-shadow: none;
 }

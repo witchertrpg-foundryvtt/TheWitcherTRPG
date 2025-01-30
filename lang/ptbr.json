@@ -196,6 +196,8 @@
             "tooMuch": "Há muita armadura equipada do mesmo tipo"
         },
         "Item": {
+            "Equipped": "Equipado",
+            "NonEquipped": "Não Equipado",
             "ClickableImage": "Ampliável",
             "Short.Availability": "Disp.",
             "Weight": "Peso",
@@ -266,11 +268,13 @@
                 "tokenExit": "Aplicar Macro ao Sair"
             },
             "ContextMenu": {
+                "Edit": "Editar",
                 "Consume": "Consumir",
                 "NotConsumable": "O item não está configurado como consumível",
                 "RemoveEnhancement": "Remover Melhorias",
                 "Gift": "Presentear",
-                "dismantle": "Desmontar"
+                "dismantle": "Desmontar",
+                "Delete": "Deletar",
             },
             "dismantle": {
                 "addedItems": "Os seguintes itens foram adicionados ao ator",

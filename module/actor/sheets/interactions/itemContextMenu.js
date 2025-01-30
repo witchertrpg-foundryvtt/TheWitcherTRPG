@@ -5,11 +5,24 @@ const DialogV2 = foundry.applications.api.DialogV2;
 export let itemContextMenu = {
     itemContextMenu(html) {
         ContextMenu.create(this, html, '.item', [
+            this.editItem(),
             this.consumableItem(),
             this.removableEnhancement(),
             this.giftableItem(),
-            this.dismantableItem()
+            this.dismantableItem(),
+            this.deleteItem()
         ]);
+    },
+
+    editItem() {
+        return {
+            name: 'WITCHER.Item.ContextMenu.Edit',
+            icon: '<i class="fas fa-edit"></i>',
+            callback: (event) => {
+                const item = this.actor.items.get(event[0].attributes[1].nodeValue)
+                item.sheet.render(true)
+            }
+        };
     },
 
     consumableItem() {
@@ -172,5 +185,16 @@ export let itemContextMenu = {
         let item = this.actor.items.get(itemHtml[0].dataset.itemId);
 
         item.dismantle();
-    }
+    },
+
+    deleteItem() {
+      return {
+          name: 'WITCHER.Item.ContextMenu.Delete',
+          icon: '<i class="fa-solid fa-trash"></i>',
+          callback: (event) => {
+              const item = this.actor.items.get(event[0].attributes[1].nodeValue)
+              item.delete()
+          }
+      };
+  },
 };
