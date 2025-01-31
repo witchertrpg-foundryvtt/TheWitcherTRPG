@@ -2,10 +2,12 @@ import WitcherActor from '../../actor/witcherActor.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 import { getRandomInt } from '../../scripts/helper.js';
 
+const DialogV2 = foundry.applications.api.DialogV2;
+
 export let damageUtilMixin = {
     createBaseDamageObject() {
         return {
-            properties: foundry.utils.deepClone(this.system.properties),
+            properties: foundry.utils.deepClone(this.system.damageProperties),
             item: this,
             itemUuid: this.uuid,
             crit: {
