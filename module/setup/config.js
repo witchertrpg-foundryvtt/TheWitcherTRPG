@@ -173,6 +173,45 @@ WITCHER.attackOptions = [
         skills: ['trapcraft']
     }
 ];
+
+WITCHER.meleeAttackOptions = [
+    {
+        value: 'brawling',
+        label: 'WITCHER.SkRefBrawling'
+    },
+    {
+        value: 'melee',
+        label: 'WITCHER.SkRefMelee'
+    },
+    {
+        value: 'smallblades',
+        label: 'WITCHER.SkRefSmall'
+    },
+    {
+        value: 'staffspear',
+        label: 'WITCHER.SkRefStaff'
+    },
+    {
+        value: 'swordsmanship',
+        label: 'WITCHER.SkRefSwordsmanship'
+    }
+];
+
+WITCHER.rangedAttackOptions = [
+    {
+        value: 'athletics',
+        label: 'WITCHER.SkDexAthletics'
+    },
+    {
+        value: 'archery',
+        label: 'WITCHER.SkDexArchery'
+    },
+    {
+        value: 'crossbow',
+        label: 'WITCHER.SkDexCrossbow'
+    }
+];
+
 WITCHER.defenseOptions = [
     {
         value: 'dodge',
@@ -617,15 +656,36 @@ WITCHER.magic = {
     }
 };
 
-WITCHER.spellDamageTypes = {
-    bludgeoning: 'WITCHER.DamageType.bludgeoning',
-    slashing: 'WITCHER.DamageType.slashing',
-    piercing: 'WITCHER.DamageType.piercing',
-    elemental: 'WITCHER.DamageType.elemental',
-    electricity: 'WITCHER.DamageType.electricity',
-    fire: 'WITCHER.DamageType.fire',
-    ice: 'WITCHER.DamageType.ice'
-};
+WITCHER.spellDamageTypes = [
+    {
+        value: 'bludgeoning',
+        label: 'WITCHER.DamageType.bludgeoning'
+    },
+    {
+        value: 'slashing',
+        label: 'WITCHER.DamageType.slashing'
+    },
+    {
+        value: 'piercing',
+        label: 'WITCHER.DamageType.piercing'
+    },
+    {
+        value: 'elemental',
+        label: 'WITCHER.DamageType.elemental'
+    },
+    {
+        value: 'electricity',
+        label: 'WITCHER.DamageType.electricity'
+    },
+    {
+        value: 'fire',
+        label: 'WITCHER.DamageType.fire'
+    },
+    {
+        value: 'ice',
+        label: 'WITCHER.DamageType.ice'
+    }
+];
 
 //Monster
 WITCHER.MonsterTypes = {

@@ -2,9 +2,25 @@ const fields = foundry.data.fields;
 
 export default function regionBehaviours() {
     return {
-        tokenEnter: new fields.DocumentUUIDField({ blank: true}),
-        tokenTurnStart: new fields.DocumentUUIDField({ blank: true }),
-        tokenPreMove: new fields.DocumentUUIDField({ blank: true }),
-        tokenExit: new fields.DocumentUUIDField({ blank: true })
+        tokenEnter: new fields.DocumentUUIDField({
+            type: 'Macro',
+            required: false,
+            label: 'WITCHER.Item.RegionProperties.tokenEnter'
+        }),
+        tokenTurnStart: new fields.DocumentUUIDField({
+            type: 'Macro',
+            required: false,
+            label: 'WITCHER.Item.RegionProperties.tokenTurnStart'
+        }),
+        tokenPreMove: new fields.DocumentUUIDField({
+            type: 'Macro',
+            required: false,
+            label: 'WITCHER.Item.RegionProperties.tokenPreMove'
+        }),
+        tokenExit: new fields.DocumentUUIDField({
+            type: 'Macro',
+            required: false,
+            label: 'WITCHER.Item.RegionProperties.tokenExit'
+        })
     };
 }

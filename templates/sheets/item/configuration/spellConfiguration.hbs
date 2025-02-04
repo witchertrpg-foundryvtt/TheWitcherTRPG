@@ -63,16 +63,8 @@
                     </tr>
                 {{/each}}
             </table>
-            <div>
-                <span>{{localize "WITCHER.DamageType.name"}}</span>
-                <select name='system.damageType'>
-                    {{selectOptions config.spellDamageTypes selected=item.system.damageType localize=true}}
-                </select>
-            </div>
-            <div>
-                {{formGroup systemFields.defenseOptions value=item.system.defenseOptions options=config.defenseOptions localize=true}}
-            </div>
-
+            {{formGroup systemFields.damageType value=item.system.damageType options=config.spellDamageTypes localize=true}}
+            {{formGroup systemFields.defenseOptions value=item.system.defenseOptions options=config.defenseOptions localize=true}}
         </div>
         <div class="tab" data-group="primary" data-tab="damageProperties">
             {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs"}}

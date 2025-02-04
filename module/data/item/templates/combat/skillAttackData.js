@@ -1,3 +1,4 @@
+import attackOptions from './attackOptionsData.js';
 import damageProperties from './damagePropertiesData.js';
 import defenseOptions from './defenseOptionsData.js';
 
@@ -17,6 +18,7 @@ export default function skillAttack() {
             initial: '',
             label: 'WITCHER.profession.skillPath.skill.skillAttack.damageFormulaOverrides'
         }),
+        ...attackOptions(),
         damageProperties: new fields.SchemaField(damageProperties()),
         ...defenseOptions()
     };

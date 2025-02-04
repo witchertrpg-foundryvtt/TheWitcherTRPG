@@ -38,7 +38,7 @@ export default function attackOptions() {
             label: 'WITCHER.Weapon.MeleeBonus'
         }),
         applyRangedMeleeBonus: new fields.BooleanField({
-            initial: source => source.applyMeleeBonus,
+            initial: source => source.applyMeleeBonus ?? false,
             label: 'WITCHER.Weapon.rangedMeleeBonus',
             hint: 'WITCHER.Weapon.rangedMeleeBonusHint'
         }),
