@@ -173,6 +173,45 @@ WITCHER.attackOptions = [
         skills: ['trapcraft']
     }
 ];
+
+WITCHER.meleeAttackOptions = [
+    {
+        value: 'brawling',
+        label: 'WITCHER.SkRefBrawling'
+    },
+    {
+        value: 'melee',
+        label: 'WITCHER.SkRefMelee'
+    },
+    {
+        value: 'smallblades',
+        label: 'WITCHER.SkRefSmall'
+    },
+    {
+        value: 'staffspear',
+        label: 'WITCHER.SkRefStaff'
+    },
+    {
+        value: 'swordsmanship',
+        label: 'WITCHER.SkRefSwordsmanship'
+    }
+];
+
+WITCHER.rangedAttackOptions = [
+    {
+        value: 'athletics',
+        label: 'WITCHER.SkDexAthletics'
+    },
+    {
+        value: 'archery',
+        label: 'WITCHER.SkDexArchery'
+    },
+    {
+        value: 'crossbow',
+        label: 'WITCHER.SkDexCrossbow'
+    }
+];
+
 WITCHER.defenseOptions = [
     {
         value: 'dodge',

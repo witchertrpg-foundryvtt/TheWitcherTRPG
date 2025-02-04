@@ -45,9 +45,9 @@ export async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/defensePropertiesConfiguration.hbs',
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/consumablePropertiesConfiguration.hbs',
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/regionPropertiesConfiguration.hbs',
-        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPath1Part.hbs',
-        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPath2Part.hbs',
-        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPath3Part.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPathPart.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPathSkillPart.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/profAttackOptionsPart.hbs',
 
         'systems/TheWitcherTRPG/templates/sheets/investigation/mystery-sheet.hbs',
         'systems/TheWitcherTRPG/templates/partials/investigation/clue-display.hbs',

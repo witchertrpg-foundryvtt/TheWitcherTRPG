@@ -1,5 +1,5 @@
 import WitcherItemSheet from './WitcherItemSheet.js';
-import WitcherConfigurationSheet from './configurations/WitcherConfigurationSheet.js';
+import WitcherProfessionConfigurationSheet from './configurations/WitcherProfessionConfigurationSheet.js';
 
 export default class WitcheProfessionSheet extends WitcherItemSheet {
     /** @override */
@@ -18,5 +18,5 @@ export default class WitcheProfessionSheet extends WitcherItemSheet {
         });
     }
 
-    configuration = new WitcherConfigurationSheet(this.item);
+    configuration = new WitcherProfessionConfigurationSheet(this.item);
 }
