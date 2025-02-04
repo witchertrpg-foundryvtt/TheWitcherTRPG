@@ -617,15 +617,36 @@ WITCHER.magic = {
     }
 };
 
-WITCHER.spellDamageTypes = {
-    bludgeoning: 'WITCHER.DamageType.bludgeoning',
-    slashing: 'WITCHER.DamageType.slashing',
-    piercing: 'WITCHER.DamageType.piercing',
-    elemental: 'WITCHER.DamageType.elemental',
-    electricity: 'WITCHER.DamageType.electricity',
-    fire: 'WITCHER.DamageType.fire',
-    ice: 'WITCHER.DamageType.ice'
-};
+WITCHER.spellDamageTypes = [
+    {
+        value: 'bludgeoning',
+        label: 'WITCHER.DamageType.bludgeoning'
+    },
+    {
+        value: 'slashing',
+        label: 'WITCHER.DamageType.slashing'
+    },
+    {
+        value: 'piercing',
+        label: 'WITCHER.DamageType.piercing'
+    },
+    {
+        value: 'elemental',
+        label: 'WITCHER.DamageType.elemental'
+    },
+    {
+        value: 'electricity',
+        label: 'WITCHER.DamageType.electricity'
+    },
+    {
+        value: 'fire',
+        label: 'WITCHER.DamageType.fire'
+    },
+    {
+        value: 'ice',
+        label: 'WITCHER.DamageType.ice'
+    }
+];
 
 //Monster
 WITCHER.MonsterTypes = {
