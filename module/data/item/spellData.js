@@ -1,5 +1,6 @@
 import { migrateDamageProperties } from '../migrations/damagePropertiesMigration.js';
 import CommonItemData from './commonItemData.js';
+import attackOptions from './templates/combat/attackOptionsData.js';
 import damageProperties from './templates/combat/damagePropertiesData.js';
 import defenseOptions from './templates/combat/defenseOptionsData.js';
 import itemEffect from './templates/itemEffectData.js';
@@ -52,6 +53,7 @@ export default class SpellData extends CommonItemData {
             selfEffects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
             onCastEffects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
 
+            ...attackOptions(),
             ...defenseOptions()
         };
     }

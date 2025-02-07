@@ -212,6 +212,21 @@ WITCHER.rangedAttackOptions = [
     }
 ];
 
+WITCHER.spellAttackOptions = [
+    {
+        value: 'spellcast',
+        label: 'WITCHER.SkWillSpellcastLable'
+    },
+    {
+        value: 'ritcraft',
+        label: 'WITCHER.SkWillRitCraftLable'
+    },
+    {
+        value: 'hexweave',
+        label: 'WITCHER.SkWillHexLable'
+    }
+];
+
 WITCHER.defenseOptions = [
     {
         value: 'dodge',

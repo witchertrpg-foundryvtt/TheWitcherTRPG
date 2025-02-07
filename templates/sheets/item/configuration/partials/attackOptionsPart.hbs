@@ -12,3 +12,7 @@
     {{formGroup systemFields.applyRangedMeleeBonus value=item.system.applyRangedMeleeBonus localize=true}}
     {{formGroup systemFields.isThrowable value=item.system.isThrowable localize=true}}
 {{/if}}
+{{#if (has 'spell' item.system.attackOptions)}}
+    <h3>{{localize "WITCHER.Attack.attackOptions.ranged"}}</h3>
+    {{formGroup systemFields.spellAttackSkill value=item.system.spellAttackSkill options=config.spellAttackOptions localize=true}}
+{{/if}}

@@ -63,6 +63,7 @@
                     </tr>
                 {{/each}}
             </table>
+            {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/attackOptionsPart.hbs"}}
             {{formGroup systemFields.damageType value=item.system.damageType options=config.damageTypes localize=true}}
             {{formGroup systemFields.defenseOptions value=item.system.defenseOptions options=config.defenseOptions localize=true}}
         </div>

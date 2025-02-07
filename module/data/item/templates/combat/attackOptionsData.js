@@ -9,6 +9,7 @@ export default function attackOptions() {
                 if (CONFIG.WITCHER.meleeSkills.includes(source.attackSkill)) options.push('melee');
                 if (CONFIG.WITCHER.rangedSkills.includes(source.attackSkill) || source.isThrowable)
                     options.push('ranged');
+                if (source.level) options.push('spell');
                 return options;
             },
             label: 'WITCHER.Attack.attackOptions.label',
@@ -25,6 +26,7 @@ export default function attackOptions() {
             hint: 'WITCHER.Attack.rangedAttackSkill.hint'
         }),
         spellAttackSkill: new fields.StringField({
+            initial: 'spellcasting',
             label: 'WITCHER.Attack.spellAttackSkill.label',
             hint: 'WITCHER.Attack.spellAttackSkill.hint'
         }),
