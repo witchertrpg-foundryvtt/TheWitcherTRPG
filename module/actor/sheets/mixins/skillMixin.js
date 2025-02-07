@@ -1,70 +1,4 @@
-import { extendedRoll } from '../../../scripts/rolls/extendedRoll.js';
-import { RollConfig } from '../../../scripts/rollConfig.js';
-import ChatMessageData from '../../../chatMessage/chatMessageData.js';
-
 export let skillMixin = {
-    async _onProfessionRoll(event) {
-        let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
-        let stat = event.currentTarget.closest('.profession-display').dataset.stat;
-        let level = event.currentTarget.closest('.profession-display').dataset.level || 0;
-        let name = event.currentTarget.closest('.profession-display').dataset.name;
-        let effet = event.currentTarget.closest('.profession-display').dataset.effet;
-        let statValue = this.actor.system.stats[stat].current;
-        let statName = `WITCHER.St${stat.charAt(0).toUpperCase() + stat.slice(1)}`;
-
-        let rollFormula = !displayRollDetails
-            ? `1d10+${statValue}+${level}`
-            : `1d10+${statValue}[${game.i18n.localize(statName)}]+${level}[${name}]`;
-        new Dialog({
-            title: `${game.i18n.localize('WITCHER.Dialog.profession.skill')}: ${name}`,
-            content: `<label>${game.i18n.localize('WITCHER.Dialog.attackCustom')}: <input name="customModifiers" value=0></label>`,
-            buttons: {
-                continue: {
-                    label: game.i18n.localize('WITCHER.Button.Continue'),
-                    callback: async html => {
-                        let customAtt = html.find('[name=customModifiers]')[0].value;
-                        if (customAtt < 0) {
-                            rollFormula += !displayRollDetails
-                                ? `${customAtt}`
-                                : `${customAtt}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-                        }
-                        if (customAtt > 0) {
-                            rollFormula += !displayRollDetails
-                                ? `+${customAtt}`
-                                : `+${customAtt}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-                        }
-
-                        let messageData = new ChatMessageData(this.actor, `<h2>${name}</h2>${effet}`);
-
-                        let config = new RollConfig();
-                        config.showCrit = true;
-                        await extendedRoll(rollFormula, messageData, config);
-                    }
-                }
-            }
-        }).render(true);
-    },
-
-    calc_total_skills_profession(context) {
-        let totalSkills = 0;
-        if (context.profession) {
-            totalSkills += Number(context.profession.system.definingSkill.level);
-            totalSkills +=
-                Number(context.profession.system.skillPath1.skill1.level) +
-                Number(context.profession.system.skillPath1.skill2.level) +
-                Number(context.profession.system.skillPath1.skill3.level);
-            totalSkills +=
-                Number(context.profession.system.skillPath2.skill1.level) +
-                Number(context.profession.system.skillPath2.skill2.level) +
-                Number(context.profession.system.skillPath2.skill3.level);
-            totalSkills +=
-                Number(context.profession.system.skillPath3.skill1.level) +
-                Number(context.profession.system.skillPath3.skill2.level) +
-                Number(context.profession.system.skillPath3.skill3.level);
-        }
-        return totalSkills;
-    },
-
     calc_total_skills(context) {
         let totalSkills = 0;
         for (let element in context.system.skills) {
@@ -93,7 +27,7 @@ export let skillMixin = {
         let thisActor = this.actor;
         let skillMap = this.skillMap;
 
-        html.find('.profession-roll').on('click', this._onProfessionRoll.bind(this));
+        html.find('.profession-roll').on('click', event => thisActor._onProfessionRoll(event));
         html.find('.skill-display').on('click', this._onSkillDisplay.bind(this));
 
         //int skills

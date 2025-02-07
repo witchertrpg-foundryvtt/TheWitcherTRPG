@@ -12,6 +12,7 @@ import { defenseMixin } from './mixins/defenseMixin.js';
 import { damageMixin } from './mixins/damageMixin.js';
 import { activeEffectMixin } from './mixins/activeEffectMixin.js';
 import ChatMessageData from '../chatMessage/chatMessageData.js';
+import { professionMixin } from './mixins/professionMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -763,6 +764,7 @@ export default class WitcherActor extends Actor {
     }
 }
 
+Object.assign(WitcherActor.prototype, professionMixin);
 Object.assign(WitcherActor.prototype, modifierMixin);
 Object.assign(WitcherActor.prototype, damageUtilMixin);
 Object.assign(WitcherActor.prototype, weaponAttackMixin);

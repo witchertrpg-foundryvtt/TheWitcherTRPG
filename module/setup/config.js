@@ -656,7 +656,7 @@ WITCHER.magic = {
     }
 };
 
-WITCHER.spellDamageTypes = [
+WITCHER.damageTypes = [
     {
         value: 'bludgeoning',
         label: 'WITCHER.DamageType.bludgeoning'

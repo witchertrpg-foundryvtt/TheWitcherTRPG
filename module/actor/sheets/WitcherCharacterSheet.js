@@ -54,7 +54,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
 
         context.totalStats = this.calc_total_stats(context);
         context.totalSkills = this.calc_total_skills(context);
-        context.totalProfSkills = this.calc_total_skills_profession(context);
+        context.totalProfSkills = this.actor.calc_total_skills_profession();
     }
 
     _prepareDiagramFormulas(context) {
@@ -175,7 +175,6 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
                 content += `<div class="flex">${a.content}</div>`;
 
                 let ownedSubstance = this.actor.getSubstance(a.name);
-                console.log(ownedSubstance);
                 let ownedSubstanceCount = ownedSubstance.sum('quantity');
                 if (ownedSubstanceCount < Number(a.quantity)) {
                     let missing = a.quantity - ownedSubstanceCount;
@@ -268,9 +267,6 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
             content += `<div class="flex"><b>${craftingComponent.name}</b>(${craftingComponent.quantity}) </div>`;
 
             let ownedComponent = this.actor.findNeededComponent(craftingComponent.name);
-
-            console.log(ownedComponent);
-
             let componentQuantity = ownedComponent.sum('quantity');
 
             if (componentQuantity < Number(craftingComponent.quantity)) {

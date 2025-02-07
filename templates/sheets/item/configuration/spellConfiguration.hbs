@@ -63,7 +63,7 @@
                     </tr>
                 {{/each}}
             </table>
-            {{formGroup systemFields.damageType value=item.system.damageType options=config.spellDamageTypes localize=true}}
+            {{formGroup systemFields.damageType value=item.system.damageType options=config.damageTypes localize=true}}
             {{formGroup systemFields.defenseOptions value=item.system.defenseOptions options=config.defenseOptions localize=true}}
         </div>
         <div class="tab" data-group="primary" data-tab="damageProperties">

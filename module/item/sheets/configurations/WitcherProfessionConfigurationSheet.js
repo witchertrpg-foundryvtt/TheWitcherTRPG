@@ -32,8 +32,6 @@ export default class WitcherDamagePropertiesConfigurationSheet extends WitcherCo
             value = element.checked;
         }
 
-        console.log(element.closest('.list-item').dataset);
-
         let skillName = element.closest('.list-item').dataset.target;
         let skillObject = this.findSkillWithName(skillName);
 
