@@ -28,7 +28,7 @@ async function applyCombatEffects(actor, status) {
     ChatMessage.create(chatData);
 
     let damage = {
-        damageProperties: {
+        properties: {
             spDamage: status.combat.turn?.damage.spDamage,
             damageToAllLocations: status.combat.turn?.damage.allLocations,
             effects: [],
