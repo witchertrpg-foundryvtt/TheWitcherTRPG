@@ -252,7 +252,7 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
     }
 
     let silverDamage = 0;
-    if (properties?.silverDamage) {
+    if (properties?.silverDamage && dialogData?.resistNonSilver) {
         let silverRoll = await new Roll(damage.properties.silverDamage).evaluate();
         silverDamage = silverRoll.total;
         infoTotalDmg += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
@@ -297,9 +297,10 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
 
     totalDamage = calculateResistances(actor, totalDamage, damage, armorSet);
 
+    let damageTypeConfig = CONFIG.WITCHER.damageTypes.find(type => type.value === damage.type);
     if (
-        (dialogData?.resistNonSilver && !properties?.silverDamage) ||
-        (dialogData?.resistNonMeteorite && !properties?.isMeteorite)
+        (dialogData?.resistNonSilver && !properties?.silverDamage && !damageTypeConfig.likeSilver) ||
+        (dialogData?.resistNonMeteorite && !properties?.isMeteorite && !damageTypeConfig.likeMeteorite)
     ) {
         totalDamage = Math.floor(0.5 * totalDamage);
     }

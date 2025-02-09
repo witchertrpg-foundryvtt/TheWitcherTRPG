@@ -694,7 +694,9 @@ WITCHER.damageTypes = [
     },
     {
         value: 'fire',
-        label: 'WITCHER.DamageType.fire'
+        label: 'WITCHER.DamageType.fire',
+        likeSilver: true,
+        likeMeteorite: true
     },
     {
         value: 'ice',
