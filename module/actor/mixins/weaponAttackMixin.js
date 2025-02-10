@@ -135,7 +135,6 @@ export let weaponAttackMixin = {
         if (options.additionalDamageProperties) {
             damageModifcation = this.mergeDamageProperties(damage.properties, options.additionalDamageProperties);
         }
-        console.log(damage);
         damage.strike = strike;
         damage.type = damageType;
 
