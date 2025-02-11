@@ -19,8 +19,8 @@
                         <select class="inline-edit defining-skill-select" data-field="system.definingSkill.stat">
                             {{selectOptions config.statTypes selected=profession.system.definingSkill.stat localize=true}}
                         </select>
-                        <input class="inline-edit profession-level" data-field="system.definingSkill.level" type="number"
-                            value="{{profession.system.definingSkill.level}}" placeholder="" />
+                        <input class="inline-edit profession-level" data-field="system.definingSkill.level"
+                            type="number" value="{{profession.system.definingSkill.level}}" placeholder="" />
                         {{#unless (eq profession.system.definingSkill.stat "none")}}
                             <a class="profession-roll"><i class="fas fa-dice-d20"></i></a>
                         {{/unless}}

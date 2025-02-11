@@ -17,7 +17,6 @@
                     <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
                 {{/if}}
             </itemimage>
-
             <table class="information">
                 <tr class="item-header-tablerow">
                     <td>
@@ -27,13 +26,13 @@
                         <label>{{localize "WITCHER.Spell.Hexes"}}</label>
                     </td>
                 </tr>
-                 <tr class="item-header-tablerow">
-                   <td>
+                <tr class="item-header-tablerow">
+                    <td>
                         <label>{{localize "WITCHER.Item.SourceBook"}}</label>
                     </td>
                     <td>
                         <input type="text" name="system.sourcebook" value="{{item.system.sourcebook}}" />
-                     </td>
+                    </td>
                 </tr>
             </table>
         </general>
@@ -52,7 +51,6 @@
             </td>
         </tr>
     </table>
-
     <label>{{localize "WITCHER.Item.Effect"}}</label>
     <textarea rows="10" name="system.effect">{{item.system.effect}}</textarea>
     <label>{{localize "WITCHER.Spell.Requirements"}}</label>

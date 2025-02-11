@@ -1,6 +1,5 @@
 <form class="{{ cssClass }}" autocomplete="off">
     <h1>{{localize "WITCHER.Item.Settings.profession"}}</h1>
-
     {{! Sheet Tab Navigation }}
     <nav class="sheet-tabs tabs flexrow" data-group="primary">
         <a data-tab="general">{{localize "WITCHER.Item.Settings.General"}}</a>
@@ -9,7 +8,6 @@
         <a data-tab="skillPath3">{{ item.system.skillPath3.pathName }}</a>
         <a data-tab="effects">{{localize "WITCHER.activeEffect.tab"}}</a>
     </nav>
-
     {{! Sheet Body }}
     <section class="sheet-body">
         <div class="tab" data-group="primary" data-tab="general"></div>

@@ -1,18 +1,18 @@
 <form>
-    <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+    <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
     <label>Goal</label>
-    <input type="text" name="system.goal" value="{{actor.system.goal}}"/>
+    <input type="text" name="system.goal" value="{{actor.system.goal}}" />
 
     <label>Difficulty</label>
-    <input type="text" name="system.complexity.difficulty" value="{{actor.system.complexity.difficulty}}"/>
+    <input type="text" name="system.complexity.difficulty" value="{{actor.system.complexity.difficulty}}" />
 
     <label>Complexity</label>
-    <input type="number" name="system.complexity.complexity" value="{{actor.system.complexity.complexity}}"/>
+    <input type="number" name="system.complexity.complexity" value="{{actor.system.complexity.complexity}}" />
 
     <div class="flex">
         <div class="item-section">
             <h2>{{localize "WITCHER.Investigation.clues"}} <a class="add-item" data-itemType="clue"><i
-                    class="fas fa-plus"></i></a></h2>
+                        class="fas fa-plus"></i></a></h2>
             <table class="item-table item-list">
                 <tr>
                     <td class="table-empty-space"></td>
@@ -32,7 +32,8 @@
                     {{> "systems/TheWitcherTRPG/templates/partials/investigation/clue-display.hbs" item=item isGM=../isGM skills=../skills}}
                 {{/each}}
             </table>
-            <h2>{{localize "WITCHER.Investigation.obstacles"}} <a class="add-item" data-itemType="obstacle"><i class="fas fa-plus"></i></a>
+            <h2>{{localize "WITCHER.Investigation.obstacles"}} <a class="add-item" data-itemType="obstacle"><i
+                        class="fas fa-plus"></i></a>
             </h2>
             <table class="item-table item-list">
                 <tr>

@@ -1,6 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
     {{>"systems/TheWitcherTRPG/templates/partials/item-header.hbs"}}
-
     {{!-- Attributes Tab --}}
     <table class="item-table">
         <tr>
@@ -22,9 +21,9 @@
                     {{selectOptions config.Availability selected=item.system.avail localize=true}}
                 </select>
             </td>
-            <td><input type="text" name="system.time" value="{{item.system.time}}"/></td>
+            <td><input type="text" name="system.time" value="{{item.system.time}}" /></td>
             {{#if (or (eq item.system.type "potion") (eq item.system.type "decoction"))}}
-                <td><input type="text" name="system.toxicity" value="{{item.system.toxicity}}"/></td>
+                <td><input type="text" name="system.toxicity" value="{{item.system.toxicity}}" /></td>
             {{/if}}
         </tr>
         <tr>

@@ -5,14 +5,11 @@
         {{#if data.causeDamages}}
             <a data-tab="damageProperties">{{localize "WITCHER.Item.Settings.DamageProperties"}}</a>
         {{/if}}
-
         {{#if data.createTemplate}}
             <a data-tab="regionProperties">{{localize "WITCHER.Item.Settings.RegionProperties"}}</a>
         {{/if}}
-
         <a data-tab="effects">{{localize "WITCHER.activeEffect.tab"}}</a>
     </nav>
-
     {{! Sheet Body }}
     <section class="sheet-body">
         <div class="tab" data-group="primary" data-tab="general">
@@ -35,11 +32,9 @@
                                 {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                             </select>
                         </td>
-
                     </tr>
                 {{/each}}
             </table>
-
             <h3>{{localize "WITCHER.Item.Settings.Spell.CastProperties"}}</h3>
             <table class="item-bottom-table">
                 <tr>
@@ -59,7 +54,6 @@
                                 {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                             </select>
                         </td>
-
                     </tr>
                 {{/each}}
             </table>

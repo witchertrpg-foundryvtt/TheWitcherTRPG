@@ -11,10 +11,9 @@
         <div class="tab" data-group="primary" data-tab="general">
             {{formGroup systemFields.customStat value=system.customStat localize=true}}
             {{#if system.customStat}}
-            {{log systemFields.derivedStats.fields.hp.fields.unmodifiedMax}}
-            {{formGroup systemFields.derivedStats.fields.hp.fields.unmodifiedMax value=system.derivedStats.hp.unmodifiedMax localize=true}}
-            {{formGroup systemFields.derivedStats.fields.sta.fields.unmodifiedMax value=system.derivedStats.sta.unmodifiedMax localize=true}}
-            {{formGroup systemFields.derivedStats.fields.resolve.fields.unmodifiedMax value=system.derivedStats.resolve.unmodifiedMax localize=true}}
+                {{formGroup systemFields.derivedStats.fields.hp.fields.unmodifiedMax value=system.derivedStats.hp.unmodifiedMax localize=true}}
+                {{formGroup systemFields.derivedStats.fields.sta.fields.unmodifiedMax value=system.derivedStats.sta.unmodifiedMax localize=true}}
+                {{formGroup systemFields.derivedStats.fields.resolve.fields.unmodifiedMax value=system.derivedStats.resolve.unmodifiedMax localize=true}}
             {{/if}}
             <hr />
             {{formGroup systemFields.showCommonerSuperstition value=system.showCommonerSuperstition localize=true}}

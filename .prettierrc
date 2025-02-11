@@ -10,14 +10,5 @@
     "printWidth": 120,
     "endOfLine": "crlf",
 
-    "bracketSameLine": true,
-
-    "overrides": [
-        {
-            "files": "**/*.hbs",
-            "options": {
-                "parser": "angular"
-            }
-        }
-    ]
+    "bracketSameLine": true
 }
