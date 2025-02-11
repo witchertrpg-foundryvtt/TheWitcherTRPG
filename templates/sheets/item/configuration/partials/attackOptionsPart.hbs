@@ -2,13 +2,32 @@
     {{formGroup systemFields.attackOptions value=item.system.attackOptions options=config.attackOptions localize=true}}
 </div>
 {{#if (has 'melee' item.system.attackOptions)}}
-    <h3>{{localize "WITCHER.Attack.attackOptions.melee"}}</h3>
-    {{formGroup systemFields.meleeAttackSkill value=item.system.meleeAttackSkill options=config.meleeAttackOptions localize=true}}
+    <h3>{{localize 'WITCHER.Attack.attackOptions.melee'}}</h3>
+    {{formGroup
+        systemFields.meleeAttackSkill
+        value=item.system.meleeAttackSkill
+        options=config.meleeAttackOptions
+        localize=true
+    }}
     {{formGroup systemFields.applyMeleeBonus value=item.system.applyMeleeBonus localize=true}}
 {{/if}}
 {{#if (has 'ranged' item.system.attackOptions)}}
-    <h3>{{localize "WITCHER.Attack.attackOptions.ranged"}}</h3>
-    {{formGroup systemFields.rangedAttackSkill value=item.system.rangedAttackSkill options=config.rangedAttackOptions localize=true}}
+    <h3>{{localize 'WITCHER.Attack.attackOptions.ranged'}}</h3>
+    {{formGroup
+        systemFields.rangedAttackSkill
+        value=item.system.rangedAttackSkill
+        options=config.rangedAttackOptions
+        localize=true
+    }}
     {{formGroup systemFields.applyRangedMeleeBonus value=item.system.applyRangedMeleeBonus localize=true}}
     {{formGroup systemFields.isThrowable value=item.system.isThrowable localize=true}}
+{{/if}}
+{{#if (has 'spell' item.system.attackOptions)}}
+    <h3>{{localize 'WITCHER.Attack.attackOptions.ranged'}}</h3>
+    {{formGroup
+        systemFields.spellAttackSkill
+        value=item.system.spellAttackSkill
+        options=config.spellAttackOptions
+        localize=true
+    }}
 {{/if}}

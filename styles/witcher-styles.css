@@ -22,6 +22,7 @@
 @import "./repair.css";
 @import './components-list.css';
 @import './dialog.css';
+@import './tab-inventory-weapon.css';
 
 @font-face {
     font-family: 'Thewitcher';

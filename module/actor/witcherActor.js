@@ -12,6 +12,7 @@ import { defenseMixin } from './mixins/defenseMixin.js';
 import { damageMixin } from './mixins/damageMixin.js';
 import { activeEffectMixin } from './mixins/activeEffectMixin.js';
 import ChatMessageData from '../chatMessage/chatMessageData.js';
+import { professionMixin } from './mixins/professionMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -582,7 +583,7 @@ export default class WitcherActor extends Actor {
     }
 
     findComponentByUuid(uuid) {
-        return this.getList('component').find(c => c?._stats.compendiumSource === uuid)
+        return this.getList('component').find(c => c?._stats.compendiumSource === uuid);
     }
 
     async addItem(addItem, numberOfItem, forcecreate = false) {
@@ -590,7 +591,8 @@ export default class WitcherActor extends Actor {
         if (foundItem && !forcecreate && !foundItem.system.isStored) {
             await foundItem.update({ 'system.quantity': Number(foundItem.system.quantity) + Number(numberOfItem) });
         } else {
-            let newItem = { ...addItem.toObject(false) };
+            //if toObject cannot be called, we dont have a source => we dont need to call toObject
+            let newItem = addItem.toObject ? addItem.toObject(false) : addItem;
 
             if (numberOfItem) {
                 newItem.system.quantity = Number(numberOfItem);
@@ -763,6 +765,7 @@ export default class WitcherActor extends Actor {
     }
 }
 
+Object.assign(WitcherActor.prototype, professionMixin);
 Object.assign(WitcherActor.prototype, modifierMixin);
 Object.assign(WitcherActor.prototype, damageUtilMixin);
 Object.assign(WitcherActor.prototype, weaponAttackMixin);

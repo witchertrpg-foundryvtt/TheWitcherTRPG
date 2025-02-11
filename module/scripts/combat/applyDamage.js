@@ -157,7 +157,7 @@ async function applyDamage(actor, dialogData, totalDamage, damage, derivedStat, 
         totalDamage -= shield;
     }
 
-    if (actor.system.category && damage.properties.oilEffect === actor.system.category) {
+    if (actor.system.category && damage.properties?.oilEffect === actor.system.category) {
         totalDamage += 5;
         infoTotalDmg += `+5[${game.i18n.localize('WITCHER.Damage.oil')}]`;
     }
@@ -174,9 +174,7 @@ async function applyDamage(actor, dialogData, totalDamage, damage, derivedStat, 
         .forEach(effect => applyStatusEffectToActor(actor.uuid, effect.statusEffect, damage.duration));
 
     if (damage.properties.appliesGlobalModifierToDamaged) {
-        damage.properties.damagedGlobalModifiers.forEach(modifier =>
-            applyModifierToActor(actor.uuid, modifier)
-        );
+        damage.properties.damagedGlobalModifiers.forEach(modifier => applyModifierToActor(actor.uuid, modifier));
     }
 
     if (damage.itemUuid) {
@@ -254,7 +252,7 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
     }
 
     let silverDamage = 0;
-    if (properties?.silverDamage) {
+    if (properties?.silverDamage && dialogData?.resistNonSilver) {
         let silverRoll = await new Roll(damage.properties.silverDamage).evaluate();
         silverDamage = silverRoll.total;
         infoTotalDmg += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
@@ -299,9 +297,10 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
 
     totalDamage = calculateResistances(actor, totalDamage, damage, armorSet);
 
+    let damageTypeConfig = CONFIG.WITCHER.damageTypes.find(type => type.value === damage.type);
     if (
-        (dialogData?.resistNonSilver && !properties?.silverDamage) ||
-        (dialogData?.resistNonMeteorite && !properties?.isMeteorite)
+        (dialogData?.resistNonSilver && !properties?.silverDamage && !damageTypeConfig.likeSilver) ||
+        (dialogData?.resistNonMeteorite && !properties?.isMeteorite && !damageTypeConfig.likeMeteorite)
     ) {
         totalDamage = Math.floor(0.5 * totalDamage);
     }
@@ -574,9 +573,7 @@ async function applySpDamage(location, properties, armorSet) {
     }
 
     let spDamage =
-        properties.crushingForce || properties.ablating
-            ? Math.floor((await new Roll('1d6/2+1').evaluate()).total)
-            : 1;
+        properties.crushingForce || properties.ablating ? Math.floor((await new Roll('1d6/2+1').evaluate()).total) : 1;
 
     if (properties.crushingForce) {
         spDamage *= 2;

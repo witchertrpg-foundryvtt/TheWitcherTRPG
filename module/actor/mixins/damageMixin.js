@@ -7,7 +7,7 @@ export let damageMixin = {
             this,
             null,
             crit.critdamage,
-            { damageProperties: { bypassesNaturalArmor: true, bypassesWornArmor: true }, location: this.getLocationObject('torso') },
+            { properties: { bypassesNaturalArmor: true, bypassesWornArmor: true }, location: this.getLocationObject('torso') },
             'hp'
         );
     },
@@ -17,7 +17,7 @@ export let damageMixin = {
             this,
             null,
             crit.bonusdamage,
-            { damageProperties: { bypassesNaturalArmor: true, bypassesWornArmor: true }, location: this.getLocationObject('torso') },
+            { properties: { bypassesNaturalArmor: true, bypassesWornArmor: true }, location: this.getLocationObject('torso') },
             'hp'
         );
     },

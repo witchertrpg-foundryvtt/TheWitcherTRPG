@@ -1,0 +1,163 @@
+<div class="profession_roll_sheet">
+    <h1>{{localize "WITCHER.Dialog.attackUse"}}: {{localize attackSkill.alias}}</h1>
+    <div class="flex attack-sheet">
+        <table>
+            <tr>
+                <td>
+                    <label>{{localize "WITCHER.Dialog.attackExtra"}}:</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="isExtraAttack" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>{{localize "WITCHER.Dialog.damageType"}}:</label>
+                </td>
+                <td>
+                    <select name="damageType">
+                        {{selectOptions config.damageTypes localize=true}}
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <label>{{localize "WITCHER.Dialog.attackLocation"}}:</label>
+                </td>
+                <td>
+                    <select name="location">
+                        <option value="randomHuman">{{localize "WITCHER.Dialog.attackRandomHuman"}}</option>
+                        <option value="randomMonster">{{localize "WITCHER.Dialog.attackRandomMonster"}}</option>
+                        <option value="head">{{localize "WITCHER.Dialog.attackHead"}}</option>
+                        <option value="torso">{{localize "WITCHER.Dialog.attackTorso"}}</option>
+                        <option value="leftArm">{{localize "WITCHER.Dialog.attackLArm"}}</option>
+                        <option value="rightArm">{{localize "WITCHER.Dialog.attackRArm"}}</option>
+                        <option value="leftLeg">{{localize "WITCHER.Dialog.attackLLeg"}}</option>
+                        <option value="rightLeg">{{localize "WITCHER.Dialog.attackRLeg"}}</option>
+                        <option value="tailWing">{{localize "WITCHER.Dialog.attackTail"}}</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h2>{{localize "WITCHER.Dialog.attackModifiers"}}</h2>
+    <details>
+        <div class="flex">
+            <table>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackOutsideLOS"}} (+3)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="outsideLOS" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsAmbush"}} (+5)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isAmbush" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsPinned"}} (+4)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isPinned" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsSilhouetted"}} (+2)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isSilhouetted" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackCustom"}}:</label>
+                    </td>
+                    <td>
+                        <input type="number" class="small" name="customAtt" value="0" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackTargetOutsideLOS"}} (-3)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="targetOutsideLOS" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsActivelyDodging"}} (-2)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isActivelyDodging" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsMoving"}} (-3)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isMoving" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsProne"}} (-2)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isProne" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackIsBlinded"}} (-3)</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="isBlinded" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </details>
+    <h2 class="flex">{{localize "WITCHER.Dialog.attackDamage"}}: {{ displayDmgFormula }}</h2>
+    <div class="flex">
+        <table>
+            <tr>
+                <td>
+                    <label>{{localize "WITCHER.Dialog.attackCustomDmg"}}</label>
+                </td>
+                <td>
+                    <input type="number" class="small" name="customDmg" value="0" />
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                {{#if meleeBonus}}
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackMeleeBonus"}}:</label>
+                    </td>
+                    <td>
+                        {{ meleeBonus }}
+                    </td>
+                {{/if}}
+            </tr>
+        </table>
+    </div>
+</div>

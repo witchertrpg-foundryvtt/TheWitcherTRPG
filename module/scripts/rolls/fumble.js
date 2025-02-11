@@ -19,8 +19,6 @@ export function addFumbleContextOptions(html, options) {
 }
 
 function applyFumble(actor, message) {
-    console.log(actor, message)
-
     checkAndHandleAttackFumble(message)
     checkAndHandleDefenseFumble(message)
 }

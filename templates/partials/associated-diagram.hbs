@@ -4,18 +4,21 @@
         <tr data-type="associatedDiagram">
             <th data-type="associatedDiagram">
                 {{#if item.system.associatedDiagram.name}}
-                    <a data-type="associatedDiagram" class="remove-associated-diagram" title="{{localize "WITCHER.AssociatedDiagram.actions.add"}}">
+                    <a data-type="associatedDiagram" class="remove-associated-diagram"
+                        title="{{localize "WITCHER.AssociatedDiagram.actions.add"}}">
                         <i class="fas fa-minus"></i></a>
 
                 {{else}}
-                    <a data-type="associatedDiagram" class="add-associated-diagram" title="{{localize "WITCHER.AssociatedDiagram.actions.remove"}}">
+                    <a data-type="associatedDiagram" class="add-associated-diagram"
+                        title="{{localize "WITCHER.AssociatedDiagram.actions.remove"}}"></a>
                 {{/if}}
             </th>
             <th data-type="associatedDiagram">
                 {{#if item.system.associatedDiagram.name}}
                     <header class="sheet-header" data-type="associatedDiagram">
-                        <img data-type="associatedDiagram" class="profile-img" src="{{item.system.associatedDiagram.img}}"
-                             data-edit="img" title="{{item.system.associatedDiagram.name}}"/>
+                        <img data-type="associatedDiagram" class="profile-img"
+                            src="{{item.system.associatedDiagram.img}}" data-edit="img"
+                            title="{{item.system.associatedDiagram.name}}" />
                     </header>
                 {{/if}}
             </th>
@@ -23,7 +26,7 @@
                 <div class="description" data-type="associatedDiagram">
                     {{#if item.system.associatedDiagram.name}}
                         <label data-type="associatedDiagram"
-                               class="label-info"><b>{{item.system.associatedDiagram.name}}</b></label>
+                            class="label-info"><b>{{item.system.associatedDiagram.name}}</b></label>
                         {{item.system.associatedDiagram.description}}
                     {{else}}
                         {{localize "WITCHER.AssociatedDiagram.missing"}}

@@ -1,0 +1,65 @@
+<div>
+    <div class="profession-card">
+        <h3>{{ skill.skillName }}</h3>
+        <div>
+            {{formGroup skillFields.fields.skillAttack.fields.isAttack value=skill.skillAttack.isAttack localize=true}}
+            {{#if skill.skillAttack.isAttack}}
+                {{formGroup skillFields.fields.skillAttack.fields.usesWeapon value=skill.skillAttack.usesWeapon localize=true}}
+                {{formGroup skillFields.fields.skillAttack.fields.damageFormulaOverride value=skill.skillAttack.damageFormulaOverride localize=true}}
+                {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/profAttackOptionsPart.hbs" systemFields=skillFields.fields.skillAttack.fields system=skill.skillAttack}}
+                {{formGroup skillFields.fields.skillAttack.fields.defenseOptions value=skill.skillAttack.defenseOptions localize=true}}
+                <details>
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.armorPiercing value=skill.skillAttack.damageProperties.armorPiercing localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.improvedArmorPiercing value=skill.skillAttack.damageProperties.improvedArmorPiercing localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.ablating value=skill.skillAttack.damageProperties.ablating localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.crushingForce value=skill.skillAttack.damageProperties.crushingForce localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.damageIsAblation value=skill.skillAttack.damageProperties.damageIsAblation localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.damageToAllLocations value=skill.skillAttack.damageProperties.damageToAllLocations localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.bypassesWornArmor value=skill.skillAttack.damageProperties.bypassesWornArmor localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.bypassesNaturalArmor value=skill.skillAttack.damageProperties.bypassesNaturalArmor localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.variableDamage value=skill.skillAttack.damageProperties.variableDamage localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.silverDamage value=skill.skillAttack.damageProperties.silverDamage localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.isMeteorite value=skill.skillAttack.damageProperties.isMeteorite localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.isNonLethal value=skill.skillAttack.damageProperties.isNonLethal localize=true}}
+                    {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.defenseDifferenceMultiplier value=skill.skillAttack.damageProperties.defenseDifferenceMultiplier localize=true}}
+                    {{#if skill.skillAttack.damageProperties.defenseDifferenceMultiplier}}
+                        {{formGroup skillFields.fields.skillAttack.fields.damageProperties.fields.defenseMultiplierCap value=skill.skillAttack.damageProperties.defenseMultiplierCap localize=true}}
+                    {{/if}}
+                    <table class="item-bottom-table">
+                        <tr>
+                            <th><a class="add-effect-damageProperties" data-target="{{skill.skillName}}"
+                                    title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
+                            </th>
+                            <th>{{localize "WITCHER.Item.Effect"}}</th>
+                            <th></th>
+                            <th>{{localize "WITCHER.Percentage"}}</th>
+                        </tr>
+                        {{#each skill.skillAttack.damageProperties.effects as |effect name|}}
+                            <tr class="list-item" data-id="{{effect.id}}" data-target="{{../skill.skillName}}">
+                                <td>
+                                    <a class="remove-effect-damageProperties"
+                                        title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                                            class="fas fa-minus"></i></a>
+                                </td>
+                                <td>
+                                    <input class="edit-effect-damageProperties item-effect"
+                                        placeholder="{{localize "WITCHER.table.Name"}}" data-field="name" type="text"
+                                        value="{{effect.name}}" />
+                                </td>
+                                <td>
+                                    <select class="edit-effect-damageProperties item-effect" data-field="statusEffect">
+                                        {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                                    </select>
+                                </td>
+                                <td>
+                                    <input class="edit-effect-damageProperties" placeholder="%" data-field="percentage"
+                                        type="text" value="{{effect.percentage}}" data-dtype="Number" />
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </table>
+                </details>
+            {{/if}}
+        </div>
+    </div>
+</div>

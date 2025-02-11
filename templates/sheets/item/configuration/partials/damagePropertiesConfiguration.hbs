@@ -13,9 +13,8 @@
 {{formGroup systemFields.damageProperties.fields.isNonLethal value=item.system.damageProperties.isNonLethal localize=true}}
 {{formGroup systemFields.damageProperties.fields.defenseDifferenceMultiplier value=item.system.damageProperties.defenseDifferenceMultiplier localize=true}}
 {{#if item.system.damageProperties.defenseDifferenceMultiplier}}
-{{formGroup systemFields.damageProperties.fields.defenseMultiplierCap value=item.system.damageProperties.defenseMultiplierCap localize=true}}
+    {{formGroup systemFields.damageProperties.fields.defenseMultiplierCap value=item.system.damageProperties.defenseMultiplierCap localize=true}}
 {{/if}}
-
 {{#if item.system.damageProperties.hitGlobalModifiers}}
     <table>
         <tr class="item-header-tablerow">
@@ -48,7 +47,6 @@
         {{/if}}
     </table>
 {{/if}}
-
 {{#if system.damageProperties.appliesGlobalModifierToDamaged}}
     <table>
         <tr class="item-header-tablerow">
@@ -81,7 +79,6 @@
         {{/if}}
     </table>
 {{/if}}
-
 <table class="item-bottom-table">
     <tr>
         <th><a class="add-effect-damageProperties" data-target='system.damageProperties.effects'

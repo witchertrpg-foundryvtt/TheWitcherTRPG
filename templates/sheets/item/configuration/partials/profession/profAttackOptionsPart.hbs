@@ -1,0 +1,12 @@
+<div>
+    {{formGroup systemFields.attackOptions value=system.attackOptions options=config.attackOptions localize=true}}
+</div>
+{{#if (has 'melee' system.attackOptions)}}
+    <h3>{{localize "WITCHER.Attack.attackOptions.melee"}}</h3>
+    {{formGroup systemFields.applyMeleeBonus value=system.applyMeleeBonus localize=true}}
+{{/if}}
+{{#if (has 'ranged' system.attackOptions)}}
+    <h3>{{localize "WITCHER.Attack.attackOptions.ranged"}}</h3>
+    {{formGroup systemFields.applyRangedMeleeBonus value=system.applyRangedMeleeBonus localize=true}}
+    {{formGroup systemFields.isThrowable value=system.isThrowable localize=true}}
+{{/if}}

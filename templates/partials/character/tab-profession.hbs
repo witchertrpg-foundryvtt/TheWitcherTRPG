@@ -19,8 +19,8 @@
                         <select class="inline-edit defining-skill-select" data-field="system.definingSkill.stat">
                             {{selectOptions config.statTypes selected=profession.system.definingSkill.stat localize=true}}
                         </select>
-                        <input class="inline-edit profession-level" data-field="system.definingSkill.level" type="number"
-                            value="{{profession.system.definingSkill.level}}" placeholder="" />
+                        <input class="inline-edit profession-level" data-field="system.definingSkill.level"
+                            type="number" value="{{profession.system.definingSkill.level}}" placeholder="" />
                         {{#unless (eq profession.system.definingSkill.stat "none")}}
                             <a class="profession-roll"><i class="fas fa-dice-d20"></i></a>
                         {{/unless}}
@@ -42,7 +42,7 @@
                             data-stat="{{profession.system.skillPath1.skill1.stat}}"
                             data-level="{{profession.system.skillPath1.skill1.level}}"
                             data-name="{{profession.system.skillPath1.skill1.skillName}}"
-                            data-effet="{{profession.system.skillPath1.skill1.definition}}">
+                            data-definition="{{profession.system.skillPath1.skill1.definition}}">
                             <input class="inline-edit profession-skill-input"
                                 data-field="system.skillPath1.skill1.skillName" type="text"
                                 value="{{profession.system.skillPath1.skill1.skillName}}" placeholder="" />

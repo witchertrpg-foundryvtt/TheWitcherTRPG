@@ -29,6 +29,10 @@ export let weaponAttackMixin = {
         }
 
         let attack = weapon.getItemAttack(options);
+        if (options.skillReplacement) {
+            attack.skill = options.skillReplacement.skillName;
+            attack.alias = options.skillReplacement.skillName;
+        }
         let messageDataFlavor = `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`;
 
         let ammunitions = ``;
@@ -127,6 +131,10 @@ export let weaponAttackMixin = {
 
         let attacknumber = 1;
         let damage = weapon.createBaseDamageObject();
+        let damageModifcation = '';
+        if (options.additionalDamageProperties) {
+            damageModifcation = this.mergeDamageProperties(damage.properties, options.additionalDamageProperties);
+        }
         damage.strike = strike;
         damage.type = damageType;
 
@@ -173,9 +181,15 @@ export let weaponAttackMixin = {
             if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
                 attFormula += '(';
             }
-            attFormula += !displayRollDetails
-                ? `${this.system.stats[skill.attribute.name].current}+${this.system.skills[skill.attribute.name][skill.name].value}`
-                : `${this.system.stats[skill.attribute.name].current}[${game.i18n.localize(skill.attribute.label)}]+${this.system.skills[skill.attribute.name][skill.name].value}[${game.i18n.localize(skill.label)}]`;
+            if (options.skillReplacement) {
+                attFormula += !displayRollDetails
+                    ? `${this.system.stats[options.skillReplacement.stat].current}+${options.skillReplacement.level ?? 0}`
+                    : `${this.system.stats[options.skillReplacement.stat].current}[${game.i18n.localize(CONFIG.WITCHER.statMap[options.skillReplacement.stat].label)}]+${options.skillReplacement.level ?? 0}[${options.skillReplacement.skillName}]`;
+            } else {
+                attFormula += !displayRollDetails
+                    ? `${this.system.stats[skill.attribute.name].current}+${this.system.skills[skill.attribute.name][skill.name].value}`
+                    : `${this.system.stats[skill.attribute.name].current}[${game.i18n.localize(skill.attribute.label)}]+${this.system.skills[skill.attribute.name][skill.name].value}[${game.i18n.localize(skill.label)}]`;
+            }
 
             attFormula = this.handleSpecialModifier(attFormula, strike);
             attFormula += this.addAllModifiers(attack.name);
@@ -337,5 +351,34 @@ export let weaponAttackMixin = {
                 await extendedRoll(attFormula, messageData);
             }
         }
+    },
+
+    mergeDamageProperties(properties, additionalProperties) {
+        let damageModification = '';
+
+        //upgrading of AP
+        if (
+            properties.armorPiercing &&
+            (additionalProperties.armorPiercing || additionalProperties.improvedArmorPiercing)
+        ) {
+            properties.improvedArmorPiercing = true;
+        }
+
+        if (
+            properties.improvedArmorPiercing &&
+            (additionalProperties.armorPiercing || additionalProperties.improvedArmorPiercing)
+        ) {
+            damageModification = '+3d6';
+        }
+
+        //generic handling
+        for (let key in properties) {
+            if (typeof properties[key] === 'boolean') properties[key] = properties[key] || additionalProperties[key];
+            if (typeof properties[key] === 'number') properties[key] = properties[key] + additionalProperties[key];
+            if (typeof properties[key] === 'string') properties[key] = properties[key] + additionalProperties[key];
+            if (Array.isArray(properties[key])) properties[key].push(...additionalProperties[key]);
+        }
+
+        return damageModification;
     }
 };

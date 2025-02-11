@@ -27,25 +27,7 @@ export default class WitcherWeaponSheet extends WitcherItemSheet {
             )
         ];
 
-        this.createAttackOptions(data);
-
         return data;
-    }
-
-    createAttackOptions(data) {
-        data.config.meleeAttackOptions = CONFIG.WITCHER.meleeSkills.map(skill => {
-            return {
-                value: skill,
-                label: CONFIG.WITCHER.skillMap[skill].label
-            };
-        });
-
-        data.config.rangedAttackOptions = CONFIG.WITCHER.rangedSkills.map(skill => {
-            return {
-                value: skill,
-                label: CONFIG.WITCHER.skillMap[skill].label
-            };
-        });
     }
 
     activateListeners(html) {

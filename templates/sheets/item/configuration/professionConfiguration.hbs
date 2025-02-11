@@ -1,7 +1,5 @@
 <form class="{{ cssClass }}" autocomplete="off">
     <h1>{{localize "WITCHER.Item.Settings.profession"}}</h1>
-
-    {{log this}}
     {{! Sheet Tab Navigation }}
     <nav class="sheet-tabs tabs flexrow" data-group="primary">
         <a data-tab="general">{{localize "WITCHER.Item.Settings.General"}}</a>
@@ -10,18 +8,17 @@
         <a data-tab="skillPath3">{{ item.system.skillPath3.pathName }}</a>
         <a data-tab="effects">{{localize "WITCHER.activeEffect.tab"}}</a>
     </nav>
-
     {{! Sheet Body }}
     <section class="sheet-body">
         <div class="tab" data-group="primary" data-tab="general"></div>
         <div class="tab" data-group="primary" data-tab="skillPath1">
-            {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPath1Part.hbs"}}
+            {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPathPart.hbs" skillPathFields=systemFields.skillPath1 skillPath=item.system.skillPath1}}
         </div>
         <div class="tab" data-group="primary" data-tab="skillPath2">
-            {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPath2Part.hbs"}}
+            {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPathPart.hbs" skillPathFields=systemFields.skillPath2 skillPath=item.system.skillPath2}}
         </div>
         <div class="tab" data-group="primary" data-tab="skillPath3">
-            {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPath3Part.hbs"}}
+            {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPathPart.hbs" skillPathFields=systemFields.skillPath3 skillPath=item.system.skillPath3}}
         </div>
         <div class="tab effects" data-group="primary" data-tab="effects">
             {{> systems/TheWitcherTRPG/templates/partials/effect-part.hbs}}
