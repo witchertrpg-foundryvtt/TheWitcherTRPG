@@ -39,8 +39,7 @@ table th {
     gap: 10px;
 }
 
-.item-tag,
-.label-info {
+.item-tag {
     background-color: rgba(25, 25, 25, 0.1);
     color: black;
     padding: 5px;
