@@ -13,6 +13,18 @@ export default class WitcherLootSheet extends ActorSheet {
         });
     }
 
+    uniqueTypes = ['profession', 'race', 'homeland'];
+
+    /** @inheritdoc */
+    _canDragStart(selector) {
+        return true;
+    }
+
+    /** @inheritdoc */
+    _canDragDrop(selector) {
+        return true;
+    }
+
     getData() {
         let context = super.getData();
         context.system = context.actor.system;
