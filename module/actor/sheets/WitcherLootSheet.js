@@ -1,3 +1,4 @@
+import { itemContextMenu } from './interactions/itemContextMenu.js';
 import { itemMixin } from './mixins/itemMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
@@ -57,6 +58,8 @@ export default class WitcherLootSheet extends ActorSheet {
         html.find('.item-hide').on('click', this._onItemHide.bind(this));
 
         html.find('input').focusin(ev => this._onFocusIn(ev));
+
+        this.itemContextMenu(html);
     }
 
     _onFocusIn(event) {
@@ -162,3 +165,4 @@ export default class WitcherLootSheet extends ActorSheet {
 }
 
 Object.assign(WitcherLootSheet.prototype, itemMixin);
+Object.assign(WitcherLootSheet.prototype, itemContextMenu);
