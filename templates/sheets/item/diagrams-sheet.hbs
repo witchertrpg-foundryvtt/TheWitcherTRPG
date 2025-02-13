@@ -97,15 +97,35 @@
         <tr>
             <th><a class="add-component" title="{{localize " WITCHER.Item.AddComponent"}}"><i
                         class="fas fa-plus"></i></a></th>
+            <th></th>
             <th>{{localize "WITCHER.Diagram.components"}}</th>
             <th><label>{{localize "WITCHER.Item.Quantity"}}</label></th>
         </tr>
-        {{#each item.system.craftingComponents as |component name|}}
+        {{#each knownCraftingComponents as |component name|}}
             <tr>
                 <th class="list-item" data-id="{{component.id}}">
                     <a class="remove-component" title="{{localize " WITCHER.Item.RemoveComponent"}}"><i
                             class="fas fa-minus"></i></a>
                 </th>
+                <td>
+                    <img class="item-img" src="{{component.img}}" title="{{component.name}}" />
+                </td>
+                <td class="list-item" data-id="{{component.id}}">
+                    <span class="edit-component item-effect">{{component.name}}</span>
+                </td>
+                <td class="list-item" data-id="{{component.id}}">
+                    <input class="edit-component" data-field="quantity" type="number" placeholder="0"
+                        value="{{component.quantity}}" data-dtype="Number" />
+                </td>
+            </tr>
+        {{/each}}
+        {{#each unknownCraftingComponents as |component name|}}
+            <tr>
+                <th class="list-item" data-id="{{component.id}}">
+                    <a class="remove-component" title="{{localize " WITCHER.Item.RemoveComponent"}}"><i
+                            class="fas fa-minus"></i></a>
+                </th>
+                <td></td>
                 <td class="list-item" data-id="{{component.id}}">
                     <input class="edit-component item-effect" data-field="name" type="text"
                         value="{{component.name}}" />

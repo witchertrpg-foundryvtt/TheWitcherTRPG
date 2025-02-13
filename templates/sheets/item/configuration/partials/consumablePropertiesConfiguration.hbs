@@ -1,67 +1,10 @@
 <h3>{{localize "WITCHER.Item.Settings.ConsumableProperties"}}</h3>
-<table class="information">
-    <tr class="item-header-tablerow">
-        <td>
-            <label>{{localize "WITCHER.Item.isConsumable"}}</label>
-        </td>
-        <td>
-            <input type="checkbox" name="system.isConsumable" {{checked item.system.isConsumable}} />
-        </td>
-    </tr>
-    {{#if item.system.isConsumable}}
-        <tr class="item-header-tablerow">
-            <td>
-                <label>{{localize "WITCHER.Item.ConsumeProperties.doesHeal"}}</label>
-            </td>
-            <td>
-                <input type="checkbox" name="system.consumeProperties.doesHeal"
-                    {{checked item.system.consumeProperties.doesHeal}} />
-            </td>
-        </tr>
-        {{#if item.system.consumeProperties.doesHeal}}
-            <tr class="item-header-tablerow">
-                <td>
-                    <label>{{localize "WITCHER.Item.ConsumeProperties.heal"}}</label>
-                </td>
-                <td>
-                    <input type="text" name="system.consumeProperties.heal"
-                        value='{{item.system.consumeProperties.heal}}' />
-                </td>
-            </tr>
-        {{/if}}
-        {{#if item.system.consumeProperties.consumeGlobalModifiers}}
-            <tr class="item-header-tablerow">
-                <td>
-                    <label>{{localize "WITCHER.Item.ConsumeProperties.appliesGlobalModifier"}}</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="system.consumeProperties.appliesGlobalModifier"
-                        {{checked item.system.consumeProperties.appliesGlobalModifier}} />
-                </td>
-            </tr>
-        {{/if}}
-    {{/if}}
-</table>
-{{#if item.system.consumeProperties.appliesGlobalModifier}}
-    <table>
-        <tr>
-            <th>{{localize "TYPES.Item.globalModifier"}}</th>
-        </tr>
-        {{#each item.system.consumeProperties.consumeGlobalModifiers as |modifier|}}
-            <tr>
-                <td class="list-item" data-id="{{modifier}}">
-                    <a class="remove-global-modifier" title="{{localize "WITCHER.Item.RemoveGlobalModifier"}}"><i
-                            class="fas fa-minus"></i></a>
-                </td>
-                <td class="list-item" data-id="{{modifier}}">
-                    <input class="edit-global-modifier" placeholder="{{localize "WITCHER.table.Name"}}" type="text"
-                        value="{{modifier}}" />
-                </td>
-            </tr>
-        {{/each}}
-    </table>
-{{/if}}
+{{formGroup systemFields.isConsumable value=item.system.isConsumable localize=true}}
 {{#if item.system.isConsumable}}
+    {{formGroup systemFields.consumeProperties.fields.doesHeal value=item.system.consumeProperties.doesHeal localize=true}}
+    {{#if item.system.consumeProperties.doesHeal}}
+        {{formGroup systemFields.consumeProperties.fields.heal value=item.system.consumeProperties.heal localize=true}}
+    {{/if}}
     <table class="item-bottom-table">
         <tr>
             <th><a class="add-effect" data-target='effects' title="{{localize "WITCHER.Item.AddEffect"}}"><i
@@ -104,6 +47,40 @@
                     <select class="edit-effect item-effect" data-field="statusEffect">
                         {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                     </select>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+{{/if}}
+{{#if item.system.isConsumable}}
+    <table class="information">
+        {{#if item.system.consumeProperties.consumeGlobalModifiers}}
+            <tr class="item-header-tablerow">
+                <td>
+                    <label>{{localize "WITCHER.Item.ConsumeProperties.appliesGlobalModifier"}}</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="system.consumeProperties.appliesGlobalModifier"
+                        {{checked item.system.consumeProperties.appliesGlobalModifier}} />
+                </td>
+            </tr>
+        {{/if}}
+    </table>
+{{/if}}
+{{#if item.system.consumeProperties.appliesGlobalModifier}}
+    <table>
+        <tr>
+            <th>{{localize "TYPES.Item.globalModifier"}}</th>
+        </tr>
+        {{#each item.system.consumeProperties.consumeGlobalModifiers as |modifier|}}
+            <tr>
+                <td class="list-item" data-id="{{modifier}}">
+                    <a class="remove-global-modifier" title="{{localize "WITCHER.Item.RemoveGlobalModifier"}}"><i
+                            class="fas fa-minus"></i></a>
+                </td>
+                <td class="list-item" data-id="{{modifier}}">
+                    <input class="edit-global-modifier" placeholder="{{localize "WITCHER.table.Name"}}" type="text"
+                        value="{{modifier}}" />
                 </td>
             </tr>
         {{/each}}

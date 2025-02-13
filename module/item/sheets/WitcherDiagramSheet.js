@@ -17,11 +17,17 @@ export default class WitcherDiagramSheet extends WitcherItemSheet {
 
     /** @override */
     getData() {
-        const data = super.getData();
+        const context = super.getData();
+        context.knownCraftingComponents = context.item.system.craftingComponents
+            .filter(component => component.uuid)
+            .map(component => {
+                return { id: component.id, ...fromUuidSync(component.uuid), quantity: component.quantity } ?? component;
+            });
+        context.unknownCraftingComponents = context.item.system.craftingComponents.filter(component => !component.uuid);
 
-        data.selects = this.createSelects();
+        context.selects = this.createSelects();
 
-        return data;
+        return context;
     }
 
     createSelects() {

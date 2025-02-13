@@ -1,3 +1,4 @@
+import { itemContextMenu } from './interactions/itemContextMenu.js';
 import { itemMixin } from './mixins/itemMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
@@ -11,6 +12,18 @@ export default class WitcherLootSheet extends ActorSheet {
             template: 'systems/TheWitcherTRPG/templates/sheets/actor/actor-sheet.hbs',
             tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }]
         });
+    }
+
+    uniqueTypes = ['profession', 'race', 'homeland'];
+
+    /** @inheritdoc */
+    _canDragStart(selector) {
+        return true;
+    }
+
+    /** @inheritdoc */
+    _canDragDrop(selector) {
+        return true;
     }
 
     getData() {
@@ -45,6 +58,8 @@ export default class WitcherLootSheet extends ActorSheet {
         html.find('.item-hide').on('click', this._onItemHide.bind(this));
 
         html.find('input').focusin(ev => this._onFocusIn(ev));
+
+        this.itemContextMenu(html);
     }
 
     _onFocusIn(event) {
@@ -150,3 +165,4 @@ export default class WitcherLootSheet extends ActorSheet {
 }
 
 Object.assign(WitcherLootSheet.prototype, itemMixin);
+Object.assign(WitcherLootSheet.prototype, itemContextMenu);

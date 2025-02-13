@@ -150,6 +150,11 @@
             "attackStats": {
                 "critLocationModifier": "Kritischer Trefferzone-modifikator",
                 "critEffectModifier": "Kritischer Effekt-modifikator"
+            },
+            "settings": {
+                "actor": "Akteur Einstellungen",
+                "general": "Allgemein",
+                "skills": "Fähigkeiten"
             }
         },
         "Alchemy": {
@@ -195,6 +200,8 @@
             "tooMuch": "Es sind zu viele Rüstungen desselben Typs vorhanden"
         },
         "Item": {
+            "Equipped": "Ausgerüstet",
+            "NotEquipped": "Nicht Ausgerüstet",
             "ClickableImage": "Zoombar",
             "Short.Availability": "Vork.",
             "Weight": "Gewicht",
@@ -208,6 +215,8 @@
             "Description": "Beschreibung",
             "Attribute": "Attributes",
             "ROF": "ROF",
+            "openDescription": "Klicke um Beschreibung zu öffnen",
+            "equipEnhancement": "Eine Verbesserung ausrüsten",
             "Availability": "Vorkommen",
             "AddEffect": "Effekt hinzufügen",
             "AddGlobalModifier": "Globalen Modifikator hinzufügen",
@@ -248,6 +257,9 @@
                 "bypassesWornArmor": "Umgeht getragene Rüstung",
                 "bypassesNaturalArmor": "Umgeht natürliche Rüstung",
                 "variableDamage": "Variabler Schaden",
+                "silverDamage": "Silberschaden Formel",
+                "isMeteorite": "Meteoritwaffe",
+                "isNonLethal": "Nich-tödliche Waffe",
                 "defenseDifferenceMultiplier": "Der Schaden wird mit der Verteidigungsdifferenz multipliziert (nicht funktionsfähig)",
                 "defenseMultiplierCap": "Der Multiplikator ist begrenzt auf (nicht funktionsfähig)"
             },
@@ -265,7 +277,13 @@
                 "Consume": "Konsumieren",
                 "NotConsumable": "Der Gegenstand ist nicht als konsumierbar konfiguriert",
                 "RemoveEnhancement": "Verbesserung ausbauen",
-                "Gift": "Gabe"
+                "Gift": "Gabe",
+                "dismantle": "Zerlegen",
+                "delete": "Löschen"
+            },
+            "dismantle": {
+                "addedItems": "Die folgenden Gegenstände wurden dem Akteur hinzugefügt",
+                "notFound": "Diese Gegenstände sind nicht verlinkt und konnten nicht hinzugefügt werden."
             },
             "Settings": {
                 "General": "Allgemeine Einstellungen",
@@ -274,6 +292,7 @@
                 "Mutagen": "Einstellungen für Mutagen",
                 "Race": "Einstellungen für Rasse",
                 "Valuable": "Einstellungen für Ausrüstung",
+                "profession": "Einstellungen für Beruf",
                 "Weapon": "Einstellungen für Waffen",
                 "DamageProperties": "Schaden Eigenschaften",
                 "DefenseProperties": "Verteidigung Eigenschaften",
@@ -422,7 +441,18 @@
             "electricity": "Elektrizität",
             "fire": "Feuer",
             "ice": "Eis"
-	    },	
+	    },
+        "profession": {
+            "skillPath": {
+                "skill": {
+                    "skillAttack": {
+                        "isAttack": "Ist Angriff",
+                        "usesWeapon": "Nutzt Waffe",
+                        "damageFormulaOverrides": "Überschreibt Schadensformel"
+                    }
+                }
+            }
+        },
         "Weapon": {
             "Type": "Art",
             "Short.WeaponAccuracy": "WG",
@@ -453,6 +483,7 @@
             "rangedMeleeBonus": "Fernkampf Bonus",
             "rangedMeleeBonusHint": "Manche Fernkampfwaffen addieren ebenfalls den Nahkampf Bonus",
             "isAmmunition": "Ist Munition",
+            "Ammunition": "Munition",
             "isThrowable": "Ist Wurfwaffe",
             "Broken": "Deine Waffe ist zerbrochen.",
             "onlyDmg": "Nur Schaden würfeln",
@@ -955,10 +986,14 @@
             }
         },
         "Chat": {
-            "SaveText": "Bei erfolg unten würfeln",
+            "SaveText": "Für Erfolg würfel unter:",
             "FullDmg": "Voller Schaden",
             "Success": "Erfolg",
-            "Fail": "Fehlschlag"
+            "Fail": "Fehlschlag",
+            "Resting": "Den Tag mit Ausruhen und Erholen verbracht:",
+            "Active": "Den Tag aktiv und mit Erholen verbracht:",
+            "WoundHealing": "an kritischer Heilschwelle",
+            "fullStamina": "Volle Ausdauer"
         },
         "Currency": {
             "bizant": "Bizant",
@@ -1018,7 +1053,7 @@
         },
         "SkIntAwareness": "Aufmerksamkeit",
         "SkIntBusiness": "Geschäftsinn",
-        "SkIntDeduction": "Schlussfolgerunden",
+        "SkIntDeduction": "Schlussfolgerungen",
         "SkIntEducation": "Bildung",
         "SkIntCommon": "Gemeinsprache(2)",
         "SkIntCommonLable": "Gemeinsprache",
@@ -1122,7 +1157,9 @@
             "recovered": " hat sich erholt von einem",
             "restful": "erholsam",
             "active": "aktiv",
-            "day": "Tag"
+            "day": "Tag",
+            "totalRecover": "Vollständige Erholung:",
+            "criticalWounds": "Kritische Wunden werden 2 Tage schneller heilen"
         },
         "Apply.Mod": "Modifikator anwenden",
         "ReputationTitle": "Einen Reputationswurf durchführen",

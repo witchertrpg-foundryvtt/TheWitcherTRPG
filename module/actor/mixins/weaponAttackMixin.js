@@ -186,13 +186,10 @@ export let weaponAttackMixin = {
                     ? `${this.system.stats[options.skillReplacement.stat].current}+${options.skillReplacement.level ?? 0}`
                     : `${this.system.stats[options.skillReplacement.stat].current}[${game.i18n.localize(CONFIG.WITCHER.statMap[options.skillReplacement.stat].label)}]+${options.skillReplacement.level ?? 0}[${options.skillReplacement.skillName}]`;
             } else {
-                attFormula += !displayRollDetails
-                    ? `${this.system.stats[skill.attribute.name].current}+${this.system.skills[skill.attribute.name][skill.name].value}`
-                    : `${this.system.stats[skill.attribute.name].current}[${game.i18n.localize(skill.attribute.label)}]+${this.system.skills[skill.attribute.name][skill.name].value}[${game.i18n.localize(skill.label)}]`;
+                attFormula += this.constructBaseAttackFormula(skill);
             }
 
             attFormula = this.handleSpecialModifier(attFormula, strike);
-            attFormula += this.addAllModifiers(attack.name);
 
             if (weapon.system.accuracy < 0) {
                 attFormula += !displayRollDetails
@@ -294,7 +291,7 @@ export let weaponAttackMixin = {
                     ? `+${customDmg}`
                     : `+${customDmg}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
             }
-            damage.formula = damageFormula;
+            damage.formula = damageFormula + damageModifcation;
 
             let touchedLocation = this.getLocationObject(location);
             attFormula += !displayRollDetails
@@ -351,6 +348,18 @@ export let weaponAttackMixin = {
                 await extendedRoll(attFormula, messageData);
             }
         }
+    },
+
+    constructBaseAttackFormula(skill) {
+        let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
+
+        let attFormula = !displayRollDetails
+            ? `${this.system.stats[skill.attribute.name].current}+${this.system.skills[skill.attribute.name][skill.name].value}`
+            : `${this.system.stats[skill.attribute.name].current}[${game.i18n.localize(skill.attribute.label)}]+${this.system.skills[skill.attribute.name][skill.name].value}[${game.i18n.localize(skill.label)}]`;
+
+        attFormula += this.addAllModifiers(skill.name);
+
+        return attFormula;
     },
 
     mergeDamageProperties(properties, additionalProperties) {
