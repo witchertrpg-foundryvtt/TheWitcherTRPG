@@ -21,7 +21,7 @@ export default class WitcherDiagramSheet extends WitcherItemSheet {
         context.knownCraftingComponents = context.item.system.craftingComponents
             .filter(component => component.uuid)
             .map(component => {
-                return { ...fromUuidSync(component.uuid), quantity: component.quantity } ?? component;
+                return { id: component.id, ...fromUuidSync(component.uuid), quantity: component.quantity } ?? component;
             });
         context.unknownCraftingComponents = context.item.system.craftingComponents.filter(component => !component.uuid);
 
