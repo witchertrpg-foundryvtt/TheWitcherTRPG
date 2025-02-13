@@ -299,7 +299,7 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
 
     let damageTypeConfig = CONFIG.WITCHER.damageTypes.find(type => type.value === damage.type);
     if (
-        (dialogData?.resistNonSilver && !properties?.silverDamage && !damageTypeConfig.likeSilver) ||
+        (dialogData?.resistNonSilver && !damageTypeConfig.likeSilver) ||
         (dialogData?.resistNonMeteorite && !properties?.isMeteorite && !damageTypeConfig.likeMeteorite)
     ) {
         totalDamage = Math.floor(0.5 * totalDamage);
@@ -538,28 +538,28 @@ function getArmorDiffBonus(OverArmor, UnderArmor) {
     return 0;
 }
 
-function calculateResistances(actor, totalDamage, damage, armorSet) {
-    let properties = damage.properties;
+function calculateResistances(actor, appliedDamage, damageObject, armorSet) {
+    let properties = damageObject.properties;
     if (properties.armorPiercing || properties.improvedArmorPiercing) {
-        return totalDamage;
+        return appliedDamage;
     }
 
-    let damageAfterResistances = totalDamage;
+    let damageAfterResistances = appliedDamage;
 
     if (
-        (armorSet['lightArmor']?.system[damage.type] ||
-            armorSet['mediumArmor']?.system[damage.type] ||
-            armorSet['heavyArmor']?.system[damage.type]) &&
+        (armorSet['lightArmor']?.system[damageObject.type] ||
+            armorSet['mediumArmor']?.system[damageObject.type] ||
+            armorSet['heavyArmor']?.system[damageObject.type]) &&
         !properties.bypassesWornArmor
     ) {
-        damageAfterResistances = Math.floor(0.5 * totalDamage);
+        damageAfterResistances = Math.floor(0.5 * appliedDamage);
     }
 
-    if (armorSet['naturalArmor']?.system[damage.type] && !properties.bypassesNaturalArmor) {
-        damageAfterResistances = Math.floor(0.5 * totalDamage);
+    if (armorSet['naturalArmor']?.system[damageObject.type] && !properties.bypassesNaturalArmor) {
+        damageAfterResistances = Math.floor(0.5 * appliedDamage);
     }
 
-    let damageMulti = actor.getMultiDamageMod(damage);
+    let damageMulti = actor.getMultiDamageMod(damageObject);
 
     damageAfterResistances = Math.floor(damageAfterResistances * damageMulti);
 
