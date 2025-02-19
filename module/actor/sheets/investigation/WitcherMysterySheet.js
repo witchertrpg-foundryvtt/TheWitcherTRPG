@@ -43,6 +43,7 @@ export default class WitcherMysterySheet extends ActorSheet {
   }
 
   async _onItemAdd(event) {
+    event.preventDefault();
     let element = event.currentTarget
     let itemData = {
       name: `new ${element.dataset.itemtype}`,

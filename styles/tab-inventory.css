@@ -108,3 +108,16 @@ table th {
 .item-img-wrapper .item-show:hover .fa {
     display: inline-block;
 }
+
+.weapon-header {
+    grid-template-columns: 33px 2fr 1fr;
+}
+
+.weapon-details {
+    grid-template-columns: 40px 2fr 1fr;
+}
+.weapon-enhancement {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
