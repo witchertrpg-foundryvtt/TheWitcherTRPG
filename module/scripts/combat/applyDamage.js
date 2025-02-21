@@ -253,7 +253,8 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
 
     let silverDamage = 0;
     if (properties?.silverDamage && dialogData?.resistNonSilver) {
-        let silverRoll = await new Roll(damage.properties.silverDamage).evaluate();
+        let multi = damage.strike === 'strong' ? '*2' : '';
+        let silverRoll = await new Roll(damage.properties.silverDamage + multi).evaluate();
         silverDamage = silverRoll.total;
         infoTotalDmg += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
     }
