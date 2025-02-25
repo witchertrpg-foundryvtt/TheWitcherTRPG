@@ -1,28 +1,28 @@
-@import "./character-header.css";
-@import "./armor-sheet.css";
-@import "./attack-sheet.css";
-@import "./system-styles.css";
-@import "./monster-sheet.css";
-@import "./tab-background.css";
-@import "./tab-inventory.css";
-@import "./tab-skills.css";
-@import "./monster-skill-tab.css";
-@import "./loot-sheet.css";
-@import "./profession-sheet.css";
-@import "./race-sheet.css";
-@import "./crit-wounds-table.css";
-@import "./item-sheets.css";
-@import "./substances.css";
-@import "./weapon-roll.css";
-@import "./container-sheet.css";
-@import "./chat.css";
-@import "./item-header.css";
-@import "./activeEffect.css";
-@import "./special-skill-table.css";
-@import "./repair.css";
+@import './character-header.css';
+@import './armor-sheet.css';
+@import './attack-sheet.css';
+@import './system-styles.css';
+@import './monster-sheet.css';
+@import './tab-background.css';
+@import './tab-inventory.css';
+@import './tab-skills.css';
+@import './monster-skill-tab.css';
+@import './loot-sheet.css';
+@import './profession-sheet.css';
+@import './race-sheet.css';
+@import './crit-wounds-table.css';
+@import './item-sheets.css';
+@import './substances.css';
+@import './weapon-roll.css';
+@import './container-sheet.css';
+@import './chat.css';
+@import './item-header.css';
+@import './activeEffect.css';
+@import './special-skill-table.css';
+@import './repair.css';
 @import './components-list.css';
 @import './dialog.css';
-@import './tab-inventory-weapon.css';
+@import './tab-inventory-list.css';
 
 @font-face {
     font-family: 'Thewitcher';
@@ -33,27 +33,27 @@
     font-family: Thewitcher;
 }
 
-.sheet-body details summary > * {
+.skill-column details summary > * {
     display: inline;
 }
 
-.sheet-body details[open] > summary::after {
+.skill-column details[open] > summary::before {
     transform: rotate(-135deg) translatey(-0.3em);
 }
 
-.sheet-body summary {
+.skill-column summary {
     list-style: none;
     padding-left: 4px;
     cursor: pointer;
 }
 
-.sheet-body summary::after {
+.skill-column summary::before {
     display: inline-block;
     content: '';
     border-right: 2px solid;
     border-bottom: 2px solid;
     position: relative;
-    left: 0.75em;
+    left: 0;
     height: 0.75em;
     width: 0.75em;
     transform: rotate(45deg) translatey(-0.1em);
