@@ -241,7 +241,7 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
     let properties = damage.properties;
     let location = damage.location;
 
-    let locationArmor = getLocationArmor(actor, location, properties);
+    let locationArmor = actor.getLocationArmor(location, properties);
     let armorSet = locationArmor.armorSet;
     let totalSP = locationArmor.totalSP;
     let displaySP = locationArmor.displaySP;
@@ -269,7 +269,7 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
         infoAfterSPReduction += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
     }
 
-    let spDamage = await applyAlwaysSpDamage(location, properties, armorSet);
+    let spDamage = await actor.applyAlwaysSpDamage(location, properties, armorSet);
 
     if (totalDamage <= 0 && silverDamage <= 0) {
         return {
@@ -296,7 +296,7 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
         infoAfterLocation += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
     }
 
-    totalDamage = calculateResistances(actor, totalDamage, damage, armorSet);
+    totalDamage = actor.calculateResistances(totalDamage, damage, armorSet);
 
     let damageTypeConfig = CONFIG.WITCHER.damageTypes.find(type => type.value === damage.type);
     if (
@@ -316,7 +316,7 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
         totalDamage *= 2;
     }
 
-    spDamage += await applySpDamage(location, properties, armorSet);
+    spDamage += await actor.applySpDamage(location, properties, armorSet);
 
     return {
         totalDamage,
@@ -363,248 +363,6 @@ async function createResultMessage(actor, damageResult) {
 
     ChatMessage.applyRollMode(chatData, game.settings.get('core', 'rollMode'));
     ChatMessage.create(chatData);
-}
-
-function getLocationArmor(actor, location, properties) {
-    let armors = actor.getList('armor').filter(a => a.system.equipped);
-
-    let headArmors = armors.filter(h => h.system.location == 'Head' || h.system.location == 'FullCover');
-    let torsoArmors = armors.filter(t => t.system.location == 'Torso' || t.system.location == 'FullCover');
-    let legArmors = armors.filter(l => l.system.location == 'Leg' || l.system.location == 'FullCover');
-
-    let armorSet;
-    let totalSP = 0;
-    let displaySP = '';
-
-    switch (location.name) {
-        case 'head':
-            armorSet = getArmors(headArmors);
-            totalSP += actor.system.armorHead ?? 0;
-            displaySP += actor.system.armorHead > 0 ? actor.system.armorHead + ' + ' : '';
-            break;
-        case 'torso':
-        case 'rightArm':
-        case 'leftArm':
-            armorSet = getArmors(torsoArmors);
-            totalSP += actor.system.armorUpper ?? 0;
-            displaySP += actor.system.armorUpper > 0 ? actor.system.armorUpper + ' + ' : '';
-            break;
-        case 'rightLeg':
-        case 'leftLeg':
-            armorSet = getArmors(legArmors);
-            totalSP += actor.system.armorLower ?? 0;
-            displaySP += actor.system.armorLower > 0 ? actor.system.armorLower + ' + ' : '';
-            break;
-        case 'tailWing':
-            armorSet = getArmors([]);
-            totalSP += actor.system.armorTailWing ?? 0;
-            displaySP += actor.system.armorTailWing > 0 ? actor.system.armorTailWing + ' + ' : '';
-            break;
-    }
-
-    if (properties.bypassesNaturalArmor) {
-        //reset SP when bypassing monster natural armor
-        totalSP = 0;
-        displaySP = '';
-    }
-
-    displaySP += getArmorSp(armorSet, location.name + 'Stopping', properties).displaySP;
-    totalSP += getArmorSp(armorSet, location.name + 'Stopping', properties).totalSP;
-
-    if (!displaySP) {
-        displaySP = '0';
-    }
-
-    return {
-        armorSet,
-        totalSP,
-        displaySP
-    };
-}
-
-function getArmors(armors) {
-    let lightCount = 0,
-        mediumCount = 0,
-        heavyCount = 0;
-    let lightArmor, mediumArmor, heavyArmor, naturalArmor;
-    armors.forEach(item => {
-        if (item.system.type == 'Light') {
-            lightCount++;
-            lightArmor = item;
-        }
-        if (item.system.type == 'Medium') {
-            mediumCount++;
-            mediumArmor = item;
-        }
-        if (item.system.type == 'Heavy') {
-            heavyCount++;
-            heavyArmor = item;
-        }
-        if (item.system.type == 'Natural') {
-            naturalArmor = item;
-        }
-    });
-
-    if (lightCount > 1 || mediumCount > 1 || heavyCount > 1) {
-        ui.notifications.error(game.i18n.localize('WITCHER.Armor.tooMuch'));
-        return;
-    }
-
-    return {
-        lightArmor: lightArmor,
-        mediumArmor: mediumArmor,
-        heavyArmor: heavyArmor,
-        naturalArmor: naturalArmor
-    };
-}
-
-function getArmorSp(armorSet, location, properties) {
-    return getStackedArmorSp(
-        armorSet['lightArmor']?.system[location],
-        armorSet['mediumArmor']?.system[location],
-        armorSet['heavyArmor']?.system[location],
-        armorSet['naturalArmor']?.system[location],
-        properties
-    );
-}
-
-function getStackedArmorSp(lightArmorSP, mediumArmorSP, heavyArmorSP, naturalArmorSP, properties) {
-    let totalSP = 0;
-    let displaySP = '';
-
-    if (heavyArmorSP && !properties.bypassesWornArmor) {
-        totalSP = heavyArmorSP;
-        displaySP = heavyArmorSP;
-    }
-
-    if (mediumArmorSP && !properties.bypassesWornArmor) {
-        if (heavyArmorSP) {
-            let diff = getArmorDiffBonus(heavyArmorSP, mediumArmorSP);
-            totalSP = Number(totalSP) + Number(diff);
-            displaySP += ' +' + diff;
-        } else {
-            displaySP = mediumArmorSP;
-            totalSP = mediumArmorSP;
-        }
-    }
-
-    if (lightArmorSP && !properties.bypassesWornArmor) {
-        if (mediumArmorSP) {
-            let diff = getArmorDiffBonus(mediumArmorSP, lightArmorSP);
-            totalSP = Number(totalSP) + Number(diff);
-            displaySP += ` +${diff}[${game.i18n.localize('WITCHER.Armor.LayerBonus')}]`;
-        } else if (heavyArmorSP) {
-            let diff = getArmorDiffBonus(heavyArmorSP, lightArmorSP);
-            totalSP = Number(totalSP) + Number(diff);
-            displaySP += ` +${diff}[${game.i18n.localize('WITCHER.Armor.LayerBonus')}]`;
-        } else {
-            totalSP = lightArmorSP;
-            displaySP = lightArmorSP;
-        }
-    }
-
-    if (naturalArmorSP && !properties.bypassesNaturalArmor) {
-        totalSP += naturalArmorSP;
-        displaySP += ` +${naturalArmorSP} [${game.i18n.localize('WITCHER.Armor.Natural')}]`;
-    }
-
-    return {
-        displaySP,
-        totalSP
-    };
-}
-
-function getArmorDiffBonus(OverArmor, UnderArmor) {
-    let diff = OverArmor - UnderArmor;
-
-    if (UnderArmor <= 0 || OverArmor <= 0) {
-        return 0;
-    }
-
-    if (diff < 0) {
-        diff *= -1;
-    }
-
-    if (diff > 20) {
-        return 0;
-    } else if (diff > 15) {
-        return 2;
-    } else if (diff > 9) {
-        return 3;
-    } else if (diff > 5) {
-        return 4;
-    } else if (diff >= 0) {
-        return 5;
-    }
-    return 0;
-}
-
-function calculateResistances(actor, totalDamage, damage, armorSet) {
-    let properties = damage.properties;
-    if (properties.armorPiercing || properties.improvedArmorPiercing) {
-        return totalDamage;
-    }
-
-    let damageAfterResistances = totalDamage;
-
-    if (
-        (armorSet['lightArmor']?.system[damage.type] ||
-            armorSet['mediumArmor']?.system[damage.type] ||
-            armorSet['heavyArmor']?.system[damage.type]) &&
-        !properties.bypassesWornArmor
-    ) {
-        damageAfterResistances = Math.floor(0.5 * totalDamage);
-    }
-
-    if (armorSet['naturalArmor']?.system[damage.type] && !properties.bypassesNaturalArmor) {
-        damageAfterResistances = Math.floor(0.5 * totalDamage);
-    }
-
-    let damageMulti = actor.getMultiDamageMod(damage);
-
-    damageAfterResistances = Math.floor(damageAfterResistances * damageMulti);
-
-    return damageAfterResistances;
-}
-
-async function applySpDamage(location, properties, armorSet) {
-    if (properties.bypassesWornArmor) {
-        //damage bypasses armor so no SP damage
-        return 0;
-    }
-
-    let spDamage =
-        properties.crushingForce || properties.ablating ? Math.floor((await new Roll('1d6/2+1').evaluate()).total) : 1;
-
-    if (properties.crushingForce) {
-        spDamage *= 2;
-    }
-
-    let lightArmorSP = armorSet['lightArmor']?.system[location.name + 'Stopping'] - spDamage;
-    armorSet['lightArmor']?.update({ [`system.${location.name}Stopping`]: lightArmorSP > 0 ? lightArmorSP : 0 });
-
-    let mediumArmorSP = armorSet['mediumArmor']?.system[location.name + 'Stopping'] - spDamage;
-    armorSet['mediumArmor']?.update({ [`system.${location.name}Stopping`]: mediumArmorSP > 0 ? mediumArmorSP : 0 });
-
-    let heavyArmorSP = armorSet['heavyArmor']?.system[location.name + 'Stopping'] - spDamage;
-    armorSet['heavyArmor']?.update({ [`system.${location.name}Stopping`]: heavyArmorSP > 0 ? heavyArmorSP : 0 });
-
-    return spDamage;
-}
-
-async function applyAlwaysSpDamage(location, properties, armorSet) {
-    let spDamage = properties.spDamage ?? 0;
-
-    let lightArmorSP = armorSet['lightArmor']?.system[location.name + 'Stopping'] - spDamage;
-    armorSet['lightArmor']?.update({ [`system.${location.name}Stopping`]: lightArmorSP > 0 ? lightArmorSP : 0 });
-
-    let mediumArmorSP = armorSet['mediumArmor']?.system[location.name + 'Stopping'] - spDamage;
-    armorSet['mediumArmor']?.update({ [`system.${location.name}Stopping`]: mediumArmorSP > 0 ? mediumArmorSP : 0 });
-
-    let heavyArmorSP = armorSet['heavyArmor']?.system[location.name + 'Stopping'] - spDamage;
-    armorSet['heavyArmor']?.update({ [`system.${location.name}Stopping`]: heavyArmorSP > 0 ? heavyArmorSP : 0 });
-
-    return spDamage;
 }
 
 export { ApplyNormalDamage, ApplyNonLethalDamage, applyDamageFromStatus, applyDamage };

@@ -13,6 +13,7 @@ import { damageMixin } from './mixins/damageMixin.js';
 import { activeEffectMixin } from './mixins/activeEffectMixin.js';
 import ChatMessageData from '../chatMessage/chatMessageData.js';
 import { professionMixin } from './mixins/professionMixin.js';
+import { armorMixin } from './mixins/armorMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -394,34 +395,6 @@ export default class WitcherActor extends Actor {
         });
     }
 
-    getArmorEcumbrance() {
-        let encumbranceModifier = -this.system.lifepathModifiers.ignoredArmorEncumbrance;
-        let armors = this.items.filter(item => item.type == 'armor' && item.system.equipped);
-        armors.forEach(item => {
-            encumbranceModifier += item.system.encumb;
-        });
-
-        let relevantModifier = this.getList('globalModifier')
-            .filter(modifier => modifier.system.isActive)
-            .filter(modifier => modifier.system.special?.length > 0)
-            .map(modifier => modifier.system.special)
-            .flat()
-            .map(modifier => CONFIG.WITCHER.specialModifier.find(special => special.id == modifier.special))
-            .filter(special => special?.tags?.includes('armorencumbarance'));
-
-        let relevantActorModifier = this.system.specialSkillModifiers
-            .map(specialSkillModifier =>
-                CONFIG.WITCHER.specialModifier.find(special => special.id == specialSkillModifier.modifier)
-            )
-            .filter(special => special?.tags?.includes('armorencumbarance'));
-
-        relevantModifier
-            .concat(relevantActorModifier)
-            .forEach(modifier => (encumbranceModifier += parseInt(modifier.formula)));
-
-        return Math.max(encumbranceModifier, 0);
-    }
-
     async applyStatus(effects) {
         effects
             .filter(effect => !!effect.statusEffect)
@@ -767,11 +740,12 @@ export default class WitcherActor extends Actor {
 
 Object.assign(WitcherActor.prototype, professionMixin);
 Object.assign(WitcherActor.prototype, modifierMixin);
+Object.assign(WitcherActor.prototype, damageMixin);
 Object.assign(WitcherActor.prototype, damageUtilMixin);
 Object.assign(WitcherActor.prototype, weaponAttackMixin);
 Object.assign(WitcherActor.prototype, defenseMixin);
-Object.assign(WitcherActor.prototype, damageMixin);
 Object.assign(WitcherActor.prototype, castSpellMixin);
 Object.assign(WitcherActor.prototype, verbalCombatMixin);
 Object.assign(WitcherActor.prototype, locationMixin);
 Object.assign(WitcherActor.prototype, activeEffectMixin);
+Object.assign(WitcherActor.prototype, armorMixin);
