@@ -249,23 +249,12 @@ export let castSpellMixin = {
             templateInfo,
             damage
         });
-        let messageData = new ChatMessageData(
-            this,
-            chatMessage,
-            'attack',
-            {
-                attacker: this.uuid,
-                attack: spellItem.getSpellFlags(),
-                damage: damage,
-                defenseOptions: spellItem.system.defenseOptions
-            },
-            {
-                TheWitcherTRPG: {
-                    attack: spellItem.getSpellFlags(),
-                    damage: damage
-                }
-            }
-        );
+        let messageData = new ChatMessageData(this, chatMessage, 'attack', {
+            attacker: this.uuid,
+            attack: spellItem.getItemAttack(),
+            damage: damage,
+            defenseOptions: spellItem.system.defenseOptions
+        });
 
         let config = new RollConfig({ showResult: false });
 

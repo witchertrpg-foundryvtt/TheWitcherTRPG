@@ -25,7 +25,7 @@ export default class MonsterData extends CommonActorData {
             armorUpper: new fields.NumberField({ initial: 0 }),
             armorLower: new fields.NumberField({ initial: 0 }),
             armorTailWing: new fields.NumberField({ initial: 0 }),
-            regen: new fields.NumberField({ initial: 0 }),
+            regeneration: new fields.NumberField({ initial: 0, label: 'WITCHER.Monster.regeneration' }),
 
             resistances: new fields.StringField({ initial: '' }),
             immunities: new fields.StringField({ initial: '' }),

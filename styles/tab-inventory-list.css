@@ -1,6 +1,5 @@
-.weapon-header {
+.list-header {
     display: grid;
-    grid-template-columns: 33px 2fr 1fr;
     align-items: center;
     padding: 5px;
     border-radius: 5px;
@@ -8,31 +7,60 @@
     border: 2px groove #eeede0;
     margin: 5px 0;
     gap: 20px;
+    list-style: none;
+    cursor: pointer;
 }
 
-.weapon-header h3 {
+.list-header::before {
+    content: '\f078';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    transition: transform 0.3s ease;
+    justify-self: center;
+    cursor: pointer;
+}
+
+details[open] .list-header::before {
+    transform: rotate(180deg);
+}
+
+.list-header h3 {
     margin: 0;
     border: none;
 }
 
-.weapon-label {
+.list-item-info {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+    gap: 5px;
+    box-shadow:
+        inset -2px 8px 8px -10px #9a9991,
+        inset -2px -8px 8px -10px #9a9991;
+}
+
+.list-item-info.invisible {
+    display: none;
+}
+
+.list-label {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.weapon-label > span {
+.list-label > span {
     width: 70px;
     text-align: center;
     padding: 5px;
 }
 
-.weapon-header .weapon-label > span {
+.list-header .list-label > span {
     border-left: 1px solid #9a9991;
     box-sizing: border-box;
 }
 
-.weapon-details .weapon-label > span:hover {
+.list-details .list-label > span:hover {
     padding: 5px;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 5px;
@@ -40,12 +68,12 @@
     transition: all 0.3s ease;
 }
 
-.weapon-info h3,
-.item-description h3 {
+.list-item-info h3,
+.list-item-description h3 {
     border-bottom: 1px solid #9a9991;
 }
 
-.weapon-list {
+.list {
     display: flex;
     flex-direction: column;
     list-style-type: none;
@@ -54,13 +82,18 @@
     gap: 10px;
 }
 
-.weapon-list.invisible {
-    display: none;
+.list-item {
+    flex-direction: column;
 }
 
-.weapon-details {
+.list-controls {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.list-details {
     display: grid;
-    grid-template-columns: 40px 2fr 1fr;
     margin: 0 7px;
     border-bottom: 1px solid rgba(25, 24, 19, 0.2);
     align-items: center;
@@ -68,13 +101,22 @@
     gap: 20px;
 }
 
-.weapon-details:last-child {
+.list-details:last-child {
     border: none;
 }
 
-.weapon-details:hover {
+.list-details:hover {
     border-radius: 5px;
     background-color: rgba(25, 25, 25, 0.05);
+}
+
+.list-details:hover > .item-weapon-display > img {
+    display: none;
+}
+
+.list-details:hover > .item-weapon-display > span {
+    display: flex;
+    font-size: 1rem;
 }
 
 .item-weapon-display {
@@ -85,15 +127,7 @@
     display: none;
 }
 
-.weapon-details:hover > .item-weapon-display > img {
-    display: none;
-}
-
-.weapon-details:hover > .item-weapon-display > span {
-    display: flex;
-}
-
-.weapon-image {
+.item-list-image {
     flex-wrap: wrap;
     place-content: center;
     text-shadow: none;
@@ -103,22 +137,6 @@
     width: 40px;
     height: 40px;
     border: 1px solid rgba(25, 24, 19, 0.6);
-}
-
-.weapon-item {
-    flex-direction: column;
-}
-
-.weapon-enhancement {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.weapon-controls {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
 }
 
 .reliable-details {
@@ -142,11 +160,3 @@ a.equipped {
     text-shadow: none;
 }
 
-a.weapon-list-display {
-    text-shadow: none;
-    text-align: center;
-}
-
-a.weapon-list-display > i {
-    transition: all 0.3s ease;
-}

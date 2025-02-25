@@ -96,20 +96,6 @@ export default class WitcherItem extends Item {
         };
     }
 
-    getSpellFlags() {
-        return {
-            origin: {
-                name: this.name,
-                uuid: this.uuid
-            },
-            spell: this,
-            item: this,
-            itemUuid: this.uuid,
-            owner: this.parent.uuid,
-            skill: 'skill'
-        };
-    }
-
     isAlchemicalCraft() {
         return this.system.alchemyDC && this.system.alchemyDC > 0;
     }
