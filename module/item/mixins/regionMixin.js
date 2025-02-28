@@ -1,21 +1,23 @@
 import { emitForGM } from '../../scripts/socket/socketMessage.js';
 
 export let regionMixin = {
-    async createRegionFromTemplateUuids(templateUuids, roll, damage) {
+    async createRegionFromTemplateUuids(templateUuids, roll, damage, options) {
         this.createRegionFromTemplates(
             templateUuids.map(uuid => fromUuidSync(uuid)),
             roll,
-            damage
+            damage,
+            options
         );
     },
 
-    async createRegionFromTemplates(templates, roll, damage) {
+    async createRegionFromTemplates(templates, roll, damage, options) {
         if (!game.user.isGM) {
             emitForGM('createRegionFromTemplateUuids', [
                 this.uuid,
                 templates.map(template => template.uuid),
                 roll,
-                damage
+                damage,
+                options
             ]);
             return;
         }
@@ -47,7 +49,8 @@ export let regionMixin = {
                             item: this,
                             itemUuid: this.uuid,
                             duration: damage.duration,
-                            actorUuid: this.parent.uuid
+                            actorUuid: this.parent.uuid,
+                            options: options
                         }
                     }
                 }
