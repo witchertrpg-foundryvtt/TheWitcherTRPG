@@ -4,7 +4,7 @@ import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 const DialogV2 = foundry.applications.api.DialogV2;
 
 export let weaponAttackMixin = {
-    async weaponAttack(weapon, options) {
+    async weaponAttack(weapon, options = {}) {
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
         let displayDmgFormula = `${weapon.system.damage}`;
