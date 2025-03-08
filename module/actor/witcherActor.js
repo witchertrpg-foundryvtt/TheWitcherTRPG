@@ -55,6 +55,7 @@ export default class WitcherActor extends Actor {
 
         this.calculateStats();
         this.calculateCoreStats();
+        this.calculateStats();
         this.calculateDerivedStats();
         this.calculateAttackStats();
     }
@@ -112,7 +113,7 @@ export default class WitcherActor extends Actor {
         } else if (HPvalue < this.system.coreStats.woundTreshold.current > 0) {
             this.system.woundTresholdApplied = true;
             if (stat === 'ref' || stat === 'dex' || stat === 'int' || stat === 'will') {
-                divider += 2;
+                divider += 1;
             }
         }
 

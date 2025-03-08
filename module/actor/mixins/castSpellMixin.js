@@ -201,7 +201,7 @@ export let castSpellMixin = {
             if (spellItem.system.staminaIsVar) {
                 dmg = this.calcStaminaMulti(origStaCost, dmg);
 
-                spellItem.system.damageProperties?.effects?.forEach(effect => {
+                damage.properties?.effects?.forEach(effect => {
                     if (effect.varEffect) {
                         effect.percentage = this.calcStaminaMulti(origStaCost, effect.percentage);
                     }
@@ -261,7 +261,7 @@ export let castSpellMixin = {
         let roll = await extendedRoll(rollFormula, messageData, config);
         await roll.toMessage(messageData);
 
-        spellItem.createSpellVisuals(roll, damage);
+        spellItem.createSpellVisuals(roll, damage, { stamina: origStaCost });
 
         if (!roll.options.fumble) {
             spellItem.system.globalModifiers?.forEach(modifier => applyModifierToActor(this.uuid, modifier));
