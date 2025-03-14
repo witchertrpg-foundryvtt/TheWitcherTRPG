@@ -38,6 +38,7 @@ export let armorMixin = {
         let totalSP = 0;
         let displaySP = '';
 
+        //get armor set and add natural armor
         switch (location.name) {
             case 'head':
                 armorSet = this.getArmors(headArmors);
@@ -64,12 +65,14 @@ export let armorMixin = {
                 break;
         }
 
+        //if natural armor is ignored, reset it to 0
         if (properties.bypassesNaturalArmor) {
             //reset SP when bypassing monster natural armor
             totalSP = 0;
             displaySP = '';
         }
 
+        //add worn armor
         displaySP += this.getArmorSp(armorSet, location.name + 'Stopping', properties).displaySP;
         totalSP += this.getArmorSp(armorSet, location.name + 'Stopping', properties).totalSP;
 
@@ -160,8 +163,8 @@ export let armorMixin = {
                 totalSP = Number(totalSP) + Number(diff);
                 displaySP += ` +${diff}[${game.i18n.localize('WITCHER.Armor.LayerBonus')}]`;
             } else {
-                totalSP = lightArmorSP;
                 displaySP = lightArmorSP;
+                totalSP = lightArmorSP;
             }
         }
 

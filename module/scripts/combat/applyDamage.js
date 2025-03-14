@@ -285,8 +285,8 @@ async function calculateDamageWithLocation(actor, dialogData, damage, totalDamag
 
     let flatDamageMod = actor.getFlatDamageMod(damage);
 
-    totalDamage = Math.floor(location.locationFormula * totalDamage);
-    silverDamage = Math.floor(location.locationFormula * silverDamage);
+    totalDamage = Math.max(Math.floor(location.locationFormula * totalDamage), 0);
+    silverDamage = Math.max(Math.floor(location.locationFormula * silverDamage), 0);
     let infoAfterLocation = totalDamage;
     if (flatDamageMod) {
         infoAfterLocation += `+${location.locationFormula * flatDamageMod}[${game.i18n.localize('WITCHER.Damage.activeEffect')}]`;
