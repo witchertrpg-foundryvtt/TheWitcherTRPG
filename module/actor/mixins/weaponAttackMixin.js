@@ -293,45 +293,11 @@ export let weaponAttackMixin = {
             }
             damage.formula = damageFormula + damageModifcation;
 
-            let touchedLocation = this.getLocationObject(location);
-            attFormula += !displayRollDetails
-                ? `${touchedLocation.modifier}`
-                : `${touchedLocation.modifier}[${touchedLocation.alias}]`;
-            damage.location = touchedLocation;
-            damage.originalLocation = location;
-
-            if (strike == 'joint') {
-                attFormula = !displayRollDetails
-                    ? `${attFormula} -3${
-                          this.system.lifepathModifiers.jointStrikeAttackBonus > 0
-                              ? ` +${this.system.lifepathModifiers.jointStrikeAttackBonus}`
-                              : ''
-                      }`
-                    : `${attFormula} -3[${game.i18n.localize('WITCHER.Dialog.attackStrike')}]${
-                          this.system.lifepathModifiers.jointStrikeAttackBonus > 0
-                              ? ` +${this.system.lifepathModifiers.jointStrikeAttackBonus}[${game.i18n.localize('WITCHER.Actor.Lifepath.Bonus')}]`
-                              : ''
-                      }`;
-            }
-
-            if (strike == 'strong') {
-                if (!displayRollDetails) {
-                    attFormula = `${attFormula} -3${
-                        this.system.lifepathModifiers.strongStrikeAttackBonus > 0
-                            ? ` +${this.system.lifepathModifiers.strongStrikeAttackBonus}`
-                            : ''
-                    }`;
-                } else {
-                    attFormula = `${attFormula} -3[${game.i18n.localize('WITCHER.Dialog.attackStrike')}]${
-                        this.system.lifepathModifiers.strongStrikeAttackBonus > 0
-                            ? ` +${this.system.lifepathModifiers.strongStrikeAttackBonus}[${game.i18n.localize('WITCHER.Actor.Lifepath.Bonus')}]`
-                            : ''
-                    }`;
-                }
-            }
+            attFormula += this.handleAttackLocation(location, damage, displayRollDetails);
+            attFormula += this.handleStrikeType(strike, displayRollDetails);
 
             messageDataFlavor = `<div class="attack-message"><h1><img src="${weapon.img}" class="item-img" />${game.i18n.localize('WITCHER.Attack.name')}: ${weapon.name}</h1>`;
-            messageDataFlavor += `<span>  ${game.i18n.localize('WITCHER.Armor.Location')}: ${touchedLocation.alias} </span>`;
+            messageDataFlavor += `<span>  ${game.i18n.localize('WITCHER.Armor.Location')}: ${damage.location.alias} </span>`;
 
             messageDataFlavor += `<button class="damage">${game.i18n.localize('WITCHER.table.Damage')}</button>`;
 
@@ -389,5 +355,49 @@ export let weaponAttackMixin = {
         }
 
         return damageModification;
+    },
+
+    handleAttackLocation(location, damage, displayRollDetails) {
+        let touchedLocation = this.getLocationObject(location);
+        damage.location = touchedLocation;
+        damage.originalLocation = location;
+
+        return !displayRollDetails
+            ? `${touchedLocation.modifier}`
+            : `${touchedLocation.modifier}[${touchedLocation.alias}]`;
+    },
+
+    handleStrikeType(strike, displayRollDetails) {
+        if (strike == 'joint') {
+            return !displayRollDetails
+                ? ` -3${
+                      this.system.lifepathModifiers.jointStrikeAttackBonus > 0
+                          ? ` +${this.system.lifepathModifiers.jointStrikeAttackBonus}`
+                          : ''
+                  }`
+                : ` -3[${game.i18n.localize('WITCHER.Dialog.attackStrike')}]${
+                      this.system.lifepathModifiers.jointStrikeAttackBonus > 0
+                          ? ` +${this.system.lifepathModifiers.jointStrikeAttackBonus}[${game.i18n.localize('WITCHER.Actor.Lifepath.Bonus')}]`
+                          : ''
+                  }`;
+        }
+
+        if (strike == 'strong') {
+            if (!displayRollDetails) {
+                return ` -3${
+                    this.system.lifepathModifiers.strongStrikeAttackBonus > 0
+                        ? ` +${this.system.lifepathModifiers.strongStrikeAttackBonus}`
+                        : ''
+                }`;
+            } else {
+                return ` -3[${game.i18n.localize('WITCHER.Dialog.attackStrike')}]${
+                    this.system.lifepathModifiers.strongStrikeAttackBonus > 0
+                        ? ` +${this.system.lifepathModifiers.strongStrikeAttackBonus}[${game.i18n.localize('WITCHER.Actor.Lifepath.Bonus')}]`
+                        : ''
+                }`;
+            }
+        }
+
+        return '';
     }
 };
