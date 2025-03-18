@@ -66,6 +66,13 @@ export default class WitcherItem extends Item {
             shift: false
         }
     ) {
+        if (!this.system.attackOptions) {
+            return {
+                attackOption: 'none',
+                itemUuid: this.uuid
+            };
+        }
+
         let mapKeyToNumber;
         if (Object.values(options).every(key => !key) || this.system.attackOptions.size < 2) {
             mapKeyToNumber = 0;
