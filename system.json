@@ -4,7 +4,8 @@
     "description": "The Witcher TRPG System",
     "compatibility": {
         "minimum": "12",
-        "verified": "12"
+        "verified": "12",
+        "maximum": "12"
     },
     "version": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION",
     "authors": [
