@@ -61,7 +61,7 @@ export async function preloadHandlebarsTemplates() {
 
         'systems/TheWitcherTRPG/templates/partials/components-list.hbs'
     ];
-    return loadTemplates(templatePath);
+    return foundry.applications.handlebars.loadTemplates(templatePath);
 }
 
 export async function registerHandelbarHelpers() {

@@ -3,7 +3,7 @@ import { temporaryItemImprovementMixin } from './mixins/temporaryItemImprovement
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
-export class WitcherActiveEffectConfig extends ActiveEffectConfig {
+export class WitcherActiveEffectConfig extends foundry.applications.sheets.ActiveEffectConfig {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {

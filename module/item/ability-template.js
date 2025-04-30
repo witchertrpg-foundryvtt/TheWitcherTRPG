@@ -2,7 +2,7 @@
  * A helper class for building MeasuredTemplates for spells and abilities
  * Adopted from 5e https://github.com/foundryvtt/dnd5e/blob/3.2.x/module/canvas/ability-template.mjs#L36
  */
-export default class AbilityTemplate extends MeasuredTemplate {
+export default class AbilityTemplate extends foundry.canvas.placeables.MeasuredTemplate {
     /**
      * Track the timestamp when the last mouse move event was captured.
      * @type {number}
@@ -156,7 +156,7 @@ export default class AbilityTemplate extends MeasuredTemplate {
         if (now - this.#moveTime <= 20) return;
         const center = event.data.getLocalPosition(this.layer);
         const interval = canvas.grid.type === CONST.GRID_TYPES.GRIDLESS ? 0 : 2;
-        const snapped = canvas.grid.getSnappedPoint(center, {mode: interval});
+        const snapped = canvas.grid.getSnappedPoint(center, { mode: interval });
         this.document.updateSource({ x: snapped.x, y: snapped.y });
         this.refresh();
         this.#moveTime = now;
@@ -187,7 +187,7 @@ export default class AbilityTemplate extends MeasuredTemplate {
     async _onConfirmPlacement(event) {
         await this._finishPlacement(event);
         const interval = canvas.grid.type === CONST.GRID_TYPES.GRIDLESS ? 0 : 2;
-        const destination = canvas.grid.getSnappedPoint(this.document, {mode: interval});
+        const destination = canvas.grid.getSnappedPoint(this.document, { mode: interval });
         this.document.updateSource(destination);
         this.#events.resolve(canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [this.document.toObject()]));
     }

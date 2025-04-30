@@ -36,7 +36,7 @@ Array.prototype.cost = function () {
     return Math.ceil(total);
 };
 
-export default class WitcherActorSheet extends ActorSheet {
+export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
     statMap = CONFIG.WITCHER.statMap;
     skillMap = CONFIG.WITCHER.skillMap;
 

@@ -25,8 +25,11 @@ import WitcherHexSheet from '../item/sheets/WitcherHexSheet.js';
 import WitcherRitualSheet from '../item/sheets/WitcherRitualSheet.js';
 import WitcherHomelandSheet from '../item/sheets/WitcherHomelandSheet.js';
 
+const Actors = foundry.documents.collections.Actors;
+const Items = foundry.documents.collections.Items;
+
 export const registerSheets = () => {
-    Items.unregisterSheet('core', ItemSheet);
+    Items.unregisterSheet('core', foundry.appv1.sheets.ItemSheet);
     Items.registerSheet('witcher', WitcherItemSheet, { makeDefault: true });
 
     Items.registerSheet('witcher', WitcherAlchemicalSheet, {
@@ -90,7 +93,7 @@ export const registerSheets = () => {
         types: ['weapon']
     });
 
-    Actors.unregisterSheet('core', ActorSheet);
+    Actors.unregisterSheet('core', foundry.appv1.sheets.ActorSheet);
     Actors.registerSheet('witcher', WitcherCharacterSheet, {
         makeDefault: true,
         types: ['character']
@@ -123,8 +126,12 @@ export const registerSheets = () => {
     });
 
     // Register configs for embedded documents.
-    DocumentSheetConfig.unregisterSheet(ActiveEffect, 'core', ActiveEffectConfig);
-    DocumentSheetConfig.registerSheet(ActiveEffect, 'witcher', WitcherActiveEffectConfig, {
+    foundry.applications.apps.DocumentSheetConfig.unregisterSheet(
+        ActiveEffect,
+        'core',
+        foundry.applications.sheets.ActiveEffectConfig
+    );
+    foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, 'witcher', WitcherActiveEffectConfig, {
         makeDefault: true
     });
 };

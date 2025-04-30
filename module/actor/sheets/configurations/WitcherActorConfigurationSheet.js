@@ -1,4 +1,4 @@
-export default class WitcherActorConfigurationSheet extends ActorSheet {
+export default class WitcherActorConfigurationSheet extends foundry.appv1.sheets.ActorSheet {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {

@@ -3,7 +3,7 @@ import { itemMixin } from './mixins/itemMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
-export default class WitcherLootSheet extends ActorSheet {
+export default class WitcherLootSheet extends foundry.appv1.sheets.ActorSheet {
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ['witcher', 'sheet', 'actor'],

@@ -13,9 +13,9 @@ export function addAttackChatListeners(html) {
 }
 
 export const attackChatMessageListeners = async (message, html) => {
-    if (!html.find('button.damage')) return;
+    if (!html.querySelector('button.damage')) return;
 
-    html.find('button.damage').on('click', _ => onDamage(message));
+    html.querySelector('button.damage').addEventListener('click', _ => onDamage(message));
 };
 
 function onDamage(message) {
@@ -54,7 +54,7 @@ async function executeDefense(actor, messageId) {
 }
 
 export function addCritMessageContextOptions(html, options) {
-    let wasCritted = li => li.find('.crit-taken').length;
+    let wasCritted = li => li.querySelector('.crit-taken').length;
     options.push(
         {
             name: `${game.i18n.localize('WITCHER.Context.applyCritDmg')}`,

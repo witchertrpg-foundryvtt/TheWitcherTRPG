@@ -4,7 +4,7 @@ const DialogV2 = foundry.applications.api.DialogV2;
 
 export let itemContextMenu = {
     itemContextMenu(html) {
-        ContextMenu.create(this, html, '.item', [
+        new foundry.applications.ux.ContextMenu(html, '.item', [
             this.editItem(),
             this.consumableItem(),
             this.removableEnhancement(),
@@ -18,9 +18,9 @@ export let itemContextMenu = {
         return {
             name: 'WITCHER.Item.ContextMenu.edit',
             icon: '<i class="fas fa-edit"></i>',
-            callback: (event) => {
-                const item = this.actor.items.get(event[0].dataset.itemId)
-                item.sheet.render(true)
+            callback: event => {
+                const item = this.actor.items.get(event[0].dataset.itemId);
+                item.sheet.render(true);
             }
         };
     },
@@ -188,13 +188,13 @@ export let itemContextMenu = {
     },
 
     deleteItem() {
-      return {
-          name: 'WITCHER.Item.ContextMenu.delete',
-          icon: '<i class="fa-solid fa-trash"></i>',
-          callback: (event) => {
-              const item = this.actor.items.get(event[0].dataset.itemId)
-              item.delete()
-          }
-      };
-  },
+        return {
+            name: 'WITCHER.Item.ContextMenu.delete',
+            icon: '<i class="fa-solid fa-trash"></i>',
+            callback: event => {
+                const item = this.actor.items.get(event[0].dataset.itemId);
+                item.delete();
+            }
+        };
+    }
 };

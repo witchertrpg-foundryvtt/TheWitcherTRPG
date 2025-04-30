@@ -3,7 +3,7 @@ import { emitForGM } from '../socket/socketMessage.js';
 
 export function addStatusEffectChatListeners(html) {
     // setup chat listener messages for each message as some need the message context instead of chatlog context.
-    html.find('.chat-message').each(async (index, element) => {
+    html.querySelector('.chat-message').each(async (index, element) => {
         element = $(element);
         const id = element.data('messageId');
         const message = game.messages?.get(id);
@@ -14,9 +14,9 @@ export function addStatusEffectChatListeners(html) {
 }
 
 export const chatMessageListeners = async (message, html) => {
-    if (!html.find('a.apply-status')) return;
+    if (!html.querySelector('a.apply-status')) return;
 
-    html.find('a.apply-status').on('click', event => onApplyStatus(event));
+    html.querySelector('a.apply-status').addEventListener('click', event => onApplyStatus(event));
 };
 
 export async function onApplyStatus(event) {
@@ -48,12 +48,12 @@ export async function applyStatusEffectToActor(actorUuid, statusEffectId, durati
     }
 
     //only try to apply it when not already present
-    if (!actor.appliedEffects.find(effect => effect.statuses.find(status => status == statusEffectId))) {
+    if (!actor.appliedEffects.querySelector(effect => effect.statuses.querySelector(status => status == statusEffectId))) {
         await actor.toggleStatusEffect(statusEffectId);
 
         handleStatusCounterIntegration(actor, statusEffectId, duration);
 
-        if (actor.system.statusEffectImmunities?.find(immunity => immunity == statusEffectId)) {
+        if (actor.system.statusEffectImmunities?.querySelector(immunity => immunity == statusEffectId)) {
             //untoggle it so people see it was tried to be applied but failed
             setTimeout(() => {
                 actor.toggleStatusEffect(statusEffectId);
@@ -67,9 +67,9 @@ function handleStatusCounterIntegration(target, statusId, duration) {
 
     if (!duration || duration == 0) return;
 
-    let statusEffect = CONFIG.WITCHER.statusEffects.find(statusEffect => statusEffect.id == statusId);
+    let statusEffect = CONFIG.WITCHER.statusEffects.querySelector(statusEffect => statusEffect.id == statusId);
 
-    let effectCounter = EffectCounter.getAllCounters(target).find(effects => effects.path == statusEffect.img);
+    let effectCounter = EffectCounter.getAllCounters(target).querySelector(effects => effects.path == statusEffect.img);
     effectCounter.setValue(parseInt(duration));
     effectCounter.changeType('statuscounter.countdown_round', target);
 }

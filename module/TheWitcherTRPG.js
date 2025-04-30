@@ -46,7 +46,7 @@ Hooks.on('renderChatLog', (app, html, data) => {
     Chat.addChatListeners(html);
 });
 
-Hooks.on('renderChatMessage', (message, html, data) => {
+Hooks.on('renderChatMessageHTML', (message, html, data) => {
     Combat.attackChatMessageListeners(message, html);
     VerbalCombat.chatMessageListeners(message, html);
     ApplyStatusEffects.chatMessageListeners(message, html);
