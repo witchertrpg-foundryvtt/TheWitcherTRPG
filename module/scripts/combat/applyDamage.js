@@ -6,7 +6,7 @@ import { applyStatusEffectToActor } from '../statusEffects/applyStatusEffect.js'
 const DialogV2 = foundry.applications.api.DialogV2;
 
 export function addDamageMessageContextOptions(html, options) {
-    let canApplyDamage = li => li.find('.damage-message').length;
+    let canApplyDamage = li => li.querySelector('.damage-message');
     options.push(
         {
             name: `${game.i18n.localize('WITCHER.Context.applyDmg')}`,
@@ -16,7 +16,7 @@ export function addDamageMessageContextOptions(html, options) {
                 ApplyNormalDamage(
                     await getInteractActor(),
                     parseInt(li.find('.dice-total')[0].innerText),
-                    li[0].dataset.messageId
+                    li.dataset.messageId
                 );
             }
         },
@@ -28,7 +28,7 @@ export function addDamageMessageContextOptions(html, options) {
                 ApplyNonLethalDamage(
                     await getInteractActor(),
                     parseInt(li.find('.dice-total')[0].innerText),
-                    li[0].dataset.messageId
+                    li.dataset.messageId
                 );
             }
         }

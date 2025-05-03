@@ -26,15 +26,13 @@ function onDamage(message) {
 }
 
 export function addDefenseOptionsContextMenu(html, options) {
-    let canDefend = li => {
-        return game.messages.get(li[0].dataset.messageId).system.defenseOptions;
-    };
+    let canDefend = li => game.messages.get(li.dataset.messageId).system.defenseOptions;
     options.push({
         name: `${game.i18n.localize('WITCHER.Context.Defense')}`,
         icon: '<i class="fas fa-shield-alt"></i>',
         condition: canDefend,
         callback: async li => {
-            executeDefense(await getInteractActor(), li[0].dataset.messageId);
+            executeDefense(await getInteractActor(), li.dataset.messageId);
         }
     });
     return options;
@@ -54,7 +52,7 @@ async function executeDefense(actor, messageId) {
 }
 
 export function addCritMessageContextOptions(html, options) {
-    let wasCritted = li => li.querySelector('.crit-taken').length;
+    let wasCritted = li => li.querySelector('.crit-taken')?.length;
     options.push(
         {
             name: `${game.i18n.localize('WITCHER.Context.applyCritDmg')}`,
@@ -62,7 +60,7 @@ export function addCritMessageContextOptions(html, options) {
             condition: wasCritted,
             callback: async li => {
                 (await getInteractActor()).applyCritDamage(
-                    game.messages.get(li[0].dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
+                    game.messages.get(li.dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
                 );
             }
         },
@@ -72,7 +70,7 @@ export function addCritMessageContextOptions(html, options) {
             condition: wasCritted,
             callback: async li => {
                 (await getInteractActor()).applyBonusCritDamage(
-                    game.messages.get(li[0].dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
+                    game.messages.get(li.dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
                 );
             }
         },
@@ -82,7 +80,7 @@ export function addCritMessageContextOptions(html, options) {
             condition: wasCritted,
             callback: async li => {
                 (await getInteractActor()).applyCritWound(
-                    game.messages.get(li[0].dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
+                    game.messages.get(li.dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
                 );
             }
         }

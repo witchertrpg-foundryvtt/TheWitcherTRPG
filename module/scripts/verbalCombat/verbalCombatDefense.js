@@ -4,13 +4,13 @@ import { RollConfig } from '../rollConfig.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 
 export function addVerbalCombatDefenseMessageContextOptions(html, options) {
-    let canDefend = li => li.find('.verbal-combat-attack-message').length;
+    let canDefend = li => li.querySelector('.verbal-combat-attack-message')?.length;
     options.push({
         name: `${game.i18n.localize('WITCHER.Context.Defense')}`,
         icon: '<i class="fas fa-shield-alt"></i>',
         condition: canDefend,
         callback: async li => {
-            executeDefense(await getInteractActor(), li[0].dataset.messageId, li.find('.dice-total')[0].innerText);
+            executeDefense(await getInteractActor(), li.dataset.messageId, li.find('.dice-total')[0].innerText);
         }
     });
     return options;

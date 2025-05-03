@@ -13,7 +13,7 @@ export function addVerbalCombatChatListeners(html) {
 }
 
 export function addVerbalCombatMessageContextOptions(html, options) {
-    let canApplyVcDamage = li => li.querySelector('.verbalcombat-damage-message').length;
+    let canApplyVcDamage = li => li.querySelector('.verbalcombat-damage-message')?.length;
     options.push({
         name: `${game.i18n.localize('WITCHER.Context.applyDmg')}`,
         icon: '<i class="fas fa-user-minus"></i>',
@@ -22,7 +22,7 @@ export function addVerbalCombatMessageContextOptions(html, options) {
             applyDamage(
                 await getInteractActor(),
                 li.querySelector('.dice-total')[0].innerText,
-                li[0].dataset.messageId
+                li.dataset.messageId
             );
         }
     });
