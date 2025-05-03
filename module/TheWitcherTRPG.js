@@ -53,7 +53,7 @@ Hooks.on('renderChatMessageHTML', (message, html, data) => {
 });
 
 Hooks.on('renderActiveEffectConfig', async (activeEffectConfig, html, data) => {
-    const effectsSection = html[0].querySelector("section[data-tab='effects']");
+    const effectsSection = html.querySelector("section[data-tab='changes']");
     const inputFields = effectsSection.querySelectorAll('.key input');
     const datalist = document.createElement('datalist');
     const attributeKeyOptions = {};
