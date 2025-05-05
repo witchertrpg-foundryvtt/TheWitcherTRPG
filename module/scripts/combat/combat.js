@@ -52,7 +52,7 @@ async function executeDefense(actor, messageId) {
 }
 
 export function addCritMessageContextOptions(html, options) {
-    let wasCritted = li => li.querySelector('.crit-taken')?.length;
+    let wasCritted = li => li.querySelector('.crit-taken');
     options.push(
         {
             name: `${game.i18n.localize('WITCHER.Context.applyCritDmg')}`,
