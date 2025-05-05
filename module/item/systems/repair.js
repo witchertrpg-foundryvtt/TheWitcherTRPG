@@ -72,7 +72,8 @@ class Repair {
                 if (uuid) {
                     const component = await fromUuid(uuid);
                     missingComponents.push(component);
-                } else { //not linked, so user input is required later
+                } else {
+                    //not linked, so user input is required later
                     unknownComponents.push(craftingComponent);
                 }
             }

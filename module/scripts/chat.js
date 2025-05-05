@@ -1,7 +1,7 @@
 import { getInteractActor } from './helper.js';
 import RepairSystem from '../item/systems/repair.js';
 
-export function addChatListeners(html) {
+export function chatMessageListeners(message, html) {
     html.querySelector('button.shield')?.addEventListener('click', onShield);
     html.querySelector('button.heal')?.addEventListener('click', onHeal);
     html.querySelector('button.request-repair')?.addEventListener('click', onRepairRequest);
@@ -50,10 +50,10 @@ function onHeal(event) {
 async function onRepairRequest(event) {
     const actor = await getInteractActor();
 
-    const ownerId = event.currentTarget.getAttribute('data-owner');
+    const ownerId = event.target.dataset.owner;
     const owner = game.actors?.get(ownerId);
 
-    const itemId = event.currentTarget.getAttribute('data-item');
+    const itemId = event.target.dataset.item;
     const item = owner.items?.get(itemId);
 
     if (actor && owner && item) {

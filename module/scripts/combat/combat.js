@@ -13,9 +13,7 @@ export function addAttackChatListeners(html) {
 }
 
 export const attackChatMessageListeners = async (message, html) => {
-    if (!html.querySelector('button.damage')) return;
-
-    html.querySelector('button.damage').addEventListener('click', _ => onDamage(message));
+    html.querySelector('button.damage')?.addEventListener('click', _ => onDamage(message));
 };
 
 function onDamage(message) {
