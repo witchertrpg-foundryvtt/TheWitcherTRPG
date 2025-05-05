@@ -15,7 +15,7 @@ export function addDamageMessageContextOptions(html, options) {
             callback: async li => {
                 ApplyNormalDamage(
                     await getInteractActor(),
-                    parseInt(li.find('.dice-total')[0].innerText),
+                    parseInt(li.querySelector('.dice-total').innerText),
                     li.dataset.messageId
                 );
             }
@@ -27,7 +27,7 @@ export function addDamageMessageContextOptions(html, options) {
             callback: async li => {
                 ApplyNonLethalDamage(
                     await getInteractActor(),
-                    parseInt(li.find('.dice-total')[0].innerText),
+                    parseInt(li.querySelector('.dice-total').innerText),
                     li.dataset.messageId
                 );
             }
