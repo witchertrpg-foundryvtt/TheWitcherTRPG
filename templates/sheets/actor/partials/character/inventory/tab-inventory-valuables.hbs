@@ -1,0 +1,101 @@
+<details open>
+    <summary class="list-header valuables-list-header">
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/inventory-items-summary.hbs" header=header itemType=itemType hasQuantity=hasQuantity}}
+    </summary>
+
+    <ol class="list item-table item-list">
+        {{#each valuables as |valuable id|}}
+            <li class="item list-item" data-item-id="{{valuable.id}}">
+                <div class="list-details valuable-details">
+                    <a class="item-display-info display-details">
+                        <img class="item-image item-list-image" src="{{valuable.img}}">
+                        <span class="item-image item-list-image" data-tooltip="{{localize 'WITCHER.Item.openDescription'}}">
+                            <i class="fa-solid fa-book"></i>
+                        </span>
+                    </a>
+                    <div>{{valuable.name}}</div>
+                    <div class="list-label">
+                        <span>
+                            <input class="inline-edit item-quantity" data-field="system.quantity" type="text" value="{{valuable.system.quantity}}" data-dtype="Number" />
+                        </span>
+                        <span class="list-controls">
+                            <a class="item-chat" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}">
+                                <i class="fa-regular fa-message"></i></a>
+                            <a class="item-carried {{#if valuable.system.isCarried}}equipped{{/if}}" data-tooltip="{{#if valuable.system.isCarried}}
+                                {{localize 'WITCHER.Item.Carried'}}
+                            {{else}}
+                                {{localize 'WITCHER.Item.notCarried'}}
+                            {{/if}}">
+                                <i class="{{#if valuable.system.isCarried}}fa-solid{{else}}fa-regular{{/if}} fa-hand"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="invisible item-info list-item-info">
+                    <div class="item-tags">
+                        <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Availability"}}">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            {{ localize (lookup ../config.Availability valuable.system.avail) }}
+                        </span>
+                        <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Concealment"}}">
+                            <i class="fa-solid fa-eye-slash"></i>
+                            {{ localize (lookup ../config.Concealment valuable.system.conceal) }}
+                        </span>
+                        <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
+                            <i class="fa-solid fa-weight-hanging"></i>
+                            {{valuable.system.weight}}
+                        </span>
+                        <span class="item-tag" data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
+                            <i class="fa-solid fa-coins"></i>
+                            {{valuable.system.cost}}
+                        </span>
+                    </div>
+                    {{#if valuable.system.description}}
+                        <div class="list-item-description">
+                            <h3>{{localize "WITCHER.Item.Description"}}</h3>
+                            {{valuable.system.description}}
+                        </div>
+                    {{/if}}
+                    {{#if (eq valuable.type 'container')}}
+                        <h3>{{localize "WITCHER.Item.containerItems"}}</h3>
+                        <div class="progress-bar-stored-weight">
+                            <progress
+                                value="{{valuable.system.storedWeight}}"
+                                max="{{valuable.system.carry}}"
+                            ></progress>
+                            <div class="progress-bar-stored-weight-labels">
+                                <span>Weight: {{valuable.system.storedWeight}}</span>
+                                <span class="bulk-max">Max Weight: {{valuable.system.carry}}</span>
+                            </div>
+                        </div>
+                        <div class="container-stored-item">
+                            {{#each valuable.system.itemContent as |storedItem|}}
+                            <details class="stored-item" data-item-id="{{storedItem.uuid}}">
+                                <summary class="stored-item-label">
+                                    <img class="stored-item-img" src="{{storedItem.img}}">
+                                    <span>{{storedItem.name}}</span>
+                                </summary>
+                                <div class="stored-item-info">
+                                    <div class="item-tags">
+                                        <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
+                                            <i class="fa-solid fa-weight-hanging"></i>
+                                            {{storedItem.weight}}
+                                        </span>
+                                    </div>
+                                    {{#if storedItem.description}}
+                                        <div class="list-item-description">
+                                            <h3>{{localize "WITCHER.Item.Description"}}</h3>
+                                            {{storedItem.description}}
+                                        </div>
+                                    {{/if}}
+                                </div>
+                            </details>
+                                
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                </div>
+            </li>
+        {{/each}}
+    </ol>
+</details>

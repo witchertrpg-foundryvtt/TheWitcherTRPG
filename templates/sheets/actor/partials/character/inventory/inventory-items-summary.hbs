@@ -1,0 +1,23 @@
+<i class="fas fa-chevron-down chevron-icon"></i>
+<h3>{{header}}</h3>
+<div class="list-label">
+    {{#if hasDamage}}
+        <span>{{localize "WITCHER.table.Damage"}}</span>
+    {{/if}}
+    {{#if hasReliability}}
+        <span>{{localize "WITCHER.table.Reliability"}}</span>
+    {{/if}}
+    {{#if hasStaCost}}
+        <span>{{localize "WITCHER.Spell.Short.StaCost"}}</span>
+    {{/if}}
+    {{#if hasQuantity}}
+        <span>{{localize "WITCHER.table.Quantity"}}</span>
+    {{/if}}
+    {{#if itemType}}
+        <span>
+            <a class="add-item" data-itemType="{{itemType}}" data-spellType="{{subtype}}">
+                <i class="fas fa-plus"></i>
+            </a>
+        </span>
+    {{/if}}
+</div>

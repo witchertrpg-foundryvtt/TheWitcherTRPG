@@ -1,0 +1,22 @@
+<section>
+    {{#if (or (eq type 'spell') (eq type 'hex') (eq type 'ritual'))}}
+        <div class="list-item-description">
+            {{#if item.system.effect}}
+                <h4>{{localize "WITCHER.Item.Effect"}}</h4>
+                <span>{{item.system.effect}}</span>
+            {{/if}}
+        </div>
+        <div class="list-item-description">
+            {{#if item.system.sideEffect}}
+                <h4>{{localize "WITCHER.Spell.SideEffect"}}</h4>
+                <span>{{item.system.sideEffect}}</span>
+            {{/if}}
+        </div>
+        <div class="list-item-description">
+            {{#if item.system.liftRequirement}}
+                <h4>{{localize "WITCHER.Spell.Requirements"}}</h4>
+                <span>{{item.system.liftRequirement}}</span>
+            {{/if}}
+        </div>
+    {{/if}}
+</section>
