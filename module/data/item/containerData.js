@@ -29,6 +29,7 @@ export default class ContainerData extends CommonItemData {
         this.storedWeight += item.system.quantity * item.system.weight
         this.itemContent.push({
           name: item.name,
+          img: item.img,
           quantity: item.system.quantity,
           weight: item.system.weight,
           description: item.system.description,

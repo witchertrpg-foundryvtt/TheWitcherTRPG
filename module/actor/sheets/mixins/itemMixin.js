@@ -1,3 +1,5 @@
+import { WITCHER } from '../../../setup/config.js';
+
 export let itemMixin = {
     async _onDropItem(event, data) {
         if (!this.actor.isOwner) return false;
@@ -82,6 +84,22 @@ export let itemMixin = {
         let item = this.actor.items.get(itemId);
 
         await item.update({ 'system.equipped': !item.system.equipped });
+    },
+
+    async _onItemCarried(event) {
+        event.preventDefault();
+        let itemId = event.currentTarget.closest('.item').dataset.itemId;
+        let item = this.actor.items.get(itemId);
+
+        await item.update({ 'system.isCarried': !item.system.isCarried });
+    },
+
+    async _onItemLearned(event) {
+        event.preventDefault();
+        let itemId = event.currentTarget.closest('.item').dataset.itemId;
+        let item = this.actor.items.get(itemId);
+
+        await item.update({ 'system.learned': !item.system.learned });
     },
 
     _onItemInlineEdit(event) {
@@ -295,9 +313,30 @@ export let itemMixin = {
         });
     },
 
+    async _onItemMessage(event) {
+        let itemId = event.currentTarget.closest('.list-item').dataset.itemId;
+        let item = this.actor.items.get(itemId);
+        const dialogData = {
+            item: item,
+            type: item.type,
+            config: WITCHER
+        };
+
+        ChatMessage.create({
+            content: await renderTemplate(
+                'systems/TheWitcherTRPG/templates/chat/item/item-description.hbs',
+                dialogData
+            ),
+            speaker: ChatMessage.getSpeaker({ actor: this.actor.name }),
+            type: CONST.CHAT_MESSAGE_TYPES.IC
+        });
+    },
+
     itemListener(html) {
         html.find('.add-item').on('click', this._onItemAdd.bind(this));
         html.find('.item-equip').on('click', this._onItemEquip.bind(this));
+        html.find('.item-carried').on('click', this._onItemCarried.bind(this));
+        html.find('.item-learned').on('click', this._onItemLearned.bind(this));
         html.find('.item-edit').on('click', this._onItemEdit.bind(this));
         html.find('.item-show').on('click', this._onItemShow.bind(this));
         html.find('.item-delete').on('click', this._onItemDelete.bind(this));
@@ -311,6 +350,7 @@ export let itemMixin = {
 
         html.find('.item-weapon-display').on('click', this._onItemDisplayInfo.bind(this));
         html.find('.item-armor-display').on('click', this._onItemDisplayInfo.bind(this));
+        html.find('.item-display-info').on('click', this._onItemDisplayInfo.bind(this));
         html.find('.item-valuable-display').on('click', this._onItemDisplayInfo.bind(this));
         html.find('.item-spell-display').on('click', this._onItemDisplayInfo.bind(this));
         html.find('.item-substance-display').on('click', this._onSubstanceDisplay.bind(this));
@@ -321,6 +361,7 @@ export let itemMixin = {
 
         html.find('.item-roll').on('click', this._onItemRoll.bind(this));
         html.find('.spell-roll').on('click', this._onItemRoll.bind(this));
+        html.find('.item-chat').on('click', this._onItemMessage.bind(this));
     }
 };
 

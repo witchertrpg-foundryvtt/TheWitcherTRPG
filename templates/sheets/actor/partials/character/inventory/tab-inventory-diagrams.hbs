@@ -1,0 +1,110 @@
+<details open>
+    <summary class="list-header valuables-list-header">
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/inventory-items-summary.hbs" header=header hasQuantity=hasQuantity}}
+    </summary>
+
+    <ol class="list item-table item-list">
+        {{#each diagrams as |diagram id|}}
+            <li class="item list-item" data-item-id="{{diagram.id}}">
+                <div class="list-details valuable-details">
+                    <a class="item-display-info display-details">
+                        <img class="item-image item-list-image" src="{{diagram.img}}">
+                        <span class="item-image item-list-image" data-tooltip="{{localize 'WITCHER.Item.openDescription'}}">
+                            <i class="fa-solid fa-book"></i>
+                        </span>
+                    </a>
+                    <div>{{diagram.name}}</div>
+                    <div class="list-label">
+                        <span>
+                            <input class="inline-edit item-quantity" data-field="system.quantity" type="text" value="{{diagram.system.quantity}}" data-dtype="Number" />
+                        </span>
+                        <span class="list-controls">
+                            <a class="item-chat" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}">
+                                <i class="fa-regular fa-message"></i></a>
+                            <a class="item-learned {{#if diagram.system.learned}}equipped{{/if}}" data-tooltip="{{#if diagram.system.learned}}
+                                {{localize 'WITCHER.Diagram.Learned'}}
+                            {{else}}
+                                {{localize 'WITCHER.Diagram.notLearned'}}
+                            {{/if}}">
+                                <i class="{{#if diagram.system.learned}}fa-solid{{else}}fa-regular{{/if}} fa-bookmark"></i>
+                            </a>
+                            <a class="crafting-craft"><i class="fas fa-hammer"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div class="invisible item-info list-item-info">
+                    <div class="item-tags">
+                        {{#if diagram.system.isFormulae}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Diagram.alchemyDC"}}">
+                                <i class="fa-solid fa-dice-d20"></i>
+                                {{diagram.system.alchemyDC}}
+                            </span>
+                        {{else}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Diagram.craftingDC"}}">
+                                <i class="fa-solid fa-dice-d20"></i>
+                                {{diagram.system.craftingDC}}
+                            </span>
+                        {{/if}}
+                        <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
+                            <i class="fa-solid fa-scroll"></i>
+                            {{diagram.system.type}}
+                        </span>
+                        <span class="item-tag" data-tooltip="{{localize "WITCHER.Actor.Profession.Level"}}">
+                            <i class="fa-solid fa-screwdriver"></i>
+                            {{ localize (lookup ../config.craftingLevels diagram.system.level) }}
+                        </span>
+                        <span class="item-tag" data-tooltip="{{localize "WITCHER.Diagram.craftingTime"}}">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            {{diagram.system.craftingTime}}
+                        </span>
+                        <span class="item-tag" data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
+                            <i class="fa-solid fa-coins"></i>
+                            {{diagram.system.cost}}
+                        </span>
+                        <span class="item-tag" data-tooltip="{{localize "WITCHER.Diagram.investment"}}">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                            {{diagram.system.investment}}
+                        </span>
+                    </div>
+                {{#if diagram.system.description}}
+                    <div class="list-item-description">
+                        <h3>{{localize "WITCHER.Item.Description"}}</h3>
+                        {{{diagram.system.description}}}
+                    </div>
+                {{/if}}
+                {{#if (or diagram.system.craftingComponents diagram.system.alchemyComponents)}}
+                    <h3>{{localize "WITCHER.Diagram.components"}}</h3>
+                {{/if}}
+                {{#if diagram.system.craftingComponents}}
+                    {{#each diagram.system.craftingComponents as |component name|}}
+                    <details class="stored-item">
+                        <summary class="stored-item-label">
+                            <img class="stored-item-img" src="{{component.img}}">
+                            <span>{{component.name}}</span>
+                            <span>{{getOwnedComponentCount ../../actor component.name}}</span>
+                            <span>/</span>
+                            <span>{{component.quantity}}</span>
+                        </summary>
+                    </details>
+                    {{/each}}
+                {{/if}}
+                {{#if diagram.system.isFormulae}}
+                    {{#each ../alchemyComponentsList as |component|}}
+                        {{#if (lookup diagram.system.alchemyComponents component.key)}}
+                            <details class="stored-item">
+                                <summary class="stored-item-label">
+                                    <img class="stored-item-img" src="systems/TheWitcherTRPG/assets/images/{{component.image}}">
+                                    <span>{{localize (concat "WITCHER.Inventory." component.label)}}</span>
+                                    <span>{{count}}</span>
+                                    <span>/</span>
+                                    <span>{{lookup  diagram.system.alchemyComponents component.key}}</span>
+                                </summary>
+                            </details>
+                        {{/if}}
+                    {{/each}}
+                {{/if}}
+                </div>
+            </li>
+        {{/each}}
+    </ol>
+</details>

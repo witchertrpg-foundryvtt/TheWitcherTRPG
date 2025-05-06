@@ -1,0 +1,10 @@
+<section>
+    {{#if (or (eq type 'armor') (eq type 'weapon') (eq type 'diagrams') (eq type 'mount') (eq type 'valuable'))}}
+        <div class="list-item-description">
+            {{#if item.system.description}}
+                <h4>{{localize "WITCHER.Item.Description"}}</h4>
+                <span>{{item.system.description}}</span>
+            {{/if}}
+        </div>
+    {{/if}}
+</section>

@@ -19,16 +19,18 @@
 }
 
 /* Navigation tabs */
-.sheet nav.sheet-tabs {
+.witcher.sheet nav.sheet-tabs {
     height: 32px;
     flex: 0 0 32px;
     margin: 4px 0;
-    line-height: 32px;
     border-top: 1px solid #06171e;
     border-bottom: 1px solid #06171e;
     background-color: #1c6888;
-    color: white;
     text-align: center;
+}
+
+.witcher.sheet nav.sheet-tabs a {
+    color: white;
 }
 
 /* Sheet min widths */
@@ -43,13 +45,14 @@
 }
 
 /* App theme edits */
-.window-header {
+.actor .window-header {
     flex: 0 0 30px;
     overflow: hidden;
     padding: 0 8px;
     line-height: 30px;
     border-bottom: 1px solid #000;
     background-color: #1c6888;
+    border-radius: 5px 5px 0px 0px;
 }
 
 .item-spell .window-header {
@@ -181,7 +184,6 @@ input.item-quantity:hover {
 
 .armor-section {
     flex: 1;
-    margin-left: 10px;
 }
 
 .armor-section .flex label {

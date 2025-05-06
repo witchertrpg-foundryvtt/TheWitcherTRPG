@@ -43,6 +43,27 @@ export default class DiagramData extends CommonItemData {
         if (itemUuid) {
             this.associatedItem = fromUuidSync(itemUuid);
         }
+
+        this.craftingComponents = this.enrichDiagramComponents(this.craftingComponents);
+    }
+
+    enrichDiagramComponents(craftingComponents) {
+        if (!craftingComponents) return;
+
+        return craftingComponents.map(component => {
+            if (!component?.uuid) return component;
+
+            const resolvedItem = fromUuidSync(component.uuid);
+            if (!resolvedItem) return component;
+
+            return {
+                ...component,
+                name: resolvedItem.name,
+                img: resolvedItem.img,
+                type: resolvedItem.type,
+                quantity: component.quantity ?? 1
+            };
+        });
     }
 
     /** @inheritdoc */

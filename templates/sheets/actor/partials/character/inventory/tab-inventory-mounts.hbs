@@ -1,0 +1,65 @@
+<details open>
+    <summary class="list-header valuables-list-header">
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/inventory-items-summary.hbs" header=header itemType=itemType subtype=subtype hasQuantity=hasQuantity}}
+    </summary>
+
+    <ol class="list item-table item-list">
+        {{#each mounts as |mount id|}}
+            <li class="item list-item" data-item-id="{{mount.id}}">
+                <div class="list-details valuable-details">
+                    <a class="item-display-info display-details">
+                        <img class="item-image item-list-image" src="{{mount.img}}">
+                        <span class="item-image item-list-image" data-tooltip="{{localize 'WITCHER.Item.openDescription'}}">
+                            <i class="fa-solid fa-book"></i>
+                        </span>
+                    </a>
+                    <div>{{mount.name}}</div>
+                    <div class="list-label">
+                        <span>
+                            <input class="inline-edit item-quantity" data-field="system.quantity" type="text" value="{{mount.system.quantity}}" data-dtype="Number" />
+                        </span>
+                        <span class="list-controls">
+                            <a class="item-chat" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}">
+                                <i class="fa-regular fa-message"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="invisible item-info list-item-info">
+                    <div class="item-tags">
+                        {{#if mount.system.dex}}
+                            <span class="item-tag">
+                                <span><b>{{localize "WITCHER.Mount.Dex"}}:</b></span>
+                                <span>{{mount.system.dex}}</span>
+                            </span>
+                        {{/if}}
+                        {{#if mount.system.control}}
+                            <span class="item-tag">
+                                <span><b>{{localize "WITCHER.Mount.Control"}}:</b></span>
+                                <span>{{mount.system.control}}</span>
+                            </span>
+                        {{/if}}
+                        {{#if mount.system.speed}}
+                            <span class="item-tag">
+                                <span><b>{{localize "WITCHER.Mount.Speed"}}:</b></span>
+                                <span>{{mount.system.speed}}</span>
+                            </span>
+                        {{/if}}
+                        {{#if mount.system.hp}}
+                            <span class="item-tag">
+                                <span><b>{{localize "WITCHER.Mount.Hp"}}:</b></span>
+                                <span>{{mount.system.hp}}</span>
+                            </span>
+                        {{/if}}
+                    </div>
+                    <div class="list-item-description">
+                        {{#if mount.system.description}}
+                            <h3>{{localize "WITCHER.Item.Description"}}</h3>
+                            <span>{{mount.system.description}}</span>
+                        {{/if}}
+                    </div>
+                </div>
+            </li>
+        {{/each}}
+    </ol>
+</details>
