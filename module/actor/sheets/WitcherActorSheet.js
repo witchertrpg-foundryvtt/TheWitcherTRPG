@@ -93,7 +93,7 @@ export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
     }
 
     async _renderConfigureDialog() {
-        this.configuration?._render(true);
+        this.configuration?.render(true);
     }
 
     _prepareCustomSkills(context) {

@@ -1,20 +1,43 @@
-export default class WitcherActorConfigurationSheet extends foundry.appv1.sheets.ActorSheet {
-    /** @override */
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets;
+
+export default class WitcherMonsterConfigurationSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
+    static DEFAULT_OPTIONS = {
+        position: {
             width: 520,
-            height: 480,
-            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body' }]
-        });
-    }
+            height: 480
+        }
+    };
 
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/actor/configuration/${this.object.type}Configuration.hbs`;
-    }
+    static PARTS = {
+        header: {
+            template: `systems/TheWitcherTRPG/templates/sheets/actor/configuration/monster/header.hbs`
+        },
+        tabs: {
+            // Foundry-provided generic template
+            template: 'templates/generic/tab-navigation.hbs'
+        },
+        general: {
+            template: `systems/TheWitcherTRPG/templates/sheets/actor/configuration/monster/general.hbs`,
+            scrollable: ['']
+        },
+        skills: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/configuration/partials/skillConfiguration.hbs',
+            scrollable: ['']
+        }
+    };
+
+    static TABS = {
+        primary: {
+            tabs: [{ id: 'general' }, { id: 'skills' }],
+            initial: 'general',
+            labelPrefix: 'WITCHER.Actor.settings'
+        }
+    };
 
     /** @override */
-    getData() {
-        const context = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
         context.config = CONFIG.WITCHER;
         context.config.statLabels = Object.keys(CONFIG.WITCHER.statMap).reduce((obj, stat) => {
             obj[stat] = CONFIG.WITCHER.statMap[stat].label ?? CONFIG.WITCHER.statMap[stat].labelShort;
@@ -23,7 +46,7 @@ export default class WitcherActorConfigurationSheet extends foundry.appv1.sheets
 
         context.system = context.actor?.system;
 
-        context.systemFields = this.actor.system.schema.fields;
+        context.systemFields = this.document.system.schema.fields;
         context.skillConfig = this._getSkills();
 
         return context;
