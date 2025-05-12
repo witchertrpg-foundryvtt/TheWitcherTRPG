@@ -16,7 +16,9 @@ export function addStatusEffectChatListeners(html) {
 export const chatMessageListeners = async (message, html) => {
     if (!html.querySelector('a.apply-status')) return;
 
-    html.querySelector('a.apply-status').addEventListener('click', event => onApplyStatus(event));
+    html.querySelectorAll('a.apply-status').forEach(status =>
+        status.addEventListener('click', event => onApplyStatus(event))
+    );
 };
 
 export async function onApplyStatus(event) {
@@ -48,12 +50,12 @@ export async function applyStatusEffectToActor(actorUuid, statusEffectId, durati
     }
 
     //only try to apply it when not already present
-    if (!actor.appliedEffects.querySelector(effect => effect.statuses.querySelector(status => status == statusEffectId))) {
+    if (!actor.appliedEffects.find(effect => effect.statuses.find(status => status == statusEffectId))) {
         await actor.toggleStatusEffect(statusEffectId);
 
         handleStatusCounterIntegration(actor, statusEffectId, duration);
 
-        if (actor.system.statusEffectImmunities?.querySelector(immunity => immunity == statusEffectId)) {
+        if (actor.system.statusEffectImmunities?.find(immunity => immunity == statusEffectId)) {
             //untoggle it so people see it was tried to be applied but failed
             setTimeout(() => {
                 actor.toggleStatusEffect(statusEffectId);
