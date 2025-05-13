@@ -286,27 +286,27 @@
                 "notFound": "Diese Gegenstände sind nicht verlinkt und konnten nicht hinzugefügt werden."
             },
             "Settings": {
-                "General": "Allgemeine Einstellungen",
-                "Alchemical": "Einstellungen für alchemistische Gegenstände",
-                "Armor": "Einstellungen für Rüstung",
-                "Mutagen": "Einstellungen für Mutagen",
-                "Race": "Einstellungen für Rasse",
-                "Valuable": "Einstellungen für Ausrüstung",
+                "general": "Allgemeine Einstellungen",
+                "alchemical": "Einstellungen für alchemistische Gegenstände",
+                "armor": "Einstellungen für Rüstung",
+                "mutagen": "Einstellungen für Mutagen",
+                "race": "Einstellungen für Rasse",
+                "valuable": "Einstellungen für Ausrüstung",
                 "profession": "Einstellungen für Beruf",
-                "Weapon": "Einstellungen für Waffen",
-                "DamageProperties": "Schaden Eigenschaften",
-                "DefenseProperties": "Verteidigung Eigenschaften",
-                "ConsumableProperties": "Verzehr Eigenschaften",
-                "RegionProperties": "Gebiet Eigenschaften",
-                "Attacks": {
+                "weapon": "Einstellungen für Waffen",
+                "damageProperties": "Schaden Eigenschaften",
+                "defenseProperties": "Verteidigung Eigenschaften",
+                "consumableProperties": "Verzehr Eigenschaften",
+                "regionProperties": "Gebiet Eigenschaften",
+                "attacks": {
                     "defendWith": {
                         "label": "Verteidgung mit:",
                         "hint": "Einstellungen, wie das Ziel sich dagegen verteidigen kann"
                     }
                 },
-                "Spell": {
-                    "SelfProperties": "Auf Anwender wirken",
-                    "CastProperties": "Auf Zeil wirken"
+                "spell": {
+                    "selfProperties": "Auf Anwender wirken",
+                    "castProperties": "Auf Ziel wirken"
                 }
             }
         },

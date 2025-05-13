@@ -1,11 +1,7 @@
-const { HandlebarsApplicationMixin } = foundry.applications.api;
-const { ItemSheetV2 } = foundry.applications.sheets;
-
-export default class WitcherConfigurationSheetV1 extends HandlebarsApplicationMixin(ItemSheetV2) {
+export default class WitcherConfigurationSheetV1 extends foundry.appv1.sheets.ItemSheet {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['witcher', 'sheet', 'item'],
             width: 520,
             height: 480,
             tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body' }],
@@ -17,6 +13,14 @@ export default class WitcherConfigurationSheetV1 extends HandlebarsApplicationMi
             ]
         });
     }
+
+    static DEFAULT_OPTIONS = {
+        classes: ['witcher', 'sheet', 'item'],
+        position: {
+            width: 520,
+            height: 480
+        }
+    };
 
     get template() {
         return `systems/TheWitcherTRPG/templates/sheets/item/configuration/${this.object.type}Configuration.hbs`;

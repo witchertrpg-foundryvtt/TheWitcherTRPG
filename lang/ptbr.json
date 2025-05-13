@@ -283,26 +283,26 @@
                 "notFound": "Estes itens não estão vinculado e não puderam ser adicionados"
             },
             "Settings": {
-                "General": "Configurações Gerais",
-                "Alchemical": "Configurações dos Alquímicos",
-                "Armor": "Configurações da Armadura",
-                "Mutagen": "Configurações de Mutagênico",
-                "Race": "Configurações de Raça",
-                "Valuable": "Configurações de Valioso",
-                "Weapon": "Configurações da Arma",
-                "DamageProperties": "Propriedades do Dano",
-                "DefenseProperties": "Propriedades da Defesa",
-                "ConsumableProperties": "Propriedades de Consumíveis",
-                "RegionProperties": "Propriedades de Região",
-                "Attacks": {
+                "general": "Configurações Gerais",
+                "alchemical": "Configurações dos Alquímicos",
+                "armor": "Configurações da Armadura",
+                "mutagen": "Configurações de Mutagênico",
+                "race": "Configurações de Raça",
+                "valuable": "Configurações de Valioso",
+                "weapon": "Configurações da Arma",
+                "damageProperties": "Propriedades do Dano",
+                "defenseProperties": "Propriedades da Defesa",
+                "consumableProperties": "Propriedades de Consumíveis",
+                "regionProperties": "Propriedades de Região",
+                "attacks": {
                     "defendWith": {
                         "label": "Defende-se com:",
                         "hint": "Configure como o alvo pode se defender contra isso"
                     }
                 },
-                "Spell": {
-                    "SelfProperties": "Aplicar ao conjurador",
-                    "CastProperties": "Aplicar ao alvo"
+                "spell": {
+                    "selfProperties": "Aplicar ao conjurador",
+                    "castProperties": "Aplicar ao alvo"
                 }
             }
         },

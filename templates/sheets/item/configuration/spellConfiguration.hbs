@@ -1,19 +1,19 @@
 <form class="{{cssClass}}" autocomplete="off">
     {{! Sheet Tab Navigation }}
     <nav class="sheet-tabs tabs flexrow" data-group="primary">
-        <a data-tab="general">{{localize "WITCHER.Item.Settings.General"}}</a>
+        <a data-tab="general">{{localize "WITCHER.Item.Settings.general"}}</a>
         {{#if data.causeDamages}}
-            <a data-tab="damageProperties">{{localize "WITCHER.Item.Settings.DamageProperties"}}</a>
+            <a data-tab="damageProperties">{{localize "WITCHER.Item.Settings.damageProperties"}}</a>
         {{/if}}
         {{#if data.createTemplate}}
-            <a data-tab="regionProperties">{{localize "WITCHER.Item.Settings.RegionProperties"}}</a>
+            <a data-tab="regionProperties">{{localize "WITCHER.Item.Settings.regionProperties"}}</a>
         {{/if}}
         <a data-tab="effects">{{localize "WITCHER.activeEffect.tab"}}</a>
     </nav>
     {{! Sheet Body }}
     <section class="sheet-body">
         <div class="tab" data-group="primary" data-tab="general">
-            <h3>{{localize "WITCHER.Item.Settings.Spell.SelfProperties"}}</h3>
+            <h3>{{localize "WITCHER.Item.Settings.Spell.selfProperties"}}</h3>
             <table class="item-bottom-table">
                 <tr>
                     <th><a class="add-effect-self" data-target='system.selfEffects'
@@ -35,7 +35,7 @@
                     </tr>
                 {{/each}}
             </table>
-            <h3>{{localize "WITCHER.Item.Settings.Spell.CastProperties"}}</h3>
+            <h3>{{localize "WITCHER.Item.Settings.Spell.castProperties"}}</h3>
             <table class="item-bottom-table">
                 <tr>
                     <th><a class="add-effect-cast" data-target='system.onCastEffects'

@@ -1,6 +1,6 @@
-import WitcherConfigurationSheet from './WitcherConfigurationSheet.js';
+import WitcherConfigurationSheetV1 from './WitcherConfigurationSheetV1.js';
 
-export default class WitcherConsumableConfigurationSheet extends WitcherConfigurationSheet {
+export default class WitcherConsumableConfigurationSheet extends WitcherConfigurationSheetV1 {
     activateListeners(html) {
         super.activateListeners(html);
 

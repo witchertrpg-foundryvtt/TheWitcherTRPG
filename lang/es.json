@@ -277,26 +277,26 @@
                 "notFound": "Estos elementos no están vinculados y no se pueden agregar automáticamente."
             },
             "Settings": {
-                "General": "Configuración general",
-                "Alchemical": "Configuración alquímica",
-                "Armor": "Configuración de armadura",
-                "Mutagen": "Configuración de mutagen",
-                "Race": "Configuración de carrera",
-                "Valuable": "Configuraciones valiosas",
-                "Weapon": "Configuración de armas",
-                "DamageProperties": "Propiedades de daño",
-                "DefenseProperties": "Propiedades de defensa",
-                "ConsumableProperties": "Propiedades consumibles",
-                "RegionProperties": "Propiedades de región",
-                "Attacks": {
+                "general": "Configuración general",
+                "alchemical": "Configuración alquímica",
+                "armor": "Configuración de armadura",
+                "mutagen": "Configuración de mutagen",
+                "race": "Configuración de carrera",
+                "valuable": "Configuraciones valiosas",
+                "weapon": "Configuración de armas",
+                "damageProperties": "Propiedades de daño",
+                "defenseProperties": "Propiedades de defensa",
+                "consumableProperties": "Propiedades consumibles",
+                "regionProperties": "Propiedades de región",
+                "attacks": {
                     "defendWith": {
                         "label": "Defiéndete con:",
                         "hint": "Configurar cómo el objetivo puede defenderse contra esto."
                     }
                 },
-                "Spell": {
-                    "SelfProperties": "Aplicar a la rueda",
-                    "CastProperties": "Aplicar al objetivo"
+                "spell": {
+                    "selfProperties": "Aplicar a la rueda",
+                    "castProperties": "Aplicar al objetivo"
                 }
             }
         },

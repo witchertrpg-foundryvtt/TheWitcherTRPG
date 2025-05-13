@@ -283,25 +283,25 @@
                 "notFound": "These items are not linked and could not be automatically added."
             },
             "Settings": {
-                "General": "General Settings",
-                "Alchemical": "Alchemical Settings",
-                "Armor": "Armor Settings",
-                "Mutagen": "Mutagen Settings",
-                "Race": "Race Settings",
-                "Valuable": "Valuable Settings",
+                "general": "General Settings",
+                "alchemical": "Alchemical Settings",
+                "armor": "Armor Settings",
+                "mutagen": "Mutagen Settings",
+                "race": "Race Settings",
+                "valuable": "Valuable Settings",
                 "profession": "Profession Settings",
-                "Weapon": "Weapon Settings",
-                "DamageProperties": "Damage Properties",
-                "DefenseProperties": "Defense Properties",
-                "ConsumableProperties": "Consumable Properties",
-                "RegionProperties": "Region Properties",
-                "Attacks": {
+                "weapon": "Weapon Settings",
+                "damageProperties": "Damage Properties",
+                "defenseProperties": "Defense Properties",
+                "consumableProperties": "Consumable Properties",
+                "regionProperties": "Region Properties",
+                "attacks": {
                     "defendWith": {
                         "label": "Defend against with:",
                         "hint": "Configure how the target can defend against this"
                     }
                 },
-                "Spell": {
+                "spell": {
                     "SelfProperties": "Apply to caster",
                     "CastProperties": "Apply to target"
                 }
