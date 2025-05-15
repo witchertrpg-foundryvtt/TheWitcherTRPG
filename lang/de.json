@@ -10,7 +10,6 @@
             "enhancement": "Verbesserung",
 			"hex": "Verhexungen",
             "homeland": "Herkunft",
-            "globalModifier": "Globaler Modifikator (abgekündigt)",
             "mount": "Reittier",
             "mutagen": "Mutagen",
             "note": "Notiz",
@@ -219,12 +218,10 @@
             "equipEnhancement": "Eine Verbesserung ausrüsten",
             "Availability": "Vorkommen",
             "AddEffect": "Effekt hinzufügen",
-            "AddGlobalModifier": "Globalen Modifikator hinzufügen",
             "AddComponent": "Komponente hinzufügen",
             "AddAssociatedItem": "Zugehöriges Gegenstand hinzufügen",
             "RemoveAssociatedItem": "Zugehöriges Gegenstand entfernen",
             "RemoveEffect": "Effekt entfernen",
-            "RemoveGlobalModifier": "Globalen Modifikator entfernen",
             "RemoveComponent": "Komponente entfernen",
             "CraftingMaterial": "Werkkomponenten",
             "Hides&AnimalParts": "Felle und Tierteile",
@@ -242,16 +239,12 @@
             "ConsumeProperties": {
                 "doesHeal": "Heilt",
                 "heal": "Heilt für",
-                "appliesGlobalModifier": "Wendet Globale Modifikatoren an (wird entfernt, stattdessen Aktive Effekte benutzen)",
                 "Chat": {
                     "healedFor": "Hat geheilt für",
-                    "consumeGlobalModifiers": "Hat Globale Modifikatoren angewendet",
                     "consumeEffects": "Hat Effekte angewendet"
                 }
             },
             "DamageProperties": {
-                "appliesGlobalModifierToHit": "wendet globalen Modifikator bei Treffer an (wird entfernt, stattdessen Aktive Effekte benutzen)",
-                "appliesGlobalModifierToDamaged": "wendet globalen Modifikator bei Schaden an (wird entfernt, stattdessen Aktive Effekte benutzen)",
                 "damageIsAblation": "Behandelt Schaden als Abtragung (nicht funktionsfähig)",
                 "damageToAllLocations": "Schädigt alle Trefferzonen",
                 "bypassesWornArmor": "Umgeht getragene Rüstung",
@@ -1020,12 +1013,9 @@
             "clickableImageItemTypes": "Zeige 'Zoombar'-Checkbox bei Items",
             "clickableImageItemTypesHint": "Eine kommaseparierte Liste von Item Typen, bei denen eine Checkbox angezeigt werden soll. Wenn die Checkbox angekreuzt ist, können die Spieler im Inventar auf das Item Bild klicken um es zu vergrößern. Mögliche Item Typen sind 'valuable', 'weapon', 'armor', 'alchemical', 'diagrams', 'component'.",
             "clickableImageCheckboxForGMOnly": "Zeige 'Zoombar'-Checkbox nur dem GM",
-            "specialFont": "Benutze die besondere Schriftart von 'The Witcher'",
-            "globalModifierLookupCompendium": "Global Modifier Nachschlage Compendium",
-            "globalModifierLookupCompendiumHint": "Wenn ein Globaler Modifikator aktiviert werden soll, dieser aber nicht auf dem Charakterbogen vorhanden ist, wird in diesem Kompendium danach gesucht"
+            "specialFont": "Benutze die besondere Schriftart von 'The Witcher'"
         },
         "background.other": "Andere",
-        "background.globalModifier": "Globale Modifikatoren",
         "Resources.modifiers": "Ressourcenmodifikatoren",
         "Notes": "Notizen",
         "Skills": {
@@ -1143,9 +1133,6 @@
             "applyCritWound": "Füge kritische Wunde zu",
             "fumble": "Patzer"
         },
-        "Defense": {
-            "Crit": "Du erleidest einen kritischen Treffer"
-        },
         "Heal": {
             "button": "Heilung",
             "dialogTitle": "Heilung nach Rast",
@@ -1228,20 +1215,6 @@
                 "Item": {
                     "damage": "Schaden"
                 }
-            }
-        },
-        "globalModifier": {
-            "tab": "Globaler Modifikator",
-            "isActive": "ist aktiv",
-            "special": "Spezielle Effekte",
-            "specialEffect": {
-                "wolfstrike": "Wolfsschule Harter Angriff",
-                "viperstrike": "Schlangenschule Beidhändiger Angriff",
-                "manticoreparry": "Mantikorschule Parieren",
-                "manticoreparrythrown": "Mantikorschule Wurfwaffe parieren",
-                "armorEncumbarance": "-1 Behinderungswert",
-                "armoredCaster": "Gepanzerter Zauberer",
-                "meleeDamage": "+1 Nahkampfschaden"
             }
         },
         "activeEffect": {
@@ -1366,11 +1339,6 @@
             }
         },
         "Deprecations": {
-            "globalModifier": {
-                "title": "Global Modifier Abschaffung",
-                "text": "Die folgenden Akteure müssen geändert werden. Wenn Sie dies nicht tun, bevor globale Modifikatoren entfernt werden, funktioniert Ihre Welt möglicherweise nicht mehr.",
-                "item": "Die folgenden Gegenstände müssen entfernt werden. Wenn Sie dies nicht tun, bevor globale Modifikatoren entfernt werden, funktioniert Ihre Welt möglicherweise nicht mehr."
-            },
             "specialSkillModifiers": {
                 "title": "spezielle Skill Modifier Abschaffung",
                 "text": "TDie folgenden Akteure müssen geändert werden. Wenn Sie dies nicht tun, bevor spezielle Skill Modifier entfernt werden, werden Daten verloren gehen. Die Funktionalität wurde in aktive Effekte verschoben."

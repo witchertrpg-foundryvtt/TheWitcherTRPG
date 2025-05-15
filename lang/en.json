@@ -1,7 +1,6 @@
 {
     "TYPES": {
         "Item": {
-            "globalModifier": "Global Modifier (deprecated)",
             "alchemical": "Alchemical",
             "armor": "Armor",
             "clue": "Clue",
@@ -215,12 +214,10 @@
             "equipEnhancement": "Equip a enhancement",
             "Availability": "Availability",
             "AddEffect": "Add Effect",
-            "AddGlobalModifier": "Add Global Modifier",
             "AddComponent": "Add Component",
             "AddAssociatedItem": "Add Associated Item",
             "RemoveAssociatedItem": "Remove Associated Item",
             "RemoveEffect": "Remove Effect",
-            "RemoveGlobalModifier": "Remove Global Modifier",
             "RemoveComponent": "Remove Component",
             "CraftingMaterial": "Crafting Material",
             "Hides&AnimalParts": "Hides & Animal Parts",
@@ -238,16 +235,12 @@
             "ConsumeProperties": {
                 "doesHeal": "Applies heal",
                 "heal": "Heals for",
-                "appliesGlobalModifier": "Applies Global Modifier (will be removed, convert to active effects)",
                 "Chat": {
                     "healedFor": "healed for",
-                    "consumeGlobalModifiers": "applied these global modifiers",
                     "consumeEffects": "applied these effects"
                 }
             },
             "DamageProperties": {
-                "appliesGlobalModifierToHit": "Applies Global Modifier to Hit (will be removed, convert to active effects)",
-                "appliesGlobalModifierToDamaged": "Applies Global Modifier to Damaged (will be removed, convert to active effects)",
                 "damageIsAblation": "Treat damage as ablation (not functional)",
                 "damageToAllLocations": "Damages all locations",
                 "bypassesWornArmor": "Bypasses worn armor",
@@ -1002,12 +995,9 @@
             "clickableImageItemTypes": "Show 'Zoomable' checkbox on item sheet",
             "clickableImageItemTypesHint": "A comma-separated list of item types, where a checkbox can be set. If it is checked, the players can click on the item image from their inventory to see a larger version of it. Possible types are 'valuable', 'weapon', 'armor', 'alchemical', 'diagrams', 'component'.",
             "clickableImageCheckboxForGMOnly": "Show 'Zoomable' checkbox to GM only",
-            "specialFont": "Use the witcher special font",
-            "globalModifierLookupCompendium": "Global Modifier Lookup Compendium",
-            "globalModifierLookupCompendiumHint": "If a global modifier that should be activated is not found on the character sheet, it will search this compendium for it"
+            "specialFont": "Use the witcher special font"
         },
         "background.other": "Other",
-        "background.globalModifier": "Global Modifiers",
         "Resources.modifiers": "Resources Modifiers",
         "Notes": "Notes",
         "Skills": {
@@ -1208,20 +1198,6 @@
                 }
             }
         },
-        "globalModifier": {
-            "tab": "Global Modifier",
-            "isActive": "Is Active",
-            "special": "Special Effects",
-            "specialEffect": {
-                "wolfstrike": "Wolf School Strong Strike",
-                "viperstrike": "Viper School Joint Strike",
-                "manticoreparry": "Manticore School Parry",
-                "manticoreparrythrown": "Manticore School Parry Thrown Weapon",
-                "armorEncumbarance": "-1 Armor Penalty",
-                "armoredCaster": "Armored Caster",
-                "meleeDamage": "+1 Melee Damage"
-            }
-        },
         "activeEffect": {
             "tab": "Active Effect",
             "source": "Source",
@@ -1344,11 +1320,6 @@
             }
         },
         "Deprecations": {
-            "globalModifier": {
-                "title": "Global Modifier Deprecation",
-                "text": "The following actors need to be modified. If you dont do it, before global modifiers are removed, your world might stop working. The functionality was moved to active effects.",
-                "item": "The following items need to be removed. If you dont do it, before global modifiers are removed, your world might stop working. The functionality was moved to active effects."
-            },
             "specialSkillModifiers": {
                 "title": "Special Skill Modifier Deprecation",
                 "text": "The following actors need to be modified. If you dont do it, before special skill modifiers are removed, data will be lost. The functionality was moved to active effects."

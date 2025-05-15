@@ -38,10 +38,6 @@ export default class WitcherItemSheet extends foundry.appv1.sheets.ItemSheet {
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find('.add-global-modifier').on('click', this._onAddGlobalModifier.bind(this));
-        html.find('.edit-global-modifier').on('blur', this._onEditGlobalModifier.bind(this));
-        html.find('.remove-global-modifier').on('click', this._oRemoveGlobalModifier.bind(this));
-
         html.find('.add-effect').on('click', this._onAddEffect.bind(this));
         html.find('.edit-effect').on('blur', this._onEditEffect.bind(this));
         html.find('.remove-effect').on('click', this._oRemoveEffect.bind(this));
@@ -49,38 +45,6 @@ export default class WitcherItemSheet extends foundry.appv1.sheets.ItemSheet {
         html.find('.configure-item').on('click', this._renderConfigureDialog.bind(this));
 
         html.find('input').focusin(ev => this._onFocusIn(ev));
-    }
-
-    _onAddGlobalModifier(event) {
-        event.preventDefault();
-        let newList = [];
-        if (this.item.system.globalModifiers) {
-            newList = this.item.system.globalModifiers;
-        }
-        newList.push('global modifier');
-        this.item.update({ 'system.globalModifiers': newList });
-    }
-
-    _onEditGlobalModifier(event) {
-        event.preventDefault();
-        let element = event.currentTarget;
-
-        let value = element.value;
-        let oldValue = element.defaultValue;
-
-        let modifiers = this.item.system.globalModifiers;
-
-        modifiers[modifiers.indexOf(oldValue)] = value;
-
-        this.item.update({ 'system.globalModifiers': modifiers });
-    }
-
-    _oRemoveGlobalModifier(event) {
-        event.preventDefault();
-        let element = event.currentTarget;
-        let itemId = element.closest('.list-item').dataset.id;
-        let newList = this.item.system.globalModifiers.filter(modifier => modifier !== itemId);
-        this.item.update({ 'system.globalModifiers': newList });
     }
 
     _onAddEffect(event) {

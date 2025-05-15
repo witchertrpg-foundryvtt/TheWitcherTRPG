@@ -10,7 +10,6 @@ import WitcherContainerSheet from '../item/sheets/WitcherContainerSheet.js';
 import WitcherMysterySheet from '../actor/sheets/investigation/WitcherMysterySheet.js';
 import WitcherClueSheet from '../item/sheets/investigation/WitcherClueSheet.js';
 import WitcherObstacleSheet from '../item/sheets/investigation/WitcherObstacleSheet.js';
-import WitcherGlobalModifierSheet from '../item/sheets/WitcherGlobalModifierSheet.js';
 import WitcherSpellSheet from '../item/sheets/WitcherSpellSheet.js';
 import WitcherAlchemicalSheet from '../item/sheets/WitcherAlchemicalSheet.js';
 import WitcherArmorSheet from '../item/sheets/WitcherArmorSheet.js';
@@ -51,10 +50,6 @@ export const registerSheets = () => {
     Items.registerSheet('witcher', WitcherEnhancementSheet, {
         makeDefault: true,
         types: ['enhancement']
-    });
-    Items.registerSheet('witcher', WitcherGlobalModifierSheet, {
-        makeDefault: true,
-        types: ['globalModifier']
     });
     Items.registerSheet('witcher', WitcherMutagenSheet, {
         makeDefault: true,

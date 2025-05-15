@@ -1,6 +1,5 @@
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 import { applyActiveEffectToActor, applyActiveEffectToTargets } from '../../scripts/activeEffects/applyActiveEffect.js';
-import { applyModifierToActor, applyModifierToTargets } from '../../scripts/globalModifier/applyGlobalModifier.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import { applyStatusEffectToActor, applyStatusEffectToTargets } from '../../scripts/statusEffects/applyStatusEffect.js';
@@ -264,7 +263,6 @@ export let castSpellMixin = {
         spellItem.createSpellVisuals(roll, damage, { stamina: origStaCost });
 
         if (!roll.options.fumble) {
-            spellItem.system.globalModifiers?.forEach(modifier => applyModifierToActor(this.uuid, modifier));
             spellItem.system.selfEffects?.forEach(effect =>
                 applyStatusEffectToActor(this.uuid, effect.statusEffect, damage.duration)
             );
@@ -275,7 +273,6 @@ export let castSpellMixin = {
             );
 
             applyStatusEffectToTargets(spellItem.system.onCastEffects, damage.duration);
-            applyModifierToTargets(spellItem.system.damageProperties?.hitGlobalModifiers);
             applyActiveEffectToTargets(
                 spellItem.effects.filter(effect => effect.system.applyOnTarget),
                 damage.duration

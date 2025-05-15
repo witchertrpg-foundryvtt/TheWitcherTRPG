@@ -71,17 +71,4 @@ export default class WitcherSpellSheet extends WitcherItemSheet {
                 return this._onDropItem(event, data);
         }
     }
-
-    async _onDropItem(event, data) {
-
-        let item = fromUuidSync(data.uuid)
-
-        if (item.type != "globalModifier") return;
-
-        let globalModifiers = this.item.system.globalModifiers
-        globalModifiers.push(item.name)
-
-        this.item.update({ 'system.globalModifiers': globalModifiers })
-
-    }
 }

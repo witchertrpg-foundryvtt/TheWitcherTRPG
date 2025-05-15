@@ -1,7 +1,6 @@
 {
     "TYPES": {
         "Item": {
-            "globalModifier": "Modificador Global (descontinuado)",
             "alchemical": "Alquímico",
             "armor": "Armadura",
             "clue": "Pista",
@@ -215,12 +214,10 @@
             "equipEnhancement": "Equipe uma melhoria",
             "Availability": "Disponibilidade",
             "AddEffect": "Adicionar Efeito",
-            "AddGlobalModifier": "Adicionar Modificador Global",
             "AddComponent": "Adicionar Componente",
             "AddAssociatedItem": "Adicionar Item Associado",
             "RemoveAssociatedItem": "Remover Item Associado",
             "RemoveEffect": "Remover Efeito",
-            "RemoveGlobalModifier": "Remover Modificador Global",
             "RemoveComponent": "Remover Componente",
             "CraftingMaterial": "Materiais para Criação",
             "Hides&AnimalParts": "Couros e Partes de Animais",
@@ -238,16 +235,12 @@
             "ConsumeProperties": {
                 "doesHeal": "Aplica cura",
                 "heal": "Cura para",
-                "appliesGlobalModifier": "Aplicar Modificador Global (será removido, converta para Efeitos Ativos)",
                 "Chat": {
                     "healedFor": "curado em",
-                    "consumeGlobalModifiers": "aplicado esses modificadores globais",
                     "consumeEffects": "Aplicado esses efeitos"
                 }
             },
             "DamageProperties": {
-                "appliesGlobalModifierToHit": "Aplica modificador global no acerto (será removido, converta para Efeitos Ativos)",
-                "appliesGlobalModifierToDamaged": "Aplica modificador global no dano (será removido, converta para Efeitos Ativos)",
                 "damageIsAblation": "Tratar o dano como ablação (não é funcional)",
                 "damageToAllLocations": "Dano em todas as localizações",
                 "bypassesWornArmor": "Ignora a armadura vestida",
@@ -998,12 +991,9 @@
             "clickableImageItemTypes": "Mostrar caixa de seleção 'Ampliável' na planilha de itens",
             "clickableImageItemTypesHint": "Uma lista de tipos de itens separados por vírgula, onde uma caixa de seleção pode ser definida. Se estiver marcado, os jogadores podem clicar na imagem do item em seu inventário para ver uma versão maior dele. Os tipos possíveis são 'valuable', 'weapon', 'armor', 'alchemical', 'diagrams', 'component'.",
             "clickableImageCheckboxForGMOnly": "Mostrar caixa de seleção 'Ampliável' apenas para GM",
-            "specialFont": "Use a fonte especial do The Witcher",
-            "globalModifierLookupCompendium": "Referenciar Compêndio de Modificadores Globais",
-            "globalModifierLookupCompendiumHint": "Se um modificador global que deveria ser ativado não for encontrado na ficha do personagem, será feita uma busca no compêndio por ele"
+            "specialFont": "Use a fonte especial do The Witcher"
         },
         "background.other": "Outro",
-        "background.globalModifier": "Modificadores Globais",
         "Resources.modifiers": "Modificadores de Recursos",
         "Notes": "Anotações",
         "Skills": {
@@ -1204,20 +1194,6 @@
                 }
             }
         },
-        "globalModifier": {
-            "tab": "Modificador Global",
-            "isActive": "Está Ativo",
-            "special": "Efeitos Especiais",
-            "specialEffect": {
-                "wolfstrike": "Ataque Forte da Escola do Lobo",
-                "viperstrike": "Ataque Conjunto da Escola da Víbora",
-                "manticoreparry": "Aparar da Escolar da Mantícora",
-                "manticoreparrythrown": "Aparar Projétil da Escolar da Mantícora",
-                "armorEncumbarance": "-1 Penalidade de Armadura",
-                "armoredCaster": "Mago com Escudo",
-                "meleeDamage": "+1 Dano de Curta Distância"
-            }
-        },
         "activeEffect": {
             "tab": "Efeito Ativo",
             "source": "Fonte",
@@ -1340,11 +1316,6 @@
             }
         },
         "Deprecations": {
-            "globalModifier": {
-                "title": "Modificador Global Depreciado",
-                "text": "Os seguintes atores precisam ser modificados. Se você não fizer isso, antes que os modificadores globais sejam removidos, seu mundo pode parar de funcionar.",
-                "item": "Os seguintes itens precisam ser removidos. Se você não fizer isso, antes que os modificadores globais sejam removidos, seu mundo pode parar de funcionar. A funcionalidade foi movida para efeitos ativos."
-            },
             "specialSkillModifiers": {
                 "title": "Descontinuação do Modificador de Perícia Especial",
                 "text": "Os seguintes atores precisam ser modificados. Se você não fizer isso, antes que os modificadores de habilidade especial sejam removidos, os dados serão perdidos. A funcionalidade foi movida para efeitos ativos."

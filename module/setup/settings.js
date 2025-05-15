@@ -62,24 +62,4 @@ export const registerSettings = function () {
         type: Boolean,
         default: true
     });
-
-    game.settings.register('TheWitcherTRPG', 'globalModifierLookupCompendium', {
-        name: 'WITCHER.Settings.globalModifierLookupCompendium',
-        scope: 'world',
-        config: true,
-        type: new foundry.data.fields.StringField({ choices: getAllCompendia }),
-        default: ''
-    });
-};
-
-const getAllCompendia = () => {
-    const itemPacks = game.packs.filter(p => p.documentName === 'Item');
-
-    const packRecord = itemPacks.reduce((record, p) => {
-        // two getters that fetch metadata.id and metadata.label respectively
-        record[p.collection] = p.title;
-        return record;
-    }, {});
-
-    return packRecord;
 };

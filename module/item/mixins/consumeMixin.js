@@ -12,10 +12,6 @@ export let consumeMixin = {
             messageInfos.heal = heal;
         }
 
-        if (properties.appliesGlobalModifier) {
-            properties.consumeGlobalModifiers.forEach(modifier => this.actor._activateGlobalModifier(modifier));
-        }
-
         this.actor.applyStatus(properties.effects);
         this.removeEffects();
         let weapon = await applyActiveEffectToActorViaId(this.actor.uuid, this.uuid, 'applySelf');

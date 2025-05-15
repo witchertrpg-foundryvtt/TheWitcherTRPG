@@ -117,7 +117,6 @@ export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
 
         context.oldNotes = actor.getList('note');
         context.notes = actor.system.notes;
-        context.globalModifiers = actor.getList('effect').concat(actor.getList('globalModifier'));
     }
 
     _prepareSpells(context) {

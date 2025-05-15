@@ -8,10 +8,6 @@ export default class WitcherDamagePropertiesConfigurationSheet extends WitcherCo
         html.find(".add-effect-damageProperties").on("click", this._onAddEffectDamageProperties.bind(this));
         html.find(".edit-effect-damageProperties").on("blur", this._onEditEffectDamageProperties.bind(this));
         html.find(".remove-effect-damageProperties").on("click", this._oRemoveEffectDamageProperties.bind(this));
-
-        html.find(".add-global-modifier-damageProperties").on("click", this._onAddGlobalModifierDamageProperties.bind(this));
-        html.find(".edit-global-modifier-damageProperties").on("blur", this._onEditGlobalModifierDamageProperties.bind(this));
-        html.find(".remove-global-modifier-damageProperties").on("click", this._oRemoveGlobalModifierDamageProperties.bind(this));
     }
 
     _onAddEffectDamageProperties(event) {
@@ -47,43 +43,6 @@ export default class WitcherDamagePropertiesConfigurationSheet extends WitcherCo
         let itemId = element.closest(".list-item").dataset.id;
         let newList = this.item.system.damageProperties.effects.filter(item => item.id !== itemId)
         this.item.update({ 'system.damageProperties.effects': newList });
-    }
-
-
-    _onAddGlobalModifierDamageProperties(event) {
-        event.preventDefault();
-        let target = event.currentTarget.dataset.target;
-
-        let newList = this.getPathedObject(this.item.system, target) ?? []
-        newList.push("global modifier")
-        this.item.update({ [`system.${target}`]: newList });
-    }
-
-    _onEditGlobalModifierDamageProperties(event) {
-        event.preventDefault();
-        let element = event.currentTarget;
-
-        let target = element.closest(".list-item").dataset.target;
-
-        let value = element.value
-        let oldValue = element.defaultValue
-
-        let modifiers = this.getPathedObject(this.item.system, target)
-
-        modifiers[modifiers.indexOf(oldValue)] = value;
-
-        this.item.update({ [`system.${target}`]: modifiers });
-
-    }
-
-    _oRemoveGlobalModifierDamageProperties(event) {
-        event.preventDefault();
-        let element = event.currentTarget;
-        let itemId = element.closest(".list-item").dataset.id;
-        let target = element.closest(".list-item").dataset.target;
-
-        let newList = this.getPathedObject(this.item.system, target).filter(modifier => modifier !== itemId)
-        this.item.update({ [`system.${target}`]: newList });
     }
 
     getPathedObject(object, path) {

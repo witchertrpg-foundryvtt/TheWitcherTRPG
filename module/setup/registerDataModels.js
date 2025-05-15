@@ -19,7 +19,6 @@ import ArmorData from '../data/item/armorData.js';
 import ClueData from '../data/investigation/clueData.js';
 import ObstacleData from '../data/investigation/obstacleData.js';
 import MysteryActorData from '../data/investigation/mysteryActorData.js';
-import GlobalModifierData from '../data/item/globalModifierData.js';
 import WitcherActiveEffectData from '../data/activeEffects/witcherActiveEffectData.js';
 import SkillItemData from '../data/item/skillItemData.js';
 import HexData from '../data/item/hexData.js';
@@ -49,7 +48,6 @@ export const registerDataModels = () => {
         component: ComponentData,
         diagrams: DiagramData,
         enhancement: EnhancementData,
-        gobalModifier: GlobalModifierData,
         mount: MountData,
         mutagen: MutagenData,
         note: NoteData,

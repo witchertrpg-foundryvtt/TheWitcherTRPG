@@ -1,5 +1,4 @@
 import { applyActiveEffectToActorViaId } from '../activeEffects/applyActiveEffect.js';
-import { applyModifierToActor } from '../globalModifier/applyGlobalModifier.js';
 import { getInteractActor } from '../helper.js';
 import { applyStatusEffectToActor } from '../statusEffects/applyStatusEffect.js';
 
@@ -172,10 +171,6 @@ async function applyDamage(actor, dialogData, totalDamage, damage, derivedStat, 
         ?.filter(effect => effect.statusEffect)
         .filter(effect => effect.applied)
         .forEach(effect => applyStatusEffectToActor(actor.uuid, effect.statusEffect, damage.duration));
-
-    if (damage.properties.appliesGlobalModifierToDamaged) {
-        damage.properties.damagedGlobalModifiers.forEach(modifier => applyModifierToActor(actor.uuid, modifier));
-    }
 
     if (damage.itemUuid) {
         applyActiveEffectToActorViaId(actor.uuid, damage.itemUuid, 'applyOnDamage', damage.duration);

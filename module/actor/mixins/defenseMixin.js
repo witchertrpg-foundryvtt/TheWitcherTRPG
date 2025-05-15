@@ -208,17 +208,6 @@ export let defenseMixin = {
     },
 
     handleSpecialModifier(formula, action, additionalTag) {
-        let relevantModifier = this.getList('globalModifier')
-            .filter(modifier => modifier.system.isActive)
-            .filter(modifier => modifier.system.special?.length > 0)
-            .map(modifier => modifier.system.special)
-            .flat()
-            .map(modifier => CONFIG.WITCHER.specialModifier.find(special => special.id == modifier.special))
-            .filter(special => special?.tags?.includes(action))
-            .filter(special => special?.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true);
-
-        relevantModifier.forEach(modifier => (formula += `${modifier.formula}[${game.i18n.localize(modifier.name)}]`));
-
         if (additionalTag === 'armor') {
             if (action === 'parry') {
                 formula +=
