@@ -1,34 +1,55 @@
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ItemSheetV2 } = foundry.applications.sheets;
 
-export default class WitcherConfigurationSheetV1 extends HandlebarsApplicationMixin(ItemSheetV2) {
+export default class WitcherConfigurationSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     /** @override */
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['witcher', 'sheet', 'item'],
+    static DEFAULT_OPTIONS = {
+        position: {
             width: 520,
-            height: 480,
-            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body' }],
-            dragDrop: [
-                {
-                    dragSelector: '.items-list .item',
-                    dropSelector: null
-                }
-            ]
-        });
-    }
+            height: 480
+        },
+        classes: ['witcher', 'sheet', 'item'],
+        actions: {
+            create: WitcherConfigurationSheet.onManageActiveEffect,
+            toggle: WitcherConfigurationSheet.onManageActiveEffect,
+            edit: WitcherConfigurationSheet.onManageActiveEffect,
+            delete: WitcherConfigurationSheet.onManageActiveEffect
+        }
+    };
 
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/item/configuration/${this.object.type}Configuration.hbs`;
-    }
+    static PARTS = {
+        header: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/configuration/tabs/header.hbs`
+        },
+        tabs: {
+            // Foundry-provided generic template
+            template: 'templates/generic/tab-navigation.hbs'
+        },
+        general: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/item/configuration/tabs/general.hbs',
+            scrollable: ['']
+        },
+        activeEffects: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/item/configuration/tabs/activeEffectConfiguration.hbs',
+            scrollable: ['']
+        }
+    };
+
+    static TABS = {
+        primary: {
+            tabs: [{ id: 'general' }, { id: 'activeEffects' }],
+            initial: 'general',
+            labelPrefix: 'WITCHER.Item.Settings'
+        }
+    };
 
     /** @override */
-    getData() {
-        const context = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
         context.config = CONFIG.WITCHER;
 
         this.options.classes.push(`item-${this.item.type}`);
-        context.data = context.item?.system;
+        context.item = this.item;
 
         // Prepare active effects for easier access
         context.effects = this.prepareActiveEffectCategories(this.item.effects);
@@ -36,13 +57,6 @@ export default class WitcherConfigurationSheetV1 extends HandlebarsApplicationMi
         context.systemFields = this.document.system.schema.fields;
 
         return context;
-    }
-
-    activateListeners(html) {
-        super.activateListeners(html);
-
-        // Active Effect management
-        html.on('click', '.effect-control', ev => this.onManageActiveEffect(ev, this.item));
     }
 
     /**
@@ -89,23 +103,22 @@ export default class WitcherConfigurationSheetV1 extends HandlebarsApplicationMi
     /**
      * Manage Active Effect instances through an Actor or Item Sheet via effect control buttons.
      * @param {MouseEvent} event      The left-click event on the effect control
-     * @param {Actor|Item} owner      The owning document which manages this effect
+     * @param {HTMLElement} element   The element which is the target of the event
      * @returns {object}              effect function
      */
-    onManageActiveEffect(event, owner) {
+    static async onManageActiveEffect(event, element) {
         event.preventDefault();
-        const a = event.currentTarget;
-        const li = a.closest('li');
-        const effect = li.dataset.effectId ? owner.effects.get(li.dataset.effectId) : null;
-        switch (a.dataset.action) {
+        const li = element.closest('li');
+        const effect = li.dataset.effectId ? this.document.effects.get(li.dataset.effectId) : null;
+        switch (element.dataset.action) {
             case 'create':
-                return owner.createEmbeddedDocuments('ActiveEffect', [
+                return this.document.createEmbeddedDocuments('ActiveEffect', [
                     {
                         type:
                             li.dataset.effectType === 'temporaryItemImprovement' ? 'temporaryItemImprovement' : 'base',
-                        name: owner.name,
-                        icon: owner.img,
-                        origin: owner.uuid,
+                        name: this.document.name,
+                        icon: this.document.img,
+                        origin: this.document.uuid,
                         duration: {
                             rounds: li.dataset.effectType === 'temporary' ? 1 : undefined
                         },

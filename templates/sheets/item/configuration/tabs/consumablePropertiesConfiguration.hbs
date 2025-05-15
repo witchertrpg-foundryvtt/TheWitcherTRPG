@@ -1,0 +1,57 @@
+<div class="tab {{tabs.consumableProperties.cssClass}} scrollable standard-form" data-group="primary" data-tab="consumableProperties">
+    <h3>{{localize "WITCHER.Item.Settings.consumableProperties"}}</h3>
+    {{formGroup systemFields.isConsumable value=item.system.isConsumable localize=true}}
+    {{#if item.system.isConsumable}}
+        {{formGroup systemFields.consumeProperties.fields.doesHeal value=item.system.consumeProperties.doesHeal localize=true}}
+        {{#if item.system.consumeProperties.doesHeal}}
+            {{formGroup systemFields.consumeProperties.fields.heal value=item.system.consumeProperties.heal localize=true}}
+        {{/if}}
+        <table class="item-bottom-table">
+            <tr>
+                <th><a data-action="addEffect" data-target='effects' title="{{localize "WITCHER.Item.AddEffect"}}"><i
+                            class="fas fa-plus"></i></a>
+                </th>
+                <th>{{localize "WITCHER.Item.Effect"}}</th>
+            </tr>
+            {{#each item.system.consumeProperties.effects as |effect name|}}
+                <tr class="list-item" data-id="{{effect.id}}" data-target='effects'>
+                    <td>
+                        <a data-action="removeEffect" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                                class="fas fa-minus"></i></a>
+                    </td>
+                    <td>
+                        <input data-action="editEffect" class="item-effect"
+                            placeholder="{{localize "WITCHER.table.Name"}}" data-field="name" type="text"
+                            value="{{effect.name}}" />
+                    </td>
+                    <td>
+                        <select data-action="editEffect" class="item-effect" data-field="statusEffect">
+                            {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                        </select>
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+        <table class="item-bottom-table">
+            <tr>
+                <th><a data-action="addEffect" data-target='removesEffects'
+                        title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
+                </th>
+                <th>{{localize "WITCHER.Item.RemoveEffect"}}</th>
+            </tr>
+            {{#each item.system.consumeProperties.removesEffects as |effect name|}}
+                <tr class="list-item" data-id="{{effect.id}}" data-target='removesEffects'>
+                    <td>
+                        <a data-action="removeEffect" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                                class="fas fa-minus"></i></a>
+                    </td>
+                    <td>
+                        <select data-action="editEffect" class="item-effect" data-field="statusEffect">
+                            {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                        </select>
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+    {{/if}}
+</div>

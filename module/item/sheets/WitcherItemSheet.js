@@ -118,7 +118,8 @@ export default class WitcherItemSheet extends foundry.appv1.sheets.ItemSheet {
     }
 
     async _renderConfigureDialog() {
-        this.configuration?._render(true);
+        //TODO remove when everything is v2
+        this.configuration?.render(true) ?? this.configuration?._render(true);
     }
 
     _onFocusIn(event) {
