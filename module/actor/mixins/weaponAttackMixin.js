@@ -25,7 +25,6 @@ export let weaponAttackMixin = {
                     ? `+${this.system.attackStats.meleeBonus}`
                     : `+${this.system.attackStats.meleeBonus}[${game.i18n.localize('WITCHER.Dialog.attackMeleeBonus')}]`;
             }
-            damageFormula = this.handleSpecialModifier(damageFormula, 'melee-damage');
         }
 
         let attack = weapon.getItemAttack(options);
@@ -188,8 +187,6 @@ export let weaponAttackMixin = {
             } else {
                 attFormula += this.constructBaseAttackFormula(skill);
             }
-
-            attFormula = this.handleSpecialModifier(attFormula, strike);
 
             if (weapon.system.accuracy < 0) {
                 attFormula += !displayRollDetails

@@ -12,19 +12,4 @@
             {{> "systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs"}}
         </div>
     </div>
-    <div class="special-skill-section">
-        <div class="special-skill-header">
-            <h2 class="special-skill-header-name">{{localize "WITCHER.Actor.SpecialSkillModifier"}}</h2>
-        </div>
-        <div class="special-skill-list">
-            {{#each system.specialSkillModifiers as |special index|}}
-                <div class="flex list-item special-skill-row" data-id="{{special.id}}">
-                    <select class="edit-special-skill-modifier">
-                        {{selectOptions ../config.specialModifier blank='' selected=special.modifier nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
-                    </select>
-                    <a class="remove-special-skill-modifier"><i class="fas fa-minus"></i></a>
-                </div>
-            {{/each}}
-        </div>
-    </div>
 </div>

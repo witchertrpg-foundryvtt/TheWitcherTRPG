@@ -47,9 +47,7 @@ export let castSpellMixin = {
                           ? ` +${this.system.lifepathModifiers.ignoredEvWhenCasting}[${game.i18n.localize('WITCHER.Actor.Lifepath.Bonus')}]`
                           : ''
                   }`;
-            rollFormula = this.handleSpecialModifier(rollFormula, 'magic-armorencumbarance');
         }
-        rollFormula = this.handleSpecialModifier(rollFormula, 'magic');
 
         let useFocus = false;
         let handlebarFocusOptions = {};

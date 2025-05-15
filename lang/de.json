@@ -1339,10 +1339,6 @@
             }
         },
         "Deprecations": {
-            "specialSkillModifiers": {
-                "title": "spezielle Skill Modifier Abschaffung",
-                "text": "TDie folgenden Akteure müssen geändert werden. Wenn Sie dies nicht tun, bevor spezielle Skill Modifier entfernt werden, werden Daten verloren gehen. Die Funktionalität wurde in aktive Effekte verschoben."
-            }
         },
         "AssociatedDiagram": {
             "actions": {

@@ -1316,10 +1316,7 @@
             }
         },
         "Deprecations": {
-            "specialSkillModifiers": {
-                "title": "Descontinuação do Modificador de Perícia Especial",
-                "text": "Os seguintes atores precisam ser modificados. Se você não fizer isso, antes que os modificadores de habilidade especial sejam removidos, os dados serão perdidos. A funcionalidade foi movida para efeitos ativos."
-            }
+
         },
         "AssociatedDiagram": {
             "actions": {

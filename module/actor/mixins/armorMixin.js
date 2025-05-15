@@ -6,13 +6,6 @@ export let armorMixin = {
             encumbranceModifier += item.system.encumb;
         });
 
-        this.system.specialSkillModifiers
-            .map(specialSkillModifier =>
-                CONFIG.WITCHER.specialModifier.find(special => special.id == specialSkillModifier.modifier)
-            )
-            .filter(special => special?.tags?.includes('armorencumbarance'))
-            .forEach(modifier => (encumbranceModifier += parseInt(modifier.formula)));
-
         return Math.max(encumbranceModifier, 0);
     },
 

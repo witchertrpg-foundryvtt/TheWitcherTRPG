@@ -44,7 +44,6 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
             notes: new fields.ArrayField(new fields.SchemaField(note())),
             pannels: new fields.SchemaField(pannels()),
 
-            specialSkillModifiers: new fields.ArrayField(new fields.SchemaField(specialSkillModifier())),
             lifepathModifiers: new fields.SchemaField(lifepathData())
         };
     }

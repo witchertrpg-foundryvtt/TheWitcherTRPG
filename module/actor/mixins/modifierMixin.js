@@ -116,16 +116,4 @@ export let modifierMixin = {
             });
         return formula;
     },
-
-    handleSpecialModifier(attFormula, action, additionalTag) {
-        this.system.specialSkillModifiers
-            .map(specialSkillModifier =>
-                CONFIG.WITCHER.specialModifier.find(special => special.id == specialSkillModifier.modifier)
-            )
-            .filter(special => special?.tags?.includes(action))
-            .filter(special => special?.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true)
-            .forEach(modifier => (attFormula += `${modifier.formula}[${game.i18n.localize(modifier.name)}]`));
-
-        return attFormula;
-    }
 };

@@ -1299,10 +1299,6 @@
             }
         },
         "Deprecations": {
-            "specialSkillModifiers": {
-                "title": "Obsolescencia de Modificadores Especiales de Habilidades",
-                "text": "Los siguientes actores necesitan ser modificados. Si no lo haces antes de que los modificadores especiales de habilidades sean eliminados, se perderán los datos. La funcionalidad se trasladó a efectos activos."
-            }
         },
         "AssociatedDiagram": {
             "actions": {
