@@ -1,3 +1,5 @@
+import WitcherConfigurationSheet from './configurations/WitcherConfigurationSheet.js';
+
 export default class WitcherItemSheet extends foundry.appv1.sheets.ItemSheet {
     /** @override */
     static get defaultOptions() {
@@ -16,7 +18,7 @@ export default class WitcherItemSheet extends foundry.appv1.sheets.ItemSheet {
     }
 
     //overwrite in sub-classes
-    configuration = undefined;
+    configuration = new WitcherConfigurationSheet(this.item);
 
     get template() {
         return `systems/TheWitcherTRPG/templates/sheets/item/${this.object.type}-sheet.hbs`;

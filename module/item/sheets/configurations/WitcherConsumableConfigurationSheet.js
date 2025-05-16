@@ -3,11 +3,6 @@ import WitcherConfigurationSheet from './WitcherConfigurationSheet.js';
 export default class WitcherConsumableConfigurationSheet extends WitcherConfigurationSheet {
     /** @override */
     static DEFAULT_OPTIONS = {
-        position: {
-            width: 520,
-            height: 480
-        },
-        classes: ['witcher', 'sheet', 'item'],
         actions: {
             addEffect: WitcherConsumableConfigurationSheet._onAddEffect,
             removeEffect: WitcherConsumableConfigurationSheet._oRemoveEffect
