@@ -1,6 +1,6 @@
-import WitcherDamagePropertiesConfigurationSheet from './WitcherDamagePropertiesConfigurationSheet.js';
+import WitcherDamagePropertiesConfigurationSheetV1 from './WitcherDamagePropertiesConfigurationSheetV1.js';
 
-export default class WitcherSpellConfigurationSheet extends WitcherDamagePropertiesConfigurationSheet {
+export default class WitcherSpellConfigurationSheet extends WitcherDamagePropertiesConfigurationSheetV1 {
     activateListeners(html) {
         super.activateListeners(html);
         html.find('.add-effect-self').on('click', this._onAddEffectToArray.bind(this, 'selfEffects'));

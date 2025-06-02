@@ -1,7 +1,7 @@
 
 import WitcherConfigurationSheetV1 from "./WitcherConfigurationSheetV1.js";
 
-export default class WitcherDamagePropertiesConfigurationSheet extends WitcherConfigurationSheetV1 {
+export default class WitcherDamagePropertiesConfigurationSheetV1 extends WitcherConfigurationSheetV1 {
 
     activateListeners(html) {
         super.activateListeners(html);

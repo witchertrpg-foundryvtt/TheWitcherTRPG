@@ -1,6 +1,6 @@
-import WitcherConfigurationSheetV1 from './WitcherConfigurationSheetV1.js';
+import WitcherConfigurationSheet from './WitcherConfigurationSheet.js';
 
-export default class WitcherDamagePropertiesConfigurationSheet extends WitcherConfigurationSheetV1 {
+export default class WitcherProfessionConfigurationSheet extends WitcherConfigurationSheet {
     activateListeners(html) {
         super.activateListeners(html);
         html.find('.add-effect-damageProperties').on('click', this._onAddEffectDamageProperties.bind(this));
