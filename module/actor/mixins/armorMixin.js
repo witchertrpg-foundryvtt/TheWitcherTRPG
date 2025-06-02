@@ -220,10 +220,7 @@ export let armorMixin = {
             return 0;
         }
 
-        let spDamage =
-            properties.crushingForce || properties.ablating
-                ? Math.floor((await new Roll('1d6/2+1').evaluate()).total)
-                : 1;
+        let spDamage = properties.ablating ? Math.floor((await new Roll('1d6/2+1').evaluate()).total) : 1;
 
         if (properties.crushingForce) {
             spDamage *= 2;
