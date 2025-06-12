@@ -1,66 +1,73 @@
-<h1>
-    <img class="item-img" src={{data.item.img}} />
-    {{#if isRequest}}
-        <span>{{data.actor.name}} {{ localize "WITCHER.Repair.chat.requestTitle" }} {{data.item.name}}</span>
-    {{else}}
-        <span>{{ localize "WITCHER.Repair.action" }} {{data.item.name}}</span>
-    {{/if}}
-</h1>
+<section class="repair-message-section">
+    <header class="chat-item-header">
+        <img src="{{data.item.img}}" alt="">
+        {{#if isRequest}}
+            <h4>{{data.actor.name}} {{ localize "WITCHER.Repair.chat.requestTitle" }} {{data.item.name}}</h4>
+        {{else}}
+            <h4>{{ localize "WITCHER.Repair.action" }} {{data.item.name}}</h4>
+        {{/if}}
+    </header>
 
-<h3><b>{{ localize "WITCHER.Repair.params.repairDC" }}: {{ data.repairDC }}</b></h3>
-<p>{{ data.repairDCFormula }}</p>
-{{#if data.damagedLocations }}
-    <h3><b>{{ localize "WITCHER.Repair.params.damagedLocations" }}</b></h3>
-    <table>
-        <tbody>
-            {{#each data.damagedLocations}}
-                <tr class="tablerow item">
-                    <td>{{label}}</td>
-                    <td>{{reliabilityValue}}</td>
-                    <td>&#8658;</td>
-                    <td>{{maxReliabilityValue}}</td>
-                </tr>
-            {{/each}}
-        </tbody>
-    </table>
-{{/if}}
-{{#if showComponents}}
-    <h3><b>{{ localize "WITCHER.Repair.params.components" }}</b></h3>
-    <table>
-        <tbody>
-            {{#each data.ownedComponents}}
-                <tr class="tablerow item">
-                    <td>
-                        <img src="{{ img }}" class="chat-icon" />
-                    </td>
-                    <td>{{ name }} <b>(1)</b></td>
-                </tr>
-            {{/each}}
-            {{#each data.missingComponents}}
-                <tr class="tablerow item">
-                    <td>
-                        <img src="{{ img }}" class="chat-icon" />
-                    </td>
-                    <td>{{ name }} <b>(1)</b></td>
-                </tr>
-            {{/each}}
-            {{#each data.unknownComponents}}
-                <tr class="tablerow item">
-                    <td>
-                        <img src="icons/svg/item-bag.svg" class="chat-icon" />
-                    </td>
-                    <td>{{ name }} <b>(1)</b></td>
-                </tr>
-            {{/each}}
-            {{#if isOrder}}
-                <tr class="tablerow components-price">
-                    <td colspan="2">{{ localize "WITCHER.ComponentsList.totalPrice" }}: {{ data.repairPrice }}</td>
-                </tr>
-            {{/if}}
-        </tbody>
-    </table>
-{{/if}}
-{{#if isRequest}}
-    <button data-owner="{{data.actor.id}}" data-item="{{data.item.id}}" class="request-repair">{{ localize
-    "WITCHER.Repair.buttons.repair" }}</button>
-{{/if}}
+    <div class="repair-section">
+        <h4>{{ localize "WITCHER.Repair.params.repairDC" }}: {{ data.repairDC }}</h4>
+        <p>{{ data.repairDCFormula }}</p>
+        {{#if data.damagedLocations }}
+            <h4>{{ localize "WITCHER.Repair.params.damagedLocations" }}</h4>
+            <table>
+                <tbody>
+                    {{#each data.damagedLocations}}
+                        <tr class="tablerow item">
+                            <td>{{label}}</td>
+                            <td>{{reliabilityValue}}</td>
+                            <td>&#8658;</td>
+                            <td>{{maxReliabilityValue}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        {{/if}}
+    </div>
+    
+    <div class="repair-section">
+        {{#if showComponents}}
+            <h4>{{ localize "WITCHER.Repair.params.components" }}</h4>
+            <table>
+                <tbody>
+                    {{#each data.ownedComponents}}
+                        <tr class="tablerow item">
+                            <td>
+                                <img src="{{ img }}" class="chat-icon" />
+                            </td>
+                            <td>{{ name }} <b>(1)</b></td>
+                        </tr>
+                    {{/each}}
+                    {{#each data.missingComponents}}
+                        <tr class="tablerow item">
+                            <td>
+                                <img src="{{ img }}" class="chat-icon" />
+                            </td>
+                            <td>{{ name }} <b>(1)</b></td>
+                        </tr>
+                    {{/each}}
+                    {{#each data.unknownComponents}}
+                        <tr class="tablerow item">
+                            <td>
+                                <img src="icons/svg/item-bag.svg" class="chat-icon" />
+                            </td>
+                            <td>{{ name }} <b>(1)</b></td>
+                        </tr>
+                    {{/each}}
+                    {{#if isOrder}}
+                        <tr class="tablerow components-price">
+                            <td colspan="2">{{ localize "WITCHER.ComponentsList.totalPrice" }}: {{ data.repairPrice }}</td>
+                        </tr>
+                    {{/if}}
+                </tbody>
+            </table>
+        {{/if}}
+    </div>
+    {{#if isRequest}}
+        <button data-owner="{{data.actor.id}}" data-item="{{data.item.id}}" class="request-repair">{{ localize
+        "WITCHER.Repair.buttons.repair" }}</button>
+    {{/if}}
+</section>

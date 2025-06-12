@@ -48,6 +48,20 @@
     margin: 0;
 }
 
+.repair-message-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.repair-section > table {
+    margin: 0;
+}
+
+.request-repair {
+    width: 100%;
+}
+
 .chat-message .flavor-text .attack-message .damage {
     width: 100%;
     margin-bottom: 5px;
