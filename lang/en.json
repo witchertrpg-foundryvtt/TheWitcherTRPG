@@ -470,7 +470,10 @@
             "armorPiercing": "Armor Piercing",
             "improvedArmorPiercing": "Improved Armor Piercing",
             "ablating": "Ablating",
-            "crushingForce": "Crushing Force"
+            "crushingForce": "Crushing Force",
+            "error": {
+                "noAttackSkill": "No attack skill configured"
+            }
         },
         "Location": {
             "Random": "Random",

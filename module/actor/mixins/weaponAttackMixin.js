@@ -32,6 +32,10 @@ export let weaponAttackMixin = {
             attack.skill = options.skillReplacement.skillName;
             attack.alias = options.skillReplacement.skillName;
         }
+
+        if (!attack.skill) {
+            return ui.notifications.error(`${game.i18n.localize('WITCHER.Weapon.error.noAttackSkill')}`);
+        }
         let messageDataFlavor = `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`;
 
         let ammunitions = ``;
