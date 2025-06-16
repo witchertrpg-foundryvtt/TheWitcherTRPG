@@ -282,8 +282,11 @@
                 "general": "General Settings",
                 "alchemical": "Alchemical Settings",
                 "armor": "Armor Settings",
+                "hex": "Hex Settings",
                 "mutagen": "Mutagen Settings",
                 "race": "Race Settings",
+                "ritual": "Ritual Settings",
+                "spell": "Spell Settings",
                 "valuable": "Valuable Settings",
                 "profession": "Profession Settings",
                 "weapon": "Weapon Settings",
@@ -297,9 +300,9 @@
                         "hint": "Configure how the target can defend against this"
                     }
                 },
-                "spell": {
-                    "SelfProperties": "Apply to caster",
-                    "CastProperties": "Apply to target"
+                "castProperties": {
+                    "selfProperties": "Apply to caster",
+                    "targetProperties": "Apply to target"
                 },
                 "activeEffects": "Active Effect"
             }
@@ -1326,8 +1329,7 @@
                 ">9": "You fail horribly and not only fall prone but also take [[1d6]] lethal damage to the head and must make a Stun save."
             }
         },
-        "Deprecations": {
-        },
+        "Deprecations": {},
         "AssociatedDiagram": {
             "actions": {
                 "add": "Add crafting diagram",

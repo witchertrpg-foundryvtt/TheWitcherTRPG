@@ -1,9 +1,9 @@
-import WitcherDamagePropertiesConfigurationSheetV1 from './configurations/WitcherDamagePropertiesConfigurationSheetV1.js';
+import WitcherPropertiesConfigurationSheet from './configurations/WitcherPropertiesConfigurationSheet.js';
 import WitcherItemSheet from './WitcherItemSheet.js';
 import { associatedDiagramMixin } from './mixins/associatedDiagramMixin.js';
 
 export default class WitcherWeaponSheet extends WitcherItemSheet {
-    configuration = new WitcherDamagePropertiesConfigurationSheetV1(this.item);
+    configuration = new WitcherPropertiesConfigurationSheet(this.item);
 
     /** @inheritdoc */
     _canDragStart(selector) {

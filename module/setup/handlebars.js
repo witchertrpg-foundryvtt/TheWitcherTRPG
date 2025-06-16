@@ -49,10 +49,6 @@ export async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/partials/effect-part.hbs',
 
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/attackOptionsPart.hbs',
-        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/damagePropertiesConfiguration.hbs',
-        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/defensePropertiesConfiguration.hbs',
-        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/regionPropertiesConfiguration.hbs',
-        'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPathPart.hbs',
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPathSkillPart.hbs',
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/profAttackOptionsPart.hbs',
 
