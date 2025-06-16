@@ -56,15 +56,6 @@ async function createApplyDamageDialog(actor, damage) {
     <option value="tailWing"> ${game.i18n.localize('WITCHER.Dialog.attackTail')} </option>
     `;
 
-    const silverOptions = `
-    <option></option>
-    <option value="1d6">1d6</option>
-    <option value="2d6">2d6</option>
-    <option value="3d6">3d6</option>
-    <option value="4d6">4d6</option>
-    <option value="5d6">5d6</option>
-    `;
-
     let location = damage.location;
     let damageTypeloc = `WITCHER.DamageType.${damage.type}`;
     let content = `<label>${game.i18n.localize('WITCHER.Damage.damageType')}: <b>${game.i18n.localize(damageTypeloc)}</b></label> <br />
@@ -77,10 +68,9 @@ async function createApplyDamageDialog(actor, damage) {
     }
 
     content += `<label>${game.i18n.localize('WITCHER.Damage.isVulnerable')}: <input type="checkbox" name="vulnerable"></label><br />
-    <label>${game.i18n.localize('WITCHER.Damage.oilDmg')}: <input type="checkbox" name="oilDmg"></label><br />
-    <label>${game.i18n.localize('WITCHER.Damage.silverDmg') + ' (Deprecated)'}: <select name="silverDmg">${silverOptions}</select></label><br />`;
+    <label>${game.i18n.localize('WITCHER.Damage.oilDmg')}: <input type="checkbox" name="oilDmg"></label><br />`;
 
-    let { newLocation, resistNonSilver, resistNonMeteorite, isVulnerable, addOilDmg, silverDmg } =
+    let { newLocation, resistNonSilver, resistNonMeteorite, isVulnerable, addOilDmg } =
         await DialogV2.prompt({
             window: { title: `${game.i18n.localize('WITCHER.Context.applyDmg')}` },
             content: content,
@@ -92,8 +82,7 @@ async function createApplyDamageDialog(actor, damage) {
                         resistNonSilver: button.form.elements.resistNonSilver?.checked,
                         resistNonMeteorite: button.form.elements.resistNonMeteorite?.checked,
                         isVulnerable: button.form.elements.vulnerable?.checked,
-                        addOilDmg: button.form.elements.oilDmg?.checked,
-                        silverDmg: button.form.elements.silverDmg?.value
+                        addOilDmg: button.form.elements.oilDmg?.checked
                     };
                 }
             }
@@ -104,8 +93,7 @@ async function createApplyDamageDialog(actor, damage) {
         resistNonMeteorite,
         newLocation,
         isVulnerable,
-        addOilDmg,
-        silverDmg
+        addOilDmg
     };
 }
 
@@ -126,10 +114,6 @@ async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat
 
     if (dialogData.addOilDmg) {
         damage.properties.oilEffect = actor.system.category;
-    }
-
-    if (dialogData.silverDmg) {
-        damage.properties.silverDamage = dialogData.silverDmg;
     }
 
     applyDamage(actor, dialogData, totalDamage, damage, derivedStat, infoTotalDmg);

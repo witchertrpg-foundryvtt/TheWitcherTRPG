@@ -77,7 +77,6 @@ export let verbalCombatMixin = {
 
                         let config = new RollConfig();
                         config.showCrit = true;
-                        console.log(rollFormula);
                         await extendedRoll(
                             rollFormula,
                             messageData,
