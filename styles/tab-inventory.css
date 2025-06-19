@@ -4,23 +4,30 @@ table th {
 }
 
 .enhancement-img,
-.enhancement-slot {
+.enhancement-slot,
+.stored-item-img {
     height: 30px;
     width: 30px;
     border-radius: 5px;
     border: 1px solid rgba(25, 24, 19, 0.6);
 }
 
-.enhancement-label {
+.enhancement-label,
+.stored-item-label {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.enhancement-label:hover {
+.enhancement-label:hover,
+.stored-item-label:hover {
     cursor: pointer;
     text-shadow: none;
     background-color: rgba(25, 25, 25, 0.1);
+}
+
+.stored-item-info {
+    margin-top: 5px;
 }
 
 .enhancement-effects-name {
@@ -36,6 +43,7 @@ table th {
 .item-tags {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -116,8 +124,71 @@ table th {
 .weapon-details {
     grid-template-columns: 40px 2fr 1fr;
 }
-.weapon-enhancement {
+.weapon-enhancement,
+.container-stored-item {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+.armor-header {
+    grid-template-columns: 33px 1fr 1fr;
+}
+
+.armor-details {
+    grid-template-columns: 40px 1fr 1fr;
+}
+
+.valuable-header,
+.spell-header {
+    grid-template-columns: 33px 6fr 1fr;
+}
+
+.valuables-list-header,
+.spell-list-header {
+    grid-template-columns: 33px 1.5fr 1fr;
+}
+
+.valuable-details,
+.spell-details {
+    grid-template-columns: 40px 1.5fr 1fr;
+}
+
+.progress-bar-stored-weight {
+    position: relative;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.progress-bar-stored-weight progress {
+    width: 100%;
+    background-color: transparent;
+}
+
+.progress-bar-stored-weight progress::-webkit-progress-bar {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.progress-bar-stored-weight progress::-webkit-progress-value {
+    background-color: #1a3b8b;
+    border-radius: 4px;
+}
+
+.progress-bar-stored-weight progress::-moz-progress-bar {
+    background-color: #1a3b8b;
+    border-radius: 4px;
+}
+
+.progress-bar-stored-weight-labels {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    font-size: 12px;
+    color: #eee;
+    padding: 0 5px;
+    height: 100%;
+    width: 100%;
 }

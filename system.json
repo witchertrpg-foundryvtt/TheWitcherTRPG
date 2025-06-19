@@ -3,9 +3,8 @@
     "title": "The Witcher TRPG - Foundry VTT",
     "description": "The Witcher TRPG System",
     "compatibility": {
-        "minimum": "12",
-        "verified": "12",
-        "maximum": "12"
+        "minimum": "13",
+        "verified": "13"
     },
     "version": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION",
     "authors": [

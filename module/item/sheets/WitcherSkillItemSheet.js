@@ -1,4 +1,4 @@
-export default class WitcherSkillItemSheet extends ItemSheet {
+export default class WitcherSkillItemSheet extends foundry.appv1.sheets.ItemSheet {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {

@@ -10,7 +10,6 @@ import { healMixin } from './mixins/healMixin.js';
 
 import { itemContextMenu } from './interactions/itemContextMenu.js';
 import { activeEffectMixin } from './mixins/activeEffectMixin.js';
-import { specialSkillModifierMixin } from './mixins/specialSkillModifierMixin.js';
 import { customSkillMixin } from './mixins/customSkillMixin.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 
@@ -36,7 +35,7 @@ Array.prototype.cost = function () {
     return Math.ceil(total);
 };
 
-export default class WitcherActorSheet extends ActorSheet {
+export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
     statMap = CONFIG.WITCHER.statMap;
     skillMap = CONFIG.WITCHER.skillMap;
 
@@ -93,7 +92,7 @@ export default class WitcherActorSheet extends ActorSheet {
     }
 
     async _renderConfigureDialog() {
-        this.configuration?._render(true);
+        this.configuration?.render(true);
     }
 
     _prepareCustomSkills(context) {
@@ -117,7 +116,6 @@ export default class WitcherActorSheet extends ActorSheet {
 
         context.oldNotes = actor.getList('note');
         context.notes = actor.system.notes;
-        context.globalModifiers = actor.getList('effect').concat(actor.getList('globalModifier'));
     }
 
     _prepareSpells(context) {
@@ -252,7 +250,6 @@ export default class WitcherActorSheet extends ActorSheet {
         this.deathSaveListener(html);
         this.criticalWoundListener(html);
         this.noteListener(html);
-        this.specialSkillModifierListener(html);
         this.healListeners(html);
 
         this.itemContextMenu(html);
@@ -338,7 +335,6 @@ Object.assign(WitcherActorSheet.prototype, sanitizeMixin);
 Object.assign(WitcherActorSheet.prototype, deathsaveMixin);
 Object.assign(WitcherActorSheet.prototype, criticalWoundMixin);
 Object.assign(WitcherActorSheet.prototype, noteMixin);
-Object.assign(WitcherActorSheet.prototype, specialSkillModifierMixin);
 Object.assign(WitcherActorSheet.prototype, healMixin);
 
 Object.assign(WitcherActorSheet.prototype, itemContextMenu);

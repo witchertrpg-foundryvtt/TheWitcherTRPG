@@ -3,22 +3,30 @@ import { temporaryItemImprovementMixin } from './mixins/temporaryItemImprovement
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
-export class WitcherActiveEffectConfig extends ActiveEffectConfig {
+export class WitcherActiveEffectConfig extends foundry.applications.sheets.ActiveEffectConfig {
+    static DEFAULT_OPTIONS = {
+        actions: {
+            wizard: WitcherActiveEffectConfig.wizardAction
+        }
+    };
+
     /** @override */
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['witcher', 'sheet', 'active-effect-sheet'],
-            template: 'systems/TheWitcherTRPG/templates/sheets/activeEffect/active-effect-config.hbs'
-        });
-    }
+    static PARTS = {
+        header: { template: 'templates/sheets/active-effect/header.hbs' },
+        tabs: { template: 'templates/generic/tab-navigation.hbs' },
+        details: { template: 'templates/sheets/active-effect/details.hbs', scrollable: [''] },
+        duration: { template: 'templates/sheets/active-effect/duration.hbs' },
+        changes: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/activeEffect/active-effect-changes.hbs',
+            scrollable: ['ol[data-changes]']
+        },
+        footer: { template: 'templates/generic/form-footer.hbs' }
+    };
 
-    async _onEffectControl(event) {
-        event.preventDefault();
-        const button = event.currentTarget;
-
+    static async wizardAction() {
         let selects;
 
-        switch (this.object.type) {
+        switch (this.document.type) {
             case 'base':
                 selects = this.getActiveEffectsBasePaths();
                 break;
@@ -27,34 +35,32 @@ export class WitcherActiveEffectConfig extends ActiveEffectConfig {
                 break;
         }
 
-        if (button.dataset.action == 'wizard') {
-            const dialogTemplate = await renderTemplate(
-                'systems/TheWitcherTRPG/templates/dialog/activeEffects/wizard.hbs',
-                { selects: selects }
-            );
+        const dialogTemplate = await renderTemplate(
+            'systems/TheWitcherTRPG/templates/dialog/activeEffects/wizard.hbs',
+            {
+                selects: selects
+            }
+        );
 
-            DialogV2.prompt({
-                content: dialogTemplate,
-                modal: true,
-                ok: {
-                    callback: (event, button, dialog) => {
-                        let paths = button.form.elements.path.value.split(',');
-                        let newChanges = this.object.changes;
-                        paths.forEach(path => {
-                            newChanges.push({
-                                key: path
-                            });
+        DialogV2.prompt({
+            content: dialogTemplate,
+            modal: true,
+            ok: {
+                callback: (event, button, dialog) => {
+                    let paths = button.form.elements.path.value.split(',');
+                    let newChanges =this.document.changes;
+                    paths.forEach(path => {
+                        newChanges.push({
+                            key: path
                         });
+                    });
 
-                        this.object.update({
-                            changes: newChanges
-                        });
-                    }
+                   this.document.update({
+                        changes: newChanges
+                    });
                 }
-            });
-        } else {
-            super._onEffectControl(event);
-        }
+            }
+        });
     }
 }
 

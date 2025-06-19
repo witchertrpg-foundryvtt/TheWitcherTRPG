@@ -132,8 +132,8 @@ export let baseMixin = {
 
     getDamageModifcators() {
         return Object.keys(
-            this.object.parent?.system.damageTypeModification ??
-                this.object.parent.parent?.system.damageTypeModification ??
+           this.document.parent?.system.damageTypeModification ??
+               this.document.parent.parent?.system.damageTypeModification ??
                 {}
         )
             .map(key => {

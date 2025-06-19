@@ -6,24 +6,6 @@ export let armorMixin = {
             encumbranceModifier += item.system.encumb;
         });
 
-        let relevantModifier = this.getList('globalModifier')
-            .filter(modifier => modifier.system.isActive)
-            .filter(modifier => modifier.system.special?.length > 0)
-            .map(modifier => modifier.system.special)
-            .flat()
-            .map(modifier => CONFIG.WITCHER.specialModifier.find(special => special.id == modifier.special))
-            .filter(special => special?.tags?.includes('armorencumbarance'));
-
-        let relevantActorModifier = this.system.specialSkillModifiers
-            .map(specialSkillModifier =>
-                CONFIG.WITCHER.specialModifier.find(special => special.id == specialSkillModifier.modifier)
-            )
-            .filter(special => special?.tags?.includes('armorencumbarance'));
-
-        relevantModifier
-            .concat(relevantActorModifier)
-            .forEach(modifier => (encumbranceModifier += parseInt(modifier.formula)));
-
         return Math.max(encumbranceModifier, 0);
     },
 
@@ -238,10 +220,7 @@ export let armorMixin = {
             return 0;
         }
 
-        let spDamage =
-            properties.crushingForce || properties.ablating
-                ? Math.floor((await new Roll('1d6/2+1').evaluate()).total)
-                : 1;
+        let spDamage = properties.ablating ? Math.floor((await new Roll('1d6/2+1').evaluate()).total) : 1;
 
         if (properties.crushingForce) {
             spDamage *= 2;

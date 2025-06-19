@@ -7,14 +7,6 @@
             {{localize "WITCHER.Item.ConsumeProperties.Chat.healedFor"}}: {{messageInfos.heal}}
         </div>
     {{/if}}
-    {{#if item.system.consumeProperties.appliesGlobalModifier}}
-        <div>
-            {{localize "WITCHER.Item.ConsumeProperties.Chat.consumeGlobalModifiers"}}:
-        </div>
-        {{#each item.system.consumeProperties.consumeGlobalModifiers as |modifier|}}
-            <div>{{modifier}}</div>
-        {{/each}}
-    {{/if}}
     {{#if item.system.consumeProperties.effects}}
         <div>
             {{localize "WITCHER.Item.ConsumeProperties.Chat.consumeEffects"}}:

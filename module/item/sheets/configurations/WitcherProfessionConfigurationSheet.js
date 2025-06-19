@@ -1,14 +1,94 @@
 import WitcherConfigurationSheet from './WitcherConfigurationSheet.js';
 
-export default class WitcherDamagePropertiesConfigurationSheet extends WitcherConfigurationSheet {
-    activateListeners(html) {
-        super.activateListeners(html);
-        html.find('.add-effect-damageProperties').on('click', this._onAddEffectDamageProperties.bind(this));
-        html.find('.edit-effect-damageProperties').on('blur', this._onEditEffectDamageProperties.bind(this));
-        html.find('.remove-effect-damageProperties').on('click', this._oRemoveEffectDamageProperties.bind(this));
+export default class WitcherProfessionConfigurationSheet extends WitcherConfigurationSheet {
+    /** @override */
+    static DEFAULT_OPTIONS = {
+        actions: {
+            addEffect: WitcherProfessionConfigurationSheet._onAddEffect,
+            editEffect: WitcherProfessionConfigurationSheet._onEditEffect,
+            removeEffect: WitcherProfessionConfigurationSheet._oRemoveEffect
+        }
+    };
+
+    static PARTS = {
+        ...super.PARTS,
+        skillPath1: {
+            template:
+                'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPathPart.hbs',
+            scrollable: ['']
+        },
+        skillPath2: {
+            template:
+                'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPathPart.hbs',
+            scrollable: ['']
+        },
+        skillPath3: {
+            template:
+                'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/skillPathPart.hbs',
+            scrollable: ['']
+        }
+    };
+
+    static TABS = {
+        primary: {
+            tabs: [
+                { id: 'general' },
+                { id: 'skillPath1' },
+                { id: 'skillPath2' },
+                { id: 'skillPath3' },
+                { id: 'activeEffects' }
+            ],
+            initial: 'general',
+            labelPrefix: 'WITCHER.Item.Settings'
+        }
+    };
+
+    /** @inheritdoc */
+    _prepareTabs(group) {
+        const tabs = super._prepareTabs(group);
+        if (group === 'primary') {
+            const system = this.item.system;
+            tabs.skillPath1.label = this.item.system.skillPath1.pathName;
+            tabs.skillPath2.label = this.item.system.skillPath2.pathName;
+            tabs.skillPath3.label = this.item.system.skillPath3.pathName;
+        }
+
+        return tabs;
     }
 
-    _onAddEffectDamageProperties(event) {
+    async _preparePartContext(partId, context, options) {
+        let partContext = {
+            config: CONFIG.WITCHER,
+            tab: context.tabs[partId],
+            partId: partId
+        };
+
+        if (partId === 'skillPath1') {
+            return {
+                ...partContext,
+                skillPathFields: context.systemFields.skillPath1,
+                skillPath: context.item.system.skillPath1
+            };
+        }
+        if (partId === 'skillPath2') {
+            return {
+                ...partContext,
+                skillPathFields: context.systemFields.skillPath2,
+                skillPath: context.item.system.skillPath2
+            };
+        }
+        if (partId === 'skillPath3') {
+            return {
+                ...partContext,
+                skillPathFields: context.systemFields.skillPath3,
+                skillPath: context.item.system.skillPath3
+            };
+        }
+
+        return context;
+    }
+
+    static async _onAddEffectDamageProperties(event) {
         event.preventDefault();
         let element = event.currentTarget;
         let skillName = element.dataset.target;
@@ -20,7 +100,7 @@ export default class WitcherDamagePropertiesConfigurationSheet extends WitcherCo
         this.item.update({ [`system.${skillObject.path}.skillAttack.damageProperties.effects`]: newList });
     }
 
-    _onEditEffectDamageProperties(event) {
+    static async _onEditEffectDamageProperties(event) {
         event.preventDefault();
         let element = event.currentTarget;
         let effectId = element.closest('.list-item').dataset.id;
@@ -42,7 +122,7 @@ export default class WitcherDamagePropertiesConfigurationSheet extends WitcherCo
         this.item.update({ [`system.${skillObject.path}.skillAttack.damageProperties.effects`]: effects });
     }
 
-    _oRemoveEffectDamageProperties(event) {
+    static async _oRemoveEffectDamageProperties(event) {
         event.preventDefault();
         let element = event.currentTarget;
         let effectId = element.closest('.list-item').dataset.id;
@@ -54,7 +134,7 @@ export default class WitcherDamagePropertiesConfigurationSheet extends WitcherCo
         this.item.update({ [`system.${skillObject.path}.skillAttack.damageProperties.effects`]: newList });
     }
 
-    findSkillWithName(skillName) {
+    static findSkillWithName(skillName) {
         let skillPath = this.document;
 
         if (this.findSkillWithNameInSkillPath(skillPath.system.skillPath1, skillName)) {
@@ -71,7 +151,7 @@ export default class WitcherDamagePropertiesConfigurationSheet extends WitcherCo
         }
     }
 
-    findSkillWithNameInSkillPath(skillPath, skillName) {
+    static findSkillWithNameInSkillPath(skillPath, skillName) {
         if (skillPath.skill1.skillName === skillName) {
             return { skill: skillPath.skill1, path: 'skill1' };
         }

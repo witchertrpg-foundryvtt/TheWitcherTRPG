@@ -64,7 +64,6 @@ export let professionMixin = {
                     ? `+${this.system.attackStats.meleeBonus}`
                     : `+${this.system.attackStats.meleeBonus}[${game.i18n.localize('WITCHER.Dialog.attackMeleeBonus')}]`;
             }
-            damageFormula = this.handleSpecialModifier(damageFormula, 'melee-damage');
         }
 
         let attack = {

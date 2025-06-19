@@ -9,12 +9,6 @@ import { repairMixin } from './mixins/repairMixin.js';
 import { dismantlingMixin } from './mixins/dismantlingMixin.js';
 
 export default class WitcherItem extends Item {
-    async _preCreate(data, options, user) {
-        //global modifiers are discontinued, so no new ones should be created
-        if (data.type === 'globalModifier') return false;
-        await super._preCreate(data, options, user);
-    }
-
     /** @inheritdoc */
     static migrateData(source) {
         this.migrateSpells(source);

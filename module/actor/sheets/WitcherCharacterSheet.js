@@ -2,6 +2,7 @@ import WitcherActorSheet from './WitcherActorSheet.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
+import { alchemyMixin } from './mixins/alchemyMixin.js';
 
 export default class WitcherCharacterSheet extends WitcherActorSheet {
     uniqueTypes = ['profession', 'race', 'homeland'];
@@ -35,6 +36,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         this._prepareSubstances(context);
         this._prepareAlchemy(context);
         this._prepareValuables(context);
+        context.alchemyComponentsList = this._prepareAlchemyComponentsList(context);
 
         context.system.general.lifeEvents = Object.entries(context.system.general.lifeEvents).map(([key, value]) => ({
             key,
@@ -345,3 +347,5 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         await item.repair();
     }
 }
+
+Object.assign(WitcherCharacterSheet.prototype, alchemyMixin);

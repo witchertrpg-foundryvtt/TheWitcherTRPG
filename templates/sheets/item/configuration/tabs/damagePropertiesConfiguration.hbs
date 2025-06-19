@@ -1,0 +1,61 @@
+<div class="tab {{tabs.damageProperties.cssClass}} scrollable standard-form" data-group="primary"
+    data-tab="damageProperties">
+    {{formGroup systemFields.damageProperties.fields.armorPiercing value=item.system.damageProperties.armorPiercing localize=true}}
+    {{formGroup systemFields.damageProperties.fields.improvedArmorPiercing value=item.system.damageProperties.improvedArmorPiercing localize=true}}
+    {{formGroup systemFields.damageProperties.fields.ablating value=item.system.damageProperties.ablating localize=true}}
+    {{formGroup systemFields.damageProperties.fields.crushingForce value=item.system.damageProperties.crushingForce localize=true}}
+    {{formGroup systemFields.damageProperties.fields.damageIsAblation value=item.system.damageProperties.damageIsAblation localize=true}}
+    {{formGroup systemFields.damageProperties.fields.damageToAllLocations value=item.system.damageProperties.damageToAllLocations localize=true}}
+    {{formGroup systemFields.damageProperties.fields.bypassesWornArmor value=item.system.damageProperties.bypassesWornArmor localize=true}}
+    {{formGroup systemFields.damageProperties.fields.bypassesNaturalArmor value=item.system.damageProperties.bypassesNaturalArmor localize=true}}
+    {{formGroup systemFields.damageProperties.fields.variableDamage value=item.system.damageProperties.variableDamage localize=true}}
+    {{formGroup systemFields.damageProperties.fields.silverDamage value=item.system.damageProperties.silverDamage localize=true}}
+    {{formGroup systemFields.damageProperties.fields.isMeteorite value=item.system.damageProperties.isMeteorite localize=true}}
+    {{formGroup systemFields.damageProperties.fields.isNonLethal value=item.system.damageProperties.isNonLethal localize=true}}
+    {{formGroup systemFields.damageProperties.fields.defenseDifferenceMultiplier value=item.system.damageProperties.defenseDifferenceMultiplier localize=true}}
+    {{#if item.system.damageProperties.defenseDifferenceMultiplier}}
+        {{formGroup systemFields.damageProperties.fields.defenseMultiplierCap value=item.system.damageProperties.defenseMultiplierCap localize=true}}
+    {{/if}}
+    <table class="item-bottom-table">
+        <tr>
+            <th><a data-action='addEffect' data-target='system.damageProperties.effects'
+                    title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
+            </th>
+            <th>{{localize "WITCHER.Item.Effect"}}</th>
+            <th></th>
+            <th>{{localize "WITCHER.Percentage"}}</th>
+        </tr>
+        {{#each item.system.damageProperties.effects as |effect name|}}
+            <tr class="list-item" data-id="{{effect.id}}">
+                <td>
+                    <a data-action='removeEffect' data-target='system.damageProperties.effects'
+                        title="{{localize "WITCHER.Item.RemoveEffect"}}"><i class="fas fa-minus"></i></a>
+                </td>
+                <td>
+                    <input class="item-effect" data-action='editEffect' data-target='system.damageProperties.effects'
+                        placeholder="{{localize "WITCHER.table.Name"}}" data-field="name" type="text"
+                        value="{{effect.name}}" />
+                </td>
+                <td>
+                    <select class="item-effect" data-action='editEffect' data-target='system.damageProperties.effects'
+                        data-field="statusEffect">
+                        {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                    </select>
+                </td>
+                <td>
+                    <input data-action='editEffect' data-target='system.damageProperties.effects' placeholder="%"
+                        data-field="percentage" type="text" value="{{effect.percentage}}" data-dtype="Number" />
+                </td>
+            </tr>
+            {{#if ../item.system.staminaIsVar }}
+                <tr class="list-item" data-id="{{effect.id}}">
+                    <td>{{localize "WITCHER.Spell.variableEffect"}}</td>
+                    <td>
+                        <input data-action='editEffect' data-target='system.damageProperties.effects' type="checkbox"
+                            data-field="varEffect" {{checked effect.varEffect}} />
+                    </td>
+                </tr>
+            {{/if}}
+        {{/each}}
+    </table>
+</div>

@@ -1,0 +1,75 @@
+<details open>
+    <summary class="list-header valuables-list-header">
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/inventory-items-summary.hbs" header=header itemType=itemType subtype=subtype hasQuantity=hasQuantity}}
+    </summary>
+
+    <ol class="list item-table item-list">
+        {{#each components as |component id|}}
+            <li class="item list-item" data-item-id="{{component.id}}">
+                <div class="list-details valuable-details">
+                    <a class="item-display-info display-details">
+                        <img class="item-image item-list-image" src="{{component.img}}">
+                        <span class="item-image item-list-image" data-tooltip="{{localize 'WITCHER.Item.openDescription'}}">
+                            <i class="fa-solid fa-book"></i>
+                        </span>
+                    </a>
+                    <div>{{component.name}}</div>
+                    <div class="list-label">
+                        <span>
+                            <input class="inline-edit item-quantity" data-field="system.quantity" type="text" value="{{component.system.quantity}}" data-dtype="Number" />
+                        </span>
+                        <span class="list-controls">
+                            <a class="item-chat" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}">
+                                <i class="fa-regular fa-message"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="invisible item-info list-item-info">
+                    <div class="item-tags">
+                        {{#if component.system.type}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
+                                <i class="fa-solid fa-gem"></i>
+                                {{component.system.type}}
+                            </span>
+                        {{/if}}
+                        {{#if component.system.rarity}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Rarity"}}">
+                                <i class="fa-solid fa-gem"></i>
+                                {{component.system.rarity}}
+                            </span>
+                        {{/if}}
+                        {{#if component.system.quantityObtainable}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Quantity"}}">
+                                <i class="fa-solid fa-dice"></i>
+                                {{component.system.quantityObtainable}}
+                            </span>
+                        {{/if}}
+                        {{#if component.system.forage}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Forage"}}">
+                                <i class="fa-solid fa-dice-d20"></i>
+                                {{component.system.forage}}
+                            </span>
+                        {{/if}}
+                        {{#if component.system.weight}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
+                                <i class="fa-solid fa-weight-hanging"></i>
+                                {{component.system.weight}}
+                            </span>
+                        {{/if}}
+                        {{#if component.system.cost}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
+                                <i class="fa-solid fa-coins"></i>
+                                {{component.system.cost}}
+                            </span>
+                        {{/if}}
+                    </div>
+                    <div class="list-item-description">
+                        <h3>{{localize "WITCHER.Item.Description"}}</h3>
+                        <span><b>{{localize "WITCHER.Component.Location"}}:</b> {{component.system.location}}</span>
+                    </div>
+                </div>
+            </li>
+        {{/each}}
+    </ol>
+</details>

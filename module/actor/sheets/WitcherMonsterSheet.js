@@ -1,4 +1,4 @@
-import WitcherActorConfigurationSheet from './configurations/WitcherActorConfigurationSheet.js';
+import WitcherMonsterConfigurationSheet from './configurations/WitcherMonsterConfigurationSheet.js';
 import WitcherActorSheet from './WitcherActorSheet.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
@@ -14,7 +14,7 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
         });
     }
 
-    configuration = new WitcherActorConfigurationSheet(this.actor);
+    configuration = new WitcherMonsterConfigurationSheet(this.actor);
 
     getData() {
         let context = super.getData();

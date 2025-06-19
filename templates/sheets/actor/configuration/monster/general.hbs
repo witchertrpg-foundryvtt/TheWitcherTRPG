@@ -1,0 +1,22 @@
+<section class="tab active scrollable standard-form" data-group="primary" data-tab="general">
+    {{formGroup systemFields.customStat value=system.customStat localize=true}}
+    {{#if system.customStat}}
+        {{formGroup systemFields.derivedStats.fields.hp.fields.unmodifiedMax value=system.derivedStats.hp.unmodifiedMax localize=true}}
+        {{formGroup systemFields.derivedStats.fields.sta.fields.unmodifiedMax value=system.derivedStats.sta.unmodifiedMax localize=true}}
+        {{formGroup systemFields.derivedStats.fields.resolve.fields.unmodifiedMax value=system.derivedStats.resolve.unmodifiedMax localize=true}}
+    {{/if}}
+    {{formGroup systemFields.regeneration value=system.regeneration localize=true}}
+    <hr />
+    {{formGroup systemFields.showCommonerSuperstition value=system.showCommonerSuperstition localize=true}}
+    {{formGroup systemFields.showAcademicKnowledge value=system.showAcademicKnowledge localize=true}}
+    {{formGroup systemFields.showMonsterLore value=system.showMonsterLore localize=true}}
+
+    <hr />
+    {{formGroup systemFields.dontAddAttr value=system.dontAddAttr localize=true}}
+    {{formGroup systemFields.addMeleeBonus value=system.addMeleeBonus localize=true}}
+    {{formGroup systemFields.hasTailWing value=system.hasTailWing localize=true}}
+
+    <hr />
+    {{formGroup systemFields.resistantNonSilver value=system.resistantNonSilver localize=true}}
+    {{formGroup systemFields.resistantNonMeteorite value=system.resistantNonMeteorite localize=true}}
+</section>

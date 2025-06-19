@@ -17,3 +17,52 @@
     color: wheat;
     background-color: brown;
 }
+
+.chat-item-description {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-item-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.chat-item-header > img {
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(25, 24, 19, 0.6);
+}
+
+.chat-item-header > h4 {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.chat-description > .list-item-description > h4,
+.chat-components > h4 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.repair-message-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.repair-section > table {
+    margin: 0;
+}
+
+.request-repair {
+    width: 100%;
+}
+
+.chat-message .flavor-text .attack-message .damage {
+    width: 100%;
+    margin-bottom: 5px;
+}

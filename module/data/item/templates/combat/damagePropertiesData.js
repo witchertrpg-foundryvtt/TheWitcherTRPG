@@ -30,11 +30,6 @@ export default function damageProperties() {
             label: 'WITCHER.Item.DamageProperties.bypassesNaturalArmor'
         }),
 
-        hitGlobalModifiers: new fields.ArrayField(new fields.StringField({ initial: '' })),
-        appliesGlobalModifierToHit: new fields.BooleanField({ initial: false }),
-        appliesGlobalModifierToDamaged: new fields.BooleanField({ initial: false }),
-        damagedGlobalModifiers: new fields.ArrayField(new fields.StringField({ initial: '' })),
-
         defenseDifferenceMultiplier: new fields.BooleanField({
             initial: false,
             label: 'WITCHER.Item.DamageProperties.defenseDifferenceMultiplier'

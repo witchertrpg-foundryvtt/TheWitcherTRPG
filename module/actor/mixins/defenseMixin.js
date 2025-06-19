@@ -160,7 +160,7 @@ export let defenseMixin = {
                 : ` +${customDef}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
         }
 
-        rollFormula = this.handleSpecialModifier(rollFormula, defenseAction, this.items.get(defenseItemId)?.type);
+        rollFormula = this.handleLifepathModifier(rollFormula, defenseAction, this.items.get(defenseItemId)?.type);
         rollFormula += this.addAllModifiers(skillName);
 
         if (skillName != 'resistmagic' && this.statuses.find(status => status == 'stun')) {
@@ -207,18 +207,7 @@ export let defenseMixin = {
         return true;
     },
 
-    handleSpecialModifier(formula, action, additionalTag) {
-        let relevantModifier = this.getList('globalModifier')
-            .filter(modifier => modifier.system.isActive)
-            .filter(modifier => modifier.system.special?.length > 0)
-            .map(modifier => modifier.system.special)
-            .flat()
-            .map(modifier => CONFIG.WITCHER.specialModifier.find(special => special.id == modifier.special))
-            .filter(special => special?.tags?.includes(action))
-            .filter(special => special?.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true);
-
-        relevantModifier.forEach(modifier => (formula += `${modifier.formula}[${game.i18n.localize(modifier.name)}]`));
-
+    handleLifepathModifier(formula, action, additionalTag) {
         if (additionalTag === 'armor') {
             if (action === 'parry') {
                 formula +=

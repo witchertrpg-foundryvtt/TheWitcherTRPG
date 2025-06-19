@@ -1,7 +1,6 @@
 {
     "TYPES": {
         "Item": {
-            "globalModifier": "Modificador global (obsoleto)",
             "alchemical": "De alquimia",
             "armor": "Armadura",
             "clue": "Clave",
@@ -211,12 +210,10 @@
             "ROF": "ROF",
             "Availability": "Disponibilidad",
             "AddEffect": "Agregar efecto",
-            "AddGlobalModifier": "Agregar modificador global",
             "AddComponent": "Agregar componente",
             "AddAssociatedItem": "Agregar artículo asociado",
             "RemoveAssociatedItem": "Eliminar el elemento asociado",
             "RemoveEffect": "Eliminar el efecto",
-            "RemoveGlobalModifier": "Eliminar modificador global",
             "RemoveComponent": "Quitar componente",
             "CraftingMaterial": "Material de elaboración",
             "Hides&AnimalParts": "Pieles y partes de animales",
@@ -234,16 +231,12 @@
             "ConsumeProperties": {
                 "doesHeal": "Aplica curación",
                 "heal": "Cura para",
-                "appliesGlobalModifier": "Aplica el modificador global (se eliminará, se convertirá en efectos activos)",
                 "Chat": {
                     "healedFor": "curado por",
-                    "consumeGlobalModifiers": "aplicó estos modificadores globales",
                     "consumeEffects": "aplicó estos efectos"
                 }
             },
             "DamageProperties": {
-                "appliesGlobalModifierToHit": "Aplica un modificador global al ataque (se eliminará, se convertirá en efectos activos)",
-                "appliesGlobalModifierToDamaged": "Aplica Modificador Global a Dañado (se eliminará, se convertirá en efectos activos)",
                 "damageIsAblation": "Tratar el daño como Ablativa (no funcional)",
                 "damageToAllLocations": "Daña todas las ubicaciones",
                 "bypassesWornArmor": "Se deriva la armadura desgastada",
@@ -277,26 +270,26 @@
                 "notFound": "Estos elementos no están vinculados y no se pueden agregar automáticamente."
             },
             "Settings": {
-                "General": "Configuración general",
-                "Alchemical": "Configuración alquímica",
-                "Armor": "Configuración de armadura",
-                "Mutagen": "Configuración de mutagen",
-                "Race": "Configuración de carrera",
-                "Valuable": "Configuraciones valiosas",
-                "Weapon": "Configuración de armas",
-                "DamageProperties": "Propiedades de daño",
-                "DefenseProperties": "Propiedades de defensa",
-                "ConsumableProperties": "Propiedades consumibles",
-                "RegionProperties": "Propiedades de región",
-                "Attacks": {
+                "general": "Configuración general",
+                "alchemical": "Configuración alquímica",
+                "armor": "Configuración de armadura",
+                "mutagen": "Configuración de mutagen",
+                "race": "Configuración de carrera",
+                "valuable": "Configuraciones valiosas",
+                "weapon": "Configuración de armas",
+                "damageProperties": "Propiedades de daño",
+                "defenseProperties": "Propiedades de defensa",
+                "consumableProperties": "Propiedades consumibles",
+                "regionProperties": "Propiedades de región",
+                "attacks": {
                     "defendWith": {
                         "label": "Defiéndete con:",
                         "hint": "Configurar cómo el objetivo puede defenderse contra esto."
                     }
                 },
-                "Spell": {
-                    "SelfProperties": "Aplicar a la rueda",
-                    "CastProperties": "Aplicar al objetivo"
+                "spell": {
+                    "selfProperties": "Aplicar a la rueda",
+                    "castProperties": "Aplicar al objetivo"
                 }
             }
         },
@@ -981,12 +974,9 @@
             "clickableImageItemTypes": "Mostrar la casilla de verificación 'Zoomable' en la hoja de elementos",
             "clickableImageItemTypesHint": "Una lista de tipos de elementos separados por comas, donde se puede configurar una casilla de verificación. ",
             "clickableImageCheckboxForGMOnly": "Mostrar la casilla de verificación 'Ampliable' solo para GM",
-            "specialFont": "Usa la fuente especial de Witcher",
-            "globalModifierLookupCompendium": "Compendio de búsqueda global de modificadores",
-            "globalModifierLookupCompendiumHint": "Si un modificador global que debe activarse no se encuentra en la hoja de caracteres, buscará este compendio para ello"
+            "specialFont": "Usa la fuente especial de Witcher"
         },
         "background.other": "Otro",
-        "background.globalModifier": "Modificadores globales",
         "Resources.modifiers": "Modificadores de recursos",
         "Notes": "Notas",
         "Skills": {
@@ -1187,20 +1177,6 @@
                 }
             }
         },
-        "globalModifier": {
-            "tab": "Modificador global",
-            "isActive": "esta activo",
-            "special": "Efectos especiales",
-            "specialEffect": {
-                "wolfstrike": "Ataque Fuerte de la Escuela del Lobo",
-                "viperstrike": "Ataque Conjunto de la Escuela de la Víbora",
-                "manticoreparry": "Parada de la Escuela del Manticora",
-                "manticoreparrythrown": "Parada de Arma Arrojadiza de la Escuela del Manticora",
-                "armorEncumbarance": "Penalización de armadura -1 (Estorbo)",
-                "armoredCaster": "Lanzador Acorazado",
-                "meleeDamage": "+1 daño cuerpo a cuerpo"
-            }
-        },
         "activeEffect": {
             "tab": "Efecto activo",
             "source": "Fuente",
@@ -1323,15 +1299,6 @@
             }
         },
         "Deprecations": {
-            "globalModifier": {
-                "title": "Obsolescencia de Modificadores Globales",
-                "text": "Los siguientes actores necesitan ser modificados. Si no lo haces antes de que los modificadores globales sean eliminados, tu mundo podría dejar de funcionar. La funcionalidad se trasladó a efectos activos.",
-                "item": "Los siguientes objetos necesitan ser eliminados. Si no lo haces antes de que los modificadores globales sean eliminados, tu mundo podría dejar de funcionar. La funcionalidad se trasladó a efectos activos."
-            },
-            "specialSkillModifiers": {
-                "title": "Obsolescencia de Modificadores Especiales de Habilidades",
-                "text": "Los siguientes actores necesitan ser modificados. Si no lo haces antes de que los modificadores especiales de habilidades sean eliminados, se perderán los datos. La funcionalidad se trasladó a efectos activos."
-            }
         },
         "AssociatedDiagram": {
             "actions": {

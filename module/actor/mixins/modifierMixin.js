@@ -1,45 +1,10 @@
 export let modifierMixin = {
     getAllModifiers(checkedStat) {
-        let globalModifiers = this.getGlobalModifier(
-            this.getList('globalModifier').filter(e => e.system.isActive),
-            checkedStat
-        );
         let woundModifiers = this.getWoundModifier(this.system.critWounds, checkedStat);
 
         return {
-            totalModifiers: globalModifiers.totalModifiers + woundModifiers.totalModifiers,
-            totalDivider: globalModifiers.totalDivider * woundModifiers.totalDivider
-        };
-    },
-
-    getGlobalModifier(globalModifier, checkedStat) {
-        let totalModifiers = 0;
-        let totalDivider = 1;
-        globalModifier?.forEach(item => {
-            item.system.stats?.forEach(stat => {
-                if (stat.stat == checkedStat) {
-                    if (stat.modifier?.toString().includes('/')) {
-                        totalDivider = Number(stat.modifier.replace('/', ''));
-                    } else {
-                        totalModifiers += Number(stat.modifier ?? 0);
-                    }
-                }
-            });
-
-            item.system.derived?.forEach(derived => {
-                if (derived.derivedStat == checkedStat) {
-                    if (derived.modifier?.toString().includes('/')) {
-                        totalDivider = Number(derived.modifier.replace('/', ''));
-                    } else {
-                        totalModifiers += Number(derived.modifier ?? 0);
-                    }
-                }
-            });
-        });
-
-        return {
-            totalModifiers,
-            totalDivider
+            totalModifiers: woundModifiers.totalModifiers,
+            totalDivider: woundModifiers.totalDivider
         };
     },
 
@@ -81,7 +46,6 @@ export let modifierMixin = {
     addAllModifiers(skillName) {
         let modifierFormula = '';
         modifierFormula += this.addSkillModifiers(skillName);
-        modifierFormula += this.addGlobalModifier(skillName);
         if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
             modifierFormula += ')';
         }
@@ -123,36 +87,6 @@ export let modifierMixin = {
         return formula;
     },
 
-    addGlobalModifier(skillName) {
-        let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
-        let globalModifier = this.getList('effect')
-            .concat(this.getList('globalModifier'))
-            .filter(e => e.system.isActive);
-
-        let formula = '';
-        globalModifier.forEach(modifier => {
-            modifier.system.skills?.forEach(modifierSkill => {
-                if (
-                    skillName == modifierSkill.skill ||
-                    modifierSkill.skill == 'allSkills' ||
-                    CONFIG.WITCHER[modifierSkill.skill]?.includes(skillName)
-                ) {
-                    if (modifierSkill.modifier.includes('/')) {
-                        formula += !displayRollDetails
-                            ? ` /${Number(modifierSkill.modifier.replace('/', ''))}`
-                            : ` /${Number(modifierSkill.modifier.replace('/', ''))}[${modifier.name}]`;
-                    } else {
-                        formula += !displayRollDetails
-                            ? ` +${modifierSkill.modifier}`
-                            : ` +${modifierSkill.modifier}[${modifier.name}]`;
-                    }
-                }
-            });
-        });
-
-        return formula;
-    },
-
     addWoundsModifier(skillName) {
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
         let wounds = this.system.critWounds;
@@ -182,47 +116,4 @@ export let modifierMixin = {
             });
         return formula;
     },
-
-    async _activateGlobalModifier(name) {
-        let toActivate = this.items.find(item => item.type == 'globalModifier' && item.name == name);
-
-        if (!toActivate) {
-            let compendium = game.packs.get(game.settings.get('TheWitcherTRPG', 'globalModifierLookupCompendium'));
-            let newGlobalModifier = await compendium?.getDocuments({ name: name });
-            if (newGlobalModifier) {
-                toActivate = (await Item.create(newGlobalModifier, { parent: this })).shift();
-            }
-        }
-
-        if (!toActivate || toActivate.system.isActive) return;
-
-        toActivate.update({
-            'system.isActive': true
-        });
-    },
-
-    handleSpecialModifier(attFormula, action, additionalTag) {
-        let relevantModifier = this
-            .getList('globalModifier')
-            .filter(modifier => modifier.system.isActive)
-            .filter(modifier => modifier.system.special?.length > 0)
-            .map(modifier => modifier.system.special)
-            .flat()
-            .map(modifier => CONFIG.WITCHER.specialModifier.find(special => special.id == modifier.special))
-            .filter(special => special?.tags?.includes(action))
-            .filter(special => special?.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true);
-
-        let relevantActorModifier = this.system.specialSkillModifiers
-            .map(specialSkillModifier =>
-                CONFIG.WITCHER.specialModifier.find(special => special.id == specialSkillModifier.modifier)
-            )
-            .filter(special => special?.tags?.includes(action))
-            .filter(special => special?.additionalTags?.includes(additionalTag?.toLowerCase()) ?? true);
-
-        relevantModifier
-            .concat(relevantActorModifier)
-            .forEach(modifier => (attFormula += `${modifier.formula}[${game.i18n.localize(modifier.name)}]`));
-
-        return attFormula;
-    }
 };

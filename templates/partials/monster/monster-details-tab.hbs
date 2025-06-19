@@ -17,53 +17,6 @@
     {{> "systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs"}}
 </div>
 
-{{#if globalModifiers}}
-    <h2>{{localize "WITCHER.background.globalModifier"}}</h2>
-    {{#each globalModifiers as |globalModifier ev|}}
-        <div class="item" data-item-id="{{globalModifier.id}}">
-            <div class="flex">
-                <a class="item-edit"><i class="fas fa-edit"></i></a>
-                <img src="{{globalModifier.img}}" class="item-img" />
-                <label class="modifier-flex"><b>{{globalModifier.name}}</b></label>
-                <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
-            </div>
-            <div class="flex">
-                <div class="modifier-flex">
-                    {{#each globalModifier.system.stats as |stat index|}}
-                        <div>{{localize stat.stat}}:{{stat.modifier}}</div>
-                    {{/each}}
-                </div>
-                <div class="modifier-flex">
-                    {{#each globalModifier.system.derived as |derived index|}}
-                        <div>{{localize derived.derivedStat}}:{{derived.modifier}}</div>
-                    {{/each}}
-                </div>
-                <div class="modifier-flex">
-                    {{#each globalModifier.system.skills as |skill index|}}
-                        <div>{{localize skill.skill}}:{{skill.modifier}}</div>
-                    {{/each}}
-                </div>
-            </div>
-            <textarea rows=3>{{globalModifier.system.description}}</textarea>
-        </div>
-    {{/each}}
-{{/if}}
-
-<div class="global-modifier-column">
-    <div>
-        <h2>{{localize "WITCHER.Actor.SpecialSkillModifier"}}
-        </h2>
-    </div>
-    {{#each system.specialSkillModifiers as |special index|}}
-        <div class="flex list-item special-skill-row" data-id="{{special.id}}">
-            <a class="remove-special-skill-modifier"><i class="fas fa-minus"></i></a>
-            <select class="edit-special-skill-modifier">
-                {{selectOptions ../config.specialModifier blank='' selected=special.modifier nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
-            </select>
-        </div>
-    {{/each}}
-</div>
-
 <h2>{{localize "WITCHER.Notes"}} <a class="add-item" data-itemType="note"><i class="fas fa-plus"></i></a></h2>
 
 {{#each oldNotes as |note id|}}

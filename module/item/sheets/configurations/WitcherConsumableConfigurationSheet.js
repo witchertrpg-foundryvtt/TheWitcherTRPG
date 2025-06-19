@@ -1,60 +1,52 @@
 import WitcherConfigurationSheet from './WitcherConfigurationSheet.js';
 
 export default class WitcherConsumableConfigurationSheet extends WitcherConfigurationSheet {
-    activateListeners(html) {
-        super.activateListeners(html);
-
-        html.find('.add-global-modifier').on('click', this._onAddGlobalModifier.bind(this));
-        html.find('.edit-global-modifier').on('blur', this._onEditGlobalModifier.bind(this));
-        html.find('.remove-global-modifier').on('click', this._oRemoveGlobalModifier.bind(this));
-
-        html.find('.add-effect').on('click', this._onAddEffect.bind(this));
-        html.find('.edit-effect').on('blur', this._onEditEffect.bind(this));
-        html.find('.remove-effect').on('click', this._oRemoveEffect.bind(this));
-    }
-
-    _onAddGlobalModifier(event) {
-        event.preventDefault();
-        let newList = [];
-        if (this.item.system.globalModifiers) {
-            newList = this.item.system.consumeProperties.consumeGlobalModifiers;
+    /** @override */
+    static DEFAULT_OPTIONS = {
+        actions: {
+            addEffect: WitcherConsumableConfigurationSheet._onAddEffect,
+            removeEffect: WitcherConsumableConfigurationSheet._oRemoveEffect
         }
-        newList.push('global modifier');
-        this.item.update({ 'system.consumeProperties.consumeGlobalModifiers': newList });
+    };
+
+    static PARTS = {
+        ...super.PARTS,
+        consumableProperties: {
+            template:
+                'systems/TheWitcherTRPG/templates/sheets/item/configuration/tabs/consumablePropertiesConfiguration.hbs',
+            scrollable: ['']
+        }
+    };
+
+    static TABS = {
+        ...super.TABS,
+        primary: {
+            ...super.TABS.primary,
+            tabs: [{ id: 'general' }, { id: 'consumableProperties' }, { id: 'activeEffects' }]
+        }
+    };
+
+    _onRender(context, options) {
+        super._onRender(context, options);
+
+        this.element
+            .querySelectorAll('input[data-action=editEffect]')
+            .forEach(input => input.addEventListener('focusout', this._onEditEffect.bind(this)));
+        this.element
+            .querySelectorAll('select[data-action=editEffect]')
+            .forEach(input => input.addEventListener('input', this._onEditEffect.bind(this)));
     }
 
-    _onEditGlobalModifier(event) {
+    static async _onAddEffect(event, element) {
         event.preventDefault();
-        let element = event.currentTarget;
-
-        let value = element.value;
-        let oldValue = element.defaultValue;
-
-        let modifiers = this.item.system.consumeProperties.consumeGlobalModifiers;
-
-        modifiers[modifiers.indexOf(oldValue)] = value;
-
-        this.item.update({ 'system.consumeProperties.consumeGlobalModifiers': modifiers });
-    }
-
-    _oRemoveGlobalModifier(event) {
-        event.preventDefault();
-        let element = event.currentTarget;
-        let itemId = element.closest('.list-item').dataset.id;
-        let newList = this.item.system.consumeProperties.consumeGlobalModifiers.filter(modifier => modifier !== itemId);
-        this.item.update({ 'system.consumeProperties.consumeGlobalModifiers': newList });
-    }
-
-    _onAddEffect(event) {
-        event.preventDefault();
-        let target = event.currentTarget.dataset.target;
+        let target = element.dataset.target;
 
         let newList = this.item.system.consumeProperties[target] ?? [];
         newList.push({ percentage: 100 });
         this.item.update({ [`system.consumeProperties.${target}`]: newList });
     }
 
-    _onEditEffect(event) {
+    async _onEditEffect(event) {
         event.preventDefault();
         let element = event.currentTarget;
         let itemId = element.closest('.list-item').dataset.id;
@@ -75,9 +67,8 @@ export default class WitcherConsumableConfigurationSheet extends WitcherConfigur
         this.item.update({ [`system.consumeProperties.${target}`]: effects });
     }
 
-    _oRemoveEffect(event) {
+    static async _oRemoveEffect(event, element) {
         event.preventDefault();
-        let element = event.currentTarget;
         let itemId = element.closest('.list-item').dataset.id;
 
         let target = element.closest('.list-item').dataset.target;

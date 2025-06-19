@@ -4,23 +4,28 @@ const DialogV2 = foundry.applications.api.DialogV2;
 
 export let itemContextMenu = {
     itemContextMenu(html) {
-        ContextMenu.create(this, html, '.item', [
-            this.editItem(),
-            this.consumableItem(),
-            this.removableEnhancement(),
-            this.giftableItem(),
-            this.dismantableItem(),
-            this.deleteItem()
-        ]);
+        let contextMenu = new foundry.applications.ux.ContextMenu(
+            html[0],
+            '.item',
+            [
+                this.editItem(),
+                this.consumableItem(),
+                this.removableEnhancement(),
+                this.giftableItem(),
+                this.dismantableItem(),
+                this.deleteItem()
+            ],
+            { jQuery: false }
+        );
     },
 
     editItem() {
         return {
             name: 'WITCHER.Item.ContextMenu.edit',
             icon: '<i class="fas fa-edit"></i>',
-            callback: (event) => {
-                const item = this.actor.items.get(event[0].dataset.itemId)
-                item.sheet.render(true)
+            callback: event => {
+                const item = this.actor.items.get(event.dataset.itemId);
+                item.sheet.render(true);
             }
         };
     },
@@ -35,13 +40,12 @@ export let itemContextMenu = {
     },
 
     isItemConsumable(itemHtml) {
-        let item = this.actor.items.get(itemHtml[0].dataset.itemId);
-
+        let item = this.actor.items.get(itemHtml.dataset.itemId);
         return item.system.isConsumable;
     },
 
     consumeItem(itemHtml) {
-        let item = this.actor.items.get(itemHtml[0].dataset.itemId);
+        let item = this.actor.items.get(itemHtml.dataset.itemId);
 
         if (!item.system.isConsumable) {
             return ui.notifications.error(`${game.i18n.localize('WITCHER.Item.ContextMenu.NotConsumable')}`);
@@ -61,15 +65,15 @@ export let itemContextMenu = {
     },
 
     isEnhancementRemovable(itemHtml) {
-        let choosenEnhancement = this.actor.items.get(itemHtml[0].dataset.itemId);
+        let choosenEnhancement = this.actor.items.get(itemHtml.dataset.itemId);
 
         return choosenEnhancement.system.applied;
     },
 
     removeEnhancement(itemHtml) {
-        let choosenEnhancement = this.actor.items.get(itemHtml[0].dataset.itemId);
+        let choosenEnhancement = this.actor.items.get(itemHtml.dataset.itemId);
 
-        var parentData = itemHtml.parent()[0].closest('.item').dataset;
+        var parentData = itemHtml.parentElement.closest('.item').dataset;
 
         choosenEnhancement.update({
             'system.applied': false,
@@ -127,13 +131,13 @@ export let itemContextMenu = {
             'valuable',
             'weapon'
         ];
-        let item = this.actor.items.get(itemHtml[0].dataset.itemId);
+        let item = this.actor.items.get(itemHtml.dataset.itemId);
 
         return giftableTypes.includes(item.type);
     },
 
     async giftItem(itemHtml) {
-        let item = this.actor.items.get(itemHtml[0].dataset.itemId);
+        let item = this.actor.items.get(itemHtml.dataset.itemId);
 
         let allActors = '';
         game.actors
@@ -176,25 +180,25 @@ export let itemContextMenu = {
     },
 
     isItemDismantable(itemHtml) {
-        let item = this.actor.items.get(itemHtml[0].dataset.itemId);
+        let item = this.actor.items.get(itemHtml.dataset.itemId);
 
         return item.canBeDismantled();
     },
 
     async dismantleItem(itemHtml) {
-        let item = this.actor.items.get(itemHtml[0].dataset.itemId);
+        let item = this.actor.items.get(itemHtml.dataset.itemId);
 
         item.dismantle();
     },
 
     deleteItem() {
-      return {
-          name: 'WITCHER.Item.ContextMenu.delete',
-          icon: '<i class="fa-solid fa-trash"></i>',
-          callback: (event) => {
-              const item = this.actor.items.get(event[0].dataset.itemId)
-              item.delete()
-          }
-      };
-  },
+        return {
+            name: 'WITCHER.Item.ContextMenu.delete',
+            icon: '<i class="fa-solid fa-trash"></i>',
+            callback: event => {
+                const item = this.actor.items.get(event.dataset.itemId);
+                item.delete();
+            }
+        };
+    }
 };

@@ -1,0 +1,49 @@
+<div class="tab {{tabs.general.cssClass}} scrollable standard-form" data-group="primary" data-tab="general">
+    <h3>{{localize "WITCHER.Item.Settings.castProperties.selfProperties"}}</h3>
+    <table class="item-bottom-table">
+        <tr>
+            <th><a data-action='addEffect' data-target='system.selfEffects'
+                    title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
+            </th>
+            <th>{{localize "WITCHER.Item.Effect"}}</th>
+        </tr>
+        {{#each item.system.selfEffects as |effect name|}}
+            <tr class="list-item" data-id="{{effect.id}}">
+                <td>
+                    <a data-action='removeEffect' title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                            class="fas fa-minus"></i></a>
+                </td>
+                <td>
+                    <select class="item-effect" data-action='editEffect' data-field="statusEffect">
+                        {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                    </select>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+    <h3>{{localize "WITCHER.Item.Settings.castProperties.targetProperties"}}</h3>
+    <table class="item-bottom-table">
+        <tr>
+            <th><a data-action='addEffect' data-target='system.onCastEffects'
+                    title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
+            </th>
+            <th>{{localize "WITCHER.Item.Effect"}}</th>
+        </tr>
+        {{#each item.system.onCastEffects as |effect name|}}
+            <tr class="list-item" data-id="{{effect.id}}">
+                <td>
+                    <a data-action='removeEffect' title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                            class="fas fa-minus"></i></a>
+                </td>
+                <td>
+                    <select class="item-effect" data-action='editEffect' data-field="statusEffect">
+                        {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                    </select>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+    {{>"systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/attackOptionsPart.hbs"}}
+    {{formGroup systemFields.damageType value=item.system.damageType options=config.damageTypes localize=true}}
+    {{formGroup systemFields.defenseOptions value=item.system.defenseOptions options=config.defenseOptions localize=true}}
+</div>

@@ -42,18 +42,15 @@ Hooks.once('init', function () {
     registerSettings();
 });
 
-Hooks.on('renderChatLog', (app, html, data) => {
-    Chat.addChatListeners(html);
-});
-
-Hooks.on('renderChatMessage', (message, html, data) => {
+Hooks.on('renderChatMessageHTML', (message, html, data) => {
     Combat.attackChatMessageListeners(message, html);
     VerbalCombat.chatMessageListeners(message, html);
     ApplyStatusEffects.chatMessageListeners(message, html);
+    Chat.chatMessageListeners(message, html);
 });
 
 Hooks.on('renderActiveEffectConfig', async (activeEffectConfig, html, data) => {
-    const effectsSection = html[0].querySelector("section[data-tab='effects']");
+    const effectsSection = html.querySelector("section[data-tab='changes']");
     const inputFields = effectsSection.querySelectorAll('.key input');
     const datalist = document.createElement('datalist');
     const attributeKeyOptions = {};
@@ -176,12 +173,12 @@ Hooks.once('polyglot.init', LanguageProvider => {
     game.polyglot.api.registerSystem(FictionalGameSystemLanguageProvider);
 });
 
-Hooks.on('getChatLogEntryContext', ApplyDamage.addDamageMessageContextOptions);
-Hooks.on('getChatLogEntryContext', VerbalCombat.addVerbalCombatMessageContextOptions);
-Hooks.on('getChatLogEntryContext', VerbalCombatDefense.addVerbalCombatDefenseMessageContextOptions);
-Hooks.on('getChatLogEntryContext', Combat.addDefenseOptionsContextMenu);
-Hooks.on('getChatLogEntryContext', Combat.addCritMessageContextOptions);
-Hooks.on('getChatLogEntryContext', Fumble.addFumbleContextOptions);
+Hooks.on('getChatMessageContextOptions', ApplyDamage.addDamageMessageContextOptions);
+Hooks.on('getChatMessageContextOptions', VerbalCombat.addVerbalCombatMessageContextOptions);
+Hooks.on('getChatMessageContextOptions', VerbalCombatDefense.addVerbalCombatDefenseMessageContextOptions);
+Hooks.on('getChatMessageContextOptions', Combat.addDefenseOptionsContextMenu);
+Hooks.on('getChatMessageContextOptions', Combat.addCritMessageContextOptions);
+Hooks.on('getChatMessageContextOptions', Fumble.addFumbleContextOptions);
 
 /**
  * Create a Macro from an Item drop.

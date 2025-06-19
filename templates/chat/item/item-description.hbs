@@ -1,0 +1,17 @@
+<section class="chat-item-description">
+    <header class="chat-item-header">
+        <img src="{{item.img}}" alt="">
+        <h4>{{item.name}}</h4>
+    </header>
+    <div class="chat-description">
+        {{> "systems/TheWitcherTRPG/templates/chat/item/partials/item-description/description.hbs"}}
+        {{> "systems/TheWitcherTRPG/templates/chat/item/partials/item-description/spell-description.hbs"}}
+        {{> "systems/TheWitcherTRPG/templates/chat/item/partials/item-description/alchemicals.hbs"}}
+    </div>
+    <div class="chat-components">
+        {{> "systems/TheWitcherTRPG/templates/chat/item/partials/item-description/crafting-items.hbs"}}
+    </div>
+    <footer class="chat-item-tags item-tags">
+        {{> "systems/TheWitcherTRPG/templates/chat/item/partials/item-description/tags.hbs"}}
+    </footer>
+</section>

@@ -1,0 +1,33 @@
+<section>
+    {{#if (eq type 'diagrams')}}
+        {{#if (or item.system.craftingComponents item.system.alchemyComponents)}}
+            <h4>{{localize "WITCHER.Diagram.components"}}</h4>
+        {{/if}}
+        {{#if item.system.craftingComponents}}
+            {{#each item.system.craftingComponents as |component name|}}
+                <details class="stored-item">
+                    <summary class="stored-item-label">
+                        <img class="stored-item-img" src="{{component.img}}">
+                        <span>{{component.name}}</span>
+                        <span>x</span>
+                        <span>{{component.quantity}}</span>
+                    </summary>
+                </details>
+            {{/each}}
+        {{/if}}
+        {{#if item.system.isFormulae}}
+            {{#each item.system.alchemyComponents as |component key|}}
+                {{#if (gt component 0)}}
+                    <details class="stored-item">
+                        <summary class="stored-item-label">
+                            <img class="stored-item-img" src="systems/TheWitcherTRPG/assets/images/{{key}}.png">
+                            <span>{{localize (concat "WITCHER.Inventory." (capitalize key))}}</span>
+                            <span>x</span>
+                            <span>{{component}}</span>
+                        </summary>
+                    </details>
+                {{/if}}
+            {{/each}}
+        {{/if}}
+    {{/if}}
+</section>

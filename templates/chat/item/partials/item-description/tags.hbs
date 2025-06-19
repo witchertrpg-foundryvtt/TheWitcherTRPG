@@ -1,0 +1,332 @@
+{{#if (or (eq type 'alchemical') (eq type 'mutagen'))}}
+    <div class="item-tags">
+        <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
+            <i class="fa-solid fa-vial"></i>
+            {{item.system.type}}
+        </span>
+        {{#if item.system.alchemyDC}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Diagram.alchemyDC"}}">
+                <i class="fa-solid fa-dice-d20"></i>
+                {{item.system.alchemyDC}}
+            </span>
+        {{/if}}
+        {{#if item.system.avail}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Availability"}}">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                {{ localize (lookup config.Availability item.system.avail) }}
+            </span>
+        {{/if}}
+        {{#if item.system.time}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Alchemy.Duration"}}">
+                <i class="fa-solid fa-hourglass-half"></i>
+                {{item.system.time}}
+            </span>
+        {{/if}}
+        {{#if item.system.weight}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
+                <i class="fa-solid fa-weight-hanging"></i>
+                {{item.system.weight}}
+            </span>
+        {{/if}}
+        {{#if item.system.cost}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
+                <i class="fa-solid fa-coins"></i>
+                {{item.system.cost}}
+            </span>
+        {{/if}}
+        {{#if item.system.toxicity}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Alchemy.Toxicity"}}">
+                <i class="fa-solid fa-skull-crossbones"></i>
+                {{item.system.toxicity}}
+            </span>
+        {{/if}}
+    </div>
+{{/if}}
+{{#if (eq type 'armor')}}
+    <div class="item-tags">
+        {{#if item.system.type}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
+                <i class="fa-solid fa-shield-halved"></i>
+                {{item.system.type}}
+            </span>
+        {{/if}}
+        {{#if item.system.slashing}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.DamageType.slashing"}}">
+                <i class="fa-solid fa-maximize"></i>
+                {{localize "WITCHER.DamageType.slashing"}}
+            </span>
+        {{/if}}
+        {{#if item.system.piercing}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.DamageType.piercing"}}">
+                <i class="fa-solid fa-maximize"></i>
+                {{localize "WITCHER.DamageType.piercing"}}
+            </span>
+        {{/if}}
+        {{#if item.system.bludgeoning}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.DamageType.bludgeoning"}}">
+                <i class="fa-solid fa-maximize"></i>
+                {{localize "WITCHER.DamageType.bludgeoning"}}
+            </span>
+        {{/if}}
+        {{#if item.system.encumb}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Armor.EncumbranceValue"}}">
+                <i class="fa-solid fa-person-hiking"></i>
+                {{item.system.encumb}}
+            </span>
+        {{/if}}
+        {{#if item.system.weight}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
+                <i class="fa-solid fa-weight-hanging"></i>
+                {{item.system.weight}}
+            </span>
+        {{/if}}
+    </div>
+{{/if}}
+{{#if (eq type 'component')}}
+    <div class="item-tags">
+        {{#if item.system.type}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
+                <i class="fa-solid fa-gem"></i>
+                {{item.system.type}}
+            </span>
+        {{/if}}
+        {{#if item.system.rarity}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Rarity"}}">
+                <i class="fa-solid fa-gem"></i>
+                {{item.system.rarity}}
+            </span>
+        {{/if}}
+        {{#if item.system.quantityObtainable}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Quantity"}}">
+                <i class="fa-solid fa-dice"></i>
+                {{item.system.quantityObtainable}}
+            </span>
+        {{/if}}
+        {{#if item.system.forage}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Forage"}}">
+                <i class="fa-solid fa-dice-d20"></i>
+                {{item.system.forage}}
+            </span>
+        {{/if}}
+        {{#if item.system.weight}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
+                <i class="fa-solid fa-weight-hanging"></i>
+                {{item.system.weight}}
+            </span>
+        {{/if}}
+        {{#if item.system.cost}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
+                <i class="fa-solid fa-coins"></i>
+                {{item.system.cost}}
+            </span>
+        {{/if}}
+    </div>
+{{/if}}
+{{#if (or (eq type 'container') (eq type 'valuable'))}}
+    <div class="item-tags">
+        <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Availability"}}">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            {{ localize (lookup config.Availability item.system.avail) }}
+        </span>
+        <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Concealment"}}">
+            <i class="fa-solid fa-eye-slash"></i>
+            {{ localize (lookup config.Concealment item.system.conceal) }}
+        </span>
+        <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
+            <i class="fa-solid fa-weight-hanging"></i>
+            {{item.system.weight}}
+        </span>
+        <span class="item-tag" data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
+            <i class="fa-solid fa-coins"></i>
+            {{item.system.cost}}
+        </span>
+    </div>
+{{/if}}
+{{#if (eq type 'diagrams')}}
+    <div class="item-tags">
+        {{#if item.system.isFormulae}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Diagram.alchemyDC"}}">
+                <i class="fa-solid fa-dice-d20"></i>
+                {{item.system.alchemyDC}}
+            </span>
+        {{else}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Diagram.craftingDC"}}">
+                <i class="fa-solid fa-dice-d20"></i>
+                {{item.system.craftingDC}}
+            </span>
+        {{/if}}
+        <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
+            <i class="fa-solid fa-scroll"></i>
+            {{item.system.type}}
+        </span>
+        <span class="item-tag" data-tooltip="{{localize "WITCHER.Actor.Profession.Level"}}">
+            <i class="fa-solid fa-screwdriver"></i>
+            {{ localize (lookup config.craftingLevels item.system.level) }}
+        </span>
+        <span class="item-tag" data-tooltip="{{localize "WITCHER.Diagram.craftingTime"}}">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            {{item.system.craftingTime}}
+        </span>
+        <span class="item-tag" data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
+            <i class="fa-solid fa-coins"></i>
+            {{item.system.cost}}
+        </span>
+        <span class="item-tag" data-tooltip="{{localize "WITCHER.Diagram.investment"}}">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            {{item.system.investment}}
+        </span>
+    </div>
+{{/if}}
+{{#if (eq type 'enhancement')}}
+    <div class="item-tags">
+        {{#if item.system.type}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
+                <i class="fa-solid fa-signature"></i>
+                {{item.system.type}}
+            </span>
+        {{/if}}
+        {{#if item.system.weight}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
+                <i class="fa-solid fa-weight-hanging"></i>
+                {{item.system.weight}}
+            </span>
+        {{/if}}
+        {{#if item.system.cost}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
+                <i class="fa-solid fa-coins"></i>
+                {{item.system.cost}}
+            </span>
+        {{/if}}
+        {{#each item.system.effects as |effects|}}
+            {{#if (gt effects.percentage 0)}}
+                <div class="item-tag">
+                    {{effects.statusEffect}}
+                    {{effects.percentage}}%
+                </div>
+            {{/if}}
+        {{/each}}
+    </div>
+{{/if}}
+{{#if (eq type 'mount')}}
+    <div class="item-tags">
+        {{#if item.system.dex}}
+            <span class="item-tag">
+                <span><b>{{localize "WITCHER.Mount.Dex"}}:</b></span>
+                <span>{{item.system.dex}}</span>
+            </span>
+        {{/if}}
+        {{#if item.system.control}}
+            <span class="item-tag">
+                <span><b>{{localize "WITCHER.Mount.Control"}}:</b></span>
+                <span>{{item.system.control}}</span>
+            </span>
+        {{/if}}
+        {{#if item.system.speed}}
+            <span class="item-tag">
+                <span><b>{{localize "WITCHER.Mount.Speed"}}:</b></span>
+                <span>{{item.system.speed}}</span>
+            </span>
+        {{/if}}
+        {{#if item.system.hp}}
+            <span class="item-tag">
+                <span><b>{{localize "WITCHER.Mount.Hp"}}:</b></span>
+                <span>{{item.system.hp}}</span>
+            </span>
+        {{/if}}
+    </div>
+{{/if}}
+{{#if (or (eq type 'spell') (eq type 'hex') (eq type 'ritual'))}}
+    <div class="item-tags">
+        {{#if item.system.source}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.Element"}}">
+                <i class="fa-solid fa-wand-sparkles"></i>
+                {{item.system.source}}
+            </span>
+        {{/if}}
+        {{#if item.system.level}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Actor.Profession.Level"}}">
+                <i class="fa-solid fa-chart-bar"></i>
+                {{item.system.level}}
+            </span>
+        {{/if}}
+        {{#if item.system.danger}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.Danger"}}">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                {{item.system.danger}}
+            </span>
+        {{/if}}
+        {{#if item.system.range}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Range"}}">
+                <i class="fa-solid fa-ruler"></i>
+                {{item.system.range}}
+            </span>
+        {{/if}}
+        {{#if item.system.preparationTime}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.PrepTime"}}">
+                <i class="fa-solid fa-hand-sparkles"></i>
+                {{item.system.preparationTime}}
+            </span>
+        {{/if}}
+        {{#if item.system.difficultyCheck}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.DC"}}">
+                <i class="fa-solid fa-dice-d20"></i>
+                {{item.system.difficultyCheck}}
+            </span>
+        {{/if}}
+        {{#if item.system.duration}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.Duration"}}">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                {{item.system.duration}}
+            </span>
+        {{/if}}
+        {{#if item.system.defence}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.Defence"}}">
+                <i class="fa-solid fa-shield-halved"></i>
+                {{item.system.defence}}
+            </span>
+        {{/if}}
+    </div>
+{{/if}}
+{{#if (eq type 'weapon')}}
+    <div class="item-tags">
+        {{#if item.system.type.text}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
+                {{item.system.type.text}}
+            </span>
+        {{/if}}
+        {{#if item.system.range}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Range"}}">
+                <i class="fa-solid fa-ruler"></i>
+                {{item.system.range}}
+            </span>
+        {{/if}}
+        {{#if (gt item.system.accuracy 0)}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.WeaponAccuracy"}}">
+                <i class="fa-solid fa-crosshairs"></i>
+                +{{item.system.accuracy}}
+            </span>
+        {{/if}}
+        {{#if item.system.isAmmo}}
+            <span class="item-tag">
+                {{localize "WITCHER.Weapon.isAmmunition"}}
+            </span>
+        {{else}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Hands.title"}}">
+                <i class="fa-solid fa-hand"></i>
+                {{ localize (lookup config.weapon.hands item.system.hands) }}
+            </span>
+        {{/if}}
+        {{#if item.system.conceal}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Concealment"}}">
+                <i class="fa-solid fa-eye-slash"></i>
+                {{ localize (lookup config.Concealment item.system.conceal) }}
+            </span>
+        {{/if}}
+        {{#if item.system.weight}}
+            <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
+                <i class="fa-solid fa-weight-hanging"></i>
+                {{item.system.weight}}
+            </span>
+        {{/if}}
+    </div>
+{{/if}}

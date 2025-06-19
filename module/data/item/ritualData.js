@@ -45,14 +45,16 @@ export default class RitualData extends CommonItemData {
         this.ritualComponentUuids?.forEach(component =>
             this.ritualComponents.push({
                 item: fromUuidSync(component.uuid) ?? { name: component.uuid },
-                quantity: component.quantity
+                quantity: component.quantity,
+                img: component.img
             })
         );
 
         this.alternateRitualComponentUuids?.forEach(component =>
             this.alternateRitualComponents.push({
                 item: fromUuidSync(component.uuid) ?? { name: component.uuid },
-                quantity: component.quantity
+                quantity: component.quantity,
+                img: component.img
             })
         );
     }

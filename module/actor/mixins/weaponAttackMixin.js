@@ -25,13 +25,16 @@ export let weaponAttackMixin = {
                     ? `+${this.system.attackStats.meleeBonus}`
                     : `+${this.system.attackStats.meleeBonus}[${game.i18n.localize('WITCHER.Dialog.attackMeleeBonus')}]`;
             }
-            damageFormula = this.handleSpecialModifier(damageFormula, 'melee-damage');
         }
 
         let attack = weapon.getItemAttack(options);
         if (options.skillReplacement) {
             attack.skill = options.skillReplacement.skillName;
             attack.alias = options.skillReplacement.skillName;
+        }
+
+        if (!attack.skill) {
+            return ui.notifications.error(`${game.i18n.localize('WITCHER.Weapon.error.noAttackSkill')}`);
         }
         let messageDataFlavor = `<h1> ${game.i18n.localize('WITCHER.Dialog.attack')}: ${weapon.name}</h1>`;
 
@@ -188,8 +191,6 @@ export let weaponAttackMixin = {
             } else {
                 attFormula += this.constructBaseAttackFormula(skill);
             }
-
-            attFormula = this.handleSpecialModifier(attFormula, strike);
 
             if (weapon.system.accuracy < 0) {
                 attFormula += !displayRollDetails
