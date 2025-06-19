@@ -9,6 +9,10 @@ export default class WitcherConfigurationSheet extends HandlebarsApplicationMixi
             height: 480
         },
         classes: ['witcher', 'sheet', 'item'],
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false
+        },
         actions: {
             create: WitcherConfigurationSheet.onManageActiveEffect,
             toggle: WitcherConfigurationSheet.onManageActiveEffect,
@@ -49,7 +53,7 @@ export default class WitcherConfigurationSheet extends HandlebarsApplicationMixi
         context.config = CONFIG.WITCHER;
 
         this.options.classes.push(`item-${this.item.type}`);
-        context.item = this.item;
+        context.item = this.document;
 
         // Prepare active effects for easier access
         context.effects = this.prepareActiveEffectCategories(this.item.effects);
