@@ -162,6 +162,7 @@ export let defenseMixin = {
 
         rollFormula = this.handleLifepathModifier(rollFormula, defenseAction, this.items.get(defenseItemId)?.type);
         rollFormula += this.addAllModifiers(skillName);
+        rollFormula += this.addDefenseModifiers();
 
         if (skillName != 'resistmagic' && this.statuses.find(status => status == 'stun')) {
             rollFormula = '10[Stun]';
@@ -190,6 +191,14 @@ export let defenseMixin = {
             stagger,
             block
         });
+    },
+
+    addDefenseModifiers() {
+        let modifiers = '';
+        Object.values(this.system.combatEffects.defenseModifier).forEach(mod => {
+            modifiers += mod.value > 0 ? ` ${mod.value}[${game.i18n.localize(mod.name)}]` : '';
+        });
+        return modifiers;
     },
 
     handleExtraDefense(extraDefense) {
