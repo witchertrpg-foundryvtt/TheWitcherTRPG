@@ -196,7 +196,7 @@ export let defenseMixin = {
     addDefenseModifiers() {
         let modifiers = '';
         Object.values(this.system.combatEffects.defenseModifier).forEach(mod => {
-            modifiers += mod.value > 0 ? ` ${mod.value}[${game.i18n.localize(mod.name)}]` : '';
+            modifiers += mod.value !== 0 ? ` ${mod.value}[${game.i18n.localize(mod.name)}]` : '';
         });
         return modifiers;
     },
