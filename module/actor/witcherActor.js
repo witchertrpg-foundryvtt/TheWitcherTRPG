@@ -14,6 +14,7 @@ import { activeEffectMixin } from './mixins/activeEffectMixin.js';
 import ChatMessageData from '../chatMessage/chatMessageData.js';
 import { professionMixin } from './mixins/professionMixin.js';
 import { armorMixin } from './mixins/armorMixin.js';
+import { healMixin } from './mixins/healMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -745,6 +746,7 @@ Object.assign(WitcherActor.prototype, damageMixin);
 Object.assign(WitcherActor.prototype, damageUtilMixin);
 Object.assign(WitcherActor.prototype, weaponAttackMixin);
 Object.assign(WitcherActor.prototype, defenseMixin);
+Object.assign(WitcherActor.prototype, healMixin);
 Object.assign(WitcherActor.prototype, castSpellMixin);
 Object.assign(WitcherActor.prototype, verbalCombatMixin);
 Object.assign(WitcherActor.prototype, locationMixin);

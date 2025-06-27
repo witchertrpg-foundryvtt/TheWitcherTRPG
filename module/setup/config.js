@@ -2003,11 +2003,19 @@ WITCHER.statusEffects = [
         id: 'healing',
         name: 'WITCHER.statusEffects.healing',
         img: 'icons/svg/regen.svg',
-        combat: {
-            turn: {
-                hp: '+3'
+        changes: [
+            {
+                key: 'system.combatEffects.turnStartEffects.healing',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: `{ 
+                    "name": "WITCHER.statusEffects.healing",
+                    "img": "icons/svg/regen.svg",
+                    "heal": {
+                        "amount": 3
+                    }
+                }`
             }
-        }
+        ]
     },
     {
         id: 'buffed',
@@ -2018,16 +2026,22 @@ WITCHER.statusEffects = [
         id: 'fire',
         name: 'WITCHER.statusEffects.fire',
         img: 'icons/svg/fire.svg',
-        combat: {
-            turn: {
-                damage: {
-                    damage: '5',
-                    allLocations: true,
-                    type: 'fire',
-                    spDamage: '1'
-                }
+        changes: [
+            {
+                key: 'system.combatEffects.turnStartEffects.fire',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: `{ 
+                    "name": "WITCHER.statusEffects.fire",
+                    "img": "icons/svg/fire.svg",
+                    "damage": {
+                        "amount": 5,
+                        "allLocations": "true",
+                        "type": "fire",
+                        "spDamage": "1"
+                    }
+                }`
             }
-        }
+        ]
     },
     {
         id: 'stun',
@@ -2038,14 +2052,20 @@ WITCHER.statusEffects = [
         id: 'poison',
         name: 'WITCHER.statusEffects.poison',
         img: 'icons/svg/poison.svg',
-        combat: {
-            turn: {
-                damage: {
-                    damage: '3',
-                    ignoreArmor: true
-                }
+        changes: [
+            {
+                key: 'system.combatEffects.turnStartEffects.poison',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: `{ 
+                    "name": "WITCHER.statusEffects.poison",
+                    "img": "icons/svg/poison.svg",
+                    "damage": {
+                        "amount": 3,
+                        "ignoreArmor": "true"
+                    }
+                }`
             }
-        }
+        ]
     },
     {
         id: 'disease',
@@ -2058,44 +2078,14 @@ WITCHER.statusEffects = [
         img: 'icons/svg/falling.svg',
         changes: [
             {
-                key: 'system.skills.ref.brawling.activeEffectModifiers',
+                key: 'system.combatEffects.attackModifier.prone',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
+                value: '{ "name": "WITCHER.statusEffects.prone", "value": "-2" }'
             },
             {
-                key: 'system.skills.ref.melee.activeEffectModifiers',
+                key: 'system.combatEffects.defenseModifier.prone',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.ref.smallblades.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.ref.staffspear.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.ref.swordsmanship.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.dex.archery.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.dex.crossbow.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.ref.dodge.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
+                value: '{ "name": "WITCHER.statusEffects.prone", "value": "-2" }'
             }
         ]
     },
@@ -2103,14 +2093,20 @@ WITCHER.statusEffects = [
         id: 'bleed',
         name: 'WITCHER.statusEffects.bleed',
         img: 'icons/svg/blood.svg',
-        combat: {
-            turn: {
-                damage: {
-                    damage: '2',
-                    ignoreArmor: true
-                }
+        changes: [
+            {
+                key: 'system.combatEffects.turnStartEffects.bleed',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: `{ 
+                    "name": "WITCHER.statusEffects.bleed",
+                    "img": "icons/svg/blood.svg",
+                    "damage": {
+                        "amount": 2,
+                        "ignoreArmor": "true"
+                    }
+                }`
             }
-        }
+        ]
     },
     {
         id: 'freeze',
@@ -2135,44 +2131,14 @@ WITCHER.statusEffects = [
         img: 'icons/svg/sword.svg',
         changes: [
             {
-                key: 'system.skills.ref.brawling.activeEffectModifiers',
+                key: 'system.combatEffects.attackModifier.staggered',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
+                value: '{ "name": "WITCHER.statusEffects.staggered", "value": "-2" }'
             },
             {
-                key: 'system.skills.ref.melee.activeEffectModifiers',
+                key: 'system.combatEffects.defenseModifier.staggered',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.ref.smallblades.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.ref.staffspear.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.ref.swordsmanship.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.dex.archery.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.dex.crossbow.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
-            },
-            {
-                key: 'system.skills.ref.dodge.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -2
+                value: '{ "name": "WITCHER.statusEffects.staggered", "value": "-2" }'
             }
         ]
     },
@@ -2262,14 +2228,20 @@ WITCHER.statusEffects = [
         id: 'suffocation',
         name: 'WITCHER.statusEffects.suffocation',
         img: 'icons/svg/silenced.svg',
-        combat: {
-            turn: {
-                damage: {
-                    damage: '3',
-                    ignoreArmor: true
-                }
+        changes: [
+            {
+                key: 'system.combatEffects.turnStartEffects.suffocation',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: `{ 
+                    "name": "WITCHER.statusEffects.suffocation",
+                    "img": "icons/svg/silenced.svg",
+                    "damage": {
+                        "amount": 3,
+                        "ignoreArmor": "true"
+                    }
+                }`
             }
-        }
+        ]
     },
     {
         id: 'blinded',
@@ -2277,44 +2249,14 @@ WITCHER.statusEffects = [
         img: 'icons/svg/blind.svg',
         changes: [
             {
-                key: 'system.skills.ref.brawling.activeEffectModifiers',
+                key: 'system.combatEffects.attackModifier.blinded',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -3
+                value: '{ "name": "WITCHER.statusEffects.blinded", "value": "-2" }'
             },
             {
-                key: 'system.skills.ref.melee.activeEffectModifiers',
+                key: 'system.combatEffects.defenseModifier.blinded',
                 mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -3
-            },
-            {
-                key: 'system.skills.ref.smallblades.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -3
-            },
-            {
-                key: 'system.skills.ref.staffspear.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -3
-            },
-            {
-                key: 'system.skills.ref.swordsmanship.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -3
-            },
-            {
-                key: 'system.skills.dex.archery.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -3
-            },
-            {
-                key: 'system.skills.dex.crossbow.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -3
-            },
-            {
-                key: 'system.skills.ref.dodge.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
-                value: -3
+                value: '{ "name": "WITCHER.statusEffects.blinded", "value": "-2" }'
             },
             {
                 key: 'system.skills.int.awareness.activeEffectModifiers',

@@ -5,7 +5,6 @@ export default class WitcherPropertiesConfigurationSheet extends WitcherConfigur
     static DEFAULT_OPTIONS = {
         actions: {
             addEffect: WitcherPropertiesConfigurationSheet._onAddEffect,
-            editEffect: WitcherPropertiesConfigurationSheet._onEditEffect,
             removeEffect: WitcherPropertiesConfigurationSheet._oRemoveEffect
         }
     };
@@ -69,6 +68,13 @@ export default class WitcherPropertiesConfigurationSheet extends WitcherConfigur
         return parts;
     }
 
+    _onChangeForm(formConfig, event) {
+        super._onChangeForm(formConfig, event);
+        if (event.target.dataset.action === 'editEffect') {
+            this._onEditEffect(event, event.target);
+        }
+    }
+
     static async _onAddEffect(event, element) {
         event.preventDefault();
         let target = element.dataset.target;
@@ -77,7 +83,7 @@ export default class WitcherPropertiesConfigurationSheet extends WitcherConfigur
         this.item.update({ [target]: newList });
     }
 
-    static async _onEditEffect(event, element) {
+    async _onEditEffect(event, element) {
         event.preventDefault();
         let itemId = element.closest('.list-item').dataset.id;
         let target = element.dataset.target;

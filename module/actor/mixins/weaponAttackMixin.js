@@ -325,6 +325,7 @@ export let weaponAttackMixin = {
             : `${this.system.stats[skill.attribute.name].current}[${game.i18n.localize(skill.attribute.label)}]+${this.system.skills[skill.attribute.name][skill.name].value}[${game.i18n.localize(skill.label)}]`;
 
         attFormula += this.addAllModifiers(skill.name);
+        attFormula += this.addAttackModifiers();
 
         return attFormula;
     },
