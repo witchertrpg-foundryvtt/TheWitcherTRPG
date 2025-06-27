@@ -24,10 +24,7 @@ export let castSpellMixin = {
             ? `${this.system.stats.will.current}`
             : `${this.system.stats.will.current}[${game.i18n.localize(CONFIG.WITCHER.statMap.will.label)}]`;
 
-        let usedSkill =
-            CONFIG.WITCHER.skillMap[spellItem.system.spellAttackSkill] ??
-            CONFIG.WITCHER.magic[spellItem.type]?.skill ??
-            CONFIG.WITCHER.magic[spellItem.system.class].skill;
+        let usedSkill = spellItem.system.getUsedSkill();
 
         rollFormula +=
             `+${this.system.skills.will[usedSkill.name].value}` +
