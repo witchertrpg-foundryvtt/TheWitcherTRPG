@@ -8,18 +8,27 @@ import ChatMessageData from '../../chatMessage/chatMessageData.js';
 const DialogV2 = foundry.applications.api.DialogV2;
 
 export let defenseMixin = {
-    async prepareAndExecuteDefense(defenseOptions, attackDamageObject, totalAttack, attacker) {
+    async prepareAndExecuteDefense(attack, defenseOptions, attackDamageObject, totalAttack, attacker) {
         const content = `
         <div class="flex">
             <label>${game.i18n.localize('WITCHER.Dialog.DefenseExtra')}: <input type="checkbox" name="isExtraDefense"></label> <br />
         </div>
         <label>${game.i18n.localize('WITCHER.Dialog.attackCustom')}: <input type="Number" class="small" name="customDef" value=0></label> <br />`;
 
+        let additionalOptions = this.items
+            .filter(item => item.system.isApplicableDefense?.(attack.attackOption))
+            .map(item => item.createDefenseOption(attack));
+
+        let defenseOptionsData = [
+            ...defenseOptions.map(option => CONFIG.WITCHER.defenseOptions.find(defense => defense.value === option)),
+            ...additionalOptions
+        ];
+
         let buttons = Array.from(
-            defenseOptions.map(option => {
+            defenseOptionsData.map(option => {
                 return {
-                    label: CONFIG.WITCHER.defenseOptions.find(defense => defense.value === option).label,
-                    action: option,
+                    label: option.label,
+                    action: option.value,
                     callback: (event, button, dialog) => {
                         return {
                             defenseAction: option,
@@ -37,17 +46,15 @@ export let defenseMixin = {
             buttons: buttons
         });
 
-        let selectedDefense = CONFIG.WITCHER.defenseOptions.find(defense => defense.value === defenseAction);
-
         let chooser = [];
-        if (selectedDefense.skills) {
-            selectedDefense.skills.forEach(skill =>
+        if (defenseAction.skills) {
+            defenseAction.skills.forEach(skill =>
                 chooser.push({ value: skill, label: CONFIG.WITCHER.skillMap[skill].label })
             );
         }
 
-        if (selectedDefense.itemTypes) {
-            selectedDefense.itemTypes.forEach(itemType =>
+        if (defenseAction.itemTypes) {
+            defenseAction.itemTypes.forEach(itemType =>
                 this.getList(itemType)
                     .filter(item => !item.system.isAmmo)
                     .forEach(item =>
@@ -66,7 +73,7 @@ export let defenseMixin = {
         if (chooser.length == 1) {
             skillName = chooser[0].value;
             itemId = chooser[0].itemId;
-        } else {
+        } else if (chooser.length > 1) {
             let options = '';
             chooser.forEach(
                 option =>
@@ -91,9 +98,9 @@ export let defenseMixin = {
         return this.skillDefense(
             {
                 skillName,
-                modifier: selectedDefense.modifier,
-                stagger: selectedDefense.stagger,
-                block: selectedDefense.block
+                modifier: defenseAction.modifier,
+                stagger: defenseAction.stagger,
+                block: defenseAction.block
             },
             {
                 totalAttack,
@@ -102,7 +109,8 @@ export let defenseMixin = {
             },
             { extraDefense, customDef },
             defenseAction,
-            itemId
+            itemId,
+            defenseAction.skillOverride
         );
     },
 
@@ -111,17 +119,18 @@ export let defenseMixin = {
         { totalAttack, attackDamageObject, attacker },
         { extraDefense = false, customDef = 0 },
         defenseAction,
-        defenseItemId
+        defenseItemId,
+        skillOverride
     ) {
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
 
         if (!this.handleExtraDefense(extraDefense)) {
             return;
         }
-        let skillMapEntry = CONFIG.WITCHER.skillMap[skillName];
+        let skillMapEntry = skillOverride?.skillMapEntry ?? CONFIG.WITCHER.skillMap[skillName];
 
         let stat = this.system.stats[skillMapEntry.attribute.name].current;
-        let skill = this.system.skills[skillMapEntry.attribute.name][skillName];
+        let skill = skillOverride?.skill ?? this.system.skills[skillMapEntry.attribute.name][skillName];
         let skillValue = skill.value;
 
         let displayFormula = `1d10 + ${game.i18n.localize(skillMapEntry.attribute.labelShort)} + ${game.i18n.localize(skillMapEntry.label)}`;
@@ -137,9 +146,9 @@ export let defenseMixin = {
         if (modifier < 0) {
             rollFormula += !displayRollDetails
                 ? `${modifier}`
-                : `${modifier}[${game.i18n.localize('WITCHER.Defense.defenseOptions.' + defenseAction)}]`;
+                : `${modifier}[${game.i18n.localize(defenseAction.label)}]`;
 
-            if (defenseAction == 'parry' || defenseAction == 'parryThrown') {
+            if (defenseAction.value == 'parry' || defenseAction.value == 'parryThrown') {
                 let weapon = this.items.get(defenseItemId);
                 if (weapon?.system.defenseProperties?.parrying) {
                     rollFormula += !displayRollDetails
@@ -151,7 +160,7 @@ export let defenseMixin = {
         if (modifier > 0) {
             rollFormula += !displayRollDetails
                 ? `+${modifier}`
-                : `+${modifier}[${game.i18n.localize('WITCHER.Defense.defenseOptions.' + defenseAction)}]`;
+                : `+${modifier}[${game.i18n.localize(defenseAction.label)}]`;
         }
 
         if (customDef != '0') {
@@ -160,7 +169,11 @@ export let defenseMixin = {
                 : ` +${customDef}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
         }
 
-        rollFormula = this.handleLifepathModifier(rollFormula, defenseAction, this.items.get(defenseItemId)?.type);
+        rollFormula = this.handleLifepathModifier(
+            rollFormula,
+            defenseAction.value,
+            this.items.get(defenseItemId)?.type
+        );
         rollFormula += this.addAllModifiers(skillName);
         rollFormula += this.addDefenseModifiers();
 
@@ -169,12 +182,12 @@ export let defenseMixin = {
         }
 
         let messageData = new ChatMessageData(this);
-        messageData.flavor = `<h1>${game.i18n.localize('WITCHER.Defense.name')}: ${game.i18n.localize('WITCHER.Defense.defenseOptions.' + defenseAction)}</h1><p>${displayFormula}</p>`;
+        messageData.flavor = `<h1>${game.i18n.localize('WITCHER.Defense.name')}: ${skillOverride ? skillMapEntry.label : game.i18n.localize(defenseAction.label)}</h1><p>${displayFormula}</p>`;
 
         let roll = await extendedRoll(
             rollFormula,
             messageData,
-            this.createDefenseRollConfig(CONFIG.WITCHER.skillMap[skillName], totalAttack)
+            this.createDefenseRollConfig(skillOverride?.skill ?? CONFIG.WITCHER.skillMap[skillName], totalAttack)
         );
         let crit = this.checkForCrit(roll.total, totalAttack);
         if (crit) {

@@ -256,7 +256,12 @@
                 "defenseMultiplierCap": "Multiplier is capped at (not functional)"
             },
             "DefenseProperties": {
-                "parrying": "Negates parry penalty"
+                "parrying": "Negates parry penalty",
+                "defendsAgainst": {
+                    "label": "Defends against",
+                    "hint": "against which attack type does this defends"
+                },
+                "modifier": "Modifier"
             },
             "RegionProperties": {
                 "createRegionFromTemplate": "Create Region from Template",
@@ -431,6 +436,9 @@
                         "isAttack": "Is Attack",
                         "usesWeapon": "Uses Weapon",
                         "damageFormulaOverrides": "Overrides Damage Formula"
+                    },
+                    "skillDefense": {
+                        "isDefense": "Is Defense"
                     }
                 }
             }
