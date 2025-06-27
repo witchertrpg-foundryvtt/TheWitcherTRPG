@@ -30,6 +30,7 @@ export let itemMixin = {
     },
 
     async _onItemAdd(event) {
+        console.log(event);
         let element = event.currentTarget;
         let itemData = {
             name: `new ${element.dataset.itemtype}`,
@@ -45,12 +46,6 @@ export let itemMixin = {
                 break;
             case 'spellMaster':
                 itemData.system = { class: 'Spells', level: 'master' };
-                break;
-            case 'rituals':
-                itemData.system = { class: 'Rituals' };
-                break;
-            case 'hexes':
-                itemData.system = { class: 'Hexes' };
                 break;
             case 'magicalgift':
                 itemData.system = { class: 'MagicalGift' };
@@ -364,4 +359,3 @@ export let itemMixin = {
         html.find('.item-chat').on('click', this._onItemMessage.bind(this));
     }
 };
-
