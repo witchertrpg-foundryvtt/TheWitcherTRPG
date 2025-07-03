@@ -14,7 +14,7 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
         });
     }
 
-    configuration = new WitcherMonsterConfigurationSheet(this.actor);
+    configuration = new WitcherMonsterConfigurationSheet({ document: this.actor });
 
     getData() {
         let context = super.getData();

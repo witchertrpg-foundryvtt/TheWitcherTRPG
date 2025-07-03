@@ -2,7 +2,7 @@ import WitcherConfigurationSheet from './configurations/WitcherConfigurationShee
 import WitcherItemSheet from './WitcherItemSheet.js';
 
 export default class WitcherRitualSheet extends WitcherItemSheet {
-    configuration = new WitcherConfigurationSheet(this.item);
+    configuration = new WitcherConfigurationSheet({ document: this.item });
 
     /** @inheritdoc */
     _canDragStart(selector) {

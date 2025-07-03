@@ -1109,7 +1109,8 @@
         "Items.transferMany": "How many items to transfer",
         "Combat": {
             "shieldApplied": "gained shield:",
-            "healed": "healed {target} for {heal}"
+            "healed": "healed {target} for {heal}",
+            "healedFor": "healed for"
         },
         "Context": {
             "applyDmg": "Apply Damage",

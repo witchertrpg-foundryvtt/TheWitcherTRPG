@@ -7,7 +7,7 @@ export let consumeMixin = {
         let properties = this.system.consumeProperties;
         let messageInfos = {};
         if (properties.doesHeal) {
-            let heal = parseInt(await this.calculateHealValue(properties.heal));
+            let heal = parseInt(await this.actor.calculateHealValue(properties.heal));
             this.actor?.update({ 'system.derivedStats.hp.value': this.actor.system.derivedStats.hp.value + heal });
             messageInfos.heal = heal;
         }
@@ -18,17 +18,6 @@ export let consumeMixin = {
         messageInfos.appliedToWeapon = weapon;
         this.applyTemporaryItemImprovements();
         this.createConsumeMessage(messageInfos);
-    },
-
-    async calculateHealValue(value) {
-        let heal = value;
-        if (value.includes && value.includes('d')) {
-            heal = (await new Roll(value).evaluate()).total;
-        }
-        return parseInt(this.actor?.system.derivedStats.hp.value) + parseInt(heal) >
-            this.actor?.system.derivedStats.hp.max
-            ? parseInt(this.actor?.system.derivedStats.hp.max) - parseInt(this.actor?.system.derivedStats.hp.value)
-            : heal;
     },
 
     async removeEffects() {

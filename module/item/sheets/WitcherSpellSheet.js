@@ -3,9 +3,7 @@ import WitcherSpellConfigurationSheet from "./configurations/WitcherSpellConfigu
 import WitcherItemSheet from "./WitcherItemSheet.js";
 
 export default class WitcherSpellSheet extends WitcherItemSheet {
-
-    configuration = new WitcherSpellConfigurationSheet(this.item);
-
+    configuration = new WitcherSpellConfigurationSheet({ document: this.item });
 
     /** @inheritdoc */
     _canDragDrop(selector) {
@@ -24,50 +22,50 @@ export default class WitcherSpellSheet extends WitcherItemSheet {
     createSelects() {
         return {
             class: {
-                Spells: "WITCHER.Spell.Spells",
-                Invocations: "WITCHER.Spell.Invocations",
-                Witcher: "WITCHER.Spell.Witcher",
-                MagicalGift: "WITCHER.Spell.MagicalGift",
+                Spells: 'WITCHER.Spell.Spells',
+                Invocations: 'WITCHER.Spell.Invocations',
+                Witcher: 'WITCHER.Spell.Witcher',
+                MagicalGift: 'WITCHER.Spell.MagicalGift'
             },
             levelSpell: {
-                novice: "WITCHER.Spell.Novice",
-                journeyman: "WITCHER.Spell.Journeyman",
-                master: "WITCHER.Spell.Master"
+                novice: 'WITCHER.Spell.Novice',
+                journeyman: 'WITCHER.Spell.Journeyman',
+                master: 'WITCHER.Spell.Master'
             },
             levelMagicalGift: {
-                "minor gift": "WITCHER.Spell.MinorGift",
-                "major gift": "WITCHER.Spell.MajorGift"
+                'minor gift': 'WITCHER.Spell.MinorGift',
+                'major gift': 'WITCHER.Spell.MajorGift'
             },
             sourceElements: {
-                mixedElements: "WITCHER.Spell.Mixed",
-                earth: "WITCHER.Spell.Earth",
-                air: "WITCHER.Spell.Air",
-                fire: "WITCHER.Spell.Fire",
-                Water: "WITCHER.Spell.Water",
+                mixedElements: 'WITCHER.Spell.Mixed',
+                earth: 'WITCHER.Spell.Earth',
+                air: 'WITCHER.Spell.Air',
+                fire: 'WITCHER.Spell.Fire',
+                Water: 'WITCHER.Spell.Water'
             },
             sourceClass: {
-                druid: "WITCHER.Spell.Druid",
-                preacher: "WITCHER.Spell.Preacher",
-                "arch priest": "WITCHER.Spell.Archpriest",
+                'druid': 'WITCHER.Spell.Druid',
+                'preacher': 'WITCHER.Spell.Preacher',
+                'arch priest': 'WITCHER.Spell.Archpriest'
             },
             domain: {
-                basic: "WITCHER.Spell.Basic",
-                alternate: "WITCHER.Spell.Alt",
+                basic: 'WITCHER.Spell.Basic',
+                alternate: 'WITCHER.Spell.Alt'
             },
             templateType: {
-                rect: "WITCHER.Spell.Square",
-                circle: "WITCHER.Spell.Circle",
-                cone: "WITCHER.Spell.Cone",
-                ray: "WITCHER.Spell.Ray",
+                rect: 'WITCHER.Spell.Square',
+                circle: 'WITCHER.Spell.Circle',
+                cone: 'WITCHER.Spell.Cone',
+                ray: 'WITCHER.Spell.Ray'
             }
-        }
+        };
     }
 
     async _onDrop(event) {
         const data = TextEditor.getDragEventData(event);
         // Handle different data types
         switch (data.type) {
-            case "Item":
+            case 'Item':
                 return this._onDropItem(event, data);
         }
     }

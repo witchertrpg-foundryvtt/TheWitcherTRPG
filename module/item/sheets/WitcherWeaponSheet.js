@@ -3,7 +3,7 @@ import WitcherItemSheet from './WitcherItemSheet.js';
 import { associatedDiagramMixin } from './mixins/associatedDiagramMixin.js';
 
 export default class WitcherWeaponSheet extends WitcherItemSheet {
-    configuration = new WitcherPropertiesConfigurationSheet(this.item);
+    configuration = new WitcherPropertiesConfigurationSheet({ document: this.item });
 
     /** @inheritdoc */
     _canDragStart(selector) {

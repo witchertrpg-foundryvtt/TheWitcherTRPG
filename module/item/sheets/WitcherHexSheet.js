@@ -2,8 +2,7 @@ import WitcherConfigurationSheet from './configurations/WitcherConfigurationShee
 import WitcherItemSheet from './WitcherItemSheet.js';
 
 export default class WitcherHexSheet extends WitcherItemSheet {
-    configuration = new WitcherConfigurationSheet(this.item);
-
+    configuration = new WitcherConfigurationSheet({ document: this.item });
 
     /** @override */
     getData() {
