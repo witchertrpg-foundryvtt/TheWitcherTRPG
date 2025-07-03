@@ -2,10 +2,15 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 
 export default class WitcherMonsterConfigurationSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
+    /** @override */
     static DEFAULT_OPTIONS = {
         position: {
             width: 520,
             height: 480
+        },
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false
         }
     };
 

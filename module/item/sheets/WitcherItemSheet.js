@@ -18,7 +18,7 @@ export default class WitcherItemSheet extends foundry.appv1.sheets.ItemSheet {
     }
 
     //overwrite in sub-classes
-    configuration = new WitcherConfigurationSheet(this.item);
+    configuration = new WitcherConfigurationSheet({ document: this.item });
 
     get template() {
         return `systems/TheWitcherTRPG/templates/sheets/item/${this.object.type}-sheet.hbs`;

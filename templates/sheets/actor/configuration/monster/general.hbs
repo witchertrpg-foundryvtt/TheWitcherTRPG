@@ -1,4 +1,4 @@
-<section class="tab active scrollable standard-form" data-group="primary" data-tab="general">
+<section class="tab {{tabs.general.cssClass}} scrollable standard-form" data-group="primary" data-tab="general">
     {{formGroup systemFields.customStat value=system.customStat localize=true}}
     {{#if system.customStat}}
         {{formGroup systemFields.derivedStats.fields.hp.fields.unmodifiedMax value=system.derivedStats.hp.unmodifiedMax localize=true}}

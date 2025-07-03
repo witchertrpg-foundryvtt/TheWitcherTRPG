@@ -18,5 +18,5 @@ export default class WitcheProfessionSheet extends WitcherItemSheet {
         });
     }
 
-    configuration = new WitcherProfessionConfigurationSheet(this.item);
+    configuration = new WitcherProfessionConfigurationSheet({ document: this.item });
 }
