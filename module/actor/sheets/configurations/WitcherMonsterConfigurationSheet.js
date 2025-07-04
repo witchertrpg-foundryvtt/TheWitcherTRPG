@@ -8,6 +8,7 @@ export default class WitcherMonsterConfigurationSheet extends HandlebarsApplicat
             width: 520,
             height: 480
         },
+        classes: ['witcher', 'sheet', 'actor'],
         form: {
             submitOnChange: true,
             closeOnSubmit: false
@@ -49,7 +50,7 @@ export default class WitcherMonsterConfigurationSheet extends HandlebarsApplicat
             return obj;
         }, {});
 
-        context.system = context.actor?.system;
+        context.system = this.document.system;
 
         context.systemFields = this.document.system.schema.fields;
         context.skillConfig = this._getSkills();
