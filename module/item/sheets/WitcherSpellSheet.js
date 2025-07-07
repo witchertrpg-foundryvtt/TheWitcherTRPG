@@ -1,8 +1,8 @@
 
 import WitcherSpellConfigurationSheet from "./configurations/WitcherSpellConfigurationSheet.js";
-import WitcherItemSheet from "./WitcherItemSheet.js";
+import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
 
-export default class WitcherSpellSheet extends WitcherItemSheet {
+export default class WitcherSpellSheet extends WitcherItemSheetV1 {
     configuration = new WitcherSpellConfigurationSheet({ document: this.item });
 
     /** @inheritdoc */
