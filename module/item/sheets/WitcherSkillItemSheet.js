@@ -1,43 +1,50 @@
-export default class WitcherSkillItemSheet extends foundry.appv1.sheets.ItemSheet {
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ItemSheetV2 } = foundry.applications.sheets;
+
+export default class WitcherSkillItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
+    /** @override */
+    static DEFAULT_OPTIONS = {
+        position: {
+            width: 520,
+            height: 480
+        },
+        classes: ['witcher', 'sheet', 'item'],
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false
+        }
+    };
+
+    static PARTS = {
+        header: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/skill-item-sheet.hbs`
+        }
+    };
+
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['witcher', 'sheet', 'item'],
-            width: 520,
-            height: 480,
             tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'data' }]
         });
     }
 
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/item/skill-item-sheet.hbs`;
-    }
-
     /** @override */
-    getData() {
-        const data = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        context.config = CONFIG.WITCHER;
 
+        this.options.classes.push(`item-skill`);
+        context.item = this.document;
         var filteredStats = Object.keys(CONFIG.WITCHER.statMap).reduce(function (r, index) {
             if (CONFIG.WITCHER.statMap[index].origin === 'stats') {
                 r[index] = CONFIG.WITCHER.statMap[index];
             }
             return r;
         }, {});
-        data.stats = filteredStats;
+        context.stats = filteredStats;
 
-        this.options.classes.push(`item-skill`);
-        data.system = data.item?.system;
+        context.system = context.item.system;
 
-        return data;
-    }
-
-    activateListeners(html) {
-        super.activateListeners(html);
-
-        html.find('input').focusin(ev => this._onFocusIn(ev));
-    }
-
-    _onFocusIn(event) {
-        event.currentTarget.select();
+        return context;
     }
 }
