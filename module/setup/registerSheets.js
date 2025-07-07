@@ -2,7 +2,7 @@ import WitcherCharacterSheet from '../actor/sheets/WitcherCharacterSheet.js';
 import WitcherMonsterSheet from '../actor/sheets/WitcherMonsterSheet.js';
 import WitcherLootSheet from '../actor/sheets/WitcherLootSheet.js';
 
-import WitcherItemSheet from '../item/sheets/WitcherItemSheet.js';
+import WitcherItemSheetV1 from '../item/sheets/WitcherItemSheetV1.js';
 import WitcherWeaponSheet from '../item/sheets/WitcherWeaponSheet.js';
 import WitcherDiagramSheet from '../item/sheets/WitcherDiagramSheet.js';
 import WitcherContainerSheet from '../item/sheets/WitcherContainerSheet.js';
@@ -27,7 +27,7 @@ const Items = foundry.documents.collections.Items;
 
 export const registerSheets = () => {
     Items.unregisterSheet('core', foundry.appv1.sheets.ItemSheet);
-    Items.registerSheet('witcher', WitcherItemSheet, { makeDefault: true });
+    Items.registerSheet('witcher', WitcherItemSheetV1, { makeDefault: true });
 
     Items.registerSheet('witcher', WitcherAlchemicalSheet, {
         makeDefault: true,

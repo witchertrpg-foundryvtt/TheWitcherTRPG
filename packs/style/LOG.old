@@ -1,3 +1,5 @@
-2025/05/12-15:33:05.429 1a6c Recovering log #468
-2025/05/12-15:33:05.523 1a6c Delete type=0 #468
-2025/05/12-15:33:05.523 1a6c Delete type=3 #467
+2025/07/07-09:54:39.433 484 Log #564: 0 ops saved to Table #567 OK
+2025/07/07-09:54:39.434 484 Archiving D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\style/000564.log: OK
+2025/07/07-09:54:39.450 484 Table #566: 77 entries OK
+2025/07/07-09:54:39.498 484 Archiving D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\style/MANIFEST-000562: OK
+2025/07/07-09:54:39.558 484 **** Repaired leveldb D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\style; recovered 1 files; 8727 bytes. Some data may have been lost. ****
