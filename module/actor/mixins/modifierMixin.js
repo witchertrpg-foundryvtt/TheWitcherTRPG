@@ -84,6 +84,23 @@ export let modifierMixin = {
                 : ` +${this.system.skills[skill.attribute.name][skill.name].activeEffectModifiers}[${effects}]`;
         }
 
+        if (this.system.skillGroupModifiers) {
+            Object.values(this.system.skillGroupModifiers).forEach(modifier => {
+                if (
+                    modifier.group === 'allSkills' ||
+                    CONFIG.WITCHER[modifier.group].some(groupSkill => groupSkill === skill.name)
+                ) {
+                    if (modifier.value < 0) {
+                        formula += ` ${modifier.value}[${game.i18n.localize(modifier.name)}]`;
+                    }
+                    if (modifier.value > 0) {
+                        formula += ` +${modifier.value}[${game.i18n.localize(modifier.name)}]`;
+                    }
+                } else {
+                }
+            });
+        }
+
         return formula;
     },
 

@@ -259,7 +259,7 @@ WITCHER.defenseOptions = [
         value: 'magicResist',
         label: 'WITCHER.Defense.defenseOptions.magicResist',
         skills: ['resistmagic']
-    },
+    }
 ];
 
 WITCHER.skillGroups = {
@@ -2060,7 +2060,23 @@ WITCHER.statusEffects = [
     {
         id: 'disease',
         name: 'WITCHER.statusEffects.disease',
-        img: 'icons/svg/biohazard.svg'
+        img: 'icons/svg/biohazard.svg',
+        changes: [
+            {
+                key: 'system.skillGroupModifiers.disease',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: `{ 
+                    "name": "WITCHER.statusEffects.disease",
+                    "group": "allSkills",
+                    "value": -2
+                }`
+            },
+            {
+                key: 'system.derivedStats.sta.max',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.MULTIPLY,
+                value: 0.75
+            }
+        ]
     },
     {
         id: 'prone',
