@@ -1,0 +1,15 @@
+<div class="witcherTRPG">
+  <h3>
+    {{localize "WITCHER.rewards.chat.title"}}: {{label}}
+  </h3>
+  {{#if ip}}
+    <div>
+      {{localize "WITCHER.rewards.chat.ip"}}: {{ip}}
+    </div>
+  {{/if}}
+  <div>
+    {{#each actors as |actor|}}
+      <br>{{actor.name}}
+    {{/each}}
+  </div>
+</div>

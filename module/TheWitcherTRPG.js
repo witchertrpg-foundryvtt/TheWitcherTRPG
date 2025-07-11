@@ -19,6 +19,7 @@ import { registerHooks } from './setup/hooks.js';
 import { deprecationWarnings } from './setup/deprecations.js';
 import { applyActiveEffectToActorViaId } from './scripts/activeEffects/applyActiveEffect.js';
 import { preloadHandlebarsTemplates, registerHandelbarHelpers } from './setup/handlebars.js';
+import Rewards from './app/reward/reward.js';
 
 registerHooks();
 
@@ -33,7 +34,8 @@ Hooks.once('init', function () {
     CONFIG.ActiveEffect.legacyTransferral = false;
 
     game.api = {
-        applyActiveEffectToActorViaId
+        applyActiveEffectToActorViaId,
+        rewards: Rewards.handoutRewards
     };
 
     registerDataModels();

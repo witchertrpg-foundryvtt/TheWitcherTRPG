@@ -1387,6 +1387,18 @@
             "required": "Required",
             "cost": "Cost",
             "totalPrice": "Total price"
+        },
+        "rewards": {
+            "dialog": {
+                "title": "Select actors for reward",
+                "label": "Label: ",
+                "ip": "IP: ",
+                "confirm": "Confirm"
+            },
+            "chat": {
+                "title": "Rewards",
+                "ip": "IP"
+            }
         }
     }
 }
