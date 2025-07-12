@@ -2,21 +2,23 @@
     <summary class="list-header valuables-list-header">
         {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/inventory-items-summary.hbs" header=header itemType=itemType hasQuantity=hasQuantity}}
     </summary>
-
+    
     <ol class="list item-table item-list">
         {{#each alchemicals as |alchemical id|}}
             <li class="item list-item" data-item-id="{{alchemical.id}}">
                 <div class="list-details valuable-details">
                     <a class="item-display-info display-details">
                         <img class="item-image item-list-image" src="{{alchemical.img}}">
-                        <span class="item-image item-list-image" data-tooltip="{{localize 'WITCHER.Item.openDescription'}}">
+                        <span class="item-image item-list-image"
+                            data-tooltip="{{localize 'WITCHER.Item.openDescription'}}">
                             <i class="fa-solid fa-book"></i>
                         </span>
                     </a>
                     <div>{{alchemical.name}}</div>
                     <div class="list-label">
                         <span>
-                            <input class="inline-edit item-quantity" data-field="system.quantity" type="text" value="{{alchemical.system.quantity}}" data-dtype="Number" />
+                            <input class="inline-edit item-quantity" data-field="system.quantity" type="text"
+                                value="{{alchemical.system.quantity}}" data-dtype="Number" />
                         </span>
                         <span class="list-controls">
                             <a class="item-chat" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}">
@@ -71,11 +73,13 @@
                     {{#if alchemical.system.effect}}
                         <div class="list-item-description">
                             <h3>{{localize "WITCHER.Item.Description"}}</h3>
-                            <span>{{#if (eq ../itemType 'mutagen')}}<b>{{localize "WITCHER.Item.Effect"}}: </b>{{/if}} {{alchemical.system.effect}}</span>
+                            <span>{{#if (eq ../itemType 'mutagen')}}<b>{{localize "WITCHER.Item.Effect"}}: </b>{{/if}}
+                                {{alchemical.system.effect}}</span>
                         </div>
                     {{/if}}
                     {{#if alchemical.system.minorMutation}}
-                        <span><b>{{localize "WITCHER.Mutagen.MinorMutation"}}: </b>{{alchemical.system.minorMutation}}</span>
+                        <span><b>{{localize "WITCHER.Mutagen.MinorMutation"}}:
+                            </b>{{alchemical.system.minorMutation}}</span>
                     {{/if}}
                 </div>
             </li>
