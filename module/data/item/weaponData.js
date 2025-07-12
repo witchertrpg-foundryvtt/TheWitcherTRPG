@@ -52,10 +52,9 @@ export default class WeaponData extends CommonItemData {
     createDefenseOption(attack) {
         return {
             ...this.defenseProperties.createDefenseOption(attack),
-            skills: () =>
-                [this.meleeAttackSkill, this.rangedAttackSkill, this.spellAttackSkill, this.itemUseAttackSkill].filter(
-                    element => element
-                )
+            skills: [
+                this.meleeAttackSkill ?? this.rangedAttackSkill ?? this.spellAttackSkill ?? this.itemUseAttackSkill
+            ]
         };
     }
 
