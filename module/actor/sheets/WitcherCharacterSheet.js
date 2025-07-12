@@ -107,7 +107,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         context.alchemicalItems = items.filter(
             i =>
                 (i.type == 'valuable' && i.system.type == 'alchemical-item') ||
-                (i.type == 'alchemical' && i.system.type == 'alchemical')
+                (i.type == 'alchemical' && (i.system.type == '' || i.system.type == 'alchemical'))
         );
         context.witcherPotions = items.filter(
             i => i.type == 'alchemical' && (i.system.type == 'decoction' || i.system.type == 'potion')
