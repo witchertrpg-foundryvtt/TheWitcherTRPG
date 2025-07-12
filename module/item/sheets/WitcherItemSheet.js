@@ -1,55 +1,68 @@
 import WitcherConfigurationSheet from './configurations/WitcherConfigurationSheet.js';
 
-export default class WitcherItemSheet extends foundry.appv1.sheets.ItemSheet {
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ItemSheetV2 } = foundry.applications.sheets;
+
+export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
+    /** @override */
+    static DEFAULT_OPTIONS = {
+        position: {
+            width: 520,
+            height: 480
+        },
+        classes: ['witcher', 'sheet', 'item'],
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false
+        },
+        actions: {
+            addEffect: WitcherItemSheet._onAddEffect,
+            removeEffect: WitcherItemSheet._oRemoveEffect,
+            configureItem: WitcherItemSheet._renderConfigureDialog
+        },
+        dragDrop: [{ dragSelector: '.items-list .item', dropSelector: null }]
+    };
+
+    static PARTS = {};
+
+    static TABS = {};
+
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['witcher', 'sheet', 'item'],
-            width: 520,
-            height: 480,
-            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'data' }],
-            dragDrop: [
-                {
-                    dragSelector: '.items-list .item',
-                    dropSelector: null
-                }
-            ]
+            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'data' }]
         });
     }
 
     //overwrite in sub-classes
     configuration = new WitcherConfigurationSheet({ document: this.item });
 
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/item/${this.object.type}-sheet.hbs`;
-    }
-
     /** @override */
-    getData() {
-        const context = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
         context.config = CONFIG.WITCHER;
 
         this.options.classes.push(`item-${this.item.type}`);
-        context.data = context.item?.system;
+        context.item = this.document;
+        context.data = context.item.system;
 
         context.showConfig = !!this.configuration;
 
         return context;
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
+    _onRender(context, options) {
+        super._onRender(context, options);
 
-        html.find('.add-effect').on('click', this._onAddEffect.bind(this));
-        html.find('.edit-effect').on('blur', this._onEditEffect.bind(this));
-        html.find('.remove-effect').on('click', this._oRemoveEffect.bind(this));
-
-        html.find('.configure-item').on('click', this._renderConfigureDialog.bind(this));
-
-        html.find('input').focusin(ev => this._onFocusIn(ev));
+        this.element
+            .querySelectorAll('input[data-action=editEffect]')
+            .forEach(input => input.addEventListener('focusout', this._onEditEffect.bind(this)));
+        this.element
+            .querySelectorAll('select[data-action=editEffect]')
+            .forEach(input => input.addEventListener('input', this._onEditEffect.bind(this)));
     }
 
-    _onAddEffect(event) {
+    static async _onAddEffect(event, element) {
         event.preventDefault();
         let newList = this.item.system.effects ?? [];
         newList.push({ percentage: 100 });
@@ -75,20 +88,14 @@ export default class WitcherItemSheet extends foundry.appv1.sheets.ItemSheet {
         this.item.update({ 'system.effects': effects });
     }
 
-    _oRemoveEffect(event) {
+    static async _oRemoveEffect(event, element) {
         event.preventDefault();
-        let element = event.currentTarget;
         let itemId = element.closest('.list-item').dataset.id;
         let newList = this.item.system.effects.filter(item => item.id !== itemId);
         this.item.update({ 'system.effects': newList });
     }
 
-    async _renderConfigureDialog() {
-        //TODO remove when everything is v2
-        this.configuration?.render(true) ?? this.configuration?._render(true);
-    }
-
-    _onFocusIn(event) {
-        event.currentTarget.select();
+    static async _renderConfigureDialog() {
+        this.configuration?.render(true);
     }
 }

@@ -3,6 +3,7 @@ import CommonItemData from './commonItemData.js';
 import attackOptions from './templates/combat/attackOptionsData.js';
 import damageProperties from './templates/combat/damagePropertiesData.js';
 import defenseOptions from './templates/combat/defenseOptionsData.js';
+import DefenseProperties from './templates/combat/defensePropertiesData.js';
 import itemEffect from './templates/itemEffectData.js';
 import regionProperties from './templates/regions/regionPropertiesData.js';
 
@@ -53,7 +54,27 @@ export default class SpellData extends CommonItemData {
             onCastEffects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
 
             ...attackOptions(),
-            ...defenseOptions()
+            ...defenseOptions(),
+            defenseProperties: new fields.EmbeddedDataField(DefenseProperties)
+        };
+    }
+
+    getUsedSkill() {
+        return (
+            CONFIG.WITCHER.skillMap[this.spellAttackSkill] ??
+            CONFIG.WITCHER.magic[this.parent.type]?.skill ??
+            CONFIG.WITCHER.magic[this.class].skill
+        );
+    }
+
+    isApplicableDefense(attack) {
+        return this.defenseProperties.isApplicableDefense(attack);
+    }
+
+    createDefenseOption(attack) {
+        return {
+            ...this.defenseProperties.createDefenseOption(attack),
+            skills: [this.getUsedSkill().name]
         };
     }
 

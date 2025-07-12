@@ -18,6 +18,8 @@ import { healMixin } from './mixins/healMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
+const derivedPaths = ['derivedStats', 'attackStats'];
+
 export default class WitcherActor extends Actor {
     /**
      * An array of ActiveEffect instances which are present on the Actor or Items which have a limited duration.
@@ -59,6 +61,7 @@ export default class WitcherActor extends Actor {
         this.calculateStats();
         this.calculateDerivedStats();
         this.calculateAttackStats();
+        this.applyActiveEffects('derived');
     }
 
     calculateStats() {
@@ -223,6 +226,60 @@ export default class WitcherActor extends Actor {
         this.system.attackStats.meleeBonus += meleeBonus;
         this.system.attackStats.punch.value = `1d6+${meleeBonus}`;
         this.system.attackStats.kick.value = `1d6+${4 + meleeBonus}`;
+    }
+
+    applyActiveEffects(preparationStage) {
+        const overrides = {};
+        const changes = [];
+
+        switch (preparationStage) {
+            case 'derived':
+                // Organize non-disabled effects by their application priority
+                for (const effect of this.allApplicableEffects()) {
+                    if (!effect.active) continue;
+                    changes.push(
+                        ...effect.changes
+                            .filter(change => derivedPaths.some(path => change.key.includes(path)))
+                            .map(change => {
+                                const c = foundry.utils.deepClone(change);
+                                c.effect = effect;
+                                c.priority = c.priority ?? c.mode * 10;
+                                return c;
+                            })
+                    );
+                }
+                break;
+            default:
+                //this is the native foundry call
+                this.statuses.clear();
+                // Organize non-disabled effects by their application priority
+                for (const effect of this.allApplicableEffects()) {
+                    if (!effect.active) continue;
+                    changes.push(
+                        ...effect.changes
+                            .filter(change => !derivedPaths.some(path => change.key.includes(path)))
+                            .map(change => {
+                                const c = foundry.utils.deepClone(change);
+                                c.effect = effect;
+                                c.priority = c.priority ?? c.mode * 10;
+                                return c;
+                            })
+                    );
+                    for (const statusId of effect.statuses) this.statuses.add(statusId);
+                }
+        }
+
+        changes.sort((a, b) => a.priority - b.priority);
+
+        // Apply all changes
+        for (const change of changes) {
+            if (!change.key) continue;
+            const changes = change.effect.apply(this, change);
+            Object.assign(overrides, changes);
+        }
+
+        // Expand the set of final overrides
+        this.overrides = foundry.utils.expandObject(overrides);
     }
 
     async rollSkillCheck(skillMapEntry, threshold = -1) {

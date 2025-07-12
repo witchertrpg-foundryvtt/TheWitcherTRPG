@@ -1,3 +1,5 @@
-2025/05/12-15:33:05.117 1a74 Recovering log #515
-2025/05/12-15:33:05.196 1a74 Delete type=0 #515
-2025/05/12-15:33:05.196 1a74 Delete type=3 #514
+2025/07/07-09:54:38.624 2198 Log #611: 0 ops saved to Table #614 OK
+2025/07/07-09:54:38.624 2198 Archiving D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\witcher-lifepath/000611.log: OK
+2025/07/07-09:54:38.699 2198 Table #613: 362 entries OK
+2025/07/07-09:54:38.810 2198 Archiving D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\witcher-lifepath/MANIFEST-000609: OK
+2025/07/07-09:54:38.951 2198 **** Repaired leveldb D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\witcher-lifepath; recovered 1 files; 66684 bytes. Some data may have been lost. ****

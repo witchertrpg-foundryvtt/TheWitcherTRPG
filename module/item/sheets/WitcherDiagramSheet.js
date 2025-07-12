@@ -1,6 +1,6 @@
-import WitcherItemSheet from './WitcherItemSheet.js';
+import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
 
-export default class WitcherDiagramSheet extends WitcherItemSheet {
+export default class WitcherDiagramSheet extends WitcherItemSheetV1 {
     get template() {
         return `systems/TheWitcherTRPG/templates/sheets/item/diagrams-sheet.hbs`;
     }

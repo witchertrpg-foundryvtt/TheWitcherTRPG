@@ -1,7 +1,6 @@
-import WitcherItemSheet from './WitcherItemSheet.js';
+import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
 
-export default class WitcherEnhancementSheet extends WitcherItemSheet {
-
+export default class WitcherEnhancementSheet extends WitcherItemSheetV1 {
     /** @override */
     getData() {
         const data = super.getData();

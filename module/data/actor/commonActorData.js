@@ -33,6 +33,13 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
             adrenaline: new fields.SchemaField(adrenaline()),
 
             skills: new fields.SchemaField(skills()),
+            skillGroupModifiers: new fields.TypedObjectField(
+                new fields.SchemaField({
+                    name: new fields.StringField(),
+                    group: new fields.StringField(),
+                    value: new fields.NumberField({ initial: 0 })
+                })
+            ),
             attackStats: new fields.SchemaField(attackStats()),
             combatEffects: new fields.SchemaField(combatEffects()),
             damageTypeModification: new fields.SchemaField(damageTypeModification()),

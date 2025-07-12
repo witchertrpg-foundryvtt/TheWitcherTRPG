@@ -1,8 +1,8 @@
 import WitcherConfigurationSheet from './configurations/WitcherConfigurationSheet.js';
-import WitcherItemSheet from './WitcherItemSheet.js';
+import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
 import { associatedDiagramMixin } from './mixins/associatedDiagramMixin.js';
 
-export default class WitcherArmorSheet extends WitcherItemSheet {
+export default class WitcherArmorSheet extends WitcherItemSheetV1 {
     configuration = new WitcherConfigurationSheet({ document: this.item });
 
     /** @inheritdoc */

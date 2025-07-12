@@ -1,7 +1,7 @@
-import WitcherItemSheet from './WitcherItemSheet.js';
+import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
 import WitcherProfessionConfigurationSheet from './configurations/WitcherProfessionConfigurationSheet.js';
 
-export default class WitcheProfessionSheet extends WitcherItemSheet {
+export default class WitcheProfessionSheet extends WitcherItemSheetV1 {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
