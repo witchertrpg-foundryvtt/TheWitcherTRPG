@@ -1,3 +1,4 @@
+import skillDefense from './combat/skillDefenseData.js';
 import skillAttack from './combat/skillAttackData.js';
 
 const fields = foundry.data.fields;
@@ -8,6 +9,7 @@ export default function professionSkill() {
         stat: new fields.StringField({ initial: '' }),
         definition: new fields.StringField({ initial: '' }),
         level: new fields.NumberField({ initial: 0 }),
-        skillAttack: new fields.SchemaField(skillAttack())
+        skillAttack: new fields.SchemaField(skillAttack()),
+        skillDefense: new fields.SchemaField(skillDefense())
     };
 }

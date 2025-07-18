@@ -56,6 +56,7 @@ export let baseMixin = {
                 return skillGroups;
             }, {});
     },
+    
     getSkillSuggestions() {
         return Object.keys(CONFIG.WITCHER.skillMap)
             .map(key => {

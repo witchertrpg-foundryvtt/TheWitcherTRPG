@@ -150,25 +150,21 @@ WITCHER.empatheticVerbalCombatSkills = ['charisma', 'persuasion', 'seduction', '
 WITCHER.attackOptions = [
     {
         value: 'melee',
-        actionType: ['attack'],
         label: 'WITCHER.Attack.attackOptions.melee',
         skills: ['brawling', 'melee', 'smallblades', 'staffspear', 'swordsmanship']
     },
     {
         value: 'ranged',
-        actionType: ['attack'],
         label: 'WITCHER.Attack.attackOptions.ranged',
         skills: ['athletics', 'archery', 'crossbow']
     },
     {
         value: 'spell',
-        actionType: ['attack'],
         label: 'WITCHER.Attack.attackOptions.spell',
         skills: ['spellcast', 'ritcraft', 'hexweave']
     },
     {
         value: 'itemUse',
-        actionType: ['attack'],
         label: 'WITCHER.Attack.attackOptions.itemUse',
         skills: ['trapcraft']
     }
@@ -230,19 +226,16 @@ WITCHER.spellAttackOptions = [
 WITCHER.defenseOptions = [
     {
         value: 'dodge',
-        actionType: ['defense'],
         label: 'WITCHER.Defense.defenseOptions.dodge',
         skills: ['dodge']
     },
     {
         value: 'reposition',
-        actionType: ['defense'],
         label: 'WITCHER.Defense.defenseOptions.reposition',
         skills: ['athletics']
     },
     {
         value: 'block',
-        actionType: ['defense'],
         label: 'WITCHER.Defense.defenseOptions.block',
         skills: ['brawling'],
         itemTypes: ['weapon', 'shield'],
@@ -250,7 +243,6 @@ WITCHER.defenseOptions = [
     },
     {
         value: 'parry',
-        actionType: ['defense'],
         label: 'WITCHER.Defense.defenseOptions.parry',
         skills: ['brawling'],
         itemTypes: ['weapon', 'shield'],
@@ -259,14 +251,12 @@ WITCHER.defenseOptions = [
     },
     {
         value: 'parryThrown',
-        actionType: ['defense'],
         label: 'WITCHER.Defense.defenseOptions.parryThrown',
         itemTypes: ['weapon', 'shield'],
         modifier: -5
     },
     {
         value: 'magicResist',
-        actionType: ['defense'],
         label: 'WITCHER.Defense.defenseOptions.magicResist',
         skills: ['resistmagic']
     }
@@ -2070,7 +2060,23 @@ WITCHER.statusEffects = [
     {
         id: 'disease',
         name: 'WITCHER.statusEffects.disease',
-        img: 'icons/svg/biohazard.svg'
+        img: 'icons/svg/biohazard.svg',
+        changes: [
+            {
+                key: 'system.skillGroupModifiers.disease',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: `{ 
+                    "name": "WITCHER.statusEffects.disease",
+                    "group": "allSkills",
+                    "value": -2
+                }`
+            },
+            {
+                key: 'system.derivedStats.sta.max',
+                mode: foundry.CONST.ACTIVE_EFFECT_MODES.MULTIPLY,
+                value: 0.75
+            }
+        ]
     },
     {
         id: 'prone',

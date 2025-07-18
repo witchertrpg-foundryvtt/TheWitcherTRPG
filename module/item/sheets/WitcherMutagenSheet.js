@@ -1,7 +1,7 @@
-import WitcherItemSheet from './WitcherItemSheet.js';
+import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
 import WitcherConsumableConfigurationSheet from './configurations/WitcherConsumableConfigurationSheet.js';
 
-export default class WitcherMutagenSheet extends WitcherItemSheet {
+export default class WitcherMutagenSheet extends WitcherItemSheetV1 {
     configuration = new WitcherConsumableConfigurationSheet({ document: this.item });
 
     /** @override */

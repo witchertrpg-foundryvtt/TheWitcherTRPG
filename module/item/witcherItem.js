@@ -7,6 +7,7 @@ import { damageUtilMixin } from './mixins/damageUtilMixin.js';
 import { consumeMixin } from './mixins/consumeMixin.js';
 import { repairMixin } from './mixins/repairMixin.js';
 import { dismantlingMixin } from './mixins/dismantlingMixin.js';
+import { defenseOptionMixin } from './mixins/defenseOptionMixin.js';
 
 export default class WitcherItem extends Item {
     /** @inheritdoc */
@@ -394,3 +395,4 @@ Object.assign(WitcherItem.prototype, repairMixin);
 Object.assign(WitcherItem.prototype, dismantlingMixin);
 Object.assign(WitcherItem.prototype, regionMixin);
 Object.assign(WitcherItem.prototype, damageUtilMixin);
+Object.assign(WitcherItem.prototype, defenseOptionMixin);

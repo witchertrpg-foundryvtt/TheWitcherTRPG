@@ -1,11 +1,11 @@
 import { migrateDamageProperties } from '../migrations/damagePropertiesMigration.js';
 import CommonItemData from './commonItemData.js';
 import damageProperties from './templates/combat/damagePropertiesData.js';
-import defenseProperties from './templates/combat/defensePropertiesData.js';
 import weaponType from './templates/weaponTypeData.js';
 import { associatedDiagramUuid, unwrapAssociatedDiagram } from './templates/associatedDiagramData.js';
 import defenseOptions from './templates/combat/defenseOptionsData.js';
 import attackOptions from './templates/combat/attackOptionsData.js';
+import DefenseProperties from './templates/combat/defensePropertiesData.js';
 
 const fields = foundry.data.fields;
 
@@ -39,9 +39,22 @@ export default class WeaponData extends CommonItemData {
             ...attackOptions(),
             damageProperties: new fields.SchemaField(damageProperties()),
             ...defenseOptions(),
-            defenseProperties: new fields.SchemaField(defenseProperties()),
+            defenseProperties: new fields.EmbeddedDataField(DefenseProperties),
 
             ...associatedDiagramUuid()
+        };
+    }
+
+    isApplicableDefense(attack) {
+        return this.defenseProperties.isApplicableDefense(attack);
+    }
+
+    createDefenseOption(attack) {
+        return {
+            ...this.defenseProperties.createDefenseOption(attack),
+            skills: [
+                this.meleeAttackSkill ?? this.rangedAttackSkill ?? this.spellAttackSkill ?? this.itemUseAttackSkill
+            ]
         };
     }
 

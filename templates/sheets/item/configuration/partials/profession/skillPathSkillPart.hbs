@@ -61,5 +61,12 @@
                 </details>
             {{/if}}
         </div>
+        <div>
+            {{formGroup skillFields.fields.skillDefense.fields.isDefense value=skill.skillDefense.isDefense localize=true}}
+            {{#if skill.skillDefense.isDefense}}
+                {{formGroup skillFields.fields.skillDefense.fields.defenseProperties.fields.defendsAgainst value=skill.skillDefense.defenseProperties.defendsAgainst options=config.attackOptions localize=true}}
+                {{formGroup skillFields.fields.skillDefense.fields.defenseProperties.fields.modifier value=skill.skillDefense.defenseProperties.modifier localize=true}}
+            {{/if}}
+        </div>
     </div>
 </div>

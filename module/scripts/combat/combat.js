@@ -42,6 +42,7 @@ async function executeDefense(actor, messageId) {
     let message = game.messages.get(messageId);
 
     actor.prepareAndExecuteDefense(
+        message.system.attack,
         message.system.defenseOptions,
         message.system.damage,
         message.system.attackRoll,
