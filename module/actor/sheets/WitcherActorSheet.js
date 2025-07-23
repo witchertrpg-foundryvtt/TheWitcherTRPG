@@ -1,4 +1,3 @@
-import { sanitizeMixin } from './mixins/sanitizeMixin.js';
 import { deathsaveMixin } from './mixins/deathSaveMixin.js';
 import { criticalWoundMixin } from './mixins/criticalWoundMixin.js';
 import { noteMixin } from './mixins/noteMixin.js';
@@ -331,7 +330,6 @@ Object.assign(WitcherActorSheet.prototype, customSkillMixin);
 Object.assign(WitcherActorSheet.prototype, itemMixin);
 Object.assign(WitcherActorSheet.prototype, activeEffectMixin);
 
-Object.assign(WitcherActorSheet.prototype, sanitizeMixin);
 Object.assign(WitcherActorSheet.prototype, deathsaveMixin);
 Object.assign(WitcherActorSheet.prototype, criticalWoundMixin);
 Object.assign(WitcherActorSheet.prototype, noteMixin);
