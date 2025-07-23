@@ -271,7 +271,7 @@ export let defenseMixin = {
         let difficult = totalAttack - 13;
         let deadly = totalAttack - 15;
 
-        if (defenseRoll < deadly) {
+        if (defenseRoll <= deadly) {
             return {
                 severity: 'deadly',
                 critdamage: 10,
@@ -279,7 +279,7 @@ export let defenseMixin = {
             };
         }
 
-        if (defenseRoll < difficult) {
+        if (defenseRoll <= difficult) {
             return {
                 severity: 'difficult',
                 critdamage: 8,
@@ -287,7 +287,7 @@ export let defenseMixin = {
             };
         }
 
-        if (defenseRoll < complex) {
+        if (defenseRoll <= complex) {
             return {
                 severity: 'complex',
                 critdamage: 5,
@@ -295,7 +295,7 @@ export let defenseMixin = {
             };
         }
 
-        if (defenseRoll < simple) {
+        if (defenseRoll <= simple) {
             return {
                 severity: 'simple',
                 critdamage: 3,
