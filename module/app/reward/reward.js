@@ -7,8 +7,10 @@ export default class Rewards {
         return game.actors.filter(actor => actor.hasPlayerOwner);
     }
 
-    static async rewardDialog() {
-        let actors = this.getPlayerActors();
+    static async rewardDialog(actors) {
+        if (!actors) {
+            actors = this.getPlayerActors();
+        }
 
         let content = '';
 
@@ -49,21 +51,23 @@ export default class Rewards {
         return values;
     }
 
-    static async handoutRewards() {
+    static async handoutRewards(actors) {
         if (!game.user.isGM) return;
 
-        let values = await Rewards.rewardDialog();
+        let values = await Rewards.rewardDialog(actors);
 
-        let actors = values.actors.map(actor => fromUuidSync(actor));
+        if (!values.actors || values.actors.length === 0) return;
+
+        let choosenActors = values.actors.map(actor => fromUuidSync(actor));
         let ip = values.ip;
         let label = values.label;
 
         if (ip) {
-            actors.forEach(actor => actor.system.logs.addIpReward(label, ip));
+            choosenActors.forEach(actor => actor.system.logs.addIpReward(label, ip));
         }
 
         const content = await renderTemplate('systems/TheWitcherTRPG/templates/chat/rewards.hbs', {
-            actors: actors,
+            actors: choosenActors,
             label: label,
             ip: ip
         });

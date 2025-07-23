@@ -25,6 +25,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         html.find('.alchemy-potion').on('click', this._alchemyCraft.bind(this));
         html.find('.crafting-craft').on('click', this._craftingCraft.bind(this));
         html.find('.item-repair').on('click', this._repairItem.bind(this));
+        html.find('.manualReward').on('click', this._addReward.bind(this));
         html.find('.saveIpSpending').on('click', this._saveIpSpending.bind(this));
     }
 
@@ -348,8 +349,12 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         await item.repair();
     }
 
+    async _addReward(event) {
+        this.actor.addReward();
+    }
+
     async _saveIpSpending(event) {
-        console.log(event)
+        console.log(event);
     }
 }
 
