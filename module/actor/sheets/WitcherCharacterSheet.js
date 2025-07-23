@@ -25,6 +25,8 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         html.find('.alchemy-potion').on('click', this._alchemyCraft.bind(this));
         html.find('.crafting-craft').on('click', this._craftingCraft.bind(this));
         html.find('.item-repair').on('click', this._repairItem.bind(this));
+        html.find('.manualReward').on('click', this._addReward.bind(this));
+        html.find('.saveIpSpending').on('click', this._saveIpSpending.bind(this));
     }
 
     getData() {
@@ -62,35 +64,21 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     _prepareDiagramFormulas(context) {
         // Formulae
         context.diagrams = context.actor.getList('diagrams');
-        context.alchemicalItemDiagrams = context.diagrams
-            .filter(d => d.system.type == 'alchemical' || !d.system.type)
-            .map(this.sanitizeDescription);
-        context.potionDiagrams = context.diagrams.filter(d => d.system.type == 'potion').map(this.sanitizeDescription);
-        context.decoctionDiagrams = context.diagrams
-            .filter(d => d.system.type == 'decoction')
-            .map(this.sanitizeDescription);
-        context.oilDiagrams = context.diagrams.filter(d => d.system.type == 'oil').map(this.sanitizeDescription);
+        context.alchemicalItemDiagrams = context.diagrams.filter(d => d.system.type == 'alchemical' || !d.system.type);
+        context.potionDiagrams = context.diagrams.filter(d => d.system.type == 'potion');
+        context.decoctionDiagrams = context.diagrams.filter(d => d.system.type == 'decoction');
+        context.oilDiagrams = context.diagrams.filter(d => d.system.type == 'oil');
 
         // Diagrams
-        context.enhancementDiagrams = context.diagrams
-            .filter(d => d.system.type == 'armor-enhancement')
-            .map(this.sanitizeDescription);
-        context.ingredientDiagrams = context.diagrams
-            .filter(d => d.system.type == 'ingredients')
-            .map(this.sanitizeDescription);
-        context.weaponDiagrams = context.diagrams.filter(d => d.system.type == 'weapon').map(this.sanitizeDescription);
-        context.armorDiagrams = context.diagrams.filter(d => d.system.type == 'armor').map(this.sanitizeDescription);
-        context.elderfolkWeaponDiagrams = context.diagrams
-            .filter(d => d.system.type == 'elderfolk-weapon')
-            .map(this.sanitizeDescription);
-        context.elderfolkArmorDiagrams = context.diagrams
-            .filter(d => d.system.type == 'elderfolk-armor')
-            .map(this.sanitizeDescription);
-        context.ammunitionDiagrams = context.diagrams
-            .filter(d => d.system.type == 'ammunition')
-            .map(this.sanitizeDescription);
-        context.bombDiagrams = context.diagrams.filter(d => d.system.type == 'bomb').map(this.sanitizeDescription);
-        context.trapDiagrams = context.diagrams.filter(d => d.system.type == 'traps').map(this.sanitizeDescription);
+        context.enhancementDiagrams = context.diagrams.filter(d => d.system.type == 'armor-enhancement');
+        context.ingredientDiagrams = context.diagrams.filter(d => d.system.type == 'ingredients');
+        context.weaponDiagrams = context.diagrams.filter(d => d.system.type == 'weapon');
+        context.armorDiagrams = context.diagrams.filter(d => d.system.type == 'armor');
+        context.elderfolkWeaponDiagrams = context.diagrams.filter(d => d.system.type == 'elderfolk-weapon');
+        context.elderfolkArmorDiagrams = context.diagrams.filter(d => d.system.type == 'elderfolk-armor');
+        context.ammunitionDiagrams = context.diagrams.filter(d => d.system.type == 'ammunition');
+        context.bombDiagrams = context.diagrams.filter(d => d.system.type == 'bomb');
+        context.trapDiagrams = context.diagrams.filter(d => d.system.type == 'traps');
     }
 
     _prepareCrafting(context) {
@@ -345,6 +333,14 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         let itemId = event.currentTarget.closest('.item').dataset.itemId;
         let item = this.actor.items.get(itemId);
         await item.repair();
+    }
+
+    async _addReward(event) {
+        this.actor.addReward();
+    }
+
+    async _saveIpSpending(event) {
+        console.log(event);
     }
 }
 

@@ -44,7 +44,7 @@ async function ApplyNonLethalDamage(actor, totalDamage, messageId) {
     applyDamageFromMessage(actor, totalDamage, messageId, 'sta');
 }
 
-async function createApplyDamageDialog(actor, damage) {
+async function createApplyDamageDialog(actor, damageObject) {
     const locationOptions = `
     <option value="Empty"></option>
     <option value="head"> ${game.i18n.localize('WITCHER.Dialog.attackHead')} </option>
@@ -56,8 +56,8 @@ async function createApplyDamageDialog(actor, damage) {
     <option value="tailWing"> ${game.i18n.localize('WITCHER.Dialog.attackTail')} </option>
     `;
 
-    let location = damage.location;
-    let damageTypeloc = `WITCHER.DamageType.${damage.type}`;
+    let location = damageObject.location;
+    let damageTypeloc = `WITCHER.DamageType.${damageObject.type}`;
     let content = `<label>${game.i18n.localize('WITCHER.Damage.damageType')}: <b>${game.i18n.localize(damageTypeloc)}</b></label> <br />
       <label>${game.i18n.localize('WITCHER.Damage.CurrentLocation')}: <b>${location.alias}</b></label> <br />
       <label>${game.i18n.localize('WITCHER.Damage.ChangeLocation')}: <select name="changeLocation">${locationOptions}</select></label> <br />`;
@@ -97,8 +97,8 @@ async function createApplyDamageDialog(actor, damage) {
     };
 }
 
-async function applyDamageFromStatus(actor, totalDamage, damage, derivedStat) {
-    await applyDamage(actor, null, totalDamage, damage, derivedStat, totalDamage);
+async function applyDamageFromStatus(actor, totalDamage, damageObject, derivedStat) {
+    await applyDamage(actor, null, totalDamage, damageObject, derivedStat, totalDamage);
 }
 
 async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat) {
@@ -119,7 +119,7 @@ async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat
     applyDamage(actor, dialogData, totalDamage, damage, derivedStat, infoTotalDmg);
 }
 
-async function applyDamage(actor, dialogData, totalDamage, damage, derivedStat, infoTotalDmg = '') {
+async function applyDamage(actor, dialogData, totalDamage, damageObject, derivedStat, infoTotalDmg = '') {
     let shield = actor.system.derivedStats.shield.value;
     if (totalDamage < shield) {
         actor.update({ 'system.derivedStats.shield.value': shield - totalDamage });
@@ -140,29 +140,29 @@ async function applyDamage(actor, dialogData, totalDamage, damage, derivedStat, 
         totalDamage -= shield;
     }
 
-    if (actor.system.category && damage.properties?.oilEffect === actor.system.category) {
+    if (actor.system.category && damageObject.properties?.oilEffect === actor.system.category) {
         totalDamage += 5;
         infoTotalDmg += `+5[${game.i18n.localize('WITCHER.Damage.oil')}]`;
     }
 
-    if (damage.properties.damageToAllLocations) {
-        await applyDamageToAllLocations(actor, dialogData, damage, totalDamage, infoTotalDmg, derivedStat);
+    if (damageObject.properties.damageToAllLocations) {
+        await applyDamageToAllLocations(actor, dialogData, damageObject, totalDamage, infoTotalDmg, derivedStat);
     } else {
-        await applyDamageToLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, derivedStat);
+        await applyDamageToLocation(actor, dialogData, damageObject, totalDamage, infoTotalDmg, derivedStat);
     }
 
-    damage.properties.effects
+    damageObject.properties.effects
         ?.filter(effect => effect.statusEffect)
         .filter(effect => effect.applied)
-        .forEach(effect => applyStatusEffectToActor(actor.uuid, effect.statusEffect, damage.duration));
+        .forEach(effect => applyStatusEffectToActor(actor.uuid, effect.statusEffect, damageObject.duration));
 
-    if (damage.itemUuid) {
-        applyActiveEffectToActorViaId(actor.uuid, damage.itemUuid, 'applyOnDamage', damage.duration);
+    if (damageObject.itemUuid) {
+        applyActiveEffectToActorViaId(actor.uuid, damageObject.itemUuid, 'applyOnDamage', damageObject.duration);
     }
 }
 
-async function applyDamageToLocation(actor, dialogData, damage, totalDamage, infoTotalDmg, derivedStat) {
-    let damageResult = await calculateDamageWithLocation(actor, dialogData, damage, totalDamage, infoTotalDmg);
+async function applyDamageToLocation(actor, dialogData, damageObject, totalDamage, infoTotalDmg, derivedStat) {
+    let damageResult = await calculateDamageWithLocation(actor, dialogData, damageObject, totalDamage, infoTotalDmg);
 
     if (damageResult.blockedBySp) {
         createDamageBlockedBySp(
