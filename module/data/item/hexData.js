@@ -18,4 +18,12 @@ export default class HexData extends CommonItemData {
             ...defenseOptions()
         };
     }
+
+    getUsedSkill() {
+        return (
+            CONFIG.WITCHER.skillMap[this.spellAttackSkill] ??
+            CONFIG.WITCHER.magic[this.parent.type]?.skill ??
+            CONFIG.WITCHER.magic[this.class].skill
+        );
+    }
 }
