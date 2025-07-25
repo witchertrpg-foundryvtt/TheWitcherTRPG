@@ -37,6 +37,14 @@ export default class RitualData extends CommonItemData {
         };
     }
 
+    getUsedSkill() {
+        return (
+            CONFIG.WITCHER.skillMap[this.spellAttackSkill] ??
+            CONFIG.WITCHER.magic[this.parent.type]?.skill ??
+            CONFIG.WITCHER.magic[this.class].skill
+        );
+    }
+
     prepareDerivedData() {
         super.prepareDerivedData();
 

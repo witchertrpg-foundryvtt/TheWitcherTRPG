@@ -56,7 +56,7 @@ export default class Rewards {
 
         let values = await Rewards.rewardDialog(actors);
 
-        if (!values.actors || values.actors.length === 0) return;
+        if (!values || !values.actors || values.actors.length === 0) return;
 
         let choosenActors = values.actors.map(actor => fromUuidSync(actor));
         let ip = values.ip;
