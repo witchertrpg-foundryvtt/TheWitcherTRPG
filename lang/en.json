@@ -1393,12 +1393,16 @@
                 "title": "Select actors for reward",
                 "label": "Label: ",
                 "ip": "IP: ",
+                "magicIp": "Is magic IP: ",
                 "confirm": "Confirm"
             },
             "chat": {
                 "title": "Rewards",
                 "ip": "IP"
             }
+        },
+        "magic": {
+            "magicImprovementPoints": "Magic IP"
         }
     }
 }

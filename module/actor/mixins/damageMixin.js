@@ -7,7 +7,10 @@ export let damageMixin = {
             this,
             null,
             crit.critdamage,
-            { properties: { bypassesNaturalArmor: true, bypassesWornArmor: true }, location: this.getLocationObject('torso') },
+            {
+                properties: { bypassesNaturalArmor: true, bypassesWornArmor: true },
+                location: this.getLocationObject('torso')
+            },
             'hp'
         );
     },
@@ -17,7 +20,10 @@ export let damageMixin = {
             this,
             null,
             crit.bonusdamage,
-            { properties: { bypassesNaturalArmor: true, bypassesWornArmor: true }, location: this.getLocationObject('torso') },
+            {
+                properties: { bypassesNaturalArmor: true, bypassesWornArmor: true },
+                location: this.getLocationObject('torso')
+            },
             'hp'
         );
     },
@@ -48,7 +54,8 @@ export let damageMixin = {
         const critList = this.system.critWounds;
         critList.push({
             configEntry: wound,
-            location: crit.location.name
+            location: crit.location.name,
+            healingTime: this.calculateHealingTime(crit.severity)
         });
         this.update({ 'system.critWounds': critList });
 
@@ -58,5 +65,16 @@ export let damageMixin = {
             type: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
         ChatMessage.create(chatData);
+    },
+
+    calculateHealingTime(severity) {
+        switch (severity) {
+            case 'simple':
+                return Math.max(8 - this.system.stats.body.max, 1);
+            case 'complex':
+                return Math.max(12 - this.system.stats.body.max, 1);
+            case 'difficult':
+                return Math.max(15 - this.system.stats.body.max, 1);
+        }
     }
 };

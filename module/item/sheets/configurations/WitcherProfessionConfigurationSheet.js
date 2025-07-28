@@ -4,9 +4,9 @@ export default class WitcherProfessionConfigurationSheet extends WitcherConfigur
     /** @override */
     static DEFAULT_OPTIONS = {
         actions: {
-            addEffect: WitcherProfessionConfigurationSheet._onAddEffect,
-            editEffect: WitcherProfessionConfigurationSheet._onEditEffect,
-            removeEffect: WitcherProfessionConfigurationSheet._oRemoveEffect
+            addEffectDamageProperties: WitcherProfessionConfigurationSheet._onAddEffectDamageProperties,
+            editEffect: WitcherProfessionConfigurationSheet._onEditEffectDamageProperties,
+            removeEffect: WitcherProfessionConfigurationSheet._oRemoveEffectDamageProperties
         }
     };
 
@@ -88,9 +88,15 @@ export default class WitcherProfessionConfigurationSheet extends WitcherConfigur
         return context;
     }
 
-    static async _onAddEffectDamageProperties(event) {
+    _onChangeForm(formConfig, event) {
+        super._onChangeForm(formConfig, event);
+        if (event.target.dataset.action === 'editEffectDamageProperties') {
+            this._onEditEffectDamageProperties(event, event.target);
+        }
+    }
+
+    static async _onAddEffectDamageProperties(event, element) {
         event.preventDefault();
-        let element = event.currentTarget;
         let skillName = element.dataset.target;
 
         let skillObject = this.findSkillWithName(skillName);

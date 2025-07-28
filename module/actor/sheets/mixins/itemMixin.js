@@ -30,7 +30,6 @@ export let itemMixin = {
     },
 
     async _onItemAdd(event) {
-        console.log(event);
         let element = event.currentTarget;
         let itemData = {
             name: `new ${element.dataset.itemtype}`,

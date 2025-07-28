@@ -35,6 +35,9 @@ export default class Rewards {
 
         let ipDiv = document.createElement('div');
         ipDiv.appendChild(createLabeledInput(game.i18n.localize('WITCHER.rewards.dialog.ip'), 'number', 'ip'));
+        ipDiv.appendChild(
+            createLabeledInput(game.i18n.localize('WITCHER.rewards.dialog.magicIp'), 'checkbox', 'isMagic')
+        );
         content += ipDiv.outerHTML;
 
         let values = await DialogV2.input({
@@ -63,7 +66,7 @@ export default class Rewards {
         let label = values.label;
 
         if (ip) {
-            choosenActors.forEach(actor => actor.system.logs.addIpReward(label, ip));
+            choosenActors.forEach(actor => actor.system.logs.addIpReward(label, ip, values.isMagic));
         }
 
         const content = await renderTemplate('systems/TheWitcherTRPG/templates/chat/rewards.hbs', {

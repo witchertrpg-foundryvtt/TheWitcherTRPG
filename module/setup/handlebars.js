@@ -53,8 +53,8 @@ export async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/sheets/item/configuration/partials/profession/profAttackOptionsPart.hbs',
 
         'systems/TheWitcherTRPG/templates/sheets/investigation/mystery-sheet.hbs',
-        'systems/TheWitcherTRPG/templates/partials/investigation/clue-display.hbs',
-        'systems/TheWitcherTRPG/templates/partials/investigation/obstacle-display.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/investigation/partials/clue-display.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/investigation/partials/obstacle-display.hbs',
 
         'systems/TheWitcherTRPG/templates/dialog/verbal-combat.hbs',
         'systems/TheWitcherTRPG/templates/dialog/repair-dialog.hbs',
