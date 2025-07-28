@@ -11,11 +11,20 @@ export default class Log extends foundry.abstract.DataModel {
         };
     }
 
-    addIpReward(label, ip) {
-        this.ipLog.push({ label: label, ip: ip });
-        this.parent.parent.update({
-            'system.logs.ipLog': this.ipLog,
-            'system.improvementPoints': this.parent.improvementPoints + ip
-        });
+    addIpReward(label, ip, isMagic) {
+        this.ipLog.push({ label: label, ip: ip, isMagic: isMagic });
+        if (!isMagic) {
+            this.parent.parent.update({
+                'system.logs.ipLog': this.ipLog,
+                'system.improvementPoints': this.parent.improvementPoints + ip
+            });
+        }
+
+        if (isMagic) {
+            this.parent.parent.update({
+                'system.logs.ipLog': this.ipLog,
+                'system.magic.magicImprovementPoints': this.parent.magic.magicImprovementPoints + ip
+            });
+        }
     }
 }
