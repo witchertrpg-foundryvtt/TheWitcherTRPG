@@ -1,20 +1,43 @@
-import { rollClue } from "../../../scripts/investigation/rollClue.js";
+import { rollClue } from '../../../scripts/investigation/rollClue.js';
 
-export default class WitcherMysterySheet extends foundry.appv1.sheets.ActorSheet {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['witcher', 'sheet', 'actor'],
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets;
+
+export default class WitcherMysterySheet extends HandlebarsApplicationMixin(ActorSheetV2) {
+    /** @override */
+    static DEFAULT_OPTIONS = {
+        position: {
             width: 1120,
-            height: 600,
-            template: 'systems/TheWitcherTRPG/templates/sheets/investigation/mystery-sheet.hbs',
-            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }]
-        });
-    }
+            height: 600
+        },
+        classes: ['witcher', 'sheet', 'actor'],
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false
+        },
+        actions: {
+            addItem: WitcherMysterySheet._onItemAdd,
+            editItem: WitcherMysterySheet._onItemEdit,
+            deleteItem: WitcherMysterySheet._onItemDelete,
+            hideItem: WitcherMysterySheet._onItemHide,
+            rollClue: WitcherMysterySheet._onRollClue
+        }
+    };
 
-    getData() {
-        let context = super.getData();
+    static PARTS = {
+        header: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/investigation/mystery-sheet.hbs'
+        }
+    };
 
-        const actorData = this.actor.toObject(false);
+    static TABS = {};
+
+    /** @override */
+    async _prepareContext(options) {
+        let context = await super._prepareContext();
+
+        const actorData = this.document.toObject(false);
+        context.actor = this.document;
         context.system = actorData.system;
 
         context.clues = context.actor.getList('clue');
@@ -26,23 +49,16 @@ export default class WitcherMysterySheet extends foundry.appv1.sheets.ActorSheet
         return context;
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
+    _onRender(context, options) {
+        super._onRender(context, options);
 
-        html.find('.add-item').on('click', this._onItemAdd.bind(this));
-        html.find('.item-edit').on('click', this._onItemEdit.bind(this));
-        html.find('.item-delete').on('click', this._onItemDelete.bind(this));
-        html.find('.item-hide').on('click', this._onItemHide.bind(this));
-
-        html.find('.inline-edit').change(this._onInlineEdit.bind(this));
-
-        //automation
-        html.find('.roll-clue').on('click', this._onRollClue.bind(this));
+        this.element
+            .querySelectorAll('.inline-edit')
+            .forEach(input => input.addEventListener('change', this._onInlineEdit.bind(this)));
     }
 
-    async _onItemAdd(event) {
+    static async _onItemAdd(event, element) {
         event.preventDefault();
-        let element = event.currentTarget;
         let itemData = {
             name: `new ${element.dataset.itemtype}`,
             type: element.dataset.itemtype
@@ -51,23 +67,23 @@ export default class WitcherMysterySheet extends foundry.appv1.sheets.ActorSheet
         await Item.create(itemData, { parent: this.actor });
     }
 
-    _onItemEdit(event) {
+    static _onItemEdit(event, element) {
         event.preventDefault();
-        let itemId = event.currentTarget.closest('.item').dataset.itemId;
+        let itemId = element.closest('.item').dataset.itemId;
         let item = this.actor.items.get(itemId);
 
         item.sheet.render(true);
     }
 
-    async _onItemDelete(event) {
+    static async _onItemDelete(event, element) {
         event.preventDefault();
-        let itemId = event.currentTarget.closest('.item').dataset.itemId;
+        let itemId = element.closest('.item').dataset.itemId;
         return await this.actor.items.get(itemId).delete();
     }
 
-    _onItemHide(event) {
+    static _onItemHide(event, element) {
         event.preventDefault();
-        let itemId = event.currentTarget.closest('.item').dataset.itemId;
+        let itemId = element.closest('.item').dataset.itemId;
         let item = this.actor.items.get(itemId);
         item.update({ 'system.isHidden': !item.system.isHidden });
     }
@@ -90,8 +106,8 @@ export default class WitcherMysterySheet extends foundry.appv1.sheets.ActorSheet
         return item.update({ [field]: value });
     }
 
-    _onRollClue(event) {
-        let clueId = event.currentTarget.closest('.item').dataset.itemId;
+    static _onRollClue(event, element) {
+        let clueId = element.closest('.item').dataset.itemId;
         let clue = this.actor.items.get(clueId);
 
         rollClue(clue);

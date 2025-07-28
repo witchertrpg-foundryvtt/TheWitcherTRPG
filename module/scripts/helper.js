@@ -1,3 +1,5 @@
+const DialogV2 = foundry.applications.api.DialogV2;
+
 export function getCurrentCharacter() {
     return canvas.tokens.controlled[0]?.actor ?? game.user.character;
 }
@@ -48,12 +50,11 @@ export async function chooseFromAvailableActors() {
                 ${allActors}
                 </select>`;
 
-        let choosenActor = await Dialog.prompt({
-            content: dialog_content,
-            callback: html => html.find('select').val()
+        let values = await DialogV2.input({
+            content: dialog_content
         });
 
-        return game.actors?.get(choosenActor);
+        return game.actors?.get(values.actor);
     }
 }
 

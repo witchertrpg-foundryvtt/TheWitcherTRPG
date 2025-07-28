@@ -39,6 +39,7 @@ export default class WitcherActor extends Actor {
         super.prepareDerivedData();
 
         if (this.type === 'loot') return;
+        if (this.type === 'mystery') return;
 
         let armorEffects = this.getList('armor')
             .filter(armor => armor.system.equipped)
