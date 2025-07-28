@@ -68,7 +68,6 @@ export let damageMixin = {
     },
 
     calculateHealingTime(severity) {
-        console.log(this);
         switch (severity) {
             case 'simple':
                 return Math.max(8 - this.system.stats.body.max, 1);

@@ -340,7 +340,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     }
 
     async _saveIpSpending(event) {
-        console.log(event);
+        //to implement
     }
 }
 

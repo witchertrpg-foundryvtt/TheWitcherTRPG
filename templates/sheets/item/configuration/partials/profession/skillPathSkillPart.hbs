@@ -27,7 +27,7 @@
                     {{/if}}
                     <table class="item-bottom-table">
                         <tr>
-                            <th><a class="add-effect-damageProperties" data-target="{{skill.skillName}}"
+                            <th><a data-action="addEffectDamageProperties" data-target="{{skill.skillName}}"
                                     title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
                             </th>
                             <th>{{localize "WITCHER.Item.Effect"}}</th>
@@ -37,23 +37,25 @@
                         {{#each skill.skillAttack.damageProperties.effects as |effect name|}}
                             <tr class="list-item" data-id="{{effect.id}}" data-target="{{../skill.skillName}}">
                                 <td>
-                                    <a class="remove-effect-damageProperties"
+                                    <a data-action="removeEffectDamageProperties"
                                         title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
                                             class="fas fa-minus"></i></a>
                                 </td>
                                 <td>
-                                    <input class="edit-effect-damageProperties item-effect"
+                                    <input class="item-effect" data-action="editEffectDamageProperties"
                                         placeholder="{{localize "WITCHER.table.Name"}}" data-field="name" type="text"
                                         value="{{effect.name}}" />
                                 </td>
                                 <td>
-                                    <select class="edit-effect-damageProperties item-effect" data-field="statusEffect">
+                                    <select class="item-effect" data-action="editEffectDamageProperties"
+                                        data-field="statusEffect">
                                         {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                                     </select>
                                 </td>
                                 <td>
-                                    <input class="edit-effect-damageProperties" placeholder="%" data-field="percentage"
-                                        type="text" value="{{effect.percentage}}" data-dtype="Number" />
+                                    <input placeholder="%" data-action="editEffectDamageProperties"
+                                        data-field="percentage" type="text" value="{{effect.percentage}}"
+                                        data-dtype="Number" />
                                 </td>
                             </tr>
                         {{/each}}
