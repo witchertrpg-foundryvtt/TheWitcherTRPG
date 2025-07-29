@@ -7,6 +7,11 @@
       {{localize "WITCHER.rewards.chat.ip"}}: {{ip}}
     </div>
   {{/if}}
+  {{#if currency}}
+    <div>
+      {{localize "WITCHER.rewards.chat.currency"}}: {{currency}} {{localize (concat "WITCHER.Currency." type)}}
+    </div>
+  {{/if}}
   <div>
     {{#each actors as |actor|}}
       <br>{{actor.name}}
