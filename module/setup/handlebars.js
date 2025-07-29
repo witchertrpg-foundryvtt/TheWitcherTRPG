@@ -39,7 +39,7 @@ export async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/partials/monster/monster-profession-skill-display.hbs',
         'systems/TheWitcherTRPG/templates/sheets/actor/configuration/partials/skillConfiguration.hbs',
 
-        'systems/TheWitcherTRPG/templates/partials/loot/loot-item-display.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/actor/partials/loot/loot-item-display.hbs',
 
         'systems/TheWitcherTRPG/templates/partials/item-header.hbs',
         'systems/TheWitcherTRPG/templates/partials/spell-header.hbs',

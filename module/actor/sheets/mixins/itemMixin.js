@@ -327,6 +327,7 @@ export let itemMixin = {
     },
 
     itemListener(html) {
+        html = $(html);
         html.find('.add-item').on('click', this._onItemAdd.bind(this));
         html.find('.item-equip').on('click', this._onItemEquip.bind(this));
         html.find('.item-carried').on('click', this._onItemCarried.bind(this));

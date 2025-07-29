@@ -34,7 +34,7 @@ export default class WitcherMysterySheet extends HandlebarsApplicationMixin(Acto
 
     /** @override */
     async _prepareContext(options) {
-        let context = await super._prepareContext();
+        let context = await super._prepareContext(options);
 
         const actorData = this.document.toObject(false);
         context.actor = this.document;
