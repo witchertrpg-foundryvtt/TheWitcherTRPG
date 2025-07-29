@@ -1,18 +1,35 @@
 import { itemContextMenu } from './interactions/itemContextMenu.js';
 import { itemMixin } from './mixins/itemMixin.js';
 
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets;
 const DialogV2 = foundry.applications.api.DialogV2;
 
-export default class WitcherLootSheet extends foundry.appv1.sheets.ActorSheet {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['witcher', 'sheet', 'actor'],
+export default class WitcherLootSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
+    /** @override */
+    static DEFAULT_OPTIONS = {
+        position: {
             width: 1120,
-            height: 600,
-            template: 'systems/TheWitcherTRPG/templates/sheets/actor/actor-sheet.hbs',
-            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }]
-        });
-    }
+            height: 600
+        },
+        classes: ['witcher', 'sheet', 'actor'],
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false
+        },
+        actions: {
+            buyItem: WitcherLootSheet._onItemBuy,
+            hideItem: WitcherLootSheet._onItemHide
+        }
+    };
+
+    static PARTS = {
+        header: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/actor-sheet.hbs'
+        }
+    };
+
+    static TABS = {};
 
     uniqueTypes = ['profession', 'race', 'homeland'];
 
@@ -26,8 +43,11 @@ export default class WitcherLootSheet extends foundry.appv1.sheets.ActorSheet {
         return true;
     }
 
-    getData() {
-        let context = super.getData();
+    /** @override */
+    async _prepareContext(options) {
+        let context = await super._prepareContext(options);
+        context.actor = this.document;
+
         context.system = context.actor.system;
         context.weapons = context.actor.getList('weapon');
         context.armors = context.actor.getList('armor');
@@ -43,32 +63,23 @@ export default class WitcherLootSheet extends foundry.appv1.sheets.ActorSheet {
             .concat(context.actor.getList('diagrams'));
 
         context.totalWeight = context.actor.getTotalWeight();
-        context.totalCost = context.items.cost();
+        // context.totalCost = context.actor.items.cost();
 
         context.isGM = game.user.isGM;
 
         return context;
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
+    _onRender(context, options) {
+        super._onRender(context, options);
 
-        this.itemListener(html);
-        html.find('.item-buy').on('click', this._onItemBuy.bind(this));
-        html.find('.item-hide').on('click', this._onItemHide.bind(this));
-
-        html.find('input').focusin(ev => this._onFocusIn(ev));
-
-        this.itemContextMenu(html);
+        this.itemListener(this.element);
+        this.itemContextMenu(this.element);
     }
 
-    _onFocusIn(event) {
-        event.currentTarget.select();
-    }
-
-    async _onItemBuy(event) {
+    static async _onItemBuy(event, element) {
         event.preventDefault();
-        let itemId = event.currentTarget.closest('.item').dataset.itemId;
+        let itemId = element.closest('.item').dataset.itemId;
         let item = this.actor.items.get(itemId);
         let coinOptions = `
       <option value="crown" selected> ${game.i18n.localize('WITCHER.Currency.crown')} </option>
@@ -156,9 +167,9 @@ export default class WitcherLootSheet extends foundry.appv1.sheets.ActorSheet {
         }
     }
 
-    _onItemHide(event) {
+    static async _onItemHide(event, element) {
         event.preventDefault();
-        let itemId = event.currentTarget.closest('.item').dataset.itemId;
+        let itemId = element.closest('.item').dataset.itemId;
         let item = this.actor.items.get(itemId);
         item.update({ 'system.isHidden': !item.system.isHidden });
     }

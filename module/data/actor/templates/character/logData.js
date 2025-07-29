@@ -27,4 +27,12 @@ export default class Log extends foundry.abstract.DataModel {
             });
         }
     }
+
+    addCurrencyReward(label, amount, type) {
+        this.currencyLog.push({ label: label, amount: amount, type: type });
+        this.parent.parent.update({
+            'system.logs.currencyLog': this.currencyLog,
+            [`system.currency.${type}`]: this.parent.currency[type] + amount
+        });
+    }
 }

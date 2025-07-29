@@ -597,6 +597,16 @@ WITCHER.socialStanding = {
 };
 
 //Items
+WITCHER.currency = {
+    bizant: 'WITCHER.Currency.bizant',
+    ducat: 'WITCHER.Currency.ducat',
+    lintar: 'WITCHER.Currency.lintar',
+    floren: 'WITCHER.Currency.floren',
+    crown: 'WITCHER.Currency.crown',
+    oren: 'WITCHER.Currency.oren',
+    falsecoin: 'WITCHER.Currency.falsecoin'
+};
+
 WITCHER.substanceTypes = {
     vitriol: 'WITCHER.Inventory.Vitriol',
     rebis: 'WITCHER.Inventory.Rebis',

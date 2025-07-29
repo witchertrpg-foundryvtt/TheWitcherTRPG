@@ -243,7 +243,7 @@ export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
         this.skillModifierListener(html);
         this.customSkillListener(html);
 
-        this.itemListener(html);
+        this.itemListener(html[0]);
         this.activeEffectListener(html);
 
         this.deathSaveListener(html);
@@ -251,7 +251,7 @@ export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
         this.noteListener(html);
         this.healListeners(html);
 
-        this.itemContextMenu(html);
+        this.itemContextMenu(html[0]);
     }
 
     async _onInitRoll(event) {

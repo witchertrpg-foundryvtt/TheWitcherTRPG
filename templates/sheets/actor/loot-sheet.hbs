@@ -85,41 +85,41 @@
                 <td class="table-empty-end-space"></td>
             </tr>
             {{#each weapons as |item id|}}
-                {{> "systems/TheWitcherTRPG/templates/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
+                {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
             {{/each}}
         </table>
         <h2>{{localize "WITCHER.Loot.Armors"}} <a class="add-item" data-itemType="armor"><i class="fas fa-plus"></i></a>
         </h2>
         <table class="item-table item-list">
             {{#each armors as |item id|}}
-                {{> "systems/TheWitcherTRPG/templates/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
+                {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
             {{/each}}
         </table>
         <h2>{{localize "WITCHER.Loot.Valuables"}} <a class="add-item" data-itemType="valuable"><i
                     class="fas fa-plus"></i></a></h2>
         <table class="item-table item-list">
             {{#each valuables as |item id|}}
-                {{> "systems/TheWitcherTRPG/templates/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
+                {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
             {{/each}}
         </table>
         <h2>{{localize "WITCHER.Loot.Components"}} <a class="add-item" data-itemType="component"><i
                     class="fas fa-plus"></i></a></h2>
         <table class="item-table item-list">
             {{#each allComponents as |item id|}}
-                {{> "systems/TheWitcherTRPG/templates/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
+                {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
             {{/each}}
         </table>
 
         <h2>{{localize "WITCHER.Loot.Runes"}} & {{localize "WITCHER.Loot.Glyphs"}}</h2>
         <table class="item-table item-list">
             {{#each enhancements as |item id|}}
-                {{> "systems/TheWitcherTRPG/templates/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
+                {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
             {{/each}}
         </table>
         <h2>{{localize "WITCHER.Loot.Name"}}</h2>
         <table class="item-table item-list">
             {{#each loot as |item id|}}
-                {{> "systems/TheWitcherTRPG/templates/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
+                {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}
             {{/each}}
         </table>
     </div>

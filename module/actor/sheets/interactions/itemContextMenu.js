@@ -5,7 +5,7 @@ const DialogV2 = foundry.applications.api.DialogV2;
 export let itemContextMenu = {
     itemContextMenu(html) {
         let contextMenu = new foundry.applications.ux.ContextMenu(
-            html[0],
+            html,
             '.item',
             [
                 this.editItem(),

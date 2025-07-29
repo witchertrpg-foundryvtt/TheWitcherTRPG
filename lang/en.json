@@ -1394,11 +1394,14 @@
                 "label": "Label: ",
                 "ip": "IP: ",
                 "magicIp": "Is magic IP: ",
+                "currency": "Currency Amount",
+                "currencyType": "Currency Type",
                 "confirm": "Confirm"
             },
             "chat": {
                 "title": "Rewards",
-                "ip": "IP"
+                "ip": "IP",
+                "currency": "Currency"
             }
         },
         "magic": {

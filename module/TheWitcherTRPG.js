@@ -20,6 +20,7 @@ import { deprecationWarnings } from './setup/deprecations.js';
 import { applyActiveEffectToActorViaId } from './scripts/activeEffects/applyActiveEffect.js';
 import { preloadHandlebarsTemplates, registerHandelbarHelpers } from './setup/handlebars.js';
 import Rewards from './app/reward/reward.js';
+import currency from './data/actor/templates/common/currencyData.js';
 
 registerHooks();
 
@@ -35,7 +36,10 @@ Hooks.once('init', function () {
 
     game.api = {
         applyActiveEffectToActorViaId,
-        rewards: Rewards.handoutRewards
+        rewards: {
+            ip: Rewards.handoutIpRewards,
+            currency: Rewards.handoutCurrencyRewards
+        }
     };
 
     registerDataModels();

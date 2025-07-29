@@ -1,5 +1,9 @@
 export let rewardsMixin = {
-    async addReward() {
-       game.api.rewards([this]);
+    async addIpReward() {
+        game.api.rewards.ip([this]);
+    },
+
+    async addCurrencyReward() {
+        game.api.rewards.currency([this]);
     }
 };
