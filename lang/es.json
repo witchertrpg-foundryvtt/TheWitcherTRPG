@@ -1,7 +1,7 @@
 {
     "TYPES": {
         "Item": {
-            "alchemical": "De alquimia",
+            "alchemical": "Alquimia",
             "armor": "Armadura",
             "clue": "Clave",
             "component": "Componente",
@@ -195,11 +195,15 @@
             "tooMuch": "Hay demasiada armadura equipada del mismo tipo"
         },
         "Item": {
+            "Equipped": "Equipado",
+            "NotEquipped": "No Equipado",
+            "sendToChat": "Mandar al Chat",
             "ClickableImage": "ampliable",
             "Short.Availability": "DISP.",
             "Weight": "Peso",
             "Cost": "Coste",
             "Carried": "Transportado",
+            "notCarried": "No Transportado",
             "isConsumable": "Es consumible",
             "Effect": "Efectos",
             "statusEffect": "Efecto de estado",
@@ -208,6 +212,8 @@
             "Description": "Descripción",
             "Attribute": "Atributos",
             "ROF": "ROF",
+            "openDescription": "Haz clic para abrir la descripción",
+            "equipEnhancement": "Equipar una mejora",
             "Availability": "Disponibilidad",
             "AddEffect": "Agregar efecto",
             "AddComponent": "Agregar componente",
@@ -228,6 +234,7 @@
             "Small": "P",
             "Large": "G",
             "CantHide": "I",
+            "containerItems": "Objetos del Contenedor",
             "ConsumeProperties": {
                 "doesHeal": "Aplica curación",
                 "heal": "Cura para",
@@ -249,7 +256,12 @@
                 "defenseMultiplierCap": "El multiplicador está limitado (no funcional)"
             },
             "DefenseProperties": {
-                "parrying": "Niega la penalización de Parry"
+                "parrying": "Niega la penalización de Parry",
+                "defendsAgainst": {
+                    "label": "Defiende contra",
+                    "hint": "contra qué tipo de ataque defiende esto"
+                },
+                "modifier": "Modificador"
             },
             "RegionProperties": {
                 "createRegionFromTemplate": "Crear región a partir de la plantilla",
@@ -259,11 +271,13 @@
                 "tokenExit": "Aplicar macro al salir"
             },
             "ContextMenu": {
+                "edit": "Editar",
                 "Consume": "Consumir",
                 "NotConsumable": "El artículo no está configurado como consumible.",
                 "RemoveEnhancement": "Eliminar la mejora",
                 "Gift": "Regalo",
-                "dismantle": "Desmantelar"
+                "dismantle": "Desmantelar",
+                "delete": "Borrar"
             },
             "dismantle": {
                 "addedItems": "Los siguientes elementos se agregaron al actor.",
@@ -273,9 +287,13 @@
                 "general": "Configuración general",
                 "alchemical": "Configuración alquímica",
                 "armor": "Configuración de armadura",
+                "hex": "Configurar Maldición",
                 "mutagen": "Configuración de mutagen",
-                "race": "Configuración de carrera",
-                "valuable": "Configuraciones valiosas",
+                "race": "Configuración de Razas",
+                "ritual": "Configuración Del Ritual",
+                "spell": "Configuración Del Hechizo",
+                "valuable": "Configuraciones de Objetos valiosos",
+                "profession": "Configuración de profesiones",
                 "weapon": "Configuración de armas",
                 "damageProperties": "Propiedades de daño",
                 "defenseProperties": "Propiedades de defensa",
@@ -287,10 +305,7 @@
                         "hint": "Configurar cómo el objetivo puede defenderse contra esto."
                     }
                 },
-                "spell": {
-                    "selfProperties": "Aplicar a la rueda",
-                    "castProperties": "Aplicar al objetivo"
-                }
+                "activeEffects": "Efecto Activo"
             }
         },
         "Damage": {
@@ -410,6 +425,20 @@
             "fire": "Fuego",
             "ice": "Hielo"
         },
+        "profession": {
+            "skillPath": {
+                "skill": {
+                    "skillAttack": {
+                        "isAttack": "Es un ataque",
+                        "usesWeapon": "Usa Arma",
+                        "damageFormulaOverrides": "Sobrescribe la fórmula de daño"
+                    },
+                    "skillDefense": {
+                        "isDefense": "Es una Defensa"
+                    }
+                }
+            }
+        },    
         "Weapon": {
             "Type": "Tipo",
             "Short.WeaponAccuracy": "PA",
@@ -440,14 +469,18 @@
             "rangedMeleeBonus": "Bono cuerpo a cuerpo a distancia",
             "rangedMeleeBonusHint": "Algunas armas a distancia también aplican el bono cuerpo a cuerpo.",
             "isAmmunition": "Es una munición",
-            "isThrowable": "Es un arma tirada",
+            "Ammunition": "Munición",
+            "isThrowable": "Es un arma Arrojadiza",
             "Broken": "Tu arma ahora está rota",
             "onlyDmg": "Solo daño",
             "useAmmo": "Usar municiones",
             "armorPiercing": "Perforación de armadura",
             "improvedArmorPiercing": "Perforación de armadura mejorada",
             "ablating": "Ablativa",
-            "crushingForce": "Fuerza Demoledora"
+            "crushingForce": "Fuerza Demoledora",
+            "error": {
+                "noAttackSkill": "Habilidad de ataque no configurada"
+            }
         },
         "Location": {
             "Random": "Aleatorio",
@@ -487,6 +520,7 @@
             "otherComponents": "Otros componentes",
             "investment": "Inversión",
             "Learned": "Aprendido",
+            "notLearned": "No Aprendido",
             "Formulae": "Fórmulas",
             "Ingredient": "Ingrediente",
             "Weapon": "Arma",
@@ -725,7 +759,8 @@
             "HeadArmor": "Cabeza",
             "UpperArmor": "Superior",
             "LowerArmor": "Inferior",
-            "WingTailArmor": "Cola",
+            "WingTailArmor": "Ala/Cola",
+            "regeneration": "Regeneración",
             "CustomHP/STA": "HP/STA personalizado",
             "Easy": "Fácil",
             "Normal": "Normal",
@@ -736,22 +771,22 @@
             "Difficult": "Difícil",
             "Difficulty": "Dificultad",
             "Complexity": "Complejidad",
-            "Bounty": "Generosidad",
+            "Bounty": "Recompensa",
             "Height": "Altura",
             "Weight": "Peso",
-            "Environment": "Ambiente",
+            "Environment": "Entorno",
             "Intelligence": "Inteligencia",
             "Organization": "Organización",
             "CommonerSuperstition": "Superstición más común (Cultura DC): ",
             "AcademicKnowledge": "Conocimientos Académicos (Cultura DC): ",
             "WitcherKnowledge": "Conocimiento de Witcher (Monster Lore DC): ",
-            "dontAddAttr": "No agregue atributos al valor de habilidad",
+            "dontAddAttr": "No agregar atributos al valor de habilidad",
             "addMeleeBonus": "Añadir bonificación cuerpo a cuerpo",
             "hasTailWing": "El monstruo tiene cola o ala.",
             "SkillTab": "Habilidades",
             "InventoryTab": "Ataque/botín",
             "DetailsTab": "Detalles",
-            "SpellsTab": "Hechizo",
+            "SpellsTab": "Hechizos",
             "SkillList": "Mostrar habilidades específicas",
             "Type": {
                 "Lable": "Tipo",
@@ -783,7 +818,7 @@
         "Mount": {
             "Dex": "Dex + Atl",
             "Dexterity": "dex",
-            "ControlMod": "Modo de control",
+            "ControlMod": "Modo de Control",
             "Control": "Control",
             "Speed": "Velocidad",
             "Hp": "HP"
@@ -861,7 +896,7 @@
             "Hydragenum": "hidrageno",
             "Vermilion": "Bermellón",
             "Sol": "Sol",
-            "Caelum": "Celo",
+            "Caelum": "Cielo",
             "Fulgur": "Fulgur"
         },
         "Button": {
@@ -878,7 +913,7 @@
                 "alternateComponents": "Componentes alternativos"
             },
             "Invocations": "Invocaciones",
-            "Witcher": "Maleficios",
+            "Witcher": "Señales De Brujo",
             "Rituals": "Rituales",
             "Hexes": "Maldiciones",
             "MagicalGift": "Regalo Mágico",
@@ -904,10 +939,10 @@
             "Defence": "Defensa",
             "PrepTime": "Tiempo de preparación",
             "DC": "DC",
-            "Requirements": "Requisitos para levantar",
+            "Requirements": "Requisitos para levantar la maldición",
             "Effect": "Efecto",
             "SideEffect": "Efecto secundario",
-            "Signs": "Letreros",
+            "Signs": "Señales",
             "Sign": "Señal",
             "Element": "Elemento",
             "MinorGift": "Regalo menor",
@@ -919,9 +954,9 @@
             "notEnoughSta": "No hay suficiente Aguante.",
             "MagicCost": "Costes mágicos",
             "ChooseFocus": "Usa un enfoque",
-            "ChooseExpandedFocus": "Usar enfoque mágico expandido",
+            "ChooseExpandedFocus": "Usar foco mágico expandido",
             "CreateTemplate": "Crear una plantilla",
-            "meters": "metro",
+            "meters": "Metros",
             "Size": "Tamaño",
             "Type": "Tipo",
             "VisualEffectDuration": "Duración visual (Sec)",
@@ -1075,10 +1110,11 @@
         "SKill.pickup": "Elegir",
         "SKill.learn": "Aprender",
         "Items.transferTitle": "Transferir artículos",
-        "Items.transferMany": "¿Cuántos artículos transferir?",
+        "Items.transferMany": "¿Cuántos ítems quieres transferir?",
         "Combat": {
             "shieldApplied": "Escudo ganado:",
-            "healed": "curado {objetivo} para {san}"
+            "healed": "curó a {target} por {heal}",
+            "healedFor": "Curado por"
         },
         "Context": {
             "applyDmg": "Aplicar daño",
@@ -1110,9 +1146,9 @@
         },
         "Apply.Mod": "Aplicar un modificador",
         "ReputationTitle": "Realizar una tirada de reputación",
-        "ReputationButton.Save": "Ahorrar",
-        "ReputationButton.FaceDown": "Boca abajo",
-        "ReputationSave.Title": "Ahorrar",
+        "ReputationButton.Save": "Guardar",
+        "ReputationButton.FaceDown": "Colocar boca abajo",
+        "ReputationSave.Title": "Guardar",
         "ReputationFaceDown.Title": "Reputación boca abajo",
         "verbalCombat": {
             "Title": "Combate verbal",
@@ -1123,13 +1159,13 @@
             "EmpatheticTools": "Herramientas Empáticas",
             "AntagonisticTools": "Herramientas Antagonistas",
             "Seduce": "Seducción",
-            "SeduceEffect": " El defensor se acalora un poco y sufrirá un +2 acumulativo de daño cada vez que le Seduzcas con éxito.",
+            "SeduceEffect": "El defensor se acalora un poco y sufrirá un +2 acumulativo de daño cada vez que le seduzcas con éxito.",
             "Persuade": "Persuasión",
             "PersuadeEffect": "Si terminas el combate con una prueba de Persuadir con éxito, convences al objetivo.",
             "Appeal": "Atraer",
-            "AppealEffect": " El defensor cree que puede que tengas razón y sufre un +1 acumulativo al daño de todos los ataques empáticos por cada vez que uses Atraer con éxito.",
+            "AppealEffect": "El defensor cree que puede que tengas razón y sufre un +1 acumulativo al daño de todos los ataques empáticos por cada vez que uses Atraer con éxito.",
             "Befriend": "EntablarAmistad",
-            "BefriendEffect": "Si terminas el combate con un ataque de Entablar Amistad con éxito, haces que tu oponente se convierta en amigo tuyo.",
+            "BefriendEffect": "Si terminas el combate con un ataque de Entablar amistad exitoso, haces que tu oponente se convierta en tu amigo.",
             "Deceive": "Engañar",
             "DeceiveEffect": " Si terminas el combate con una prueba de Engañar con éxito, convences a tu objetivo de la mentira en cuestión.",
             "Ridicule": "Ridiculizar",
@@ -1139,10 +1175,10 @@
             "Ignore": "Ignorar",
             "Counterargue": "ContraArgumentar",
             "CounterargueDmg": "Según Ataque",
-            "CounterargueEffect": " En lugar de ponerte a la defensiva, puedes realizar un ataque utilizando la misma habilidad que el ataque inicial, para anularlo. Si superas la tirada de tu oponente, su ataque se anula y el tuyo causa daño.",
+            "CounterargueEffect": "En lugar de ponerte a la defensiva, puedes realizar un ataque usando la misma habilidad que el ataque inicial para anularlo. Si superas la tirada de tu oponente, su ataque se anula y el tuyo causa daño.",
             "ChangeSubject": "Persuasión",
             "Disengage": "ResistirCoacción",
-            "DisengageEffect": "Termina la discusión",
+            "DisengageEffect": "Termina el combate verbal inmediatamente.",
             "Romance": "Romance",
             "RomanceEffect": " El objetivo se enamora de ti. Eso hace que sufra un -3 a todas las pruebas de Combate Verbal contra ti, siempre que sigas convenciéndole de que estáis enamorados y le trates bien. Si el romance termina mal, el objetivo recibe permanentemente un +3 a sus pruebas contra tus ataques empáticos.",
             "Study": "Estudiar",
@@ -1180,8 +1216,8 @@
         "activeEffect": {
             "tab": "Efecto activo",
             "source": "Fuente",
-            "toggle": "Palanca",
-            "temporary": "Temporario",
+            "toggle": "Activar/Desactivar",
+            "temporary": "Temporal",
             "passive": "Pasivo",
             "inactive": "Inactivo",
             "temporaryItemImprovement": "Mejora temporal de artículos"
@@ -1201,17 +1237,17 @@
             "mahakam": "Mahakam"
         },
         "craft": {
-            "InsufficientComponents": "No hay suficientes componentes para realizar una artesanía real.",
+            "InsufficientComponents": "No hay suficientes componentes para realizar una artesanía.",
             "ItemsSuccessfullyDeleted": "Los artículos fueron eliminados con éxito del actor",
             "ItemsSuccessfullyCrafted": "El artículo fue elaborado con éxito por",
             "ItemsNotCrafted": "El artículo no fue elaborado con éxito por",
-            "SuccessfulCraftForNothing": "Deberías haber especificado el elemento asociado para permitir su creación. ",
+            "SuccessfulCraftForNothing": "Debes especificar un objeto asociado para poder crearlo.",
             "SkipRemovalOfComponent": "Saltar la eliminación del componente",
             "AssociatedItemMissing": "No se proporciona un artículo asociado"
         },
         "err": {
-            "CraftItemDeletion": "La cantidad incorrecta de artículos fue eliminado del actor",
-            "NoItemsOfSpecificType": "No hay elementos de tipo específico disponible para el actor"
+            "CraftItemDeletion": "La cantidad incorrecta de artículos fue eliminada del actor",
+            "NoItemsOfSpecificType": "No hay elementos de tipo específico disponibles para el actor"
         },
         "Investigation": {
             "clues": "Pistas",
@@ -1221,7 +1257,7 @@
             "timeBonus": "Bono de tiempo",
             "damage": "Daño",
             "obfuscation": "Ofuscación",
-            "penalty": "Pena",
+            "penalty": "Penalización",
             "focusDamage": "Daño al foco",
             "successDamage": "Daños por éxito",
             "failDamage": "Daño por falla",
@@ -1267,27 +1303,27 @@
             "name": "Resultado de La Pifia",
             "nothing": "Sin efectos destacables.",
             "magic": {
-                "1-6": "Magic chispas y crepitaciones y tomas 1 punto de daño por cada punto por el que te tocaste, pero el hechizo aún se apaga.",
-                "7-9": "La magia que ya está parcialmente a través de ti se enciende dentro de ti. ",
+                "1-6": "Chispas y crepitaciones mágicas. Sufres 1 punto de daño por cada punto por el que fallaste, pero el hechizo aún se apaga.",
+                "7-9": "La magia que ya está parcialmente canalizada a través de ti se enciende dentro de tu cuerpo. Sufres daño según el DJ.",
                 ">9": "Tu magia explota con un efecto catastrófico. "
             },
             "meleeAttack": {
                 "6": "El rebote de tu arma te deja desequilibrado.",
                 "7": "Tu arma se clava en un objeto cercano y te cuesta 1 asalto sacarla.",
-                "8": "Dañas seriamente tu arma, que pierde [[1d10]] puntos de fiabilidad",
+                "8": "Dañas seriamente tu arma, que pierde [[1d10]] puntos de fiabilidad.",
                 "9": "Logras herirte a ti mismo. Determina la localización al azar.",
                 ">9": "Hieres a un aliado cercano. Determina al azar qué aliado afecta dentro de los que estén a tu alcance y la localización del impacto."
             },
             "armedDefense": {
                 "6": "Tu arma pierde [[1d6]] puntos de fiabilidad adicionales",
                 "7": "Se te escapa el arma de la mano y vuela [[1d6]] metros en una dirección aleatoria (ver diagrama de desviación).",
-                "8": "Caes al suelo. Ahora estás postrado y debes realizar una tirada de salvación contra aturdimiento.",
+                "8": "Caes al suelo. Quedas postrado y debes realizar una tirada de salvación contra aturdimiento.",
                 "9": "Tu arma pierde [[2d6]] puntos de fiabilidad adicionales.",
                 ">9": "Tu arma rebota y te golpeas a ti mismo. Determina la localización al azar."
             },
             "rangedAttack": {
                 "6-7": "El proyectil o arma que has lanzado golpea algo duro y se rompe.",
-                "8-9": "Se afloja la cuerda del arco, se traba la ballesta o se te cae el arma. Te cuesta 1 asalto arreglarlo",
+                "8-9": "Se afloja la cuerda del arco, se traba la ballesta, o se te cae el arma. Te cuesta 1 asalto arreglarlo.",
                 ">9": "Golpeas a uno de tus aliados de rebote. Determina al azar qué aliado afecta dentro de los que estén a tu alcance y la localización del impacto."
             },
             "unarmed": {
@@ -1298,8 +1334,7 @@
                 ">9": "Cometes un terrible error y no solo quedas postrado, sino que sufres [[1d6]] puntos de daño letal en la cabeza y debes realizar una tirada de salvación contra aturdimiento."
             }
         },
-        "Deprecations": {
-        },
+        "Deprecations": {},
         "AssociatedDiagram": {
             "actions": {
                 "add": "Añadir diagrama de fabricación",
@@ -1348,6 +1383,25 @@
             "required": "Requerido",
             "cost": "Coste",
             "totalPrice": "precio total"
+        },
+        "rewards": {
+            "dialog": {
+                "title": "Seleccionar actores para recompensa",
+                "label": "Etiqueta: ",
+                "ip": "PE: ",
+                "magicIp": "¿Es PE mágico?: ",
+                "currency": "Cantidad de monedas",
+                "currencyType": "Tipo de moneda",
+                "confirm": "Confirmar"
+            },
+            "chat": {
+                "title": "Recompensas",
+                "ip": "PE",
+                "currency": "Moneda"
+            }
+        },
+        "magic": {
+            "magicImprovementPoints": "PE Mágico"    
         }
     }
 }
