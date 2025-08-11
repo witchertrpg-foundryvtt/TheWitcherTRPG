@@ -1,41 +1,43 @@
-import CommonItemData from "./commonItemData.js";
+import CommonItemData from './commonItemData.js';
 
 const fields = foundry.data.fields;
 
 export default class ContainerData extends CommonItemData {
-
-  static defineSchema() {
-
-    const commonData = super.defineSchema();
-    return {
-      // Using destructuring to effectively append our additional data here
-      ...commonData,
-      carry: new fields.NumberField({ initial: 0 }),
-      storedWeight: new fields.NumberField({ initial: 0 }),
-      content: new fields.ArrayField(new fields.StringField())
+    static defineSchema() {
+        const commonData = super.defineSchema();
+        return {
+            // Using destructuring to effectively append our additional data here
+            ...commonData,
+            carry: new fields.NumberField({ initial: 0 }),
+            storedWeight: new fields.NumberField({ initial: 0 }),
+            content: new fields.ArrayField(new fields.StringField())
+        };
     }
-  }
 
-  prepareDerivedData() {
-    super.prepareDerivedData();
-
-    let content = this.content;
-    this.storedWeight = 0;
-
-    if (content) {
-      this.itemContent = []
-      content.forEach(itemId => {
-        let item = fromUuidSync(itemId);
-        this.storedWeight += item.system.quantity * item.system.weight
-        this.itemContent.push({
-          name: item.name,
-          img: item.img,
-          quantity: item.system.quantity,
-          weight: item.system.weight,
-          description: item.system.description,
-          uuid: itemId,
-        })
-      });
+    calcWeight() {
+        return this.isCarried && !this.isStored ? this.quantity * this.weight + this.storedWeight : 0;
     }
-  }
+
+    prepareDerivedData() {
+        super.prepareDerivedData();
+
+        let content = this.content;
+        this.storedWeight = 0;
+
+        if (content) {
+            this.itemContent = [];
+            content.forEach(itemId => {
+                let item = fromUuidSync(itemId);
+                this.storedWeight += item.system.quantity * item.system.weight;
+                this.itemContent.push({
+                    name: item.name,
+                    img: item.img,
+                    quantity: item.system.quantity,
+                    weight: item.system.weight,
+                    description: item.system.description,
+                    uuid: itemId
+                });
+            });
+        }
+    }
 }

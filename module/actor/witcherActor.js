@@ -16,6 +16,7 @@ import { professionMixin } from './mixins/professionMixin.js';
 import { armorMixin } from './mixins/armorMixin.js';
 import { healMixin } from './mixins/healMixin.js';
 import { rewardsMixin } from './mixins/rewardsMixin.js';
+import { craftingMixin } from './mixins/craftingMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -493,7 +494,7 @@ export default class WitcherActor extends Actor {
         if (!item) return;
 
         if (item.type === 'weapon') {
-            return this.rollWeapon(item, options);
+            return this.weaponAttack(item, options);
         }
 
         if (item.type === 'spell' || item.type === 'hex' || item.type === 'ritual') {
@@ -503,62 +504,13 @@ export default class WitcherActor extends Actor {
         if (item.system.isConsumable) {
             item.consume();
             this.removeItem(item.id, 1);
+            return;
         }
     }
 
-    async rollWeapon(weapon, options) {
-        return this.weaponAttack(weapon, options);
-    }
-
-    getDefenseSuccessFlags(defenseSkill) {
-        return {
-            origin: {
-                name: this.name,
-                uuid: this.uuid
-            },
-            defenseSkill: defenseSkill,
-            defense: true
-        };
-    }
-
-    getDefenseFailFlags(defenseSkill) {
-        return {
-            origin: {
-                name: this.name,
-                uuid: this.uuid
-            },
-            defenseSkill: defenseSkill,
-            defense: false
-        };
-    }
-
     getTotalWeight() {
-        var total = 0;
-        this.items.forEach(item => {
-            if (item.system.weight && item.system.quantity && item.system.isCarried && !item.system.isStored) {
-                total += item.system.quantity * item.system.weight + (item.system.storedWeight ?? 0);
-            }
-        });
-        return Math.ceil(total + this.calc_currency_weight());
-    }
-
-    calc_currency_weight() {
-        let currency = this.system.currency;
-        let totalPieces = 0;
-        totalPieces += Number(currency.bizant);
-        totalPieces += Number(currency.ducat);
-        totalPieces += Number(currency.lintar);
-        totalPieces += Number(currency.floren);
-        totalPieces += Number(currency.crown);
-        totalPieces += Number(currency.oren);
-        totalPieces += Number(currency.falsecoin);
-        return Number(totalPieces * 0.001);
-    }
-
-    getSubstance(name) {
-        return this.getList('component').filter(
-            i => i.system.type == 'substances' && i.system.substanceType == name && !i.system.isStored
-        );
+        let total = this.items.reduce((total, item) => (total += item.system.calcWeight()), 0);
+        return Math.ceil(total + this.system.calcCurrencyWeight());
     }
 
     getList(name) {
@@ -568,44 +520,6 @@ export default class WitcherActor extends Actor {
                 .sort((a, b) => a.sort - b.sort);
         }
         return this.items.filter(i => i.type == name && !i.system.isStored).sort((a, b) => a.sort - b.sort);
-    }
-
-    // Find needed component in the items list based on the component name or based on the exact name of the substance in the players compendium
-    // Components in the diagrams are only string fields.
-    // It is possible for diagram to have component which is actually the substance
-    // That is why we need to check whether specific component name could be a substance
-    // Ideally we need to store some flag (substances list for diagrams) to the diagram components
-    // which will indicate whether the component is substance or not.
-    // Such modification may require either modification dozens of compendiums, or some additional parsers
-    findNeededComponent(componentName) {
-        return this.items.filter(
-            item =>
-                item.type == 'component' &&
-                (item.name == componentName ||
-                    (item.system.type == 'substances' &&
-                        ((game.i18n.localize('WITCHER.Inventory.Vitriol') == componentName &&
-                            item.system.substanceType == 'vitriol') ||
-                            (game.i18n.localize('WITCHER.Inventory.Rebis') == componentName &&
-                                item.system.substanceType == 'rebis') ||
-                            (game.i18n.localize('WITCHER.Inventory.Aether') == componentName &&
-                                item.system.substanceType == 'aether') ||
-                            (game.i18n.localize('WITCHER.Inventory.Quebrith') == componentName &&
-                                item.system.substanceType == 'quebrith') ||
-                            (game.i18n.localize('WITCHER.Inventory.Hydragenum') == componentName &&
-                                item.system.substanceType == 'hydragenum') ||
-                            (game.i18n.localize('WITCHER.Inventory.Vermilion') == componentName &&
-                                item.system.substanceType == 'vermilion') ||
-                            (game.i18n.localize('WITCHER.Inventory.Sol') == componentName &&
-                                item.system.substanceType == 'sol') ||
-                            (game.i18n.localize('WITCHER.Inventory.Caelum') == componentName &&
-                                item.system.substanceType == 'caelum') ||
-                            (game.i18n.localize('WITCHER.Inventory.Fulgur') == componentName &&
-                                item.system.substanceType == 'fulgur'))))
-        );
-    }
-
-    findComponentByUuid(uuid) {
-        return this.getList('component').find(c => c?._stats.compendiumSource === uuid);
     }
 
     async addItem(addItem, numberOfItem, forcecreate = false) {
@@ -800,3 +714,4 @@ Object.assign(WitcherActor.prototype, locationMixin);
 Object.assign(WitcherActor.prototype, activeEffectMixin);
 Object.assign(WitcherActor.prototype, armorMixin);
 Object.assign(WitcherActor.prototype, rewardsMixin);
+Object.assign(WitcherActor.prototype, craftingMixin);

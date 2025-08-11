@@ -56,6 +56,18 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
         };
     }
 
+    calcCurrencyWeight() {
+        let totalPieces =
+            Number(this.currency.bizant) +
+            Number(this.currency.ducat) +
+            Number(this.currency.lintar) +
+            Number(this.currency.floren) +
+            Number(this.currency.crown) +
+            Number(this.currency.oren) +
+            Number(this.currency.falsecoin);
+        return Number(totalPieces * 0.001);
+    }
+
     /** @inheritdoc */
     static migrateData(source) {
         super.migrateData(source);

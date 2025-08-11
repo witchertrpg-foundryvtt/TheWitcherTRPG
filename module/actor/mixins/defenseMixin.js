@@ -430,5 +430,27 @@ export let defenseMixin = {
         if (!roll.options.success) {
             this.applyStatus([{ statusEffect: 'stun' }]);
         }
+    },
+
+    getDefenseSuccessFlags(defenseSkill) {
+        return {
+            origin: {
+                name: this.name,
+                uuid: this.uuid
+            },
+            defenseSkill: defenseSkill,
+            defense: true
+        };
+    },
+
+    getDefenseFailFlags(defenseSkill) {
+        return {
+            origin: {
+                name: this.name,
+                uuid: this.uuid
+            },
+            defenseSkill: defenseSkill,
+            defense: false
+        };
     }
 };
