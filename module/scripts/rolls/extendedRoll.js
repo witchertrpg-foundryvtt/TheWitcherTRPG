@@ -69,6 +69,8 @@ export async function extendedRoll(rollFormula, messageData, config = new RollCo
             success = config.defense ? roll.total <= config.threshold : roll.total < config.threshold;
         }
 
+        roll.options.success = success;
+
         let successHeader = config.thresholdDesc ? `: ${game.i18n.localize(config.thresholdDesc)}` : '';
         messageData.flavor += success
             ? `<div class="dice-success"><i>${game.i18n.localize('WITCHER.Chat.Success')}${successHeader}</i></br>${config.messageOnSuccess}</div>`
@@ -90,7 +92,7 @@ export async function extendedRoll(rollFormula, messageData, config = new RollCo
         }
     }
 
-    return config.showResult ? roll.total : roll;
+    return roll;
 }
 
 function isCrit(roll) {

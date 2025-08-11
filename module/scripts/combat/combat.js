@@ -23,6 +23,21 @@ function onDamage(message) {
     item.rollDamage(damage);
 }
 
+export const defenseChatMessageListeners = async (message, html) => {
+    html.querySelectorAll('button.stun').forEach(button =>
+        button.addEventListener('click', async _ => {
+            console.log(message);
+            (await getInteractActor()).stunSave(message.system.attackWeaponProperties.stun);
+        })
+    );
+
+    html.querySelectorAll('button.crit-stun').forEach(button =>
+        button.addEventListener('click', async _ => {
+            (await getInteractActor()).stunSave();
+        })
+    );
+};
+
 export function addDefenseOptionsContextMenu(html, options) {
     let canDefend = li => game.messages.get(li.dataset.messageId).system.defenseOptions;
     options.push({

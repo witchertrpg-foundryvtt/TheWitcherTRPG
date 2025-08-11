@@ -181,8 +181,13 @@ export let defenseMixin = {
             rollFormula = '10[Stun]';
         }
 
-        let messageData = new ChatMessageData(this);
-        messageData.flavor = `<h1>${game.i18n.localize('WITCHER.Defense.name')}: ${skillOverride ? skillMapEntry.label : game.i18n.localize(defenseAction.label)}</h1><p>${displayFormula}</p>`;
+        const chatMessage = await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/defense/defense.hbs', {
+            defenseName: skillOverride ? skillMapEntry.label : defenseAction.label,
+            displayFormula
+        });
+        let messageData = new ChatMessageData(this, chatMessage, 'defense', {
+            attackWeaponProperties: attackDamageObject.properties
+        });
 
         let roll = await extendedRoll(
             rollFormula,
@@ -191,14 +196,27 @@ export let defenseMixin = {
         );
         let crit = this.checkForCrit(roll.total, totalAttack);
         if (crit) {
-            messageData.flavor += `<h3 class='center-important crit-taken'>${game.i18n.localize('WITCHER.Defense.Crit')}: ${game.i18n.localize(CONFIG.WITCHER.CritGravity[crit.severity])}</h3>`;
             crit.location = await this.handleCritLocation(attackDamageObject);
             attackDamageObject.location = crit.location;
             crit.critEffectModifier = attackDamageObject.crit.critEffectModifier;
         }
 
+        const chatMessageCrit = crit
+            ? await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/defense/defenseCrit.hbs', {
+                  crit: { severity: CONFIG.WITCHER.CritGravity[crit.severity] }
+              })
+            : '';
+        messageData.append(new ChatMessageData(this, chatMessageCrit));
+
+        let stun = this.checkForStun(attackDamageObject, crit);
+        const chatMessageStun = stun
+            ? await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/defense/defenseStun.hbs', {
+                  stun
+              })
+            : '';
+        messageData.append(new ChatMessageData(this, chatMessageStun));
+
         let message = await roll.toMessage(messageData);
-        message.setFlag('TheWitcherTRPG', 'crit', crit);
 
         this.handleDefenseResults(roll, { totalAttack, attackDamageObject, attacker }, defenseItemId, {
             stagger,
@@ -259,6 +277,15 @@ export let defenseMixin = {
         config.flagsOnFailure = this.getDefenseFailFlags(skill);
 
         return config;
+    },
+
+    checkForStun(attackDamageObject) {
+        if (attackDamageObject.location.name != 'torso' && attackDamageObject.location.name != 'head') return;
+        if (!attackDamageObject.properties.stun) return;
+
+        return {
+            modifier: attackDamageObject.properties.stun
+        };
     },
 
     checkForCrit(defenseRoll, totalAttack) {
@@ -357,7 +384,7 @@ export let defenseMixin = {
                 attackDamageObject.duration
             );
 
-            this.applyStatus(['stun']);
+            this.removeStatus([{ statusEffect: 'stun' }]);
         } else {
             if (stagger) {
                 applyStatusEffectToActor(attacker, 'staggered', 1);
@@ -377,6 +404,31 @@ export let defenseMixin = {
                     }
                 }
             }
+        }
+    },
+
+    async stunSave(modifier = 0) {
+        let stunValue = this.system.coreStats.stun.current + modifier;
+        let stunName = 'WITCHER.Actor.CoreStat.Stun';
+
+        let messageData = new ChatMessageData(this);
+        messageData.flavor = `
+        <h2>${game.i18n.localize(stunName)}</h2>
+        <div class="roll-summary">
+            <div class="dice-formula">${game.i18n.localize('WITCHER.Chat.SaveText')} <b>${stunValue}</b></div>
+        </div>
+        <hr />`;
+
+        let config = new RollConfig();
+        config.showCrit = false;
+        config.showSuccess = true;
+        config.reversal = true;
+        config.threshold = stunValue;
+        config.thresholdDesc = stunName;
+        let roll = await extendedRoll(`1d10`, messageData, config);
+
+        if (!roll.options.success) {
+            this.applyStatus([{ statusEffect: 'stun' }]);
         }
     }
 };

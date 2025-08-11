@@ -284,6 +284,10 @@ export default class WitcherActor extends Actor {
         this.overrides = foundry.utils.expandObject(overrides);
     }
 
+    async rollSkill(skillName, threshold = -1) {
+        return this.rollSkillCheck(CONFIG.WITCHER.skillMap[skillName], threshold);
+    }
+
     async rollSkillCheck(skillMapEntry, threshold = -1) {
         let attribute = skillMapEntry.attribute;
         let attributeLabel = game.i18n.localize(attribute.label);
@@ -474,11 +478,13 @@ export default class WitcherActor extends Actor {
     }
 
     async removeStatus(effects) {
-        effects.forEach(effect => {
-            if (this.statuses.find(status => status == effect.statusEffect)) {
-                this.toggleStatusEffect(effect.statusEffect);
-            }
-        });
+        effects
+            .filter(effect => !!effect.statusEffect)
+            .forEach(effect => {
+                if (this.statuses.find(status => status == effect.statusEffect)) {
+                    this.toggleStatusEffect(effect.statusEffect);
+                }
+            });
     }
 
     async useItem(itemId, options) {
@@ -502,10 +508,6 @@ export default class WitcherActor extends Actor {
 
     async rollWeapon(weapon, options) {
         return this.weaponAttack(weapon, options);
-    }
-
-    async rollSkill(skillName, threshold = -1) {
-        return this.rollSkillCheck(CONFIG.WITCHER.skillMap[skillName], threshold);
     }
 
     getDefenseSuccessFlags(defenseSkill) {

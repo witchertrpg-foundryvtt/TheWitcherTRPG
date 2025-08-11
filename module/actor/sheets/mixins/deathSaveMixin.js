@@ -14,21 +14,24 @@ export let deathsaveMixin = {
     },
 
     async _onDeathSaveRoll(event) {
-        let stunBase = Math.floor((this.actor.system.stats.body.max + this.actor.system.stats.will.max) / 2);
-        if (this.actor.system.derivedStats.hp.value > 0) {
-            stunBase = this.actor.system.coreStats.stun.current;
-        }
-        if (stunBase > 10) {
-            stunBase = 10;
-        }
+        let stunBase =
+            this.actor.system.derivedStats.hp.value > 0
+                ? this.actor.system.coreStats.stun.current
+                : Math.floor((this.actor.system.stats.body.max + this.actor.system.stats.will.max) / 2);
+
+        stunBase = Math.min(stunBase, 10);
+
         stunBase -= this.actor.system.deathSaves;
 
-        let messageData = new ChatMessageData(this.actor, `
+        let messageData = new ChatMessageData(
+            this.actor,
+            `
           <h2>${game.i18n.localize('WITCHER.DeathSave')}</h2>
           <div class="roll-summary">
               <div class="dice-formula">${game.i18n.localize('WITCHER.Chat.SaveText')} <b>${stunBase}</b></div>
           </div>
-          <hr />`);
+          <hr />`
+        );
 
         let config = new RollConfig();
         config.reversal = true;
