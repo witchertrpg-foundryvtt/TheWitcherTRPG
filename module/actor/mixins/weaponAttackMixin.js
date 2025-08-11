@@ -55,7 +55,7 @@ export let weaponAttackMixin = {
             }
         }
 
-        let noThrowable = !this.isEnoughThrowableWeapon(weapon);
+        let noThrowable = !weapon.system.isEnoughThrowable();
         let meleeBonus = weapon.system.applyMeleeBonus ? this.system.attackStats.meleeBonus : 0;
         let data = {
             item: weapon,

@@ -532,20 +532,6 @@ export default class WitcherActor extends Actor {
         };
     }
 
-    isEnoughThrowableWeapon(item) {
-        if (item.system.isThrowable) {
-            let throwableItems = this.items.filter(w => w.type == 'weapon' && w.name == item.name);
-
-            let quantity =
-                throwableItems[0].system.quantity >= 0
-                    ? throwableItems[0].system.quantity
-                    : throwableItems.sum('quantity');
-            return quantity > 0;
-        } else {
-            return false;
-        }
-    }
-
     getTotalWeight() {
         var total = 0;
         this.items.forEach(item => {
