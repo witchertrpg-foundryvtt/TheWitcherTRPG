@@ -509,7 +509,7 @@ export default class WitcherActor extends Actor {
     }
 
     getTotalWeight() {
-        let total = this.items.reduce((total, item) => (total += item.system.calcWeight()), 0);
+        let total = this.items.reduce((total, item) => (total += item.system.calcWeight?.() ?? 0), 0);
         return Math.ceil(total + this.system.calcCurrencyWeight());
     }
 
