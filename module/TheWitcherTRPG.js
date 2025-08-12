@@ -20,7 +20,6 @@ import { deprecationWarnings } from './setup/deprecations.js';
 import { applyActiveEffectToActorViaId } from './scripts/activeEffects/applyActiveEffect.js';
 import { preloadHandlebarsTemplates, registerHandelbarHelpers } from './setup/handlebars.js';
 import Rewards from './app/reward/reward.js';
-import currency from './data/actor/templates/common/currencyData.js';
 
 registerHooks();
 
@@ -50,6 +49,7 @@ Hooks.once('init', function () {
 
 Hooks.on('renderChatMessageHTML', (message, html, data) => {
     Combat.attackChatMessageListeners(message, html);
+    Combat.defenseChatMessageListeners(message, html);
     VerbalCombat.chatMessageListeners(message, html);
     ApplyStatusEffects.chatMessageListeners(message, html);
     Chat.chatMessageListeners(message, html);

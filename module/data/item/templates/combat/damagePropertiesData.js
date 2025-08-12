@@ -15,6 +15,7 @@ export default function damageProperties() {
             initial: false,
             label: 'WITCHER.Item.DamageProperties.damageIsAblation'
         }),
+        stun: new fields.NumberField({ label: 'WITCHER.Item.DamageProperties.stun' }),
 
         damageToAllLocations: new fields.BooleanField({
             initial: false,

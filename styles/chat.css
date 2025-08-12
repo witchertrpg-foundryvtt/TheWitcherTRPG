@@ -66,3 +66,9 @@
     width: 100%;
     margin-bottom: 5px;
 }
+
+.chat-message .flavor-text .stun,
+.chat-message .flavor-text .crit-stun {
+    width: 100%;
+    margin-bottom: 5px;
+}

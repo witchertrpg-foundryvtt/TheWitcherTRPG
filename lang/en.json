@@ -64,6 +64,7 @@
         "Defense": {
             "name": "Defense",
             "Crit": "You received a crit",
+            "critStun": "Stun save for critical",
             "defenseOptions": {
                 "name": "Defense Options",
                 "dodge": "Dodge",
@@ -72,6 +73,9 @@
                 "block": "Block",
                 "parryThrown": "Parry thrown weapon",
                 "magicResist": "Magic Resist"
+            },
+            "stun": {
+                "button": "Stun"
             }
         },
         "Actor": {
@@ -245,6 +249,7 @@
             },
             "DamageProperties": {
                 "damageIsAblation": "Treat damage as ablation (not functional)",
+                "stun": "Stun(x)",
                 "damageToAllLocations": "Damages all locations",
                 "bypassesWornArmor": "Bypasses worn armor",
                 "bypassesNaturalArmor": "Bypasses natural armor",
@@ -1338,7 +1343,7 @@
                 ">9": "You fail horribly and not only fall prone but also take [[1d6]] lethal damage to the head and must make a Stun save."
             }
         },
-        "Deprecations": {},
+        "deprecations": {},
         "AssociatedDiagram": {
             "actions": {
                 "add": "Add crafting diagram",

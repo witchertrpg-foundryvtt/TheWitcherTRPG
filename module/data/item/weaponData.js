@@ -83,6 +83,10 @@ export default class WeaponData extends CommonItemData {
         unwrapAssociatedDiagram(this);
     }
 
+    isEnoughThrowable() {
+        return this.isThrowable ? this.quantity > 0 : false;
+    }
+
     /** @inheritdoc */
     static migrateData(source) {
         super.migrateData(source);
