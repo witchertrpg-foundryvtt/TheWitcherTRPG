@@ -26,7 +26,6 @@ function onDamage(message) {
 export const defenseChatMessageListeners = async (message, html) => {
     html.querySelectorAll('button.stun').forEach(button =>
         button.addEventListener('click', async _ => {
-            console.log(message);
             (await getInteractActor()).stunSave(message.system.attackWeaponProperties.stun);
         })
     );
