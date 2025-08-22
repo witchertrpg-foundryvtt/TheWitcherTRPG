@@ -98,13 +98,11 @@ async function createApplyDamageDialog(actor, damageObject) {
 }
 
 async function applyDamageFromStatus(actor, totalDamage, damageObject, derivedStat) {
-    await applyDamage(actor, null, totalDamage, damageObject, derivedStat, totalDamage);
+    await applyDamage(actor, null, totalDamage, damageObject, derivedStat);
 }
 
 async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat) {
     let damage = game.messages.get(messageId).getFlag('TheWitcherTRPG', 'damage');
-
-    let infoTotalDmg = totalDamage;
 
     let dialogData = await createApplyDamageDialog(actor, damage);
 
@@ -116,10 +114,10 @@ async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat
         damage.properties.oilEffect = actor.system.category;
     }
 
-    applyDamage(actor, dialogData, totalDamage, damage, derivedStat, infoTotalDmg);
+    applyDamage(actor, dialogData, totalDamage, damage, derivedStat);
 }
 
-async function applyDamage(actor, dialogData, totalDamage, damageObject, derivedStat, infoTotalDmg = '') {
+async function applyDamage(actor, dialogData, totalDamage, damageObject, derivedStat, infoTotalDmg = totalDamage) {
     let shield = actor.system.derivedStats.shield.value;
     if (totalDamage < shield) {
         actor.update({ 'system.derivedStats.shield.value': shield - totalDamage });

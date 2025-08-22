@@ -72,9 +72,7 @@ export function addCritMessageContextOptions(html, options) {
             icon: '<i class="fas fa-user-minus"></i>',
             condition: wasCritted,
             callback: async li => {
-                (await getInteractActor()).applyCritDamage(
-                    game.messages.get(li.dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
-                );
+                (await getInteractActor()).applyCritDamage(game.messages.get(li.dataset.messageId).system.crit);
             }
         },
         {
@@ -82,9 +80,7 @@ export function addCritMessageContextOptions(html, options) {
             icon: '<i class="fas fa-user-minus"></i>',
             condition: wasCritted,
             callback: async li => {
-                (await getInteractActor()).applyBonusCritDamage(
-                    game.messages.get(li.dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
-                );
+                (await getInteractActor()).applyBonusCritDamage(game.messages.get(li.dataset.messageId).system.crit);
             }
         },
         {
@@ -92,9 +88,7 @@ export function addCritMessageContextOptions(html, options) {
             icon: '<i class="fas fa-user-minus"></i>',
             condition: wasCritted,
             callback: async li => {
-                (await getInteractActor()).applyCritWound(
-                    game.messages.get(li.dataset.messageId).getFlag('TheWitcherTRPG', 'crit')
-                );
+                (await getInteractActor()).applyCritWound(game.messages.get(li.dataset.messageId).system.crit);
             }
         }
     );

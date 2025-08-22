@@ -206,15 +206,15 @@ export let defenseMixin = {
                   crit: { severity: CONFIG.WITCHER.CritGravity[crit.severity] }
               })
             : '';
-        messageData.append(new ChatMessageData(this, chatMessageCrit));
+        messageData.append(new ChatMessageData(this, chatMessageCrit, 'defense', { crit: crit }));
 
-        let stun = this.checkForStun(attackDamageObject, crit);
+        let stun = this.checkForStun(attackDamageObject);
         const chatMessageStun = stun
             ? await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/defense/defenseStun.hbs', {
                   stun
               })
             : '';
-        messageData.append(new ChatMessageData(this, chatMessageStun));
+        messageData.append(new ChatMessageData(this, chatMessageStun, 'defense', { stun: stun }));
 
         let message = await roll.toMessage(messageData);
 

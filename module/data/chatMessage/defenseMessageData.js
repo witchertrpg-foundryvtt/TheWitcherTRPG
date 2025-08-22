@@ -15,7 +15,21 @@ export default class DefenseMessageData extends BaseMessageData {
         let commonData = super.defineSchema();
         return {
             ...commonData,
-            attackWeaponProperties: new fields.SchemaField(damageProperties())
+            attackWeaponProperties: new fields.SchemaField(damageProperties()),
+            crit: new fields.SchemaField({
+                severity: new fields.StringField(),
+                critdamage: new fields.NumberField(),
+                bonusdamage: new fields.NumberField(),
+                location: new fields.SchemaField({
+                    name: new fields.StringField(),
+                    alias: new fields.StringField(),
+                    locationFormula: new fields.NumberField(),
+                    modifier: new fields.NumberField()
+                })
+            }),
+            stun: new fields.SchemaField({
+                modifier: new fields.NumberField()
+            })
         };
     }
 
