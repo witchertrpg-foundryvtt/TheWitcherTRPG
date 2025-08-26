@@ -257,7 +257,7 @@ export let castSpellMixin = {
         let roll = await extendedRoll(rollFormula, messageData, config);
         await roll.toMessage(messageData);
 
-        spellItem.createSpellVisuals(roll, damage, { stamina: origStaCost });
+        spellItem.system.createSpellVisuals?.(roll, damage, { stamina: origStaCost });
 
         if (!roll.options.fumble) {
             spellItem.system.selfEffects?.forEach(effect =>

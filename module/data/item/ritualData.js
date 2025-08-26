@@ -1,7 +1,8 @@
 import CommonItemData from './commonItemData.js';
 import defenseOptions from './templates/combat/defenseOptionsData.js';
 import component from './templates/componentData.js';
-import regionProperties from './templates/regions/regionPropertiesData.js';
+import RegionProperties from './templates/regions/regionPropertiesData.js';
+import { spellVisualMixin } from './mixin/spellVisualMixin.js';
 
 const fields = foundry.data.fields;
 
@@ -31,7 +32,7 @@ export default class RitualData extends CommonItemData {
             templateSize: new fields.NumberField({ initial: 0 }),
             templateType: new fields.StringField({ initial: '' }),
             visualEffectDuration: new fields.NumberField(),
-            regionProperties: new fields.SchemaField(regionProperties()),
+            regionProperties: new fields.EmbeddedDataField(RegionProperties),
 
             ...defenseOptions()
         };
@@ -72,3 +73,5 @@ export default class RitualData extends CommonItemData {
         super.migrateData(source);
     }
 }
+
+Object.assign(RitualData.prototype, spellVisualMixin);

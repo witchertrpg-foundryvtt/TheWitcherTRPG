@@ -1,8 +1,6 @@
 import { extendedRoll } from '../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../scripts/rollConfig.js';
 import { WITCHER } from '../setup/config.js';
-import AbilityTemplate from './ability-template.js';
-import { regionMixin } from './mixins/regionMixin.js';
 import { damageUtilMixin } from './mixins/damageUtilMixin.js';
 import { consumeMixin } from './mixins/consumeMixin.js';
 import { repairMixin } from './mixins/repairMixin.js';
@@ -24,33 +22,6 @@ export default class WitcherItem extends Item {
 
         if (source.system?.class === 'Rituals') {
             source.type = 'ritual';
-        }
-    }
-
-    async createSpellVisuals(roll, damage, options) {
-        if (this.system.createTemplate && this.system.templateType && this.system.templateSize) {
-            AbilityTemplate.fromItem(this)
-                ?.drawPreview()
-                .then(templates => {
-                    if (this.system.regionProperties.createRegionFromTemplate) {
-                        this.createRegionFromTemplates(templates, roll, damage, options);
-                    }
-
-                    return templates;
-                })
-                .then(templates => this.deleteSpellVisualEffect(templates))
-                .catch(() => {});
-        }
-    }
-
-    async deleteSpellVisualEffect(templates) {
-        if (templates && this.system.visualEffectDuration > 0) {
-            setTimeout(() => {
-                canvas.scene.deleteEmbeddedDocuments(
-                    'MeasuredTemplate',
-                    templates.map(effect => effect.id)
-                );
-            }, this.system.visualEffectDuration * 1000);
         }
     }
 
@@ -102,12 +73,8 @@ export default class WitcherItem extends Item {
         return this.system.alchemyDC && this.system.alchemyDC > 0;
     }
 
-    isWeaponThrowable() {
-        return this.system.isThrowable;
-    }
-
     populateAlchemyCraftComponentsList() {
-        class alchemyComponent {
+        class AlchemyComponent {
             name = '';
             alias = '';
             content = '';
@@ -123,7 +90,7 @@ export default class WitcherItem extends Item {
 
         let alchemyCraftComponents = [];
         alchemyCraftComponents.push(
-            new alchemyComponent(
+            new AlchemyComponent(
                 'vitriol',
                 game.i18n.localize('WITCHER.Inventory.Vitriol'),
                 `<img src="systems/TheWitcherTRPG/assets/images/vitriol.png" class="substance-img" /> <b>${this.system.alchemyComponents.vitriol}</b>`,
@@ -131,7 +98,7 @@ export default class WitcherItem extends Item {
             )
         );
         alchemyCraftComponents.push(
-            new alchemyComponent(
+            new AlchemyComponent(
                 'rebis',
                 game.i18n.localize('WITCHER.Inventory.Rebis'),
                 `<img src="systems/TheWitcherTRPG/assets/images/rebis.png" class="substance-img" /> <b>${this.system.alchemyComponents.rebis}</b>`,
@@ -139,7 +106,7 @@ export default class WitcherItem extends Item {
             )
         );
         alchemyCraftComponents.push(
-            new alchemyComponent(
+            new AlchemyComponent(
                 'aether',
                 game.i18n.localize('WITCHER.Inventory.Aether'),
                 `<img src="systems/TheWitcherTRPG/assets/images/aether.png" class="substance-img" /> <b>${this.system.alchemyComponents.aether}</b>`,
@@ -147,7 +114,7 @@ export default class WitcherItem extends Item {
             )
         );
         alchemyCraftComponents.push(
-            new alchemyComponent(
+            new AlchemyComponent(
                 'quebrith',
                 game.i18n.localize('WITCHER.Inventory.Quebrith'),
                 `<img src="systems/TheWitcherTRPG/assets/images/quebrith.png" class="substance-img" /> <b>${this.system.alchemyComponents.quebrith}</b>`,
@@ -155,7 +122,7 @@ export default class WitcherItem extends Item {
             )
         );
         alchemyCraftComponents.push(
-            new alchemyComponent(
+            new AlchemyComponent(
                 'hydragenum',
                 game.i18n.localize('WITCHER.Inventory.Hydragenum'),
                 `<img src="systems/TheWitcherTRPG/assets/images/hydragenum.png" class="substance-img" /> <b>${this.system.alchemyComponents.hydragenum}</b>`,
@@ -163,7 +130,7 @@ export default class WitcherItem extends Item {
             )
         );
         alchemyCraftComponents.push(
-            new alchemyComponent(
+            new AlchemyComponent(
                 'vermilion',
                 game.i18n.localize('WITCHER.Inventory.Vermilion'),
                 `<img src="systems/TheWitcherTRPG/assets/images/vermilion.png" class="substance-img" /> <b>${this.system.alchemyComponents.vermilion}</b>`,
@@ -171,7 +138,7 @@ export default class WitcherItem extends Item {
             )
         );
         alchemyCraftComponents.push(
-            new alchemyComponent(
+            new AlchemyComponent(
                 'sol',
                 game.i18n.localize('WITCHER.Inventory.Sol'),
                 `<img src="systems/TheWitcherTRPG/assets/images/sol.png" class="substance-img" /> <b>${this.system.alchemyComponents.sol}</b>`,
@@ -179,7 +146,7 @@ export default class WitcherItem extends Item {
             )
         );
         alchemyCraftComponents.push(
-            new alchemyComponent(
+            new AlchemyComponent(
                 'caelum',
                 game.i18n.localize('WITCHER.Inventory.Caelum'),
                 `<img src="systems/TheWitcherTRPG/assets/images/caelum.png" class="substance-img" /> <b>${this.system.alchemyComponents.caelum}</b>`,
@@ -187,7 +154,7 @@ export default class WitcherItem extends Item {
             )
         );
         alchemyCraftComponents.push(
-            new alchemyComponent(
+            new AlchemyComponent(
                 'fulgur',
                 game.i18n.localize('WITCHER.Inventory.Fulgur'),
                 `<img src="systems/TheWitcherTRPG/assets/images/fulgur.png" class="substance-img" /> <b>${this.system.alchemyComponents.fulgur}</b>`,
@@ -393,6 +360,5 @@ export default class WitcherItem extends Item {
 Object.assign(WitcherItem.prototype, consumeMixin);
 Object.assign(WitcherItem.prototype, repairMixin);
 Object.assign(WitcherItem.prototype, dismantlingMixin);
-Object.assign(WitcherItem.prototype, regionMixin);
 Object.assign(WitcherItem.prototype, damageUtilMixin);
 Object.assign(WitcherItem.prototype, defenseOptionMixin);
