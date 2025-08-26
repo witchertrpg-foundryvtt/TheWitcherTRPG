@@ -91,7 +91,8 @@ export let defenseMixin = {
                             itemId: button.form.elements.choosenDefense.selectedOptions[0].dataset.itemid
                         };
                     }
-                }
+                },
+                rejectClose: true
             }));
         }
 

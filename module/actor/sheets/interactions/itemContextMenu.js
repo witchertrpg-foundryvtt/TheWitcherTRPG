@@ -157,7 +157,8 @@ export let itemContextMenu = {
                 callback: (event, button, dialog) => {
                     return button.form.elements.actor?.value;
                 }
-            }
+            },
+            rejectClose: true
         });
 
         if (game.user.isGM) {

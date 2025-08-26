@@ -44,7 +44,8 @@ export let consumeMixin = {
                 callback: (event, button, dialog) => {
                     return button.form.elements.choosen.value;
                 }
-            }
+            },
+            rejectClose: true
         });
 
         let weapon = weapons.find(weapon => weapon.id === itemId);

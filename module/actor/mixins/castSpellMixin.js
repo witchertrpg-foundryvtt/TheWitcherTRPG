@@ -106,7 +106,8 @@ export let castSpellMixin = {
                             location: button.form.elements.location?.value
                         };
                     }
-                }
+                },
+                rejectClose: true
             });
 
         let origStaCost = staCostTotal;

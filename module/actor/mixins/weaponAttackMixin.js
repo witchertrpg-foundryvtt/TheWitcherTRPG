@@ -129,7 +129,8 @@ export let weaponAttackMixin = {
                         customDmg: button.form.elements.customDmg.value
                     };
                 }
-            }
+            },
+            rejectClose: true
         });
 
         let attacknumber = 1;

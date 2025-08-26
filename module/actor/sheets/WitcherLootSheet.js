@@ -147,7 +147,8 @@ export default class WitcherLootSheet extends HandlebarsApplicationMixin(ActorSh
                         characterId: button.form.elements.character.value
                     };
                 }
-            }
+            },
+            rejectClose: true
         });
 
         let buyerActor = game.actors.get(characterId);

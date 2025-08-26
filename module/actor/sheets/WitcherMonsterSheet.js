@@ -76,7 +76,8 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
             modal: true,
             ok: {
                 callback: (event, button, dialog) => button.form.elements.multiple.value
-            }
+            },
+            rejectClose: true
         });
 
         let folder = await this.getOrCreateFolder();

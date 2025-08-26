@@ -347,7 +347,8 @@ export default class WitcherActor extends Actor {
                     config.threshold = threshold;
                     return extendedRoll(rollFormula, messageData, config);
                 }
-            }
+            },
+            rejectClose: true
         });
     }
 
@@ -457,7 +458,8 @@ export default class WitcherActor extends Actor {
                     config.showSuccess = true;
                     return extendedRoll(rollFormula, messageData, config);
                 }
-            }
+            },
+            rejectClose: true
         });
     }
 

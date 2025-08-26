@@ -89,7 +89,8 @@ export let damageUtilMixin = {
                 callback: (event, button, dialog) => button.form.elements.newDamage.value
             },
             title: `${game.i18n.localize('WITCHER.Item.properties.variableDamage')}`,
-            content: dialogTemplate
+            content: dialogTemplate,
+            rejectClose: true
         });
 
         return newDamageFormula;
