@@ -161,7 +161,7 @@ export let weaponAttackMixin = {
             damage.ammunition = item;
         }
 
-        if (weapon.system.isThrowable() && attack.attackOption === 'ranged') {
+        if (weapon.system.isThrowable && attack.attackOption === 'ranged') {
             let newQuantity = weapon.system.quantity - 1;
             if (newQuantity < 0) {
                 return;

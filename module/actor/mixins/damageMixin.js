@@ -1,4 +1,6 @@
 import { getRandomInt } from '../../scripts/helper.js';
+import { applyActiveEffectToActorViaId } from '../../scripts/activeEffects/applyActiveEffect.js';
+import { applyStatusEffectToActor } from '../../scripts/statusEffects/applyStatusEffect.js';
 
 export let damageMixin = {
     async applyDamage(dialogData, totalDamage, damageObject, derivedStat, infoTotalDmg = totalDamage) {
@@ -42,6 +44,7 @@ export let damageMixin = {
             applyActiveEffectToActorViaId(this.uuid, damageObject.itemUuid, 'applyOnDamage', damageObject.duration);
         }
     },
+
     async applyDamageToLocation(dialogData, damageObject, totalDamage, infoTotalDmg, derivedStat) {
         let damageResult = await this.calculateDamageWithLocation(dialogData, damageObject, totalDamage, infoTotalDmg);
 
@@ -54,7 +57,7 @@ export let damageMixin = {
             return;
         }
 
-        createDamageResultMessage(damageResult);
+        this.createDamageResultMessage(damageResult);
 
         await this.update({
             [`system.derivedStats.${derivedStat}.value`]:
@@ -97,7 +100,7 @@ export let damageMixin = {
         });
     },
 
-    async calculateDamageWithLocation(dialogData, damage, totalDamage, infoTotalDmg) {
+    async calculateDamageWithLocation(enemyData, damage, totalDamage, infoTotalDmg) {
         let properties = damage.properties;
         let location = damage.location;
 
@@ -112,11 +115,19 @@ export let damageMixin = {
         }
 
         let silverDamage = 0;
-        if (properties?.silverDamage && dialogData?.resistNonSilver) {
-            let multi = damage.strike === 'strong' ? '*2' : '';
-            let silverRoll = await new Roll(damage.properties.silverDamage + multi).evaluate();
-            silverDamage = silverRoll.total;
-            infoTotalDmg += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
+
+        if (game.settings.get('TheWitcherTRPG', 'silverTrait')) {
+            if (properties?.silverTrait) {
+                silverDamage = totalDamage;
+                totalDamage = 0;
+            }
+        } else {
+            if (properties?.silverDamage && enemyData?.resistNonSilver) {
+                let multi = damage.strike === 'strong' ? '*2' : '';
+                let silverRoll = await new Roll(damage.properties.silverDamage + multi).evaluate();
+                silverDamage = silverRoll.total;
+                infoTotalDmg += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
+            }
         }
 
         totalDamage -= totalSP < 0 ? 0 : totalSP;
@@ -156,14 +167,24 @@ export let damageMixin = {
             infoAfterLocation += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
         }
 
-        totalDamage = this.calculateResistances(totalDamage, damage, armorSet);
+        totalDamage = this.calculateArmorResistances(totalDamage, damage, armorSet);
 
         let damageTypeConfig = CONFIG.WITCHER.damageTypes.find(type => type.value === damage.type);
+        //Enemy is suspectible to silver
         if (
-            (dialogData?.resistNonSilver && !properties?.silverDamage && !damageTypeConfig.likeSilver) ||
-            (dialogData?.resistNonMeteorite && !properties?.isMeteorite && !damageTypeConfig.likeMeteorite)
+            (enemyData?.resistNonSilver && !properties?.silverDamage && !damageTypeConfig.likeSilver) ||
+            (enemyData?.resistNonMeteorite && !properties?.isMeteorite && !damageTypeConfig.likeMeteorite)
         ) {
             totalDamage = Math.floor(0.5 * totalDamage);
+        }
+
+        //Enemy is not suspectible to silver
+        if (
+            game.settings.get('TheWitcherTRPG', 'silverTrait') &&
+            !enemyData?.resistNonSilver &&
+            properties.silverTrait
+        ) {
+            silverDamage = Math.floor(0.5 * silverDamage);
         }
 
         let infoAfterResistance = totalDamage;
@@ -172,8 +193,9 @@ export let damageMixin = {
             infoAfterResistance += `+${silverDamage}[${game.i18n.localize('WITCHER.Damage.silver')}]`;
         }
 
-        if (dialogData?.isVulnerable) {
+        if (enemyData?.isVulnerable) {
             totalDamage *= 2;
+            silverDamage *= 2;
         }
 
         spDamage += await this.applySpDamage(location, properties, armorSet);

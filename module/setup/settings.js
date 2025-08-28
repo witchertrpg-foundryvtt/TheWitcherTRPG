@@ -1,5 +1,5 @@
 export const registerSettings = function () {
-    // Register any custom system settings here
+    //optional rules
     game.settings.register('TheWitcherTRPG', 'useOptionalAdrenaline', {
         name: 'WITCHER.Settings.Adrenaline',
         hint: 'WITCHER.Settings.AdrenalineDetails',
@@ -8,6 +8,16 @@ export const registerSettings = function () {
         type: Boolean,
         default: false
     });
+    game.settings.register('TheWitcherTRPG', 'useOptionalVerbalCombat', {
+        name: 'WITCHER.Settings.useVerbalCombatRule',
+        hint: 'WITCHER.Settings.useVerbalCombatRuleHint',
+        scope: 'world',
+        config: true,
+        type: Boolean,
+        default: false
+    });
+
+    //rules interpretation
     game.settings.register('TheWitcherTRPG', 'woundsAffectSkillBase', {
         name: 'WITCHER.Settings.WoundsAffectSkillBase',
         hint: 'WITCHER.Settings.WoundsAffectSkillBaseDetails',
@@ -16,6 +26,17 @@ export const registerSettings = function () {
         type: Boolean,
         default: false
     });
+
+    //sage rulings
+    game.settings.register('TheWitcherTRPG', 'silverTrait', {
+        name: 'WITCHER.Settings.silverTrait',
+        hint: 'WITCHER.Settings.silverTraitHint',
+        scope: 'world',
+        config: true,
+        type: Boolean,
+        default: false
+    });
+
     game.settings.register('TheWitcherTRPG', 'displayRollsDetails', {
         name: 'WITCHER.Settings.displayRollDetails',
         hint: 'WITCHER.Settings.displayRollDetailsHint',
@@ -34,14 +55,6 @@ export const registerSettings = function () {
     game.settings.register('TheWitcherTRPG', 'displayRep', {
         name: 'WITCHER.Settings.displayReputation',
         hint: 'WITCHER.Settings.displayReputationHint',
-        scope: 'world',
-        config: true,
-        type: Boolean,
-        default: false
-    });
-    game.settings.register('TheWitcherTRPG', 'useOptionalVerbalCombat', {
-        name: 'WITCHER.Settings.useVerbalCombatRule',
-        hint: 'WITCHER.Settings.useVerbalCombatRuleHint',
         scope: 'world',
         config: true,
         type: Boolean,

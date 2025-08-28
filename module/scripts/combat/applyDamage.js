@@ -1,6 +1,4 @@
-import { applyActiveEffectToActorViaId } from '../activeEffects/applyActiveEffect.js';
 import { getInteractActor } from '../helper.js';
-import { applyStatusEffectToActor } from '../statusEffects/applyStatusEffect.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 

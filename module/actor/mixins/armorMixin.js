@@ -186,7 +186,7 @@ export let armorMixin = {
         return 0;
     },
 
-    calculateResistances(totalDamage, damage, armorSet) {
+    calculateArmorResistances(totalDamage, damage, armorSet) {
         let properties = damage.properties;
         if (properties.armorPiercing || properties.improvedArmorPiercing) {
             return totalDamage;

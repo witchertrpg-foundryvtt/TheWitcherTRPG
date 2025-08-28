@@ -655,7 +655,6 @@
     "Settings.displayRollDetails": "Wyświetl szczegóły rzutu",
     "Settings.displayRollDetailsHint": "Wyświietla szczeguły rzutu : 1d10+2[cecha]+4[umiejętność]-3[parowanie]",
     "Settings.Custom": "Dodatkowe",
-    "Settings.modifiers": "Modyfikatory",
     "Settings.displayReputation": "Pokaż sławe graczom",
     "Settings.displayReputationHint": "Pozwala graczom widzieć i modyfikować swoją sławe",
     "Settings.useVerbalCombatRule": "Stosuj zasady Konfliktu Społęcznego",
