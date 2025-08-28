@@ -159,6 +159,11 @@
                 "actor": "Actor Settings",
                 "general": "General",
                 "skills": "Skills"
+            },
+            "rewards": {
+                "heading": "Rewards",
+                "currency": "Currency",
+                "ip": "IP"
             }
         },
         "Alchemy": {

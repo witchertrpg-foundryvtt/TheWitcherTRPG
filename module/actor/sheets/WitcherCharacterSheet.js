@@ -3,9 +3,12 @@ import { RollConfig } from '../../scripts/rollConfig.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 import { alchemyMixin } from './mixins/alchemyMixin.js';
+import RewardsSheet from '../rewardsSheet.js';
 
 export default class WitcherCharacterSheet extends WitcherActorSheet {
     uniqueTypes = ['profession', 'race', 'homeland'];
+
+    rewards = new RewardsSheet({ document: this.actor });
 
     /** @override */
     static get defaultOptions() {
@@ -27,6 +30,8 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         html.find('.item-repair').on('click', this._repairItem.bind(this));
         html.find('.manualIpReward').on('click', this._addIpReward.bind(this));
         html.find('.saveIpSpending').on('click', this._saveIpSpending.bind(this));
+
+        html.find('.open-rewards').on('click', this._renderRewards.bind(this));
     }
 
     getData() {
@@ -341,6 +346,10 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
 
     async _saveIpSpending(event) {
         //to implement
+    }
+
+    async _renderRewards() {
+        this.rewards?.render(true);
     }
 }
 

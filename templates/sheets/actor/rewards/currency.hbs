@@ -1,0 +1,12 @@
+<section class="tab {{tabs.currency.cssClass}} scrollable standard-form" data-group="primary" data-tab="currency">
+    <div class="logs">
+        {{#each system.logs.currencyLog as |currencyLog|}}
+            <div class="logEntry">
+                <label>{{localize "WITCHER.rewards.dialog.label"}}: {{currencyLog.label}}</label>
+                <label>{{localize "WITCHER.rewards.dialog.currency"}}: {{currencyLog.amount}}</label>
+                <label>{{localize "WITCHER.rewards.dialog.currencyType"}}:
+                    {{ localize (lookup ../config.currency currencyLog.type) }}</label>
+            </div>
+        {{/each}}
+    </div>
+</section>
