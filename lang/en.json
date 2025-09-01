@@ -452,6 +452,10 @@
                         "isDefense": "Is Defense"
                     }
                 }
+            },
+            "professionSkills": {
+                "label": "Profession Skills",
+                "hint": "Add the skills that will be marked as profession skills"
             }
         },
         "Weapon": {
