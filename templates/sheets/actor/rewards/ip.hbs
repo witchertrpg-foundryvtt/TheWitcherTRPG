@@ -1,0 +1,11 @@
+<section class="tab {{tabs.ip.cssClass}} scrollable standard-form" data-group="primary" data-tab="ip">
+    <div class="logs">
+        {{#each system.logs.ipLog as |ipLog|}}
+            <div class="logEntry">
+                <label>{{localize "WITCHER.rewards.dialog.label"}}: {{ipLog.label}}</label>
+                <label>{{localize "WITCHER.rewards.dialog.ip"}}: {{ipLog.ip}}</label>
+                <label>{{localize "WITCHER.rewards.dialog.magicIp"}}: {{ipLog.isMagic}}</label>
+            </div>
+        {{/each}}
+    </div>
+</section>

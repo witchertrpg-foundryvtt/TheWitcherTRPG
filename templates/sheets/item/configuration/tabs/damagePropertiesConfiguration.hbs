@@ -10,7 +10,11 @@
     {{formGroup systemFields.damageProperties.fields.bypassesWornArmor value=item.system.damageProperties.bypassesWornArmor localize=true}}
     {{formGroup systemFields.damageProperties.fields.bypassesNaturalArmor value=item.system.damageProperties.bypassesNaturalArmor localize=true}}
     {{formGroup systemFields.damageProperties.fields.variableDamage value=item.system.damageProperties.variableDamage localize=true}}
-    {{formGroup systemFields.damageProperties.fields.silverDamage value=item.system.damageProperties.silverDamage localize=true}}
+    {{#if settings.silverTrait}}
+        {{formGroup systemFields.damageProperties.fields.silverTrait value=item.system.damageProperties.silverTrait localize=true}}
+    {{else}}
+        {{formGroup systemFields.damageProperties.fields.silverDamage value=item.system.damageProperties.silverDamage localize=true}}
+    {{/if}}
     {{formGroup systemFields.damageProperties.fields.isMeteorite value=item.system.damageProperties.isMeteorite localize=true}}
     {{formGroup systemFields.damageProperties.fields.isNonLethal value=item.system.damageProperties.isNonLethal localize=true}}
     {{formGroup systemFields.damageProperties.fields.defenseDifferenceMultiplier value=item.system.damageProperties.defenseDifferenceMultiplier localize=true}}

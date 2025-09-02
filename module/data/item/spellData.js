@@ -1,11 +1,13 @@
 import { migrateDamageProperties } from '../migrations/damagePropertiesMigration.js';
 import CommonItemData from './commonItemData.js';
+import { spellVisualMixin } from './mixin/spellVisualMixin.js';
 import attackOptions from './templates/combat/attackOptionsData.js';
 import damageProperties from './templates/combat/damagePropertiesData.js';
 import defenseOptions from './templates/combat/defenseOptionsData.js';
 import DefenseProperties from './templates/combat/defensePropertiesData.js';
 import itemEffect from './templates/itemEffectData.js';
-import regionProperties from './templates/regions/regionPropertiesData.js';
+
+import RegionProperties from './templates/regions/regionPropertiesData.js';
 
 const fields = foundry.data.fields;
 
@@ -33,7 +35,7 @@ export default class SpellData extends CommonItemData {
             templateSize: new fields.NumberField({ initial: 0 }),
             templateType: new fields.StringField({ initial: '' }),
             visualEffectDuration: new fields.NumberField(),
-            regionProperties: new fields.SchemaField(regionProperties()),
+            regionProperties: new fields.EmbeddedDataField(RegionProperties),
 
             causeDamages: new fields.BooleanField({ initial: false }),
             damage: new fields.StringField({ nullable: true, initial: null }),
@@ -98,3 +100,5 @@ export default class SpellData extends CommonItemData {
         }
     }
 }
+
+Object.assign(SpellData.prototype, spellVisualMixin);

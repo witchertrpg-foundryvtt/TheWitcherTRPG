@@ -159,6 +159,11 @@
                 "actor": "Actor Settings",
                 "general": "General",
                 "skills": "Skills"
+            },
+            "rewards": {
+                "heading": "Rewards",
+                "currency": "Currency",
+                "ip": "IP"
             }
         },
         "Alchemy": {
@@ -254,6 +259,7 @@
                 "bypassesWornArmor": "Bypasses worn armor",
                 "bypassesNaturalArmor": "Bypasses natural armor",
                 "variableDamage": "Variable Damage",
+                "silverTrait": "has Silver Trait",
                 "silverDamage": "Silver Damage Formula",
                 "isMeteorite": "Meteorite Weapon",
                 "isNonLethal": "Non-Lethal Weapon",
@@ -446,6 +452,10 @@
                         "isDefense": "Is Defense"
                     }
                 }
+            },
+            "professionSkills": {
+                "label": "Profession Skills",
+                "hint": "Add the skills that will be marked as profession skills"
             }
         },
         "Weapon": {
@@ -1007,14 +1017,15 @@
             "AdrenalineDetails": "Adrenaline is the willpower to go on and Fight harder in dire situations",
             "WoundsAffectSkillBase": "Wounds affect skill base",
             "WoundsAffectSkillBaseDetails": "Wounds affect skill base instead of only skill. This makes wounds more impactful.",
+            "useVerbalCombatRule": "Use the Verbal Combat Optional Rule",
+            "useVerbalCombatRuleHint": "Allows players to see their resolve value and roll for Verbal combat actions",
+            "silverTrait": "Use Silver Trait rule",
+            "silverTraitHint": "Instead of silver dice, silver is a damage property",
             "displayRollDetails": "Display roll's details",
             "displayRollDetailsHint": "Display details when rolling dice : 1d10+2[stat]+4[skill]-3[parry]",
             "Custom": "Custom",
-            "modifiers": "Modifiers",
             "displayReputation": "Display Reputation to players",
             "displayReputationHint": "Allows players to see and modify their reputation",
-            "useVerbalCombatRule": "Use the Verbal Combat Optional Rule",
-            "useVerbalCombatRuleHint": "Allows players to see their resolve value and roll for Verbal combat actions",
             "clickableImageItemTypes": "Show 'Zoomable' checkbox on item sheet",
             "clickableImageItemTypesHint": "A comma-separated list of item types, where a checkbox can be set. If it is checked, the players can click on the item image from their inventory to see a larger version of it. Possible types are 'valuable', 'weapon', 'armor', 'alchemical', 'diagrams', 'component'.",
             "clickableImageCheckboxForGMOnly": "Show 'Zoomable' checkbox to GM only",

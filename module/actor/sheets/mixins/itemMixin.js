@@ -18,6 +18,35 @@ export let itemMixin = {
                 if (item.type === 'weapon' && this.actor.type === 'monster') {
                     item.system.equipped = true;
                 }
+                if (item.type === 'profession') {
+                    let allSkills = Object.keys(this.actor.system.skills).reduce((collectedAttr, attr) => {
+                        return {
+                            ...collectedAttr,
+                            ...Object.keys(this.actor.system.skills[attr]).reduce((collectedSkills, skill) => {
+                                return {
+                                    ...collectedSkills,
+                                    [`system.skills.${attr}.${skill}.isProfession`]: false
+                                };
+                            }, {})
+                        };
+                    }, {});
+
+                    await this.actor.update(allSkills);
+
+                    let delta = {};
+                    item.system.professionSkills.forEach(profSkill => {
+                        //find skill
+                        let attr = Object.keys(this.actor.system.skills).find(attr =>
+                            Object.keys(this.actor.system.skills[attr]).find(skill => skill === profSkill)
+                        );
+
+                        delta = {
+                            ...delta,
+                            [`system.skills.${attr}.${profSkill}.isProfession`]: true
+                        };
+                    });
+                    this.actor.update(delta);
+                }
                 this.actor.addItem(item, 1);
             }
         } else {

@@ -19,4 +19,15 @@ export default class WitcheProfessionSheet extends WitcherItemSheetV1 {
     }
 
     configuration = new WitcherProfessionConfigurationSheet({ document: this.item });
+
+    /** @override */
+    getData() {
+        const context = super.getData();
+
+        context.professionSkills = Object.values(CONFIG.WITCHER.skillMap).map(skill => {
+            return { value: skill.name, label: skill.label };
+        });
+
+        return context;
+    }
 }

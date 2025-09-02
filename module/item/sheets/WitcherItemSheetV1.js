@@ -31,6 +31,7 @@ export default class WitcherItemSheetV1 extends foundry.appv1.sheets.ItemSheet {
 
         this.options.classes.push(`item-${this.item.type}`);
         context.data = context.item?.system;
+        context.systemFields = this.item.system.schema.fields;
 
         context.showConfig = !!this.configuration;
 

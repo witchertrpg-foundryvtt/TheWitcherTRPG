@@ -23,6 +23,7 @@
 @import './components-list.css';
 @import './dialog.css';
 @import './tab-inventory-list.css';
+@import './rewards.css';
 
 @font-face {
     font-family: 'Thewitcher';

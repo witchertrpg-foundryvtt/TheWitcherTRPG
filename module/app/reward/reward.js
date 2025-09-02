@@ -112,7 +112,7 @@ export default class Rewards {
 
         let ipDiv = document.createElement('div');
         ipDiv.appendChild(
-            createLabeledInput(game.i18n.localize('WITCHER.rewards.dialog.currency'), 'number', 'currency')
+            createLabeledInput(game.i18n.localize('WITCHER.rewards.dialog.amount'), 'number', 'amount')
         );
         ipDiv.appendChild(
             createLabeledSelect(game.i18n.localize('WITCHER.rewards.dialog.currencyType'), 'type', {
@@ -147,17 +147,17 @@ export default class Rewards {
         if (!values || !values.actors || values.actors.length === 0) return;
 
         let choosenActors = values.actors.map(actor => fromUuidSync(actor));
-        let currency = values.currency;
+        let amount = values.amount;
         let label = values.label;
 
-        if (currency) {
-            choosenActors.forEach(actor => actor.system.logs.addCurrencyReward(label, currency, values.type));
+        if (amount) {
+            choosenActors.forEach(actor => actor.system.logs.addCurrencyReward(label, amount, values.type));
         }
 
         const content = await renderTemplate('systems/TheWitcherTRPG/templates/chat/rewards.hbs', {
             actors: choosenActors,
             label: label,
-            currency: currency,
+            amount: amount,
             type: values.type
         });
         const chatData = {
@@ -165,7 +165,7 @@ export default class Rewards {
             type: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 
-        if (currency) {
+        if (amount) {
             ChatMessage.create(chatData);
         }
     }

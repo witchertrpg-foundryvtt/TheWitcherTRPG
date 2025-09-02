@@ -42,6 +42,15 @@ export default class WitcherPropertiesConfigurationSheet extends WitcherConfigur
         }
     };
 
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        context.settings = {
+            silverTrait: game.settings.get('TheWitcherTRPG', 'silverTrait')
+        };
+
+        return context;
+    }
+
     /** @inheritdoc */
     _prepareTabs(group) {
         const tabs = super._prepareTabs(group);

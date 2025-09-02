@@ -129,7 +129,8 @@ export let weaponAttackMixin = {
                         customDmg: button.form.elements.customDmg.value
                     };
                 }
-            }
+            },
+            rejectClose: true
         });
 
         let attacknumber = 1;
@@ -160,7 +161,7 @@ export let weaponAttackMixin = {
             damage.ammunition = item;
         }
 
-        if (weapon.isWeaponThrowable() && attack.attackOption === 'ranged') {
+        if (weapon.system.isThrowable && attack.attackOption === 'ranged') {
             let newQuantity = weapon.system.quantity - 1;
             if (newQuantity < 0) {
                 return;

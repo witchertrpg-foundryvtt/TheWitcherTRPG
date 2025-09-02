@@ -130,7 +130,8 @@ export let professionMixin = {
                         customDmg: button.form.elements.customDmg.value
                     };
                 }
-            }
+            },
+            rejectClose: true
         });
 
         let damage = {
@@ -242,7 +243,8 @@ export let professionMixin = {
                 callback: (event, button, dialog) => {
                     return button.form.elements.choosen.value;
                 }
-            }
+            },
+            rejectClose: true
         });
 
         let weapon = this.items.get(itemId);
@@ -271,7 +273,8 @@ export let professionMixin = {
             modal: true,
             ok: {
                 callback: (event, button, dialog) => button.form.elements.customModifiers.value
-            }
+            },
+            rejectClose: true
         });
 
         if (customMod < 0) {

@@ -19,7 +19,7 @@ export function addVerbalCombatMessageContextOptions(html, options) {
         icon: '<i class="fas fa-user-minus"></i>',
         condition: canApplyVcDamage,
         callback: async li => {
-            applyDamage(
+            applyVerbalCombatDamage(
                 await getInteractActor(),
                 li.querySelector('.dice-total')[0].innerText,
                 li.dataset.messageId
@@ -49,7 +49,7 @@ export async function rollDamage(verbalCombat, damage) {
     message.setFlag('TheWitcherTRPG', 'damage', damage);
 }
 
-export async function applyDamage(targetActor, totalDamage, messageId) {
+export async function applyVerbalCombatDamage(targetActor, totalDamage, messageId) {
     let currentResolve = targetActor.system.derivedStats.resolve.value;
     targetActor.update({ 'system.derivedStats.resolve.value': currentResolve - Math.floor(totalDamage) });
 }

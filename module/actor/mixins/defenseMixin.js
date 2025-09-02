@@ -24,6 +24,10 @@ export let defenseMixin = {
             ...additionalOptions
         ];
 
+        if (attackDamageObject.properties.crushingForce) {
+            defenseOptionsData = defenseOptionsData.filter(option => option.value != 'parry');
+        }
+
         let buttons = Array.from(
             defenseOptionsData.map(option => {
                 return {
@@ -43,7 +47,8 @@ export let defenseMixin = {
         let { defenseAction, extraDefense, customDef } = await DialogV2.wait({
             window: { title: `${game.i18n.localize('WITCHER.Dialog.DefenseTitle')}` },
             content,
-            buttons: buttons
+            buttons: buttons,
+            rejectClose: true
         });
 
         let chooser = [];
@@ -91,7 +96,8 @@ export let defenseMixin = {
                             itemId: button.form.elements.choosenDefense.selectedOptions[0].dataset.itemid
                         };
                     }
-                }
+                },
+                rejectClose: true
             }));
         }
 
@@ -391,16 +397,20 @@ export let defenseMixin = {
             }
 
             if (block) {
+                let reliabilityDamage = 1;
+                if (attackDamageObject.properties.crushingForce) {
+                    reliabilityDamage *= 2;
+                }
                 let item = this.items.get(defenseItemId);
                 if (item.type == 'armor') {
-                    item.update({ 'system.reliability': item.system.reliability - 1 });
-                    if (item.system.reliability - 1 <= 0) {
-                        return ui.notifications.error(game.i18n.localize('WITCHER.Shield.Broken'));
+                    item.update({ 'system.reliability': item.system.reliability - reliabilityDamage });
+                    if (item.system.reliability - reliabilityDamage <= 0) {
+                        ui.notifications.error(game.i18n.localize('WITCHER.Shield.Broken'));
                     }
                 } else {
-                    item.update({ 'system.reliable': item.system.reliable - 1 });
-                    if (item.system.reliable - 1 <= 0) {
-                        return ui.notifications.error(game.i18n.localize('WITCHER.Weapon.Broken'));
+                    item.update({ 'system.reliable': item.system.reliable - reliabilityDamage });
+                    if (item.system.reliable - reliabilityDamage <= 0) {
+                        ui.notifications.error(game.i18n.localize('WITCHER.Weapon.Broken'));
                     }
                 }
             }

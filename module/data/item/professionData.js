@@ -14,7 +14,12 @@ export default class ProfessionData extends CommonItemData {
             definingSkill: new fields.SchemaField(professionSkill()),
             skillPath1: new fields.SchemaField(professionPath()),
             skillPath2: new fields.SchemaField(professionPath()),
-            skillPath3: new fields.SchemaField(professionPath())
+            skillPath3: new fields.SchemaField(professionPath()),
+
+            professionSkills: new fields.SetField(new fields.StringField(), {
+                label: 'WITCHER.profession.professionSkills.label',
+                hint: 'WITCHER.profession.professionSkills.hint'
+            })
         };
     }
 
