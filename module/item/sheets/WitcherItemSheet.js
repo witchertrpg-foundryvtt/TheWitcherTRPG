@@ -35,14 +35,14 @@ export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemShe
     }
 
     //overwrite in sub-classes
-    configuration = new WitcherConfigurationSheet({ document: this.item });
+    configuration = new WitcherConfigurationSheet({ document: this.document });
 
     /** @override */
     async _prepareContext(options) {
         const context = await super._prepareContext(options);
         context.config = CONFIG.WITCHER;
 
-        this.options.classes.push(`item-${this.item.type}`);
+        this.options.classes.push(`item-${this.document.type}`);
         context.item = this.document;
         context.data = context.item.system;
 
