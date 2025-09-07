@@ -345,7 +345,11 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     }
 
     async _saveIpSpending(event) {
-        //to implement
+        let siblings = event.currentTarget.parentElement.children;
+        let label = siblings.item(0).value;
+        let value = siblings.item(1).value < 0 ? siblings.item(1).value : siblings.item(1).value * -1;
+
+        this.actor.system.logs.addIpReward(label, value);
     }
 
     async _renderRewards() {

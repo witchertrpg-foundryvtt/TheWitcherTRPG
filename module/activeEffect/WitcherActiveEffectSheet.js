@@ -14,7 +14,7 @@ export class WitcherActiveEffectConfig extends foundry.applications.sheets.Activ
     static PARTS = {
         header: { template: 'templates/sheets/active-effect/header.hbs' },
         tabs: { template: 'templates/generic/tab-navigation.hbs' },
-        details: { template: 'templates/sheets/active-effect/details.hbs', scrollable: [''] },
+        details: { template: 'systems/TheWitcherTRPG/templates/sheets/activeEffect/details.hbs', scrollable: [''] },
         duration: { template: 'templates/sheets/active-effect/duration.hbs' },
         changes: {
             template: 'systems/TheWitcherTRPG/templates/sheets/activeEffect/active-effect-changes.hbs',
@@ -22,6 +22,13 @@ export class WitcherActiveEffectConfig extends foundry.applications.sheets.Activ
         },
         footer: { template: 'templates/generic/form-footer.hbs' }
     };
+
+    /** @override */
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        context.systemFields = this.document.system.schema.fields;
+        return context;
+    }
 
     static async wizardAction() {
         let selects;
@@ -48,14 +55,14 @@ export class WitcherActiveEffectConfig extends foundry.applications.sheets.Activ
             ok: {
                 callback: (event, button, dialog) => {
                     let paths = button.form.elements.path.value.split(',');
-                    let newChanges =this.document.changes;
+                    let newChanges = this.document.changes;
                     paths.forEach(path => {
                         newChanges.push({
                             key: path
                         });
                     });
 
-                   this.document.update({
+                    this.document.update({
                         changes: newChanges
                     });
                 }

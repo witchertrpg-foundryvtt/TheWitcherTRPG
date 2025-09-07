@@ -49,7 +49,7 @@ export let damageMixin = {
         let damageResult = await this.calculateDamageWithLocation(dialogData, damageObject, totalDamage, infoTotalDmg);
 
         if (damageResult.blockedBySp) {
-            createDamageBlockedBySp(
+            this.createDamageBlockedBySp(
                 damageResult.infoTotalDmg,
                 damageResult.displaySP,
                 damageResult.infoAfterSPReduction
