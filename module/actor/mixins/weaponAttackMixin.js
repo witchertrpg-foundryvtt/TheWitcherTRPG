@@ -372,9 +372,14 @@ export let weaponAttackMixin = {
         let formula = '';
         let strikeConfig = CONFIG.WITCHER.weapon.attacks[strike];
         if (strikeConfig.attackPenality) {
-            formula += !displayRollDetails
-                ? ` ${strikeConfig.attackPenality}`
-                : ` ${strikeConfig.attackPenality}[${game.i18n.localize(strikeConfig.label)}]`;
+            formula += ` ${strikeConfig.attackPenality}`;
+            formula += !displayRollDetails ? `` : `[${game.i18n.localize(strikeConfig.label)}]`;
+        }
+
+        if (this.system.lifepathModifiers.attacks[strike]) {
+            formula += this.system.lifepathModifiers.attacks[strike] > 0 ? ' +' : ' ';
+            formula += `${this.system.lifepathModifiers.attacks[strike]}`;
+            formula += displayRollDetails ? `[${game.i18n.localize('WITCHER.Actor.Lifepath.Bonus')}]` : '';
         }
 
         if (strike == 'joint') {

@@ -1357,7 +1357,12 @@
                 ">9": "You fail horribly and not only fall prone but also take [[1d6]] lethal damage to the head and must make a Stun save."
             }
         },
-        "deprecations": {},
+        "deprecations": {
+            "lifepathModifiers": {
+                "title": "Lifepath Modifiers",
+                "text": "Lifepath Modifiers attack boni where changed. Re-add them via the active effect wizard for the following actors"
+            }
+        },
         "AssociatedDiagram": {
             "actions": {
                 "add": "Add crafting diagram",

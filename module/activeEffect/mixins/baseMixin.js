@@ -56,7 +56,7 @@ export let baseMixin = {
                 return skillGroups;
             }, {});
     },
-    
+
     getSkillSuggestions() {
         return Object.keys(CONFIG.WITCHER.skillMap)
             .map(key => {
@@ -81,12 +81,12 @@ export let baseMixin = {
             strongStrikeAttackBonus: {
                 group: game.i18n.localize('WITCHER.Effect.wizard.lifepath'),
                 label: label + 'strongStrikeAttackBonus',
-                value: path + 'strongStrikeAttackBonus'
+                value: path + 'attacks.strong'
             },
             jointStrikeAttackBonus: {
                 group: game.i18n.localize('WITCHER.Effect.wizard.lifepath'),
                 label: label + 'jointStrikeAttackBonus',
-                value: path + 'jointStrikeAttackBonus'
+                value: path + 'attacks.joint'
             },
             shieldParryBonus: {
                 group: game.i18n.localize('WITCHER.Effect.wizard.lifepath'),
@@ -133,8 +133,8 @@ export let baseMixin = {
 
     getDamageModifcators() {
         return Object.keys(
-           this.document.parent?.system.damageTypeModification ??
-               this.document.parent.parent?.system.damageTypeModification ??
+            this.document.parent?.system.damageTypeModification ??
+                this.document.parent.parent?.system.damageTypeModification ??
                 {}
         )
             .map(key => {

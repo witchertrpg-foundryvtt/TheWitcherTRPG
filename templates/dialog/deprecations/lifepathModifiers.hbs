@@ -1,0 +1,10 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{#if affectedActors}}
+        <span>{{localize "WITCHER.deprecations.lifepathModifiers.text"}}</span>
+        {{#each affectedActors as |actor|}}
+            <div>
+                <span>{{actor.name}}</span>
+            </div>
+        {{/each}}
+    {{/if}}
+</form>
