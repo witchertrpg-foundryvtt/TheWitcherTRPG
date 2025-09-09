@@ -16,17 +16,10 @@ export default class WitcherSkillItemSheet extends HandlebarsApplicationMixin(It
     };
 
     static PARTS = {
-        header: {
+        main: {
             template: `systems/TheWitcherTRPG/templates/sheets/item/skill-item-sheet.hbs`
         }
     };
-
-    /** @override */
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'data' }]
-        });
-    }
 
     /** @override */
     async _prepareContext(options) {
