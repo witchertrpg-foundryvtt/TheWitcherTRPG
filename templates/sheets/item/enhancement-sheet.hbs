@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<section class="scrollable">
     {{>"systems/TheWitcherTRPG/templates/partials/item-header.hbs"}}
     <div class="item-options">
         <div class="item-column">
@@ -36,27 +36,27 @@
         </table>
     {{/if}}
     <div class="flex">
-        <b>{{localize "WITCHER.Item.Effect"}} </b><a class="add-effect"><i class="fas fa-plus"></i></a>
+        <b>{{localize "WITCHER.Item.Effect"}} </b><a data-action="addEffect"><i class="fas fa-plus"></i></a>
     </div>
     {{#each item.system.effects as |effect name|}}
         <div class="flex list-item" data-id="{{effect.id}}">
-            <a class="remove-effect"><i class="fas fa-minus"></i></a>
-            <textarea class="edit-effect" rows=3 data-field="name">{{effect.name}}</textarea>
+            <a data-action="removeEffect"><i class="fas fa-minus"></i></a>
+            <textarea data-action="editEffect" rows=3 data-field="name">{{effect.name}}</textarea>
             {{#if (or (eq ../item.system.type "weapon") (eq ../item.system.type "rune"))}}
-                <select class="edit-effect item-effect" data-field="statusEffect">
+                <select class="item-effect" data-action="editEffect" data-field="statusEffect">
                     {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                 </select>
             {{else}}
-                <select class="edit-effect item-effect" data-field="statusEffect">
+                <select class="item-effect" data-action="editEffect" data-field="statusEffect">
                     {{selectOptions ../config.armorEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                 </select>
             {{/if}}
             <div class="flex">
                 <label>{{localize "WITCHER.Percentage"}}:</label>
-                <input class="edit-effect" data-field="percentage" type="text" value="{{effect.percentage}}"
+                <input data-action="editEffect" data-field="percentage" type="text" value="{{effect.percentage}}"
                     data-dtype="Number" />
                 %
             </div>
         </div>
     {{/each}}
-</form>
+</section>

@@ -61,6 +61,9 @@ export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemShe
             .querySelectorAll('input[data-action=editEffect]')
             .forEach(input => input.addEventListener('focusout', this._onEditEffect.bind(this)));
         this.element
+            .querySelectorAll('textarea[data-action=editEffect]')
+            .forEach(input => input.addEventListener('focusout', this._onEditEffect.bind(this)));
+        this.element
             .querySelectorAll('select[data-action=editEffect]')
             .forEach(input => input.addEventListener('input', this._onEditEffect.bind(this)));
     }
