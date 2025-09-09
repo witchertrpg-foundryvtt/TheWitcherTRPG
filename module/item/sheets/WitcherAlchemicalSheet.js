@@ -1,17 +1,23 @@
-import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
+import WitcherItemSheet from './WitcherItemSheet.js';
 import WitcherConsumableConfigurationSheet from './configurations/WitcherConsumableConfigurationSheet.js';
 
-export default class WitcherAlchemicalSheet extends WitcherItemSheetV1 {
-    configuration = new WitcherConsumableConfigurationSheet({ document: this.item });
+export default class WitcherAlchemicalSheet extends WitcherItemSheet {
+    configuration = new WitcherConsumableConfigurationSheet({ document: this.document });
+
+    static PARTS = {
+        main: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/alchemical-sheet.hbs`,
+            scrollable: ['']
+        }
+    };
 
     /** @override */
-    getData() {
-        const data = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        context.config.Availability.WITCHER = 'WITCHER.Item.AvailabilityWitcher';
+        context.config.type = this.getTypes();
 
-        data.config.Availability.WITCHER = 'WITCHER.Item.AvailabilityWitcher';
-        data.config.type = this.getTypes();
-
-        return data;
+        return context;
     }
 
     getTypes() {
