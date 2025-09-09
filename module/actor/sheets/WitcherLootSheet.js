@@ -29,7 +29,8 @@ export default class WitcherLootSheet extends HandlebarsApplicationMixin(ActorSh
 
     static PARTS = {
         main: {
-            template: 'systems/TheWitcherTRPG/templates/sheets/actor/loot-sheet.hbs'
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/loot-sheet.hbs',
+            scrollable: ['']
         }
     };
 

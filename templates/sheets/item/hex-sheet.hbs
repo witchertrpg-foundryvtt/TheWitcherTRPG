@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<section class="scrollable">
     <header class="item-header">
         <h1 class="itemname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
         <a class="configure-item"><i class="fas fa-gear"></i></a>
@@ -51,8 +51,12 @@
             </td>
         </tr>
     </table>
-    <label>{{localize "WITCHER.Item.Effect"}}</label>
-    <textarea rows="10" name="system.effect">{{item.system.effect}}</textarea>
-    <label>{{localize "WITCHER.Spell.Requirements"}}</label>
-    <textarea rows="5" name="system.liftRequirement">{{item.system.liftRequirement}}</textarea>
-</form>
+    <div class="grid">
+        <label>{{localize "WITCHER.Item.Effect"}}</label>
+        <textarea rows="10" name="system.effect">{{item.system.effect}}</textarea>
+    </div>
+    <div class="grid">
+        <label>{{localize "WITCHER.Spell.Requirements"}}</label>
+        <textarea rows="5" name="system.liftRequirement">{{item.system.liftRequirement}}</textarea>
+    </div>
+</section>

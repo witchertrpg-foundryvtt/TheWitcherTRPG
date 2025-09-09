@@ -59,3 +59,7 @@
     width: 0.75em;
     transform: rotate(45deg) translatey(-0.1em);
 }
+
+.grid {
+    display: grid;
+}

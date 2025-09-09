@@ -1,16 +1,22 @@
 import WitcherConfigurationSheet from './configurations/WitcherConfigurationSheet.js';
-import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
+import WitcherItemSheet from './WitcherItemSheet.js';
 
-export default class WitcherHexSheet extends WitcherItemSheetV1 {
+export default class WitcherHexSheet extends WitcherItemSheet {
     configuration = new WitcherConfigurationSheet({ document: this.item });
 
+    static PARTS = {
+        main: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/hex-sheet.hbs`,
+            scrollable: ['']
+        }
+    };
+
     /** @override */
-    getData() {
-        const data = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        context.selects = this.createSelects();
 
-        data.selects = this.createSelects();
-
-        return data;
+        return context;
     }
 
     createSelects() {
