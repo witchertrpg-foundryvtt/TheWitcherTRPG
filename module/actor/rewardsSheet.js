@@ -4,6 +4,9 @@ const { ActorSheetV2 } = foundry.applications.sheets;
 export default class RewardsSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     /** @override */
     static DEFAULT_OPTIONS = {
+        window: {
+            resizable: true
+        },
         position: {
             width: 520,
             height: 480

@@ -1,6 +1,58 @@
 import { WITCHER } from '../../../setup/config.js';
 
 export let itemMixin = {
+    async _onDropDocument(dragEvent, document) {
+        if (!this.actor.isOwner) return false;
+
+        // Handle item sorting within the same Actor
+        if (this.actor.uuid === item.parent?.uuid) return this._onSortItem(dragEvent, document);
+
+        if (this._isUniqueItem(document)) {
+            await this.actor.removeItemsOfType(document.type);
+        }
+
+        if (document && document.type === 'Item') {
+            if (document) {
+                if (document.type === 'weapon' && this.actor.type === 'monster') {
+                    document.system.equipped = true;
+                }
+                if (document.type === 'profession') {
+                    let allSkills = Object.keys(this.actor.system.skills).reduce((collectedAttr, attr) => {
+                        return {
+                            ...collectedAttr,
+                            ...Object.keys(this.actor.system.skills[attr]).reduce((collectedSkills, skill) => {
+                                return {
+                                    ...collectedSkills,
+                                    [`system.skills.${attr}.${skill}.isProfession`]: false
+                                };
+                            }, {})
+                        };
+                    }, {});
+
+                    await this.actor.update(allSkills);
+
+                    let delta = {};
+                    document.system.professionSkills.forEach(profSkill => {
+                        //find skill
+                        let attr = Object.keys(this.actor.system.skills).find(attr =>
+                            Object.keys(this.actor.system.skills[attr]).find(skill => skill === profSkill)
+                        );
+
+                        delta = {
+                            ...delta,
+                            [`system.skills.${attr}.${profSkill}.isProfession`]: true
+                        };
+                    });
+                    this.actor.update(delta);
+                }
+                this.actor.addItem(document, 1);
+            }
+        } else {
+            super._onDropDocument(dragEvent, data);
+        }
+    },
+
+    //TODO remove when everything is v2
     async _onDropItem(event, data) {
         if (!this.actor.isOwner) return false;
         const item = await Item.implementation.fromDropData(data);

@@ -15,7 +15,7 @@ table tr.hidden-view {
 }
 
 .hidden-from-view {
-    display: none
+    display: none;
 }
 
 .table-empty-space {
