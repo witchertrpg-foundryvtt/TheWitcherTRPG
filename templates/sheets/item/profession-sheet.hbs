@@ -1,4 +1,4 @@
-<form class="{{ cssClass }}" autocomplete="off">
+<section class="scrollable">
     {{#if showConfig}}
         <a class="configure-item"><i class="fas fa-gear"></i></a>
     {{/if}}
@@ -161,7 +161,6 @@
         </div>
     </div>
     <div>
-        {{log this}}
         {{formGroup systemFields.professionSkills value=item.system.professionSkills options=professionSkills localize=true}}
     </div>
-</form>
+</section>
