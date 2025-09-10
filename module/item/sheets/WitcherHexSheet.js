@@ -1,9 +1,6 @@
-import WitcherConfigurationSheet from './configurations/WitcherConfigurationSheet.js';
 import WitcherItemSheet from './WitcherItemSheet.js';
 
 export default class WitcherHexSheet extends WitcherItemSheet {
-    configuration = new WitcherConfigurationSheet({ document: this.item });
-
     static PARTS = {
         main: {
             template: `systems/TheWitcherTRPG/templates/sheets/item/hex-sheet.hbs`,

@@ -1,9 +1,6 @@
 import WitcherItemSheet from './WitcherItemSheet.js';
-import WitcherConsumableConfigurationSheet from './configurations/WitcherConsumableConfigurationSheet.js';
 
 export default class WitcherMutagenSheet extends WitcherItemSheet {
-    configuration = new WitcherConsumableConfigurationSheet({ document: this.document });
-
     static PARTS = {
         main: {
             template: `systems/TheWitcherTRPG/templates/sheets/item/mutagen-sheet.hbs`,
