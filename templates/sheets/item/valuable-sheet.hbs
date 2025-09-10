@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<section class="scrollable">
     {{>"systems/TheWitcherTRPG/templates/partials/item-header.hbs"}}
     <div class="item-options">
         <div class="item-column item-selector">
@@ -24,8 +24,7 @@
             </div>
         </div>
     </div>
-    {{!-- effect Tab --}}
     <div class="description">
         <textarea rows=5 name="system.description">{{item.system.description}}</textarea>
     </div>
-</form>
+</section>
