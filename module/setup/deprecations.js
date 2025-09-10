@@ -16,8 +16,6 @@ async function lifepathModifiers() {
             )
         );
 
-    console.log(affectedActors);
-
     if (affectedActors.length > 0) {
         const dialogTemplate = await renderTemplate(
             'systems/TheWitcherTRPG/templates/dialog/deprecations/lifepathModifiers.hbs',
