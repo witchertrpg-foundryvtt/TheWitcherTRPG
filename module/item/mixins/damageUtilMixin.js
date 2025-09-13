@@ -31,9 +31,9 @@ export let damageUtilMixin = {
             ui.notifications.error(`${game.i18n.localize('WITCHER.NoDamageSpecified')}`);
         }
 
-        if (damage.strike == 'strong') {
-            damage.formula = `(${damage.formula})*2`;
-            messageData.flavor += `<div>${game.i18n.localize('WITCHER.Dialog.strikeStrong')}</div>`;
+        if (CONFIG.WITCHER.weapon.attacks[damage.strike].dmgMulti) {
+            damage.formula = `(${damage.formula})${CONFIG.WITCHER.weapon.attacks[damage.strike].dmgMulti}`;
+            messageData.flavor += `<div>${game.i18n.localize(CONFIG.WITCHER.weapon.attacks[damage.strike].label)}</div>`;
         }
 
         damage.location = WitcherActor.getLocationObject(damage.location.name);

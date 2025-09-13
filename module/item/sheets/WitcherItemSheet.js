@@ -6,6 +6,9 @@ const { ItemSheetV2 } = foundry.applications.sheets;
 export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     /** @override */
     static DEFAULT_OPTIONS = {
+        window: {
+            resizable: true
+        },
         position: {
             width: 520,
             height: 480
@@ -56,6 +59,9 @@ export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemShe
 
         this.element
             .querySelectorAll('input[data-action=editEffect]')
+            .forEach(input => input.addEventListener('focusout', this._onEditEffect.bind(this)));
+        this.element
+            .querySelectorAll('textarea[data-action=editEffect]')
             .forEach(input => input.addEventListener('focusout', this._onEditEffect.bind(this)));
         this.element
             .querySelectorAll('select[data-action=editEffect]')

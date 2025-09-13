@@ -1,13 +1,19 @@
-import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
+import WitcherItemSheet from './WitcherItemSheet.js';
 
-export default class WitcherEnhancementSheet extends WitcherItemSheetV1 {
+export default class WitcherEnhancementSheet extends WitcherItemSheet {
+    static PARTS = {
+        main: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/enhancement-sheet.hbs`,
+            scrollable: ['']
+        }
+    };
+
     /** @override */
-    getData() {
-        const data = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        context.selects = this.createSelects();
 
-        data.selects = this.createSelects();
-
-        return data;
+        return context;
     }
 
     createSelects() {

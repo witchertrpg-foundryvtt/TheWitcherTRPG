@@ -398,10 +398,6 @@
             "rangeMedium": "Medium (1/2 Range)",
             "rangeLong": "Long (Full Range)",
             "rangeExtreme": "Extreme (2x Range)",
-            "strikeNormal": "Normal Strike",
-            "strikeFast": "Fast Strike",
-            "strikeStrong": "Strong Strike",
-            "strikeJoint": "Joint Strike",
             "attackUse": "Attack will use",
             "attackExtra": "Extra attack",
             "attackLocation": "Hit Location",
@@ -499,6 +495,13 @@
             "crushingForce": "Crushing Force",
             "error": {
                 "noAttackSkill": "No attack skill configured"
+            },
+            "attacks": {
+                "normal": "Normal Strike",
+                "fast": "Fast Strike",
+                "strong": "Strong Strike",
+                "joint": "Joint Strike",
+                "half": "Half Damage"
             }
         },
         "Location": {
@@ -1354,7 +1357,12 @@
                 ">9": "You fail horribly and not only fall prone but also take [[1d6]] lethal damage to the head and must make a Stun save."
             }
         },
-        "deprecations": {},
+        "deprecations": {
+            "lifepathModifiers": {
+                "title": "Lifepath Modifiers",
+                "text": "Lifepath Modifiers attack boni where changed. Re-add them via the active effect wizard for the following actors"
+            }
+        },
         "AssociatedDiagram": {
             "actions": {
                 "add": "Add crafting diagram",

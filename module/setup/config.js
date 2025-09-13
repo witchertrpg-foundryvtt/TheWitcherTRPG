@@ -647,6 +647,28 @@ WITCHER.weapon = {
         left: 'WITCHER.Weapon.Hands.left',
         right: 'WITCHER.Weapon.Hands.right',
         both: 'WITCHER.Weapon.Hands.both'
+    },
+    attacks: {
+        normal: {
+            label: 'WITCHER.Weapon.attacks.normal'
+        },
+        fast: {
+            label: 'WITCHER.Weapon.attacks.fast',
+            attackNumber: 2
+        },
+        strong: {
+            label: 'WITCHER.Weapon.attacks.strong',
+            attackPenality: -3,
+            dmgMulti: '*2'
+        },
+        joint: {
+            label: 'WITCHER.Weapon.attacks.joint',
+            attackPenality: -3
+        },
+        half: {
+            label: 'WITCHER.Weapon.attacks.half',
+            dmgMulti: '/2'
+        }
     }
 };
 

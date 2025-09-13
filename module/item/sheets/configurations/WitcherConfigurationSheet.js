@@ -4,6 +4,9 @@ const { ItemSheetV2 } = foundry.applications.sheets;
 export default class WitcherConfigurationSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     /** @override */
     static DEFAULT_OPTIONS = {
+        window: {
+            resizable: true
+        },
         position: {
             width: 520,
             height: 480
