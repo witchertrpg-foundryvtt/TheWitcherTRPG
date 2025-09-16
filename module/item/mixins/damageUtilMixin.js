@@ -31,7 +31,7 @@ export let damageUtilMixin = {
             ui.notifications.error(`${game.i18n.localize('WITCHER.NoDamageSpecified')}`);
         }
 
-        if (CONFIG.WITCHER.weapon.attacks[damage.strike].dmgMulti) {
+        if (CONFIG.WITCHER.weapon.attacks[damage.strike]?.dmgMulti) {
             damage.formula = `(${damage.formula})${CONFIG.WITCHER.weapon.attacks[damage.strike].dmgMulti}`;
             messageData.flavor += `<div>${game.i18n.localize(CONFIG.WITCHER.weapon.attacks[damage.strike].label)}</div>`;
         }
