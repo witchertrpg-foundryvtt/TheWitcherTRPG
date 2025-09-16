@@ -1,113 +1,59 @@
 import { WITCHER } from '../../../setup/config.js';
+import WitcherItem from '../../../item/witcherItem.js';
 
 export let itemMixin = {
-    async _onDropDocument(dragEvent, document) {
+    async _onDropItem(event, item) {
         if (!this.actor.isOwner) return false;
 
-        // Handle item sorting within the same Actor
-        if (this.actor.uuid === item.parent?.uuid) return this._onSortItem(dragEvent, document);
-
-        if (this._isUniqueItem(document)) {
-            await this.actor.removeItemsOfType(document.type);
+        //TODO remove when everything is v2
+        if (!(item instanceof WitcherItem)) {
+            const itemConverter = await Item.implementation.fromDropData(item);
+            item = itemConverter.toObject();
         }
-
-        if (document && document.type === 'Item') {
-            if (document) {
-                if (document.type === 'weapon' && this.actor.type === 'monster') {
-                    document.system.equipped = true;
-                }
-                if (document.type === 'profession') {
-                    let allSkills = Object.keys(this.actor.system.skills).reduce((collectedAttr, attr) => {
-                        return {
-                            ...collectedAttr,
-                            ...Object.keys(this.actor.system.skills[attr]).reduce((collectedSkills, skill) => {
-                                return {
-                                    ...collectedSkills,
-                                    [`system.skills.${attr}.${skill}.isProfession`]: false
-                                };
-                            }, {})
-                        };
-                    }, {});
-
-                    await this.actor.update(allSkills);
-
-                    let delta = {};
-                    document.system.professionSkills.forEach(profSkill => {
-                        //find skill
-                        let attr = Object.keys(this.actor.system.skills).find(attr =>
-                            Object.keys(this.actor.system.skills[attr]).find(skill => skill === profSkill)
-                        );
-
-                        delta = {
-                            ...delta,
-                            [`system.skills.${attr}.${profSkill}.isProfession`]: true
-                        };
-                    });
-                    this.actor.update(delta);
-                }
-                this.actor.addItem(document, 1);
-            }
-        } else {
-            super._onDropDocument(dragEvent, data);
-        }
-    },
-
-    //TODO remove when everything is v2
-    async _onDropItem(event, data) {
-        if (!this.actor.isOwner) return false;
-        const item = await Item.implementation.fromDropData(data);
-        const itemData = item.toObject();
 
         // Handle item sorting within the same Actor
-        if (this.actor.uuid === item.parent?.uuid) return this._onSortItem(event, itemData);
+        if (this.actor.uuid === item.parent?.uuid) return this._onSortItem(event, item);
 
-        if (this._isUniqueItem(itemData)) {
-            await this.actor.removeItemsOfType(itemData.type);
+        if (this._isUniqueItem(item)) {
+            await this.actor.removeItemsOfType(item.type);
         }
 
-        if (data && data.type === 'Item') {
-            if (item) {
-                if (item.type === 'weapon' && this.actor.type === 'monster') {
-                    item.system.equipped = true;
-                }
-                if (item.type === 'profession') {
-                    let allSkills = Object.keys(this.actor.system.skills).reduce((collectedAttr, attr) => {
+        if (item.type === 'weapon' && this.actor.type === 'monster') {
+            item.system.equipped = true;
+        } else if (item.type === 'profession') {
+            let allSkills = Object.keys(this.actor.system.skills).reduce((collectedAttr, attr) => {
+                return {
+                    ...collectedAttr,
+                    ...Object.keys(this.actor.system.skills[attr]).reduce((collectedSkills, skill) => {
                         return {
-                            ...collectedAttr,
-                            ...Object.keys(this.actor.system.skills[attr]).reduce((collectedSkills, skill) => {
-                                return {
-                                    ...collectedSkills,
-                                    [`system.skills.${attr}.${skill}.isProfession`]: false
-                                };
-                            }, {})
+                            ...collectedSkills,
+                            [`system.skills.${attr}.${skill}.isProfession`]: false
                         };
-                    }, {});
+                    }, {})
+                };
+            }, {});
 
-                    await this.actor.update(allSkills);
+            await this.actor.update(allSkills);
 
-                    let delta = {};
-                    item.system.professionSkills.forEach(profSkill => {
-                        //find skill
-                        let attr = Object.keys(this.actor.system.skills).find(attr =>
-                            Object.keys(this.actor.system.skills[attr]).find(skill => skill === profSkill)
-                        );
+            let delta = {};
+            item.system.professionSkills.forEach(profSkill => {
+                //find skill
+                let attr = Object.keys(this.actor.system.skills).find(attr =>
+                    Object.keys(this.actor.system.skills[attr]).find(skill => skill === profSkill)
+                );
 
-                        delta = {
-                            ...delta,
-                            [`system.skills.${attr}.${profSkill}.isProfession`]: true
-                        };
-                    });
-                    this.actor.update(delta);
-                }
-                this.actor.addItem(item, 1);
-            }
-        } else {
-            super._onDrop(event, data);
+                delta = {
+                    ...delta,
+                    [`system.skills.${attr}.${profSkill}.isProfession`]: true
+                };
+            });
+            this.actor.update(delta);
         }
+        this.actor.addItem(item, 1);
     },
 
-    _isUniqueItem(itemData) {
-        return this.uniqueTypes.includes(itemData.type);
+    _isUniqueItem(item) {
+        return this.uniqueTypes.includes(item.type);
     },
 
     async _onItemAdd(event) {
