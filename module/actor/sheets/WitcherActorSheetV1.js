@@ -12,9 +12,6 @@ import { activeEffectMixin } from './mixins/activeEffectMixin.js';
 import { customSkillMixin } from './mixins/customSkillMixin.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 
-const { HandlebarsApplicationMixin } = foundry.applications.api;
-const { ActorSheetV2 } = foundry.applications.sheets;
-
 Array.prototype.sum = function (prop) {
     var total = 0;
     for (var i = 0; i < this.length; i++) {
@@ -37,7 +34,7 @@ Array.prototype.cost = function () {
     return Math.ceil(total);
 };
 
-export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
+export default class WitcherActorSheetV1 extends foundry.appv1.sheets.ActorSheet {
     statMap = CONFIG.WITCHER.statMap;
     skillMap = CONFIG.WITCHER.skillMap;
 
@@ -46,19 +43,9 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
     //overwrite in sub-classes
     configuration = undefined;
 
-    /** @inheritdoc */
-    _canDragStart(selector) {
-        return true;
-    }
-
-    /** @inheritdoc */
-    _canDragDrop(selector) {
-        return true;
-    }
-
     /** @override */
-    async _prepareContext(options) {
-        let context = await super._prepareContext(options);
+    getData() {
+        const context = super.getData();
 
         context.useAdrenaline = game.settings.get('TheWitcherTRPG', 'useOptionalAdrenaline');
         context.displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
@@ -68,8 +55,8 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
         context.config = CONFIG.WITCHER;
         CONFIG.Combat.initiative.formula = '1d10 + @stats.ref.current' + (context.displayRollDetails ? '[REF]' : '');
 
-        context.actor = this.actor;
-        context.system = context.actor.system;
+        const actorData = this.actor.toObject(false);
+        context.system = actorData.system;
         context.items = context.actor.items.filter(i => !i.system.isStored).sort((a, b) => a.sort - b.sort);
 
         this._prepareGeneralInformation(context);
@@ -91,6 +78,16 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
 
         context.isGM = game.user.isGM;
         return context;
+    }
+
+    /** @inheritdoc */
+    _canDragStart(selector) {
+        return true;
+    }
+
+    /** @inheritdoc */
+    _canDragDrop(selector) {
+        return true;
     }
 
     async _renderConfigureDialog() {
@@ -225,14 +222,9 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
         });
     }
 
-    _onRender(context, options) {
-        super._onRender(context, options);
-
-        this.activateListeners(this.element);
-    }
-
     activateListeners(html) {
-        html = $(html);
+        super.activateListeners(html);
+
         html.find('.life-event-display').on('click', this._onLifeEventDisplay.bind(this));
 
         html.find('.init-roll').on('click', this._onInitRoll.bind(this));
@@ -325,17 +317,17 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
     }
 }
 
-Object.assign(WitcherActorSheet.prototype, statMixin);
-Object.assign(WitcherActorSheet.prototype, skillMixin);
-Object.assign(WitcherActorSheet.prototype, skillModifierMixin);
-Object.assign(WitcherActorSheet.prototype, customSkillMixin);
+Object.assign(WitcherActorSheetV1.prototype, statMixin);
+Object.assign(WitcherActorSheetV1.prototype, skillMixin);
+Object.assign(WitcherActorSheetV1.prototype, skillModifierMixin);
+Object.assign(WitcherActorSheetV1.prototype, customSkillMixin);
 
-Object.assign(WitcherActorSheet.prototype, itemMixin);
-Object.assign(WitcherActorSheet.prototype, activeEffectMixin);
+Object.assign(WitcherActorSheetV1.prototype, itemMixin);
+Object.assign(WitcherActorSheetV1.prototype, activeEffectMixin);
 
-Object.assign(WitcherActorSheet.prototype, deathsaveMixin);
-Object.assign(WitcherActorSheet.prototype, criticalWoundMixin);
-Object.assign(WitcherActorSheet.prototype, noteMixin);
-Object.assign(WitcherActorSheet.prototype, healMixin);
+Object.assign(WitcherActorSheetV1.prototype, deathsaveMixin);
+Object.assign(WitcherActorSheetV1.prototype, criticalWoundMixin);
+Object.assign(WitcherActorSheetV1.prototype, noteMixin);
+Object.assign(WitcherActorSheetV1.prototype, healMixin);
 
-Object.assign(WitcherActorSheet.prototype, itemContextMenu);
+Object.assign(WitcherActorSheetV1.prototype, itemContextMenu);

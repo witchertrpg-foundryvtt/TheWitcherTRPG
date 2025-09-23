@@ -24,6 +24,7 @@ export let skillMixin = {
     },
 
     skillListener(html) {
+        html = $(html);
         let thisActor = this.actor;
         let skillMap = this.skillMap;
 

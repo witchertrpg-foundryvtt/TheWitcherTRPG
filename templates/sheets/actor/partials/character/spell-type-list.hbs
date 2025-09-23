@@ -1,0 +1,166 @@
+<details open>
+    <summary class="list-header spell-list-header">
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/inventory-items-summary.hbs" header=header itemType=itemType subtype=subtype}}
+    </summary>
+
+    <ol class="list item-table item-list">
+        {{#each spells as |spell id|}}
+            <li class="item list-item" data-item-id="{{spell.id}}">
+                <div class="list-details spell-details">
+                    <a class="item-display-info display-details">
+                        <img class="item-image item-list-image" src="{{spell.img}}">
+                        <span class="item-image item-list-image" data-tooltip="{{localize 'WITCHER.Item.openDescription'}}">
+                            <i class="fa-solid fa-book"></i>
+                        </span>
+                    </a>
+                    <div><a class="spell-roll">{{spell.name}}</a></div>
+                    <div class="list-label">
+                        {{#if spell.system.staminaIsVar}}
+                            <span>
+                                {{localize 'WITCHER.Spell.Variable'}}
+                            </span>
+                        {{else}}
+                            <span>{{spell.system.stamina}}</span>
+                        {{/if}}
+                        <span class="list-controls">
+                            <a class="item-chat" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}">
+                                <i class="fa-regular fa-message"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="invisible item-info list-item-info">
+                    <div class="item-tags">
+                        {{#if spell.system.source}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.Element"}}">
+                                <i class="fa-solid fa-wand-sparkles"></i>
+                                {{spell.system.source}}
+                            </span>
+                        {{/if}}
+                        {{#if spell.system.level}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Actor.Profession.Level"}}">
+                                <i class="fa-solid fa-chart-bar"></i>
+                                {{spell.system.level}}
+                            </span>
+                        {{/if}}
+                        {{#if spell.system.danger}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.Danger"}}">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                {{spell.system.danger}}
+                            </span>
+                        {{/if}}
+                        {{#if spell.system.range}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Range"}}">
+                                <i class="fa-solid fa-ruler"></i>
+                                {{spell.system.range}}
+                            </span>
+                        {{/if}}
+                        {{#if spell.system.preparationTime}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.PrepTime"}}">
+                                <i class="fa-solid fa-hand-sparkles"></i>
+                                {{spell.system.preparationTime}}
+                            </span>
+                        {{/if}}
+                        {{#if spell.system.difficultyCheck}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.DC"}}">
+                                <i class="fa-solid fa-dice-d20"></i>
+                                {{spell.system.difficultyCheck}}
+                            </span>
+                        {{/if}}
+                        {{#if spell.system.duration}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.Duration"}}">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                {{spell.system.duration}}
+                            </span>
+                        {{/if}}
+                        {{#if spell.system.defence}}
+                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.Defence"}}">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                {{spell.system.defence}}
+                            </span>
+                        {{/if}}
+                    </div>
+                    <div class="list-item-description">
+                        {{#if spell.system.effect}}
+                            <h3>{{localize "WITCHER.Item.Effect"}}</h3>
+                            <span>{{spell.system.effect}}</span>
+                        {{/if}}
+                    </div>
+                    <div class="list-item-side-effect">
+                        {{#if spell.system.sideEffect}}
+                            <h3>{{localize "WITCHER.Spell.SideEffect"}}</h3>
+                            <span>{{spell.system.sideEffect}}</span>
+                        {{/if}}
+                    </div>
+                    <div class="list-item-requirements">
+                        {{#if spell.system.liftRequirement}}
+                            <h3>{{localize "WITCHER.Spell.Requirements"}}</h3>
+                            <span>{{spell.system.liftRequirement}}</span>
+                        {{/if}}
+                    </div>
+                    <div class="list-item-components">
+                        {{#if spell.system.components}}
+                            <h3>{{localize "WITCHER.Spell.Ritual.components"}}</h3>
+                            <span>{{spell.system.components}}</span>
+                        {{/if}}
+                        {{#if spell.system.alternateRitualComponents}}
+                            <h3>{{localize "WITCHER.Spell.Ritual.alternateComponents"}}</h3>
+                            {{#each spell.system.alternateRitualComponents as |component name|}}
+                                <details class="stored-item" data-item-id="{{component.name}}">
+                                    <summary>
+                                        <img class="stored-item-img" src="{{component.item.img}}">
+                                        <span>{{component.item.name}}</span>
+                                    </summary>
+                                    <div class="stored-item-info">
+                                        <div class="item-tags">
+                                            {{#if component.item.system.type}}
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
+                                                    <i class="fa-solid fa-gem"></i>
+                                                    {{component.item.system.type}}
+                                                </span>
+                                            {{/if}}
+                                            {{#if component.item.system.rarity}}
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Rarity"}}">
+                                                    <i class="fa-solid fa-gem"></i>
+                                                    {{component.item.system.rarity}}
+                                                </span>
+                                            {{/if}}
+                                            {{#if component.item.system.quantityObtainable}}
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Quantity"}}">
+                                                    <i class="fa-solid fa-dice"></i>
+                                                    {{component.item.system.quantityObtainable}}
+                                                </span>
+                                            {{/if}}
+                                            {{#if component.item.system.forage}}
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Forage"}}">
+                                                    <i class="fa-solid fa-dice-d20"></i>
+                                                    {{component.item.system.forage}}
+                                                </span>
+                                            {{/if}}
+                                            {{#if component.item.system.weight}}
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
+                                                    <i class="fa-solid fa-weight-hanging"></i>
+                                                    {{component.item.system.weight}}
+                                                </span>
+                                            {{/if}}
+                                            {{#if component.item.system.cost}}
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
+                                                    <i class="fa-solid fa-coins"></i>
+                                                    {{component.item.system.cost}}
+                                                </span>
+                                            {{/if}}
+                                        </div>
+                                        <div class="list-item-description">
+                                            <h3>{{localize "WITCHER.Item.Description"}}</h3>
+                                            <span><b>{{localize "WITCHER.Component.Location"}}:</b> {{component.item.system.location}}</span>
+                                        </div>
+                                    </div>
+                                </details>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+            </li>
+        {{/each}}
+    </ol>
+</details>

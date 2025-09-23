@@ -17,6 +17,7 @@ export let noteMixin = {
   },
 
   noteListener(html) {
+    html = $(html);
     html.find(".add-note").on("click", this._onNoteAdd.bind(this));
     html.find(".delete-note").on("click", this._onNoteDelete.bind(this));
   }

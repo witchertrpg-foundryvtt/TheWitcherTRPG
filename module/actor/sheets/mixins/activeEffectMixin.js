@@ -90,6 +90,7 @@ export let activeEffectMixin = {
 
     activeEffectListener(html) {
         // Active Effect management
+        html = $(html);
         html.on('click', '.effect-control', ev => this.onManageActiveEffect(ev, this.actor));
         html.find('.effect-display').on('click', this._onActiveEffectDisplayInfo.bind(this));
     }
