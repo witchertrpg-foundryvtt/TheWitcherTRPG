@@ -5,11 +5,7 @@
             <th>{{localize "WITCHER.Diagram.Formulae"}}</th>
             <th>{{localize "WITCHER.Type"}}</th>
             <th>{{localize "WITCHER.Actor.Profession.Level"}}</th>
-            {{#if item.system.isFormulae}}
-                <th title="{{localize "WITCHER.Diagram.alchemyDC"}}">{{localize "WITCHER.DC"}}</th>
-            {{else}}
-                <th title="{{localize "WITCHER.Diagram.craftingDC"}}">{{localize "WITCHER.DC"}}</th>
-            {{/if}}
+            <th title="{{localize "WITCHER.Diagram.craftingDC"}}">{{localize "WITCHER.DC"}}</th>
             <th>{{localize "WITCHER.Diagram.craftingTime"}}</th>
             {{#unless item.system.isFormulae}}
                 <th>{{localize "WITCHER.Diagram.investment"}}</th>
