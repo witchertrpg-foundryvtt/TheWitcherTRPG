@@ -134,7 +134,7 @@ export let weaponAttackMixin = {
             rejectClose: true
         });
 
-        let attacknumber = CONFIG.WITCHER.weapon.attacks[strike].attackNumber ?? 1;
+        let attacknumber = CONFIG.WITCHER.weapon.attacks[strike]?.attackNumber ?? 1;
         let damage = weapon.createBaseDamageObject();
         let damageModifcation = '';
         if (options.additionalDamageProperties) {

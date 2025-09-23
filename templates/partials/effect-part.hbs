@@ -1,4 +1,5 @@
 <ol class="items-list effects-list">
+    {{log this}}
     {{#each effects as |section sid|}}
         <li class="items-header effects-header flexrow" data-effect-type="{{section.type}}">
             <h4 class="item-name header-name flexrow">{{localize section.label}}</h4>
@@ -15,7 +16,7 @@
 
         <ol class="item-list effect-list">
             {{#each section.effects as |effect|}}
-                {{#unless effect.isSuppressed}}
+                {{#unless (and effect.isSuppressed @root.actor)}}
                     <li class="item effect-row flexrow" data-effect-id="{{effect.id}}"
                         data-parent-id="{{effect.parent.uuid}}" data-parent-uuid="{{effect.parent.uuid}}">
                         <div class="effect-first-row">
