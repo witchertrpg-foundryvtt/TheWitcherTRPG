@@ -218,6 +218,7 @@ export let statMixin = {
     },
 
     statListener(html) {
+        html = $(html);
         html.find('.stat-roll').on('click', this._onStatSaveRoll.bind(this));
         html.find('.reputation-roll').on('click', this._onReputation.bind(this));
 

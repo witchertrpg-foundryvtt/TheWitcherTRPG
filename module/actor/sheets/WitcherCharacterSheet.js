@@ -11,20 +11,89 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     rewards = new RewardsSheet({ document: this.actor });
 
     /** @override */
+    static DEFAULT_OPTIONS = {
+        window: {
+            resizable: true
+        },
+        position: {
+            width: 1120,
+            height: 600
+        },
+        classes: ['witcher', 'sheet', 'actor'],
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false
+        },
+        actions: {},
+        dragDrop: [{ dragSelector: '.item-list', dropSelector: null }]
+    };
+
+    /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['witcher', 'sheet', 'actor'],
-            width: 1120,
-            height: 600,
             template: 'systems/TheWitcherTRPG/templates/sheets/actor/actor-sheet.hbs',
             tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }],
             scrollY: ['.item-list']
         });
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
+    static PARTS = {
+        header: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character-header.hbs'
+        },
+        tabs: {
+            // Foundry-provided generic template
+            template: 'templates/generic/tab-navigation.hbs'
+        },
+        skills: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-skills.hbs',
+            scrollable: ['']
+        },
+        profession: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-profession.hbs',
+            scrollable: ['']
+        },
+        inventory: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-inventory.hbs',
+            scrollable: ['']
+        },
+        magic: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-magic.hbs',
+            scrollable: ['']
+        },
+        background: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-background.hbs',
+            scrollable: ['']
+        },
+        effects: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/tab-effects.hbs',
+            scrollable: ['']
+        }
+    };
 
+    static TABS = {
+        primary: {
+            tabs: [
+                { id: 'skills' },
+                { id: 'profession' },
+                { id: 'inventory' },
+                { id: 'magic' },
+                { id: 'background' },
+                { id: 'effects' }
+            ],
+            initial: 'skills',
+            labelPrefix: 'WITCHER.Actor.tabs'
+        }
+    };
+
+    _onRender(context, options) {
+        super._onRender(context, options);
+
+        this.activateListeners(this.element);
+    }
+
+    activateListeners(html) {
+        html = $(html);
         html.find('.alchemy-potion').on('click', this._alchemyCraft.bind(this));
         html.find('.crafting-craft').on('click', this._craftingCraft.bind(this));
         html.find('.item-repair').on('click', this._repairItem.bind(this));
@@ -34,8 +103,8 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         html.find('.open-rewards').on('click', this._renderRewards.bind(this));
     }
 
-    getData() {
-        const context = super.getData();
+    async _prepareContext(options) {
+        let context = await super._prepareContext(options);
 
         this._prepareCharacterData(context);
         this._prepareDiagramFormulas(context);

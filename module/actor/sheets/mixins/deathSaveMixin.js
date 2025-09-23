@@ -43,6 +43,7 @@ export let deathsaveMixin = {
     },
 
     deathSaveListener(html) {
+        html = $(html);
         html.find('.death-roll').on('click', this._onDeathSaveRoll.bind(this));
         html.find('.death-minus').on('click', this._removeDeathSaves.bind(this));
         html.find('.death-plus').on('click', this._addDeathSaves.bind(this));

@@ -1,5 +1,6 @@
 export let customSkillMixin = {
     customSkillListener(html) {
+        html = $(html);
         let thisActor = this.actor;
 
         html.find('#custom-rollable').on('click', thisActor.rollCustomSkillCheck.bind(thisActor));

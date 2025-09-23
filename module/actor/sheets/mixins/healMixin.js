@@ -124,6 +124,7 @@ export let healMixin = {
     },
 
     healListeners(html) {
+        html = $(html);
         html.find('.heal-button').on('click', this._onHeal.bind(this));
     },
 
