@@ -53,6 +53,7 @@ export let skillModifierMixin = {
     },
 
     skillModifierListener(html) {
+        html = $(html);
         html.find('.add-skill-modifier').on('click', this._onAddSkillModifier.bind(this));
         html.find('.skill-modifier-display').on('click', this._onSkillModifierDisplay.bind(this));
         html.find('.skill-mod-edit').on('blur', this._onSkillModifierEdit.bind(this));

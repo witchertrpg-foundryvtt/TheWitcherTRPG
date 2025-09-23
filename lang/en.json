@@ -79,11 +79,14 @@
             }
         },
         "Actor": {
-            "SkillTab": "Skills & Modifiers",
-            "ProfessionTab": "Profession & Race",
-            "InventoryTab": "Gear & inventory",
-            "MagicTab": "Magic and Spells",
-            "BackgroundTab": "Background",
+            "tabs": {
+                "skills": "Skills & Modifiers",
+                "profession": "Profession & Race",
+                "inventory": "Gear & inventory",
+                "magic": "Magic and Spells",
+                "background": "Background",
+                "effects": "Active Effect"
+            },
             "Name": "Character Name",
             "Race": "Race",
             "Gender": "Gender",

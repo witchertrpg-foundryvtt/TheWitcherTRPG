@@ -26,7 +26,7 @@ export async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/tab-inventory-runes-glyphs.hbs',
         'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/inventory-items-summary.hbs',
 
-        'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/tab-magic-spells.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs',
 
         'systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs',
 

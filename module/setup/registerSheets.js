@@ -27,7 +27,6 @@ const Actors = foundry.documents.collections.Actors;
 const Items = foundry.documents.collections.Items;
 
 export const registerSheets = () => {
-    Items.unregisterSheet('core', foundry.appv1.sheets.ItemSheet);
     Items.registerSheet('witcher', WitcherItemSheetV1, { makeDefault: true });
 
     Items.registerSheet('witcher', WitcherAlchemicalSheet, {
@@ -83,7 +82,6 @@ export const registerSheets = () => {
         types: ['weapon']
     });
 
-    Actors.unregisterSheet('core', foundry.appv1.sheets.ActorSheet);
     Actors.registerSheet('witcher', WitcherCharacterSheet, {
         makeDefault: true,
         types: ['character']
