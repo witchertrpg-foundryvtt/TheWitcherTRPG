@@ -192,7 +192,9 @@ export let defenseMixin = {
             displayFormula
         });
         let messageData = new ChatMessageData(this, chatMessage, 'defense', {
-            attackWeaponProperties: attackDamageObject.properties
+            attackWeaponProperties: attackDamageObject.properties,
+            defender: this.uuid,
+            defense: skillName
         });
 
         let roll = await extendedRoll(
@@ -279,9 +281,6 @@ export let defenseMixin = {
         config.defense = true;
         config.threshold = totalAttack;
         config.thresholdDesc = skill.label;
-        config.flagsOnSuccess = this.getDefenseSuccessFlags(skill);
-        config.flagsOnFailure = this.getDefenseFailFlags(skill);
-
         return config;
     },
 
@@ -440,27 +439,5 @@ export let defenseMixin = {
         if (!roll.options.success) {
             this.applyStatus([{ statusEffect: 'stun' }]);
         }
-    },
-
-    getDefenseSuccessFlags(defenseSkill) {
-        return {
-            origin: {
-                name: this.name,
-                uuid: this.uuid
-            },
-            defenseSkill: defenseSkill,
-            defense: true
-        };
-    },
-
-    getDefenseFailFlags(defenseSkill) {
-        return {
-            origin: {
-                name: this.name,
-                uuid: this.uuid
-            },
-            defenseSkill: defenseSkill,
-            defense: false
-        };
     }
 };

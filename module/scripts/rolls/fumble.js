@@ -1,3 +1,5 @@
+import AttackMessageData from '../../data/chatMessage/attackMessageData.js';
+import DefenseMessageData from '../../data/chatMessage/defenseMessageData.js';
 import { getInteractActor } from '../helper.js';
 
 export function addFumbleContextOptions(html, options) {
@@ -7,21 +9,20 @@ export function addFumbleContextOptions(html, options) {
         icon: '<i class="fas fa-user-minus"></i>',
         condition: isFumble,
         callback: async li => {
-            applyFumble(await getInteractActor(), game.messages.get(li.dataset.messageId));
+            applyFumble(game.messages.get(li.dataset.messageId));
         }
     });
     return options;
 }
 
-function applyFumble(actor, message) {
-    checkAndHandleAttackFumble(message);
-    checkAndHandleDefenseFumble(message);
-}
-
-function checkAndHandleAttackFumble(message) {
-    const attack = message.system.attack;
-    if (attack) {
-        attackFumble(message);
+function applyFumble(message) {
+    switch (message.system.constructor) {
+        case DefenseMessageData:
+            defenseFumble(message);
+            break;
+        case AttackMessageData:
+            attackFumble(message);
+            break;
     }
 }
 
@@ -72,24 +73,15 @@ function attackFumble(message) {
     createResultMessage(actor, fumbleResult);
 }
 
-function checkAndHandleDefenseFumble(message) {
-    const defense = message.getFlag('TheWitcherTRPG', 'defenseSkill');
-    if (defense) {
-        defenseFumble(message);
-    }
-}
-
 function defenseFumble(message) {
-    const actor = fromUuidSync(message.getFlag('TheWitcherTRPG', 'origin').uuid);
     const fumbleAmount = message.rolls[0].options.fumbleAmount;
+    const actor = message.system.defender;
     if (fumbleAmount < 6) {
         createResultMessage(actor, 'nothing');
         return;
     }
 
-    const defense = message.getFlag('TheWitcherTRPG', 'defenseSkill');
-
-    if (CONFIG.WITCHER.meleeSkills.includes(defense.name) && defense.name != 'brawling') {
+    if (CONFIG.WITCHER.meleeSkills.includes(message.system.defense) && message.system.defense != 'brawling') {
         if (fumbleAmount < 9) {
             createResultMessage(actor, 'armedDefense.' + fumbleAmount);
             return;
@@ -97,7 +89,7 @@ function defenseFumble(message) {
 
         createResultMessage(actor, 'armedDefense.>9');
     } else {
-        unarmedAttackDefense(actor, fumbleAmount);
+        createResultMessage(actor, unarmedAttackDefense(fumbleAmount));
     }
 }
 
