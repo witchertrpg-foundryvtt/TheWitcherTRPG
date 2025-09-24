@@ -100,19 +100,16 @@ async function executeDefenseCallback(actor, totalAttack, html) {
         ? `<button class="vcDamage" > ${game.i18n.localize('WITCHER.table.Damage')}</button>`
         : '';
 
-    let config = createRollConfig(actor, vcSkill, totalAttack);
+    let config = createRollConfig(vcSkill, totalAttack);
     config.showCrit = true;
     await extendedRoll(rollFormula, messageData, config, actor.createVerbalCombatFlags(verbalCombat, vcDmg));
 }
 
-function createRollConfig(actor, skill, totalAttack) {
+function createRollConfig(skill, totalAttack) {
     let config = new RollConfig();
     config.showResult = true;
     config.defense = true;
     config.threshold = totalAttack;
     config.thresholdDesc = skill.label;
-    config.flagsOnSuccess = actor.getDefenseSuccessFlags(skill);
-    config.flagsOnFailure = actor.getDefenseFailFlags(skill);
-
     return config;
 }

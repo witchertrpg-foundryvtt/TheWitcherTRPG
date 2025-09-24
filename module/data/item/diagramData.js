@@ -73,5 +73,9 @@ export default class DiagramData extends CommonItemData {
         if ('associatedItem' in source) {
             source.associatedItemUuid = 'Compendium.TheWitcherTRPG.gear.Item.' + source.associatedItem._id;
         }
+
+        if (source.alchemyDC > 0) {
+            source.craftingDC = source.alchemyDC;
+        }
     }
 }

@@ -16,6 +16,8 @@ export default class DefenseMessageData extends BaseMessageData {
         return {
             ...commonData,
             attackWeaponProperties: new fields.SchemaField(damageProperties()),
+            defender: new fields.DocumentUUIDField(),
+            defense:  new fields.StringField(),
             crit: new fields.SchemaField({
                 severity: new fields.StringField(),
                 critdamage: new fields.NumberField(),

@@ -294,9 +294,14 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
                             (messageData.flavor += `<label>${game.i18n.localize('WITCHER.Dialog.after')}:</label> <b>${item.system.craftingTime}</b> <br />`),
                             (messageData.flavor += `${game.i18n.localize('WITCHER.Diagram.craftingDC')} ${item.system.craftingDC}`);
 
-                        let rollFormula = !displayRollDetails
-                            ? `1d10+${stat}+${skill}`
-                            : `1d10+${stat}[${statName}]+${skill}[${skillName}]`;
+                        let rollFormula = '1d10 +';
+                        if (game.settings.get('TheWitcherTRPG', 'woundsAffectSkillBase')) {
+                            rollFormula += '(';
+                        }
+
+                        rollFormula += !displayRollDetails
+                            ? `${stat} + ${skill}`
+                            : `${stat}[${statName}] + ${skill}[${skillName}]`;
 
                         if (hasDiagram) {
                             rollFormula += !displayRollDetails
