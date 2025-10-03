@@ -31,6 +31,21 @@
                             value="{{details.value}}" />
                     </div>
                 {{/each}}
+                <div class="general-info">
+                    {{localize 'WITCHER.Actor.Gender'}}
+                    <input class='details gender' name='system.gender' type='text' value='{{system.gender}}' placeholder='' />
+                </div>
+                <div class="general-info">
+                    {{localize 'WITCHER.Actor.Age'}}
+                    <input class='details age' name='system.general.age' type='number' value='{{system.general.age}}'
+                    placeholder='0' data-dtype='Number' />
+                </div>
+                <div class="general-info">
+                    {{localize 'WITCHER.character.socialStanding'}}
+                    <select name='system.general.socialStanding'>
+                        {{selectOptions config.socialStanding selected=system.general.socialStanding localize=true}}
+                    </select>
+                </div>
             </div>
             <div class="background-description">
                 {{editor system.general.background.value target="system.general.background.value" button=true editable=editable}}
@@ -41,19 +56,19 @@
             <div class="scrollable" id="lifeEvents">
                 <div class="life-events-section">
                     <div class="life-events-header">
-                        <h2>{{localize "WITCHER.LifeEvents"}}</h2>
-                        <h2 class="life-events-decades"><input id="item-count" class="life-events-decades"
+                        <span>{{localize "WITCHER.LifeEvents"}}</span>
+                        <span class="life-events-decades"><input id="item-count" class="life-events-decades"
                                 name="system.lifeEventCounter" min="1" max="20" value="{{system.lifeEventCounter}}"
-                                type="number">/20</h2>
+                                type="number">/20</span>
                     </div>
                     <div class="life-events">
                         {{#eachLimit system.general.lifeEvents system.lifeEventCounter}}
                             <div class="tablerow life-events-card {{this.lifeEvent.key}}"
                                 data-event="{{this.lifeEvent.key}}">
                                 <div class="life-events-card-header">
-                                    <h4>{{this.lifeEvent.key}}</h4>
+                                    <span>{{this.lifeEvent.key}}</span>
                                     {{#unless this.lifeEvent.isOpened}}
-                                        <h4>{{this.lifeEvent.value}}</h4>
+                                        <span>{{this.lifeEvent.value}}</span>
                                     {{/unless}}
                                     {{#if this.lifeEvent.isOpened}}
                                         <input class="input life-events-details" id="life-events-input"
@@ -83,7 +98,7 @@
         </div>
         <div class="notes-section">
             <div class="notes-header">
-                <h2>{{localize "WITCHER.Notes"}}</h2>
+                <span>{{localize "WITCHER.Notes"}}</span>
                 <a class="add-item" data-itemType="note"><i class="fas fa-plus"></i></a>
             </div>
             <div class="character-notes">

@@ -80,10 +80,11 @@
         },
         "Actor": {
             "tabs": {
-                "skills": "Skills & Modifiers",
+                "stats": "Stats",
+                "skills": "Skills",
                 "profession": "Profession & Race",
-                "inventory": "Gear & inventory",
-                "magic": "Magic and Spells",
+                "inventory": "Inventory",
+                "magic": "Spells",
                 "background": "Background",
                 "effects": "Active Effect"
             },

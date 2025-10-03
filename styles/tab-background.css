@@ -1,6 +1,6 @@
 .editor {
     border-radius: 5px;
-    background: rgba(0, 0, 0, 0.05);
+    background: light-dark(#22222210, #e7d1b110);
     height: 250px;
     padding: 5px;
 }
@@ -23,15 +23,19 @@
     padding: 5px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.05);
-    border: 2px groove #eeede0;
+    border: 1px solid darkgray;
     margin-top: 20px;
     margin-bottom: 5px;
+
+    span {
+        font-size: 24px;
+    }
 }
 
 .life-events-card {
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.05);
-    border: 2px groove #eeede0;
+    border: 1px solid darkgray;
 }
 
 .life-events-header > h2, .notes-header > h2 {
@@ -43,12 +47,12 @@
 .life-events-card-header {
     display: grid;
     grid-template-columns: 10% 80% 10%;
-    padding: 8px 10px;
+    padding: 8px 4px;
     align-items: center;
-}
 
-.life-events-card-header > h4 {
-    margin: 0;
+    span {
+        font-size: 18px;
+    }
 }
 
 .padding {
@@ -75,7 +79,7 @@
     border-radius: 5px;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.05);
-    border: 2px groove #eeede0;
+    border: 1px solid darkgray;
 }
 
 .note-header {
@@ -119,10 +123,10 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.05);
-    border: 2px groove #eeede0;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: light-dark(#22222210, #e7d1b110);
+    border: 1px solid light-dark(#22222240, #e7d1b140);
 }
 
 .homeland-select {
@@ -130,10 +134,19 @@
     gap: 5px;
 }
 
+.background-description {
+    overflow-y: auto;
+}
+
 textarea.life-events-details,
 textarea.inline-edit {
     resize: vertical;
     height: auto;
+}
+
+input.life-events-decades {
+    width: 4ch;
+    text-align: center;
 }
 
 input.details,

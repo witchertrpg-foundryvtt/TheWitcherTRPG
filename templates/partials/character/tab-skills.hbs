@@ -1,52 +1,38 @@
 <section class="tab {{tabs.skills.cssClass}} scrollable standard-form" data-group="primary" data-tab="skills">
-    <div>
-        <div class="skill-column">
-            <details open>
-                <summary>
-                    <h1>{{localize "WITCHER.Actor.Skill.Intelligence"}}</h1>
-                </summary>
-                <table class="table-skills">
-                    {{#each system.skills.int as |skill name|}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="int"}}
-                    {{/each}}
-                    {{#each customSkills.int}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
-                    {{/each}}
-                </table>
-            </details>
-        </div>
-
-        <div class="skill-info">
-            <h3>{{localize "WITCHER.Actor.ImprovementPoints"}} <a class="open-rewards"><i
-                        class="fa-solid fa-clipboard-list"></i></a></h3>
-            <div class="flex">
+    <div class="skill-info">
+        <div class="skill-ip">
+            <span>
+                <span>{{localize "WITCHER.Actor.ImprovementPoints"}}</span>
+                <a class="open-rewards"><i class="fa-solid fa-clipboard-list"></i></a>
+            </span>
+            <div class="current-ip">
                 <label>{{localize "WITCHER.Actor.CurrentIP"}}</label>
                 <input class="IP-value" name="system.improvementPoints" type="number"
                     value="{{system.improvementPoints}}" placeholder="0" data-dtype="Number" />
                 <a class="manualIpReward"><i class="fa-solid fa-plus"></i></a>
             </div>
-            <div class="flex skillTraining">
+            <div class="skillTraining">
                 <input class="extra-skill-name" name="system.skillTraining1.name" type="text"
                     value="{{system.skillTraining1.name}}" placeholder='{{localize "WITCHER.Actor.SkillName"}}' />
                 <input class="extra-skill-value" name="system.skillTraining1.value" type="number"
                     value="{{system.skillTraining1.value}}" placeholder="0" />
                 <a class="saveIpSpending"><i class="fa-solid fa-minus"></i></a>
             </div>
-            <div class="flex skillTraining">
+            <div class="skillTraining">
                 <input class="extra-skill-name" name="system.skillTraining2.name" type="text"
                     value="{{system.skillTraining2.name}}" placeholder='{{localize "WITCHER.Actor.SkillName"}}' />
                 <input class="extra-skill-value" name="system.skillTraining2.value" type="number"
                     value="{{system.skillTraining2.value}}" placeholder="0" />
                 <a class="saveIpSpending"><i class="fa-solid fa-minus"></i></a>
             </div>
-            <div class="flex skillTraining">
+            <div class="skillTraining">
                 <input class="extra-skill-name" name="system.skillTraining3.name" type="text"
                     value="{{system.skillTraining3.name}}" placeholder='{{localize "WITCHER.Actor.SkillName"}}' />
                 <input class="extra-skill-value" name="system.skillTraining3.value" type="number"
                     value="{{system.skillTraining3.value}}" placeholder="0" />
                 <a class="saveIpSpending"><i class="fa-solid fa-minus"></i></a>
             </div>
-            <div class="flex skillTraining">
+            <div class="skillTraining">
                 <input class="extra-skill-name" name="system.skillTraining4.name" type="text"
                     value="{{system.skillTraining4.name}}" placeholder='{{localize "WITCHER.Actor.SkillName"}}' />
                 <input class="extra-skill-value" name="system.skillTraining4.value" type="number"
@@ -54,117 +40,36 @@
                 <a class="saveIpSpending"><i class="fa-solid fa-minus"></i></a>
             </div>
         </div>
-    </div>
-
-    <div>
-        <div class="skill-column">
-            <details open>
-                <summary>
-                    <h1>{{localize "WITCHER.Actor.Skill.Reflex"}}</h1>
-                </summary>
-                <table class="table-skills">
-                    {{#each system.skills.ref as |skill name|}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="ref"}}
-                    {{/each}}
-                    {{#each customSkills.ref}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
-                    {{/each}}
-                </table>
-            </details>
-        </div>
-        <div class="skill-column">
-            <details open>
-                <summary>
-                    <h1>{{localize "WITCHER.Actor.Skill.Willpower"}}</h1>
-                </summary>
-                <table class="table-skills">
-                    {{#each system.skills.will as |skill name|}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="will" skill-data=system}}
-                    {{/each}}
-                    {{#each customSkills.will}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
-                    {{/each}}
-                </table>
-            </details>
-        </div>
-    </div>
-
-    <div>
-        <div class="skill-column">
-            <details open>
-                <summary>
-                    <h1>{{localize "WITCHER.Actor.Skill.Dexterity"}}</h1>
-                </summary>
-                <table class="table-skills">
-                    {{#each system.skills.dex as |skill name|}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="dex" skill-data=system}}
-                    {{/each}}
-                    {{#each customSkills.dex}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
-                    {{/each}}
-                </table>
-            </details>
-        </div>
-
-        <div class="skill-column">
-            <details open>
-                <summary>
-                    <h1>{{localize "WITCHER.Actor.Skill.Crafting"}}</h1>
-                </summary>
-                <table class="table-skills">
-                    {{#each system.skills.cra as |skill name|}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="cra" skill-data=system}}
-                    {{/each}}
-                    {{#each customSkills.cra}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
-                    {{/each}}
-                </table>
-            </details>
-        </div>
-
-    </div>
-
-    <div>
-        <div class="skill-column">
-            <details open>
-                <summary>
-                    <h1>{{localize "WITCHER.Actor.Skill.Body"}}</h1>
-                </summary>
-                <table class="table-skills">
-                    {{#each system.skills.body as |skill name|}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="body" skill-data=system}}
-                    {{/each}}
-                    {{#each customSkills.body}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
-                    {{/each}}
-                </table>
-            </details>
-        </div>
-
-        <div class="skill-column">
-            <details open>
-                <summary>
-                    <h1>{{localize "WITCHER.Actor.Skill.Empathy"}}</h1>
-                </summary>
-                <table class="table-skills">
-                    {{#each system.skills.emp as |skill name|}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" skill=skill name=name stat="emp" skill-data=system}}
-                    {{/each}}
-                    {{#each customSkills.emp}}
-                        {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
-                    {{/each}}
-                </table>
-            </details>
-        </div>
 
         <div class="skill-column">
             <div>
-                <b>{{localize "WITCHER.Actor.TotalSkill"}} <input class="total-skills small" name="totalSkills"
+                <b>{{localize "WITCHER.Actor.TotalSkill"}} <input class="total-skills" name="totalSkills"
                         type="number" value="{{totalSkills}}" placeholder="0" readonly disabled /> </b>
                 <br />
-                <b>{{localize "WITCHER.Actor.TotalProfSkill"}} <input class="total-skills small" name="totalProfSkills"
+                <b>{{localize "WITCHER.Actor.TotalProfSkill"}} <input class="total-skills" name="totalProfSkills"
                         type="number" value="{{totalProfSkills}}" placeholder="0" readonly disabled /> </b>
             </div>
         </div>
     </div>
+
+    {{#each system.skills as |skillsGroup statKey|}}
+    <div class="skill-column">
+        <details open>
+            <summary>
+                <span>{{localize (concat "WITCHER.St" (capitalize statKey) )}}</span>
+                <a data-action="openSkillsDialog" data-type="{{statKey}}"><i class="fas fa-edit"></i></a>
+            </summary>
+            <div class="skills-stats-list">
+                {{#each skillsGroup as |skill name|}}
+                {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" 
+                    skill=skill name=name stat=statKey}}
+                {{/each}}
+
+                {{#each (lookup ../customSkills statKey)}}
+                {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
+                {{/each}}
+            </div>
+        </details>
+    </div>
+    {{/each}}
 </section>

@@ -11,7 +11,7 @@ export default class RewardsSheet extends HandlebarsApplicationMixin(ActorSheetV
             width: 520,
             height: 480
         },
-        classes: ['witcher', 'sheet', 'actor'],
+        classes: ['witcher', 'extended-sheet', 'actor'],
         form: {
             submitOnChange: true,
             closeOnSubmit: false

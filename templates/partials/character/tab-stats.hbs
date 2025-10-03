@@ -1,0 +1,96 @@
+<section class="tab {{tabs.stats.cssClass}} standard-form" data-group="primary" data-tab="stats">
+    <div class='character-statistics'>
+        <div class='char-stat-title margin-right'>
+            <label>{{localize 'WITCHER.Item.Attribute'}}</label>
+            <a data-action="openAttributeDialog"><i class="fas fa-edit"></i></a>
+        </div>
+        <div class='stat-grid'>
+            {{#each system.stats as |details stat|}}
+                {{#unless (eq (localize details.label) (localize 'WITCHER.Actor.Stat.Toxicity'))}}
+                    <a class='stat-display char-stat-button stat-roll' data-stat='{{stat}}' data-stat='{{stat}}'>
+                        <div class="label">
+                            <span>{{localize details.label}}</span>
+                            {{#if (gte details.current 0)}}
+                                <span>+{{details.current}}</span>
+                            {{else}}
+                                <span>{{details.current}}</span>
+                            {{/if}}
+                        </div>
+                        <div class="mod">
+                            {{#if (gte details.max 0)}}
+                                <span class="max">+{{details.max}}</span>
+                            {{else}}
+                                <span class="max">{{details.max}}</span>
+                            {{/if}}
+                            {{#if (gte (formatModLabel details.current details.max) 0)}}
+                                <span class="{{#if (gt details.current details.max)}}stat-mod-plus{{else if (eq details.current details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel details.current details.max}}</span>
+                            {{else}}
+                                <span class="{{#if (gt details.current details.max)}}stat-mod-plus{{else if (eq details.current details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel details.current details.max}}</span>
+                            {{/if}}
+                        </div>
+                    </a>
+                {{/unless}}
+            {{/each}}
+
+            <div class='total-stats'>
+                <h4 class='total-stats-label'>{{localize 'WITCHER.Actor.TotalStats'}}: {{totalStats}}</h4>
+            </div>
+            {{#if (or isGM displayRep)}}
+                <a class='stat-display char-stat-display char-stat-button reputation-button reputation-roll' data-type='reputation' data-stat='reputation'>
+                    <div class="label">
+                        <span>{{localize 'WITCHER.Reputation'}}</span>
+                        {{#if (gte system.reputation.current 0)}}
+                            <span>+{{system.reputation.current}}</span>
+                        {{else}}
+                            <span>{{system.reputation.current}}</span>
+                        {{/if}}
+                    </div>
+                    <div class="mod">
+                        {{#if (gte system.reputation.max 0)}}
+                            <span class="max">+{{system.reputation.max}}</span>
+                        {{else}}
+                            <span class="max">{{system.reputation.max}}</span>
+                        {{/if}}
+                        {{#if (gte (formatModLabel system.reputation.current system.reputation.max) 0)}}
+                            <span class="{{#if (gt system.reputation.current system.reputation.max)}}stat-mod-plus{{else if (eq system.reputation.current system.reputation.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel system.reputation.current system.reputation.max}}</span>
+                        {{else}}
+                            <span class="{{#if (gt system.reputation.current system.reputation.max)}}stat-mod-plus{{else if (eq system.reputation.current system.reputation.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel system.reputation.current system.reputation.max}}</span>
+                        {{/if}}
+                    </div>
+                </a>
+            {{/if}}
+        </div>
+    </div>
+    <div class='core-stats-list'>
+        <div class='char-stat-title'>
+            <label>{{localize 'WITCHER.Actor.StatTitle.Derived'}}</label>
+            <a data-action="openDerivedDialog"><i class="fas fa-edit"></i></a>
+        </div>
+        <div class='stat-grid'>
+            {{#each system.coreStats as |details coreStat|}}
+                <div class='stat-display char-derived-button' data-type='coreStat' data-stat='{{coreStat}}'>
+                    <div class="label">
+                        <span>{{localize details.label}}</span>
+                        {{#if (gte details.current 0)}}
+                            <span>+{{details.current}}</span>
+                        {{else}}
+                            <span>{{details.current}}</span>
+                        {{/if}}
+                    </div>
+                    <div class="mod">
+                        {{#if (gte details.max 0)}}
+                            <span class="max">+{{details.max}}</span>
+                        {{else}}
+                            <span class="max">{{details.max}}</span>
+                        {{/if}}
+                        {{#if (gte (formatModLabel details.current details.max) 0)}}
+                            <span class="{{#if (gt details.current details.max)}}stat-mod-plus{{else if (eq details.current details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel details.current details.max}}</span>
+                        {{else}}
+                            <span class="{{#if (gt details.current details.max)}}stat-mod-plus{{else if (eq details.current details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel details.current details.max}}</span>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</section>

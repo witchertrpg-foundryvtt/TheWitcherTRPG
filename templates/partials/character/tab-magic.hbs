@@ -1,55 +1,52 @@
 <section class="tab {{tabs.magic.cssClass}} scrollable standard-form" data-group="primary" data-tab="magic">
-    <div class="flex">
-        <div class="spell-section">
-            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=noviceSpells itemType='spell' spellType="spellNovice" header=(concat (localize "WITCHER.Spell.Novice") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
+    <div class="magic-info">
+        <div class="value-max-stat-display">
+            <label>{{localize "WITCHER.StVigor"}}</label>
+            <input class="focus-value" name="system.derivedStats.vigor.unmodifiedMax" type="number"
+                value="{{system.derivedStats.vigor.unmodifiedMax}}" placeholder="0" data-dtype="Number" />
+            <span> -> {{system.derivedStats.vigor.max}}</span>
 
-            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=journeymanSpells itemType='spell' spellType="spellJourneyman" header=(concat (localize "WITCHER.Spell.Journeyman") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
-
-            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=masterSpells itemType='spell' spellType="spellMaster" header=(concat (localize "WITCHER.Spell.Master") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
+            <label>{{localize "WITCHER.magic.magicImprovementPoints"}}</label>
+            <input class="focus-value" name="system.magic.magicImprovementPoints" type="number"
+                value="{{system.magic.magicImprovementPoints}}" placeholder="0" />
         </div>
-        <div class="magic-section">
-            <div class="magic-info">
-                <div class="value-max-stat-display">
-                    <label>{{localize "WITCHER.StVigor"}}</label>
-                    <input class="focus-value" name="system.derivedStats.vigor.unmodifiedMax" type="number"
-                        value="{{system.derivedStats.vigor.unmodifiedMax}}" placeholder="0" data-dtype="Number" />
-                    <span> -> {{system.derivedStats.vigor.max}}</span>
-
-                    <label>{{localize "WITCHER.magic.magicImprovementPoints"}}</label>
-                    <input class="focus-value" name="system.magic.magicImprovementPoints" type="number"
-                        value="{{system.magic.magicImprovementPoints}}" placeholder="0" />
-                </div>
-                <div class="flex">
-                    <input class="focus" name="system.focus1.name" type="text" value="{{system.focus1.name}}"
-                        placeholder="First Focus" />
-                    <input class="focus-value" name="system.focus1.value" type="text" value="{{system.focus1.value}}"
-                        placeholder="0" />
-                </div>
-                <div class="flex">
-                    <input class="focus" name="system.focus2.name" type="text" value="{{system.focus2.name}}"
-                        placeholder="Second Focus" />
-                    <input class="focus-value" name="system.focus2.value" type="text" value="{{system.focus2.value}}"
-                        placeholder="0" />
-                </div>
-                <div class="flex">
-                    <input class="focus" name="system.focus3.name" type="text" value="{{system.focus3.name}}"
-                        placeholder="Third Focus" />
-                    <input class="focus-value" name="system.focus3.value" type="text" value="{{system.focus3.value}}"
-                        placeholder="0" />
-                </div>
-                <div class="flex">
-                    <input class="focus" name="system.focus4.name" type="text" value="{{system.focus4.name}}"
-                        placeholder="Fourth Focus" />
-                    <input class="focus-value" name="system.focus4.value" type="text" value="{{system.focus4.value}}"
-                        placeholder="0" />
-                </div>
-            </div>
-
-            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=rituals itemType='ritual' header=(localize "WITCHER.Spell.Rituals")}}
-
-            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=hexes itemType='hex' header=(localize "WITCHER.Spell.Hexes")}}
-
-            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=magicalgift itemType='spell' spellType="magicalgift" header=(localize "WITCHER.Spell.MagicalGift")}}
+        <div class="focus-item">
+            <input class="focus" name="system.focus1.name" type="text" value="{{system.focus1.name}}"
+                placeholder="First Focus" />
+            <input class="focus-value" name="system.focus1.value" type="text" value="{{system.focus1.value}}"
+                placeholder="0" />
         </div>
+        <div class="focus-item">
+            <input class="focus" name="system.focus2.name" type="text" value="{{system.focus2.name}}"
+                placeholder="Second Focus" />
+            <input class="focus-value" name="system.focus2.value" type="text" value="{{system.focus2.value}}"
+                placeholder="0" />
+        </div>
+        <div class="focus-item">
+            <input class="focus" name="system.focus3.name" type="text" value="{{system.focus3.name}}"
+                placeholder="Third Focus" />
+            <input class="focus-value" name="system.focus3.value" type="text" value="{{system.focus3.value}}"
+                placeholder="0" />
+        </div>
+        <div class="focus-item">
+            <input class="focus" name="system.focus4.name" type="text" value="{{system.focus4.name}}"
+                placeholder="Fourth Focus" />
+            <input class="focus-value" name="system.focus4.value" type="text" value="{{system.focus4.value}}"
+                placeholder="0" />
+        </div>
+    </div>
+    <div class="spell-section">
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=noviceSpells itemType='spell' spellType="spellNovice" header=(concat (localize "WITCHER.Spell.Novice") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
+
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=journeymanSpells itemType='spell' spellType="spellJourneyman" header=(concat (localize "WITCHER.Spell.Journeyman") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
+
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=masterSpells itemType='spell' spellType="spellMaster" header=(concat (localize "WITCHER.Spell.Master") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
+    </div>
+    <div class="magic-section">
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=rituals itemType='ritual' header=(localize "WITCHER.Spell.Rituals")}}
+
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=hexes itemType='hex' header=(localize "WITCHER.Spell.Hexes")}}
+
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=magicalgift itemType='spell' spellType="magicalgift" header=(localize "WITCHER.Spell.MagicalGift")}}
     </div>
 </section>

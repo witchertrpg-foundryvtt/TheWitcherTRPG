@@ -13,16 +13,16 @@
     padding: 5px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.05);
-    border: 2px groove #eeede0;
+    border: 1px solid darkgray;
+
+    h3 {
+        font-size: 18px;
+        margin: 0;
+    }
 }
 
 .effects-header:nth-child(n + 2) {
     margin-top: 5px;
-}
-
-.effects-header > h4 {
-    border-bottom: none;
-    margin-bottom: 0;
 }
 
 /* Effects Row Style */
@@ -30,11 +30,13 @@
 .effect-first-row {
     display: grid;
     grid-template-columns: 1fr 100px;
+    width: 100%;
 }
 
 .effect-display {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
 }
 
 .effect-list {
@@ -65,11 +67,8 @@
 }
 
 .effect-name > img {
-    width: 40px;
-    height: 40px;
     max-width: 40px;
     max-height: 40px;
-    border-color: rgba(25, 24, 19, 0.6);
 }
 
 .effect-name > h4 {
@@ -89,11 +88,9 @@ a.effect-control {
     align-self: center;
 }
 
-.effect-control {
-    color: rgba(25, 24, 19, 0.8);
-}
 
 .effect-description {
     padding: 10px 120px 0 50px;
+    width: 100%;
 }
 
