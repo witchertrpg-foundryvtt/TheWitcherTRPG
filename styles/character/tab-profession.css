@@ -28,8 +28,8 @@
             }
 
             .profession-card {
-                .profession-display input,
-                .profession-display select,
+                input,
+                select,
                 .editor {
                     color: #222;
                 }
@@ -56,14 +56,15 @@
             .profession-card {
                 max-width: none;
 
-                .profession-display input,
-                .profession-display select,
+                input,
+                select,
                 .editor {
                     color: #222;
                 }
 
                 .editor {
                     overflow-y: auto;
+                    min-height: 50px;
                     height: -webkit-fill-available;
                 }
             }

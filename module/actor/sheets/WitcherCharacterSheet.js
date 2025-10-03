@@ -4,6 +4,7 @@ import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 import { alchemyMixin } from './mixins/alchemyMixin.js';
 import RewardsSheet from '../rewardsSheet.js';
+import WitcherModifiersConfiguration from '../../actor/sheets/configurations/WitcherModifiersConfiguration.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -27,7 +28,8 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         },
         actions: {
             openAttributeDialog: this.#openAttributeDialog,
-            openDerivedDialog: this.#openDerivedDialog
+            openDerivedDialog: this.#openDerivedDialog,
+            openModifiers: this.#openModifiers,
         },
         dragDrop: [{ dragSelector: '.item-list', dropSelector: null }]
     };
@@ -35,7 +37,6 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     static PARTS = {
         sidebar: {
             template: 'systems/TheWitcherTRPG/templates/partials/character/sidebar.hbs',
-            scrollable: ['']
         },
         header: {
             template: 'systems/TheWitcherTRPG/templates/partials/character-header.hbs'
@@ -432,6 +433,18 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     static async #openAttributeDialog() {}
 
     static async #openDerivedDialog() {}
+
+    static async #openModifiers(_, target) {
+        _.preventDefault();
+        const type = target.dataset.type;
+        const skillKey = target.dataset.skillKey;
+
+        new WitcherModifiersConfiguration({
+            document: this.document,
+            skillKey: skillKey,
+            type: type
+        })?.render(true);
+    }
 }
 
 Object.assign(WitcherCharacterSheet.prototype, alchemyMixin);

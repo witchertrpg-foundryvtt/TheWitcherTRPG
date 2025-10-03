@@ -10,13 +10,13 @@
     {{#if (or skill.isProfession skill.isPickup skill.isLearned)}}
         <div class="skill-icons">
             {{#if skill.isProfession}}
-                <i data-tooltip="{{localize 'WITCHER.SKill.profession'}}" class="fa-solid fa-briefcase"></i>
+                <span><i>{{localize 'WITCHER.SKill.profession'}}</i></span>
             {{/if}}
             {{#if skill.isPickup}}
-                <i data-tooltip="{{localize 'WITCHER.SKill.pickup'}}" class="fa-solid fa-check-to-slot"></i>
+                <span><i>{{localize 'WITCHER.SKill.pickup'}}</i></span>
             {{/if}}
             {{#if skill.isLearned}}
-                <i data-tooltip="{{localize 'WITCHER.SKill.learn'}}" class="fa-solid fa-chalkboard-user"></i>
+                <span><i>{{localize 'WITCHER.SKill.learn'}}</i></span>
             {{/if}}
         </div>
     {{/if}}
