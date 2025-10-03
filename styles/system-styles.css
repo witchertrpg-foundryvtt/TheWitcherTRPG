@@ -420,3 +420,26 @@ input.skill-value {
     transform: rotate(180deg);
     transition: all 0.3s ease;
 }
+
+.sheet-header {
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .item-name {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        padding-bottom: 5px;
+        margin: 0;
+
+        input {
+            height: auto;
+        }
+
+        .configure-item {
+            font-size: 16px;
+        }
+    }
+}

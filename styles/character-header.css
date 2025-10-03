@@ -84,6 +84,7 @@
 }
 
 .stat-modifiers,
+.skill-modifiers,
 .derived-modifiers {
     margin-top: 5px;
 }
@@ -614,7 +615,7 @@ input.progress-input,
             place-content: center;
             border-radius: 0 0 5px 5px;
             height: 35px;
-            border: 1px solid light-dark(black, white);;
+            border: 1px solid black;
             text-align: center;
             gap: 5px;
         }
@@ -640,12 +641,18 @@ input.progress-input,
 }
 
 .char-resource-modifier {
-    color: black;
-}
-
-.char-resource-modifier {
     border: 1px solid black;
+    color: light-dark(black, white);
     border-radius: 5px;
+
+    .resource-modifiers {
+        overflow-y: auto;
+        height: 130px;
+
+        input.list-mod-edit.medium {
+            width: 75px;
+        }
+    }
 }
 
 .resource-title {

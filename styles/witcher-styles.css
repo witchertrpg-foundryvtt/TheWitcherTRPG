@@ -28,6 +28,8 @@
 @import './character/sheet.css';
 @import './character/tab-profession.css';
 
+@import './configurations/modifier-configuration.css';
+
 @font-face {
     font-family: 'Thewitcher';
     src: url('./fonts/thewitcher2.ttf');

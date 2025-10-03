@@ -1,0 +1,5 @@
+.application.sheet.witcher.actor.modifier-configuration:not(.extended-sheet) {
+    .window-content {
+        display: inherit;
+    }
+}

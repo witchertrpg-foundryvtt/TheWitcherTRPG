@@ -52,20 +52,20 @@
         </div>
     </div>
 
-    {{#each system.skills as |skillsGroup statKey|}}
+    {{#each system.skills as |skillsGroup skillKey|}}
     <div class="skill-column">
         <details open>
             <summary>
-                <span>{{localize (concat "WITCHER.St" (capitalize statKey) )}}</span>
-                <a data-action="openSkillsDialog" data-type="{{statKey}}"><i class="fas fa-edit"></i></a>
+                <span>{{localize (concat "WITCHER.St" (capitalize skillKey) )}}</span>
+                <a data-action="openModifiers" data-type="skill" data-skill-key="{{skillKey}}"><i class="fas fa-edit"></i></a>
             </summary>
             <div class="skills-stats-list">
                 {{#each skillsGroup as |skill name|}}
                 {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" 
-                    skill=skill name=name stat=statKey}}
+                    skill=skill name=name stat=skillKey}}
                 {{/each}}
 
-                {{#each (lookup ../customSkills statKey)}}
+                {{#each (lookup ../customSkills skillKey)}}
                 {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
                 {{/each}}
             </div>

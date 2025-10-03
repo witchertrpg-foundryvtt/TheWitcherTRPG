@@ -4,9 +4,8 @@ import WitcherProfessionConfigurationSheet from './configurations/WitcherProfess
 export default class WitcheProfessionSheet extends WitcherItemSheet {
     static DEFAULT_OPTIONS = {
         position: {
-            width: 800,
-            height: 480
-        }
+            width: 600,
+        },
     };
 
     configuration = new WitcherProfessionConfigurationSheet({ document: this.item });

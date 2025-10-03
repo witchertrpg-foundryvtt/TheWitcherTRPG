@@ -1,6 +1,10 @@
 <header class="item-header">
-    <h1 class="itemname"><input name="name" type="text" value="{{ item.name }}" placeholder="Name" /></h1>
-    <a class="configure-item" data-action="configureItem"><i class="fas fa-gear"></i></a>
+    <h1 class="itemname">
+        <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+        {{#if showConfig}}
+            <a class="configure-item" data-action="configureItem"><i class="fas fa-gear"></i></a>
+        {{/if}}
+    </h1>
     <general>
         <itemimage>
             {{#if (and (includes (getSetting "clickableImageItemTypes") item.type)  (or (window "game" "user" "isGM") (eq (getSetting "clickableImageCheckboxForGMOnly") false)) )}}
