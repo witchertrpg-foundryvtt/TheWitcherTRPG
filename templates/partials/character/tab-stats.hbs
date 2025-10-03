@@ -2,7 +2,7 @@
     <div class='character-statistics'>
         <div class='char-stat-title margin-right'>
             <label>{{localize 'WITCHER.Item.Attribute'}}</label>
-            <a data-action="openAttributeDialog"><i class="fas fa-edit"></i></a>
+            <a data-action="openModifiers" data-type="attribute"><i class="fas fa-edit"></i></a>
         </div>
         <div class='stat-grid'>
             {{#each system.stats as |details stat|}}
@@ -64,7 +64,7 @@
     <div class='core-stats-list'>
         <div class='char-stat-title'>
             <label>{{localize 'WITCHER.Actor.StatTitle.Derived'}}</label>
-            <a data-action="openDerivedDialog"><i class="fas fa-edit"></i></a>
+            <a data-action="openModifiers" data-type="derived"><i class="fas fa-edit"></i></a>
         </div>
         <div class='stat-grid'>
             {{#each system.coreStats as |details coreStat|}}
