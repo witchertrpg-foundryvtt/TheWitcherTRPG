@@ -2,18 +2,32 @@
     flex-grow: 1;
 }
 
+.skills-stats-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
 .skill-column {
     margin: 5px;
     padding: 10px;
     border-radius: 10px;
-    background-color: darkgray;
+    border: 1px solid darkgray;
 
     h1 {
         border: none;
     }
 
     summary {
+        display: flex;
+        align-items: center;
+        gap: 15px;
         border-bottom: 2px solid var(--color-underline-header);
+
+        span {
+            font-size: 24px;
+        }
     }
 }
 
@@ -61,39 +75,58 @@
 }
 
 .skill-info {
-    background-color: lightslategray;
-    margin: auto;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.skill-ip {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: light-dark(#22222210, #e7d1b110);
+    border: 1px solid light-dark(#22222240, #e7d1b140);
     border-radius: 10px;
     padding: 10px;
-    margin-top: 20px;
-    color: white;
-}
+    color: light-dark(black, white);
+    flex: 1;
 
-.skill-info h3 {
-    margin: 0px !important;
-}
+    .current-ip {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
 
-.IP-value {
-    font-weight: bold;
-    width: 30px !important;
-    text-align: center !important;
-    background: lightsteelblue !important;
-}
+    span {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+    }
 
-.extra-skill-name {
-    background-color: lightsteelblue !important;
-}
+    .IP-value {
+        font-weight: bold;
+        width: 5ch;
+        text-align: center;
+    }
 
-.extra-skill-value {
-    font-weight: bold;
-    width: 30px !important;
-    text-align: center !important;
-    background: lightsteelblue !important;
-    min-width: 30px !important;
+    .skillTraining {
+        display: flex;
+        gap: 5px;
+    }
+
+    .extra-skill-value {
+        font-weight: bold;
+        width: 8ch;
+        text-align: center;
+        min-width: 30px;
+    }
 }
 
 .total-skills {
+    width: 5ch;
     font-weight: bold;
+    text-align: center;
 }
 
 .learned-skilled a {

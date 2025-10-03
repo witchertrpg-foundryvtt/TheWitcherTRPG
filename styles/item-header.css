@@ -1,7 +1,19 @@
 .item-header {
 
     .itemname {
+        display: flex;
+        gap: 15px;
+        align-items: center;
         padding-bottom: 5px;
+        margin: 0;
+
+        input {
+            height: auto;
+        }
+
+        .configure-item {
+            font-size: 16px;
+        }
     }
 
     img {
@@ -38,6 +50,11 @@
 
         td {
             width: 100%;
+            align-content: center;
+
+            input {
+                text-align: center;
+            }
         }
     }
 
