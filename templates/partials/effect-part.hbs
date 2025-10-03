@@ -1,9 +1,9 @@
 <ol class="items-list effects-list">
     {{#each effects as |section sid|}}
         <li class="items-header effects-header flexrow" data-effect-type="{{section.type}}">
-            <h4 class="item-name header-name flexrow">{{localize section.label}}</h4>
-            <h4 class="header-source">{{localize "WITCHER.activeEffect.source"}}</h4>
-            <h4 class="header-source">{{localize "EFFECT.TABS.duration"}}</h4>
+            <h3 class="item-name header-name flexrow">{{localize section.label}}</h3>
+            <h3 class="header-source">{{localize "WITCHER.activeEffect.source"}}</h3>
+            <h3 class="header-source">{{localize "EFFECT.TABS.duration"}}</h3>
             {{#unless (and (eq section.type 'temporaryItemImprovement') ../actor)}}
                 <div class="item-controls header-controls flexrow">
                     <a class="effect-control" data-action="create" title="{{localize 'DOCUMENT.Create' type="Effect"}}">
@@ -20,8 +20,8 @@
                     <div class="effect-first-row">
                         <a class="effect-display">
                             <div class="item-name effect-name flexrow ">
-                                <img class="item-image" src="{{effect.img}}" />
-                                <h4>{{effect.name}}</h4>
+                                <img class="item-image item-list-image" src="{{effect.img}}" />
+                                <p>{{effect.name}}</p>
                             </div>
                             <div class="effect-source">{{effect.sourceName}}</div>
                             <div class="effect-duration">{{effect.duration.label}}</div>

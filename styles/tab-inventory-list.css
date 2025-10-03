@@ -5,7 +5,7 @@
     padding: 5px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.05);
-    border: 2px groove #eeede0;
+    border: 1px solid darkgray;
     margin: 5px 0;
     gap: 20px;
     list-style: none;
@@ -25,11 +25,12 @@ details[open] .list-header > .chevron-icon {
 .list-header h2,
 .section-header h2 {
     margin: 0;
-    border: none;
+    font-size: 24px;
 }
 
 .list-header h3,
 .section-header h3 {
+    font-size: 18px;
     margin: 0;
     border: none;
 }
@@ -40,8 +41,8 @@ details[open] .list-header > .chevron-icon {
     padding: 10px 5px;
     gap: 5px;
     box-shadow:
-        inset -2px 8px 8px -10px #9a9991,
-        inset -2px -8px 8px -10px #9a9991;
+        inset -2px 8px 8px -10px light-dark(#9a9991, black),
+        inset -2px -8px 8px -10px light-dark(#9a9991, black);
 }
 
 .list-item-info.invisible {
@@ -106,6 +107,7 @@ details[open] .list-header > .chevron-icon {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    transition: all 0.3s ease;
 }
 
 .list-details:last-child {
@@ -114,7 +116,7 @@ details[open] .list-header > .chevron-icon {
 
 .list-details:hover {
     border-radius: 5px;
-    background-color: rgba(25, 25, 25, 0.05);
+    background-color:  light-dark(#22222210, #e7d1b110);
 }
 
 .list-details:hover > .display-details > img {
@@ -143,7 +145,7 @@ details[open] .list-header > .chevron-icon {
     border-radius: 5px;
     width: 40px;
     height: 40px;
-    border: 1px solid rgba(25, 24, 19, 0.6);
+    border: 1px solid light-dark(#19191950, #e7d1b140);
 }
 
 .reliable-armor {
@@ -177,7 +179,6 @@ details[open] .list-header > .chevron-icon {
 .item-carried,
 .item-learned,
 .crafting-craft {
-    color: rgba(25, 25, 25, 0.4);
     text-shadow: none;
 }
 
@@ -194,7 +195,7 @@ a.equipped {
 
 .toggle-hand-icon input[type='checkbox'] {
     position: absolute;
-    opacity: 1; /* invisível, mas ainda clicável */
+    opacity: 1;
     width: 100%;
     height: 100%;
     top: 0;

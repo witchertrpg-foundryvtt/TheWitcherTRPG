@@ -5,6 +5,8 @@ import ChatMessageData from '../../chatMessage/chatMessageData.js';
 import { alchemyMixin } from './mixins/alchemyMixin.js';
 import RewardsSheet from '../rewardsSheet.js';
 
+const DialogV2 = foundry.applications.api.DialogV2;
+
 export default class WitcherCharacterSheet extends WitcherActorSheet {
     uniqueTypes = ['profession', 'race', 'homeland'];
 
@@ -16,15 +18,17 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
             resizable: true
         },
         position: {
-            width: 1120,
-            height: 600
+            width: 800
         },
         classes: ['witcher', 'sheet', 'actor'],
         form: {
             submitOnChange: true,
             closeOnSubmit: false
         },
-        actions: {},
+        actions: {
+            openAttributeDialog: this.#openAttributeDialog,
+            openDerivedDialog: this.#openDerivedDialog,
+        },
         dragDrop: [{ dragSelector: '.item-list', dropSelector: null }]
     };
 
@@ -38,12 +42,19 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     }
 
     static PARTS = {
+        sidebar: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/sidebar.hbs',
+        },
         header: {
             template: 'systems/TheWitcherTRPG/templates/partials/character-header.hbs'
         },
         tabs: {
             // Foundry-provided generic template
             template: 'templates/generic/tab-navigation.hbs'
+        },
+        stats: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-stats.hbs',
+            scrollable: ['']
         },
         skills: {
             template: 'systems/TheWitcherTRPG/templates/partials/character/tab-skills.hbs',
@@ -74,14 +85,15 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     static TABS = {
         primary: {
             tabs: [
-                { id: 'skills' },
-                { id: 'profession' },
-                { id: 'inventory' },
-                { id: 'magic' },
-                { id: 'background' },
-                { id: 'effects' }
+                { id: 'stats', cssClass: 'stats' },
+                { id: 'skills', cssClass: 'skills' },
+                { id: 'profession', cssClass: 'profession' },
+                { id: 'inventory', cssClass: 'inventory' },
+                { id: 'magic', cssClass: 'magic' },
+                { id: 'background', cssClass: 'background' },
+                { id: 'effects', cssClass: 'effects' }
             ],
-            initial: 'skills',
+            initial: 'stats',
             labelPrefix: 'WITCHER.Actor.tabs'
         }
     };
@@ -424,6 +436,10 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     async _renderRewards() {
         this.rewards?.render(true);
     }
+
+    static async #openAttributeDialog() {}
+
+    static async #openDerivedDialog() {}
 }
 
 Object.assign(WitcherCharacterSheet.prototype, alchemyMixin);

@@ -81,6 +81,16 @@
     padding: 0.25em 0.25em;
 }
 
+.item-table td.effect-text-area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    label {
+        text-align: start;
+    }
+}
+
 .spell-template-damage {
     width: 15em;
     margin-top: 0.6em;

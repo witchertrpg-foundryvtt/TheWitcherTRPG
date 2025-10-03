@@ -4,7 +4,7 @@
     padding: 5px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.05);
-    border: 2px groove #eeede0;
+    border: 1px solid darkgray;
     gap: 20px;
     margin-top: 20px;
 }

@@ -25,6 +25,9 @@
 @import './tab-inventory-list.css';
 @import './rewards.css';
 
+@import './character/sheet.css';
+@import './character/tab-profession.css';
+
 @font-face {
     font-family: 'Thewitcher';
     src: url('./fonts/thewitcher2.ttf');
