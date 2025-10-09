@@ -1,6 +1,5 @@
 export async function preloadHandlebarsTemplates() {
     const templatePath = [
-        'systems/TheWitcherTRPG/templates/sheets/actor/character-sheet.hbs',
         'systems/TheWitcherTRPG/templates/sheets/actor/monster-sheet.hbs',
         'systems/TheWitcherTRPG/templates/sheets/actor/loot-sheet.hbs',
 
