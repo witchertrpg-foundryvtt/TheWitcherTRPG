@@ -240,7 +240,7 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
         jquery.find('.recover-sta').on('click', this._onRecoverSta.bind(this));
         jquery.find('.verbal-button').on('click', this._onVerbalCombat.bind(this));
 
-        jquery.find('input').focusin(ev => this._onFocusIn(ev));
+        jquery.find('input').focusin(event => event.currentTarget.select());
 
         jquery.find('.configure-actor').on('click', this._renderConfigureDialog.bind(this));
 
@@ -309,10 +309,6 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
 
     async _onVerbalCombat() {
         this.actor.verbalCombat();
-    }
-
-    _onFocusIn(event) {
-        event.currentTarget.select();
     }
 
     _onLifeEventDisplay(event) {
