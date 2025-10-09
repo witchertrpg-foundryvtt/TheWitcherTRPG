@@ -27,23 +27,15 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         },
         actions: {
             openAttributeDialog: this.#openAttributeDialog,
-            openDerivedDialog: this.#openDerivedDialog,
+            openDerivedDialog: this.#openDerivedDialog
         },
         dragDrop: [{ dragSelector: '.item-list', dropSelector: null }]
     };
 
-    /** @override */
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            template: 'systems/TheWitcherTRPG/templates/sheets/actor/actor-sheet.hbs',
-            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }],
-            scrollY: ['.item-list']
-        });
-    }
-
     static PARTS = {
         sidebar: {
             template: 'systems/TheWitcherTRPG/templates/partials/character/sidebar.hbs',
+            scrollable: ['']
         },
         header: {
             template: 'systems/TheWitcherTRPG/templates/partials/character-header.hbs'
@@ -98,13 +90,8 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         }
     };
 
-    _onRender(context, options) {
-        super._onRender(context, options);
-
-        this.activateListeners(this.element);
-    }
-
     activateListeners(html) {
+        super.activateListeners(html);
         html = $(html);
         html.find('.alchemy-potion').on('click', this._alchemyCraft.bind(this));
         html.find('.crafting-craft').on('click', this._craftingCraft.bind(this));
