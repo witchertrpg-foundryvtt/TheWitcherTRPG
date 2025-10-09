@@ -232,33 +232,33 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
     }
 
     activateListeners(html) {
-        html = $(html);
-        html.find('.life-event-display').on('click', this._onLifeEventDisplay.bind(this));
+        let jquery = $(html);
+        jquery.find('.life-event-display').on('click', this._onLifeEventDisplay.bind(this));
 
-        html.find('.init-roll').on('click', this._onInitRoll.bind(this));
-        html.find('.crit-roll').on('click', this._onCritRoll.bind(this));
-        html.find('.recover-sta').on('click', this._onRecoverSta.bind(this));
-        html.find('.verbal-button').on('click', this._onVerbalCombat.bind(this));
+        jquery.find('.init-roll').on('click', this._onInitRoll.bind(this));
+        jquery.find('.crit-roll').on('click', this._onCritRoll.bind(this));
+        jquery.find('.recover-sta').on('click', this._onRecoverSta.bind(this));
+        jquery.find('.verbal-button').on('click', this._onVerbalCombat.bind(this));
 
-        html.find('input').focusin(ev => this._onFocusIn(ev));
+        jquery.find('input').focusin(ev => this._onFocusIn(ev));
 
-        html.find('.configure-actor').on('click', this._renderConfigureDialog.bind(this));
+        jquery.find('.configure-actor').on('click', this._renderConfigureDialog.bind(this));
 
         //mixins
-        this.statListener(html[0]);
-        this.skillListener(html[0]);
-        this.skillModifierListener(html[0]);
-        this.customSkillListener(html[0]);
+        this.statListener(html);
+        this.skillListener(html);
+        this.skillModifierListener(html);
+        this.customSkillListener(html);
 
-        this.itemListener(html[0]);
-        this.activeEffectListener(html[0]);
+        this.itemListener(html);
+        this.activeEffectListener(html);
 
-        this.deathSaveListener(html[0]);
-        this.criticalWoundListener(html[0]);
-        this.noteListener(html[0]);
-        this.healListeners(html[0]);
+        this.deathSaveListener(html);
+        this.criticalWoundListener(html);
+        this.noteListener(html);
+        this.healListeners(html);
 
-        this.itemContextMenu(html[0]);
+        this.itemContextMenu(html);
     }
 
     async _onInitRoll(event) {
@@ -319,8 +319,9 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
         event.preventDefault();
         let section = event.currentTarget.closest('.life-events-card');
         this.actor.update({
-            [`system.general.lifeEvents.${section.dataset.event}.isOpened`]:
-                !this.actor.system.general.lifeEvents[section.dataset.event].isOpened
+            [`system.general.lifeEvents.${section.dataset.event}.isOpened`]: !this.actor.system.general.lifeEvents.find(
+                event => event.key === section.dataset.event
+            ).isOpened
         });
     }
 }
