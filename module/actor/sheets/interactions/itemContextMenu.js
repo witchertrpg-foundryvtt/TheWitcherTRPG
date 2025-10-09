@@ -41,6 +41,7 @@ export let itemContextMenu = {
 
     isItemConsumable(itemHtml) {
         let item = this.actor.items.get(itemHtml.dataset.itemId);
+        if (!item) return false;
         return item.system.isConsumable;
     },
 
@@ -66,6 +67,7 @@ export let itemContextMenu = {
 
     isEnhancementRemovable(itemHtml) {
         let choosenEnhancement = this.actor.items.get(itemHtml.dataset.itemId);
+        if (!choosenEnhancement) return false;
 
         return choosenEnhancement.system.applied;
     },
@@ -132,6 +134,7 @@ export let itemContextMenu = {
             'weapon'
         ];
         let item = this.actor.items.get(itemHtml.dataset.itemId);
+        if (!item) return false;
 
         return giftableTypes.includes(item.type);
     },
@@ -182,6 +185,7 @@ export let itemContextMenu = {
 
     isItemDismantable(itemHtml) {
         let item = this.actor.items.get(itemHtml.dataset.itemId);
+        if (!item) return false;
 
         return item.canBeDismantled();
     },
