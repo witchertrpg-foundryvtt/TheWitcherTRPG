@@ -92,14 +92,14 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
 
     activateListeners(html) {
         super.activateListeners(html);
-        html = $(html);
-        html.find('.alchemy-potion').on('click', this._alchemyCraft.bind(this));
-        html.find('.crafting-craft').on('click', this._craftingCraft.bind(this));
-        html.find('.item-repair').on('click', this._repairItem.bind(this));
-        html.find('.manualIpReward').on('click', this._addIpReward.bind(this));
-        html.find('.saveIpSpending').on('click', this._saveIpSpending.bind(this));
+        let jquery = $(html);
+        jquery.find('.alchemy-potion').on('click', this._alchemyCraft.bind(this));
+        jquery.find('.crafting-craft').on('click', this._craftingCraft.bind(this));
+        jquery.find('.item-repair').on('click', this._repairItem.bind(this));
+        jquery.find('.manualIpReward').on('click', this._addIpReward.bind(this));
+        jquery.find('.saveIpSpending').on('click', this._saveIpSpending.bind(this));
 
-        html.find('.open-rewards').on('click', this._renderRewards.bind(this));
+        jquery.find('.open-rewards').on('click', this._renderRewards.bind(this));
     }
 
     async _prepareContext(options) {
