@@ -1,6 +1,6 @@
 <div class='char-sidebar'>
     <div class="char-image">
-        <img class='witcher-actor-img' src='{{actor.img}}' data-edit='img' title='{{actor.name}}' />
+        <img class='witcher-actor-img' src='{{actor.img}}' data-action="editImage" data-edit='img' title='{{actor.name}}' />
         <div class='wound-state' data-tooltip="Wound State">
             {{#if (gte system.derivedStats.hp.value system.derivedStats.hp.unmodifiedMax)}}
                 <i class='fa-solid fa-heart' style='color: green;'></i>
