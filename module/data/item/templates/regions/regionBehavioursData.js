@@ -12,7 +12,7 @@ export default function regionBehaviours() {
             required: false,
             label: 'WITCHER.Item.RegionProperties.tokenTurnStart'
         }),
-        tokenPreMove: new fields.DocumentUUIDField({
+        tokenMoveWithin: new fields.DocumentUUIDField({
             type: 'Macro',
             required: false,
             label: 'WITCHER.Item.RegionProperties.tokenPreMove'

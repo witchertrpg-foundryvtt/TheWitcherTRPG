@@ -23,7 +23,7 @@ export default class RegionProperties extends foundry.abstract.DataModel {
     }
 
     async createRegionFromTemplates(templates, roll, damage, options) {
-        let item = this.parent.parent
+        let item = this.parent.parent;
         if (!game.user.isGM) {
             emitForGM('createRegionFromTemplateUuids', [
                 item.uuid,
@@ -80,5 +80,12 @@ export default class RegionProperties extends foundry.abstract.DataModel {
                 uuid: uuid
             }
         };
+    }
+
+    /** @inheritdoc */
+    static migrateData(source) {
+        super.migrateData(source);
+
+        source.behaviours.tokenMoveWithin = source.behaviours.tokenPreMove;
     }
 }
