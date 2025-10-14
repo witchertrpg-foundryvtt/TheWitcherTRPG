@@ -20,7 +20,7 @@ import { craftingMixin } from './mixins/craftingMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
-const derivedPaths = ['derivedStats', 'attackStats'];
+const derivedPaths = ['coreStats', 'derivedStats', 'attackStats'];
 
 export default class WitcherActor extends Actor {
     /**
