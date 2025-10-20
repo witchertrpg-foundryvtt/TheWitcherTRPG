@@ -91,6 +91,7 @@
             "Perks": "Perks",
             "Adda.Profession": "Add a Profession",
             "Adda.Race": "Add a Race",
+            "woundState": "Wound State",
             "TotalStats": "Total Stats",
             "Stat.Int": "INT",
             "Stat.Ref": "REF",
@@ -142,6 +143,13 @@
             "TotalSkill": "Total Skills",
             "TotalProfSkill": "Total Profession Skills",
             "SpecialSkillModifier": "Special Skill Modifiers",
+            "focus": {
+                "name": "Focus",
+                "first": "First",
+                "second": "Second",
+                "third": "Third",
+                "fourth": "Fourth"
+            },
             "Lifepath": {
                 "Bonus": "Lifepath Bonus",
                 "strongStrikeAttackBonus": "Strong Strike Attack Bonus",
@@ -1341,7 +1349,7 @@
                 "6": "Your weapon takes [[1d6]] extra points of reliability damage.",
                 "7": "Your weapon is knocked from your hand and flies [[1d6]] meters away in a random direction (see Scatter table).",
                 "8": "You are knocked to the ground. You are now prone and must make a Stun save.",
-                "9": "Your weapon takes 2d6 extra points of reliability damage.",
+                "9": "Your weapon takes [[2d6]] extra points of reliability damage.",
                 ">9": "Your weapon ricochets back and hits you. Roll for location."
             },
             "rangedAttack": {
