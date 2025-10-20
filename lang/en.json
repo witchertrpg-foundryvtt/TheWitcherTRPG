@@ -79,15 +79,11 @@
             }
         },
         "Actor": {
-            "tabs": {
-                "stats": "Stats",
-                "skills": "Skills",
-                "profession": "Profession & Race",
-                "inventory": "Inventory",
-                "magic": "Magic",
-                "background": "Background",
-                "effects": "Active Effect"
-            },
+            "SkillTab": "Skills & Modifiers",
+            "ProfessionTab": "Profession & Race",
+            "InventoryTab": "Gear & inventory",
+            "MagicTab": "Magic and Spells",
+            "BackgroundTab": "Background",
             "Name": "Character Name",
             "Race": "Race",
             "Gender": "Gender",
@@ -95,6 +91,7 @@
             "Perks": "Perks",
             "Adda.Profession": "Add a Profession",
             "Adda.Race": "Add a Race",
+            "woundState": "Wound State",
             "TotalStats": "Total Stats",
             "Stat.Int": "INT",
             "Stat.Ref": "REF",
@@ -146,6 +143,13 @@
             "TotalSkill": "Total Skills",
             "TotalProfSkill": "Total Profession Skills",
             "SpecialSkillModifier": "Special Skill Modifiers",
+            "focus": {
+                "name": "Focus",
+                "first": "First",
+                "second": "Second",
+                "third": "Third",
+                "fourth": "Fourth"
+            },
             "Lifepath": {
                 "Bonus": "Lifepath Bonus",
                 "strongStrikeAttackBonus": "Strong Strike Attack Bonus",
@@ -1345,7 +1349,7 @@
                 "6": "Your weapon takes [[1d6]] extra points of reliability damage.",
                 "7": "Your weapon is knocked from your hand and flies [[1d6]] meters away in a random direction (see Scatter table).",
                 "8": "You are knocked to the ground. You are now prone and must make a Stun save.",
-                "9": "Your weapon takes 2d6 extra points of reliability damage.",
+                "9": "Your weapon takes [[2d6]] extra points of reliability damage.",
                 ">9": "Your weapon ricochets back and hits you. Roll for location."
             },
             "rangedAttack": {
@@ -1365,10 +1369,6 @@
             "lifepathModifiers": {
                 "title": "Lifepath Modifiers",
                 "text": "Lifepath Modifiers attack boni where changed. Re-add them via the active effect wizard for the following actors"
-            },
-            "statSkillModifiers": {
-                "title": "Stat or Skill Modifiers",
-                "text": "Stat and Skill Modifiers are deprecated. Move them to active effects for the following actors"
             }
         },
         "AssociatedDiagram": {
