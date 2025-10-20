@@ -1365,6 +1365,10 @@
             "lifepathModifiers": {
                 "title": "Lifepath Modifiers",
                 "text": "Lifepath Modifiers attack boni where changed. Re-add them via the active effect wizard for the following actors"
+            },
+            "statSkillModifiers": {
+                "title": "Stat or Skill Modifiers",
+                "text": "Stat and Skill Modifiers are deprecated. Move them to active effects for the following actors"
             }
         },
         "AssociatedDiagram": {

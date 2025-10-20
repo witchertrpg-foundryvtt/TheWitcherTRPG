@@ -2,6 +2,7 @@ const DialogV2 = foundry.applications.api.DialogV2;
 
 export const deprecationWarnings = function () {
     lifepathModifiers();
+    statSkillModifiers();
 };
 
 async function lifepathModifiers() {
@@ -23,6 +24,34 @@ async function lifepathModifiers() {
         );
         DialogV2.prompt({
             window: { title: `${game.i18n.localize('WITCHER.deprecations.lifepathModifiers.title')}` },
+            content: dialogTemplate
+        });
+    }
+}
+
+async function statSkillModifiers() {
+    let affectedActors = game.actors
+        .filter(actor => actor.isOwner)
+        .filter(actor => actor.type != 'mystery' && actor.type != 'loot')
+        .filter(
+            actor =>
+                !!Object.values(actor.system.stats).find(stat => stat.modifiers?.length > 0) ||
+                !!Object.values(actor.system.coreStats).find(stat => stat.modifiers?.length > 0) ||
+                !!Object.values(actor.system.derivedStats).find(stat => stat.modifiers?.length > 0) ||
+                !!Object.values(actor.system.skills).find(
+                    skillGroup => !!Object.values(skillGroup).find(skill => skill.modifiers?.length > 0)
+                )
+        );
+
+    console.log(affectedActors);
+
+    if (affectedActors.length > 0) {
+        const dialogTemplate = await renderTemplate(
+            'systems/TheWitcherTRPG/templates/dialog/deprecations/statSkillModifiers.hbs',
+            { affectedActors }
+        );
+        DialogV2.prompt({
+            window: { title: `${game.i18n.localize('WITCHER.deprecations.statSkillModifiers.title')}` },
             content: dialogTemplate
         });
     }

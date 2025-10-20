@@ -1,58 +1,60 @@
 <div class="edit-stats">
     {{#with (lookup system.skills skillKey) as |skillGroup|}}
         {{#each skillGroup as |skill skillName|}}
-            <span>{{localize skill.label}}</span>
-            <input class='header-stat stat-max' name='system.skills.{{skillKey}}.{{skillName}}.value' type='number' value='{{skill.value}}' placeholder='0' data-dtype='Number' />
-            {{#if skill.isOpened}}
-                <a class='skill-modifier-display'><i class='fas fa-chevron-down'></i></a>
-            {{else}}
-                <a class='skill-modifier-display'><i class='fas fa-chevron-right'></i></a>
-            {{/if}}
-            <div class='skill-modifiers'>
-                {{#if skill.isOpened}}
+            <details>
+                <summary>
+                    <span>{{localize skill.label}}</span>
+                    <input class='header-stat stat-max' name='system.skills.{{skillKey}}.{{skillName}}.value'
+                        type='number' value='{{skill.value}}' placeholder='0' data-dtype='Number' />
+                </summary>
+                <div class='skill-modifiers'>
                     <tr>
                         <td colspan="3">
                             <label>{{localize "WITCHER.SKill.profession"}}:
-                                <input class="skill-checkbox" type="checkbox" name="system.skills.{{skillName}}.{{name}}.isProfession"
+                                <input class="skill-checkbox" type="checkbox"
+                                    name="system.skills.{{skillName}}.{{name}}.isProfession"
                                     {{checked skill.isProfession}} />
                             </label>
                             <label>{{localize "WITCHER.SKill.pickup"}}:
-                                <input class="skill-checkbox" type="checkbox" name="system.skills.{{skillName}}.{{name}}.isPickup"
-                                    {{checked skill.isPickup}} />
+                                <input class="skill-checkbox" type="checkbox"
+                                    name="system.skills.{{skillName}}.{{name}}.isPickup" {{checked skill.isPickup}} />
                             </label>
                             <label>{{localize "WITCHER.SKill.learn"}}:
-                                <input class="skill-checkbox" type="checkbox" name="system.skills.{{skillName}}.{{name}}.isLearned"
-                                    {{checked skill.isLearned}} />
+                                <input class="skill-checkbox" type="checkbox"
+                                    name="system.skills.{{skillName}}.{{name}}.isLearned" {{checked skill.isLearned}} />
                             </label>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="3">
-                            <a class="add-skill-modifier"><i class="fas fa-plus"></i></a>
-                            {{#each skill.modifiers as |modifier value|}}
-                                <div class="list-modifiers" data-id="{{modifier.id}}">
-                                    <input class="medium skill-mod-edit" data-field="name" type="text" value="{{modifier.name}}" />
-                                    <input class="small skill-mod-edit" data-field="value" type="number"
-                                        value="{{modifier.value}}" />
-                                    <a class="delete-skill-modifier"><i class="fas fa-trash-alt" data-id="{{modifier.id}}"></i></a>
-                                </div>
-                            {{/each}}
-                        </td>
-                    </tr>
+                    {{#if skill.modifiers}}
+                        <tr>
+                            <td colspan="3">
+                                {{#each skill.modifiers as |modifier value|}}
+                                    <div class="list-modifiers" data-id="{{modifier.id}}">
+                                        <input class="medium skill-mod-edit" data-field="name" type="text"
+                                            value="{{modifier.name}}" />
+                                        <input class="small skill-mod-edit" data-field="value" type="number"
+                                            value="{{modifier.value}}" />
+                                        <a class="delete-skill-modifier"><i class="fas fa-trash-alt"
+                                                data-id="{{modifier.id}}"></i></a>
+                                    </div>
+                                {{/each}}
+                            </td>
+                        </tr>
+                    {{/if}}
                     {{#if skill.activeEffectModifiers}}
                         <tr>
                             <td colspan="3">
                                 <div class="list-modifiers">
-                                    <input class="medium skill-mod-edit" type="text" value="{{localize "WITCHER.activeEffect.tab"}}"
-                                        disabled />
-                                    <input class="small skill-mod-edit" type="number" value="{{skill.activeEffectModifiers}}"
-                                        disabled />
+                                    <input class="medium skill-mod-edit" type="text"
+                                        value="{{localize "WITCHER.activeEffect.tab"}}" disabled />
+                                    <input class="small skill-mod-edit" type="number"
+                                        value="{{skill.activeEffectModifiers}}" disabled />
                                 </div>
                             </td>
                         </tr>
                     {{/if}}
-                {{/if}}
-            </div>
+                </div>
+            </details>
         {{/each}}
     {{/with}}
 </div>
