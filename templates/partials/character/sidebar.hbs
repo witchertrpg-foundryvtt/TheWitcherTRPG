@@ -1,7 +1,7 @@
 <div class='char-sidebar'>
     <div class="char-image">
         <img class='witcher-actor-img' src='{{actor.img}}' data-action="editImage" data-edit='img' title='{{actor.name}}' />
-        <div class='wound-state' data-tooltip="Wound State">
+        <div class='wound-state' data-tooltip="{{localize 'WITCHER.Actor.woundState'}}">
             {{#if (gte system.derivedStats.hp.value system.derivedStats.hp.unmodifiedMax)}}
                 <i class='fa-solid fa-heart' style='color: green;'></i>
             {{else if (gte system.derivedStats.hp.value system.coreStats.woundTreshold.current)}}
