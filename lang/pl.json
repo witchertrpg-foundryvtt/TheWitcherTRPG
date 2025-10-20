@@ -79,11 +79,15 @@
             }
         },
         "Actor": {
-            "SkillTab": "Zdolności",
-            "ProfessionTab": "Profesja i Rasa",
-            "InventoryTab": "Ekwipunek",
-            "MagicTab": "Magia i Zaklęcia",
-            "BackgroundTab": "Tło postaci",
+            "tabs": {
+                "stats": "Statystyki",
+                "skills": "Zdolności",
+                "profession": "Profesja",
+                "inventory": "Ekwipunek",
+                "magic": "Magia",
+                "background": "Tło Postaci",
+                "effects": "Efekty"
+            },
             "Name": "Nazwa Postaci",
             "Race": "Rasa",
             "Gender": "Płeć",
@@ -143,15 +147,6 @@
             "TotalSkill": "Suma Zdolności",
             "TotalProfSkill": "Suma zdolności profesji",
             "SpecialSkillModifier": "Specjalny Modyfikator Zdolności",
-            "tabs": {
-                "stats": "Statystyki",
-                "skills": "Zdolności",
-                "profession": "Profesja",
-                "inventory": "Ekwipunek",
-                "magic": "Magia",
-                "background": "Tło Postaci",
-                "effects": "Efekty"
-            },
             "focus": {
                 "name": "Fokus",
                 "first": "Pierwszy",
@@ -349,7 +344,7 @@
             "resistNonMeteorite": "Zastosuj odporność na stal nie meteorytową",
             "initial": "Początkowe obrażenia",
             "totalSP": "Wartość wyparowań",
-            "improvedArmorPiercing": "(Po wzmocnionym Przebiciu Pancerza)",
+            "improvedArmorPiercing": "(Po Wzmocnionym Przebijaniu Pancerzy)",
             "afterSPReduct": "Pozostałe obrażenia",
             "armorPiercing": "(Zignorowane przez przebicie pancerza)",
             "afterLocationModifier": "Obrażenia po modyfikatorze lokacji",
@@ -506,8 +501,8 @@
             "Broken": "Twoja broń się zepsuła",
             "onlyDmg": "Rzuć tylko obrażenia",
             "useAmmo": "Używa amunicji",
-            "armorPiercing": "Przebicie Pancerza",
-            "improvedArmorPiercing": "Lepsze Przebicie Pancerza",
+            "armorPiercing": "Przebijanie Pancerzy",
+            "improvedArmorPiercing": "Wzmocnione Przebijanie Pancerzy",
             "ablating": "Obrażenia do Trwałości",
             "crushingForce": "Miażdząca Siła",
             "error": {
@@ -1097,7 +1092,7 @@
         "SkIntWilderness": "Sztuka przetrwania",
         "SkRefBrawling": "Bójka",
         "SkRefDodge": "Zwinność",
-        "SkRefMelee": "Broń biewna",
+        "SkRefMelee": "Broń bitewna",
         "SkRefRiding": "Jeździectwo",
         "SkRefSailing": "Żeglarstwo",
         "SkRefSmall": "Broń krótka",
@@ -1378,6 +1373,10 @@
             "lifepathModifiers": {
                 "title": "Modyfikatory Ścieżki Życia",
                 "text": "Modyfikatory do ataków ze ścieżki życia zmieniły się. Dodaj je ponownie do Active Effects poprzez 'wizarda' dla następujących aktorów"
+            },
+            "statSkillModifiers": {
+                "title": "Modyfikatory Cech i Zdolności",
+                "text": "Modyfikatory Cech i Zdolności nie są już wspierane. Przenieś je do aktywnych efektów dla następujących aktorów"
             }
         },
         "AssociatedDiagram": {

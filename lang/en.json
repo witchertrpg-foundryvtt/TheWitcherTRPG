@@ -79,11 +79,15 @@
             }
         },
         "Actor": {
-            "SkillTab": "Skills & Modifiers",
-            "ProfessionTab": "Profession & Race",
-            "InventoryTab": "Gear & inventory",
-            "MagicTab": "Magic and Spells",
-            "BackgroundTab": "Background",
+            "tabs": {
+                "stats": "Stats",
+                "skills": "Skills",
+                "profession": "Profession & Race",
+                "inventory": "Inventory",
+                "magic": "Magic",
+                "background": "Background",
+                "effects": "Active Effect"
+            },
             "Name": "Character Name",
             "Race": "Race",
             "Gender": "Gender",
@@ -143,15 +147,6 @@
             "TotalSkill": "Total Skills",
             "TotalProfSkill": "Total Profession Skills",
             "SpecialSkillModifier": "Special Skill Modifiers",
-            "tabs": {
-                "stats": "Statistics",
-                "skills": "Skills",
-                "profession": "Profession",
-                "inventory": "Inventory",
-                "magic": "Magic",
-                "background": "Background",
-                "effects": "Effects"
-            },
             "focus": {
                 "name": "Focus",
                 "first": "First",
@@ -1379,6 +1374,10 @@
             "lifepathModifiers": {
                 "title": "Lifepath Modifiers",
                 "text": "Lifepath Modifiers attack boni where changed. Re-add them via the active effect wizard for the following actors"
+            },
+            "statSkillModifiers": {
+                "title": "Stat or Skill Modifiers",
+                "text": "Stat and Skill Modifiers are deprecated. Move them to active effects for the following actors"
             }
         },
         "AssociatedDiagram": {
