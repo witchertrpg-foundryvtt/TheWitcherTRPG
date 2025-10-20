@@ -143,6 +143,15 @@
             "TotalSkill": "Total Skills",
             "TotalProfSkill": "Total Profession Skills",
             "SpecialSkillModifier": "Special Skill Modifiers",
+            "tabs": {
+                "stats": "Statistics",
+                "skills": "Skills",
+                "profession": "Profession",
+                "inventory": "Inventory",
+                "magic": "Magic",
+                "background": "Background",
+                "effects": "Effects"
+            },
             "focus": {
                 "name": "Focus",
                 "first": "First",

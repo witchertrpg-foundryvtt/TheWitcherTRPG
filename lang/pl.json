@@ -143,6 +143,15 @@
             "TotalSkill": "Suma Zdolności",
             "TotalProfSkill": "Suma zdolności profesji",
             "SpecialSkillModifier": "Specjalny Modyfikator Zdolności",
+            "tabs": {
+                "stats": "Statystyki",
+                "skills": "Zdolności",
+                "profession": "Profesja",
+                "inventory": "Ekwipunek",
+                "magic": "Magia",
+                "background": "Tło Postaci",
+                "effects": "Efekty"
+            },
             "focus": {
                 "name": "Fokus",
                 "first": "Pierwszy",
@@ -227,7 +236,7 @@
             "Quantity": "Ilość",
             "SourceBook": "Źródło",
             "Description": "Opis",
-            "Attribute": "Atrybuty",
+            "Attribute": "Cechy",
             "ROF": "Ataki",
             "openDescription": "Kliknij by otworzyć opis",
             "equipEnhancement": "Wyposażenie wzmocnienia",
