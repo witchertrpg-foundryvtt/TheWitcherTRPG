@@ -1274,6 +1274,7 @@
         },
         "err": {
             "CraftItemDeletion": "Incorrect amount of items were deleted from the actor",
+            "craftItemAvailable": "Not all necessary items are available",
             "NoItemsOfSpecificType": "No items of specific type are available for actor"
         },
         "Investigation": {

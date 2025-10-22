@@ -73,7 +73,7 @@ export default class WitcherItem extends Item {
         return this.system.alchemyDC && this.system.alchemyDC > 0;
     }
 
-    populateAlchemyCraftComponentsList() {
+    get alchemyCraftComponentsList() {
         class AlchemyComponent {
             name = '';
             alias = '';
@@ -162,7 +162,6 @@ export default class WitcherItem extends Item {
             )
         );
 
-        this.system.alchemyCraftComponents = alchemyCraftComponents;
         return alchemyCraftComponents;
     }
 
@@ -184,15 +183,17 @@ export default class WitcherItem extends Item {
         let craftedItemName;
         if (this.system.associatedItem?.name) {
             let craftingComponents = this.isAlchemicalCraft()
-                ? this.system.alchemyCraftComponents.filter(c => Number(c.quantity) > 0)
+                ? this.alchemyCraftComponentsList.filter(c => Number(c.quantity) > 0)
                 : this.system.craftingComponents.filter(c => Number(c.quantity) > 0);
 
-            craftingComponents.forEach(c => {
-                let componentsToDelete = this.isAlchemicalCraft()
-                    ? this.actor.getSubstance(c.name)
-                    : this.actor.findNeededComponent(c.name);
+            let itemsToDelete = [];
 
-                let componentsCountToDelete = Number(c.quantity);
+            craftingComponents.forEach(component => {
+                let componentsToDelete = this.isAlchemicalCraft()
+                    ? this.actor.getSubstance(component.name)
+                    : this.actor.findNeededComponent(component.name);
+
+                let componentsCountToDelete = Number(component.quantity);
                 let componentsLeftToDelete = componentsCountToDelete;
                 let componentsCountDeleted = 0;
 
@@ -209,23 +210,26 @@ export default class WitcherItem extends Item {
                     }
 
                     if (componentsCountDeleted < componentsCountToDelete) {
-                        this.actor.removeItem(toDelete._id, toDeleteCount);
+                        itemsToDelete.push({ id: toDelete.id, name: toDelete.name, count: toDeleteCount });
                         componentsCountDeleted += toDeleteCount;
                         componentsLeftToDelete -= toDeleteCount;
-                        return ui.notifications.info(
-                            `${toDeleteCount} ${toDelete.name} ${game.i18n.localize('WITCHER.craft.ItemsSuccessfullyDeleted')} ${this.actor.name}`
-                        );
                     }
                 });
 
-                if (componentsCountDeleted != componentsCountToDelete || componentsLeftToDelete != 0) {
+                if (componentsLeftToDelete != 0) {
                     result = false;
-                    return ui.notifications.error(game.i18n.localize('WITCHER.err.CraftItemDeletion'));
+                    return ui.notifications.error(game.i18n.localize('WITCHER.err.craftItemAvailable'));
                 }
             });
 
             craftedItemName = this.system.associatedItem?.name;
             if (result) {
+                itemsToDelete.forEach(item => {
+                    this.actor.removeItem(item.id, item.count);
+                    ui.notifications.info(
+                        `${item.count} ${item.name} ${game.i18n.localize('WITCHER.craft.ItemsSuccessfullyDeleted')} ${this.actor.name}`
+                    );
+                });
                 let craftedItem = await fromUuid(this.system.associatedItemUuid);
                 this.actor.addItem(craftedItem, this.system.resultQuantity);
             }
