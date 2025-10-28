@@ -224,7 +224,7 @@
             "Weight": "Waga",
             "Cost": "Koszt",
             "Carried": "Noszony",
-            "notCarried": "Niesnoszy",
+            "notCarried": "Nienoszony",
             "isConsumable": "Użytkowy?",
             "Effect": "Efekty",
             "statusEffect": "Efekt Statusu",
@@ -261,12 +261,12 @@
                 "heal": "Leczy za",
                 "Chat": {
                     "healedFor": "uleczony za",
-                    "consumeEffects": "zaaplikowane następujące efekty"
+                    "consumeEffects": "zaaplikowano następujące efekty"
                 }
             },
             "DamageProperties": {
                 "damageIsAblation": "Traktuj obrażenia do Trwałości/Wyparowań (not functional)",
-                "stun": "PP(x)",
+                "stun": "Ogłuszenie(x)",
                 "damageToAllLocations": "Zadaje Obrażenia Wszystkim Lokacjom",
                 "bypassesWornArmor": "Ignoruje Noszony Pancerz",
                 "bypassesNaturalArmor": "Ignoruje Naturalny Pancerz",
@@ -406,10 +406,10 @@
             "sizeHuge": "Olbrzymi",
             "rangeNone": "Brak",
             "rangePointBlank": "Bezpośredni (<2m)",
-            "rangeClose": "Bliski (1/4 Zasięg)",
-            "rangeMedium": "Średni (1/2 Zasięg)",
-            "rangeLong": "Długi (Pełny Zaięg)",
-            "rangeExtreme": "Ekstremalny (2x Zasięg)",
+            "rangeClose": "Bliski (do 1/4 Zasięgu)",
+            "rangeMedium": "Średni (do 1/2 Zasięgu)",
+            "rangeLong": "Długi (Do Pełnego Zasięgu)",
+            "rangeExtreme": "Ekstremalny (Do 2x Zasięgu)",
             "attackUse": "Atak za pomocą",
             "attackExtra": "Dodatkowy atak",
             "attackLocation": "Lokacja trafienia",
@@ -769,7 +769,7 @@
         "Personality": "Osobowość",
         "Clothing": "Ubranie",
         "FeelingsOnPeople": "O innych",
-        "LifeEvents": "Wydażenia w życiu",
+        "LifeEvents": "Wydarzenia w życiu",
         "Decade": "Dekada",
         "Event": "Wydarzenie",
         "DeathSave": "Test przytomności/konania",
@@ -1366,7 +1366,7 @@
                 "7": "Postać potyka się. Jest przewrócona.",
                 "8": "Postać potyka się. Jest przewrócona i musi wykonać test Przytomności.",
                 "9": "Postać potyka się i uderza w głowę. Jest przewrócona i dostaje [[1d6]] stłuczeń. Musi też wykonać test Przytomności.",
-                ">9": "Postać wpadłą na coś twardego. Jest przewrócona, traci  dodatkowe [[1d6]] PZ i musi wykonać test Przytomności."
+                ">9": "Postać wpadła na coś twardego. Jest przewrócona, traci  dodatkowe [[1d6]] PZ i musi wykonać test Przytomności."
             }
         },
         "deprecations": {
@@ -1415,7 +1415,7 @@
                 "requestTitle": "prosi o naprawę"
             },
             "alerts": {
-                "notEnoughComponents": "Nie wystarczająca ilość składników do naprawy tego przedmiotu",
+                "notEnoughComponents": "Niewystarczająca ilość składników do naprawy tego przedmiotu",
                 "itemIsAlreadyRepaired": "Przedmiot już jest w pełni naprawiony",
                 "noDiagram": "Brak powiązanego schematu dla tego przedmiotu",
                 "invalidDiagram": "Ten rodzaj schematu jest nieprawidłowy dla tego przedmiotu"
