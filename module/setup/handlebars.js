@@ -1,6 +1,5 @@
 export async function preloadHandlebarsTemplates() {
     const templatePath = [
-        'systems/TheWitcherTRPG/templates/sheets/actor/character-sheet.hbs',
         'systems/TheWitcherTRPG/templates/sheets/actor/monster-sheet.hbs',
         'systems/TheWitcherTRPG/templates/sheets/actor/loot-sheet.hbs',
 
@@ -26,7 +25,7 @@ export async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/tab-inventory-runes-glyphs.hbs',
         'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/inventory-items-summary.hbs',
 
-        'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/tab-magic-spells.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs',
 
         'systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs',
 
@@ -38,6 +37,8 @@ export async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/partials/monster/monster-custom-skill-display.hbs',
         'systems/TheWitcherTRPG/templates/partials/monster/monster-profession-skill-display.hbs',
         'systems/TheWitcherTRPG/templates/sheets/actor/configuration/partials/skillConfiguration.hbs',
+
+        'systems/TheWitcherTRPG/templates/sheets/actor/configuration/app/partials/stats-block.hbs',
 
         'systems/TheWitcherTRPG/templates/sheets/actor/partials/loot/loot-item-display.hbs',
 

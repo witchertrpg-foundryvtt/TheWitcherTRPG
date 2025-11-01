@@ -1,0 +1,27 @@
+.application.sheet.witcher.actor:not(.extended-sheet) {
+    .window-content {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        grid-template-rows: 130px 70px 1fr;
+        gap: 10px 30px;
+
+        .char-sidebar {
+            grid-row: 1 / span 3;
+        }
+
+        .char-header-center {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .sheet-tabs.tabs {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .tab {
+            grid-column: 2;
+            grid-row: 3;
+        }
+    }
+}

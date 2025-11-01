@@ -1,19 +1,23 @@
 <header class="item-header">
-    <h1 class="itemname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
-    {{#if showConfig}}
-        <a class="configure-item" data-action="configureItem"><i class="fas fa-gear"></i></a>
-    {{/if}}
+    <h1 class="itemname">
+        <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+        {{#if showConfig}}
+            <a class="configure-item" data-action="configureItem"><i class="fas fa-gear"></i></a>
+        {{/if}}
+    </h1>
     <general>
         <itemimage>
             {{#if (and (includes (getSetting "clickableImageItemTypes") item.type)  (or (window "game" "user" "isGM") (eq (getSetting "clickableImageCheckboxForGMOnly") false)) )}}
-                <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+                <img class="profile-img" src="{{item.img}}" data-action="editImage" data-edit="img"
+                    title="{{item.name}}" />
                 <div>
                     <input type="checkbox" id="clickable-image-{{item._id}}" name="system.clickableImage"
                         {{checked item.system.clickableImage}}>
                     <label for="clickable-image-{{item._id}}">{{localize "WITCHER.Item.ClickableImage"}}</label>
                 </div>
             {{else}}
-                <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+                <img class="profile-img" src="{{item.img}}" data-action="editImage" data-edit="img"
+                    title="{{item.name}}" />
             {{/if}}
         </itemimage>
 

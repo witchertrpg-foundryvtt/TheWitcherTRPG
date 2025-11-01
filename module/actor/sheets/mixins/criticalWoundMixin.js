@@ -32,6 +32,7 @@ export let criticalWoundMixin = {
     },
 
     criticalWoundListener(html) {
+        html = $(html);
         html.find(".add-crit").on("click", this._onCriticalWoundAdd.bind(this));
         html.find(".delete-crit").on("click", this._onCriticalWoundRemove.bind(this));
         html.find('.critwound-display').on('click', this._onCritWoundDisplayInfo.bind(this));

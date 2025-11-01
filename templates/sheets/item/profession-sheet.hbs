@@ -1,11 +1,23 @@
-<form class="{{ cssClass }}" autocomplete="off">
-    {{#if showConfig}}
-        <a class="configure-item"><i class="fas fa-gear"></i></a>
-    {{/if}}
+<section class="scrollable">
     <header class="sheet-header">
-        <img class="profile-img" src="{{ item.img }}" data-edit="img" title="{{ item.name }}" />
-        <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{ item.name }}" placeholder="Name" /></h1>
+        <h1 class="item-name">
+            <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+            {{#if showConfig}}
+                <a class="configure-item" data-action="configureItem"><i class="fas fa-gear"></i></a>
+            {{/if}}
+        </h1>
+        <div class="flex">
+            <img class="profile-img" src="{{ item.img }}" data-edit="img" title="{{ item.name }}" />
+            <table class="information">
+                <tr class="item-header-tablerow">
+                    <td>
+                        <label>{{localize "WITCHER.Item.SourceBook"}}</label>
+                    </td>
+                    <td>
+                        <input type="text" name="system.sourcebook" value="{{item.system.sourcebook}}" />
+                    </td>
+                </tr>
+            </table>
         </div>
     </header>
     <div class="profession-layout">
@@ -161,7 +173,6 @@
         </div>
     </div>
     <div>
-        {{log this}}
         {{formGroup systemFields.professionSkills value=item.system.professionSkills options=professionSkills localize=true}}
     </div>
-</form>
+</section>

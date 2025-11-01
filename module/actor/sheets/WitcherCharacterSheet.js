@@ -4,6 +4,9 @@ import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 import { alchemyMixin } from './mixins/alchemyMixin.js';
 import RewardsSheet from '../rewardsSheet.js';
+import WitcherModifiersConfiguration from '../../actor/sheets/configurations/WitcherModifiersConfiguration.js';
+
+const DialogV2 = foundry.applications.api.DialogV2;
 
 export default class WitcherCharacterSheet extends WitcherActorSheet {
     uniqueTypes = ['profession', 'race', 'homeland'];
@@ -11,31 +14,97 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     rewards = new RewardsSheet({ document: this.actor });
 
     /** @override */
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['witcher', 'sheet', 'actor'],
-            width: 1120,
-            height: 600,
-            template: 'systems/TheWitcherTRPG/templates/sheets/actor/actor-sheet.hbs',
-            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }],
-            scrollY: ['.item-list']
-        });
-    }
+    static DEFAULT_OPTIONS = {
+        window: {
+            resizable: true
+        },
+        position: {
+            width: 800
+        },
+        classes: ['witcher', 'sheet', 'actor'],
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false
+        },
+        actions: {
+            openAttributeDialog: this.#openAttributeDialog,
+            openDerivedDialog: this.#openDerivedDialog,
+            openModifiers: this.#openModifiers,
+        },
+        dragDrop: [{ dragSelector: '.item-list', dropSelector: null }]
+    };
+
+    static PARTS = {
+        sidebar: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/sidebar.hbs',
+        },
+        header: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character-header.hbs'
+        },
+        tabs: {
+            // Foundry-provided generic template
+            template: 'templates/generic/tab-navigation.hbs'
+        },
+        stats: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-stats.hbs',
+            scrollable: ['']
+        },
+        skills: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-skills.hbs',
+            scrollable: ['']
+        },
+        profession: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-profession.hbs',
+            scrollable: ['']
+        },
+        inventory: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-inventory.hbs',
+            scrollable: ['']
+        },
+        magic: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-magic.hbs',
+            scrollable: ['']
+        },
+        background: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-background.hbs',
+            scrollable: ['']
+        },
+        effects: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/tab-effects.hbs',
+            scrollable: ['']
+        }
+    };
+
+    static TABS = {
+        primary: {
+            tabs: [
+                { id: 'stats', cssClass: 'stats' },
+                { id: 'skills', cssClass: 'skills' },
+                { id: 'profession', cssClass: 'profession' },
+                { id: 'inventory', cssClass: 'inventory' },
+                { id: 'magic', cssClass: 'magic' },
+                { id: 'background', cssClass: 'background' },
+                { id: 'effects', cssClass: 'effects' }
+            ],
+            initial: 'stats',
+            labelPrefix: 'WITCHER.Actor.tabs'
+        }
+    };
 
     activateListeners(html) {
         super.activateListeners(html);
+        let jquery = $(html);
+        jquery.find('.alchemy-potion').on('click', this._alchemyCraft.bind(this));
+        jquery.find('.crafting-craft').on('click', this._craftingCraft.bind(this));
+        jquery.find('.item-repair').on('click', this._repairItem.bind(this));
+        jquery.find('.manualIpReward').on('click', this._addIpReward.bind(this));
+        jquery.find('.saveIpSpending').on('click', this._saveIpSpending.bind(this));
 
-        html.find('.alchemy-potion').on('click', this._alchemyCraft.bind(this));
-        html.find('.crafting-craft').on('click', this._craftingCraft.bind(this));
-        html.find('.item-repair').on('click', this._repairItem.bind(this));
-        html.find('.manualIpReward').on('click', this._addIpReward.bind(this));
-        html.find('.saveIpSpending').on('click', this._saveIpSpending.bind(this));
-
-        html.find('.open-rewards').on('click', this._renderRewards.bind(this));
+        jquery.find('.open-rewards').on('click', this._renderRewards.bind(this));
     }
 
-    getData() {
-        const context = super.getData();
+    async _prepareContext(options) {
+        let context = await super._prepareContext(options);
 
         this._prepareCharacterData(context);
         this._prepareDiagramFormulas(context);
@@ -359,6 +428,22 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
 
     async _renderRewards() {
         this.rewards?.render(true);
+    }
+
+    static async #openAttributeDialog() {}
+
+    static async #openDerivedDialog() {}
+
+    static async #openModifiers(_, target) {
+        _.preventDefault();
+        const type = target.dataset.type;
+        const skillKey = target.dataset.skillKey;
+
+        new WitcherModifiersConfiguration({
+            document: this.document,
+            skillKey: skillKey,
+            type: type
+        })?.render(true);
     }
 }
 

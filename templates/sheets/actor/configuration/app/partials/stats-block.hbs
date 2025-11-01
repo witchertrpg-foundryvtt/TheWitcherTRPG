@@ -1,0 +1,31 @@
+{{log this}}
+{{#each stats as |details stat|}}
+    {{#unless (eq (localize details.label) (localize 'WITCHER.Actor.Stat.Toxicity'))}}
+        <details>
+            <summary>
+                <span>{{localize details.label}}</span>
+                <input class='header-stat stat-max' name='system.stats.{{stat}}.max' type='number'
+                    value='{{details.max}}' placeholder='0' data-dtype='Number' />
+            </summary>
+            {{#if details.modifiers}}
+                <div class='stat-modifiers'>
+                    {{#each details.modifiers as |modifier value|}}
+                        <div class='list-modifiers' data-id='{{modifier.id}}'>
+                            <input class='medium list-mod-edit' data-field='name' type='text'
+                                value='{{modifier.name}}' />
+                            <input class='small list-mod-edit' data-field='value' type='number'
+                                value='{{modifier.value}}' />
+                            <a class='delete-stat'><i class='fas fa-trash-alt' data-id='{{modifier.id}}'></i></a>
+                        </div>
+                    {{/each}}
+                </div>
+            {{/if}}
+        </details>
+    {{/unless}}
+{{/each}}
+
+{{#if reputation}}
+    <span>{{localize 'WITCHER.Reputation'}}</span>
+    <input class='header-stat stat-max' name='system.reputation.max' type='number' value='{{reputation.max}}'
+        placeholder='0' data-dtype='Number' />
+{{/if}}

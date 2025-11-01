@@ -12,6 +12,9 @@ import { activeEffectMixin } from './mixins/activeEffectMixin.js';
 import { customSkillMixin } from './mixins/customSkillMixin.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets;
+
 Array.prototype.sum = function (prop) {
     var total = 0;
     for (var i = 0; i < this.length; i++) {
@@ -34,7 +37,7 @@ Array.prototype.cost = function () {
     return Math.ceil(total);
 };
 
-export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
+export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     statMap = CONFIG.WITCHER.statMap;
     skillMap = CONFIG.WITCHER.skillMap;
 
@@ -43,9 +46,19 @@ export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
     //overwrite in sub-classes
     configuration = undefined;
 
+    /** @inheritdoc */
+    _canDragStart(selector) {
+        return true;
+    }
+
+    /** @inheritdoc */
+    _canDragDrop(selector) {
+        return true;
+    }
+
     /** @override */
-    getData() {
-        const context = super.getData();
+    async _prepareContext(options) {
+        let context = await super._prepareContext(options);
 
         context.useAdrenaline = game.settings.get('TheWitcherTRPG', 'useOptionalAdrenaline');
         context.displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
@@ -55,8 +68,8 @@ export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
         context.config = CONFIG.WITCHER;
         CONFIG.Combat.initiative.formula = '1d10 + @stats.ref.current' + (context.displayRollDetails ? '[REF]' : '');
 
-        const actorData = this.actor.toObject(false);
-        context.system = actorData.system;
+        context.actor = this.actor;
+        context.system = context.actor.system;
         context.items = context.actor.items.filter(i => !i.system.isStored).sort((a, b) => a.sort - b.sort);
 
         this._prepareGeneralInformation(context);
@@ -78,16 +91,6 @@ export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
 
         context.isGM = game.user.isGM;
         return context;
-    }
-
-    /** @inheritdoc */
-    _canDragStart(selector) {
-        return true;
-    }
-
-    /** @inheritdoc */
-    _canDragDrop(selector) {
-        return true;
     }
 
     async _renderConfigureDialog() {
@@ -222,20 +225,24 @@ export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
         });
     }
 
+    _onRender(context, options) {
+        super._onRender(context, options);
+
+        this.activateListeners(this.element);
+    }
+
     activateListeners(html) {
-        super.activateListeners(html);
+        let jquery = $(html);
+        jquery.find('.life-event-display').on('click', this._onLifeEventDisplay.bind(this));
 
-        html.find('.life-event-display').on('click', this._onLifeEventDisplay.bind(this));
+        jquery.find('.init-roll').on('click', this._onInitRoll.bind(this));
+        jquery.find('.crit-roll').on('click', this._onCritRoll.bind(this));
+        jquery.find('.recover-sta').on('click', this._onRecoverSta.bind(this));
+        jquery.find('.verbal-button').on('click', this._onVerbalCombat.bind(this));
 
-        html.find('.init-roll').on('click', this._onInitRoll.bind(this));
-        html.find('.crit-roll').on('click', this._onCritRoll.bind(this));
-        html.find('.recover-sta').on('click', this._onRecoverSta.bind(this));
-        html.find('.defense-roll').on('click', this._onDefenseRoll.bind(this));
-        html.find('.verbal-button').on('click', this._onVerbalCombat.bind(this));
+        jquery.find('input').focusin(event => event.currentTarget.select());
 
-        html.find('input').focusin(ev => this._onFocusIn(ev));
-
-        html.find('.configure-actor').on('click', this._renderConfigureDialog.bind(this));
+        jquery.find('.configure-actor').on('click', this._renderConfigureDialog.bind(this));
 
         //mixins
         this.statListener(html);
@@ -243,7 +250,7 @@ export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
         this.skillModifierListener(html);
         this.customSkillListener(html);
 
-        this.itemListener(html[0]);
+        this.itemListener(html);
         this.activeEffectListener(html);
 
         this.deathSaveListener(html);
@@ -251,7 +258,7 @@ export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
         this.noteListener(html);
         this.healListeners(html);
 
-        this.itemContextMenu(html[0]);
+        this.itemContextMenu(html);
     }
 
     async _onInitRoll(event) {
@@ -300,24 +307,17 @@ export default class WitcherActorSheet extends foundry.appv1.sheets.ActorSheet {
         }).render({ force: true });
     }
 
-    async _onDefenseRoll(event) {
-        ExecuteDefense(this.actor);
-    }
-
     async _onVerbalCombat() {
         this.actor.verbalCombat();
-    }
-
-    _onFocusIn(event) {
-        event.currentTarget.select();
     }
 
     _onLifeEventDisplay(event) {
         event.preventDefault();
         let section = event.currentTarget.closest('.life-events-card');
         this.actor.update({
-            [`system.general.lifeEvents.${section.dataset.event}.isOpened`]:
-                !this.actor.system.general.lifeEvents[section.dataset.event].isOpened
+            [`system.general.lifeEvents.${section.dataset.event}.isOpened`]: !this.actor.system.general.lifeEvents.find(
+                event => event.key === section.dataset.event
+            ).isOpened
         });
     }
 }

@@ -1,31 +1,31 @@
-<form class="{{cssClass}}" autocomplete="off">
+<section class="scrollable">
     {{>"systems/TheWitcherTRPG/templates/partials/item-header.hbs"}}
-    <div class="item-options">
-        <div class="item-column item-selector">
-            <label>{{localize "WITCHER.Type"}}</label>
-            <select name="system.type" id="type-select">
-                {{selectOptions selects.type selected=item.system.type localize=true}}
-            </select>
-        </div>
-        <div class="item-column">
-            <div class="item-row">
-                <div class="item-second-column">
-                    <label>{{localize "WITCHER.Item.Short.Availability"}}</label>
-                    <select name="system.avail">
-                        {{selectOptions config.Availability selected=item.system.avail localize=true}}
-                    </select>
-                </div>
-                <div class="item-second-column">
-                    <div>{{localize "WITCHER.Valuable.Conceal"}}</div>
-                    <select name="system.conceal">
-                        {{selectOptions config.Concealment selected=item.system.conceal localize=true}}
-                    </select>
-                </div>
-            </div>
-        </div>
+    <table class="item-table">
+        <tr>
+            <th>{{localize "WITCHER.Type"}}</th>
+            <th>{{localize "WITCHER.Item.Short.Availability"}}</th>
+            <th>{{localize "WITCHER.Valuable.Conceal"}}</th>
+        </tr>
+        <tr>
+            <td>
+                <select name="system.type" id="type-select">
+                    {{selectOptions selects.type selected=item.system.type localize=true}}
+                </select>
+            </td>
+            <td>
+                <select name="system.avail">
+                    {{selectOptions config.Availability selected=item.system.avail localize=true}}
+                </select>
+            </td>
+            <td>
+                <select name="system.conceal">
+                    {{selectOptions config.Concealment selected=item.system.conceal localize=true}}
+                </select>
+            </td>
+        </tr>
+    </table>
+    <div class="grid">
+        <label>{{localize "WITCHER.Item.Description"}}</label>
+        <textarea rows="5" name="system.description">{{item.system.description}}</textarea>
     </div>
-    {{!-- effect Tab --}}
-    <div class="description">
-        <textarea rows=5 name="system.description">{{item.system.description}}</textarea>
-    </div>
-</form>
+</section>

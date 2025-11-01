@@ -20,17 +20,30 @@
 
 /* Navigation tabs */
 .witcher.sheet nav.sheet-tabs {
-    height: 32px;
-    flex: 0 0 32px;
-    margin: 4px 0;
-    border-top: 1px solid #06171e;
-    border-bottom: 1px solid #06171e;
-    background-color: #1c6888;
+    height: fit-content;
+    padding: 10px;
     text-align: center;
+    background-color: light-dark(#22222210, #e7d1b110);
+    border: 1px solid light-dark(#22222210, #e7d1b110);
+    border-radius: 10px;
 }
 
-.witcher.sheet nav.sheet-tabs a {
-    color: white;
+.witcher.sheet nav.sheet-tabs {
+    a {
+        color: light-dark(black, white);
+        text-shadow: none;
+        padding: 0px 5px;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+    }
+
+    a:hover {
+        background-color: light-dark(#22222210, #e7d1b110);
+    }
+
+    a.active {
+        background-color: light-dark(#22222240, #e7d1b140);
+    }
 }
 
 /* Sheet min widths */
@@ -171,6 +184,7 @@ input.damage-info {
 input.reliable-info,
 input.item-quantity {
     background-color: transparent;
+    padding: 0;
     max-width: 25px;
     text-align: center;
     transition: all 0.3 ease;
@@ -247,22 +261,25 @@ input.weight-data {
 }
 
 .magic-info {
-    width: 250px;
-    background-color: lightslategray;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: light-dark(#22222210, #e7d1b110);
+    border: 1px solid light-dark(#22222240, #e7d1b140);
     border-radius: 10px;
     padding: 10px;
     color: white;
-}
+    flex: 1;
 
-input.focus-value {
-    background-color: lightsteelblue;
-    width: 25px;
-    text-align: center;
-}
+    .focus-item {
+        display: flex;
+        gap: 5px;
+    }
 
-input.focus {
-    background-color: lightsteelblue;
+    input.focus-value {
+        width: 5ch;
+        text-align: center;
+    }
 }
 
 .spell-section {
@@ -306,7 +323,8 @@ input.focus {
 }
 
 input.small {
-    width: 30px;
+    width: 3ch;
+    text-align: center;
 }
 
 input.small-medium {
@@ -401,4 +419,27 @@ input.skill-value {
 .rotate-180 {
     transform: rotate(180deg);
     transition: all 0.3s ease;
+}
+
+.sheet-header {
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .item-name {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        padding-bottom: 5px;
+        margin: 0;
+
+        input {
+            height: auto;
+        }
+
+        .configure-item {
+            font-size: 16px;
+        }
+    }
 }

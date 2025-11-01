@@ -1,0 +1,168 @@
+<div class='char-sidebar'>
+    <div class="char-image">
+        <img class='witcher-actor-img' src='{{actor.img}}' data-action="editImage" data-edit='img' title='{{actor.name}}' />
+        <div class='wound-state' data-tooltip="{{localize 'WITCHER.Actor.woundState'}}">
+            {{#if (gte system.derivedStats.hp.value system.derivedStats.hp.unmodifiedMax)}}
+                <i class='fa-solid fa-heart' style='color: green;'></i>
+            {{else if (gte system.derivedStats.hp.value system.coreStats.woundTreshold.current)}}
+                <i class='fa-solid fa-heart-crack' style='color: green;'></i>
+            {{else}}
+                <i class='fa-solid fa-heart-crack' style='color: orange;'></i>
+            {{/if}}
+        </div>
+    </div>
+    <div class='status-section'>
+        <div class='progress-container'>
+            <h3 class="progress-header hp">{{localize 'WITCHER.Actor.Hp'}}</h3>
+            <progress class='hp-bar' value='{{system.derivedStats.hp.value}}'
+                max='{{system.derivedStats.hp.unmodifiedMax}}'></progress>
+            <h3 class='progress-text'>
+                <input class='progress-input' name='system.derivedStats.hp.value'
+                    type='number' value='{{system.derivedStats.hp.value}}' max='99' placeholder='0'
+                    data-dtype='Number' />
+                <span>|</span>
+                <span class='progress-total'>{{system.derivedStats.hp.max}}</span>
+            </h3>
+        </div>
+        <div class='progress-container'>
+            <h3 class="progress-header stamina">{{localize 'WITCHER.Actor.Stamina'}}</h3>
+            <progress class='sta-bar' value='{{system.derivedStats.sta.value}}'
+                max='{{system.derivedStats.sta.max}}'></progress>
+            <h3 class='progress-text'>
+                <input class='progress-input' name='system.derivedStats.sta.value'
+                    type='number' value='{{system.derivedStats.sta.value}}' max='99' placeholder='0'
+                    data-dtype='Number' />
+                <span>|</span>
+                <span class='progress-total'>{{system.derivedStats.sta.max}}</span>
+            </h3>
+        </div>
+        <div class='progress-container'>
+            <h3 class="progress-header toxicity">{{localize 'WITCHER.Actor.Stat.Toxicity'}}</h3>
+            <progress class='toxicity-bar' value='{{system.stats.toxicity.current}}'
+                max='{{system.stats.toxicity.max}}'></progress>
+            <h3 class='progress-text'>
+                <input class='progress-input' name='system.stats.toxicity.current'
+                    type='number' value='{{system.stats.toxicity.current}}' max='{{system.stats.toxicity.max}}'
+                    placeholder='0' data-dtype='Number' />
+                <span>|</span>
+                <span class='progress-total'>{{system.stats.toxicity.max}}</span>
+            </h3>
+        </div>
+        <div class='progress-container'>
+            <h3 class="progress-header focus">{{localize system.derivedStats.focus.label}}</h3>
+            <progress class='focus-bar' value='{{system.derivedStats.focus.value}}'
+                max='{{system.derivedStats.focus.max}}'></progress>
+            <h3 class='progress-text'>
+                <input class='progress-input' name='system.derivedStats.focus.value'
+                    type='number' value='{{system.derivedStats.focus.value}}' max='{{system.derivedStats.focus.max}}'
+                    placeholder='0' data-dtype='Number' />
+                <span>|</span>
+                <span class='progress-total'>{{system.derivedStats.focus.max}}</span>
+            </h3>
+        </div>
+    </div>
+    <div class="optional-stats-section">
+        <div class='optional-stat vigor-display'>
+            <div class='optional-name'>
+                <i class='fa-solid fa-circle-notch optional-icon'></i>
+                <span class=''>{{localize 'WITCHER.Actor.DerStat.Vigor'}}</span>
+            </div>
+            <div class='optional-info'>
+                <h3>{{system.derivedStats.vigor.max}}</h3>
+            </div>
+        </div>
+        <div class='optional-stat shield-display'>
+            <div class='optional-name'>
+                <i class='fa-solid fa-shield-halved'></i>
+                <span class=''>{{localize 'WITCHER.Actor.Shield'}}</span>
+            </div>
+            <div class='optional-info'>
+                <h3>
+                    <input class='small' type='number' name='system.derivedStats.shield.value'
+                        value='{{system.derivedStats.shield.value}}' data-dtype='Number' />
+                </h3>
+            </div>
+        </div>
+        {{#if useVerbalCombat}}
+            <div class='optional-stat resolve-display'>
+                <div class='optional-name'>
+                    <i class='fa-solid fa-comment'></i>
+                    <span class=''>{{localize 'WITCHER.Actor.DerStat.Resolve'}}</span>
+                </div>
+                <div class='optional-info'>
+                    <h3>
+                        <input class='small' type='number' name='system.derivedStats.resolve.value'
+                            value='{{system.derivedStats.resolve.value}}' data-dtype='Number' />
+                    </h3>
+                    <h3>{{system.derivedStats.resolve.max}}</h3>
+                </div>
+            </div>
+        {{/if}}
+        <div class='optional-stat luck-display'>
+            <div class='optional-name'>
+                <i class='fa-solid fa-clover'></i>
+                <span class=''>{{localize 'WITCHER.StLuck'}}</span>
+            </div>
+            <div class='optional-info'>
+                <a class='optional-buttons luck-minus'><i class='fa-solid fa-minus'></i></a>
+                <h3>
+                    <input class='small' type='number' name='system.stats.luck.total' value='{{system.stats.luck.total}}' data-dtype='Number' />
+                </h3>
+                <a class='optional-buttons luck-reset'><i class='fa-solid fa-rotate-left'></i></a>
+            </div>
+        </div>
+        {{#if useAdrenaline}}
+            <div class='optional-stat adrenaline-display'>
+                <div class='optional-name'>
+                    <i class='fa-solid fa-burst'></i>
+                    <span class=''>{{localize 'WITCHER.Actor.Adrenaline'}}</span>
+                </div>
+                <div class='optional-info'>
+                    <a class='optional-buttons adrenaline-minus'><i class='fa-solid fa-minus'></i></a>
+                    <h3>
+                        <input class='small' type='number' name='system.adrenaline.current'
+                            value='{{system.adrenaline.current}}' data-dtype='Number' />
+                    </h3>
+                    <a class='optional-buttons adrenaline-plus'><i class='fa-solid fa-plus'></i></a>
+                </div>
+            </div>
+        {{/if}}
+        <div class='char-resource-modifier'>
+            <div class='resource-title'>
+                {{#if system.derivedStats.modifiersIsOpened}}
+                    <a class='derived-modifier-display'>
+                        <span>{{localize 'WITCHER.Resources.modifiers'}}</span><i class='fas fa-chevron-down'></i>
+                    </a>
+                {{else}}
+                    <a class='derived-modifier-display'>
+                        <span>{{localize 'WITCHER.Resources.modifiers'}}</span><i class='fas fa-chevron-right'></i>
+                    </a>
+                {{/if}}
+            </div>
+            <div class='resource-modifiers'>
+                {{#if system.derivedStats.modifiersIsOpened}}
+                    {{#each system.derivedStats as |details derivedStats|}}
+                        {{#unless (eq derivedStats 'vigor')}}
+                            {{#unless (eq derivedStats 'modifiersIsOpened')}}
+                                <div class='stat-display' data-type='derivedStat' data-stat='{{derivedStats}}'>
+                                    <div class='flex'><label>{{localize details.label}} </label> <a
+                                            class='add-modifier'><i class='fas fa-plus'></i></a></div>
+                                    {{#each details.modifiers as |modifier value|}}
+                                        <div class='list-modifiers' data-id='{{modifier.id}}'>
+                                            <input class='medium list-mod-edit' data-field='name' type='text'
+                                                value='{{modifier.name}}' />
+                                            <input class='small list-mod-edit' data-field='value' type='number'
+                                                value='{{modifier.value}}' />
+                                            <a class='delete-stat'><i class='fas fa-trash-alt'
+                                                    data-id='{{modifier.id}}'></i></a>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            {{/unless}}
+                        {{/unless}}
+                    {{/each}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

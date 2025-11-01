@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<section class="scrollable">
     {{>"systems/TheWitcherTRPG/templates/partials/spell-header.hbs"}}
     <table class="item-table">
         <tr>
@@ -14,8 +14,7 @@
                 <th>{{localize "WITCHER.Spell.Defence"}}</th>
             {{/unless}}
             {{#if (eq item.system.class "Witcher")}}
-                <th>{{localize "WITCHER.Spell.Sign"}} {{localize "WITCHER.Spell.Type"}}
-                <th>
+                <th>{{localize "WITCHER.Spell.Sign"}} {{localize "WITCHER.Spell.Type"}}</th>
             {{/if}}
         </tr>
         <tr>
@@ -39,12 +38,16 @@
             {{/if}}
         </tr>
     </table>
-    <label>{{localize "WITCHER.Item.Effect"}}</label>
-    <textarea rows="10" name="system.effect">{{item.system.effect}}</textarea>
-    {{#if (eq item.system.class "MagicalGift")}}
-        <label>{{localize "WITCHER.Spell.SideEffect"}}</label>
-        <textarea rows="5" name="system.sideEffect">{{item.system.sideEffect}}</textarea>
-    {{/if}}
+    <div class="grid">
+        <label>{{localize "WITCHER.Item.Effect"}}</label>
+        <textarea rows="10" name="system.effect">{{item.system.effect}}</textarea>
+    </div>
+    <div class="grid">
+        {{#if (eq item.system.class "MagicalGift")}}
+            <label>{{localize "WITCHER.Spell.SideEffect"}}</label>
+            <textarea rows="5" name="system.sideEffect">{{item.system.sideEffect}}</textarea>
+        {{/if}}
+    </div>
     <div class="flex">
         <div class="spell-template-damage">
             <div>
@@ -118,4 +121,4 @@
             </tr>
         </table>
     </div>
-</form>
+</section>

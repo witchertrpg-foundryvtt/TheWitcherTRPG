@@ -1,29 +1,25 @@
-import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
+import WitcherItemSheet from './WitcherItemSheet.js';
 import WitcherProfessionConfigurationSheet from './configurations/WitcherProfessionConfigurationSheet.js';
 
-export default class WitcheProfessionSheet extends WitcherItemSheetV1 {
-    /** @override */
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['witcher', 'sheet', 'item'],
-            width: 800,
-            height: 480,
-            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'data' }],
-            dragDrop: [
-                {
-                    dragSelector: '.items-list .item',
-                    dropSelector: null
-                }
-            ]
-        });
-    }
+export default class WitcheProfessionSheet extends WitcherItemSheet {
+    static DEFAULT_OPTIONS = {
+        position: {
+            width: 600,
+        },
+    };
 
     configuration = new WitcherProfessionConfigurationSheet({ document: this.item });
 
-    /** @override */
-    getData() {
-        const context = super.getData();
+    static PARTS = {
+        main: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/profession-sheet.hbs`,
+            scrollable: ['']
+        }
+    };
 
+    /** @override */
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
         context.professionSkills = Object.values(CONFIG.WITCHER.skillMap).map(skill => {
             return { value: skill.name, label: skill.label };
         });

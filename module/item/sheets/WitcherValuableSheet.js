@@ -1,16 +1,22 @@
-import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
+import WitcherItemSheet from './WitcherItemSheet.js';
 import WitcherConsumableConfigurationSheet from './configurations/WitcherConsumableConfigurationSheet.js';
 
-export default class WitcherValuableSheet extends WitcherItemSheetV1 {
-    configuration = new WitcherConsumableConfigurationSheet({ document: this.item });
+export default class WitcherValuableSheet extends WitcherItemSheet {
+    configuration = new WitcherConsumableConfigurationSheet({ document: this.document });
+
+    static PARTS = {
+        main: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/valuable-sheet.hbs`,
+            scrollable: ['']
+        }
+    };
 
     /** @override */
-    getData() {
-        const data = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        context.selects = this.createSelects();
 
-        data.selects = this.createSelects();
-
-        return data;
+        return context;
     }
 
     createSelects() {

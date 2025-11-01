@@ -1,111 +1,128 @@
-<div class="tab body background">
-    <div class="background-info">
-        <div class="background scrollable general-section">
-            <div class="general-homeland">
-                {{localize "WITCHER.Homeland"}}
-                {{#unless homeland}}
-                    <div class="homeland-select">
-                        <select name="system.general.homeland.value" class="details" id="homeland-select">
-                            {{selectOptions config.homelands selected=system.general.homeland.value localize=true}}
-                        </select>
-                        {{#if (eq system.general.homeland.value "other")}}
-                            <input class="details hometailOther" name="system.general.homeland.otherValue" type="text"
-                                value="{{system.general.homeland.otherValue}}" />
-                        {{/if}}
-                    </div>
-                {{/unless}}
-                {{#if homeland}}
-                    <div class="homeland-select">
-                        <label> {{localize (lookup config.homelands homeland.system.value)}} </label>
-                        {{#if (eq homeland.system.value "other")}}
-                            <label class="details hometailOther">{{homeland.system.otherValue}}</label>
-                        {{/if}}
-                    </div>
-                {{/if}}
-            </div>
-            {{#each system.general.details as |details dt|}}
-                <div class="general-info">
-                    {{localize details.label}}
-                    <input class="details {{dt}}" name="system.general.details.{{dt}}.value" type="text"
-                        value="{{details.value}}" />
-                </div>
-            {{/each}}
-        </div>
-        <div class="background-description">
-            {{editor system.general.background.value target="system.general.background.value" button=true editable=editable}}
-        </div>
-    </div>
-
-    <div class="flexcol background">
-        <div class="scrollable" id="lifeEvents">
-            <div class="life-events-section">
-                <div class="life-events-header">
-                    <h2>{{localize "WITCHER.LifeEvents"}}</h2>
-                    <h2 class="life-events-decades"><input id="item-count" class="life-events-decades"
-                            name="system.lifeEventCounter" min="1" max="20" value="{{system.lifeEventCounter}}"
-                            type="number">/20</h2>
-                </div>
-                <div class="life-events">
-                    {{#eachLimit system.general.lifeEvents system.lifeEventCounter}}
-                        <div class="tablerow life-events-card {{this.lifeEvent.key}}"
-                            data-event="{{this.lifeEvent.key}}">
-                            <div class="life-events-card-header">
-                                <h4>{{this.lifeEvent.key}}</h4>
-                                {{#unless this.lifeEvent.isOpened}}
-                                    <h4>{{this.lifeEvent.value}}</h4>
-                                {{/unless}}
-                                {{#if this.lifeEvent.isOpened}}
-                                    <input class="input life-events-details" id="life-events-input"
-                                        name="system.general.lifeEvents.{{this.lifeEvent.key}}.value" type="text"
-                                        value="{{this.lifeEvent.value}}" />
-                                {{/if}}
-                                <div class="life-events-controls">
-                                    {{#unless this.lifeEvent.isOpened}}
-                                        <a class="life-event-display"><i class="fas fa-chevron-down"></i></a>
-                                    {{/unless}}
-                                    {{#if this.lifeEvent.isOpened}}
-                                        <a class="life-event-display"><i class="fas fa-chevron-up"></i></a>
-                                    {{/if}}
-                                </div>
-                            </div>
-                            {{#if this.lifeEvent.isOpened}}
-                                <div>
-                                    <textarea class="life-events-details"
-                                        name="system.general.lifeEvents.{{this.lifeEvent.key}}.details">{{this.lifeEvent.details}}</textarea>
-                                </div>
+<section class="tab {{tabs.background.cssClass}} scrollable standard-form" data-group="primary" data-tab="background">
+    <div class="tab body background">
+        <div class="background-info">
+            <div class="background scrollable general-section">
+                <div class="general-homeland">
+                    {{localize "WITCHER.Homeland"}}
+                    {{#unless homeland}}
+                        <div class="homeland-select">
+                            <select name="system.general.homeland.value" class="details" id="homeland-select">
+                                {{selectOptions config.homelands selected=system.general.homeland.value localize=true}}
+                            </select>
+                            {{#if (eq system.general.homeland.value "other")}}
+                                <input class="details hometailOther" name="system.general.homeland.otherValue"
+                                    type="text" value="{{system.general.homeland.otherValue}}" />
                             {{/if}}
                         </div>
-                    {{/eachLimit}}
+                    {{/unless}}
+                    {{#if homeland}}
+                        <div class="homeland-select">
+                            <label> {{localize (lookup config.homelands homeland.system.value)}} </label>
+                            {{#if (eq homeland.system.value "other")}}
+                                <label class="details hometailOther">{{homeland.system.otherValue}}</label>
+                            {{/if}}
+                        </div>
+                    {{/if}}
+                </div>
+                {{#each system.general.details as |details dt|}}
+                    <div class="general-info">
+                        {{localize details.label}}
+                        <input class="details {{dt}}" name="system.general.details.{{dt}}.value" type="text"
+                            value="{{details.value}}" />
+                    </div>
+                {{/each}}
+                <div class="general-info">
+                    {{localize 'WITCHER.Actor.Gender'}}
+                    <input class='details gender' name='system.gender' type='text' value='{{system.gender}}' placeholder='' />
+                </div>
+                <div class="general-info">
+                    {{localize 'WITCHER.Actor.Age'}}
+                    <input class='details age' name='system.general.age' type='number' value='{{system.general.age}}'
+                    placeholder='0' data-dtype='Number' />
+                </div>
+                <div class="general-info">
+                    {{localize 'WITCHER.character.socialStanding'}}
+                    <select name='system.general.socialStanding'>
+                        {{selectOptions config.socialStanding selected=system.general.socialStanding localize=true}}
+                    </select>
+                </div>
+            </div>
+            <div class="background-description">
+                {{editor system.general.background.value target="system.general.background.value" button=true editable=editable}}
+            </div>
+        </div>
+
+        <div class="flexcol background">
+            <div class="scrollable" id="lifeEvents">
+                <div class="life-events-section">
+                    <div class="life-events-header">
+                        <span>{{localize "WITCHER.LifeEvents"}}</span>
+                        <span class="life-events-decades"><input id="item-count" class="life-events-decades"
+                                name="system.lifeEventCounter" min="1" max="20" value="{{system.lifeEventCounter}}"
+                                type="number">/20</span>
+                    </div>
+                    <div class="life-events">
+                        {{#eachLimit system.general.lifeEvents system.lifeEventCounter}}
+                            <div class="tablerow life-events-card {{this.lifeEvent.key}}"
+                                data-event="{{this.lifeEvent.key}}">
+                                <div class="life-events-card-header">
+                                    <span>{{this.lifeEvent.key}}</span>
+                                    {{#unless this.lifeEvent.isOpened}}
+                                        <span>{{this.lifeEvent.value}}</span>
+                                    {{/unless}}
+                                    {{#if this.lifeEvent.isOpened}}
+                                        <input class="input life-events-details" id="life-events-input"
+                                            name="system.general.lifeEvents.{{this.lifeEvent.key}}.value" type="text"
+                                            value="{{this.lifeEvent.value}}" />
+                                    {{/if}}
+                                    <div class="life-events-controls">
+                                        {{#unless this.lifeEvent.isOpened}}
+                                            <a class="life-event-display"><i class="fas fa-chevron-down"></i></a>
+                                        {{/unless}}
+                                        {{#if this.lifeEvent.isOpened}}
+                                            <a class="life-event-display"><i class="fas fa-chevron-up"></i></a>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                {{#if this.lifeEvent.isOpened}}
+                                    <div>
+                                        <textarea class="life-events-details"
+                                            name="system.general.lifeEvents.{{this.lifeEvent.key}}.details">{{this.lifeEvent.details}}</textarea>
+                                    </div>
+                                {{/if}}
+                            </div>
+                        {{/eachLimit}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="notes-section">
-        <div class="notes-header">
-            <h2>{{localize "WITCHER.Notes"}}</h2>
-            <a class="add-item" data-itemType="note"><i class="fas fa-plus"></i></a>
-        </div>
-        <div class="character-notes">
-            {{#each oldNotes as |note id|}}
-                <div class="item bg-note" data-item-id="{{note._id}}">
-                    <div class="note-header">
-                        <input class="inline-edit" data-field="name" type="text" value="{{note.name}}"
-                            placeholder="name" />
-                        <a class="item-delete"><i class="fas fa-trash"></i></a>
+        <div class="notes-section">
+            <div class="notes-header">
+                <span>{{localize "WITCHER.Notes"}}</span>
+                <a class="add-item" data-itemType="note"><i class="fas fa-plus"></i></a>
+            </div>
+            <div class="character-notes">
+                {{#each oldNotes as |note id|}}
+                    <div class="item bg-note" data-item-id="{{note._id}}">
+                        <div class="note-header">
+                            <input class="inline-edit" data-field="name" type="text" value="{{note.name}}"
+                                placeholder="name" />
+                            <a class="item-delete"><i class="fas fa-trash"></i></a>
+                        </div>
+                        <textarea class="inline-edit" rows="5"
+                            data-field="system.description">{{system.description}}</textarea>
                     </div>
-                    <textarea class="inline-edit" rows="5"
-                        data-field="system.description">{{system.description}}</textarea>
-                </div>
-            {{/each}}
-            {{#each notes as |note|}}
-                <div class="item bg-note">
-                    <div class="flex">
-                        <input type="text" name="system.notes.{{@index}}.title" value="{{note.title}}" />
-                        <a class="delete-note" data-note-index="{{@index}}"><i class="fas fa-trash-alt"></i></a>
+                {{/each}}
+                {{#each notes as |note|}}
+                    <div class="item bg-note">
+                        <div class="flex">
+                            <input type="text" name="system.notes.{{@index}}.title" value="{{note.title}}" />
+                            <a class="delete-note" data-note-index="{{@index}}"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                        {{editor note.details target=(concat "system.notes." @index ".details") button=true }}
                     </div>
-                    {{editor note.details target=(concat "system.notes." @index ".details") button=true }}
-                </div>
-            {{/each}}
+                {{/each}}
+            </div>
         </div>
     </div>
-</div>
+</section>

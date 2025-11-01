@@ -1,9 +1,9 @@
 import WitcherMonsterConfigurationSheet from './configurations/WitcherMonsterConfigurationSheet.js';
-import WitcherActorSheet from './WitcherActorSheet.js';
+import WitcherActorSheetV1 from './WitcherActorSheetV1.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
-export default class WitcherMonsterSheet extends WitcherActorSheet {
+export default class WitcherMonsterSheet extends WitcherActorSheetV1 {
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ['witcher', 'sheet', 'actor'],

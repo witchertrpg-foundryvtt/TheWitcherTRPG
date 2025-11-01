@@ -170,3 +170,56 @@ input.profession-skill-input {
     margin: 5px !important;
     width: 97.5% !important;
 }
+
+.profession-flex {
+    margin-bottom: 20px;
+
+    .profession-card,
+    .profession-notes {
+        .editor {
+            overflow-y: auto;
+        }
+    }
+
+    .profession-card {
+        input,
+        select,
+        .editor {
+            color: #222;
+        }
+    }
+}
+
+.profession-path {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+    .blue-path,
+    .green-path,
+    .red-path {
+        width: 100%;
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+    }
+
+    .profession-card {
+        max-width: none;
+
+        input,
+        select,
+        .editor {
+            color: #222;
+        }
+
+        .editor {
+            overflow-y: auto;
+            min-height: 50px;
+            height: -webkit-fill-available;
+        }
+    }
+}

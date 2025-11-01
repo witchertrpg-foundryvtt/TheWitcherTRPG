@@ -1,17 +1,18 @@
-<div class="wrapper">
-    <div class="weight-value">
-        <span>{{totalWeight}}/{{system.coreStats.enc.current}} </span>
+<section class="tab {{tabs.inventory.cssClass}} scrollable standard-form" data-group="primary" data-tab="inventory">
+    <div class="carry-section">
+        <div class="carry-labels">
+            <span>Carry: {{totalWeight}}</span>
+            <span class="bulk-max">Max Carry: {{system.coreStats.enc.current}}</span>
+        </div>
+        <progress class="carry-bar {{#if (gte totalWeight system.coreStats.enc.current)}}overweight{{/if}}" value="{{totalWeight}}" max="{{system.coreStats.enc.current}}"></progress>
     </div>
-    {{#if (gte totalWeight system.coreStats.enc.current)}}
-        <div class="weightbar-overweight"></div>
-    {{else}}
-        <progress class="weightbar" value="{{totalWeight}}" max="{{system.coreStats.enc.current}}"></progress>
-    {{/if}}
-</div>
-<div class="flex">
-    <div class="weapon-section">
-        <div class="flex">
+
+    <div class="currency-section">
+        <span>
+            <span>{{localize 'WITCHER.Actor.rewards.currency'}}</span>
             <a class="open-rewards"><i class="fa-solid fa-clipboard-list"></i></a>
+        </span>
+        <div class="currency-list">
             <div class="currency">
                 <label>{{localize "WITCHER.Currency.bizant"}}</label>
                 <input class="small-medium" name="system.currency.bizant" type="number"
@@ -19,8 +20,8 @@
             </div>
             <div class="currency">
                 <label>{{localize "WITCHER.Currency.ducat"}}</label>
-                <input class="small-medium" name="system.currency.ducat" type="number" value="{{system.currency.ducat}}"
-                    placeholder="0" data-dtype="Number" />
+                <input class="small-medium" name="system.currency.ducat" type="number"
+                    value="{{system.currency.ducat}}" placeholder="0" data-dtype="Number" />
             </div>
             <div class="currency">
                 <label>{{localize "WITCHER.Currency.lintar"}}</label>
@@ -34,13 +35,13 @@
             </div>
             <div class="currency">
                 <label>{{localize "WITCHER.Currency.crown"}}</label>
-                <input class="small-medium" name="system.currency.crown" type="number" value="{{system.currency.crown}}"
-                    placeholder="0" data-dtype="Number" />
+                <input class="small-medium" name="system.currency.crown" type="number"
+                    value="{{system.currency.crown}}" placeholder="0" data-dtype="Number" />
             </div>
             <div class="currency">
                 <label>{{localize "WITCHER.Currency.oren"}}</label>
-                <input class="small-medium" name="system.currency.oren" type="number" value="{{system.currency.oren}}"
-                    placeholder="0" data-dtype="Number" />
+                <input class="small-medium" name="system.currency.oren" type="number"
+                    value="{{system.currency.oren}}" placeholder="0" data-dtype="Number" />
             </div>
             <div class="currency">
                 <label>{{localize "WITCHER.Currency.falsecoin"}}</label>
@@ -48,15 +49,16 @@
                     value="{{system.currency.falsecoin}}" placeholder="0" data-dtype="Number" />
             </div>
         </div>
+    </div>
 
+    <div class="weapon-section">
         {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/tab-inventory-weapons.hbs" weapons=weapons itemType='weapon' header=(localize "WITCHER.Inventory.Weapons") hasDamage=true hasReliability=true hasQuantity=true}}
     </div>
 
     <div class="armor-section">
         {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/tab-inventory-armors.hbs" armors=armors itemType='armor' header=(localize "WITCHER.Inventory.Armor") hasReliability=true}}
     </div>
-</div>
-<div class="flex">
+
     <div class="valuable-section">
         <div class="section-header valuable-header">
             <div></div>
@@ -235,4 +237,4 @@
             {{/if}}
         </div>
     </div>
-</div>
+</section>

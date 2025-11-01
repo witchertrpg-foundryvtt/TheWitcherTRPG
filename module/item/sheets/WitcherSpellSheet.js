@@ -1,22 +1,23 @@
 
 import WitcherSpellConfigurationSheet from "./configurations/WitcherSpellConfigurationSheet.js";
-import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
+import WitcherItemSheet from './WitcherItemSheet.js';
 
-export default class WitcherSpellSheet extends WitcherItemSheetV1 {
+export default class WitcherSpellSheet extends WitcherItemSheet {
     configuration = new WitcherSpellConfigurationSheet({ document: this.item });
 
-    /** @inheritdoc */
-    _canDragDrop(selector) {
-        return true;
-    }
+    static PARTS = {
+        main: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/spell-sheet.hbs`,
+            scrollable: ['']
+        }
+    };
 
     /** @override */
-    getData() {
-        const data = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        context.selects = this.createSelects();
 
-        data.selects = this.createSelects();
-
-        return data;
+        return context;
     }
 
     createSelects() {
@@ -59,14 +60,5 @@ export default class WitcherSpellSheet extends WitcherItemSheetV1 {
                 ray: 'WITCHER.Spell.Ray'
             }
         };
-    }
-
-    async _onDrop(event) {
-        const data = TextEditor.getDragEventData(event);
-        // Handle different data types
-        switch (data.type) {
-            case 'Item':
-                return this._onDropItem(event, data);
-        }
     }
 }

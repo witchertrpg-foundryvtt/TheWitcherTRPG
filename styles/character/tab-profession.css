@@ -1,0 +1,80 @@
+.application.sheet.witcher.actor {
+    .tab.profession.active {
+        .profession-header,
+        .race-header {
+            display: flex;
+            width: 100%;
+
+            h1 {
+                margin: 0;
+                margin-right: auto;
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 24px;
+                margin: 0;
+            }
+        }
+
+        .profession-flex {
+            margin-bottom: 20px;
+
+            .profession-card,
+            .profession-notes {
+                .editor {
+                    overflow-y: auto;
+                }
+            }
+
+            .profession-card {
+                input,
+                select,
+                .editor {
+                    color: #222;
+                }
+            }
+        }
+        
+        .profession-path {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+
+            .blue-path,
+            .green-path,
+            .red-path {
+                width: 100%;
+
+                h2 {
+                    font-size: 24px;
+                    margin-bottom: 5px;
+                }
+            }
+
+            .profession-card {
+                max-width: none;
+
+                input,
+                select,
+                .editor {
+                    color: #222;
+                }
+
+                .editor {
+                    overflow-y: auto;
+                    min-height: 50px;
+                    height: -webkit-fill-available;
+                }
+            }
+        }
+
+        .item .perk {
+            h3 {
+                font-size: 20px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
