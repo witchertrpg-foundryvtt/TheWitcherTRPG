@@ -112,7 +112,8 @@
                 {{/each}}
             </table>
 
-            <h2>{{localize "WITCHER.Loot.Runes"}} & {{localize "WITCHER.Loot.Glyphs"}}</h2>
+            <h2>{{localize "WITCHER.Loot.Runes"}} & {{localize "WITCHER.Loot.Glyphs"}} <a class="add-item"
+                    data-itemType="enhancement"><i class="fas fa-plus"></i></a></h2>
             <table class="item-table item-list">
                 {{#each enhancements as |item id|}}
                     {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/loot/loot-item-display.hbs" item=item isGM=../isGM}}

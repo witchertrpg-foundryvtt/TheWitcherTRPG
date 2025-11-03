@@ -46,7 +46,7 @@ export default class WitcherLootSheet extends HandlebarsApplicationMixin(ActorSh
 
         context.valuables = context.actor.getList('valuable');
         context.allComponents = context.actor.getList('component');
-        context.enhancements = context.items?.filter(i => i.type == 'enhancement' && !i.system.applied);
+        context.enhancements = context.actor.getList('enhancement').filter(i => !i.system.applied);
         context.loot = context.actor
             .getList('mount')
             .concat(context.actor.getList('mutagens'))
@@ -55,7 +55,6 @@ export default class WitcherLootSheet extends HandlebarsApplicationMixin(ActorSh
             .concat(context.actor.getList('diagrams'));
 
         context.totalWeight = context.actor.getTotalWeight();
-        // context.totalCost = context.actor.items.cost();
 
         context.isGM = game.user.isGM;
 
