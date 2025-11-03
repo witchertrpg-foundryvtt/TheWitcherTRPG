@@ -46,15 +46,20 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
     //overwrite in sub-classes
     configuration = undefined;
 
-    /** @inheritdoc */
-    _canDragStart(selector) {
-        return true;
-    }
-
-    /** @inheritdoc */
-    _canDragDrop(selector) {
-        return true;
-    }
+    /** @override */
+    static DEFAULT_OPTIONS = {
+        window: {
+            resizable: true
+        },
+        position: {
+            width: 800
+        },
+        classes: ['witcher', 'sheet', 'actor'],
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false
+        }
+    };
 
     /** @override */
     async _prepareContext(options) {
@@ -225,8 +230,8 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
         });
     }
 
-    _onRender(context, options) {
-        super._onRender(context, options);
+    async _onRender(context, options) {
+        await super._onRender(context, options);
 
         this.activateListeners(this.element);
     }
