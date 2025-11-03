@@ -8,23 +8,10 @@ const DialogV2 = foundry.applications.api.DialogV2;
 export default class WitcherLootSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     /** @override */
     static DEFAULT_OPTIONS = {
-        window: {
-            resizable: true
-        },
-        position: {
-            width: 1120,
-            height: 600
-        },
-        classes: ['witcher', 'sheet', 'actor'],
-        form: {
-            submitOnChange: true,
-            closeOnSubmit: false
-        },
         actions: {
             buyItem: WitcherLootSheet._onItemBuy,
             hideItem: WitcherLootSheet._onItemHide
-        },
-        dragDrop: [{ dragSelector: '.items-section', dropSelector: null }]
+        }
     };
 
     static PARTS = {

@@ -15,28 +15,16 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
 
     /** @override */
     static DEFAULT_OPTIONS = {
-        window: {
-            resizable: true
-        },
-        position: {
-            width: 800
-        },
-        classes: ['witcher', 'sheet', 'actor'],
-        form: {
-            submitOnChange: true,
-            closeOnSubmit: false
-        },
         actions: {
             openAttributeDialog: this.#openAttributeDialog,
             openDerivedDialog: this.#openDerivedDialog,
-            openModifiers: this.#openModifiers,
-        },
-        dragDrop: [{ dragSelector: '.item-list', dropSelector: null }]
+            openModifiers: this.#openModifiers
+        }
     };
 
     static PARTS = {
         sidebar: {
-            template: 'systems/TheWitcherTRPG/templates/partials/character/sidebar.hbs',
+            template: 'systems/TheWitcherTRPG/templates/partials/character/sidebar.hbs'
         },
         header: {
             template: 'systems/TheWitcherTRPG/templates/partials/character-header.hbs'
