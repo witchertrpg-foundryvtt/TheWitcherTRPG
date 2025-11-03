@@ -1,10 +1,10 @@
-<form class="{{cssClass}}" autocomplete="off">
-    {{#if affectedActors}}
-        <span>{{localize "WITCHER.deprecations.lifepathModifiers.text"}}</span>
-        {{#each affectedActors as |actor|}}
-            <div>
-                <span>{{actor.name}}</span>
-            </div>
-        {{/each}}
-    {{/if}}
-</form>
+{{#if affectedActors}}
+    <span>{{localize "WITCHER.deprecations.lifepathModifiers.text"}}</span>
+    <div class="scrollable" style="max-height: 300px;">
+    {{#each affectedActors as |actor|}}
+        <div>
+            <span>{{actor.name}}</span>
+        </div>
+    {{/each}}
+    </div>
+{{/if}}
