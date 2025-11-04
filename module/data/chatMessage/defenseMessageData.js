@@ -17,7 +17,7 @@ export default class DefenseMessageData extends BaseMessageData {
             ...commonData,
             attackWeaponProperties: new fields.SchemaField(damageProperties()),
             defender: new fields.DocumentUUIDField(),
-            defense:  new fields.StringField(),
+            defense: new fields.StringField(),
             crit: new fields.SchemaField({
                 severity: new fields.StringField(),
                 critdamage: new fields.NumberField(),
@@ -26,6 +26,7 @@ export default class DefenseMessageData extends BaseMessageData {
                     name: new fields.StringField(),
                     alias: new fields.StringField(),
                     locationFormula: new fields.NumberField(),
+                    critEffect: new fields.NumberField(),
                     modifier: new fields.NumberField()
                 })
             }),
