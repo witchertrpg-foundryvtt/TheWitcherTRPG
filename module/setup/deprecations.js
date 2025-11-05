@@ -36,7 +36,6 @@ async function statSkillModifiers() {
         .filter(
             actor =>
                 !!Object.values(actor.system.stats).find(stat => stat.modifiers?.length > 0) ||
-                !!Object.values(actor.system.coreStats).find(stat => stat.modifiers?.length > 0) ||
                 !!Object.values(actor.system.derivedStats).find(stat => stat.modifiers?.length > 0) ||
                 !!Object.values(actor.system.skills).find(
                     skillGroup => !!Object.values(skillGroup).find(skill => skill.modifiers?.length > 0)

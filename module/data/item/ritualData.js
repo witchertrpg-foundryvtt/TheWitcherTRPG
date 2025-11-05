@@ -67,11 +67,6 @@ export default class RitualData extends CommonItemData {
             })
         );
     }
-
-    /** @inheritdoc */
-    static migrateData(source) {
-        super.migrateData(source);
-    }
 }
 
 Object.assign(RitualData.prototype, spellVisualMixin);

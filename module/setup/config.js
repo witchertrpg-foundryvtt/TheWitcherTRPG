@@ -71,34 +71,34 @@ WITCHER.statMap = {
     },
 
     stun: {
-        origin: 'coreStats',
+        origin: 'derivedStats',
         name: 'stun',
-        labelShort: 'WITCHER.Actor.CoreStat.Stun'
+        labelShort: 'WITCHER.Actor.DerStat.Stun'
     },
     run: {
-        origin: 'coreStats',
+        origin: 'derivedStats',
         name: 'run',
-        labelShort: 'WITCHER.Actor.CoreStat.Run'
+        labelShort: 'WITCHER.Actor.DerStat.Run'
     },
     leap: {
-        origin: 'coreStats',
+        origin: 'derivedStats',
         name: 'leap',
-        labelShort: 'WITCHER.Actor.CoreStat.Leap'
+        labelShort: 'WITCHER.Actor.DerStat.Leap'
     },
     enc: {
-        origin: 'coreStats',
+        origin: 'derivedStats',
         name: 'enc',
-        labelShort: 'WITCHER.Actor.CoreStat.Enc'
+        labelShort: 'WITCHER.Actor.DerStat.Enc'
     },
     rec: {
-        origin: 'coreStats',
+        origin: 'derivedStats',
         name: 'rec',
-        labelShort: 'WITCHER.Actor.CoreStat.Rec'
+        labelShort: 'WITCHER.Actor.DerStat.Rec'
     },
     woundTreshold: {
-        origin: 'coreStats',
+        origin: 'derivedStats',
         name: 'woundTreshold',
-        labelShort: 'WITCHER.Actor.CoreStat.woundTreshold'
+        labelShort: 'WITCHER.Actor.DerStat.woundTreshold'
     },
 
     hp: {

@@ -43,12 +43,12 @@
             {{/unless}}
         {{/each}}
         <hr />
-        {{#each system.coreStats as |details coreStat|}}
+        {{#each system.derivedStats as |details derStat|}}
             <div class="monster-stat-display margin-right">
                 <label>{{localize details.label}}</label>
-                <input class="small" name="system.coreStats.{{coreStat}}.current" type="number"
+                <input class="small" name="system.derivedStats.{{derStat}}.current" type="number"
                     value="{{details.current}}" placeholder="0" data-dtype="Number" disabled readonly />
-                <input class="small" name="system.coreStats.{{coreStat}}.max" type="number" value="{{details.max}}"
+                <input class="small" name="system.derivedStats.{{derStat}}.max" type="number" value="{{details.max}}"
                     placeholder="0" data-dtype="Number" disabled readonly />
             </div>
         {{/each}}

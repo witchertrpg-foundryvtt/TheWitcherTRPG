@@ -101,12 +101,12 @@
       "StatTitle.LableLeft": "Характеристики",
       "StatTitle.ModMax": "Мод/Макс",
       "StatTitle.Derived": "Доп.",
-      "CoreStat.Stun": "ОГЛУШ",
-      "CoreStat.Run": "БЕГ",
-      "CoreStat.Leap": "ПРЫЖ",
-      "CoreStat.Enc": "ВЕС",
-      "CoreStat.Rec": "ОТД",
-      "CoreStat.woundTreshold": "ПР",
+      "DerStat.Stun": "ОГЛУШ",
+      "DerStat.Run": "БЕГ",
+      "DerStat.Leap": "ПРЫЖ",
+      "DerStat.Enc": "ВЕС",
+      "DerStat.Rec": "ОТД",
+      "DerStat.woundTreshold": "ПР",
       "DerStat.Vigor": "Энергия",
       "DerStat.HP": "Макс. ПЗ",
       "DerStat.Shield": "Щит",
@@ -1014,9 +1014,6 @@
 "Stats": {
     "stats": {
         "Name": "Характеристики"
-    },
-    "coreStats": {
-        "Name": "Основные характеристики"
     },
     "derivedStats": {
         "Name": "Производные характеристики"

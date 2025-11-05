@@ -4,7 +4,7 @@
         <div class='wound-state' data-tooltip="{{localize 'WITCHER.Actor.woundState'}}">
             {{#if (gte system.derivedStats.hp.value system.derivedStats.hp.unmodifiedMax)}}
                 <i class='fa-solid fa-heart' style='color: green;'></i>
-            {{else if (gte system.derivedStats.hp.value system.coreStats.woundTreshold.current)}}
+            {{else if (gte system.derivedStats.hp.value system.derivedStats.woundTreshold.current)}}
                 <i class='fa-solid fa-heart-crack' style='color: green;'></i>
             {{else}}
                 <i class='fa-solid fa-heart-crack' style='color: orange;'></i>

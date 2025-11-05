@@ -110,12 +110,12 @@
             "StatTitle.LableLeft": "Statistics",
             "StatTitle.ModMax": "Mod / Max",
             "StatTitle.Derived": "Derived",
-            "CoreStat.Stun": "STUN",
-            "CoreStat.Run": "RUN",
-            "CoreStat.Leap": "LEAP",
-            "CoreStat.Enc": "ENC",
-            "CoreStat.Rec": "REC",
-            "CoreStat.woundTreshold": "WT",
+            "DerStat.Stun": "STUN",
+            "DerStat.Run": "RUN",
+            "DerStat.Leap": "LEAP",
+            "DerStat.Enc": "ENC",
+            "DerStat.Rec": "REC",
+            "DerStat.woundTreshold": "WT",
             "DerStat.Vigor": "Vigor",
             "DerStat.HP": "Max HP",
             "DerStat.Shield": "Shield",
@@ -1064,9 +1064,6 @@
         "Stats": {
             "stats": {
                 "Name": "Stats"
-            },
-            "coreStats": {
-                "Name": "Core Stats"
             },
             "derivedStats": {
                 "Name": "Derived Stats"

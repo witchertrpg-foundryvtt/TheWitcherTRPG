@@ -100,12 +100,12 @@
             "StatTitle.LableLeft": "Eigensch.",
             "StatTitle.ModMax": "Mod / Max",
             "StatTitle.Derived": "Abgeleitet",
-            "CoreStat.Stun": "Betä",
-            "CoreStat.Run": "Renn",
-            "CoreStat.Leap": "Spri",
-            "CoreStat.Enc": "Bela",
-            "CoreStat.Rec": "Erho",
-            "CoreStat.woundTreshold": "WS",
+            "DerStat.Stun": "Betä",
+            "DerStat.Run": "Renn",
+            "DerStat.Leap": "Spri",
+            "DerStat.Enc": "Bela",
+            "DerStat.Rec": "Erho",
+            "DerStat.woundTreshold": "WS",
             "DerStat.Vigor": "Elan",
             "DerStat.HP": "Max LP",
             "DerStat.Shield": "Schild",
@@ -1033,9 +1033,6 @@
         "Stats": {
             "stats": {
                 "Name": "Eigenschaften"
-            },
-            "coreStats": {
-                "Name": "Grundwerte"
             },
             "derivedStats": {
                 "Name": "Abgeleitete Werte"
