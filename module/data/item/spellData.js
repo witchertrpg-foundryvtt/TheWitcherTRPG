@@ -82,8 +82,6 @@ export default class SpellData extends CommonItemData {
 
     /** @inheritdoc */
     static migrateData(source) {
-        super.migrateData(source);
-
         if ('dificultyCheck' in source) {
             source.difficultyCheck = source.dificultyCheck;
         }
@@ -92,6 +90,8 @@ export default class SpellData extends CommonItemData {
 
         this.migrateTemplateSize(source);
         migrateDamageProperties(source);
+
+        return super.migrateData(source);
     }
 
     static migrateTemplateSize(source) {

@@ -7,13 +7,13 @@
         <div class='stat-grid'>
             {{#each system.stats as |details stat|}}
                 {{#unless (eq (localize details.label) (localize 'WITCHER.Actor.Stat.Toxicity'))}}
-                    <a class='stat-display char-stat-button stat-roll' data-stat='{{stat}}' data-stat='{{stat}}'>
+                    <a class='stat-display char-stat-button stat-roll' data-stat='{{stat}}'>
                         <div class="label">
                             <span>{{localize details.label}}</span>
-                            {{#if (gte details.current 0)}}
-                                <span>+{{details.current}}</span>
+                            {{#if (gte details.value 0)}}
+                                <span>+{{details.value}}</span>
                             {{else}}
-                                <span>{{details.current}}</span>
+                                <span>{{details.value}}</span>
                             {{/if}}
                         </div>
                         <div class="mod">
@@ -22,10 +22,10 @@
                             {{else}}
                                 <span class="max">{{details.max}}</span>
                             {{/if}}
-                            {{#if (gte (formatModLabel details.current details.max) 0)}}
-                                <span class="{{#if (gt details.current details.max)}}stat-mod-plus{{else if (eq details.current details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel details.current details.max}}</span>
+                            {{#if (gte (formatModLabel details.value details.max) 0)}}
+                                <span class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel details.value details.max}}</span>
                             {{else}}
-                                <span class="{{#if (gt details.current details.max)}}stat-mod-plus{{else if (eq details.current details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel details.current details.max}}</span>
+                                <span class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel details.value details.max}}</span>
                             {{/if}}
                         </div>
                     </a>
@@ -39,10 +39,10 @@
                 <a class='stat-display char-stat-display char-stat-button reputation-button reputation-roll' data-type='reputation' data-stat='reputation'>
                     <div class="label">
                         <span>{{localize 'WITCHER.Reputation'}}</span>
-                        {{#if (gte system.reputation.current 0)}}
-                            <span>+{{system.reputation.current}}</span>
+                        {{#if (gte system.reputation.value 0)}}
+                            <span>+{{system.reputation.value}}</span>
                         {{else}}
-                            <span>{{system.reputation.current}}</span>
+                            <span>{{system.reputation.value}}</span>
                         {{/if}}
                     </div>
                     <div class="mod">
@@ -51,10 +51,10 @@
                         {{else}}
                             <span class="max">{{system.reputation.max}}</span>
                         {{/if}}
-                        {{#if (gte (formatModLabel system.reputation.current system.reputation.max) 0)}}
-                            <span class="{{#if (gt system.reputation.current system.reputation.max)}}stat-mod-plus{{else if (eq system.reputation.current system.reputation.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel system.reputation.current system.reputation.max}}</span>
+                        {{#if (gte (formatModLabel system.reputation.value system.reputation.max) 0)}}
+                            <span class="{{#if (gt system.reputation.value system.reputation.max)}}stat-mod-plus{{else if (eq system.reputation.value system.reputation.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel system.reputation.value system.reputation.max}}</span>
                         {{else}}
-                            <span class="{{#if (gt system.reputation.current system.reputation.max)}}stat-mod-plus{{else if (eq system.reputation.current system.reputation.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel system.reputation.current system.reputation.max}}</span>
+                            <span class="{{#if (gt system.reputation.value system.reputation.max)}}stat-mod-plus{{else if (eq system.reputation.value system.reputation.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel system.reputation.value system.reputation.max}}</span>
                         {{/if}}
                     </div>
                 </a>
@@ -67,14 +67,14 @@
             <a data-action="openModifiers" data-type="derived"><i class="fas fa-edit"></i></a>
         </div>
         <div class='stat-grid'>
-            {{#each system.coreStats as |details coreStat|}}
-                <div class='stat-display char-derived-button' data-type='coreStat' data-stat='{{coreStat}}'>
+            {{#each system.derivedStats as |details derStat|}}
+                <div class='stat-display char-derived-button' data-type='derStat' data-stat='{{derStat}}'>
                     <div class="label">
                         <span>{{localize details.label}}</span>
-                        {{#if (gte details.current 0)}}
-                            <span>+{{details.current}}</span>
+                        {{#if (gte details.value 0)}}
+                            <span>+{{details.value}}</span>
                         {{else}}
-                            <span>{{details.current}}</span>
+                            <span>{{details.value}}</span>
                         {{/if}}
                     </div>
                     <div class="mod">
@@ -83,10 +83,10 @@
                         {{else}}
                             <span class="max">{{details.max}}</span>
                         {{/if}}
-                        {{#if (gte (formatModLabel details.current details.max) 0)}}
-                            <span class="{{#if (gt details.current details.max)}}stat-mod-plus{{else if (eq details.current details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel details.current details.max}}</span>
+                        {{#if (gte (formatModLabel details.value details.max) 0)}}
+                            <span class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel details.value details.max}}</span>
                         {{else}}
-                            <span class="{{#if (gt details.current details.max)}}stat-mod-plus{{else if (eq details.current details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel details.current details.max}}</span>
+                            <span class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel details.value details.max}}</span>
                         {{/if}}
                     </div>
                 </div>

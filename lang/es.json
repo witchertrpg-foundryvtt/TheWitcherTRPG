@@ -101,12 +101,12 @@
             "StatTitle.LableLeft": "Estadística",
             "StatTitle.ModMax": "Mod/Máx.",
             "StatTitle.Derived": "Derivado",
-            "CoreStat.Stun": "ATU",
-            "CoreStat.Run": "CORRER",
-            "CoreStat.Leap": "SALTO",
-            "CoreStat.Enc": "ENC",
-            "CoreStat.Rec": "REC",
-            "CoreStat.woundTreshold": "UH",
+            "DerStat.Stun": "ATU",
+            "DerStat.Run": "CORRER",
+            "DerStat.Leap": "SALTO",
+            "DerStat.Enc": "ENC",
+            "DerStat.Rec": "REC",
+            "DerStat.woundTreshold": "UH",
             "DerStat.Vigor": "Vigor",
             "DerStat.HP": "HP máx.",
             "DerStat.Shield": "Escudo",
@@ -1029,9 +1029,6 @@
         "Stats": {
             "stats": {
                 "Name": "Estadísticas"
-            },
-            "coreStats": {
-                "Name": "Estadísticas del núcleo"
             },
             "derivedStats": {
                 "Name": "Estadísticas derivadas"

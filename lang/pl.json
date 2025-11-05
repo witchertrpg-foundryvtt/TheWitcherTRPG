@@ -110,12 +110,12 @@
             "StatTitle.LableLeft": "Cechy",
             "StatTitle.ModMax": "Akt / Max",
             "StatTitle.Derived": "Pochodne",
-            "CoreStat.Stun": "PP",
-            "CoreStat.Run": "BIEG",
-            "CoreStat.Leap": "SKOK",
-            "CoreStat.Enc": "OBC.",
-            "CoreStat.Rec": "Zdr.",
-            "CoreStat.woundTreshold": "Próg C.R.",
+            "DerStat.Stun": "PP",
+            "DerStat.Run": "BIEG",
+            "DerStat.Leap": "SKOK",
+            "DerStat.Enc": "OBC.",
+            "DerStat.Rec": "Zdr.",
+            "DerStat.woundTreshold": "Próg C.R.",
             "DerStat.Vigor": "Wigor",
             "DerStat.HP": "Max PZ",
             "DerStat.Shield": "Tarcza",
@@ -1064,9 +1064,6 @@
         "Stats": {
             "stats": {
                 "Name": "Statystyki"
-            },
-            "coreStats": {
-                "Name": "Główne"
             },
             "derivedStats": {
                 "Name": "Pochodne"

@@ -417,8 +417,8 @@ export let defenseMixin = {
     },
 
     async stunSave(modifier = 0) {
-        let stunValue = this.system.coreStats.stun.current + modifier;
-        let stunName = 'WITCHER.Actor.CoreStat.Stun';
+        let stunValue = this.system.derivedStats.stun.current + modifier;
+        let stunName = 'WITCHER.Actor.DerStat.Stun';
 
         let messageData = new ChatMessageData(this);
         messageData.flavor = `

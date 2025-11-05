@@ -23,21 +23,6 @@ export let statMixin = {
         });
     },
 
-    async _onAddStatModifier(event) {
-        event.preventDefault();
-        let stat = event.currentTarget.closest('.stat-display').dataset.stat;
-
-        if (stat == 'reputation') {
-            let newModifierList = this.actor.system.reputation.modifiers;
-            newModifierList.push({ name: 'Modifier', value: 0 });
-            this.actor.update({ [`system.${stat}.modifiers`]: newModifierList });
-        } else {
-            let newModifierList = this.actor.system[this.statMap[stat].origin][stat].modifiers;
-            newModifierList.push({ name: 'Modifier', value: 0 });
-            this.actor.update({ [`system.${this.statMap[stat].origin}.${stat}.modifiers`]: newModifierList });
-        }
-    },
-
     async _onEditStatModifier(event) {
         event.preventDefault();
         let stat = event.currentTarget.closest('.stat-display').dataset.stat;
@@ -70,9 +55,7 @@ export let statMixin = {
         let stat = event.currentTarget.closest('.stat-display').dataset.stat;
         let type = event.currentTarget.closest('.stat-display').dataset.type;
         let prevModList = [];
-        if (type == 'coreStat') {
-            prevModList = this.actor.system.coreStats[stat].modifiers;
-        } else if (type == 'derivedStat') {
+        if (type == 'derivedStat') {
             prevModList = this.actor.system.derivedStats[stat].modifiers;
         } else if (type == 'reputation') {
             prevModList = this.actor.system.reputation.modifiers;
@@ -225,7 +208,6 @@ export let statMixin = {
         html.find('.stat-modifier-display').on('click', this._onStatModifierDisplay.bind(this));
         html.find('.derived-modifier-display').on('click', this._onDerivedModifierDisplay.bind(this));
 
-        html.find('.add-modifier').on('click', this._onAddStatModifier.bind(this));
         html.find('.delete-stat').on('click', this._onRemoveStatModifier.bind(this));
         html.find('.list-mod-edit').on('blur', this._onEditStatModifier.bind(this));
 
