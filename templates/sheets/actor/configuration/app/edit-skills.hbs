@@ -12,16 +12,18 @@
                         <td colspan="3">
                             <label>{{localize "WITCHER.SKill.profession"}}:
                                 <input class="skill-checkbox" type="checkbox"
-                                    name="system.skills.{{skillName}}.{{name}}.isProfession"
+                                    name="system.skills.{{@root.skillKey}}.{{skillName}}.isProfession"
                                     {{checked skill.isProfession}} />
                             </label>
                             <label>{{localize "WITCHER.SKill.pickup"}}:
                                 <input class="skill-checkbox" type="checkbox"
-                                    name="system.skills.{{skillName}}.{{name}}.isPickup" {{checked skill.isPickup}} />
+                                    name="system.skills.{{@root.skillKey}}.{{skillName}}.isPickup"
+                                    {{checked skill.isPickup}} />
                             </label>
                             <label>{{localize "WITCHER.SKill.learn"}}:
                                 <input class="skill-checkbox" type="checkbox"
-                                    name="system.skills.{{skillName}}.{{name}}.isLearned" {{checked skill.isLearned}} />
+                                    name="system.skills.{{@root.skillKey}}.{{skillName}}.isLearned"
+                                    {{checked skill.isLearned}} />
                             </label>
                         </td>
                     </tr>
