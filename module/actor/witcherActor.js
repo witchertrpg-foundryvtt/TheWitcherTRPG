@@ -78,7 +78,8 @@ export default class WitcherActor extends Actor {
         this.calculateStat('will');
         this.calculateStat('luck');
 
-        this.system.stats.toxicity.max += this.system.stats.toxicity.totalModifiers;
+        this.system.stats.toxicity.max =
+            this.system.stats.toxicity.unmodifiedMax + this.system.stats.toxicity.totalModifiers;
         this.system.reputation.value = this.system.reputation.max;
     }
 
