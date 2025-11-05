@@ -1,6 +1,7 @@
 <div class='char-sidebar'>
     <div class="char-image">
-        <img class='witcher-actor-img' src='{{actor.img}}' data-action="editImage" data-edit='img' title='{{actor.name}}' />
+        <img class='witcher-actor-img' src='{{actor.img}}' data-action="editImage" data-edit='img'
+            title='{{actor.name}}' />
         <div class='wound-state' data-tooltip="{{localize 'WITCHER.Actor.woundState'}}">
             {{#if (gte system.derivedStats.hp.value system.derivedStats.hp.unmodifiedMax)}}
                 <i class='fa-solid fa-heart' style='color: green;'></i>
@@ -17,9 +18,8 @@
             <progress class='hp-bar' value='{{system.derivedStats.hp.value}}'
                 max='{{system.derivedStats.hp.unmodifiedMax}}'></progress>
             <h3 class='progress-text'>
-                <input class='progress-input' name='system.derivedStats.hp.value'
-                    type='number' value='{{system.derivedStats.hp.value}}' max='99' placeholder='0'
-                    data-dtype='Number' />
+                <input class='progress-input' name='system.derivedStats.hp.value' type='number'
+                    value='{{system.derivedStats.hp.value}}' max='99' placeholder='0' data-dtype='Number' />
                 <span>|</span>
                 <span class='progress-total'>{{system.derivedStats.hp.max}}</span>
             </h3>
@@ -29,9 +29,8 @@
             <progress class='sta-bar' value='{{system.derivedStats.sta.value}}'
                 max='{{system.derivedStats.sta.max}}'></progress>
             <h3 class='progress-text'>
-                <input class='progress-input' name='system.derivedStats.sta.value'
-                    type='number' value='{{system.derivedStats.sta.value}}' max='99' placeholder='0'
-                    data-dtype='Number' />
+                <input class='progress-input' name='system.derivedStats.sta.value' type='number'
+                    value='{{system.derivedStats.sta.value}}' max='99' placeholder='0' data-dtype='Number' />
                 <span>|</span>
                 <span class='progress-total'>{{system.derivedStats.sta.max}}</span>
             </h3>
@@ -41,9 +40,9 @@
             <progress class='toxicity-bar' value='{{system.stats.toxicity.current}}'
                 max='{{system.stats.toxicity.max}}'></progress>
             <h3 class='progress-text'>
-                <input class='progress-input' name='system.stats.toxicity.current'
-                    type='number' value='{{system.stats.toxicity.current}}' max='{{system.stats.toxicity.max}}'
-                    placeholder='0' data-dtype='Number' />
+                <input class='progress-input' name='system.stats.toxicity.current' type='number'
+                    value='{{system.stats.toxicity.current}}' max='{{system.stats.toxicity.max}}' placeholder='0'
+                    data-dtype='Number' />
                 <span>|</span>
                 <span class='progress-total'>{{system.stats.toxicity.max}}</span>
             </h3>
@@ -53,9 +52,9 @@
             <progress class='focus-bar' value='{{system.derivedStats.focus.value}}'
                 max='{{system.derivedStats.focus.max}}'></progress>
             <h3 class='progress-text'>
-                <input class='progress-input' name='system.derivedStats.focus.value'
-                    type='number' value='{{system.derivedStats.focus.value}}' max='{{system.derivedStats.focus.max}}'
-                    placeholder='0' data-dtype='Number' />
+                <input class='progress-input' name='system.derivedStats.focus.value' type='number'
+                    value='{{system.derivedStats.focus.value}}' max='{{system.derivedStats.focus.max}}' placeholder='0'
+                    data-dtype='Number' />
                 <span>|</span>
                 <span class='progress-total'>{{system.derivedStats.focus.max}}</span>
             </h3>
@@ -106,7 +105,8 @@
             <div class='optional-info'>
                 <a class='optional-buttons luck-minus'><i class='fa-solid fa-minus'></i></a>
                 <h3>
-                    <input class='small' type='number' name='system.stats.luck.total' value='{{system.stats.luck.total}}' data-dtype='Number' />
+                    <input class='small' type='number' name='system.stats.luck.total'
+                        value='{{system.stats.luck.total}}' data-dtype='Number' />
                 </h3>
                 <a class='optional-buttons luck-reset'><i class='fa-solid fa-rotate-left'></i></a>
             </div>
@@ -128,25 +128,16 @@
             </div>
         {{/if}}
         <div class='char-resource-modifier'>
-            <div class='resource-title'>
-                {{#if system.derivedStats.modifiersIsOpened}}
-                    <a class='derived-modifier-display'>
-                        <span>{{localize 'WITCHER.Resources.modifiers'}}</span><i class='fas fa-chevron-down'></i>
-                    </a>
-                {{else}}
-                    <a class='derived-modifier-display'>
-                        <span>{{localize 'WITCHER.Resources.modifiers'}}</span><i class='fas fa-chevron-right'></i>
-                    </a>
-                {{/if}}
-            </div>
-            <div class='resource-modifiers'>
-                {{#if system.derivedStats.modifiersIsOpened}}
+            <details>
+                <summary>
+                    <span>{{localize 'WITCHER.Resources.modifiers'}}</span>
+                </summary>
+                <div class='resource-modifiers'>
                     {{#each system.derivedStats as |details derivedStats|}}
                         {{#unless (eq derivedStats 'vigor')}}
-                            {{#unless (eq derivedStats 'modifiersIsOpened')}}
+                            {{#if details.modifiers}}
                                 <div class='stat-display' data-type='derivedStat' data-stat='{{derivedStats}}'>
-                                    <div class='flex'><label>{{localize details.label}} </label> <a
-                                            class='add-modifier'><i class='fas fa-plus'></i></a></div>
+                                    <div class='flex'><label>{{localize details.label}} </label></div>
                                     {{#each details.modifiers as |modifier value|}}
                                         <div class='list-modifiers' data-id='{{modifier.id}}'>
                                             <input class='medium list-mod-edit' data-field='name' type='text'
@@ -158,11 +149,11 @@
                                         </div>
                                     {{/each}}
                                 </div>
-                            {{/unless}}
+                            {{/if}}
                         {{/unless}}
                     {{/each}}
-                {{/if}}
-            </div>
+                </div>
+            </details>
         </div>
     </div>
 </div>

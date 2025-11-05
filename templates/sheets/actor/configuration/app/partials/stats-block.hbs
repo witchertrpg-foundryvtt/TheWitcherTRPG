@@ -3,13 +3,14 @@
         <details>
             <summary>
                 <span>{{localize details.label}}</span>
-                <input class='header-stat stat-max' name='system.stats.{{stat}}.max' type='number'
+                <input class='header-stat stat-max' name='system.{{@root.type}}.{{stat}}.max' type='number'
                     value='{{details.max}}' placeholder='0' data-dtype='Number' />
             </summary>
             {{#if details.modifiers}}
                 <div class='stat-modifiers'>
                     {{#each details.modifiers as |modifier value|}}
-                        <div class='list-modifiers' data-id='{{modifier.id}}'>
+                        <div class='list-modifiers stat-display' data-id='{{modifier.id}}' data-type="{{@root.type}}"
+                            data-stat="{{stat}}">
                             <input class='medium list-mod-edit' data-field='name' type='text'
                                 value='{{modifier.name}}' />
                             <input class='small list-mod-edit' data-field='value' type='number'
