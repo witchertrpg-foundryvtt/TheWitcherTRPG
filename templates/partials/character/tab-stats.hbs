@@ -2,7 +2,7 @@
     <div class='character-statistics'>
         <div class='char-stat-title margin-right'>
             <label>{{localize 'WITCHER.Item.Attribute'}}</label>
-            <a data-action="openModifiers" data-type="attribute"><i class="fas fa-edit"></i></a>
+            <a data-action="openModifiers" data-type="stats"><i class="fas fa-edit"></i></a>
         </div>
         <div class='stat-grid'>
             {{#each system.stats as |details stat|}}
@@ -23,9 +23,11 @@
                                 <span class="max">{{details.max}}</span>
                             {{/if}}
                             {{#if (gte (formatModLabel details.value details.max) 0)}}
-                                <span class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel details.value details.max}}</span>
+                                <span
+                                    class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel details.value details.max}}</span>
                             {{else}}
-                                <span class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel details.value details.max}}</span>
+                                <span
+                                    class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel details.value details.max}}</span>
                             {{/if}}
                         </div>
                     </a>
@@ -36,7 +38,8 @@
                 <h4 class='total-stats-label'>{{localize 'WITCHER.Actor.TotalStats'}}: {{totalStats}}</h4>
             </div>
             {{#if (or isGM displayRep)}}
-                <a class='stat-display char-stat-display char-stat-button reputation-button reputation-roll' data-type='reputation' data-stat='reputation'>
+                <a class='stat-display char-stat-display char-stat-button reputation-button reputation-roll'
+                    data-type='reputation' data-stat='reputation'>
                     <div class="label">
                         <span>{{localize 'WITCHER.Reputation'}}</span>
                         {{#if (gte system.reputation.value 0)}}
@@ -52,9 +55,11 @@
                             <span class="max">{{system.reputation.value}}</span>
                         {{/if}}
                         {{#if (gte (formatModLabel system.reputation.value system.reputation.max) 0)}}
-                            <span class="{{#if (gt system.reputation.value system.reputation.max)}}stat-mod-plus{{else if (eq system.reputation.value system.reputation.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel system.reputation.value system.reputation.max}}</span>
+                            <span
+                                class="{{#if (gt system.reputation.value system.reputation.max)}}stat-mod-plus{{else if (eq system.reputation.value system.reputation.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel system.reputation.value system.reputation.max}}</span>
                         {{else}}
-                            <span class="{{#if (gt system.reputation.value system.reputation.max)}}stat-mod-plus{{else if (eq system.reputation.value system.reputation.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel system.reputation.value system.reputation.max}}</span>
+                            <span
+                                class="{{#if (gt system.reputation.value system.reputation.max)}}stat-mod-plus{{else if (eq system.reputation.value system.reputation.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel system.reputation.value system.reputation.max}}</span>
                         {{/if}}
                     </div>
                 </a>
@@ -84,9 +89,11 @@
                             <span class="max">{{details.max}}</span>
                         {{/if}}
                         {{#if (gte (formatModLabel details.value details.max) 0)}}
-                            <span class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel details.value details.max}}</span>
+                            <span
+                                class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel details.value details.max}}</span>
                         {{else}}
-                            <span class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel details.value details.max}}</span>
+                            <span
+                                class="{{#if (gt details.value details.max)}}stat-mod-plus{{else if (eq details.value details.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">{{formatModLabel details.value details.max}}</span>
                         {{/if}}
                     </div>
                 </div>
