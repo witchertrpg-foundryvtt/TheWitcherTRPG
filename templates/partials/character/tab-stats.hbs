@@ -46,10 +46,10 @@
                         {{/if}}
                     </div>
                     <div class="mod">
-                        {{#if (gte system.reputation.max 0)}}
-                            <span class="max">+{{system.reputation.max}}</span>
+                        {{#if (gte system.reputation.value 0)}}
+                            <span class="max">+{{system.reputation.value}}</span>
                         {{else}}
-                            <span class="max">{{system.reputation.max}}</span>
+                            <span class="max">{{system.reputation.value}}</span>
                         {{/if}}
                         {{#if (gte (formatModLabel system.reputation.value system.reputation.max) 0)}}
                             <span class="{{#if (gt system.reputation.value system.reputation.max)}}stat-mod-plus{{else if (eq system.reputation.value system.reputation.max)}}stat-mod-zero{{else}}stat-mod-minus{{/if}}">+{{formatModLabel system.reputation.value system.reputation.max}}</span>

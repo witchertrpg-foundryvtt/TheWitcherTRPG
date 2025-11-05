@@ -76,7 +76,7 @@ export let statMixin = {
     /** Do not delete. This method is here to give external modules the possibility to make skill rolls. */
     async _onStatSaveRoll(event) {
         let stat = event.currentTarget.closest('.stat-display').dataset.stat;
-        let statValue = this.actor.system.stats[stat].current;
+        let statValue = this.actor.system.stats[stat].value;
         let statName = `WITCHER.St${stat.charAt(0).toUpperCase() + stat.slice(1)}`;
 
         let messageData = new ChatMessageData(this.actor);
@@ -151,7 +151,7 @@ export let statMixin = {
                         });
 
                         let messageData = new ChatMessageData(this.actor);
-                        let rollFormula = `1d10 + ${Number(repValue)}[${game.i18n.localize('WITCHER.Reputation')}] + ${Number(this.actor.system.stats.will.current)}[${game.i18n.localize('WITCHER.StWill')}]`;
+                        let rollFormula = `1d10 + ${Number(repValue)}[${game.i18n.localize('WITCHER.Reputation')}] + ${Number(this.actor.system.stats.will.value)}[${game.i18n.localize('WITCHER.StWill')}]`;
                         messageData.flavor = `
                 <h2>${game.i18n.localize('WITCHER.ReputationTitle')}: ${game.i18n.localize('WITCHER.ReputationFaceDown.Title')}</h2>
                 <div class="roll-summary">
