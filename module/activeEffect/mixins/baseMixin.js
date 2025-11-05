@@ -1,7 +1,17 @@
 export let baseMixin = {
     getActiveEffectsBasePaths() {
+        console.log(
+            this.getStatSuggestions(),
+            this.getToxSuggestions(),
+            this.getSkillGroupSuggestions(),
+            this.getSkillSuggestions(),
+            this.getLifepathSuggestions(),
+            this.getOtherSuggestions(),
+            this.getDamageModifcators()
+        );
         return {
             ...this.getStatSuggestions(),
+            ...this.getToxSuggestions(),
             ...this.getSkillGroupSuggestions(),
             ...this.getSkillSuggestions(),
             ...this.getLifepathSuggestions(),
@@ -26,6 +36,16 @@ export let baseMixin = {
                 stats[stat.label] = stat;
                 return stats;
             }, {});
+    },
+
+    getToxSuggestions() {
+        return {
+            'WITCHER.Actor.Stat.Toxicity': {
+                label: 'WITCHER.Actor.Stat.Toxicity',
+                value: 'system.stats.toxicity.totalModifiers',
+                group: game.i18n.localize('WITCHER.Stats.stats.Name')
+            }
+        };
     },
 
     getSkillGroupSuggestions() {
