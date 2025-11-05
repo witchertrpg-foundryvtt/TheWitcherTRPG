@@ -35,6 +35,7 @@ async function statSkillModifiers() {
         .filter(actor => actor.type != 'mystery' && actor.type != 'loot')
         .filter(
             actor =>
+                !!(actor.system.reputation.modifiers?.length > 0) ||
                 !!Object.values(actor.system.stats).find(stat => stat.modifiers?.length > 0) ||
                 !!Object.values(actor.system.derivedStats).find(stat => stat.modifiers?.length > 0) ||
                 !!Object.values(actor.system.skills).find(

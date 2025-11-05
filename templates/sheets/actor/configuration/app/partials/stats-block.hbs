@@ -25,7 +25,23 @@
 {{/each}}
 
 {{#if reputation}}
-    <span>{{localize 'WITCHER.Reputation'}}</span>
-    <input class='header-stat stat-max' name='system.reputation.max' type='number' value='{{reputation.max}}'
-        placeholder='0' data-dtype='Number' />
+    <details>
+        <summary>
+            <span>{{localize 'WITCHER.Reputation'}}</span>
+            <input class='header-stat stat-max' name='system.reputation.max' type='number' value='{{reputation.max}}'
+                placeholder='0' data-dtype='Number' />
+        </summary>
+        {{#if reputation.modifiers}}
+            <div class='stat-modifiers'>
+                {{#each reputation.modifiers as |modifier value|}}
+                    <div class='list-modifiers stat-display' data-id='{{modifier.id}}' data-type="reputation">
+                        <input class='medium list-mod-edit' data-field='name' type='text' value='{{modifier.name}}' />
+                        <input class='small list-mod-edit' data-field='value' type='number'
+                            value='{{modifier.value}}' />
+                        <a class='delete-stat'><i class='fas fa-trash-alt' data-id='{{modifier.id}}'></i></a>
+                    </div>
+                {{/each}}
+            </div>
+        {{/if}}
+    </details>
 {{/if}}
