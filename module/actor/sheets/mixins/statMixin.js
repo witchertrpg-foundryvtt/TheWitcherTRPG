@@ -7,7 +7,9 @@ export let statMixin = {
         event.preventDefault();
         let stat = event.currentTarget.closest('.stat-display').dataset.stat;
 
-        if (stat == 'reputation') {
+        if (stat == 'toxicity') {
+            this.actor.update({ [`system.stats.${stat}.isOpened`]: !this.actor.system.stats[stat].isOpened });
+        } else if (stat == 'reputation') {
             this.actor.update({ [`system.${stat}.isOpened`]: !this.actor.system[stat].isOpened });
         } else {
             this.actor.update({
@@ -17,11 +19,6 @@ export let statMixin = {
         }
     },
 
-    _onDerivedModifierDisplay(event) {
-        this.actor.update({
-            'system.derivedStats.modifiersIsOpened': !this.actor.system.derivedStats.modifiersIsOpened
-        });
-    },
 
     async _onEditStatModifier(event) {
         event.preventDefault();
@@ -206,7 +203,6 @@ export let statMixin = {
         html.find('.reputation-roll').on('click', this._onReputation.bind(this));
 
         html.find('.stat-modifier-display').on('click', this._onStatModifierDisplay.bind(this));
-        html.find('.derived-modifier-display').on('click', this._onDerivedModifierDisplay.bind(this));
 
         html.find('.delete-stat').on('click', this._onRemoveStatModifier.bind(this));
         html.find('.list-mod-edit').on('blur', this._onEditStatModifier.bind(this));
