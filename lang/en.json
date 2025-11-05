@@ -417,7 +417,7 @@
             "attackModifiers": "Attack Modifiers",
             "attackSize": " Opponent Size Modifiers",
             "attackRange": "Range Modifiers",
-            "attackCustom": "Custom Modifiers",
+            "attackCustom": "Custom Attack Modifiers",
             "attackStrike": "Strike type",
             "attackDamage": "damage",
             "attackMeleeBonus": "Melee Bonus",
