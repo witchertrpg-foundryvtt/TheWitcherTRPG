@@ -2,9 +2,9 @@
     <div class="carry-section">
         <div class="carry-labels">
             <span>Carry: {{totalWeight}}</span>
-            <span class="bulk-max">Max Carry: {{system.coreStats.enc.current}}</span>
+            <span class="bulk-max">Max Carry: {{system.derivedStats.enc.value}}</span>
         </div>
-        <progress class="carry-bar {{#if (gte totalWeight system.coreStats.enc.current)}}overweight{{/if}}" value="{{totalWeight}}" max="{{system.coreStats.enc.current}}"></progress>
+        <progress class="carry-bar {{#if (gte totalWeight system.derivedStats.enc.value)}}overweight{{/if}}" value="{{totalWeight}}" max="{{system.derivedStats.enc.value}}"></progress>
     </div>
 
     <div class="currency-section">

@@ -101,12 +101,12 @@
             "StatTitle.LableLeft": "Atributos",
             "StatTitle.ModMax": "Mod / Máx",
             "StatTitle.Derived": "Derivado",
-            "CoreStat.Stun": "ATORD",
-            "CoreStat.Run": "CORRER",
-            "CoreStat.Leap": "SALTO",
-            "CoreStat.Enc": "FARDO",
-            "CoreStat.Rec": "REC",
-            "CoreStat.woundTreshold": "LF",
+            "DerStat.Stun": "ATORD",
+            "DerStat.Run": "CORRER",
+            "DerStat.Leap": "SALTO",
+            "DerStat.Enc": "FARDO",
+            "DerStat.Rec": "REC",
+            "DerStat.woundTreshold": "LF",
             "DerStat.Vigor": "VIGOR",
             "DerStat.HP": "PV Máx",
             "DerStat.Shield": "Escudo",
@@ -1011,9 +1011,6 @@
         "Stats": {
             "stats": {
                 "Name": "Status"
-            },
-            "coreStats": {
-                "Name": "Status Principal"
             },
             "derivedStats": {
                 "Name": "Status Derivado"

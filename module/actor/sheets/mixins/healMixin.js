@@ -2,7 +2,7 @@ const DialogV2 = foundry.applications.api.DialogV2;
 
 export let healMixin = {
     async _onHeal() {
-        const rec = this.actor.system.coreStats.rec;
+        const rec = this.actor.system.derivedStats.rec;
         const hp = this.actor.system.derivedStats.hp;
         const sta = this.actor.system.derivedStats.sta;
         const actualWoundList = this.actor.system.critWounds;

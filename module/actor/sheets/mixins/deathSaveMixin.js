@@ -16,7 +16,7 @@ export let deathsaveMixin = {
     async _onDeathSaveRoll(event) {
         let stunBase =
             this.actor.system.derivedStats.hp.value > 0
-                ? this.actor.system.coreStats.stun.current
+                ? this.actor.system.derivedStats.stun.current
                 : Math.floor((this.actor.system.stats.body.max + this.actor.system.stats.will.max) / 2);
 
         stunBase = Math.min(stunBase, 10);

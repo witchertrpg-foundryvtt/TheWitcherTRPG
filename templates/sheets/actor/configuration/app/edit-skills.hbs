@@ -12,16 +12,18 @@
                         <td colspan="3">
                             <label>{{localize "WITCHER.SKill.profession"}}:
                                 <input class="skill-checkbox" type="checkbox"
-                                    name="system.skills.{{skillName}}.{{name}}.isProfession"
+                                    name="system.skills.{{@root.skillKey}}.{{skillName}}.isProfession"
                                     {{checked skill.isProfession}} />
                             </label>
                             <label>{{localize "WITCHER.SKill.pickup"}}:
                                 <input class="skill-checkbox" type="checkbox"
-                                    name="system.skills.{{skillName}}.{{name}}.isPickup" {{checked skill.isPickup}} />
+                                    name="system.skills.{{@root.skillKey}}.{{skillName}}.isPickup"
+                                    {{checked skill.isPickup}} />
                             </label>
                             <label>{{localize "WITCHER.SKill.learn"}}:
                                 <input class="skill-checkbox" type="checkbox"
-                                    name="system.skills.{{skillName}}.{{name}}.isLearned" {{checked skill.isLearned}} />
+                                    name="system.skills.{{@root.skillKey}}.{{skillName}}.isLearned"
+                                    {{checked skill.isLearned}} />
                             </label>
                         </td>
                     </tr>
@@ -29,7 +31,8 @@
                         <tr>
                             <td colspan="3">
                                 {{#each skill.modifiers as |modifier value|}}
-                                    <div class="list-modifiers" data-id="{{modifier.id}}">
+                                    <div class="list-modifiers skill" data-id="{{modifier.id}}"
+                                        data-skill="{{skillName}}" data-stat="{{@root.skillKey}}">
                                         <input class="medium skill-mod-edit" data-field="name" type="text"
                                             value="{{modifier.name}}" />
                                         <input class="small skill-mod-edit" data-field="value" type="number"

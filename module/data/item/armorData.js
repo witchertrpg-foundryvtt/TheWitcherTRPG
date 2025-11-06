@@ -84,8 +84,6 @@ export default class ArmorData extends CommonItemData {
 
     /** @inheritdoc */
     static migrateData(source) {
-        super.migrateData(source);
-
         if ('enhancementItems' in source) {
             source.enhancementItemIds = source.enhancementItemIds ?? [];
             source.enhancementItems.forEach(enhancement => {
@@ -96,5 +94,7 @@ export default class ArmorData extends CommonItemData {
         }
 
         this.effects?.forEach(effect => (effect.percentage = parseInt(effect.percentage)));
+
+        return super.migrateData(source);
     }
 }

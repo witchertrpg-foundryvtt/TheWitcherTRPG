@@ -20,7 +20,7 @@ import { craftingMixin } from './mixins/craftingMixin.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
-const derivedPaths = ['coreStats', 'derivedStats', 'attackStats'];
+const derivedPaths = ['derivedStats', 'attackStats'];
 
 export default class WitcherActor extends Actor {
     /**
@@ -60,7 +60,7 @@ export default class WitcherActor extends Actor {
         });
 
         this.calculateStats();
-        this.calculateCoreStats();
+        this.calculateFixedDerivedStats();
         this.calculateStats();
         this.calculateDerivedStats();
         this.calculateAttackStats();
@@ -78,7 +78,9 @@ export default class WitcherActor extends Actor {
         this.calculateStat('will');
         this.calculateStat('luck');
 
-        this.system.stats.toxicity.max += this.system.stats.toxicity.totalModifiers;
+        this.system.stats.toxicity.max =
+            this.system.stats.toxicity.unmodifiedMax + this.system.stats.toxicity.totalModifiers;
+        this.system.reputation.value = this.system.reputation.max;
     }
 
     calculateStat(stat) {
@@ -94,7 +96,7 @@ export default class WitcherActor extends Actor {
             let currentEncumbrance =
                 (this.system.stats.body.max + bodyTotalModifiers) * 10 +
                 this.getAllModifiers('enc').totalModifiers +
-                this.system.coreStats.enc.totalModifiers;
+                this.system.derivedStats.enc.totalModifiers;
             var totalWeights = this.getTotalWeight();
 
             let encDiff = 0;
@@ -117,68 +119,72 @@ export default class WitcherActor extends Actor {
         if (HPvalue <= 0) {
             this.system.deathStateApplied = true;
             divider += 2;
-        } else if (HPvalue < this.system.coreStats.woundTreshold.current > 0) {
+        } else if (HPvalue < this.system.derivedStats.woundTreshold.value > 0) {
             this.system.woundTresholdApplied = true;
             if (stat === 'ref' || stat === 'dex' || stat === 'int' || stat === 'will') {
                 divider += 1;
             }
         }
 
-        this.system.stats[stat].current = Math.floor((this.system.stats[stat].max + totalModifiers) / divider);
+        this.system.stats[stat].value = Math.floor((this.system.stats[stat].max + totalModifiers) / divider);
     }
 
-    calculateCoreStats() {
-        const base = Math.floor((this.system.stats.body.current + this.system.stats.will.current) / 2);
+    calculateFixedDerivedStats() {
+        const base = Math.floor((this.system.stats.body.value + this.system.stats.will.value) / 2);
         const baseMax = Math.floor((this.system.stats.body.max + this.system.stats.will.max) / 2);
 
         let stunTotalModifiers =
-            this.getAllModifiers('stun').totalModifiers + this.system.coreStats.stun.totalModifiers;
+            this.getAllModifiers('stun').totalModifiers + this.system.derivedStats.stun.totalModifiers;
         let stunDivider = this.getAllModifiers('stun').totalDivider;
-        this.system.coreStats.stun.modifiers.forEach(item => (stunTotalModifiers += Number(item.value)));
-        this.system.coreStats.stun.current = Math.floor((Math.clamp(base, 1, 10) + stunTotalModifiers) / stunDivider);
-        this.system.coreStats.stun.max = Math.clamp(baseMax, 1, 10);
-        this.system.coreStats.stun.totalModifiers = stunTotalModifiers;
+        this.system.derivedStats.stun.modifiers.forEach(item => (stunTotalModifiers += Number(item.value)));
+        this.system.derivedStats.stun.value = Math.floor((Math.clamp(base, 1, 10) + stunTotalModifiers) / stunDivider);
+        this.system.derivedStats.stun.max = Math.clamp(baseMax, 1, 10);
+        this.system.derivedStats.stun.totalModifiers = stunTotalModifiers;
 
-        let runTotalModifiers = this.getAllModifiers('run').totalModifiers + this.system.coreStats.run.totalModifiers;
+        let runTotalModifiers =
+            this.getAllModifiers('run').totalModifiers + this.system.derivedStats.run.totalModifiers;
         let runDivider = this.getAllModifiers('run').totalDivider;
-        this.system.coreStats.run.modifiers.forEach(item => (runTotalModifiers += Number(item.value)));
-        this.system.coreStats.run.current = Math.floor(
-            (this.system.stats.spd.current * 3 + runTotalModifiers) / runDivider
+        this.system.derivedStats.run.modifiers.forEach(item => (runTotalModifiers += Number(item.value)));
+        this.system.derivedStats.run.value = Math.floor(
+            (this.system.stats.spd.value * 3 + runTotalModifiers) / runDivider
         );
-        this.system.coreStats.run.max = this.system.stats.spd.current * 3;
-        this.system.coreStats.run.totalModifiers = runTotalModifiers;
+        this.system.derivedStats.run.max = this.system.stats.spd.value * 3;
+        this.system.derivedStats.run.totalModifiers = runTotalModifiers;
 
         let leapTotalModifiers =
-            this.getAllModifiers('leap').totalModifiers + this.system.coreStats.leap.totalModifiers;
+            this.getAllModifiers('leap').totalModifiers + this.system.derivedStats.leap.totalModifiers;
         let leapDivider = this.getAllModifiers('leap').totalDivider;
-        this.system.coreStats.leap.modifiers.forEach(item => (leapTotalModifiers += Number(item.value)));
-        this.system.coreStats.leap.current =
-            Math.floor((this.system.stats.spd.current * 3) / 5 + leapTotalModifiers) / leapDivider;
-        this.system.coreStats.leap.max = Math.floor((this.system.stats.spd.max * 3) / 5);
-        this.system.coreStats.leap.totalModifiers = leapTotalModifiers;
+        this.system.derivedStats.leap.modifiers.forEach(item => (leapTotalModifiers += Number(item.value)));
+        this.system.derivedStats.leap.value =
+            Math.floor((this.system.stats.spd.value * 3) / 5 + leapTotalModifiers) / leapDivider;
+        this.system.derivedStats.leap.max = Math.floor((this.system.stats.spd.max * 3) / 5);
+        this.system.derivedStats.leap.totalModifiers = leapTotalModifiers;
 
-        let encTotalModifiers = this.getAllModifiers('enc').totalModifiers + this.system.coreStats.enc.totalModifiers;
+        let encTotalModifiers =
+            this.getAllModifiers('enc').totalModifiers + this.system.derivedStats.enc.totalModifiers;
         let encDivider = this.getAllModifiers('enc').totalDivider;
-        this.system.coreStats.enc.modifiers.forEach(item => (encTotalModifiers += Number(item.value)));
-        this.system.coreStats.enc.current = Math.floor(
-            (this.system.stats.body.current * 10 + encTotalModifiers) / encDivider
+        this.system.derivedStats.enc.modifiers.forEach(item => (encTotalModifiers += Number(item.value)));
+        this.system.derivedStats.enc.value = Math.floor(
+            (this.system.stats.body.value * 10 + encTotalModifiers) / encDivider
         );
-        this.system.coreStats.enc.max = this.system.stats.body.current * 10;
-        this.system.coreStats.enc.totalModifiers = encTotalModifiers;
+        this.system.derivedStats.enc.max = this.system.stats.body.value * 10;
+        this.system.derivedStats.enc.totalModifiers = encTotalModifiers;
 
-        let recTotalModifiers = this.getAllModifiers('rec').totalModifiers + this.system.coreStats.rec.totalModifiers;
+        let recTotalModifiers =
+            this.getAllModifiers('rec').totalModifiers + this.system.derivedStats.rec.totalModifiers;
         let recDivider = this.getAllModifiers('rec').totalDivider;
-        this.system.coreStats.rec.modifiers.forEach(item => (recTotalModifiers += Number(item.value)));
-        this.system.coreStats.rec.current = Math.floor((base + recTotalModifiers) / recDivider);
-        this.system.coreStats.rec.max = baseMax;
-        this.system.coreStats.rec.totalModifiers = recTotalModifiers;
+        this.system.derivedStats.rec.modifiers.forEach(item => (recTotalModifiers += Number(item.value)));
+        this.system.derivedStats.rec.value = Math.floor((base + recTotalModifiers) / recDivider);
+        this.system.derivedStats.rec.max = baseMax;
+        this.system.derivedStats.rec.totalModifiers = recTotalModifiers;
 
         let wtTotalModifiers =
-            this.getAllModifiers('woundTreshold').totalModifiers + this.system.coreStats.woundTreshold.totalModifiers;
+            this.getAllModifiers('woundTreshold').totalModifiers +
+            this.system.derivedStats.woundTreshold.totalModifiers;
         let wtDivider = this.getAllModifiers('woundTreshold').totalDivider;
-        this.system.coreStats.woundTreshold.modifiers.forEach(item => (wtTotalModifiers += Number(item.value)));
-        this.system.coreStats.woundTreshold.current = Math.floor((baseMax + wtTotalModifiers) / wtDivider);
-        this.system.coreStats.woundTreshold.max = baseMax;
+        this.system.derivedStats.woundTreshold.modifiers.forEach(item => (wtTotalModifiers += Number(item.value)));
+        this.system.derivedStats.woundTreshold.value = Math.floor((baseMax + wtTotalModifiers) / wtDivider);
+        this.system.derivedStats.woundTreshold.max = baseMax;
     }
 
     calculateDerivedStats() {
@@ -195,7 +201,7 @@ export default class WitcherActor extends Actor {
         this.system.derivedStats[stat].modifiers.forEach(item => (totalModifiers += Number(item.value)));
         totalModifiers += this.system.derivedStats[stat].totalModifiers;
 
-        const base = Math.floor((this.system.stats.body.current + this.system.stats.will.current) / 2);
+        const base = Math.floor((this.system.stats.body.value + this.system.stats.will.value) / 2);
         if (!this.system.customStat && (stat === 'hp' || stat === 'sta')) {
             this.system.derivedStats[stat].unmodifiedMax = base * 5;
         }
@@ -211,11 +217,11 @@ export default class WitcherActor extends Actor {
                 modifiedMax = Math.floor((base * 5 + totalModifiers) / divider);
             } else if (stat === 'resolve') {
                 modifiedMax =
-                    Math.floor((this.system.stats.will.current + this.system.stats.int.current) / divider) * 5 +
+                    Math.floor((this.system.stats.will.value + this.system.stats.int.value) / divider) * 5 +
                     totalModifiers;
             } else if (stat === 'focus') {
                 modifiedMax =
-                    Math.floor((this.system.stats.will.current + this.system.stats.int.current) / divider) * 3 +
+                    Math.floor((this.system.stats.will.value + this.system.stats.int.value) / divider) * 3 +
                     totalModifiers;
             }
         }
@@ -225,7 +231,7 @@ export default class WitcherActor extends Actor {
     }
 
     calculateAttackStats() {
-        const meleeBonus = Math.ceil((this.system.stats.body.current - 6) / 2) * 2;
+        const meleeBonus = Math.ceil((this.system.stats.body.value - 6) / 2) * 2;
         this.system.attackStats.meleeBonus += meleeBonus;
         this.system.attackStats.punch.value = `1d6+${meleeBonus}`;
         this.system.attackStats.kick.value = `1d6+${4 + meleeBonus}`;
@@ -259,14 +265,12 @@ export default class WitcherActor extends Actor {
                 for (const effect of this.allApplicableEffects()) {
                     if (!effect.active) continue;
                     changes.push(
-                        ...effect.changes
-                            .filter(change => !derivedPaths.some(path => change.key.includes(path)))
-                            .map(change => {
-                                const c = foundry.utils.deepClone(change);
-                                c.effect = effect;
-                                c.priority = c.priority ?? c.mode * 10;
-                                return c;
-                            })
+                        ...effect.changes.map(change => {
+                            const c = foundry.utils.deepClone(change);
+                            c.effect = effect;
+                            c.priority = c.priority ?? c.mode * 10;
+                            return c;
+                        })
                     );
                     for (const statusId of effect.statuses) this.statuses.add(statusId);
                 }
@@ -292,7 +296,7 @@ export default class WitcherActor extends Actor {
     async rollSkillCheck(skillMapEntry, threshold = -1) {
         let attribute = skillMapEntry.attribute;
         let attributeLabel = game.i18n.localize(attribute.label);
-        let attributeValue = this.system.stats[attribute.name].current;
+        let attributeValue = this.system.stats[attribute.name].value;
 
         let skillName = skillMapEntry.name;
         let skillLabel = game.i18n.localize(skillMapEntry.label);
@@ -406,7 +410,7 @@ export default class WitcherActor extends Actor {
 
         let attribute = CONFIG.WITCHER.statMap[customSkill.system.attribute];
         let attributeLabel = game.i18n.localize(attribute.label);
-        let attributeValue = this.system.stats[attribute.name].current;
+        let attributeValue = this.system.stats[attribute.name].value;
 
         let skillLabel = customSkill.name;
         let skillValue = customSkill.system.value;
