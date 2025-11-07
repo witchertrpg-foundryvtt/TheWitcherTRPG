@@ -436,7 +436,10 @@
             "staDialog": "How do you want to recover stamina?",
             "recoveryAction": "Recovery Action",
             "fullRecovery": "Full Recovery",
-            "fullStaInfo": "Your stamina is already full"
+            "fullStaInfo": "Your stamina is already full",
+            "defense": {
+                "custom": "Custom Defense Modifiers"
+            }
         },
         "DamageType": {
             "name": "Damage Type",
