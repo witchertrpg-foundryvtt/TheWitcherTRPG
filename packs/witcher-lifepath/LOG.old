@@ -1,5 +1,13 @@
-2025/07/07-09:54:38.624 2198 Log #611: 0 ops saved to Table #614 OK
-2025/07/07-09:54:38.624 2198 Archiving D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\witcher-lifepath/000611.log: OK
-2025/07/07-09:54:38.699 2198 Table #613: 362 entries OK
-2025/07/07-09:54:38.810 2198 Archiving D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\witcher-lifepath/MANIFEST-000609: OK
-2025/07/07-09:54:38.951 2198 **** Repaired leveldb D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\witcher-lifepath; recovered 1 files; 66684 bytes. Some data may have been lost. ****
+2025/11/06-14:57:30.086 1c5c Recovering log #803
+2025/11/06-14:57:30.305 1c5c Delete type=0 #803
+2025/11/06-14:57:30.305 1c5c Delete type=3 #802
+2025/11/06-14:58:25.111 1ca0 Level-0 table #807: started
+2025/11/06-14:58:25.111 1ca0 Level-0 table #807: 0 bytes OK
+2025/11/06-14:58:25.249 1ca0 Delete type=0 #805
+2025/11/06-14:58:25.691 1ca0 Manual compaction at level-0 from '!tables!1QUG4e60Iqom24ac' @ 72057594037927935 : 1 .. '!tables.results!zVS3tsoiyTdjwU7i.th9s2aW3pwS3ZZX2' @ 0 : 0; will stop at '!tables.results!zVS3tsoiyTdjwU7i.th9s2aW3pwS3ZZX2' @ 1826 : 1
+2025/11/06-14:58:25.691 1ca0 Compacting 1@0 + 0@1 files
+2025/11/06-14:58:25.803 1ca0 Generated table #808@0: 362 keys, 66684 bytes
+2025/11/06-14:58:25.803 1ca0 Compacted 1@0 + 0@1 files => 66684 bytes
+2025/11/06-14:58:25.913 1ca0 compacted to: files[ 0 1 0 0 0 0 0 ]
+2025/11/06-14:58:25.913 1ca0 Delete type=2 #742
+2025/11/06-14:58:26.013 1ca0 Manual compaction at level-0 from '!tables.results!zVS3tsoiyTdjwU7i.th9s2aW3pwS3ZZX2' @ 1826 : 1 .. '!tables.results!zVS3tsoiyTdjwU7i.th9s2aW3pwS3ZZX2' @ 0 : 0; will stop at (end)

@@ -1,5 +1,13 @@
-2025/07/07-09:54:39.433 484 Log #564: 0 ops saved to Table #567 OK
-2025/07/07-09:54:39.434 484 Archiving D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\style/000564.log: OK
-2025/07/07-09:54:39.450 484 Table #566: 77 entries OK
-2025/07/07-09:54:39.498 484 Archiving D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\style/MANIFEST-000562: OK
-2025/07/07-09:54:39.558 484 **** Repaired leveldb D:\Tools\FoundryVTT\FoundryVTT\Data\systems\TheWitcherTRPG\packs\style; recovered 1 files; 8727 bytes. Some data may have been lost. ****
+2025/11/06-14:57:30.745 2a84 Recovering log #756
+2025/11/06-14:57:30.887 2a84 Delete type=0 #756
+2025/11/06-14:57:30.887 2a84 Delete type=3 #755
+2025/11/06-14:58:25.913 1ca0 Level-0 table #760: started
+2025/11/06-14:58:25.913 1ca0 Level-0 table #760: 0 bytes OK
+2025/11/06-14:58:26.013 1ca0 Delete type=0 #758
+2025/11/06-14:58:26.013 1ca0 Manual compaction at level-0 from '!tables!4RWDMDzNdnz2kgwU' @ 72057594037927935 : 1 .. '!tables.results!y1WCi6n2Kpwqb27P.th9s2aW3pwS3ZZX2' @ 0 : 0; will stop at '!tables.results!y1WCi6n2Kpwqb27P.th9s2aW3pwS3ZZX2' @ 227 : 1
+2025/11/06-14:58:26.013 1ca0 Compacting 1@0 + 0@1 files
+2025/11/06-14:58:26.204 1ca0 Generated table #761@0: 77 keys, 8727 bytes
+2025/11/06-14:58:26.204 1ca0 Compacted 1@0 + 0@1 files => 8727 bytes
+2025/11/06-14:58:26.322 1ca0 compacted to: files[ 0 1 0 0 0 0 0 ]
+2025/11/06-14:58:26.322 1ca0 Delete type=2 #695
+2025/11/06-14:58:26.621 1ca0 Manual compaction at level-0 from '!tables.results!y1WCi6n2Kpwqb27P.th9s2aW3pwS3ZZX2' @ 227 : 1 .. '!tables.results!y1WCi6n2Kpwqb27P.th9s2aW3pwS3ZZX2' @ 0 : 0; will stop at (end)
