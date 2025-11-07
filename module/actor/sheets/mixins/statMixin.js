@@ -19,7 +19,6 @@ export let statMixin = {
         }
     },
 
-
     async _onEditStatModifier(event) {
         event.preventDefault();
         let stat = event.currentTarget.closest('.stat-display').dataset.stat;
@@ -175,14 +174,14 @@ export let statMixin = {
 
     async _onLuckMinus(event) {
         event.preventDefault();
-        if (this.actor.system.stats.luck.total > 0) {
-            await this.actor.update({ 'system.stats.luck.total': this.actor.system.stats.luck.total - 1 });
+        if (this.actor.system.stats.luck.value > 0) {
+            await this.actor.update({ 'system.stats.luck.value': this.actor.system.stats.luck.value - 1 });
         }
     },
 
     async _onLuckReset(event) {
         event.preventDefault();
-        await this.actor.update({ 'system.stats.luck.total': this.actor.system.stats.luck.max });
+        await this.actor.update({ 'system.stats.luck.value': this.actor.system.stats.luck.max });
     },
 
     async _onAdrenalineMinus(event) {
