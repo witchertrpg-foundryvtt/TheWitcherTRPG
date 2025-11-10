@@ -63,7 +63,7 @@
     .skill-icons {
         display: flex;
         gap: 10px;
-        font-size: 16px;
+        font-size: 14px;
         margin: 5px 0;
         color: light-dark(black, white);
     }
@@ -71,6 +71,34 @@
 
 .char-stat-button:hover {
     background: light-dark(#22222240, #e7d1b140);
+}
+
+.char-stat-button.skill {
+    .label,
+    .skill-icons {
+        font-size: 14px;
+    }
+}
+
+.char-stat-button.skill.profession {
+    background: rgba(85, 107, 47, 0.35);
+}
+.char-stat-button.skill.profession:hover {
+    background: rgba(107, 142, 35, 0.45);
+}
+
+.char-stat-button.skill.learned {
+    background: rgba(32, 95, 171, 0.35);
+}
+.char-stat-button.skill.learned:hover {
+    background: rgba(60, 130, 210, 0.45);
+}
+
+.char-stat-button.skill.pickup {
+    background: rgba(175, 50, 50, 0.35);
+}
+.char-stat-button.skill.pickup:hover {
+    background: rgba(210, 70, 70, 0.45);
 }
 
 .reputation-button {
@@ -432,7 +460,8 @@ a.button-roll:hover {
 .hp-bar,
 .sta-bar,
 .toxicity-bar,
-.focus-bar {
+.focus-bar,
+.resolve-bar {
     height: 20px;
     width: 130px;
 }
@@ -520,6 +549,27 @@ a.button-roll:hover {
     background-color: #7C14EC;
 }
 
+.resolve-bar,
+.resolve-bar::-webkit-progress-bar {
+    border: none;
+    background-color: #59236210;
+    border-radius: 0 5px 5px 5px;
+}
+
+.resolve-bar::-webkit-progress-value {
+    background-color: #f2a4ea;
+    border-radius: 0 5px 5px 5px;
+}
+
+.resolve-bar::-moz-progress-bar,
+.resolve-bar::-moz-progress-value {
+    border-radius: 0 5px 5px 5px;
+}
+
+.resolve-bar::-moz-progress-bar {
+    background-color: #f2a4ea;
+}
+
 .progress-container {
     display: flex;
     flex-direction: column;
@@ -572,6 +622,10 @@ a.button-roll:hover {
 
 .progress-header.focus {
     background: #220742;
+}
+
+.progress-header.resolve {
+    background: #592362;
 }
 
 input.progress-input,

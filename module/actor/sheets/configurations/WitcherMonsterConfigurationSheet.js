@@ -8,7 +8,7 @@ export default class WitcherMonsterConfigurationSheet extends HandlebarsApplicat
             width: 520,
             height: 480
         },
-        classes: ['witcher', 'sheet', 'actor'],
+        classes: ['witcher', 'extended-sheet', 'actor'],
         form: {
             submitOnChange: true,
             closeOnSubmit: false
