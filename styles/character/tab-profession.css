@@ -38,8 +38,8 @@
         
         .profession-path {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            flex-direction: row;
+            gap: 0px;
             width: 100%;
 
             .blue-path,
@@ -55,6 +55,7 @@
 
             .profession-card {
                 max-width: none;
+                min-width: 190px;
 
                 input,
                 select,
@@ -66,6 +67,28 @@
                     overflow-y: auto;
                     min-height: 50px;
                     height: -webkit-fill-available;
+                }
+
+                .profession-display {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 5px;
+
+                    .profession-skill-input {
+                        border-radius: 5px;
+                    }
+
+                    select.inline-edit {
+                        max-width: calc(100% - 80px);
+                        height: 32px;
+                        border-radius: 5px;
+                        margin: 0;
+                    }
+
+                    .profession-level {
+                        max-width: 35px;
+                        border-radius: 5px;
+                    }
                 }
             }
         }

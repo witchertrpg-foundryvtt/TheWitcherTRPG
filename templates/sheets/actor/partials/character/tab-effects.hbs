@@ -1,8 +1,4 @@
 <section class="tab {{tabs.effects.cssClass}} scrollable standard-form" data-group="primary" data-tab="effects">
-    <div class="active-effects-section">
-        {{> systems/TheWitcherTRPG/templates/partials/effect-part.hbs}}
-    </div>
-
     <div class="flex crit-wound-section">
         <div class="crit-wounds">
             <div class="item-name crit-wounds-header">
@@ -11,5 +7,9 @@
             </div>
             {{> "systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs"}}
         </div>
+    </div>
+
+    <div class="active-effects-section">
+        {{> systems/TheWitcherTRPG/templates/partials/effect-part.hbs}}
     </div>
 </section>
