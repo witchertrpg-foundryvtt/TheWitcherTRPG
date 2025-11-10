@@ -1,5 +1,46 @@
 <section class="tab {{tabs.magic.cssClass}} scrollable standard-form" data-group="primary" data-tab="magic">
-    <div class="magic-info">
+    <nav class="sheet-tabs tabs">
+    {{#each magicTabs as |tab|}}
+        <a class="{{tab.cssClass}}" data-action="tab" data-group="magicTabs" data-tab="{{tab.id}}">{{localize tab.label}}</a>
+    {{/each}}
+    </nav>
+    <section class="tab active" data-group="magicTabs" data-tab="all">
+        <div class="spell-section">
+            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=noviceSpells itemType='spell' spellType="spellNovice" header=(concat (localize "WITCHER.Spell.Novice") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
+
+            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=journeymanSpells itemType='spell' spellType="spellJourneyman" header=(concat (localize "WITCHER.Spell.Journeyman") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
+
+            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=masterSpells itemType='spell' spellType="spellMaster" header=(concat (localize "WITCHER.Spell.Master") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
+        </div>
+        <div class="magic-section">
+            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=rituals itemType='ritual' header=(localize "WITCHER.Spell.Rituals")}}
+
+            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=hexes itemType='hex' header=(localize "WITCHER.Spell.Hexes")}}
+
+            {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=magicalgift itemType='spell' spellType="magicalgift" header=(localize "WITCHER.Spell.MagicalGift")}}
+        </div>
+    </section>
+    <section class="tab spell-section" data-group="magicTabs" data-tab="magic">
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=noviceSpells itemType='spell' spellType="spellNovice" header=(concat (localize "WITCHER.Spell.Novice") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
+
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=journeymanSpells itemType='spell' spellType="spellJourneyman" header=(concat (localize "WITCHER.Spell.Journeyman") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
+
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=masterSpells itemType='spell' spellType="spellMaster" header=(concat (localize "WITCHER.Spell.Master") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
+    </section>
+
+    <section class="tab magic-section" data-group="magicTabs" data-tab="rituals">
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=rituals itemType='ritual' header=(localize "WITCHER.Spell.Rituals")}}
+    </section>
+
+    <section class="tab magic-section" data-group="magicTabs" data-tab="hexes">
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=hexes itemType='hex' header=(localize "WITCHER.Spell.Hexes")}}
+    </section>
+
+    <section class="tab magic-section" data-group="magicTabs" data-tab="magicalGift">
+        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=magicalgift itemType='spell' spellType="magicalgift" header=(localize "WITCHER.Spell.MagicalGift")}}
+    </section>
+
+    <div class="tab magic-info" data-group="magicTabs" data-tab="focus">
         <div class="value-max-stat-display">
             <label>{{localize "WITCHER.StVigor"}}</label>
             <input class="focus-value" name="system.derivedStats.vigor.unmodifiedMax" type="number"
@@ -34,19 +75,5 @@
             <input class="focus-value" name="system.focus4.value" type="text" value="{{system.focus4.value}}"
                 placeholder="0" />
         </div>
-    </div>
-    <div class="spell-section">
-        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=noviceSpells itemType='spell' spellType="spellNovice" header=(concat (localize "WITCHER.Spell.Novice") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
-
-        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=journeymanSpells itemType='spell' spellType="spellJourneyman" header=(concat (localize "WITCHER.Spell.Journeyman") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
-
-        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=masterSpells itemType='spell' spellType="spellMaster" header=(concat (localize "WITCHER.Spell.Master") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
-    </div>
-    <div class="magic-section">
-        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=rituals itemType='ritual' header=(localize "WITCHER.Spell.Rituals")}}
-
-        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=hexes itemType='hex' header=(localize "WITCHER.Spell.Hexes")}}
-
-        {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=magicalgift itemType='spell' spellType="magicalgift" header=(localize "WITCHER.Spell.MagicalGift")}}
     </div>
 </section>

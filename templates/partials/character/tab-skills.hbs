@@ -1,5 +1,10 @@
 <section class="tab {{tabs.skills.cssClass}} scrollable standard-form" data-group="primary" data-tab="skills">
-    <div class="skill-info">
+    <nav class="sheet-tabs tabs">
+    {{#each skillTabs as |tab|}}
+        <a class="{{tab.cssClass}}" data-action="tab" data-group="skillTabs" data-tab="{{tab.id}}">{{localize tab.label}}</a>
+    {{/each}}
+    </nav>
+    <section class="tab skill-info" data-group="skillTabs" data-tab="ip">
         <div class="skill-ip">
             <span>
                 <span>{{localize "WITCHER.Actor.ImprovementPoints"}}</span>
@@ -50,10 +55,33 @@
                         type="number" value="{{totalProfSkills}}" placeholder="0" readonly disabled /> </b>
             </div>
         </div>
+    </section>
+
+    <div class="tab active" data-group="skillTabs" data-tab="all">
+        {{#each system.skills as |skillsGroup skillKey|}}
+        <div class="skill-column">
+            <details open>
+                <summary>
+                    <span>{{localize (concat "WITCHER.St" (capitalize skillKey) )}}</span>
+                    <a data-action="openModifiers" data-type="skill" data-skill-key="{{skillKey}}"><i class="fas fa-edit"></i></a>
+                </summary>
+                <div class="skills-stats-list">
+                    {{#each skillsGroup as |skill name|}}
+                    {{> "systems/TheWitcherTRPG/templates/partials/character/skill-display.hbs" 
+                        skill=skill name=name stat=skillKey}}
+                    {{/each}}
+
+                    {{#each (lookup ../customSkills skillKey)}}
+                    {{> "systems/TheWitcherTRPG/templates/partials/character/custom-skill-display.hbs"}}
+                    {{/each}}
+                </div>
+            </details>
+        </div>
+        {{/each}}
     </div>
 
     {{#each system.skills as |skillsGroup skillKey|}}
-    <div class="skill-column">
+    <section class="tab skill-column" data-group="skillTabs" data-tab="{{skillKey}}">
         <details open>
             <summary>
                 <span>{{localize (concat "WITCHER.St" (capitalize skillKey) )}}</span>
@@ -70,6 +98,6 @@
                 {{/each}}
             </div>
         </details>
-    </div>
+    </section>
     {{/each}}
 </section>
