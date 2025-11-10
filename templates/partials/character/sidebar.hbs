@@ -37,11 +37,11 @@
         </div>
         <div class='progress-container'>
             <h3 class="progress-header toxicity">{{localize 'WITCHER.Actor.Stat.Toxicity'}}</h3>
-            <progress class='toxicity-bar' value='{{system.stats.toxicity.current}}'
+            <progress class='toxicity-bar' value='{{system.stats.toxicity.value}}'
                 max='{{system.stats.toxicity.max}}'></progress>
             <h3 class='progress-text'>
-                <input class='progress-input' name='system.stats.toxicity.current' type='number'
-                    value='{{system.stats.toxicity.current}}' max='{{system.stats.toxicity.max}}' placeholder='0'
+                <input class='progress-input' name='system.stats.toxicity.value' type='number'
+                    value='{{system.stats.toxicity.value}}' max='{{system.stats.toxicity.max}}' placeholder='0'
                     data-dtype='Number' />
                 <span>|</span>
                 <span class='progress-total'>{{system.stats.toxicity.max}}</span>
@@ -59,6 +59,20 @@
                 <span class='progress-total'>{{system.derivedStats.focus.max}}</span>
             </h3>
         </div>
+        {{#if useVerbalCombat}}
+        <div class='progress-container'>
+            <h3 class="progress-header resolve">{{localize system.derivedStats.resolve.label}}</h3>
+            <progress class='resolve-bar' value='{{system.derivedStats.resolve.value}}'
+                max='{{system.derivedStats.resolve.max}}'></progress>
+            <h3 class='progress-text'>
+                <input class='progress-input' name='system.derivedStats.resolve.value' type='number'
+                    value='{{system.derivedStats.resolve.value}}' max='{{system.derivedStats.resolve.max}}' placeholder='0'
+                    data-dtype='Number' />
+                <span>|</span>
+                <span class='progress-total'>{{system.derivedStats.resolve.max}}</span>
+            </h3>
+        </div>
+        {{/if}}
     </div>
     <div class="optional-stats-section">
         <div class='optional-stat vigor-display'>
@@ -82,21 +96,6 @@
                 </h3>
             </div>
         </div>
-        {{#if useVerbalCombat}}
-            <div class='optional-stat resolve-display'>
-                <div class='optional-name'>
-                    <i class='fa-solid fa-comment'></i>
-                    <span class=''>{{localize 'WITCHER.Actor.DerStat.Resolve'}}</span>
-                </div>
-                <div class='optional-info'>
-                    <h3>
-                        <input class='small' type='number' name='system.derivedStats.resolve.value'
-                            value='{{system.derivedStats.resolve.value}}' data-dtype='Number' />
-                    </h3>
-                    <h3>{{system.derivedStats.resolve.max}}</h3>
-                </div>
-            </div>
-        {{/if}}
         <div class='optional-stat luck-display'>
             <div class='optional-name'>
                 <i class='fa-solid fa-clover'></i>

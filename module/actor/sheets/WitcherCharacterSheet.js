@@ -15,6 +15,9 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
 
     /** @override */
     static DEFAULT_OPTIONS = {
+        position: {
+            width: 900
+        },
         actions: {
             openAttributeDialog: this.#openAttributeDialog,
             openDerivedDialog: this.#openDerivedDialog,
@@ -76,6 +79,31 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
             ],
             initial: 'stats',
             labelPrefix: 'WITCHER.Actor.tabs'
+        },
+        skillTabs: {
+            tabs: [
+                { id: 'all', cssClass: 'all', label: 'WITCHER.Button.All' },
+                { id: 'int', cssClass: 'int', label: 'WITCHER.Actor.Stat.Int' },
+                { id: 'ref', cssClass: 'ref', label: 'WITCHER.Actor.Stat.Ref' },
+                { id: 'dex', cssClass: 'dex', label: 'WITCHER.Actor.Stat.Dex' },
+                { id: 'body', cssClass: 'body', label: 'WITCHER.Actor.Stat.Body' },
+                { id: 'emp', cssClass: 'emp', label: 'WITCHER.Actor.Stat.Emp' },
+                { id: 'cra', cssClass: 'cra', label: 'WITCHER.Actor.Stat.Cra' },
+                { id: 'will', cssClass: 'will', label: 'WITCHER.Actor.Stat.Will' },
+                { id: 'ip', cssClass: 'ip', label: 'WITCHER.Actor.rewards.ip' },
+            ],
+            initial: 'all',
+        },
+        magicTabs: {
+            tabs: [
+                { id: 'all', cssClass: 'all', label: 'WITCHER.Button.All' },
+                { id: 'magic', cssClass: 'magic', label: 'WITCHER.Actor.tabs.magic' },
+                { id: 'rituals', cssClass: 'rituals', label: 'WITCHER.Spell.Rituals' },
+                { id: 'hexes', cssClass: 'hexes', label: 'WITCHER.Spell.Hexes' },
+                { id: 'magicalGift', cssClass: 'magicalGift', label: 'WITCHER.Spell.MagicalGift' },
+                { id: 'focus', cssClass: 'focus', label: 'WITCHER.Actor.focus.name' },
+            ],
+            initial: 'all',
         }
     };
 
@@ -107,6 +135,15 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
             ...value
         }));
         context.system.lifeEventCounter = context.system.lifeEventCounter || context.system.general.lifeEvents.length;
+
+        context.tabs = this._prepareTabs("primary");
+        context.skillTabs = this._prepareTabs("skillTabs");
+        context.magicTabs = this._prepareTabs("magicTabs");
+
+        context.enrichedText = {
+            ...context.enrichedText,
+            ...(await this.document.system.enrichedText())
+        };
 
         return context;
     }
