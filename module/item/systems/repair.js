@@ -254,7 +254,7 @@ class Repair {
     }
 
     prepareRollFormula(data) {
-        const stat = data.executor.system.stats.cra.current;
+        const stat = data.executor.system.stats.cra.value;
         const statName = game.i18n.localize(CONFIG.WITCHER.statMap.cra.label);
 
         const skill = data.executor.system.skills.cra.crafting.value;

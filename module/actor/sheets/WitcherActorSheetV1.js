@@ -53,7 +53,7 @@ export default class WitcherActorSheetV1 extends foundry.appv1.sheets.ActorSheet
         context.displayRep = game.settings.get('TheWitcherTRPG', 'displayRep');
 
         context.config = CONFIG.WITCHER;
-        CONFIG.Combat.initiative.formula = '1d10 + @stats.ref.current' + (context.displayRollDetails ? '[REF]' : '');
+        CONFIG.Combat.initiative.formula = '1d10 + @stats.ref.value' + (context.displayRollDetails ? '[REF]' : '');
 
         const actorData = this.actor.toObject(false);
         context.system = actorData.system;
@@ -280,7 +280,7 @@ export default class WitcherActorSheetV1 extends foundry.appv1.sheets.ActorSheet
                         }
                         this.actor.update({
                             'system.derivedStats.sta.value':
-                                this.actor.system.derivedStats.sta.value + this.actor.system.derivedStats.rec.current
+                                this.actor.system.derivedStats.sta.value + this.actor.system.derivedStats.rec.value
                         });
                     }
                 },

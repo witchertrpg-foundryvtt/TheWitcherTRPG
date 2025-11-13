@@ -5,7 +5,7 @@
         <div class='wound-state' data-tooltip="{{localize 'WITCHER.Actor.woundState'}}">
             {{#if (gte system.derivedStats.hp.value system.derivedStats.hp.unmodifiedMax)}}
                 <i class='fa-solid fa-heart' style='color: green;'></i>
-            {{else if (gte system.derivedStats.hp.value system.derivedStats.woundTreshold.current)}}
+            {{else if (gte system.derivedStats.hp.value system.derivedStats.woundTreshold.value)}}
                 <i class='fa-solid fa-heart-crack' style='color: green;'></i>
             {{else}}
                 <i class='fa-solid fa-heart-crack' style='color: orange;'></i>
@@ -37,11 +37,11 @@
         </div>
         <div class='progress-container'>
             <h3 class="progress-header toxicity">{{localize 'WITCHER.Actor.Stat.Toxicity'}}</h3>
-            <progress class='toxicity-bar' value='{{system.stats.toxicity.current}}'
+            <progress class='toxicity-bar' value='{{system.stats.toxicity.value}}'
                 max='{{system.stats.toxicity.max}}'></progress>
             <h3 class='progress-text'>
-                <input class='progress-input' name='system.stats.toxicity.current' type='number'
-                    value='{{system.stats.toxicity.current}}' max='{{system.stats.toxicity.max}}' placeholder='0'
+                <input class='progress-input' name='system.stats.toxicity.value' type='number'
+                    value='{{system.stats.toxicity.value}}' max='{{system.stats.toxicity.max}}' placeholder='0'
                     data-dtype='Number' />
                 <span>|</span>
                 <span class='progress-total'>{{system.stats.toxicity.max}}</span>
@@ -120,8 +120,8 @@
                 <div class='optional-info'>
                     <a class='optional-buttons adrenaline-minus'><i class='fa-solid fa-minus'></i></a>
                     <h3>
-                        <input class='small' type='number' name='system.adrenaline.current'
-                            value='{{system.adrenaline.current}}' data-dtype='Number' />
+                        <input class='small' type='number' name='system.adrenaline.value'
+                            value='{{system.adrenaline.value}}' data-dtype='Number' />
                     </h3>
                     <a class='optional-buttons adrenaline-plus'><i class='fa-solid fa-plus'></i></a>
                 </div>

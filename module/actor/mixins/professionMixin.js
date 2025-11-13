@@ -147,8 +147,8 @@ export let professionMixin = {
 
         let attFormula = '1d10+';
         attFormula += !displayRollDetails
-            ? `${this.system.stats[skill.stat].current}+${skill.level ?? 0}`
-            : `${this.system.stats[skill.stat].current}[${game.i18n.localize(CONFIG.WITCHER.statMap[skill.stat].label)}]+${skill.level ?? 0}[${skill.skillName}]`;
+            ? `${this.system.stats[skill.stat].value}+${skill.level ?? 0}`
+            : `${this.system.stats[skill.stat].value}[${game.i18n.localize(CONFIG.WITCHER.statMap[skill.stat].label)}]+${skill.level ?? 0}[${skill.skillName}]`;
 
         attFormula += this.addAllModifiers(attack.name);
 
@@ -260,7 +260,7 @@ export let professionMixin = {
         let level = skill.level || 0;
 
         let definition = skill.definition;
-        let statValue = this.system.stats[stat].current;
+        let statValue = this.system.stats[stat].value;
         let statName = CONFIG.WITCHER.statMap[stat].label;
 
         let rollFormula = !displayRollDetails

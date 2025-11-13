@@ -73,6 +73,7 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
         }
 
         this.migrateCalculatedStats(source);
+        this.migrateAdrenaline(source);
 
         return super.migrateData(source);
     }
@@ -89,5 +90,9 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
         if (source?.stats?.cra?.totalModifiers) source.stats.cra.totalModifiers = 0;
         if (source?.stats?.will?.totalModifiers) source.stats.will.totalModifiers = 0;
         if (source?.stats?.luck?.totalModifiers) source.stats.luck.totalModifiers = 0;
+    }
+
+    static migrateAdrenaline(source) {
+        if (!source?.adrenaline.value) source.adrenaline.value = source.adrenaline.current;
     }
 }

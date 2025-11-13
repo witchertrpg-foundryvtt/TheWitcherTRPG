@@ -24,7 +24,7 @@ export let verbalCombatMixin = {
 
                         let vcStatName = verbalCombat.skill?.attribute.label ?? 'WITCHER.Context.unavailable';
                         let vcStat = verbalCombat.skill
-                            ? this.system.stats[verbalCombat.skill.attribute.name]?.current
+                            ? this.system.stats[verbalCombat.skill.attribute.name]?.value
                             : 0;
 
                         let vcSkillName = verbalCombat.skill?.label ?? 'WITCHER.Context.unavailable';
@@ -33,7 +33,7 @@ export let verbalCombatMixin = {
                             : 0;
 
                         let vcDmg = verbalCombat.baseDmg
-                            ? `${verbalCombat.baseDmg}+${this.system.stats[verbalCombat.dmgStat.name].current}[${game.i18n.localize(verbalCombat.dmgStat?.label)}]`
+                            ? `${verbalCombat.baseDmg}+${this.system.stats[verbalCombat.dmgStat.name].value}[${game.i18n.localize(verbalCombat.dmgStat?.label)}]`
                             : game.i18n.localize('WITCHER.verbalCombat.None');
                         if (verbal == 'Counterargue') {
                             vcDmg = `${game.i18n.localize('WITCHER.verbalCombat.CounterargueDmg')}`;

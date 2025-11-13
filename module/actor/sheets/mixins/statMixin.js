@@ -186,14 +186,14 @@ export let statMixin = {
 
     async _onAdrenalineMinus(event) {
         event.preventDefault();
-        if (this.actor.system.adrenaline.current > 0) {
-            await this.actor.update({ 'system.adrenaline.current': this.actor.system.adrenaline.current - 1 });
+        if (this.actor.system.adrenaline.value > 0) {
+            await this.actor.update({ 'system.adrenaline.value': this.actor.system.adrenaline.value - 1 });
         }
     },
 
     async _onAdrenalinePlus(event) {
         event.preventDefault();
-        await this.actor.update({ 'system.adrenaline.current': this.actor.system.adrenaline.current + 1 });
+        await this.actor.update({ 'system.adrenaline.value': this.actor.system.adrenaline.value + 1 });
     },
 
     statListener(html) {
