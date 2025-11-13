@@ -21,8 +21,8 @@ export let castSpellMixin = {
             rollFormula += '(';
         }
         rollFormula += !displayRollDetails
-            ? `${this.system.stats.will.current}`
-            : `${this.system.stats.will.current}[${game.i18n.localize(CONFIG.WITCHER.statMap.will.label)}]`;
+            ? `${this.system.stats.will.value}`
+            : `${this.system.stats.will.value}[${game.i18n.localize(CONFIG.WITCHER.statMap.will.label)}]`;
 
         let usedSkill = spellItem.system.getUsedSkill();
 
