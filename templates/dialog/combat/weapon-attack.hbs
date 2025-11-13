@@ -129,14 +129,6 @@
                 </tr>
                 <tr>
                     <td>
-                        <label>{{localize "WITCHER.Dialog.attackCustom"}}:</label>
-                    </td>
-                    <td>
-                        <input type="number" class="small" name="customAtt" value=0>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
 
                     </td>
                     <td>
@@ -210,54 +202,69 @@
         {{localize "WITCHER.Dialog.attackDamage"}}: {{displayDmgFormula}}
     </h2>
     <div class="flex">
-        <table>
-            <tr>
-                <td>
-                    <label>{{localize "WITCHER.Dialog.attackCustomDmg"}}</label>
-                </td>
-                <td>
-                    <input type="number" class="small" name="customDmg" value=0>
-                </td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                {{#if meleeBonus}}
+        <div>
+            <table>
+                <tr>
                     <td>
-                        <label>{{localize "WITCHER.Dialog.attackMeleeBonus"}}:</label>
+                        <label>{{localize "WITCHER.Dialog.attackCustom"}}:</label>
                     </td>
                     <td>
-                        {{meleeBonus}}
+                        <input type="number" name="customAtt" value=0>
                     </td>
-                {{/if}}
-                {{#if item.system.usingAmmo}}
-                    {{#if (eq noAmmo 1)}}
+                </tr>
+            </table>
+
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <label>{{localize "WITCHER.Dialog.attackCustomDmg"}}</label>
+                    </td>
+                    <td>
+                        <input type="text" style="width: auto; max-width: 50%" name="customDmg" value=0>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    {{#if meleeBonus}}
                         <td>
-                            <label class="error-display">{{localize "WITCHER.Dialog.NoAmmunition"}}</label>
+                            <label>{{localize "WITCHER.Dialog.attackMeleeBonus"}}:</label>
                         </td>
-                    {{else}}
                         <td>
-                            <label>{{localize "WITCHER.Dialog.Ammunition"}}:</label>
-                        </td>
-                        <td>
-                            <select name="ammunition">
-                                {{{ammunitionOption}}}
-                            </select>
-                        </td>
-                    {{/if}}
-                {{/if}}
-                {{#if item.system.isThrowable}}
-                    {{#if noThrowable }}
-                        <td>
-                            <label class="error-display">{{localize "WITCHER.Dialog.NoThrowable"}}</label>
-                        </td>
-                    {{else}}
-                        <td>
-                            <label><b>{{localize "WITCHER.Dialog.Throwable"}}</b></label>
+                            {{meleeBonus}}
                         </td>
                     {{/if}}
-                {{/if}}
-            </tr>
-        </table>
+                    {{#if item.system.usingAmmo}}
+                        {{#if (eq noAmmo 1)}}
+                            <td>
+                                <label class="error-display">{{localize "WITCHER.Dialog.NoAmmunition"}}</label>
+                            </td>
+                        {{else}}
+                            <td>
+                                <label>{{localize "WITCHER.Dialog.Ammunition"}}:</label>
+                            </td>
+                            <td>
+                                <select name="ammunition">
+                                    {{{ammunitionOption}}}
+                                </select>
+                            </td>
+                        {{/if}}
+                    {{/if}}
+                    {{#if item.system.isThrowable}}
+                        {{#if noThrowable }}
+                            <td>
+                                <label class="error-display">{{localize "WITCHER.Dialog.NoThrowable"}}</label>
+                            </td>
+                        {{else}}
+                            <td>
+                                <label><b>{{localize "WITCHER.Dialog.Throwable"}}</b></label>
+                            </td>
+                        {{/if}}
+                    {{/if}}
+                </tr>
+            </table>
+        </div>
     </div>
 </div>

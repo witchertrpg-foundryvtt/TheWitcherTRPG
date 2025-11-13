@@ -1,7 +1,5 @@
-import coreStats from './templates/common/stats/coreStatsData.js';
 import critWound from './templates/common/critWoundData.js';
 import currency from './templates/common/currencyData.js';
-import derivedStats from './templates/common/stats/derivedStatsData.js';
 import reputation from './templates/common/reputationData.js';
 import stats from './templates/common/stats/statsData.js';
 import adrenaline from './templates/common/adrenalineData.js';
@@ -13,6 +11,7 @@ import pannels from './templates/character/pannelsData.js';
 import lifepathData from './templates/common/lifepathData.js';
 import damageTypeModification from './templates/character/general/damage/damageTypeModificationData.js';
 import combatEffects from './templates/common/combatEffectsData.js';
+import DerivedStats from './templates/common/stats/derivedStatsData.js';
 
 const fields = foundry.data.fields;
 
@@ -26,8 +25,7 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
             critWounds: new fields.ArrayField(new fields.SchemaField(critWound())),
 
             stats: new fields.SchemaField(stats()),
-            coreStats: new fields.SchemaField(coreStats()),
-            derivedStats: new fields.SchemaField(derivedStats()),
+            derivedStats: new fields.EmbeddedDataField(DerivedStats),
 
             reputation: new fields.SchemaField(reputation()),
             adrenaline: new fields.SchemaField(adrenaline()),
@@ -70,12 +68,14 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
 
     /** @inheritdoc */
     static migrateData(source) {
-        super.migrateData(source);
         if (source.derivedStats?.vigor?.unmodifiedMax == 0) {
             source.derivedStats.vigor.unmodifiedMax = source.derivedStats.vigor.value;
         }
 
         this.migrateCalculatedStats(source);
+        this.migrateAdrenaline(source);
+
+        return super.migrateData(source);
     }
 
     static migrateCalculatedStats(source) {
@@ -90,12 +90,9 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
         if (source?.stats?.cra?.totalModifiers) source.stats.cra.totalModifiers = 0;
         if (source?.stats?.will?.totalModifiers) source.stats.will.totalModifiers = 0;
         if (source?.stats?.luck?.totalModifiers) source.stats.luck.totalModifiers = 0;
+    }
 
-        if (source?.coreStats?.stun?.totalModifiers) source.coreStats.stun.totalModifiers = 0;
-        if (source?.coreStats?.enc?.totalModifiers) source.coreStats.enc.totalModifiers = 0;
-        if (source?.coreStats?.run?.totalModifiers) source.coreStats.run.totalModifiers = 0;
-        if (source?.coreStats?.leap?.totalModifiers) source.coreStats.leap.totalModifiers = 0;
-        if (source?.coreStats?.rec?.totalModifiers) source.coreStats.rec.totalModifiers = 0;
-        if (source?.coreStats?.woundTreshold?.totalModifiers) source.coreStats.woundTreshold.totalModifiers = 0;
+    static migrateAdrenaline(source) {
+        if (!source?.adrenaline.value) source.adrenaline.value = source.adrenaline.current;
     }
 }

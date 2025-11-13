@@ -246,7 +246,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
                 Craft: {
                     label: `${game.i18n.localize('WITCHER.Dialog.ButtonCraft')}`,
                     callback: async html => {
-                        let stat = this.actor.system.stats.cra.current;
+                        let stat = this.actor.system.stats.cra.value;
                         let statName = game.i18n.localize(this.actor.system.stats.cra.label);
                         let skill = this.actor.system.skills.cra.alchemy.value;
                         let skillName = game.i18n.localize(this.actor.system.skills.cra.alchemy.label);
@@ -259,7 +259,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
                             (messageData.flavor += `${game.i18n.localize('WITCHER.Diagram.alchemyDC')} ${item.system.alchemyDC}`);
 
                         if (!item.isAlchemicalCraft()) {
-                            stat = this.actor.system.stats.cra.current;
+                            stat = this.actor.system.stats.cra.value;
                             skill = this.actor.system.skills.cra.crafting.value;
                             messageData.flavor = `${game.i18n.localize('WITCHER.Diagram.craftingDC')} ${item.system.craftingDC}`;
                         }
@@ -339,7 +339,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
                 Craft: {
                     label: `${game.i18n.localize('WITCHER.Dialog.ButtonCraft')}`,
                     callback: async html => {
-                        let stat = this.actor.system.stats.cra.current;
+                        let stat = this.actor.system.stats.cra.value;
                         let statName = game.i18n.localize(this.actor.system.stats.cra.label);
                         let skill = this.actor.system.skills.cra.crafting.value;
                         let skillName = game.i18n.localize(this.actor.system.skills.cra.crafting.label);

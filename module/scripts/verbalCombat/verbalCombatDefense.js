@@ -54,7 +54,7 @@ async function executeDefenseCallback(actor, totalAttack, html) {
     let vcName = verbalCombat.name;
 
     let vcStatName = verbalCombat.skill?.attribute.label ?? 'WITCHER.Context.unavailable';
-    let vcStat = verbalCombat.skill ? actor.system.stats[verbalCombat.skill.attribute.name]?.current : 0;
+    let vcStat = verbalCombat.skill ? actor.system.stats[verbalCombat.skill.attribute.name]?.value : 0;
 
     let vcSkillName = verbalCombat.skill?.label ?? 'WITCHER.Context.unavailable';
     let vcSkill = verbalCombat.skill
@@ -62,7 +62,7 @@ async function executeDefenseCallback(actor, totalAttack, html) {
         : 0;
 
     let vcDmg = verbalCombat.baseDmg
-        ? `${verbalCombat.baseDmg}+${actor.system.stats[verbalCombat.dmgStat.name].current}[${game.i18n.localize(verbalCombat.dmgStat?.label)}]`
+        ? `${verbalCombat.baseDmg}+${actor.system.stats[verbalCombat.dmgStat.name].value}[${game.i18n.localize(verbalCombat.dmgStat?.label)}]`
         : game.i18n.localize('WITCHER.verbalCombat.None');
 
     let effect = verbalCombat.effect;

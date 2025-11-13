@@ -110,12 +110,12 @@
             "StatTitle.LableLeft": "Statistics",
             "StatTitle.ModMax": "Mod / Max",
             "StatTitle.Derived": "Derived",
-            "CoreStat.Stun": "STUN",
-            "CoreStat.Run": "RUN",
-            "CoreStat.Leap": "LEAP",
-            "CoreStat.Enc": "ENC",
-            "CoreStat.Rec": "REC",
-            "CoreStat.woundTreshold": "WT",
+            "DerStat.Stun": "STUN",
+            "DerStat.Run": "RUN",
+            "DerStat.Leap": "LEAP",
+            "DerStat.Enc": "ENC",
+            "DerStat.Rec": "REC",
+            "DerStat.woundTreshold": "WT",
             "DerStat.Vigor": "Vigor",
             "DerStat.HP": "Max HP",
             "DerStat.Shield": "Shield",
@@ -417,7 +417,7 @@
             "attackModifiers": "Attack Modifiers",
             "attackSize": " Opponent Size Modifiers",
             "attackRange": "Range Modifiers",
-            "attackCustom": "Custom Modifiers",
+            "attackCustom": "Custom Attack Modifiers",
             "attackStrike": "Strike type",
             "attackDamage": "damage",
             "attackMeleeBonus": "Melee Bonus",
@@ -436,7 +436,10 @@
             "staDialog": "How do you want to recover stamina?",
             "recoveryAction": "Recovery Action",
             "fullRecovery": "Full Recovery",
-            "fullStaInfo": "Your stamina is already full"
+            "fullStaInfo": "Your stamina is already full",
+            "defense": {
+                "custom": "Custom Defense Modifiers"
+            }
         },
         "DamageType": {
             "name": "Damage Type",
@@ -1064,9 +1067,6 @@
         "Stats": {
             "stats": {
                 "Name": "Stats"
-            },
-            "coreStats": {
-                "Name": "Core Stats"
             },
             "derivedStats": {
                 "Name": "Derived Stats"

@@ -71,7 +71,7 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
         context.displayRep = game.settings.get('TheWitcherTRPG', 'displayRep');
 
         context.config = CONFIG.WITCHER;
-        CONFIG.Combat.initiative.formula = '1d10 + @stats.ref.current' + (context.displayRollDetails ? '[REF]' : '');
+        CONFIG.Combat.initiative.formula = '1d10 + @stats.ref.value' + (context.displayRollDetails ? '[REF]' : '');
 
         context.actor = this.actor;
         context.system = context.actor.system;
@@ -293,7 +293,7 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
                         }
                         this.actor.update({
                             'system.derivedStats.sta.value':
-                                this.actor.system.derivedStats.sta.value + this.actor.system.coreStats.rec.current
+                                this.actor.system.derivedStats.sta.value + this.actor.system.derivedStats.rec.value
                         });
                     }
                 },

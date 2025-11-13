@@ -84,8 +84,8 @@ export default class RegionProperties extends foundry.abstract.DataModel {
 
     /** @inheritdoc */
     static migrateData(source) {
-        super.migrateData(source);
-
         source.behaviours.tokenMoveWithin = source.behaviours.tokenPreMove;
+
+        return super.migrateData(source);
     }
 }

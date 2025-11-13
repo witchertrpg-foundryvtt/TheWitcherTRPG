@@ -1,13 +1,17 @@
 const { HandlebarsApplicationMixin } = foundry.applications.api;
-const { ItemSheetV2 } = foundry.applications.sheets;
+const { ActorSheetV2 } = foundry.applications.sheets;
+import { skillModifierMixin } from '../mixins/skillModifierMixin.js';
 import { statMixin } from '../mixins/statMixin.js';
 
-export default class WitcherModifiersConfiguration extends HandlebarsApplicationMixin(ItemSheetV2) {
+export default class WitcherModifiersConfiguration extends HandlebarsApplicationMixin(ActorSheetV2) {
+    statMap = CONFIG.WITCHER.statMap;
+    skillMap = CONFIG.WITCHER.skillMap;
+
     constructor(options = {}) {
         super(options);
-        
+
         this.type = options.type;
-        this.skillKey = options.skillKey
+        this.skillKey = options.skillKey;
     }
 
     /** @override */
@@ -16,15 +20,14 @@ export default class WitcherModifiersConfiguration extends HandlebarsApplication
             resizable: true
         },
         position: {
-            width: 520,
+            width: 520
         },
         classes: ['witcher', 'sheet', 'actor', 'modifier-configuration'],
         form: {
             submitOnChange: true,
             closeOnSubmit: false
         },
-        actions: {
-        }
+        actions: {}
     };
 
     static PARTS = {
@@ -35,6 +38,18 @@ export default class WitcherModifiersConfiguration extends HandlebarsApplication
             template: 'systems/TheWitcherTRPG/templates/sheets/actor/configuration/app/edit-skills.hbs'
         }
     };
+
+    async _onRender(context, options) {
+        await super._onRender(context, options);
+
+        this.activateListeners(this.element);
+    }
+
+    activateListeners(html) {
+        //mixins
+        this.skillModifierListener(html);
+        this.statListener(html);
+    }
 
     async _prepareContext(options) {
         const context = await super._prepareContext(options);
@@ -49,7 +64,8 @@ export default class WitcherModifiersConfiguration extends HandlebarsApplication
         context.type = this.type;
 
         return context;
-    };
+    }
 }
 
 Object.assign(WitcherModifiersConfiguration.prototype, statMixin);
+Object.assign(WitcherModifiersConfiguration.prototype, skillModifierMixin);

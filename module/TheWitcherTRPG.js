@@ -122,7 +122,7 @@ Hooks.once('dragRuler.ready', SpeedProvider => {
         }
 
         getRanges(token) {
-            let baseSpeed = token.actor.system.stats.spd.current;
+            let baseSpeed = token.actor.system.stats.spd.value;
             // A character can always walk it's base speed and dash twice it's base speed
             let moveSpeed = baseSpeed % 2 == 0 ? baseSpeed : baseSpeed + 1;
             let runspeed = (baseSpeed * 3) % 2 == 0 ? baseSpeed * 3 : baseSpeed * 3 + 1;

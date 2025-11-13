@@ -661,16 +661,3 @@ input.progress-input,
     padding: 5px;
 }
 
-.derived-modifier-display {
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
-    justify-content: space-between;
-}
-
-.derived-modifier-display > h4 {
-    margin-bottom: 0;
-    width: max-content;
-    text-shadow: none;
-}
-

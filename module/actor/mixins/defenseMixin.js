@@ -13,7 +13,7 @@ export let defenseMixin = {
         <div class="flex">
             <label>${game.i18n.localize('WITCHER.Dialog.DefenseExtra')}: <input type="checkbox" name="isExtraDefense"></label> <br />
         </div>
-        <label>${game.i18n.localize('WITCHER.Dialog.attackCustom')}: <input type="Number" class="small" name="customDef" value=0></label> <br />`;
+        <label>${game.i18n.localize('WITCHER.Dialog.defense.custom')}: <input type="Number" class="small" name="customDef" value=0></label> <br />`;
 
         let additionalOptions = this.items
             .filter(item => item.system.isApplicableDefense?.(attack.attackOption))
@@ -135,7 +135,7 @@ export let defenseMixin = {
         }
         let skillMapEntry = skillOverride?.skillMapEntry ?? CONFIG.WITCHER.skillMap[skillName];
 
-        let stat = this.system.stats[skillMapEntry.attribute.name].current;
+        let stat = this.system.stats[skillMapEntry.attribute.name].value;
         let skill = skillOverride?.skill ?? this.system.skills[skillMapEntry.attribute.name][skillName];
         let skillValue = skill.value;
 
@@ -417,8 +417,8 @@ export let defenseMixin = {
     },
 
     async stunSave(modifier = 0) {
-        let stunValue = this.system.coreStats.stun.current + modifier;
-        let stunName = 'WITCHER.Actor.CoreStat.Stun';
+        let stunValue = this.system.derivedStats.stun.value + modifier;
+        let stunName = 'WITCHER.Actor.DerStat.Stun';
 
         let messageData = new ChatMessageData(this);
         messageData.flavor = `

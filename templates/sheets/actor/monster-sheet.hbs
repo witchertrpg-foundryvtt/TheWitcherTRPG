@@ -13,8 +13,8 @@
                     <div>
                         <div class="flex">
                             <a class="monster-stat-button stat-roll">{{localize details.label}}</a>
-                            <input class="header-stat" name="system.stats.{{stat}}.current" type="number"
-                                value="{{details.current}}" placeholder="0" data-dtype="Number" disabled readonly />
+                            <input class="header-stat" name="system.stats.{{stat}}.value" type="number"
+                                value="{{details.value}}" placeholder="0" data-dtype="Number" disabled readonly />
                             <input class="header-stat stat-max" name="system.stats.{{stat}}.max" type="number"
                                 value="{{details.max}}" placeholder="0" data-dtype="Number" />
 
@@ -43,13 +43,13 @@
             {{/unless}}
         {{/each}}
         <hr />
-        {{#each system.coreStats as |details coreStat|}}
+        {{#each system.derivedStats as |details derStat|}}
             <div class="monster-stat-display margin-right">
                 <label>{{localize details.label}}</label>
-                <input class="small" name="system.coreStats.{{coreStat}}.current" type="number"
-                    value="{{details.current}}" placeholder="0" data-dtype="Number" disabled readonly />
-                <input class="small" name="system.coreStats.{{coreStat}}.max" type="number" value="{{details.max}}"
-                    placeholder="0" data-dtype="Number" disabled readonly />
+                <input class="small" type="number" value="{{details.value}}" placeholder="0" data-dtype="Number"
+                    disabled readonly />
+                <input class="small" type="number" value="{{details.max}}" placeholder="0" data-dtype="Number" disabled
+                    readonly />
             </div>
         {{/each}}
         <div class="monster-stat-display margin-right">

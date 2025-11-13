@@ -7,34 +7,15 @@ export let statMixin = {
         event.preventDefault();
         let stat = event.currentTarget.closest('.stat-display').dataset.stat;
 
-        if (stat == 'reputation') {
+        if (stat == 'toxicity') {
+            this.actor.update({ [`system.stats.${stat}.isOpened`]: !this.actor.system.stats[stat].isOpened });
+        } else if (stat == 'reputation') {
             this.actor.update({ [`system.${stat}.isOpened`]: !this.actor.system[stat].isOpened });
         } else {
             this.actor.update({
                 [`system.${this.statMap[stat].origin}.${stat}.isOpened`]:
                     !this.actor.system[this.statMap[stat].origin][stat].isOpened
             });
-        }
-    },
-
-    _onDerivedModifierDisplay(event) {
-        this.actor.update({
-            'system.derivedStats.modifiersIsOpened': !this.actor.system.derivedStats.modifiersIsOpened
-        });
-    },
-
-    async _onAddStatModifier(event) {
-        event.preventDefault();
-        let stat = event.currentTarget.closest('.stat-display').dataset.stat;
-
-        if (stat == 'reputation') {
-            let newModifierList = this.actor.system.reputation.modifiers;
-            newModifierList.push({ name: 'Modifier', value: 0 });
-            this.actor.update({ [`system.${stat}.modifiers`]: newModifierList });
-        } else {
-            let newModifierList = this.actor.system[this.statMap[stat].origin][stat].modifiers;
-            newModifierList.push({ name: 'Modifier', value: 0 });
-            this.actor.update({ [`system.${this.statMap[stat].origin}.${stat}.modifiers`]: newModifierList });
         }
     },
 
@@ -70,9 +51,7 @@ export let statMixin = {
         let stat = event.currentTarget.closest('.stat-display').dataset.stat;
         let type = event.currentTarget.closest('.stat-display').dataset.type;
         let prevModList = [];
-        if (type == 'coreStat') {
-            prevModList = this.actor.system.coreStats[stat].modifiers;
-        } else if (type == 'derivedStat') {
+        if (type == 'derivedStat') {
             prevModList = this.actor.system.derivedStats[stat].modifiers;
         } else if (type == 'reputation') {
             prevModList = this.actor.system.reputation.modifiers;
@@ -93,7 +72,7 @@ export let statMixin = {
     /** Do not delete. This method is here to give external modules the possibility to make skill rolls. */
     async _onStatSaveRoll(event) {
         let stat = event.currentTarget.closest('.stat-display').dataset.stat;
-        let statValue = this.actor.system.stats[stat].current;
+        let statValue = stat != 'luck' ? this.actor.system.stats[stat].value : this.actor.system.stats[stat].max;
         let statName = `WITCHER.St${stat.charAt(0).toUpperCase() + stat.slice(1)}`;
 
         let messageData = new ChatMessageData(this.actor);
@@ -168,7 +147,7 @@ export let statMixin = {
                         });
 
                         let messageData = new ChatMessageData(this.actor);
-                        let rollFormula = `1d10 + ${Number(repValue)}[${game.i18n.localize('WITCHER.Reputation')}] + ${Number(this.actor.system.stats.will.current)}[${game.i18n.localize('WITCHER.StWill')}]`;
+                        let rollFormula = `1d10 + ${Number(repValue)}[${game.i18n.localize('WITCHER.Reputation')}] + ${Number(this.actor.system.stats.will.value)}[${game.i18n.localize('WITCHER.StWill')}]`;
                         messageData.flavor = `
                 <h2>${game.i18n.localize('WITCHER.ReputationTitle')}: ${game.i18n.localize('WITCHER.ReputationFaceDown.Title')}</h2>
                 <div class="roll-summary">
@@ -195,26 +174,26 @@ export let statMixin = {
 
     async _onLuckMinus(event) {
         event.preventDefault();
-        if (this.actor.system.stats.luck.total > 0) {
-            await this.actor.update({ 'system.stats.luck.total': this.actor.system.stats.luck.total - 1 });
+        if (this.actor.system.stats.luck.value > 0) {
+            await this.actor.update({ 'system.stats.luck.value': this.actor.system.stats.luck.value - 1 });
         }
     },
 
     async _onLuckReset(event) {
         event.preventDefault();
-        await this.actor.update({ 'system.stats.luck.total': this.actor.system.stats.luck.max });
+        await this.actor.update({ 'system.stats.luck.value': this.actor.system.stats.luck.max });
     },
 
     async _onAdrenalineMinus(event) {
         event.preventDefault();
-        if (this.actor.system.adrenaline.current > 0) {
-            await this.actor.update({ 'system.adrenaline.current': this.actor.system.adrenaline.current - 1 });
+        if (this.actor.system.adrenaline.value > 0) {
+            await this.actor.update({ 'system.adrenaline.value': this.actor.system.adrenaline.value - 1 });
         }
     },
 
     async _onAdrenalinePlus(event) {
         event.preventDefault();
-        await this.actor.update({ 'system.adrenaline.current': this.actor.system.adrenaline.current + 1 });
+        await this.actor.update({ 'system.adrenaline.value': this.actor.system.adrenaline.value + 1 });
     },
 
     statListener(html) {
@@ -223,9 +202,7 @@ export let statMixin = {
         html.find('.reputation-roll').on('click', this._onReputation.bind(this));
 
         html.find('.stat-modifier-display').on('click', this._onStatModifierDisplay.bind(this));
-        html.find('.derived-modifier-display').on('click', this._onDerivedModifierDisplay.bind(this));
 
-        html.find('.add-modifier').on('click', this._onAddStatModifier.bind(this));
         html.find('.delete-stat').on('click', this._onRemoveStatModifier.bind(this));
         html.find('.list-mod-edit').on('blur', this._onEditStatModifier.bind(this));
 
