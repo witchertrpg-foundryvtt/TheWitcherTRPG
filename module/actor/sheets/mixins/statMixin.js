@@ -72,7 +72,7 @@ export let statMixin = {
     /** Do not delete. This method is here to give external modules the possibility to make skill rolls. */
     async _onStatSaveRoll(event) {
         let stat = event.currentTarget.closest('.stat-display').dataset.stat;
-        let statValue = this.actor.system.stats[stat].value;
+        let statValue = stat != 'luck' ? this.actor.system.stats[stat].value : this.actor.system.stats[stat].max;
         let statName = `WITCHER.St${stat.charAt(0).toUpperCase() + stat.slice(1)}`;
 
         let messageData = new ChatMessageData(this.actor);
