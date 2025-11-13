@@ -46,10 +46,10 @@
         {{#each system.derivedStats as |details derStat|}}
             <div class="monster-stat-display margin-right">
                 <label>{{localize details.label}}</label>
-                <input class="small" name="system.derivedStats.{{derStat}}.current" type="number"
-                    value="{{details.current}}" placeholder="0" data-dtype="Number" disabled readonly />
-                <input class="small" name="system.derivedStats.{{derStat}}.max" type="number" value="{{details.max}}"
-                    placeholder="0" data-dtype="Number" disabled readonly />
+                <input class="small" type="number" value="{{details.value}}" placeholder="0" data-dtype="Number"
+                    disabled readonly />
+                <input class="small" type="number" value="{{details.max}}" placeholder="0" data-dtype="Number" disabled
+                    readonly />
             </div>
         {{/each}}
         <div class="monster-stat-display margin-right">
