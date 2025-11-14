@@ -1,6 +1,7 @@
 import CommonItemData from './commonItemData.js';
 import professionPath from './templates/professionPathData.js';
 import professionSkill from './templates/professionSkillData.js';
+import { createEnrichedText } from '../dataUtils.js';
 
 const fields = foundry.data.fields;
 
@@ -25,44 +26,24 @@ export default class ProfessionData extends CommonItemData {
 
     async enrichedText() {
         return {
-            definingSkill: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                this.definingSkill.definition
-            ),
-            notes: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.notes),
+            definingSkill: await createEnrichedText(this, this.definingSkill.definition, 'definingSkill.definition'),
+            notes: await createEnrichedText(this, this.notes, 'notes'),
             skillPath1: {
-                skill1: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                    this.skillPath1.skill1.definition
-                ),
-                skill2: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                    this.skillPath1.skill2.definition
-                ),
-                skill3: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                    this.skillPath1.skill3.definition
-                )
+                skill1: await createEnrichedText(this, this.skillPath1.skill1.definition, 'skillPath1.skill1.definition'),
+                skill2: await createEnrichedText(this, this.skillPath1.skill2.definition, 'skillPath1.skill2.definition'),
+                skill3: await createEnrichedText(this, this.skillPath1.skill3.definition, 'skillPath1.skill3.definition'),
             },
             skillPath2: {
-                skill1: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                    this.skillPath2.skill1.definition
-                ),
-                skill2: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                    this.skillPath2.skill2.definition
-                ),
-                skill3: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                    this.skillPath2.skill3.definition
-                )
+                skill1: await createEnrichedText(this, this.skillPath2.skill1.definition, 'skillPath2.skill1.definition'),
+                skill2: await createEnrichedText(this, this.skillPath2.skill2.definition, 'skillPath2.skill2.definition'),
+                skill3: await createEnrichedText(this, this.skillPath2.skill3.definition, 'skillPath2.skill3.definition'),
             },
             skillPath3: {
-                skill1: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                    this.skillPath3.skill1.definition
-                ),
-                skill2: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                    this.skillPath3.skill2.definition
-                ),
-                skill3: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                    this.skillPath3.skill3.definition
-                )
+                skill1: await createEnrichedText(this, this.skillPath3.skill1.definition, 'skillPath3.skill1.definition'),
+                skill2: await createEnrichedText(this, this.skillPath3.skill2.definition, 'skillPath3.skill2.definition'),
+                skill3: await createEnrichedText(this, this.skillPath3.skill3.definition, 'skillPath3.skill3.definition'),
             }
-        }
+        };
     }
 
     isApplicableDefense(attack) {

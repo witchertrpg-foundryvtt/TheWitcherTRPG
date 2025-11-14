@@ -94,7 +94,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
     async _prepareContext(options) {
         let context = await super._prepareContext(options);
 
-        this._prepareCharacterData(context);
+        await this._prepareCharacterData(context);
         this._prepareDiagramFormulas(context);
         this._prepareCrafting(context);
         this._prepareSubstances(context);
@@ -108,13 +108,24 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
         }));
         context.system.lifeEventCounter = context.system.lifeEventCounter || context.system.general.lifeEvents.length;
 
+        context.enrichedText = {
+            ...context.enrichedText,
+            ...(await this.document.system.enrichedText())
+        };
+
         return context;
     }
 
-    _prepareCharacterData(context) {
+    async _prepareCharacterData(context) {
         let actor = context.actor;
 
         context.profession = actor.getList('profession')[0];
+        context.enrichedText = {
+            ...context.enrichedText,
+            profession: {
+                ...(await context.profession.system.enrichedText())
+            }
+        };
         context.homeland = actor.getList('homeland')[0];
         context.race = actor.getList('race')[0];
 

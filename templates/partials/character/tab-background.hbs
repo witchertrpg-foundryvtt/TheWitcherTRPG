@@ -33,12 +33,13 @@
                 {{/each}}
                 <div class="general-info">
                     {{localize 'WITCHER.Actor.Gender'}}
-                    <input class='details gender' name='system.gender' type='text' value='{{system.gender}}' placeholder='' />
+                    <input class='details gender' name='system.gender' type='text' value='{{system.gender}}'
+                        placeholder='' />
                 </div>
                 <div class="general-info">
                     {{localize 'WITCHER.Actor.Age'}}
                     <input class='details age' name='system.general.age' type='number' value='{{system.general.age}}'
-                    placeholder='0' data-dtype='Number' />
+                        placeholder='0' data-dtype='Number' />
                 </div>
                 <div class="general-info">
                     {{localize 'WITCHER.character.socialStanding'}}
@@ -48,7 +49,7 @@
                 </div>
             </div>
             <div class="background-description">
-                {{editor system.general.background.value target="system.general.background.value" button=true editable=editable}}
+                {{formGroup enrichedText.general.background.systemField value=enrichedText.general.background.value enriched=enrichedText.general.background.enriched toggled=true}}
             </div>
         </div>
 
