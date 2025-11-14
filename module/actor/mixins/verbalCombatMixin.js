@@ -5,9 +5,12 @@ import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 export let verbalCombatMixin = {
     async verbalCombat() {
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
-        const dialogTemplate = await renderTemplate('systems/TheWitcherTRPG/templates/dialog/verbal-combat.hbs', {
-            verbalCombat: CONFIG.WITCHER.verbalCombat
-        });
+        const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/dialog/verbal-combat.hbs',
+            {
+                verbalCombat: CONFIG.WITCHER.verbalCombat
+            }
+        );
         new Dialog({
             title: game.i18n.localize('WITCHER.verbalCombat.DialogTitle'),
             content: dialogTemplate,

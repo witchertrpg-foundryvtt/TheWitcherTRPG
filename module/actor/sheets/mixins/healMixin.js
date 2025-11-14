@@ -22,7 +22,10 @@ export let healMixin = {
 
         await new DialogV2({
             window: { title: game.i18n.localize('WITCHER.Heal.dialogTitle') },
-            content: await renderTemplate('systems/TheWitcherTRPG/templates/dialog/heal/heal-rest.hbs', dialogData),
+            content: await foundry.applications.handlebars.renderTemplate(
+                'systems/TheWitcherTRPG/templates/dialog/heal/heal-rest.hbs',
+                dialogData
+            ),
             modal: false,
             buttons: [
                 {
@@ -39,7 +42,7 @@ export let healMixin = {
                             hp.value,
                             hp.max,
                             sta.unmodifiedMax
-                        )
+                        );
                     }
                 },
                 {
@@ -110,7 +113,7 @@ export let healMixin = {
         this.actor.update({ 'system.critWounds': newCritList });
 
         ChatMessage.create({
-            content: await renderTemplate(
+            content: await foundry.applications.handlebars.renderTemplate(
                 'systems/TheWitcherTRPG/templates/chat/heal/resting-status.hbs',
                 dialogData
             ),

@@ -42,7 +42,7 @@ export class WitcherActiveEffectConfig extends foundry.applications.sheets.Activ
                 break;
         }
 
-        const dialogTemplate = await renderTemplate(
+        const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
             'systems/TheWitcherTRPG/templates/dialog/activeEffects/wizard.hbs',
             {
                 selects: selects

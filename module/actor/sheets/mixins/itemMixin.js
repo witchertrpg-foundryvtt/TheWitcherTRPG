@@ -344,7 +344,7 @@ export let itemMixin = {
         };
 
         ChatMessage.create({
-            content: await renderTemplate(
+            content: await foundry.applications.handlebars.renderTemplate(
                 'systems/TheWitcherTRPG/templates/chat/item/item-description.hbs',
                 dialogData
             ),

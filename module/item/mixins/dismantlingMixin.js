@@ -48,7 +48,11 @@ export let dismantlingMixin = {
         let foundItems = components.filter(comp => comp.item);
         let unfoundItems = components.filter(comp => !comp.item);
 
-        const content = await renderTemplate(messageTemplate, { item: this, foundItems, unfoundItems });
+        const content = await foundry.applications.handlebars.renderTemplate(messageTemplate, {
+            item: this,
+            foundItems,
+            unfoundItems
+        });
         const chatData = {
             content: content,
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),

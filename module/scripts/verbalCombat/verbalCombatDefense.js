@@ -19,9 +19,12 @@ export function addVerbalCombatDefenseMessageContextOptions(html, options) {
 async function executeDefense(actor, messageId, totalAttack) {
     if (!actor) return;
 
-    const dialogTemplate = await renderTemplate('systems/TheWitcherTRPG/templates/dialog/verbal-combat-defense.hbs', {
-        defenses: CONFIG.WITCHER.verbalCombat.Defenses
-    });
+    const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
+        'systems/TheWitcherTRPG/templates/dialog/verbal-combat-defense.hbs',
+        {
+            defenses: CONFIG.WITCHER.verbalCombat.Defenses
+        }
+    );
 
     new Dialog({
         title: `${game.i18n.localize('WITCHER.Dialog.DefenseTitle')}`,

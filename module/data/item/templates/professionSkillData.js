@@ -7,7 +7,7 @@ export default function professionSkill() {
     return {
         skillName: new fields.StringField({ initial: '' }),
         stat: new fields.StringField({ initial: '' }),
-        definition: new fields.StringField({ initial: '' }),
+        definition: new fields.HTMLField({ initial: '' }),
         level: new fields.NumberField({ initial: 0 }),
         skillAttack: new fields.SchemaField(skillAttack()),
         skillDefense: new fields.SchemaField(skillDefense())

@@ -48,10 +48,14 @@
         "spell": {},
         "hex": {},
         "ritual": {},
-        "profession": {},
+        "profession": {
+            "htmlFields": ["notes", "definingSkill.definition", "*.*.definition"]
+        },
         "homeland": {},
         "note": {},
-        "race": {},
+        "race": {
+            "htmlFields": ["description", "*.description"]
+        },
         "effect": {}
     },
     "ChatMessage": {

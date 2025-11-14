@@ -85,7 +85,7 @@ export let castSpellMixin = {
             focusOptions: handlebarFocusOptions
         };
 
-        const dialogTemplate = await renderTemplate(
+        const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
             'systems/TheWitcherTRPG/templates/dialog/combat/spell-attack.hbs',
             data
         );
@@ -240,11 +240,14 @@ export let castSpellMixin = {
             });
         }
 
-        const chatMessage = await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/spellItem.hbs', {
-            spellItem,
-            templateInfo,
-            damage
-        });
+        const chatMessage = await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/chat/combat/spellItem.hbs',
+            {
+                spellItem,
+                templateInfo,
+                damage
+            }
+        );
         let messageData = new ChatMessageData(this, chatMessage, 'attack', {
             attacker: this.uuid,
             attack: spellItem.getItemAttack(),

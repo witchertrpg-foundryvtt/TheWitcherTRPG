@@ -7,7 +7,8 @@
             {{/if}}
         </h1>
         <div class="flex">
-            <img class="profile-img" src="{{ item.img }}" data-action="editImage" data-edit="img" title="{{ item.name }}" />
+            <img class="profile-img" src="{{ item.img }}" data-action="editImage" data-edit="img"
+                title="{{ item.name }}" />
             <table class="information">
                 <tr class="item-header-tablerow">
                     <td>
@@ -32,12 +33,12 @@
                     <input class="profession-level" name="system.definingSkill.level" type="number"
                         value="{{ item.system.definingSkill.level }}" placeholder="" />
                 </div>
-                {{editor item.system.definingSkill.definition target="system.definingSkill.definition" button=true
-                        editable=editable}}
+                {{log this}}
+                {{formGroup systemFields.definingSkill.fields.definition value=item.system.definingSkill.definition enriched=enrichedText.definingSkill toggled=true}}
             </div>
             <div class="profession-notes">
                 <div class="profession-notes-header">{{localize "WITCHER.Notes"}}</div>
-                {{editor item.system.notes target="system.notes" button=true editable=editable}}
+                {{formGroup systemFields.notes value=item.system.notes enriched=enrichedText.notes toggled=true}}
             </div>
         </div>
         <div class="profession-path flex">
@@ -54,8 +55,7 @@
                         <input class="profession-level" name="system.skillPath1.skill1.level" type="number"
                             value="{{ item.system.skillPath1.skill1.level }}" placeholder="" />
                     </div>
-                    {{editor item.system.skillPath1.skill1.definition target="system.skillPath1.skill1.definition"
-                             button=true editable=editable}}
+                    {{formGroup systemFields.skillPath1.fields.skill1.fields.definition value=item.system.skillPath1.skill1.definition enriched=enrichedText.skillPath1.skill1 toggled=true}}
                 </div>
                 <div class="profession-card first-path">
                     <div class="flex first-path-header">
@@ -67,8 +67,7 @@
                         <input class="profession-level" name="system.skillPath1.skill2.level" type="number"
                             value="{{ item.system.skillPath1.skill2.level }}" placeholder="" />
                     </div>
-                    {{editor item.system.skillPath1.skill2.definition target="system.skillPath1.skill2.definition"
-                             button=true editable=editable}}
+                    {{formGroup systemFields.skillPath1.fields.skill2.fields.definition value=item.system.skillPath1.skill2.definition enriched=enrichedText.skillPath1.skill2 toggled=true}}
                 </div>
                 <div class="profession-card first-path">
                     <div class="flex first-path-header">
@@ -80,8 +79,7 @@
                         <input class="profession-level" name="system.skillPath1.skill3.level" type="number"
                             value="{{ item.system.skillPath1.skill3.level }}" placeholder="" />
                     </div>
-                    {{editor item.system.skillPath1.skill3.definition target="system.skillPath1.skill3.definition"
-                             button=true editable=editable}}
+                    {{formGroup systemFields.skillPath1.fields.skill3.fields.definition value=item.system.skillPath1.skill3.definition enriched=enrichedText.skillPath3.skill1 toggled=true}}
                 </div>
             </div>
             <div>
@@ -97,8 +95,7 @@
                         <input class="profession-level" name="system.skillPath2.skill1.level" type="number"
                             value="{{ item.system.skillPath2.skill1.level }}" placeholder="" />
                     </div>
-                    {{editor item.system.skillPath2.skill1.definition target="system.skillPath2.skill1.definition"
-                             button=true editable=editable}}
+                    {{formGroup systemFields.skillPath2.fields.skill1.fields.definition value=item.system.skillPath2.skill1.definition enriched=enrichedText.skillPath2.skill1 toggled=true}}
                 </div>
                 <div class="profession-card second-path">
                     <div class="flex second-path-header">
@@ -110,8 +107,7 @@
                         <input class="profession-level" name="system.skillPath2.skill2.level" type="number"
                             value="{{ item.system.skillPath2.skill2.level }}" placeholder="" />
                     </div>
-                    {{editor item.system.skillPath2.skill2.definition target="system.skillPath2.skill2.definition"
-                             button=true editable=editable}}
+                    {{formGroup systemFields.skillPath2.fields.skill2.fields.definition value=item.system.skillPath2.skill2.definition enriched=enrichedText.skillPath2.skill2 toggled=true}}
                 </div>
                 <div class="profession-card second-path">
                     <div class="flex second-path-header">
@@ -123,8 +119,7 @@
                         <input class="profession-level" name="system.skillPath2.skill3.level" type="number"
                             value="{{ item.system.skillPath2.skill3.level }}" placeholder="" />
                     </div>
-                    {{editor item.system.skillPath2.skill3.definition target="system.skillPath2.skill3.definition"
-                             button=true editable=editable}}
+                    {{formGroup systemFields.skillPath2.fields.skill3.fields.definition value=item.system.skillPath2.skill3.definition enriched=enrichedText.skillPath2.skill3 toggled=true}}
                 </div>
             </div>
             <div>
@@ -140,8 +135,7 @@
                         <input class="profession-level" name="system.skillPath3.skill1.level" type="number"
                             value="{{ item.system.skillPath3.skill1.level }}" placeholder="" />
                     </div>
-                    {{editor item.system.skillPath3.skill1.definition target="system.skillPath3.skill1.definition"
-                             button=true editable=editable}}
+                    {{formGroup systemFields.skillPath3.fields.skill1.fields.definition value=item.system.skillPath3.skill1.definition enriched=enrichedText.skillPath3.skill1 toggled=true}}
                 </div>
                 <div class="profession-card third-path">
                     <div class="flex third-path-header">
@@ -153,8 +147,7 @@
                         <input class="profession-level" name="system.skillPath3.skill2.level" type="number"
                             value="{{ item.system.skillPath3.skill2.level }}" placeholder="" />
                     </div>
-                    {{editor item.system.skillPath3.skill2.definition target="system.skillPath3.skill2.definition"
-                             button=true editable=editable}}
+                    {{formGroup systemFields.skillPath3.fields.skill2.fields.definition value=item.system.skillPath3.skill2.definition enriched=enrichedText.skillPath3.skill2 toggled=true}}
                 </div>
                 <div class="profession-card third-path">
                     <div class="flex third-path-header">
@@ -166,8 +159,7 @@
                         <input class="profession-level" name="system.skillPath3.skill3.level" type="number"
                             value="{{ item.system.skillPath3.skill3.level }}" placeholder="" />
                     </div>
-                    {{editor item.system.skillPath3.skill3.definition target="system.skillPath3.skill3.definition"
-                             button=true editable=editable}}
+                    {{formGroup systemFields.skillPath3.fields.skill3.fields.definition value=item.system.skillPath3.skill3.definition enriched=enrichedText.skillPath3.skill3 toggled=true}}
                 </div>
             </div>
         </div>

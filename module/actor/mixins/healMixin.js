@@ -13,7 +13,7 @@ export let healMixin = {
     async createHealMessage(heal) {
         const messageTemplate = 'systems/TheWitcherTRPG/templates/chat/combat/heal.hbs';
 
-        const content = await renderTemplate(messageTemplate, { actor: this, heal });
+        const content = await foundry.applications.handlebars.renderTemplate(messageTemplate, { actor: this, heal });
         const chatData = {
             content: content,
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),

@@ -81,7 +81,7 @@ export let professionMixin = {
             config: CONFIG.WITCHER
         };
 
-        const dialogTemplate = await renderTemplate(
+        const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
             'systems/TheWitcherTRPG/templates/dialog/combat/profession-attack.hbs',
             data
         );

@@ -78,7 +78,11 @@ export let consumeMixin = {
             };
         });
 
-        const content = await renderTemplate(messageTemplate, { item: this, messageInfos, statusEffects });
+        const content = await foundry.applications.handlebars.renderTemplate(messageTemplate, {
+            item: this,
+            messageInfos,
+            statusEffects
+        });
         const chatData = {
             content: content,
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),

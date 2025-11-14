@@ -211,7 +211,10 @@ class Repair {
             });
         });
 
-        return await renderTemplate('systems/TheWitcherTRPG/templates/dialog/repair-dialog.hbs', templateData);
+        return await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/dialog/repair-dialog.hbs',
+            templateData
+        );
     }
 
     async repairItem(data, options) {
@@ -294,12 +297,15 @@ class Repair {
     }
 
     async renderChatTemplate(data, isRequest) {
-        return await renderTemplate('systems/TheWitcherTRPG/templates/chat/item/repair.hbs', {
-            data: data,
-            isRequest: isRequest,
-            isOrder: data.artisan !== null,
-            showComponents: data.ownedComponents.length || data.missingComponents.length
-        });
+        return await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/chat/item/repair.hbs',
+            {
+                data: data,
+                isRequest: isRequest,
+                isOrder: data.artisan !== null,
+                showComponents: data.ownedComponents.length || data.missingComponents.length
+            }
+        );
     }
 
     _doRepair(data, success) {

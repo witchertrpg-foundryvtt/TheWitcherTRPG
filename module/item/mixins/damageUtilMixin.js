@@ -77,7 +77,7 @@ export let damageUtilMixin = {
     },
 
     async createVariableDamageDialog(damageFormula) {
-        const dialogTemplate = await renderTemplate(
+        const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
             'systems/TheWitcherTRPG/templates/dialog/combat/variableDamage.hbs',
             {
                 currentDamage: damageFormula

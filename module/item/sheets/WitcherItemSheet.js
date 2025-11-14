@@ -47,6 +47,9 @@ export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemShe
 
         this.options.classes.push(`item-${this.document.type}`);
         context.item = this.document;
+        context.systemFields = this.document.system.schema.fields;
+        context.enrichedText = await this.document.system.enrichedText?.();
+
         context.data = context.item.system;
 
         context.showConfig = !!this.configuration;
