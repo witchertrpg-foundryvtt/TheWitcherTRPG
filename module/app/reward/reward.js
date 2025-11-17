@@ -69,11 +69,14 @@ export default class Rewards {
             choosenActors.forEach(actor => actor.system.logs.addIpReward(label, ip, values.isMagic));
         }
 
-        const content = await renderTemplate('systems/TheWitcherTRPG/templates/chat/rewards.hbs', {
-            actors: choosenActors,
-            label: label,
-            ip: ip
-        });
+        const content = await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/chat/rewards.hbs',
+            {
+                actors: choosenActors,
+                label: label,
+                ip: ip
+            }
+        );
         const chatData = {
             content: content,
             type: CONST.CHAT_MESSAGE_STYLES.OTHER
@@ -154,12 +157,15 @@ export default class Rewards {
             choosenActors.forEach(actor => actor.system.logs.addCurrencyReward(label, amount, values.type));
         }
 
-        const content = await renderTemplate('systems/TheWitcherTRPG/templates/chat/rewards.hbs', {
-            actors: choosenActors,
-            label: label,
-            amount: amount,
-            type: values.type
-        });
+        const content = await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/chat/rewards.hbs',
+            {
+                actors: choosenActors,
+                label: label,
+                amount: amount,
+                type: values.type
+            }
+        );
         const chatData = {
             content: content,
             type: CONST.CHAT_MESSAGE_STYLES.OTHER

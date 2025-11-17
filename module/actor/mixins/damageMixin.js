@@ -85,7 +85,7 @@ export let damageMixin = {
             totalAppliedDamage
         };
 
-        const content = await renderTemplate(messageTemplate, templateContext);
+        const content = await foundry.applications.handlebars.renderTemplate(messageTemplate, templateContext);
         const chatData = {
             content: content,
             type: CONST.CHAT_MESSAGE_STYLES.OTHER
@@ -235,7 +235,7 @@ export let damageMixin = {
     async createDamageResultMessage(damageResult) {
         const messageTemplate = 'systems/TheWitcherTRPG/templates/chat/damage/damageToLocation.hbs';
 
-        const content = await renderTemplate(messageTemplate, damageResult);
+        const content = await foundry.applications.handlebars.renderTemplate(messageTemplate, damageResult);
         const chatData = {
             content: content,
             speaker: ChatMessage.getSpeaker({ actor: this }),

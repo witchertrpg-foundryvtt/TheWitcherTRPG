@@ -187,10 +187,13 @@ export let defenseMixin = {
             rollFormula = '10[Stun]';
         }
 
-        const chatMessage = await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/defense/defense.hbs', {
-            defenseName: skillOverride ? skillMapEntry.label : defenseAction.label,
-            displayFormula
-        });
+        const chatMessage = await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/chat/combat/defense/defense.hbs',
+            {
+                defenseName: skillOverride ? skillMapEntry.label : defenseAction.label,
+                displayFormula
+            }
+        );
         let messageData = new ChatMessageData(this, chatMessage, 'defense', {
             attackWeaponProperties: attackDamageObject.properties,
             defender: this.uuid,
@@ -210,17 +213,23 @@ export let defenseMixin = {
         }
 
         const chatMessageCrit = crit
-            ? await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/defense/defenseCrit.hbs', {
-                  crit: { severity: CONFIG.WITCHER.CritGravity[crit.severity] }
-              })
+            ? await foundry.applications.handlebars.renderTemplate(
+                  'systems/TheWitcherTRPG/templates/chat/combat/defense/defenseCrit.hbs',
+                  {
+                      crit: { severity: CONFIG.WITCHER.CritGravity[crit.severity] }
+                  }
+              )
             : '';
         messageData.append(new ChatMessageData(this, chatMessageCrit, 'defense', { crit: crit }));
 
         let stun = this.checkForStun(attackDamageObject);
         const chatMessageStun = stun
-            ? await renderTemplate('systems/TheWitcherTRPG/templates/chat/combat/defense/defenseStun.hbs', {
-                  stun
-              })
+            ? await foundry.applications.handlebars.renderTemplate(
+                  'systems/TheWitcherTRPG/templates/chat/combat/defense/defenseStun.hbs',
+                  {
+                      stun
+                  }
+              )
             : '';
         messageData.append(new ChatMessageData(this, chatMessageStun, 'defense', { stun: stun }));
 

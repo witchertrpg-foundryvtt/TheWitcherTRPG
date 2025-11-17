@@ -9,11 +9,21 @@
 }
 
 @keyframes vibrate {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-2px); }
-    50% { transform: translateX(2px); }
-    75% { transform: translateX(-2px); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-2px);
+    }
+    50% {
+        transform: translateX(2px);
+    }
+    75% {
+        transform: translateX(-2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .profession-roll:hover i {
@@ -29,7 +39,7 @@
     display: flex;
     align-items: center;
 }
-  
+
 .profession-notes {
     width: 100%;
     min-width: 250px;
@@ -142,14 +152,14 @@ input.profession-skill-input {
 }
 
 .profession-flex {
-    display: flex; 
-    flex-direction: row; 
+    display: flex;
+    flex-direction: row;
     justify-content: flex-start;
 }
 
 .monster-profession-flex {
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     justify-content: flex-start;
 }
 
@@ -218,7 +228,6 @@ input.profession-skill-input {
 
         .editor {
             overflow-y: auto;
-            min-height: 50px;
             height: -webkit-fill-available;
         }
     }

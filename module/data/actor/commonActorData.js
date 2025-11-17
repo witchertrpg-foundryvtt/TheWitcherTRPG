@@ -93,6 +93,6 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
     }
 
     static migrateAdrenaline(source) {
-        if (!source?.adrenaline.value) source.adrenaline.value = source.adrenaline.current;
+        if (source.adrenaline && !source.adrenaline.value) source.adrenaline.value = source.adrenaline.current;
     }
 }

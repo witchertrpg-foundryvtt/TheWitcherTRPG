@@ -75,6 +75,7 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
 
         context.actor = this.actor;
         context.system = context.actor.system;
+        context.systemFields = this.document.system.schema.fields;
         context.items = context.actor.items.filter(i => !i.system.isStored).sort((a, b) => a.sort - b.sort);
 
         this._prepareGeneralInformation(context);

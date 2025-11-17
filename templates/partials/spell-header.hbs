@@ -9,7 +9,7 @@
         <itemimage>
             {{#if (and (includes (getSetting "clickableImageItemTypes") item.type)  (or (window "game" "user" "isGM") (eq (getSetting "clickableImageCheckboxForGMOnly") false)) )}}
                 <div class="item-header-wrapper">
-                    <img class="profile-img" src="{{ item.img }}" data-edit="img" title="{{ item.name }}" />
+                    <img class="profile-img" src="{{ item.img }}" data-action="editImage" data-edit="img" title="{{ item.name }}" />
                     <div>
                         <input type="checkbox" id="clickable-image-{{ item._id }}" name="system.clickableImage" {{checked
                         item.system.clickableImage}} />
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             {{else}}
-                <img class="profile-img" src="{{ item.img }}" data-edit="img" title="{{ item.name }}" />
+                <img class="profile-img" src="{{ item.img }}" data-action="editImage" data-edit="img" title="{{ item.name }}" />
             {{/if}}
         </itemimage>
 

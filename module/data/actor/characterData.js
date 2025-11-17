@@ -1,3 +1,4 @@
+import { createEnrichedText } from '../dataUtils.js';
 import CommonActorData from './commonActorData.js';
 import general from './templates/character/generalData.js';
 import Log from './templates/character/logData.js';
@@ -27,6 +28,14 @@ export default class CharacterData extends CommonActorData {
             skillTraining4: new fields.SchemaField(skillTraining()),
 
             logs: new fields.EmbeddedDataField(Log)
+        };
+    }
+
+    async enrichedText() {
+        return {
+            general: {
+                background: await createEnrichedText(this, this.general.background.value, 'general.background.value')
+            }
         };
     }
 }

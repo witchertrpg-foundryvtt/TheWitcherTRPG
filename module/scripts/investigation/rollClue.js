@@ -17,7 +17,10 @@ export async function rollClue(clueItem) {
         choosenSkill = availableSkills[0]
     } else {
         let skills = availableSkills.reduce((acc, skill) => acc.concat([CONFIG.WITCHER.skillMap[skill]]), [])
-        const dialogTemplate = await renderTemplate("systems/TheWitcherTRPG/templates/dialog/investigation/chooseEvidenceSkill.hbs", { skills: skills });
+        const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/dialog/investigation/chooseEvidenceSkill.hbs',
+            { skills: skills }
+        );
 
 
         choosenSkill = await DialogV2.wait({

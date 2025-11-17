@@ -1,6 +1,7 @@
 import CommonItemData from './commonItemData.js';
 import professionPath from './templates/professionPathData.js';
 import professionSkill from './templates/professionSkillData.js';
+import { createEnrichedText } from '../dataUtils.js';
 
 const fields = foundry.data.fields;
 
@@ -10,7 +11,7 @@ export default class ProfessionData extends CommonItemData {
         return {
             // Using destructuring to effectively append our additional data here
             ...commonData,
-            notes: new fields.StringField({ initial: '' }),
+            notes: new fields.HTMLField({ initial: '' }),
             definingSkill: new fields.SchemaField(professionSkill()),
             skillPath1: new fields.SchemaField(professionPath()),
             skillPath2: new fields.SchemaField(professionPath()),
@@ -20,6 +21,28 @@ export default class ProfessionData extends CommonItemData {
                 label: 'WITCHER.profession.professionSkills.label',
                 hint: 'WITCHER.profession.professionSkills.hint'
             })
+        };
+    }
+
+    async enrichedText() {
+        return {
+            definingSkill: await createEnrichedText(this, this.definingSkill.definition, 'definingSkill.definition'),
+            notes: await createEnrichedText(this, this.notes, 'notes'),
+            skillPath1: {
+                skill1: await createEnrichedText(this, this.skillPath1.skill1.definition, 'skillPath1.skill1.definition'),
+                skill2: await createEnrichedText(this, this.skillPath1.skill2.definition, 'skillPath1.skill2.definition'),
+                skill3: await createEnrichedText(this, this.skillPath1.skill3.definition, 'skillPath1.skill3.definition'),
+            },
+            skillPath2: {
+                skill1: await createEnrichedText(this, this.skillPath2.skill1.definition, 'skillPath2.skill1.definition'),
+                skill2: await createEnrichedText(this, this.skillPath2.skill2.definition, 'skillPath2.skill2.definition'),
+                skill3: await createEnrichedText(this, this.skillPath2.skill3.definition, 'skillPath2.skill3.definition'),
+            },
+            skillPath3: {
+                skill1: await createEnrichedText(this, this.skillPath3.skill1.definition, 'skillPath3.skill1.definition'),
+                skill2: await createEnrichedText(this, this.skillPath3.skill2.definition, 'skillPath3.skill2.definition'),
+                skill3: await createEnrichedText(this, this.skillPath3.skill3.definition, 'skillPath3.skill3.definition'),
+            }
         };
     }
 
