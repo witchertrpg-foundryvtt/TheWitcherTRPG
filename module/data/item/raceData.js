@@ -1,6 +1,7 @@
-import CommonItemData from "./commonItemData.js";
-import perk from "./templates/perkData.js";
-import socialStanding from "./templates/socialStandingData.js";
+import CommonItemData from './commonItemData.js';
+import perk from './templates/perkData.js';
+import socialStanding from './templates/socialStandingData.js';
+import { createEnrichedText } from '../dataUtils.js';
 
 const fields = foundry.data.fields;
 
@@ -21,18 +22,10 @@ export default class RaceData extends CommonItemData {
 
     async enrichedText() {
         return {
-            perk1: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                this.perk1.description
-            ),
-            perk2: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                this.perk1.description
-            ),
-            perk3: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                this.perk1.description
-            ),
-            perk4: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                this.perk1.description
-            )
+            perk1: await createEnrichedText(this, this.perk1.description, 'perk1.description'),
+            perk2: await createEnrichedText(this, this.perk2.description, 'perk2.description'),
+            perk3: await createEnrichedText(this, this.perk3.description, 'perk3.description'),
+            perk4: await createEnrichedText(this, this.perk4.description, 'perk4.description')
         };
     }
 }
