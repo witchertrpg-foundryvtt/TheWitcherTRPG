@@ -51,7 +51,7 @@ export let statMixin = {
         let stat = event.currentTarget.closest('.stat-display').dataset.stat;
         let type = event.currentTarget.closest('.stat-display').dataset.type;
         let prevModList = [];
-        if (type == 'derivedStat') {
+        if (type == 'derived') {
             prevModList = this.actor.system.derivedStats[stat].modifiers;
         } else if (type == 'reputation') {
             prevModList = this.actor.system.reputation.modifiers;
