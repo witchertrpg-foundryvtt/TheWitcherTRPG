@@ -34,7 +34,7 @@
         {{#if reputation.modifiers}}
             <div class='stat-modifiers'>
                 {{#each reputation.modifiers as |modifier value|}}
-                    <div class='list-modifiers stat-display' data-id='{{modifier.id}}' data-type="reputation">
+                    <div class='list-modifiers stat-display' data-id='{{modifier.id}}' data-type="reputation" data-stat="reputation">
                         <input class='medium list-mod-edit' data-field='name' type='text' value='{{modifier.name}}' />
                         <input class='small list-mod-edit' data-field='value' type='number'
                             value='{{modifier.value}}' />
