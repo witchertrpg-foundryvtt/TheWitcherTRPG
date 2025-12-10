@@ -111,32 +111,6 @@ Hooks.once('ready', async function () {
     deprecationWarnings();
 });
 
-Hooks.once('dragRuler.ready', SpeedProvider => {
-    class FictionalGameSystemSpeedProvider extends SpeedProvider {
-        get colors() {
-            return [
-                { id: 'walk', default: 0x00ff00, name: 'witcher.speeds.walk' },
-                { id: 'dash', default: 0xffff00, name: 'witcher.speeds.dash' },
-                { id: 'run', default: 0xff8000, name: 'witcher.speeds.run' }
-            ];
-        }
-
-        getRanges(token) {
-            let baseSpeed = token.actor.system.stats.spd.value;
-            // A character can always walk it's base speed and dash twice it's base speed
-            let moveSpeed = baseSpeed % 2 == 0 ? baseSpeed : baseSpeed + 1;
-            let runspeed = (baseSpeed * 3) % 2 == 0 ? baseSpeed * 3 : baseSpeed * 3 + 1;
-            const ranges = [
-                { range: moveSpeed, color: 'walk' },
-                { range: runspeed, color: 'dash' }
-            ];
-            return ranges;
-        }
-    }
-
-    dragRuler.registerSystem('TheWitcherTRPG', FictionalGameSystemSpeedProvider);
-});
-
 Hooks.once('polyglot.init', LanguageProvider => {
     class FictionalGameSystemLanguageProvider extends LanguageProvider {
         languages = {

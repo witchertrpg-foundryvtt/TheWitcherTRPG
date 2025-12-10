@@ -22,17 +22,19 @@ export let damageUtilMixin = {
         let messageData = new ChatMessageData(this.parent);
         messageData.flavor = `<div class="damage-message" <h1><img src="${this.img}" class="item-img" />${game.i18n.localize('WITCHER.table.Damage')}: ${this.name} </h1>`;
 
+        let damageFormula = '' + damage.formula;
+
         if (damage.properties.variableDamage) {
-            damage.formula = await this.createVariableDamageDialog(damage.formula);
+            damageFormula = await this.createVariableDamageDialog(damageFormula);
         }
 
-        if (damage.formula == '') {
-            damage.formula = '0';
+        if (damageFormula == '') {
+            damageFormula = '0';
             ui.notifications.error(`${game.i18n.localize('WITCHER.NoDamageSpecified')}`);
         }
 
         if (CONFIG.WITCHER.weapon.attacks[damage.strike]?.dmgMulti) {
-            damage.formula = `(${damage.formula})${CONFIG.WITCHER.weapon.attacks[damage.strike].dmgMulti}`;
+            damageFormula = `(${damageFormula})${CONFIG.WITCHER.weapon.attacks[damage.strike].dmgMulti}`;
             messageData.flavor += `<div>${game.i18n.localize(CONFIG.WITCHER.weapon.attacks[damage.strike].label)}</div>`;
         }
 
@@ -72,7 +74,7 @@ export let damageUtilMixin = {
             });
         }
 
-        let message = await (await new Roll(damage.formula).evaluate()).toMessage(messageData);
+        let message = await (await new Roll(damageFormula).evaluate()).toMessage(messageData);
         message.setFlag('TheWitcherTRPG', 'damage', damage);
     },
 

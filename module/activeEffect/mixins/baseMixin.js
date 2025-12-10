@@ -1,14 +1,5 @@
 export let baseMixin = {
     getActiveEffectsBasePaths() {
-        console.log(
-            this.getStatSuggestions(),
-            this.getToxSuggestions(),
-            this.getSkillGroupSuggestions(),
-            this.getSkillSuggestions(),
-            this.getLifepathSuggestions(),
-            this.getOtherSuggestions(),
-            this.getDamageModifcators()
-        );
         return {
             ...this.getStatSuggestions(),
             ...this.getToxSuggestions(),

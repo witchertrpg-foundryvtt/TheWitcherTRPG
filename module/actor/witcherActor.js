@@ -50,13 +50,7 @@ export default class WitcherActor extends Actor {
             .map(effect => WITCHER.armorEffects.find(armorEffect => armorEffect.id == effect.statusEffect));
 
         armorEffects.forEach(effect => {
-            if (
-                effect.refersStatusEffect &&
-                !effect.addsResistance &&
-                !this.statuses.find(status => status == effect.id)
-            ) {
-                this.toggleStatusEffect(effect.id);
-            }
+            this.applyStatus(effect);
         });
 
         this.calculateStats();

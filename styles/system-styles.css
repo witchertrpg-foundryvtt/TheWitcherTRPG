@@ -46,17 +46,6 @@
     }
 }
 
-/* Sheet min widths */
-.witcher.sheet.actor {
-    min-width: 555px;
-    min-height: 400px;
-}
-
-.witcher.sheet.item {
-    min-width: 460px;
-    min-height: 400px;
-}
-
 /* App theme edits */
 .actor .window-header {
     flex: 0 0 30px;
@@ -82,9 +71,6 @@
 
 .item-mutagen .window-header {
     background-color: #2a4e0a;
-}
-
-.actor-sheet-header {
 }
 
 .hp-content {
