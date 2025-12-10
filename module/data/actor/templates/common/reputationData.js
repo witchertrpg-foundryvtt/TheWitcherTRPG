@@ -1,6 +1,7 @@
-import stat from "./stats/statData.js"
+import stat from './stats/statData.js';
 
-
-export default function reputation() {
-    return stat("WITCHER.Actor.DerStat.Rep");
-  }
+export default class Reputation extends foundry.abstract.DataModel {
+    static defineSchema() {
+        return stat('WITCHER.Actor.DerStat.Rep');
+    }
+}

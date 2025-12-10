@@ -3,8 +3,6 @@ const DialogV2 = foundry.applications.api.DialogV2;
 export let healMixin = {
     async _onHeal() {
         const rec = this.actor.system.derivedStats.rec;
-        const hp = this.actor.system.derivedStats.hp;
-        const sta = this.actor.system.derivedStats.sta;
         const actualWoundList = this.actor.system.critWounds;
 
         let totalRec = Math.floor(rec.max / 2);
@@ -35,14 +33,7 @@ export let healMixin = {
                         const isResting = document.querySelector('#resting').checked;
                         const isSterilized = document.querySelector('#sterilized').checked;
 
-                        await this.recoverActor(
-                            isResting,
-                            isSterilized,
-                            dialogData,
-                            hp.value,
-                            hp.max,
-                            sta.unmodifiedMax
-                        );
+                        await this.recoverActor(isResting, isSterilized, dialogData);
                     }
                 },
                 {
@@ -53,50 +44,54 @@ export let healMixin = {
             ]
         }).render({ force: true });
 
-        this.restDialogListener(document, totalRec, rec, dialogData, actualWoundList)
+        this.restDialogListener(document, totalRec, rec, dialogData, actualWoundList);
     },
 
     async updateHealAmount(totalRec, rec, dialogData, actualWoundList) {
-      const isResting = document.querySelector('#resting').checked;
-      const isSterilized = document.querySelector('#sterilized').checked;
-      const isHealingHand = document.querySelector('#healing-hand').checked;
-      const isHealingTent = document.querySelector('#healing-tent').checked;
+        const isResting = document.querySelector('#resting').checked;
+        const isSterilized = document.querySelector('#sterilized').checked;
+        const isHealingHand = document.querySelector('#healing-hand').checked;
+        const isHealingTent = document.querySelector('#healing-tent').checked;
 
-      totalRec = Math.floor(rec.max / 2);
+        totalRec = Math.floor(rec.max / 2);
 
-      if (isResting) {
-          totalRec = rec.max;
-          dialogData.isResting = true;
-      }
+        if (isResting) {
+            totalRec = rec.max;
+            dialogData.isResting = true;
+        }
 
-      if (isSterilized) {
-          totalRec += 2;
-          dialogData.isSterilized = true;
+        if (isSterilized) {
+            totalRec += 2;
+            dialogData.isSterilized = true;
 
-          if (actualWoundList.some(wound => !wound.sterilized)) {
-            dialogData.daysHealed =+ 3;
-          }
-      }
+            if (actualWoundList.some(wound => !wound.sterilized)) {
+                dialogData.daysHealed = +3;
+            }
+        }
 
-      if (isHealingHand) totalRec += 3;
+        if (isHealingHand) totalRec += 3;
 
-      if (isHealingTent) totalRec += 2;
+        if (isHealingTent) totalRec += 2;
 
-      dialogData.totalRec = totalRec;
-      document.querySelector('#extra-info').textContent =
-          `${game.i18n.localize('WITCHER.Heal.totalRecover')} + ${totalRec}`;
+        dialogData.totalRec = totalRec;
+        document.querySelector('#extra-info').textContent =
+            `${game.i18n.localize('WITCHER.Heal.totalRecover')} + ${totalRec}`;
 
-      dialogData.sterilizedClass = isSterilized ? '' : 'invisible';
-      document.querySelector('#sterilized-info').className = dialogData.sterilizedClass;
-  },
+        dialogData.sterilizedClass = isSterilized ? '' : 'invisible';
+        document.querySelector('#sterilized-info').className = dialogData.sterilizedClass;
+    },
 
-    async recoverActor(isResting, isSterilized, dialogData, curHealth, maxHealth, unmodifiedMaxSta) {
+    async recoverActor(isResting, isSterilized, dialogData) {
         await this.actor.update({
-          'system.derivedStats.hp.value': Math.min(curHealth + dialogData.totalRec, maxHealth),
-          'system.derivedStats.sta.value': unmodifiedMaxSta
+            'system.derivedStats.hp.value': Math.min(
+                this.actor.system.derivedStats.hp.value + dialogData.totalRec,
+                this.actor.system.derivedStats.hp.max
+            ),
+            'system.derivedStats.sta.value': this.actor.system.derivedStats.sta.max,
+            'system.derivedStats.vigor.value': this.actor.system.derivedStats.vigor.max
         });
 
-        const clonedCritList = foundry.utils.deepClone(this.actor.system.critWounds)
+        const clonedCritList = foundry.utils.deepClone(this.actor.system.critWounds);
         let newCritList = [];
 
         clonedCritList.forEach(crit => {
@@ -132,9 +127,17 @@ export let healMixin = {
     },
 
     restDialogListener(document, totalRec, rec, dialogData, actualWoundList) {
-        document.querySelector('#resting').addEventListener('change', () => this.updateHealAmount(totalRec, rec, dialogData, actualWoundList));
-        document.querySelector('#sterilized').addEventListener('change', () => this.updateHealAmount(totalRec, rec, dialogData, actualWoundList));
-        document.querySelector('#healing-hand').addEventListener('change', () => this.updateHealAmount(totalRec, rec, dialogData, actualWoundList));
-        document.querySelector('#healing-tent').addEventListener('change', () => this.updateHealAmount(totalRec, rec, dialogData, actualWoundList));
+        document
+            .querySelector('#resting')
+            .addEventListener('change', () => this.updateHealAmount(totalRec, rec, dialogData, actualWoundList));
+        document
+            .querySelector('#sterilized')
+            .addEventListener('change', () => this.updateHealAmount(totalRec, rec, dialogData, actualWoundList));
+        document
+            .querySelector('#healing-hand')
+            .addEventListener('change', () => this.updateHealAmount(totalRec, rec, dialogData, actualWoundList));
+        document
+            .querySelector('#healing-tent')
+            .addEventListener('change', () => this.updateHealAmount(totalRec, rec, dialogData, actualWoundList));
     }
 };

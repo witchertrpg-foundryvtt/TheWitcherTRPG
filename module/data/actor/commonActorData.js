@@ -12,6 +12,8 @@ import lifepathData from './templates/common/lifepathData.js';
 import damageTypeModification from './templates/character/general/damage/damageTypeModificationData.js';
 import combatEffects from './templates/common/combatEffectsData.js';
 import DerivedStats from './templates/common/stats/derivedStatsData.js';
+import Stats from './templates/common/stats/statsData.js';
+import Reputation from './templates/common/reputationData.js';
 
 const fields = foundry.data.fields;
 
@@ -24,10 +26,10 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
             deathSaves: new fields.NumberField({ initial: 0 }),
             critWounds: new fields.ArrayField(new fields.SchemaField(critWound())),
 
-            stats: new fields.SchemaField(stats()),
+            stats: new fields.EmbeddedDataField(Stats),
             derivedStats: new fields.EmbeddedDataField(DerivedStats),
 
-            reputation: new fields.SchemaField(reputation()),
+            reputation: new fields.EmbeddedDataField(Reputation),
             adrenaline: new fields.SchemaField(adrenaline()),
 
             skills: new fields.SchemaField(skills()),
