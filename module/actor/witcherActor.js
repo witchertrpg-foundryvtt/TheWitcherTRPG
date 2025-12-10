@@ -50,13 +50,7 @@ export default class WitcherActor extends Actor {
             .map(effect => WITCHER.armorEffects.find(armorEffect => armorEffect.id == effect.statusEffect));
 
         armorEffects.forEach(effect => {
-            if (
-                effect.refersStatusEffect &&
-                !effect.addsResistance &&
-                !this.statuses.find(status => status == effect.id)
-            ) {
-                this.toggleStatusEffect(effect.id);
-            }
+            this.applyStatus(effect);
         });
 
         this.calculateStats();
@@ -79,7 +73,7 @@ export default class WitcherActor extends Actor {
 
         this.system.stats.toxicity.max =
             this.system.stats.toxicity.unmodifiedMax + this.system.stats.toxicity.totalModifiers;
-        this.system.stats.luck.max = this.system.stats.luck.max + this.system.stats.luck.totalModifiers;
+        this.system.stats.luck.max = this.system.stats.luck.unmodifiedMax + this.system.stats.luck.totalModifiers;
         this.system.reputation.value = this.system.reputation.max;
     }
 

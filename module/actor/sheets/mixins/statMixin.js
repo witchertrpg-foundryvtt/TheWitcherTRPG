@@ -109,7 +109,7 @@ export let statMixin = {
                 t1: {
                     label: `${game.i18n.localize('WITCHER.ReputationButton.Save')}`,
                     callback: async html => {
-                        let statValue = this.actor.system.reputation.max;
+                        let statValue = this.actor.system.reputation.value;
 
                         this.actor.system.reputation.modifiers.forEach(mod => {
                             const noSpacesName = mod.name.replace(/\s/g, '');
@@ -137,7 +137,7 @@ export let statMixin = {
                 t2: {
                     label: `${game.i18n.localize('WITCHER.ReputationButton.FaceDown')}`,
                     callback: async html => {
-                        let repValue = this.actor.system.reputation.max;
+                        let repValue = this.actor.system.reputation.value;
 
                         this.actor.system.reputation.modifiers.forEach(mod => {
                             const noSpacesName = mod.name.replace(/\s/g, '');
