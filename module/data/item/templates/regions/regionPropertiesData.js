@@ -1,4 +1,5 @@
 import regionBehaviours from './regionBehavioursData.js';
+import { emitForGM } from '../../../../scripts/socket/socketMessage.js';
 
 const fields = foundry.data.fields;
 
