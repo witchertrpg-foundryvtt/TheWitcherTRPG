@@ -11,6 +11,10 @@ export default class WitcherLootSheet extends HandlebarsApplicationMixin(ActorSh
         actions: {
             buyItem: WitcherLootSheet._onItemBuy,
             hideItem: WitcherLootSheet._onItemHide
+        },
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false
         }
     };
 

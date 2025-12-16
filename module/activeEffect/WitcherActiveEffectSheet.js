@@ -5,6 +5,10 @@ const DialogV2 = foundry.applications.api.DialogV2;
 
 export class WitcherActiveEffectConfig extends foundry.applications.sheets.ActiveEffectConfig {
     static DEFAULT_OPTIONS = {
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false
+        },
         actions: {
             wizard: WitcherActiveEffectConfig.wizardAction
         }
