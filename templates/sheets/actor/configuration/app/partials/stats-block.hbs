@@ -3,7 +3,7 @@
         <details>
             <summary>
                 <span>{{localize details.label}}</span>
-                <input class='header-stat stat-max' name='system.{{@root.type}}.{{stat}}.max' type='number'
+                <input class='header-stat stat-max' name='system.{{@root.type}}.{{stat}}.unmodifiedMax' type='number'
                     value='{{details.max}}' placeholder='0' data-dtype='Number' />
             </summary>
             {{#if details.modifiers}}
@@ -28,7 +28,7 @@
     <details>
         <summary>
             <span>{{localize 'WITCHER.Reputation'}}</span>
-            <input class='header-stat stat-max' name='system.reputation.max' type='number' value='{{reputation.max}}'
+            <input class='header-stat stat-max' name='system.reputation.unmodifiedMax' type='number' value='{{reputation.max}}'
                 placeholder='0' data-dtype='Number' />
         </summary>
         {{#if reputation.modifiers}}
