@@ -7,7 +7,7 @@
                     <div class="critwound-header">
                         <div class="critwound-info">
                             <input hidden name="system.critWounds.{{i}}.id" type="text" value="{{critWound.id}}" />
-                            <select name="system.critWounds.{{i}}.configEntry">
+                            <select class="wound-name" name="system.critWounds.{{i}}.configEntry">
                                 <option value=""></option>
                                 {{selectOptions ../config.Crit selected=this.configEntry labelAttr="label" localize=true}}
                             </select>
@@ -20,12 +20,15 @@
                         </div>
                         <div class="critwound-days-rest">
                             <label
-                                class="healing-time-lable">{{localize "WITCHER.CritWound.HealingTime.Label"}}:</label>
-                            <input class="days-healed" name="system.critWounds.{{i}}.daysHealed" type="number"
-                                data-dtype="Number" value="{{critWound.daysHealed}}" />
-                            /
-                            <input class="healing-time" name="system.critWounds.{{i}}.healingTime" type="number"
-                                data-dtype="Number" value="{{critWound.healingTime}}" />
+                                class="healing-time-lable">{{localize "WITCHER.CritWound.HealingTime.Label"}}:
+                            </label>
+                            <div class="healing-time-inputs">
+                                <input class="days-healed" name="system.critWounds.{{i}}.daysHealed" type="number"
+                                    data-dtype="Number" value="{{critWound.daysHealed}}" />
+                                /
+                                <input class="healing-time" name="system.critWounds.{{i}}.healingTime" type="number"
+                                    data-dtype="Number" value="{{critWound.healingTime}}" />
+                            </div>
                         </div>
                         <div class="critwound-controls">
                             <a class="effect-control critwound-display">

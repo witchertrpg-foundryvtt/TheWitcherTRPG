@@ -26,9 +26,30 @@
 .critwound-header {
     display: grid;
     grid-template-columns: 2fr 1fr 100px;
-    height: 60px;
     align-items: center;
-    padding: 10px 5px 10px;
+    padding: 10px 5px 0px;
+}
+
+.critwound-info {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    
+    select {
+        width: max-content;
+    }
+
+    .wound-name {
+        width: -webkit-fill-available;
+    }
+}
+
+.critwound-days-rest {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: start;
+    margin: 0 auto;
 }
 
 .critwound-display {
@@ -81,8 +102,8 @@
     box-shadow: 0 0 5px var(--color-shadow-primary);
 }
 
-.critwounds-description {
-    padding: 0 5px 1rem 5px;
+.critwounds-description:not(.invisible) {
+    padding: 10px 5px 1rem 5px;
 }
 
 .crit-wound-description,
@@ -100,7 +121,8 @@
 }
 
 .healing-time-lable {
-    width: 150px;
+    height: 32px;
+    align-content: center;
 }
 
 .days-healed {
