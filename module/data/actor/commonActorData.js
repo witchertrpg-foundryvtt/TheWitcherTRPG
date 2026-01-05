@@ -56,6 +56,21 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
         };
     }
 
+    prepareBaseData() {
+        this.stats.int.max = this.stats.int.unmodifiedMax;
+        this.stats.ref.max = this.stats.ref.unmodifiedMax;
+        this.stats.dex.max = this.stats.dex.unmodifiedMax;
+        this.stats.body.max = this.stats.body.unmodifiedMax;
+        this.stats.spd.max = this.stats.spd.unmodifiedMax;
+        this.stats.emp.max = this.stats.emp.unmodifiedMax;
+        this.stats.cra.max = this.stats.cra.unmodifiedMax;
+        this.stats.will.max = this.stats.will.unmodifiedMax;
+
+        this.stats.toxicity.max = this.stats.toxicity.unmodifiedMax;
+        this.stats.luck.max = this.stats.luck.unmodifiedMax;
+        this.reputation.max = this.reputation.unmodifiedMax;
+    }
+
     calcCurrencyWeight() {
         let totalPieces =
             Number(this.currency.bizant) +
