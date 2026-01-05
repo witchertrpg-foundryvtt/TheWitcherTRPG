@@ -71,9 +71,8 @@ export default class WitcherActor extends Actor {
         this.calculateStat('cra');
         this.calculateStat('will');
 
-        this.system.stats.toxicity.max =
-            this.system.stats.toxicity.unmodifiedMax + this.system.stats.toxicity.totalModifiers;
-        this.system.stats.luck.max = this.system.stats.luck.unmodifiedMax + this.system.stats.luck.totalModifiers;
+        this.system.stats.toxicity.max += this.system.stats.toxicity.totalModifiers;
+        this.system.stats.luck.max += this.system.stats.luck.totalModifiers;
         this.system.reputation.value = this.system.reputation.max;
     }
 
@@ -83,27 +82,12 @@ export default class WitcherActor extends Actor {
 
         //Adjust for encumbrance
         if (stat === 'ref' || stat === 'dex' || stat === 'spd') {
-            let bodyTotalModifiers =
-                this.getAllModifiers('body').totalModifiers + this.system.stats.body.totalModifiers;
-            this.system.stats.body.modifiers.forEach(item => (bodyTotalModifiers += Number(item.value)));
-
-            let currentEncumbrance =
-                (this.system.stats.body.max + bodyTotalModifiers) * 10 +
-                this.getAllModifiers('enc').totalModifiers +
-                this.system.derivedStats.enc.totalModifiers;
-            var totalWeights = this.getTotalWeight();
-
-            let encDiff = 0;
-            if (currentEncumbrance < totalWeights) {
-                encDiff = Math.ceil((totalWeights - currentEncumbrance) / 5);
-            }
-
             if (stat === 'ref' || stat === 'dex') {
                 let armorEnc = this.getArmorEcumbrance();
-                totalModifiers += -armorEnc - encDiff;
+                totalModifiers += -armorEnc - this.calculateWeigthEncumbrance();
             }
 
-            totalModifiers += -encDiff;
+            totalModifiers -= this.calculateWeigthEncumbrance();
         }
 
         let divider = this.getAllModifiers(stat).totalDivider;
@@ -120,7 +104,24 @@ export default class WitcherActor extends Actor {
             }
         }
 
-        this.system.stats[stat].value = Math.floor((this.system.stats[stat].max + totalModifiers) / divider);
+        this.system.stats[stat].value = Math.floor((this.system.stats[stat].unmodifiedMax + totalModifiers) / divider);
+    }
+
+    calculateWeigthEncumbrance() {
+        let bodyTotalModifiers = this.getAllModifiers('body').totalModifiers + this.system.stats.body.totalModifiers;
+        this.system.stats.body.modifiers.forEach(item => (bodyTotalModifiers += Number(item.value)));
+        let currentEncumbrance =
+            (this.system.stats.body.max + bodyTotalModifiers) * 10 +
+            this.getAllModifiers('enc').totalModifiers +
+            this.system.derivedStats.enc.totalModifiers;
+        var totalWeights = this.getTotalWeight();
+
+        let encDiff = 0;
+        if (currentEncumbrance < totalWeights) {
+            encDiff = Math.ceil((totalWeights - currentEncumbrance) / 5);
+        }
+
+        return encDiff;
     }
 
     calculateFixedDerivedStats() {
