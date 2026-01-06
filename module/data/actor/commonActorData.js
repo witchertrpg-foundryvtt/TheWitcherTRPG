@@ -80,9 +80,8 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
         this.derivedStats.rec.unmodifiedMax = baseMax;
         this.derivedStats.woundTreshold.unmodifiedMax = baseMax;
 
-        this.derivedStats.resolve.unmodifiedMax =
-            (this.system.stats.will.unmodifiedMax + this.system.stats.int.unmodifiedMax) * 5;
-        this.derivedStats.focus.unmodifiedMax = (this.system.stats.will.value + this.system.stats.int.value) * 3;
+        this.derivedStats.resolve.unmodifiedMax = (this.stats.will.unmodifiedMax + this.stats.int.unmodifiedMax) * 5;
+        this.derivedStats.focus.unmodifiedMax = (this.stats.will.value + this.stats.int.value) * 3;
 
         this.derivedStats.vigor.max = this.derivedStats.vigor.unmodifiedMax;
     }
