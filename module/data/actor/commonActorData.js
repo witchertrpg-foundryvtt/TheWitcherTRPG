@@ -69,6 +69,22 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
         this.stats.toxicity.max = this.stats.toxicity.unmodifiedMax;
         this.stats.luck.max = this.stats.luck.unmodifiedMax;
         this.reputation.max = this.reputation.unmodifiedMax;
+
+        const baseMax = Math.floor((this.stats.body.unmodifiedMax + this.stats.will.unmodifiedMax) / 2);
+
+        this.derivedStats.stun.unmodifiedMax = Math.clamp(baseMax, 1, 10);
+
+        this.derivedStats.run.unmodifiedMax = this.stats.spd.unmodifiedMax * 3;
+        this.derivedStats.leap.unmodifiedMax = Math.floor((this.stats.spd.unmodifiedMax * 3) / 5);
+        this.derivedStats.enc.unmodifiedMax = this.stats.body.unmodifiedMax * 10;
+        this.derivedStats.rec.unmodifiedMax = baseMax;
+        this.derivedStats.woundTreshold.unmodifiedMax = baseMax;
+
+        this.derivedStats.resolve.unmodifiedMax =
+            (this.system.stats.will.unmodifiedMax + this.system.stats.int.unmodifiedMax) * 5;
+        this.derivedStats.focus.unmodifiedMax = (this.system.stats.will.value + this.system.stats.int.value) * 3;
+
+        this.derivedStats.vigor.max = this.derivedStats.vigor.unmodifiedMax;
     }
 
     calcCurrencyWeight() {
