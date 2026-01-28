@@ -15,8 +15,8 @@
                             <a class="monster-stat-button stat-roll">{{localize details.label}}</a>
                             <input class="header-stat" name="system.stats.{{stat}}.value" type="number"
                                 value="{{details.value}}" placeholder="0" data-dtype="Number" disabled readonly />
-                            <input class="header-stat stat-max" name="system.stats.{{stat}}.max" type="number"
-                                value="{{details.max}}" placeholder="0" data-dtype="Number" />
+                            <input class="header-stat stat-max" name="system.stats.{{stat}}.unmodifiedMax" type="number"
+                                value="{{details.unmodifiedMax}}" placeholder="0" data-dtype="Number" />
 
                             {{#if details.isOpened}}
                                 <a class="stat-modifier-display"><i class="fas fa-chevron-down"></i></a>
@@ -64,7 +64,7 @@
             <input class="small" name="system.derivedStats.hp.value" type="number"
                 value="{{system.derivedStats.hp.value}}" data-dtype="Number" />
             /
-            <input class="small" name="system.derivedStats.hp.max" type="number" value="{{system.derivedStats.hp.max}}"
+            <input class="small" name="system.derivedStats.hp.unmodifiedMax" type="number" value="{{system.derivedStats.hp.unmodifiedMax}}"
                 data-dtype="Number" />
         </div>
         <div class="monster-HPSTA margin-right">
@@ -72,8 +72,8 @@
             <input class="small" name="system.derivedStats.sta.value" type="number"
                 value="{{system.derivedStats.sta.value}}" data-dtype="Number" />
             /
-            <input class="small" name="system.derivedStats.sta.max" type="number"
-                value="{{system.derivedStats.sta.max}}" data-dtype="Number" />
+            <input class="small" name="system.derivedStats.sta.unmodifiedMax" type="number"
+                value="{{system.derivedStats.sta.unmodifiedMax}}" data-dtype="Number" />
         </div>
         {{#if useVerbalCombat}}
             <div class="monster-HPSTA margin-right">
@@ -81,8 +81,8 @@
                 <input class="small" name="system.derivedStats.resolve.value" type="number"
                     value="{{system.derivedStats.resolve.value}}" data-dtype="Number" />
                 /
-                <input class="small" name="system.derivedStats.resolve.max" type="number"
-                    value="{{system.derivedStats.resolve.max}}" data-dtype="Number" />
+                <input class="small" name="system.derivedStats.resolve.unmodifiedMax" type="number"
+                    value="{{system.derivedStats.resolve.unmodifiedMax}}" data-dtype="Number" />
             </div>
         {{/if}}
         <div>
