@@ -1,0 +1,260 @@
+{
+  "name": "Witcher Lifepath: Danger - Wounds",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wound - Stiff Knee (-1 SPD): A horrible wound to your leg left it shattered and nearly unrepairable. Even after surgery and a regimen of witcher potions, it has never been the same.",
+      "name": "",
+      "_key": "!tables.results!q2Cdg3rDUsu3xYLd.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "oKZeEBIq2FLMNk2e",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wound - Damaged Eye (-1 Sight Awareness): Usually witchers are fast enough to avoid a vital strike, but some monsters are too fast. A shot to your eye left it mildly hazy.",
+      "name": "",
+      "_key": "!tables.results!q2Cdg3rDUsu3xYLd.oKZeEBIq2FLMNk2e"
+    },
+    {
+      "_id": "kQX7ZeIIWKy5yTPF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wound - Stiff Arm (-1 Melee with that arm): A shattering blow to your arm left you with weeks of recovery and a stiff arm. You can still hold a sword and fight, but the stiffness always aggravates you.",
+      "name": "",
+      "_key": "!tables.results!q2Cdg3rDUsu3xYLd.kQX7ZeIIWKy5yTPF"
+    },
+    {
+      "_id": "36ROPw9QWjYWmpBV",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wound - Damaged Fingers (Can’t do signs with that hand): It may have been the result of torture or just a very unlucky strike to that hand in combat, but its fingers are stiff and awkward.",
+      "name": "",
+      "_key": "!tables.results!q2Cdg3rDUsu3xYLd.36ROPw9QWjYWmpBV"
+    },
+    {
+      "_id": "9kVdEtFeX4a3nAoe",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wound - Embedded Arrowhead (-1 Physique): A marksman’s shot and a barbed head left an arrowhead deep in your body, lodged in your muscle. Strenuous lifting has been painful ever since.",
+      "name": "",
+      "_key": "!tables.results!q2Cdg3rDUsu3xYLd.9kVdEtFeX4a3nAoe"
+    },
+    {
+      "_id": "cQfRuoxqB1FI58LA",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wound - Wheeze (-5 Stamina): You may have been stabbed in the lung or inhaled a toxic gas. Either way, your lungs have been damaged; breathing normally is somewhat difficult.",
+      "name": "",
+      "_key": "!tables.results!q2Cdg3rDUsu3xYLd.cQfRuoxqB1FI58LA"
+    },
+    {
+      "_id": "th9s2aW3pwS3ZZX2",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wound - Huge Scar (-2 Charm &amp; Seduction): It’s not uncommon for a witcher’s body to be a patchwork of scars. However you have sustained a blow that disfigured your face.",
+      "name": "",
+      "_key": "!tables.results!q2Cdg3rDUsu3xYLd.th9s2aW3pwS3ZZX2"
+    },
+    {
+      "_id": "tfUjaxwfTwqW98vG",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wound - Damaged Nose (-2 Scent Tracking): A number of punches to the face in bar fights (or toxic gases) have damaged your nose and nearly robbed you of your scent tracking.",
+      "name": "",
+      "_key": "!tables.results!q2Cdg3rDUsu3xYLd.tfUjaxwfTwqW98vG"
+    },
+    {
+      "_id": "XFy2l49tSxFMwvUu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wound - Venom Damage (-5 Health): Toxins that once coursed though you left a patchwork of blackened veins around the wound and weakened your body.",
+      "name": "",
+      "_key": "!tables.results!q2Cdg3rDUsu3xYLd.XFy2l49tSxFMwvUu"
+    },
+    {
+      "_id": "NlfhnGUfAnLtImRU",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wound - Half Deafened (-1 Hearing Awareness): Many monsters use deadly sonic attacks. You were lucky enough to survive one, but your ears will never be the same.",
+      "name": "",
+      "_key": "!tables.results!q2Cdg3rDUsu3xYLd.NlfhnGUfAnLtImRU"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "q2Cdg3rDUsu3xYLd",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.ub0OgKJtPKbMpWUS",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!q2Cdg3rDUsu3xYLd"
+}

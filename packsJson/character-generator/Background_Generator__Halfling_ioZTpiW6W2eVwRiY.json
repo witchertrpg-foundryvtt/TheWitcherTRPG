@@ -1,0 +1,223 @@
+{
+  "name": "Background Generator: Halfling",
+  "flags": {
+    "better-rolltables": {
+      "table-type": "none",
+      "loot-amount-key": ""
+    },
+    "core": {}
+  },
+  "img": "icons/svg/cave.svg",
+  "description": "<p>In the world of The Witcher your early life can be very important. Not only does it tell you what land you grew up in, but also what kind of environment you lived in, what the people around you were like, and even what skills you learned. This is also the point at which you decide which of the three sides of the Third Northern War you hail from. This may not reflect what side you are on now, but it will tell you what you grew up knowing about the conflict and what people will expect of you.</p>",
+  "results": [
+    {
+      "_id": "rGAJedctF1vHUm0t",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Origin: Human Lands",
+      "name": "",
+      "_key": "!tables.results!ioZTpiW6W2eVwRiY.rGAJedctF1vHUm0t"
+    },
+    {
+      "_id": "0dQ3NR8YsZjPzHul",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Origin: Human Lands",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.de64KicDG5R7FFO9",
+      "description": "",
+      "_key": "!tables.results!ioZTpiW6W2eVwRiY.0dQ3NR8YsZjPzHul"
+    },
+    {
+      "_id": "L1KBkf196CGL9GXv",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family and Parents: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.d7NLtNEdvkagBLOP",
+      "description": "",
+      "_key": "!tables.results!ioZTpiW6W2eVwRiY.L1KBkf196CGL9GXv"
+    },
+    {
+      "_id": "dsneFT5aK1HggTKQ",
+      "flags": {},
+      "type": "document",
+      "img": "icons/sundries/flags/banner-silver-white.webp",
+      "weight": 1,
+      "range": [
+        1,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Siblings: Dwarves/Halflings",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.Ty1Hs3G4BXkkTu67",
+      "description": "",
+      "_key": "!tables.results!ioZTpiW6W2eVwRiY.dsneFT5aK1HggTKQ"
+    },
+    {
+      "_id": "pbEqX2RnJhB453Ch",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Dwarf / Gnome Profession",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.TjKh0NMxyyYxjSDt",
+      "description": "",
+      "_key": "!tables.results!ioZTpiW6W2eVwRiY.pbEqX2RnJhB453Ch"
+    },
+    {
+      "_id": "obUPNuwQ20fRhtom",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Elderland Origin:",
+      "name": "",
+      "_key": "!tables.results!ioZTpiW6W2eVwRiY.obUPNuwQ20fRhtom"
+    },
+    {
+      "_id": "NQvQKUljwbGcZKIk",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Origin: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.f17QrlT4P5u8m65o",
+      "description": "",
+      "_key": "!tables.results!ioZTpiW6W2eVwRiY.NQvQKUljwbGcZKIk"
+    },
+    {
+      "_id": "Lq6SDOHwOyB0ZrZt",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family and Parents: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.d7NLtNEdvkagBLOP",
+      "description": "",
+      "_key": "!tables.results!ioZTpiW6W2eVwRiY.Lq6SDOHwOyB0ZrZt"
+    }
+  ],
+  "formula": "1d2",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "ioZTpiW6W2eVwRiY",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.2fQwpgAKFqEzT5uq",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!ioZTpiW6W2eVwRiY"
+}

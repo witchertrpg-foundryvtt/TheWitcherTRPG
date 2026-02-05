@@ -1,0 +1,84 @@
+{
+  "name": "Mounted Control Loss",
+  "img": "https://assets.forge-vtt.com/bazaar/core/icons/environment/creatures/horse-brown.webp",
+  "description": "",
+  "results": [
+    {
+      "_id": "dn7MWvgQnc6QY9pS",
+      "flags": {},
+      "type": "document",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Mounted Control Loss: Personal",
+      "documentUuid": "Compendium.TheWitcherTRPG.Combat.RollTable.aLBBrVnSsL3wqQUx",
+      "description": "",
+      "_key": "!tables.results!VVb2zLR4NLdMLVQQ.dn7MWvgQnc6QY9pS"
+    },
+    {
+      "_id": "26LwnYmEgT6vWjyk",
+      "flags": {},
+      "type": "document",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Mounted Control Loss: Mount",
+      "documentUuid": "Compendium.TheWitcherTRPG.Combat.RollTable.6FrD4tQuyJOICu5m",
+      "description": "",
+      "_key": "!tables.results!VVb2zLR4NLdMLVQQ.26LwnYmEgT6vWjyk"
+    }
+  ],
+  "formula": "1d1",
+  "replacement": true,
+  "displayRoll": true,
+  "folder": null,
+  "flags": {
+    "better-rolltables": {},
+    "core": {},
+    "scene-packer": {
+      "sourceId": "Compendium.wtrpg-compendium.combat.RollTable.uwP0ctsgt3HDObUy",
+      "hash": "bf4e3b818a635585c9aeed5dfc703bb79eaf94f2"
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "c4glZubSgyUNSkxe": 3,
+    "JEflPFTBB5wpYRms": 3,
+    "dxC9PYhanWf4xPZG": 3
+  },
+  "_stats": {
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "0.107",
+    "coreVersion": "13.351",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "VVb2zLR4NLdMLVQQ",
+  "sort": 0,
+  "_key": "!tables!VVb2zLR4NLdMLVQQ"
+}

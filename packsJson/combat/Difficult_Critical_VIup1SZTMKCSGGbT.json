@@ -1,0 +1,174 @@
+{
+  "name": "Difficult Critical",
+  "flags": {
+    "better-rolltables": {},
+    "core": {},
+    "scene-packer": {
+      "sourceId": "Compendium.wtrpg-compendium.combat.RollTable.8WU0VLiYpTNtpTJh",
+      "hash": "37b9c22f8b54a400a587956a9b7f91f6005dbcfe"
+    }
+  },
+  "img": "https://assets.forge-vtt.com/bazaar/core/icons/skills/wounds/bone-broken-knee-beam.webp",
+  "description": "",
+  "results": [
+    {
+      "_id": "md13gU5GXWqdSo3b",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Compound Leg Fracture - The blow snaps your leg, rendering it useless. Quarter SPD, Dodge/Escape, and Athletics. This induces bleeding. | Stabilized: Halves SPD, Dodge/ Escape, and Athletics. | Treated: 2 to SPD, Dodge/ Escape, and Athletics.",
+      "name": "",
+      "_key": "!tables.results!VIup1SZTMKCSGGbT.md13gU5GXWqdSo3b"
+    },
+    {
+      "_id": "Kg6cLOw7bcrhf9zi",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Compound Arm Fracture - The blow crushes your arm. Bone sticks out of the skin. The arm is rendered useless and you start bleeding. | Stabilized: That arm is useless. | Treated : That arm must remain in a sling, but it can hold things.",
+      "name": "",
+      "_key": "!tables.results!VIup1SZTMKCSGGbT.Kg6cLOw7bcrhf9zi"
+    },
+    {
+      "_id": "Aupjx9gqdL7IdDsG",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Sucking Chest Wound - The wound tears your lung, which fills your chest with air, crushing organs. You take a -3 to BODY and SPD. You also start suffocating. | Stabilized: You take a -2 to BODY and SPD. | Treated: You take a -1 to BODY and SPD.",
+      "name": "",
+      "_key": "!tables.results!VIup1SZTMKCSGGbT.Aupjx9gqdL7IdDsG"
+    },
+    {
+      "_id": "dcTrmwGr6QqbwArw",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Torn Stomach - The blow rips your stomach, pouring its contents into your gut. You take a -2 to all actions and take 4 points of acid damage per round. | Stabilized: You take a -2 to all actions. | Treated: You take a -1 to all actions.",
+      "name": "",
+      "_key": "!tables.results!VIup1SZTMKCSGGbT.dcTrmwGr6QqbwArw"
+    },
+    {
+      "_id": "8BDa9D8PpydHDt9F",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Concussion -  The blow caused a minor concussion. Make a Stun save every 1d6 rounds and take a -2 to INT, REF, and DEX. | Stabilized: You take a -1 to INT, REF, and DEX. | Treated: You take a-1 to INT and DEX",
+      "name": "",
+      "_key": "!tables.results!VIup1SZTMKCSGGbT.8BDa9D8PpydHDt9F"
+    },
+    {
+      "_id": "H0XA02QcwUBIRRWa",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Skull Fracture - The blow fractures a part of your skull, weakening your head and causing bleeding. You take a -1 to INT and DEX, and take quadruple damage from head wounds. | Stabilized: Take a -1 to INT and DEX and quadruple damage from head wounds. | Treated: You take quadruple damage from head wounds.",
+      "name": "",
+      "_key": "!tables.results!VIup1SZTMKCSGGbT.H0XA02QcwUBIRRWa"
+    }
+  ],
+  "formula": "2d6",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 0,
+    "c4glZubSgyUNSkxe": 3,
+    "JEflPFTBB5wpYRms": 3,
+    "dxC9PYhanWf4xPZG": 3
+  },
+  "folder": null,
+  "_stats": {
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "0.107",
+    "coreVersion": "13.351",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "VIup1SZTMKCSGGbT",
+  "sort": 0,
+  "_key": "!tables!VIup1SZTMKCSGGbT"
+}

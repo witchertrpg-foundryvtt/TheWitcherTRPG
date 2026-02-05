@@ -1,0 +1,500 @@
+{
+  "name": "Witcher Background: What Was Your Most Important Event",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What Was Your Most Important Event - Given a Child by the Law of Surprises: Along your travels you invoked the Law of Surprises and received a child. They may have been a boy, in which case they were made into a witcher, or a girl, in which case their fate was up to you.",
+      "name": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "sqyIMiR1RKv2AHJa",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: Where Are You Now?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.w8GcZsTyPF85V5Rr",
+      "description": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.sqyIMiR1RKv2AHJa"
+    },
+    {
+      "_id": "oKZeEBIq2FLMNk2e",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What Was Your Most Important Event - Hunted by a Sentient Monster: The tables turned during one of your hunts. Sentient monsters like grave hags and katakan can be dangerous quarry, and you wound up becoming the hunted for a stressful night.",
+      "name": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.oKZeEBIq2FLMNk2e"
+    },
+    {
+      "_id": "fCL38Rgrs0Zoi6tL",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: Where Are You Now?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.w8GcZsTyPF85V5Rr",
+      "description": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.fCL38Rgrs0Zoi6tL"
+    },
+    {
+      "_id": "kQX7ZeIIWKy5yTPF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What Was Your Most Important Event - Fought Alongside a Knight: You did battle alongside a noble knight. This may have been against both of your wishes or even an accident, but fighting beside a noble changed your outlook on knights and your job as a witcher.",
+      "name": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.kQX7ZeIIWKy5yTPF"
+    },
+    {
+      "_id": "wV6AXUWCol53u7Qp",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: Where Are You Now?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.w8GcZsTyPF85V5Rr",
+      "description": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.wV6AXUWCol53u7Qp"
+    },
+    {
+      "_id": "36ROPw9QWjYWmpBV",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What Was Your Most Important Event - Captured by a Mage for Testing: Mages lust after the secrets of Witcher mutations. At some point in your life, you were captured by a mage who experimented on you in an attempt to reverse-engineer them.",
+      "name": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.36ROPw9QWjYWmpBV"
+    },
+    {
+      "_id": "XdFNmzMBLOFAdT0a",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: Where Are You Now?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.w8GcZsTyPF85V5Rr",
+      "description": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.XdFNmzMBLOFAdT0a"
+    },
+    {
+      "_id": "9kVdEtFeX4a3nAoe",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What Was Your Most Important Event - Worked for a Nobleman: For a time you worked for a nobleman. The pay was good, but it was strange and aggravating to have to hide most of your actions to avoid shaming the family by bringing their secrets to light.",
+      "name": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.9kVdEtFeX4a3nAoe"
+    },
+    {
+      "_id": "l4vJrb9CXI7lFvOF",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: Where Are You Now?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.w8GcZsTyPF85V5Rr",
+      "description": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.l4vJrb9CXI7lFvOF"
+    },
+    {
+      "_id": "cQfRuoxqB1FI58LA",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What Was Your Most Important Event - Went Beyond the Boundaries: Once, you traveled beyond the borders of the Continent—past the Dragon Mountains, the Tir Tochair or Blue Mountains, or the Great Sea. You have seen far lands unknown to most others.",
+      "name": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.cQfRuoxqB1FI58LA"
+    },
+    {
+      "_id": "9ohWB7wfnoJIuyMj",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: Where Are You Now?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.w8GcZsTyPF85V5Rr",
+      "description": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.9ohWB7wfnoJIuyMj"
+    },
+    {
+      "_id": "th9s2aW3pwS3ZZX2",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What Was Your Most Important Event - Meaningful Romance: Most witchers remain neutral and avoid meaningful relationships. However, this didn’t stop you. You fell in love and actually considered settling down. It still occurs to you sometimes.",
+      "name": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.th9s2aW3pwS3ZZX2"
+    },
+    {
+      "_id": "olJrQIfiLqykKL6Y",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: Where Are You Now?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.w8GcZsTyPF85V5Rr",
+      "description": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.olJrQIfiLqykKL6Y"
+    },
+    {
+      "_id": "tfUjaxwfTwqW98vG",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What Was Your Most Important Event - Fought for your Keep: You fought at a siege of your keep. You were outnumbered and overpowered, but you stayed nonetheless. You survived the siege with serious wounds, but saw your brethren dying around you.",
+      "name": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.tfUjaxwfTwqW98vG"
+    },
+    {
+      "_id": "e1QeDpvSCQW3TLl0",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: Where Are You Now?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.w8GcZsTyPF85V5Rr",
+      "description": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.e1QeDpvSCQW3TLl0"
+    },
+    {
+      "_id": "XFy2l49tSxFMwvUu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What Was Your Most Important Event - Gained Infamy: After helping a city with a monster, the people became afraid and turned on you. They might have even tried to kill you. Either way, you’ve seen what kind of reward you can expect from people",
+      "name": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.XFy2l49tSxFMwvUu"
+    },
+    {
+      "_id": "A6SuhFPiLwWjoYCB",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: Where Are You Now?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.w8GcZsTyPF85V5Rr",
+      "description": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.A6SuhFPiLwWjoYCB"
+    },
+    {
+      "_id": "NlfhnGUfAnLtImRU",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What Was Your Most Important Event - Gained Fame: You were well-received in a town after helping them with a monster. You didn’t expect free drinks or women casting you glances, but that’s what you got. You haven’t seen such kindness again, but it was heartening.",
+      "name": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.NlfhnGUfAnLtImRU"
+    },
+    {
+      "_id": "9rYHpxRi9jvAeqhM",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: Where Are You Now?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.w8GcZsTyPF85V5Rr",
+      "description": "",
+      "_key": "!tables.results!34nU6OswdgAyMC6p.9rYHpxRi9jvAeqhM"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "34nU6OswdgAyMC6p",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.ub0OgKJtPKbMpWUS",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!34nU6OswdgAyMC6p"
+}

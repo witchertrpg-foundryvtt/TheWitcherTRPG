@@ -41,6 +41,12 @@
     ],
     "packs": [
         {
+            "name": "Combat",
+            "label": "Combat",
+            "path": "packs/combat.db",
+            "type": "RollTable"
+        },
+        {
             "name": "Character-gen",
             "label": "Character Generator",
             "path": "packs/character-generator.db",

@@ -1,0 +1,99 @@
+{
+  "name": "Which Parent",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "FSiN9Lz0KFhVSqtl",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate, which parent: Father",
+      "name": "",
+      "_key": "!tables.results!7fAXpaJLFwlWxkWX.FSiN9Lz0KFhVSqtl"
+    },
+    {
+      "_id": "NHxsyIUmt1tGSp3v",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate, which parent: Mother",
+      "name": "",
+      "_key": "!tables.results!7fAXpaJLFwlWxkWX.NHxsyIUmt1tGSp3v"
+    },
+    {
+      "_id": "XEDYdsBspEf428n1",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate, which parent: Both",
+      "name": "",
+      "_key": "!tables.results!7fAXpaJLFwlWxkWX.XEDYdsBspEf428n1"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "7fAXpaJLFwlWxkWX",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.gT3TsAgTNme2wzAy",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!7fAXpaJLFwlWxkWX"
+}

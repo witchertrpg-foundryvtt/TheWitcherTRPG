@@ -1,0 +1,260 @@
+{
+  "name": "Siblings: Feelings About You",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "ciSfEh9nn9LIoeuR",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wants You Dead",
+      "name": "",
+      "_key": "!tables.results!ACf1JfCfVtJWw5DG.ciSfEh9nn9LIoeuR"
+    },
+    {
+      "_id": "yMqVK3tiav0L8fQk",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Can’t Stand You",
+      "name": "",
+      "_key": "!tables.results!ACf1JfCfVtJWw5DG.yMqVK3tiav0L8fQk"
+    },
+    {
+      "_id": "j2lDuepiTSG7Pwem",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Jealous of You",
+      "name": "",
+      "_key": "!tables.results!ACf1JfCfVtJWw5DG.j2lDuepiTSG7Pwem"
+    },
+    {
+      "_id": "YN5dkMg8cg9oF81P",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "No Feelings About You",
+      "name": "",
+      "_key": "!tables.results!ACf1JfCfVtJWw5DG.YN5dkMg8cg9oF81P"
+    },
+    {
+      "_id": "d5F4mYU9fpQwiuB1",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "No Feelings About You",
+      "name": "",
+      "_key": "!tables.results!ACf1JfCfVtJWw5DG.d5F4mYU9fpQwiuB1"
+    },
+    {
+      "_id": "htXu6vKZbTPVjQtn",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "No Feelings About You",
+      "name": "",
+      "_key": "!tables.results!ACf1JfCfVtJWw5DG.htXu6vKZbTPVjQtn"
+    },
+    {
+      "_id": "woyxU9KOvRD10vrT",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "No Feelings About You",
+      "name": "",
+      "_key": "!tables.results!ACf1JfCfVtJWw5DG.woyxU9KOvRD10vrT"
+    },
+    {
+      "_id": "7F8XPaw6iN19ZxYz",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Likes You",
+      "name": "",
+      "_key": "!tables.results!ACf1JfCfVtJWw5DG.7F8XPaw6iN19ZxYz"
+    },
+    {
+      "_id": "K1FjnYrs9T6QF8lr",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Looks Up To You",
+      "name": "",
+      "_key": "!tables.results!ACf1JfCfVtJWw5DG.K1FjnYrs9T6QF8lr"
+    },
+    {
+      "_id": "Lc1qzvjevzlL9Lvg",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Possessive of You",
+      "name": "",
+      "_key": "!tables.results!ACf1JfCfVtJWw5DG.Lc1qzvjevzlL9Lvg"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "ACf1JfCfVtJWw5DG",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.s7HqHUdoybIKo9GX",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!ACf1JfCfVtJWw5DG"
+}

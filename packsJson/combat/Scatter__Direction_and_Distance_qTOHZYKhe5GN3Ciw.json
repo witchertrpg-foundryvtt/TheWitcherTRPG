@@ -1,0 +1,266 @@
+{
+  "name": "Scatter: Direction and Distance",
+  "flags": {
+    "better-rolltables": {},
+    "core": {},
+    "scene-packer": {
+      "sourceId": "Compendium.wtrpg-compendium.combat.RollTable.cVBJxNtEfhqJn1V7",
+      "hash": "97ec5d97c7cb01941417684756a749fb3eea987d"
+    }
+  },
+  "img": "https://assets.forge-vtt.com/bazaar/core/icons/skills/targeting/target-strike-gray.webp",
+  "description": "",
+  "results": [
+    {
+      "_id": "oaXOa9sNFv1XKvlO",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Scatter - Projectile falls far short of target by [[1d6]] meters",
+      "name": "",
+      "_key": "!tables.results!qTOHZYKhe5GN3Ciw.oaXOa9sNFv1XKvlO"
+    },
+    {
+      "_id": "D2jQzy2v4xFnfEzK",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Scatter - Projectile falls short and to the left of the target by [[1d6]] meters",
+      "name": "",
+      "_key": "!tables.results!qTOHZYKhe5GN3Ciw.D2jQzy2v4xFnfEzK"
+    },
+    {
+      "_id": "jEZthC8lFGqZgpxp",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Scatter - Projectile falls just short of target by [[1d6]] meters",
+      "name": "",
+      "_key": "!tables.results!qTOHZYKhe5GN3Ciw.jEZthC8lFGqZgpxp"
+    },
+    {
+      "_id": "baUWh1qwipLYsMtW",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Scatter - Projectile falls short and to the right of the target by:[[1d6]] meters",
+      "name": "",
+      "_key": "!tables.results!qTOHZYKhe5GN3Ciw.baUWh1qwipLYsMtW"
+    },
+    {
+      "_id": "yh0SvOI9XeJw7hb1",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Scatter - Projectile falls to the left of the target by [[1d6]] meters",
+      "name": "",
+      "_key": "!tables.results!qTOHZYKhe5GN3Ciw.yh0SvOI9XeJw7hb1"
+    },
+    {
+      "_id": "3QX2p5zI7RuJozPR",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Scatter - Projectile falls to the right of the target by [[1d6]] meters",
+      "name": "",
+      "_key": "!tables.results!qTOHZYKhe5GN3Ciw.3QX2p5zI7RuJozPR"
+    },
+    {
+      "_id": "H6G8BiJPzEM1RzDl",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Scatter - Projectile falls behind and to the left of the target by [[1d6]] meters",
+      "name": "",
+      "_key": "!tables.results!qTOHZYKhe5GN3Ciw.H6G8BiJPzEM1RzDl"
+    },
+    {
+      "_id": "zX3JPffwplIPWSai",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Scatter - Projectile falls just behind the target by [[1d6]] meters",
+      "name": "",
+      "_key": "!tables.results!qTOHZYKhe5GN3Ciw.zX3JPffwplIPWSai"
+    },
+    {
+      "_id": "aHb3gspMwCd06K2Q",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Scatter - Projectile falls behind and to the right of the target by [[1d6]] meters",
+      "name": "",
+      "_key": "!tables.results!qTOHZYKhe5GN3Ciw.aHb3gspMwCd06K2Q"
+    },
+    {
+      "_id": "sNrNYR2lN63k7Zrs",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Scatter - Projectile falls far behind the target by [[1d6]] meters",
+      "name": "",
+      "_key": "!tables.results!qTOHZYKhe5GN3Ciw.sNrNYR2lN63k7Zrs"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 0,
+    "c4glZubSgyUNSkxe": 3,
+    "JEflPFTBB5wpYRms": 3,
+    "dxC9PYhanWf4xPZG": 3
+  },
+  "folder": null,
+  "_stats": {
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "0.107",
+    "coreVersion": "13.351",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "qTOHZYKhe5GN3Ciw",
+  "sort": 0,
+  "_key": "!tables!qTOHZYKhe5GN3Ciw"
+}

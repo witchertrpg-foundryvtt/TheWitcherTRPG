@@ -1,0 +1,359 @@
+{
+  "name": "Family Status: Northern",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "<p>Everyone grows up differently. One man may come of age in a palace, as the son of a king, while another toils as a slave in the vineyard of a wealthy man. Your family status can tell a lot about how you grew up and what kind of person you turn out to be.</p>",
+  "results": [
+    {
+      "_id": "5nnfEB4exhLKU2mN",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Aristocracy - You grew up in a noble manor with servants to wait on you, but you were always expected to behave and impress. Starting Gear: Paper of Nobility (+2 Reputation)",
+      "name": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.5nnfEB4exhLKU2mN"
+    },
+    {
+      "_id": "vox7NUbtHmyKyBxI",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Northern",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.Xc9k6o8pE8Aaj1Kb",
+      "description": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.vox7NUbtHmyKyBxI"
+    },
+    {
+      "_id": "VlrPIguiOBBjm4bm",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Adopted by a Mage - You were given to a mage at a young age. You lived in comfort but barely saw your caretaker, who was always busy. Starting Gear: A Chronicle (+1 Education)",
+      "name": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.VlrPIguiOBBjm4bm"
+    },
+    {
+      "_id": "KN1jkgllBFtZX23D",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Northern",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.Xc9k6o8pE8Aaj1Kb",
+      "description": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.KN1jkgllBFtZX23D"
+    },
+    {
+      "_id": "IsRY79j4twFs8apC",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Knights - You grew up in a manor where you learned to be a proper lady or lord. Your fate was set from birth. Starting Gear: Personal Heraldry (+1 Reputation)",
+      "name": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.IsRY79j4twFs8apC"
+    },
+    {
+      "_id": "NQNctkYs5dmyGEkh",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Northern",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.Xc9k6o8pE8Aaj1Kb",
+      "description": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.NQNctkYs5dmyGEkh"
+    },
+    {
+      "_id": "d6KS3R5eEDFIeMmw",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Merchant Family - You grew up among merchants and you were always surrounded by yelling, haggling, and money. Starting Gear: 2 Acquaintances",
+      "name": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.d6KS3R5eEDFIeMmw"
+    },
+    {
+      "_id": "LojwHWtEWxxqb6PZ",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Northern",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.Xc9k6o8pE8Aaj1Kb",
+      "description": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.LojwHWtEWxxqb6PZ"
+    },
+    {
+      "_id": "BPTQOqaS1Ccdyifj",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Artisan Family - You grew up in an artisan’s workshop. Your days were filled with the incessant sounds of creation, and often long. Starting Gear: 3 Common Diagrams/Formulae",
+      "name": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.BPTQOqaS1Ccdyifj"
+    },
+    {
+      "_id": "0bRV83bCJSU0qETV",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Northern",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.Xc9k6o8pE8Aaj1Kb",
+      "description": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.0bRV83bCJSU0qETV"
+    },
+    {
+      "_id": "HMOPPekiY08124lE",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Entertainer Family - You grew up with a band of performers. You may have traveled or you may have performed at a theater. Starting Gear: 1 Instrument &amp; 1 Friend",
+      "name": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.HMOPPekiY08124lE"
+    },
+    {
+      "_id": "mvqP5Ic7KBewbj2x",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        6,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Northern",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.Xc9k6o8pE8Aaj1Kb",
+      "description": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.mvqP5Ic7KBewbj2x"
+    },
+    {
+      "_id": "AvyV1RxSjBFrzpUx",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Peasant Family - You grew up on a farm in the countryside. You didn’t have much to your name and your life was simple, but dangerous. Starting Gear: A Lucky Token (+1 Luck)",
+      "name": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.AvyV1RxSjBFrzpUx"
+    },
+    {
+      "_id": "YEQ2wdEvKm0Eamde",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Northern",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.Xc9k6o8pE8Aaj1Kb",
+      "description": "",
+      "_key": "!tables.results!EeOlp8UMRiYS1AEt.YEQ2wdEvKm0Eamde"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "EeOlp8UMRiYS1AEt",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.K0GQBcaCqzLKVuuu",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!EeOlp8UMRiYS1AEt"
+}

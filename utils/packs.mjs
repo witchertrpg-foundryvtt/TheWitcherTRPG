@@ -4,7 +4,7 @@ import { promises as fs } from 'fs';
 const MODULE_ID = process.cwd();
 const yaml = false;
 
-const packs = await fs.readdir('./src/packsJson');
+const packs = await fs.readdir('./packsJson');
 for (const pack of packs) {
     if (pack === '.gitattributes') continue;
     console.log('Packing ' + pack);

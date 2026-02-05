@@ -1,0 +1,243 @@
+{
+  "name": "Witcher Background Generator",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/sundries/scrolls/scroll-worn-beige.webp",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "When Did You Become A Witcher? - Infancy (-2 to the Trial of the Grasses): You were taken to become a witcher when you were a toddler, between 1 and 2 years old. You have no memories of life before becoming a witcher and had nothing to cling to when taking the Trial of the Grasses.",
+      "name": "",
+      "_key": "!tables.results!C5d6zkIMvS9gDWEN.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "qajkRaccfhCw3FmJ",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: What School Did You Train In?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.kEqyptPU1X7TvKc1",
+      "description": "",
+      "_key": "!tables.results!C5d6zkIMvS9gDWEN.qajkRaccfhCw3FmJ"
+    },
+    {
+      "_id": "nZaULCfUDcjTijGv",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: How Did Early Training Go? -2",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.G9iWzbiGQloX7sls",
+      "description": "",
+      "_key": "!tables.results!C5d6zkIMvS9gDWEN.nZaULCfUDcjTijGv"
+    },
+    {
+      "_id": "oKZeEBIq2FLMNk2e",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "When Did You Become A Witcher? - Early Childhood (No Modifiers): You were taken to become a witcher when you were young, between 4 and 6 years old. You had some normal memories to aid you when taking the Trial of the Grasses.",
+      "name": "",
+      "_key": "!tables.results!C5d6zkIMvS9gDWEN.oKZeEBIq2FLMNk2e"
+    },
+    {
+      "_id": "I2WgdMaqvCOO86Cd",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        3,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: What School Did You Train In?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.kEqyptPU1X7TvKc1",
+      "description": "",
+      "_key": "!tables.results!C5d6zkIMvS9gDWEN.I2WgdMaqvCOO86Cd"
+    },
+    {
+      "_id": "d9NGvIh79ha1B9mq",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        3,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: How Did Early Training Go?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.u2n9HR4RhSt1QV3l",
+      "description": "",
+      "_key": "!tables.results!C5d6zkIMvS9gDWEN.d9NGvIh79ha1B9mq"
+    },
+    {
+      "_id": "kQX7ZeIIWKy5yTPF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "When Did You Become A Witcher? - Late Childhood (+2 to the Trial of the Grasses): You were taken to become a witcher when you were relatively old, between 8 and 11 years old. While training was somewhat harder, your many memories bolstered you when you took the Trial of the Grasses.",
+      "name": "",
+      "_key": "!tables.results!C5d6zkIMvS9gDWEN.kQX7ZeIIWKy5yTPF"
+    },
+    {
+      "_id": "q8LCtgshNjOjac5P",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: What School Did You Train In?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.kEqyptPU1X7TvKc1",
+      "description": "",
+      "_key": "!tables.results!C5d6zkIMvS9gDWEN.q8LCtgshNjOjac5P"
+    },
+    {
+      "_id": "VaBMiBo9HQjCGHT1",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: How Did Early Training Go? +2",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.A7jt3mfuFTEQiXRv",
+      "description": "",
+      "_key": "!tables.results!C5d6zkIMvS9gDWEN.VaBMiBo9HQjCGHT1"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "C5d6zkIMvS9gDWEN",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.ub0OgKJtPKbMpWUS",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!C5d6zkIMvS9gDWEN"
+}

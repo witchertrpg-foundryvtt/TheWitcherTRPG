@@ -1,0 +1,260 @@
+{
+  "name": "Most Influential Friend: Elderland",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "JFQp11xOxJvsDKNM",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Human - Your greatest influence was a human who taught you that sometimes racism is unfounded. Gear: A Straw Doll",
+      "name": "",
+      "_key": "!tables.results!eATe1gk2PaKG1K9r.JFQp11xOxJvsDKNM"
+    },
+    {
+      "_id": "VgZylS4pJWSlcJfl",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: An Artisan - Your greatest influence was an artisan who taught you to appreciate great elderfolk art. Gear: A Small Token You Made",
+      "name": "",
+      "_key": "!tables.results!eATe1gk2PaKG1K9r.VgZylS4pJWSlcJfl"
+    },
+    {
+      "_id": "TdQRXB7UbEfdV35d",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Noble Warrior - Your greatest influence was a War Dancer or a Mahakaman Defender who taught you honor. Gear: A Token of Battle",
+      "name": "",
+      "_key": "!tables.results!eATe1gk2PaKG1K9r.TdQRXB7UbEfdV35d"
+    },
+    {
+      "_id": "Y8g0DWGZfC5wLYWx",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Highborn - Your greatest influence was a highborn who taught you pride and how to comport yourself. Gear: A Signet Ring",
+      "name": "",
+      "_key": "!tables.results!eATe1gk2PaKG1K9r.Y8g0DWGZfC5wLYWx"
+    },
+    {
+      "_id": "XObJWkbk3Q5PzG1h",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: An Entertainer - Your greatest influence was an entertainer who taught you the importance of happiness and beauty. Gear: A Playbill or Ticket",
+      "name": "",
+      "_key": "!tables.results!eATe1gk2PaKG1K9r.XObJWkbk3Q5PzG1h"
+    },
+    {
+      "_id": "DCx5bDeMkPrAW8Lu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Raider - Your greatest influence was a raider who taught you that you have the right to take what you need. Gear: A Satchel",
+      "name": "",
+      "_key": "!tables.results!eATe1gk2PaKG1K9r.DCx5bDeMkPrAW8Lu"
+    },
+    {
+      "_id": "ZchxXpW2jQc3iPVU",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Sage - Your greatest influence was a sage who taught you about the importance of elderfolk history. Gear: A Book of Tales",
+      "name": "",
+      "_key": "!tables.results!eATe1gk2PaKG1K9r.ZchxXpW2jQc3iPVU"
+    },
+    {
+      "_id": "u4lXsez4UGjAY14R",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Criminal - Your greatest influence was a criminal who taught you to follow your own rules. Gear: A Mask",
+      "name": "",
+      "_key": "!tables.results!eATe1gk2PaKG1K9r.u4lXsez4UGjAY14R"
+    },
+    {
+      "_id": "p0WUkxWYGUPh4gEB",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Hunter - Your greatest influence was a hunter who taught you how to survive in the wilderness. Gear: A Trophy of a Hunt",
+      "name": "",
+      "_key": "!tables.results!eATe1gk2PaKG1K9r.p0WUkxWYGUPh4gEB"
+    },
+    {
+      "_id": "VSc9ry4JowYa3Rgz",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Lowland Farmer - Your greatest influence was a lowland farmer who taught you how to live happily. Gear: A Farmer’s Spade",
+      "name": "",
+      "_key": "!tables.results!eATe1gk2PaKG1K9r.VSc9ry4JowYa3Rgz"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "eATe1gk2PaKG1K9r",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.Hb0fJCOlltctoiGg",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!eATe1gk2PaKG1K9r"
+}

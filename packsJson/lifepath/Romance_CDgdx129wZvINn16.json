@@ -1,0 +1,170 @@
+{
+  "name": "Romance",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "A Happy Love Affair",
+      "name": "",
+      "_key": "!tables.results!CDgdx129wZvINn16.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "oKZeEBIq2FLMNk2e",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "A Romantic Tragedy:",
+      "name": "",
+      "_key": "!tables.results!CDgdx129wZvINn16.oKZeEBIq2FLMNk2e"
+    },
+    {
+      "_id": "diG3ThmxwJLO2CDQ",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Romance: Romantic Tragedy",
+      "documentUuid": "Compendium.TheWitcherTRPG.Life_Event_Sub-tables.RollTable.Jmvpwp9FRwRhDWZu",
+      "description": "",
+      "_key": "!tables.results!CDgdx129wZvINn16.diG3ThmxwJLO2CDQ"
+    },
+    {
+      "_id": "kQX7ZeIIWKy5yTPF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "A Problematic Love:",
+      "name": "",
+      "_key": "!tables.results!CDgdx129wZvINn16.kQX7ZeIIWKy5yTPF"
+    },
+    {
+      "_id": "OE6SRABJiTVvYX8Q",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        5,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Romance: Problematic Love",
+      "documentUuid": "Compendium.TheWitcherTRPG.Life_Event_Sub-tables.RollTable.l7k0hSL3iRzjJcYs",
+      "description": "",
+      "_key": "!tables.results!CDgdx129wZvINn16.OE6SRABJiTVvYX8Q"
+    },
+    {
+      "_id": "36ROPw9QWjYWmpBV",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Whores and Debauchery - This result means that you spent your time sleeping around, buying whores and perhaps leaving a trail of bastard children in your wake if you weren’t careful.",
+      "name": "",
+      "_key": "!tables.results!CDgdx129wZvINn16.36ROPw9QWjYWmpBV"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "CDgdx129wZvINn16",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.SVVSw82TzC4il8zO",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!CDgdx129wZvINn16"
+}

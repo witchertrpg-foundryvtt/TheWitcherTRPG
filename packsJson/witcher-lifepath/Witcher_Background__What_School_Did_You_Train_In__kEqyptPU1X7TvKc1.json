@@ -1,0 +1,145 @@
+{
+  "name": "Witcher Background: What School Did You Train In?",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What School Did You Train In? - The Wolf School (No Penalty For Strong Strikes) You trained at Kaer Morhen in the heights of the Blue Mountains. Your training was tough and structured, focusing on a very rounded approach to the Witcher profession. You were taught to strike hard and fast to end hunts quickly.",
+      "name": "",
+      "_key": "!tables.results!kEqyptPU1X7TvKc1.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "oKZeEBIq2FLMNk2e",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What School Did You Train In? - The Gryphon School (+2 Vigor Threshold) You were trained at Kaer Y Seren along the coastal side of the Dragon Mountains. Your training was heavily focused on fighting any number of opponents and using your limited magical power to its greatest potential.",
+      "name": "",
+      "_key": "!tables.results!kEqyptPU1X7TvKc1.oKZeEBIq2FLMNk2e"
+    },
+    {
+      "_id": "kQX7ZeIIWKy5yTPF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What School Did You Train In? - The Cat School (Immune to Non-Magical Charm Attempts) You trained in the Dyn Marv Caravan, a traveling troop of witchers who sold their skills to anyone who could pay, for any job. Their mutations and training flayed your emotions, and you struggle against violent, cruel impulses.",
+      "name": "",
+      "_key": "!tables.results!kEqyptPU1X7TvKc1.kQX7ZeIIWKy5yTPF"
+    },
+    {
+      "_id": "36ROPw9QWjYWmpBV",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What School Did You Train In? - The Viper School (No Penalties for Dual Wielding) You trained at Gorthwr Gvaed in the deep chasms of the Tir Tochair Mountains. Unlike other witchers, you were trained on twin blades and an assassination-based approach to killing monsters.",
+      "name": "",
+      "_key": "!tables.results!kEqyptPU1X7TvKc1.36ROPw9QWjYWmpBV"
+    },
+    {
+      "_id": "9kVdEtFeX4a3nAoe",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "What School Did You Train In? - The Bear School (-2 to Overall Armor Penalty) You trained in the snowy heights of the Amell Mountains at Haern Cadvch. You conditioned your body to endure all manner of punishment and move quickly and efficiently in heavy steel armor.",
+      "name": "",
+      "_key": "!tables.results!kEqyptPU1X7TvKc1.9kVdEtFeX4a3nAoe"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "kEqyptPU1X7TvKc1",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.ub0OgKJtPKbMpWUS",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!kEqyptPU1X7TvKc1"
+}

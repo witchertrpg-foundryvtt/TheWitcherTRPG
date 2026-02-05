@@ -10,6 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # Run build script, leaving out CSS because that's handled by the postInstall script
+      - name: Build All
+        run: npm run build:db
+
       # Get all relevant files
       - name: Get Includes
         shell: bash

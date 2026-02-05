@@ -1,0 +1,174 @@
+{
+  "name": "Human Damage Location",
+  "flags": {
+    "better-rolltables": {},
+    "core": {},
+    "scene-packer": {
+      "sourceId": "Compendium.wtrpg-compendium.combat.RollTable.r88I3ET0y4hkZPTT",
+      "hash": "f99f2f2e59b8b388cbf22f1e6cd799f1b23e3d16"
+    }
+  },
+  "img": "https://assets.forge-vtt.com/bazaar/core/icons/environment/people/commoner.webp",
+  "description": "",
+  "results": [
+    {
+      "_id": "RHNQnlcfgi5i1isk",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Hit location - Head: Penalty to ATK (if aimed) = -6 | DMG = x3",
+      "name": "",
+      "_key": "!tables.results!jKFIdFvv4P49JXPU.RHNQnlcfgi5i1isk"
+    },
+    {
+      "_id": "nGvEbuComhjRZAPP",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Hit location - Torso: Penalty to ATK (if aimed) = -1 | DMG = x1",
+      "name": "",
+      "_key": "!tables.results!jKFIdFvv4P49JXPU.nGvEbuComhjRZAPP"
+    },
+    {
+      "_id": "bmm5fg7mdHPOmQ3G",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Hit location - R. Arm: Penalty to ATK (if aimed) = -3 | DMG = x1/2",
+      "name": "",
+      "_key": "!tables.results!jKFIdFvv4P49JXPU.bmm5fg7mdHPOmQ3G"
+    },
+    {
+      "_id": "3K1jam0ISPD3EKNg",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Hit location - L. Arm: Penalty to ATK (if aimed) = -3 | DMG = x1/2",
+      "name": "",
+      "_key": "!tables.results!jKFIdFvv4P49JXPU.3K1jam0ISPD3EKNg"
+    },
+    {
+      "_id": "BMvFuST8XAzAv26J",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Hit location - R. Leg: Penalty to ATK (if aimed) = -2 | DMG = x1/2",
+      "name": "",
+      "_key": "!tables.results!jKFIdFvv4P49JXPU.BMvFuST8XAzAv26J"
+    },
+    {
+      "_id": "BBam5islqax05Zea",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Hit location - L. Leg: Penalty to ATK (if aimed) = -2 | DMG = x1/2",
+      "name": "",
+      "_key": "!tables.results!jKFIdFvv4P49JXPU.BBam5islqax05Zea"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 0,
+    "c4glZubSgyUNSkxe": 3,
+    "JEflPFTBB5wpYRms": 3,
+    "dxC9PYhanWf4xPZG": 3
+  },
+  "folder": null,
+  "_stats": {
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "0.107",
+    "coreVersion": "13.351",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "jKFIdFvv4P49JXPU",
+  "sort": 0,
+  "_key": "!tables!jKFIdFvv4P49JXPU"
+}

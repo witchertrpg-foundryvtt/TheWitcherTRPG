@@ -1,0 +1,174 @@
+{
+  "name": "Witcher Lifepath: Allies - Generator",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Lifepath: Allies - Gender",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.bw2dbovLaFTJJ8EP",
+      "description": "",
+      "_key": "!tables.results!47kWQhpq3yeAG74c.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "mp0F0yfLeczgHYKB",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Lifepath: Allies - Position",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.zG6aQ2srMV79PDHY",
+      "description": "",
+      "_key": "!tables.results!47kWQhpq3yeAG74c.mp0F0yfLeczgHYKB"
+    },
+    {
+      "_id": "a90EHPhkX2hszHH8",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Lifepath: Allies - How You Met",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.pr3upjAFiZVHdOXp",
+      "description": "",
+      "_key": "!tables.results!47kWQhpq3yeAG74c.a90EHPhkX2hszHH8"
+    },
+    {
+      "_id": "KgpE0Q8gz4x0tE9A",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Lifepath: Allies - Closeness",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.TLO7kA1RyxfxP2D8",
+      "description": "",
+      "_key": "!tables.results!47kWQhpq3yeAG74c.KgpE0Q8gz4x0tE9A"
+    },
+    {
+      "_id": "ph4JxbZMB7MniZZ5",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Lifepath: Allies - Where Are They?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.LPwYvTqPg52QQ9IU",
+      "description": "",
+      "_key": "!tables.results!47kWQhpq3yeAG74c.ph4JxbZMB7MniZZ5"
+    },
+    {
+      "_id": "CO3QQZcFp1D2YDGe",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Lifepath: Allies - Are They Alive?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.2l9nl4ndvdgtn2SJ",
+      "description": "",
+      "_key": "!tables.results!47kWQhpq3yeAG74c.CO3QQZcFp1D2YDGe"
+    }
+  ],
+  "formula": "1d1",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "47kWQhpq3yeAG74c",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.OmaVsbOv4sSJuRLI",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!47kWQhpq3yeAG74c"
+}

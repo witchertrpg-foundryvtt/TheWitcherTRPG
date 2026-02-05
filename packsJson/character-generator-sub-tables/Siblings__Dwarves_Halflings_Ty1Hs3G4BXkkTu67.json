@@ -1,0 +1,260 @@
+{
+  "name": "Siblings: Dwarves/Halflings",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/sundries/flags/banner-silver-white.webp",
+  "description": "",
+  "results": [
+    {
+      "_id": "uZEDUG0b1QS3X7aE",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You have 1 Sibling",
+      "name": "",
+      "_key": "!tables.results!Ty1Hs3G4BXkkTu67.uZEDUG0b1QS3X7aE"
+    },
+    {
+      "_id": "owOV7YfwzHeKjQgE",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You have 2 Siblings",
+      "name": "",
+      "_key": "!tables.results!Ty1Hs3G4BXkkTu67.owOV7YfwzHeKjQgE"
+    },
+    {
+      "_id": "5qNX6NeAArgThim7",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You have 3 Siblings",
+      "name": "",
+      "_key": "!tables.results!Ty1Hs3G4BXkkTu67.5qNX6NeAArgThim7"
+    },
+    {
+      "_id": "nIYe2CnYdX2javLK",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You have 4 Siblings",
+      "name": "",
+      "_key": "!tables.results!Ty1Hs3G4BXkkTu67.nIYe2CnYdX2javLK"
+    },
+    {
+      "_id": "r1LxXfZHW30aoSVf",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You have 5 Siblings",
+      "name": "",
+      "_key": "!tables.results!Ty1Hs3G4BXkkTu67.r1LxXfZHW30aoSVf"
+    },
+    {
+      "_id": "RBBFLtK9dH9FBcyJ",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You are an only child",
+      "name": "",
+      "_key": "!tables.results!Ty1Hs3G4BXkkTu67.RBBFLtK9dH9FBcyJ"
+    },
+    {
+      "_id": "H0o6cOQwByLAlDxW",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You are an only child",
+      "name": "",
+      "_key": "!tables.results!Ty1Hs3G4BXkkTu67.H0o6cOQwByLAlDxW"
+    },
+    {
+      "_id": "pWN64mjZ9JqI6UZR",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You are an only child",
+      "name": "",
+      "_key": "!tables.results!Ty1Hs3G4BXkkTu67.pWN64mjZ9JqI6UZR"
+    },
+    {
+      "_id": "kfXUMiqdlmBeSlbX",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You are an only child",
+      "name": "",
+      "_key": "!tables.results!Ty1Hs3G4BXkkTu67.kfXUMiqdlmBeSlbX"
+    },
+    {
+      "_id": "cHIc5jk2KytQfMji",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You are an only child",
+      "name": "",
+      "_key": "!tables.results!Ty1Hs3G4BXkkTu67.cHIc5jk2KytQfMji"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "Ty1Hs3G4BXkkTu67",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.nLShtklKnMHxebva",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!Ty1Hs3G4BXkkTu67"
+}

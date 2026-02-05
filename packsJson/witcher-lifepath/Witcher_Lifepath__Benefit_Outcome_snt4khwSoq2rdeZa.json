@@ -1,0 +1,260 @@
+{
+  "name": "Witcher Lifepath: Benefit Outcome",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Law of Surprises - You invoked the Law of Surprises during that decade. Roll 1d10 [[1d10]] to see what you got in return. 1: a baby, 2: a dog, 3: a horse, 4: a new plow, 5: a cat, 6: a barrel of ale, 7: a piece of jewelery worth 1d6x10 [[1d6x10]] crowns, 8: a weapon worth up to 500 crowns, 9: an ox, 10: a mule.",
+      "name": "",
+      "_key": "!tables.results!snt4khwSoq2rdeZa.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "oKZeEBIq2FLMNk2e",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Romance - You found a lover who saw past your mutations and desensitization. Somehow you managed to make a meaningful connection with a person. Roll 1d10 [[1d10]]. 1-6: it lasted a few weeks, 7-8: it lasted a few months, 9-10: it’s still going, on and off.",
+      "name": "",
+      "_key": "!tables.results!snt4khwSoq2rdeZa.oKZeEBIq2FLMNk2e"
+    },
+    {
+      "_id": "kQX7ZeIIWKy5yTPF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Windfall - You raked in a suprisingly large amount of coin that decade. You managed to not only pay for alchemy ingredients and repairs to your gear, but also put some coin aside for a legitimate savings. You gain 1d10x100 [[1d10x100]] crowns.",
+      "name": "",
+      "_key": "!tables.results!snt4khwSoq2rdeZa.kQX7ZeIIWKy5yTPF"
+    },
+    {
+      "_id": "36ROPw9QWjYWmpBV",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "A Noble Owes You - You performed a task for a noble. It may have been legal, it may have been illegal—either way, the noble you helped out owes you big and knows you’ll come to collect someday. You can invoke this favor at any time but it must be reasonable (GM’s discretion).",
+      "name": "",
+      "_key": "!tables.results!snt4khwSoq2rdeZa.36ROPw9QWjYWmpBV"
+    },
+    {
+      "_id": "9kVdEtFeX4a3nAoe",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Witcher Secrets Passed Down - Along your journeys you met with and traveled with another witcher. This witcher taught you and shared some long-lost knowledge. You gain a witcher diagram: a potion, oil, or decoction of your choice.",
+      "name": "",
+      "_key": "!tables.results!snt4khwSoq2rdeZa.9kVdEtFeX4a3nAoe"
+    },
+    {
+      "_id": "cQfRuoxqB1FI58LA",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Knighted For Valor - At some point that decade, you fought bravely to defend a country. You may have gone to protect someone or you may just have been in the right place at the right time. For this great deed, you were knighted by a king/queen. You gain +1 Reputation in one country of your choice.",
+      "name": "",
+      "_key": "!tables.results!snt4khwSoq2rdeZa.cQfRuoxqB1FI58LA"
+    },
+    {
+      "_id": "th9s2aW3pwS3ZZX2",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Fell in with Bandits - You fell in with a group of bandits or scoia’tael while on a hunt. You may not have agreed with their methods, but they didn’t bother you and you didn’t bother them. You even shared some drinks. You can ask them for a favor once a month as long as it’s reasonable (GM’s discretion).",
+      "name": "",
+      "_key": "!tables.results!snt4khwSoq2rdeZa.th9s2aW3pwS3ZZX2"
+    },
+    {
+      "_id": "tfUjaxwfTwqW98vG",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Explored a Ruin - You had to hunt a monster through a large and complex ruin. Along the way you found something useful. Roll 1d10 [[1d10]]. 1-2: elven enhancement, 3-4: elven messer, 5-6: dwarven enhancement, 7-8: gnomish hand crossbow, 9-10: dwarven cloak.",
+      "name": "",
+      "_key": "!tables.results!snt4khwSoq2rdeZa.tfUjaxwfTwqW98vG"
+    },
+    {
+      "_id": "XFy2l49tSxFMwvUu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "A Mage Owes You - During this decade you did a favor for a mage. You may have gathered monster parts for their experiments, let them study you, or even captured a monster alive for them. Either way, the mage now owes you one favor in return as long as it’s reasonable (GM’s discretion).",
+      "name": "",
+      "_key": "!tables.results!snt4khwSoq2rdeZa.XFy2l49tSxFMwvUu"
+    },
+    {
+      "_id": "NlfhnGUfAnLtImRU",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Found a Teacher - You studied under a mentor. You spent many weeks learning, practicing, and looking to your mentor for guidance. It was a strange experience. You may gain +1 in any INT skill or start a new INT skill at +2.",
+      "name": "",
+      "_key": "!tables.results!snt4khwSoq2rdeZa.NlfhnGUfAnLtImRU"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "snt4khwSoq2rdeZa",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.ub0OgKJtPKbMpWUS",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!snt4khwSoq2rdeZa"
+}
