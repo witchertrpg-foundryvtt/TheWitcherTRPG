@@ -1,7 +1,7 @@
 
-import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
+import WitcherItemSheet from './WitcherItemSheet.js';
 
-export default class WitcherContainerSheet extends WitcherItemSheetV1 {
+export default class WitcherContainerSheet extends WitcherItemSheet {
     storableItems = [
         'weapon',
         'armor',
@@ -14,20 +14,22 @@ export default class WitcherContainerSheet extends WitcherItemSheetV1 {
         'container'
     ];
 
-    activateListeners(html) {
-        super.activateListeners(html);
-        html.find('.remove-item').on('click', this._onRemoveItem.bind(this));
+    static PARTS = {
+        main: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/container-sheet.hbs`,
+            scrollable: ['']
+        }
+    };
+
+    _onRender(context, options) {
+        super._onRender(context, options);
+
+        this.element
+            .querySelectorAll('.remove-item')
+            .forEach(input => input.addEventListener('click', this._onRemoveItem.bind(this)));
     }
 
-    /** @inheritdoc */
-    _canDragDrop(selector) {
-        return true;
-    }
-
-    async _onDrop(event) {
-        let dragEventData = TextEditor.getDragEventData(event);
-        let item = fromUuidSync(dragEventData.uuid);
-
+    async _onDropItem(event, item) {
         if (item && this.storableItems.includes(item.type) && !this.item.system.content.includes(item.uuid)) {
             this.item.system.content.push(item.uuid);
             this.item.update({ 'system.content': this.item.system.content });

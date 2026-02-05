@@ -1,26 +1,23 @@
 import WitcherConfigurationSheet from './configurations/WitcherConfigurationSheet.js';
-import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
+import WitcherItemSheet from './WitcherItemSheet.js';
 
-export default class WitcherRitualSheet extends WitcherItemSheetV1 {
+export default class WitcherRitualSheet extends WitcherItemSheet {
     configuration = new WitcherConfigurationSheet({ document: this.item });
 
-    /** @inheritdoc */
-    _canDragStart(selector) {
-        return true;
-    }
-
-    /** @inheritdoc */
-    _canDragDrop(selector) {
-        return true;
-    }
+    static PARTS = {
+        main: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/ritual-sheet.hbs`,
+            scrollable: ['']
+        }
+    };
 
     /** @override */
-    getData() {
-        const data = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
 
-        data.selects = this.createSelects();
+        context.selects = this.createSelects();
 
-        return data;
+        return context;
     }
 
     createSelects() {
@@ -42,14 +39,12 @@ export default class WitcherRitualSheet extends WitcherItemSheetV1 {
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find('.edit-component').on('blur', this._onEditComponent.bind(this));
-        html.find('.remove-component').on('click', this._onRemoveComponent.bind(this));
+        let jquery = $(html);
+        jquery.find('.edit-component').on('blur', this._onEditComponent.bind(this));
+        jquery.find('.remove-component').on('click', this._onRemoveComponent.bind(this));
     }
 
-    async _onDrop(event) {
-        let dragEventData = TextEditor.getDragEventData(event);
-        let item = await fromUuid(dragEventData.uuid);
-
+    async _onDropItem(event, item) {
         if (item) {
             if (event.target.closest('.alternateComponents')) {
                 let newComponentList = this.item.system.alternateRitualComponentUuids ?? [];

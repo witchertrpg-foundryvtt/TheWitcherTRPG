@@ -1,25 +1,22 @@
 import WitcherPropertiesConfigurationSheet from './configurations/WitcherPropertiesConfigurationSheet.js';
-import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
+import WitcherItemSheet from './WitcherItemSheet.js';
 import { associatedDiagramMixin } from './mixins/associatedDiagramMixin.js';
 
-export default class WitcherWeaponSheet extends WitcherItemSheetV1 {
+export default class WitcherWeaponSheet extends WitcherItemSheet {
     configuration = new WitcherPropertiesConfigurationSheet({ document: this.item });
 
-    /** @inheritdoc */
-    _canDragStart(selector) {
-        return true;
-    }
-
-    /** @inheritdoc */
-    _canDragDrop(selector) {
-        return true;
-    }
+    static PARTS = {
+        main: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/weapon-sheet.hbs`,
+            scrollable: ['']
+        }
+    };
 
     /** @override */
-    getData() {
-        const data = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
 
-        data.config.attackSkills = [
+        context.config.attackSkills = [
             ...new Set(
                 CONFIG.WITCHER.meleeSkills
                     .concat(CONFIG.WITCHER.rangedSkills)
@@ -27,13 +24,13 @@ export default class WitcherWeaponSheet extends WitcherItemSheetV1 {
             )
         ];
 
-        return data;
+        return context;
     }
 
     activateListeners(html) {
         super.activateListeners(html);
-
-        html.find('.damage-type').on('change', this._onDamageTypeEdit.bind(this));
+        let jquery = $(html);
+        jquery.find('.damage-type').on('change', this._onDamageTypeEdit.bind(this));
 
         this._addAssociatedDiagramListeners(html);
     }
@@ -52,8 +49,8 @@ export default class WitcherWeaponSheet extends WitcherItemSheetV1 {
         this.item.update({ 'system.type': newval });
     }
 
-    async _onDrop(event) {
-        this._onDropDiagram(event, 'weapon', 'elderfolk-weapon');
+    async _onDropItem(event, item) {
+        this._onDropDiagram(event, item, 'weapon', 'elderfolk-weapon');
     }
 }
 

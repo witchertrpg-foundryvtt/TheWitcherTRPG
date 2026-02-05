@@ -1,34 +1,26 @@
 import WitcherPropertiesConfigurationSheet from './configurations/WitcherPropertiesConfigurationSheet.js';
-import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
+import WitcherItemSheet from './WitcherItemSheet.js';
 import { associatedDiagramMixin } from './mixins/associatedDiagramMixin.js';
 
-export default class WitcherArmorSheet extends WitcherItemSheetV1 {
+export default class WitcherArmorSheet extends WitcherItemSheet {
     configuration = new WitcherPropertiesConfigurationSheet({ document: this.item });
 
-    /** @inheritdoc */
-    _canDragStart(selector) {
-        return true;
-    }
-
-    /** @inheritdoc */
-    _canDragDrop(selector) {
-        return true;
-    }
-
-    activateListeners(html) {
-        super.activateListeners(html);
-        this._addAssociatedDiagramListeners(html);
-    }
+    static PARTS = {
+        main: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/armor-sheet.hbs`,
+            scrollable: ['']
+        }
+    };
 
     /** @override */
-    getData() {
-        const data = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
 
-        data.config.Availability.WITCHER = 'WITCHER.Item.AvailabilityWitcher';
-        data.config.type = this.getTypes();
-        data.config.armorLocations = this.getArmorLocations();
+        context.config.Availability.WITCHER = 'WITCHER.Item.AvailabilityWitcher';
+        context.config.type = this.getTypes();
+        context.config.armorLocations = this.getArmorLocations();
 
-        return data;
+        return context;
     }
 
     getTypes() {
@@ -50,8 +42,13 @@ export default class WitcherArmorSheet extends WitcherItemSheetV1 {
         };
     }
 
-    async _onDrop(event) {
-        this._onDropDiagram(event, 'armor', 'elderfolk-armor');
+    activateListeners(html) {
+        super.activateListeners(html);
+        this._addAssociatedDiagramListeners(html);
+    }
+
+    async _onDropItem(event, item) {
+        this._onDropDiagram(event, item, 'armor', 'elderfolk-armor');
     }
 }
 

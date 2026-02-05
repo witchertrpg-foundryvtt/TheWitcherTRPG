@@ -2,7 +2,6 @@ import WitcherCharacterSheet from '../actor/sheets/WitcherCharacterSheet.js';
 import WitcherMonsterSheet from '../actor/sheets/WitcherMonsterSheet.js';
 import WitcherLootSheet from '../actor/sheets/WitcherLootSheet.js';
 
-import WitcherItemSheetV1 from '../item/sheets/WitcherItemSheetV1.js';
 import WitcherWeaponSheet from '../item/sheets/WitcherWeaponSheet.js';
 import WitcherDiagramSheet from '../item/sheets/WitcherDiagramSheet.js';
 import WitcherContainerSheet from '../item/sheets/WitcherContainerSheet.js';
@@ -22,12 +21,14 @@ import WitcherEnhancementSheet from '../item/sheets/WitcherEnhancementSheet.js';
 import WitcherHexSheet from '../item/sheets/WitcherHexSheet.js';
 import WitcherRitualSheet from '../item/sheets/WitcherRitualSheet.js';
 import WitcherRaceSheet from '../item/sheets/WitcherRaceSheet.js';
+import WitcherItemSheet from '../item/sheets/WitcherItemSheet.js';
+import WitcherMountSheet from '../item/sheets/WitcherMountSheet.js';
 
 const Actors = foundry.documents.collections.Actors;
 const Items = foundry.documents.collections.Items;
 
 export const registerSheets = () => {
-    Items.registerSheet('witcher', WitcherItemSheetV1, { makeDefault: true });
+    Items.registerSheet('witcher', WitcherItemSheet, { makeDefault: true });
 
     Items.registerSheet('witcher', WitcherAlchemicalSheet, {
         makeDefault: true,
@@ -68,6 +69,10 @@ export const registerSheets = () => {
     Items.registerSheet('witcher', WitcherRaceSheet, {
         makeDefault: true,
         types: ['race']
+    });
+    Items.registerSheet('witcher', WitcherMountSheet, {
+        makeDefault: true,
+        types: ['mount']
     });
     Items.registerSheet('witcher', WitcherRitualSheet, {
         makeDefault: true,

@@ -2,6 +2,7 @@ import WitcherConfigurationSheet from './configurations/WitcherConfigurationShee
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ItemSheetV2 } = foundry.applications.sheets;
+const { ux } = foundry.applications;
 
 export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     /** @override */
@@ -57,8 +58,19 @@ export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemShe
         return context;
     }
 
-    _onRender(context, options) {
-        super._onRender(context, options);
+    async _onRender(context, options) {
+        await super._onRender(context, options);
+
+        new foundry.applications.ux.DragDrop.implementation({
+            dragSelector: '.draggable',
+            permissions: {
+                dragstart: this._canDragStart.bind(this),
+                drop: this._canDragDrop.bind(this)
+            },
+            callbacks: {
+                drop: this._onDrop.bind(this)
+            }
+        }).bind(this.element);
 
         this.element
             .querySelectorAll('input[data-action=editEffect]')
@@ -69,6 +81,63 @@ export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemShe
         this.element
             .querySelectorAll('select[data-action=editEffect]')
             .forEach(input => input.addEventListener('input', this._onEditEffect.bind(this)));
+
+        this.activateListeners(this.element);
+    }
+
+    activateListeners(html) {
+
+    }
+
+    _canDragStart() {
+        return false;
+    }
+
+    _canDragDrop() {
+        return this.isEditable;
+    }
+
+    /**
+     * An event that occurs when data is dropped into a drop target.
+     * @param {DragEvent} event
+     * @protected
+     */
+    async _onDrop(event) {
+        if (!this.isEditable) return;
+        const data = ux.TextEditor.implementation.getDragEventData(event);
+
+        // Dropped Documents
+        const documentClass = foundry.utils.getDocumentClass(data.type);
+        if (documentClass) {
+            const document = await documentClass.fromDropData(data);
+            return this._onDropDocument(event, document);
+        }
+
+        return data;
+    }
+
+    /**
+     * Handle a dropped document on the Document Sheet.
+     * @template {Document} TDocument
+     * @param {DragEvent} event           The initiating drop event.
+     * @param {TDocument} document        The resolved Document instance.
+     * @returns {Promise<TDocument|null>} A Document of the same type as the dropped one in case of a successful result,
+     *                                    or null in case of failure or no action being taken.
+     * @protected
+     */
+    async _onDropDocument(event, document) {
+        switch (document.documentName) {
+            case 'ActiveEffect':
+                return (await this._onDropActiveEffect(event, document)) ?? null;
+            case 'Actor':
+                return (await this._onDropActor(event, document)) ?? null;
+            case 'Item':
+                return (await this._onDropItem(event, document)) ?? null;
+            case 'Folder':
+                return (await this._onDropFolder(event, document)) ?? null;
+            default:
+                return null;
+        }
     }
 
     static async _onAddEffect(event, element) {

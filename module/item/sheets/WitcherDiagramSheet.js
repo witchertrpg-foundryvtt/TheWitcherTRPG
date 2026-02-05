@@ -1,23 +1,17 @@
-import WitcherItemSheetV1 from './WitcherItemSheetV1.js';
+import WitcherItemSheet from './WitcherItemSheet.js';
 
-export default class WitcherDiagramSheet extends WitcherItemSheetV1 {
-    get template() {
-        return `systems/TheWitcherTRPG/templates/sheets/item/diagrams-sheet.hbs`;
-    }
-
-    /** @inheritdoc */
-    _canDragStart(selector) {
-        return true;
-    }
-
-    /** @inheritdoc */
-    _canDragDrop(selector) {
-        return true;
-    }
+export default class WitcherDiagramSheet extends WitcherItemSheet {
+    static PARTS = {
+        main: {
+            template: `systems/TheWitcherTRPG/templates/sheets/item/diagrams-sheet.hbs`,
+            scrollable: ['']
+        }
+    };
 
     /** @override */
-    getData() {
-        const context = super.getData();
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+
         context.knownCraftingComponents = context.item.system.craftingComponents
             .filter(component => component.uuid)
             .map(component => {
@@ -55,17 +49,21 @@ export default class WitcherDiagramSheet extends WitcherItemSheetV1 {
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find('.add-component').on('click', this._onAddComponent.bind(this));
-        html.find('.edit-component').on('blur', this._onEditComponent.bind(this));
-        html.find('.remove-component').on('click', this._onRemoveComponent.bind(this));
-
-        html.find('.remove-associated-item').on('click', this._onRemoveAssociatedItem.bind(this));
+        html.querySelectorAll('.add-component').forEach(input =>
+            input.addEventListener('click', this._onAddComponent.bind(this))
+        );
+        html.querySelectorAll('.edit-component').forEach(input =>
+            input.addEventListener('blur', this._onEditComponent.bind(this))
+        );
+        html.querySelectorAll('.remove-component').forEach(input =>
+            input.addEventListener('click', this._onRemoveComponent.bind(this))
+        );
+        html.querySelectorAll('.remove-associated-item').forEach(input =>
+            input.addEventListener('click', this._onRemoveAssociatedItem.bind(this))
+        );
     }
 
-    async _onDrop(event) {
-        let dragEventData = TextEditor.getDragEventData(event);
-        let item = await fromUuid(dragEventData.uuid);
-
+    async _onDropItem(event, item) {
         if (item) {
             if (event.target.offsetParent.dataset.type == 'associatedItem') {
                 this.item.update({ 'system.associatedItemUuid': item.uuid });
