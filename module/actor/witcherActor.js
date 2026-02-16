@@ -294,7 +294,7 @@ export default class WitcherActor extends Actor {
         let attributeValue = this.system.stats[attribute.name].value;
 
         let skillName = skillMapEntry.name;
-        let skillLabel = game.i18n.localize(skillMapEntry.label);
+        let skillLabel = game.i18n.localize(skillMapEntry.rollLabel ?? skillMapEntry.label);
         let skillValue = this.system.skills[attribute.name][skillName].value;
 
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');

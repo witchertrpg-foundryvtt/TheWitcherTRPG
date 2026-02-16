@@ -58,7 +58,7 @@ export let baseMixin = {
                 return {
                     label: skillGroup.label,
                     value: paths,
-                    group: game.i18n.localize('WITCHER.Skills.SkillGroups.name')
+                    group: game.i18n.localize('WITCHER.skills.skillGroups.name')
                 };
             })
             .reduce((skillGroups, skillGroup) => {
@@ -75,7 +75,7 @@ export let baseMixin = {
                 return {
                     label: skill.label,
                     value: 'system.skills.' + skill.attribute.name + '.' + key + '.activeEffectModifiers',
-                    group: game.i18n.localize('WITCHER.Skills.Name')
+                    group: game.i18n.localize('WITCHER.skills.name')
                 };
             })
             .reduce((skills, skill) => {

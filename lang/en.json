@@ -1052,9 +1052,12 @@
         "background.other": "Other",
         "Resources.modifiers": "Resources Modifiers",
         "Notes": "Notes",
-        "Skills": {
-            "Name": "Skill",
-            "SkillGroups": {
+        "skills": {
+            "name": "Skill",
+            "profession": "Prof",
+            "pickup": "Pick",
+            "learn": "Learn",
+            "skillGroups": {
                 "name": "Skill Groups",
                 "allSkills": "All Skills",
                 "meleeSkills": "Melee Skills",
@@ -1062,6 +1065,174 @@
                 "magicSkills": "Magic Skills",
                 "verbalCombatSkills": "Verbal Combat Skills",
                 "empatheticVerbalCombatSkills": "Empathetic Verbal Combat Skills"
+            },
+            "awareness": {
+                "label": "Awareness"
+            },
+            "business": {
+                "label": "Business"
+            },
+            "deduction": {
+                "label": "Deduction"
+            },
+            "education": {
+                "label": "Education"
+            },
+            "commonSpeech": {
+                "label": "Common Speech (2)",
+                "rollLabel": "Common Speech"
+            },
+            "elderSpeech": {
+                "label": "Elder Speech (2)",
+                "rollLabel": "Elder Speech"
+            },
+            "dwarvenSpeech": {
+                "label": "Dwarven Speech (2)",
+                "rollLabel": "Dwarven Speech"
+            },
+            "monsterLore": {
+                "label": "Monster Lore (2)",
+                "rollLabel": "Monster Lore"
+            },
+            "socialEtiquette": {
+                "label": "Social Etiquette"
+            },
+            "streetwise": {
+                "label": "Streetwise"
+            },
+            "tactics": {
+                "label": "Tactics (2)",
+                "rollLabel": "Tactics"
+            },
+            "teaching": {
+                "label": "Teaching"
+            },
+            "wildernessSurvival": {
+                "label": "Wilderness Survival"
+            },
+            "brawling": {
+                "label": "Brawling"
+            },
+            "dodgeEscape": {
+                "label": "Dodge/Escape"
+            },
+            "melee": {
+                "label": "Melee"
+            },
+            "riding": {
+                "label": "Riding"
+            },
+            "sailing": {
+                "label": "Sailing"
+            },
+            "smallblades": {
+                "label": "Small Blades"
+            },
+            "staffspear": {
+                "label": "Staff/Spear"
+            },
+            "swordsmanship": {
+                "label": "Swordsmanship"
+            },
+            "archery": {
+                "label": "Archery"
+            },
+            "athletics": {
+                "label": "Athletics"
+            },
+            "crossbow": {
+                "label": "Crossbow"
+            },
+            "sleightOfHand": {
+                "label": "Sleight of Hand"
+            },
+            "stealth": {
+                "label": "Stealth"
+            },
+            "physique": {
+                "label": "Physique"
+            },
+            "endurance": {
+                "label": "Endurance"
+            },
+            "charisma": {
+                "label": "Charisma"
+            },
+            "deceit": {
+                "label": "Deceit"
+            },
+            "fineArts": {
+                "label": "Fine Arts"
+            },
+            "gambling": {
+                "label": "Gambling"
+            },
+            "groomingAndStyle": {
+                "label": "Grooming and Style"
+            },
+            "humanPerception": {
+                "label": "Human Perception"
+            },
+            "leadership": {
+                "label": "Leadership"
+            },
+            "persuasion": {
+                "label": "Persuasion"
+            },
+            "performance": {
+                "label": "Performance"
+            },
+            "seduction": {
+                "label": "Seduction"
+            },
+            "alchemy": {
+                "label": "Alchemy (2)",
+                "rollLabel": "Alchemy"
+            },
+            "crafting": {
+                "label": "Crafting (2)",
+                "rollLabel": "Crafting"
+            },
+            "disguise": {
+                "label": "Disguise"
+            },
+            "firstAid": {
+                "label": "First Aid"
+            },
+            "forgery": {
+                "label": "Forgery"
+            },
+            "pickLock": {
+                "label": "Pick Lock"
+            },
+            "trapCrafting": {
+                "label": "Trap Crafting (2)",
+                "rollLabel": "Trap Crafting"
+            },
+            "courage": {
+                "label": "Courage"
+            },
+            "hexWeaving": {
+                "label": "Hex Weaving (2)",
+                "rollLabel": "Hex Weaving"
+            },
+            "intimidation": {
+                "label": "Intimidation"
+            },
+            "spellCasting": {
+                "label": "Spell Casting (2)",
+                "rollLabel": "Spell Casting"
+            },
+            "resistMagic": {
+                "label": "Resist Magic (2)",
+                "rollLabel": "Resist Magic"
+            },
+            "resistCoercion": {
+                "label": "Resist Coercion"
+            },
+            "ritualCrafting": {
+                "label": "Ritual Crafting (2)",
+                "rollLabel": "Ritual Crafting"
             }
         },
         "Stats": {
@@ -1072,78 +1243,13 @@
                 "Name": "Derived Stats"
             }
         },
-        "SkIntAwareness": "Awareness",
-        "SkIntBusiness": "Business",
-        "SkIntDeduction": "Deduction",
-        "SkIntEducation": "Education",
-        "SkIntCommon": "Common Speech (2)",
-        "SkIntCommonLable": "Common Speech",
-        "SkIntElder": "Elder Speech (2)",
-        "SkIntElderLable": "Elder Speech",
-        "SkIntDwarven": "Dwarven (2)",
-        "SkIntDwarvenLable": "Dwarven",
-        "SkIntMonster": "Monster Lore (2)",
-        "SkIntMonsterLable": "Monster Lore",
-        "SkIntSocialEt": "Social Etiquette",
-        "SkIntStreet": "Streetwise",
-        "SkIntTactics": "Tactics (2)",
-        "SkIntTacticsLable": "Tactics",
-        "SkIntTeaching": "Teaching",
-        "SkIntWilderness": "Wilderness Survival",
-        "SkRefBrawling": "Brawling",
-        "SkRefDodge": "Dodge/Escape",
-        "SkRefMelee": "Melee",
-        "SkRefRiding": "Riding",
-        "SkRefSailing": "Sailing",
-        "SkRefSmall": "Small Blades",
-        "SkRefStaff": "Staff/Spear",
-        "SkRefSwordsmanship": "Swordsmanship",
-        "SkDexArchery": "Archery",
-        "SkDexAthletics": "Athletics",
-        "SkDexCrossbow": "Crossbow",
-        "SkDexSleight": "Sleight of Hand",
-        "SkDexStealth": "Stealth",
-        "SkBodyPhys": "Physique",
-        "SkBodyEnd": "Endurance",
-        "SkEmpCharisma": "Charisma",
-        "SkEmpDeceit": "Deceit",
-        "SkEmpArts": "Fine Arts",
-        "SkEmpGambling": "Gambling",
-        "SkEmpGrooming": "Grooming and Style",
-        "SkEmpHumanPerc": "Human Perception",
-        "SkEmpLeadership": "Leadership",
-        "SkEmpPersuasion": "Persuasion",
-        "SkEmpPerformance": "Performance",
-        "SkEmpSeduction": "Seduction",
-        "SkCraAlchemy": "Alchemy (2)",
-        "SkCraAlchemyLable": "Alchemy",
-        "SkCraCrafting": "Crafting (2)",
-        "SkCraCraftingLable": "Crafting",
-        "SkCraDisguise": "Disguise",
-        "SkCraAid": "First Aid",
-        "SkCraForge": "Forgery",
-        "SkCraPick": "Pick Lock",
-        "SkCraTrapCraft": "Trap Crafting (2)",
-        "SkCraTrapCraftLable": "Trap Crafting",
-        "SkWillCourage": "Courage",
-        "SkWillHex": "Hex Weaving (2)",
-        "SkWillHexLable": "Hex Weaving",
-        "SkWillIntim": "Intimidation",
-        "SkWillSpellcast": "Spell Casting (2)",
-        "SkWillSpellcastLable": "Spell Casting",
-        "SkWillResistMag": "Resist Magic (2)",
-        "SkWillResistMagLable": "Resist Magic",
-        "SkWillResistCoer": "Resist Coercion",
-        "SkWillRitCraft": "Ritual Crafting (2)",
-        "SkWillRitCraftLable": "Ritual Crafting",
+
         "SocialStanding": "Social Standing",
         "Profession": "Profession",
         "Reputation": "Reputation",
         "NoDamageSpecified": "Damage is not specified",
         "Shield.Broken": "Your shield is now broken",
-        "SKill.profession": "Prof",
-        "SKill.pickup": "Pick",
-        "SKill.learn": "Learn",
+
         "Items.transferTitle": "Transferring Items",
         "Items.transferMany": "How many items to transfer",
         "Combat": {

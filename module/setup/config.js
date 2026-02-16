@@ -173,53 +173,53 @@ WITCHER.attackOptions = [
 WITCHER.meleeAttackOptions = [
     {
         value: 'brawling',
-        label: 'WITCHER.SkRefBrawling'
+        label: 'WITCHER.skills.brawling.label'
     },
     {
         value: 'melee',
-        label: 'WITCHER.SkRefMelee'
+        label: 'WITCHER.skills.melee.label'
     },
     {
         value: 'smallblades',
-        label: 'WITCHER.SkRefSmall'
+        label: 'WITCHER.skills.smallblades.label'
     },
     {
         value: 'staffspear',
-        label: 'WITCHER.SkRefStaff'
+        label: 'WITCHER.skills.staffspear.label'
     },
     {
         value: 'swordsmanship',
-        label: 'WITCHER.SkRefSwordsmanship'
+        label: 'WITCHER.skills.swordsmanship.label'
     }
 ];
 
 WITCHER.rangedAttackOptions = [
     {
         value: 'athletics',
-        label: 'WITCHER.SkDexAthletics'
+        label: 'WITCHER.skills.athletics.label'
     },
     {
         value: 'archery',
-        label: 'WITCHER.SkDexArchery'
+        label: 'WITCHER.skills.archery.label'
     },
     {
         value: 'crossbow',
-        label: 'WITCHER.SkDexCrossbow'
+        label: 'WITCHER.skills.crossbow.label'
     }
 ];
 
 WITCHER.spellAttackOptions = [
     {
         value: 'spellcast',
-        label: 'WITCHER.SkWillSpellcastLable'
+        label: 'WITCHER.skills.spellCasting.label'
     },
     {
         value: 'ritcraft',
-        label: 'WITCHER.SkWillRitCraftLable'
+        label: 'WITCHER.skills.ritualCrafting.label'
     },
     {
         value: 'hexweave',
-        label: 'WITCHER.SkWillHexLable'
+        label: 'WITCHER.skills.hexWeaving.label'
     }
 ];
 
@@ -264,27 +264,27 @@ WITCHER.defenseOptions = [
 
 WITCHER.skillGroups = {
     allSkills: {
-        label: 'WITCHER.Skills.SkillGroups.allSkills',
+        label: 'WITCHER.skills.skillGroups.allSkills',
         name: 'allSkills'
     },
     meleeSkills: {
-        label: 'WITCHER.Skills.SkillGroups.meleeSkills',
+        label: 'WITCHER.skills.skillGroups.meleeSkills',
         name: 'meleeSkills'
     },
     rangedSkills: {
-        label: 'WITCHER.Skills.SkillGroups.rangedSkills',
+        label: 'WITCHER.skills.skillGroups.rangedSkills',
         name: 'rangedSkills'
     },
     magicSkills: {
-        label: 'WITCHER.Skills.SkillGroups.magicSkills',
+        label: 'WITCHER.skills.skillGroups.magicSkills',
         name: 'magicSkills'
     },
     verbalCombatSkills: {
-        label: 'WITCHER.Skills.SkillGroups.verbalCombatSkills',
+        label: 'WITCHER.skills.skillGroups.verbalCombatSkills',
         name: 'verbalCombatSkills'
     },
     empatheticVerbalCombatSkills: {
-        label: 'WITCHER.Skills.SkillGroups.empatheticVerbalCombatSkills',
+        label: 'WITCHER.skills.skillGroups.empatheticVerbalCombatSkills',
         name: 'empatheticVerbalCombatSkills'
     }
 };
@@ -292,267 +292,279 @@ WITCHER.skillGroups = {
 WITCHER.skillMap = {
     awareness: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntAwareness',
+        label: 'WITCHER.skills.awareness.label',
         name: 'awareness'
     },
     business: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntBusiness',
+        label: 'WITCHER.skills.business.label',
         name: 'business'
     },
     deduction: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntDeduction',
+        label: 'WITCHER.skills.deduction.label',
         name: 'deduction'
     },
     education: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntEducation',
+        label: 'WITCHER.skills.education.label',
         name: 'education'
     },
-    commonsp: {
+    commonspeech: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntCommonLable',
+        label: 'WITCHER.skills.commonSpeech.label',
+        rollLabel: 'WITCHER.skills.commonSpeech.rollLabel',
         name: 'commonsp'
     },
     eldersp: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntElderLable',
+        label: 'WITCHER.skills.elderSpeech.label',
+        rollLabel: 'WITCHER.skills.elderSpeech.rollLabel',
         name: 'eldersp'
     },
     dwarven: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntDwarvenLable',
+        label: 'WITCHER.skills.dwarvenSpeech.label',
+        rollLabel: 'WITCHER.skills.dwarvenSpeech.rollLabel',
         name: 'dwarven'
     },
     monster: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntMonster',
+        label: 'WITCHER.skills.monsterLore.label',
+        rollLabel: 'WITCHER.skills.monsterLore.rollLabel',
         name: 'monster'
     },
     socialetq: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntSocialEt',
+        label: 'WITCHER.skills.socialEtiquette.label',
         name: 'socialetq'
     },
     streetwise: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntStreet',
+        label: 'WITCHER.skills.streetwise.label',
         name: 'streetwise'
     },
     tactics: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntTacticsLable',
+        label: 'WITCHER.skills.tactics.label',
+        rollLabel: 'WITCHER.skills.tactics.rollLabel',
         name: 'tactics'
     },
     teaching: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntTeaching',
+        label: 'WITCHER.skills.teaching.label',
         name: 'teaching'
     },
     wilderness: {
         attribute: WITCHER.statMap.int,
-        label: 'WITCHER.SkIntWilderness',
+        label: 'WITCHER.skills.wildernessSurvival.label',
         name: 'wilderness'
     },
     brawling: {
         attribute: WITCHER.statMap.ref,
-        label: 'WITCHER.SkRefBrawling',
+        label: 'WITCHER.skills.brawling.label',
         name: 'brawling'
     },
     dodge: {
         attribute: WITCHER.statMap.ref,
-        label: 'WITCHER.SkRefDodge',
+        label: 'WITCHER.skills.dodgeEscape.label',
         name: 'dodge'
     },
     melee: {
         attribute: WITCHER.statMap.ref,
-        label: 'WITCHER.SkRefMelee',
+        label: 'WITCHER.skills.melee.label',
         name: 'melee'
     },
     riding: {
         attribute: WITCHER.statMap.ref,
-        label: 'WITCHER.SkRefRiding',
+        label: 'WITCHER.skills.riding.label',
         name: 'riding'
     },
     sailing: {
         attribute: WITCHER.statMap.ref,
-        label: 'WITCHER.SkRefSailing',
+        label: 'WITCHER.skills.sailing.label',
         name: 'sailing'
     },
     smallblades: {
         attribute: WITCHER.statMap.ref,
-        label: 'WITCHER.SkRefSmall',
+        label: 'WITCHER.skills.smallblades.label',
         name: 'smallblades'
     },
     staffspear: {
         attribute: WITCHER.statMap.ref,
-        label: 'WITCHER.SkRefStaff',
+        label: 'WITCHER.skills.staffspear.label',
         name: 'staffspear'
     },
     swordsmanship: {
         attribute: WITCHER.statMap.ref,
-        label: 'WITCHER.SkRefSwordsmanship',
+        label: 'WITCHER.skills.swordsmanship.label',
         name: 'swordsmanship'
     },
 
     courage: {
         attribute: WITCHER.statMap.will,
-        label: 'WITCHER.SkWillCourage',
+        label: 'WITCHER.skills.courage.label',
         name: 'courage'
     },
     hexweave: {
         attribute: WITCHER.statMap.will,
-        label: 'WITCHER.SkWillHexLable',
+        label: 'WITCHER.skills.hexWeaving.label',
+        rollLabel: 'WITCHER.skills.hexWeaving.rollLabel',
         name: 'hexweave'
     },
     intimidation: {
         attribute: WITCHER.statMap.will,
-        label: 'WITCHER.SkWillIntim',
+        label: 'WITCHER.skills.intimidation.label',
         name: 'intimidation'
     },
     spellcast: {
         attribute: WITCHER.statMap.will,
-        label: 'WITCHER.SkWillSpellcastLable',
+        label: 'WITCHER.skills.spellCasting.label',
+        rollLabel: 'WITCHER.skills.spellCasting.rollLabel',
         name: 'spellcast'
     },
     resistmagic: {
         attribute: WITCHER.statMap.will,
-        label: 'WITCHER.SkWillResistMagLable',
+        label: 'WITCHER.skills.resistMagic.label',
+        rollLabel: 'WITCHER.skills.resistMagic.rollLabel',
         name: 'resistmagic'
     },
     resistcoerc: {
         attribute: WITCHER.statMap.will,
-        label: 'WITCHER.SkWillResistCoer',
+        label: 'WITCHER.skills.resistCoercion.label',
         name: 'resistcoerc'
     },
     ritcraft: {
         attribute: WITCHER.statMap.will,
-        label: 'WITCHER.SkWillRitCraftLable',
+        label: 'WITCHER.skills.ritualCrafting.label',
+        rollLabel: 'WITCHER.skills.ritualCrafting.rollLabel',
         name: 'ritcraft'
     },
 
     archery: {
         attribute: WITCHER.statMap.dex,
-        label: 'WITCHER.SkDexArchery',
+        label: 'WITCHER.skills.archery.label',
         name: 'archery'
     },
     athletics: {
         attribute: WITCHER.statMap.dex,
-        label: 'WITCHER.SkDexAthletics',
+        label: 'WITCHER.skills.athletics.label',
         name: 'athletics'
     },
     crossbow: {
         attribute: WITCHER.statMap.dex,
-        label: 'WITCHER.SkDexCrossbow',
+        label: 'WITCHER.skills.crossbow.label',
         name: 'crossbow'
     },
     sleight: {
         attribute: WITCHER.statMap.dex,
-        label: 'WITCHER.SkDexSleight',
+        label: 'WITCHER.skills.sleightOfHand.label',
         name: 'sleight'
     },
     stealth: {
         attribute: WITCHER.statMap.dex,
-        label: 'WITCHER.SkDexStealth',
+        label: 'WITCHER.skills.stealth.label',
         name: 'stealth'
     },
 
     alchemy: {
         attribute: WITCHER.statMap.cra,
-        label: 'WITCHER.SkCraAlchemyLable',
+        label: 'WITCHER.skills.alchemy.label',
+        rollLabel: 'WITCHER.skills.alchemy.rollLabel',
         name: 'alchemy'
     },
     crafting: {
         attribute: WITCHER.statMap.cra,
-        label: 'WITCHER.SkCraCraftingLable',
+        label: 'WITCHER.skills.crafting.label',
+        rollLabel: 'WITCHER.skills.crafting.rollLabel',
         name: 'crafting'
     },
     disguise: {
         attribute: WITCHER.statMap.cra,
-        label: 'WITCHER.SkCraDisguise',
+        label: 'WITCHER.skills.disguise.label',
         name: 'disguise'
     },
     firstaid: {
         attribute: WITCHER.statMap.cra,
-        label: 'WITCHER.SkCraAid',
+        label: 'WITCHER.skills.firstAid.label',
         name: 'firstaid'
     },
     forgery: {
         attribute: WITCHER.statMap.cra,
-        label: 'WITCHER.SkCraForge',
+        label: 'WITCHER.skills.forgery.label',
         name: 'forgery'
     },
     picklock: {
         attribute: WITCHER.statMap.cra,
-        label: 'WITCHER.SkCraPick',
+        label: 'WITCHER.skills.pickLock.label',
         name: 'picklock'
     },
     trapcraft: {
         attribute: WITCHER.statMap.cra,
-        label: 'WITCHER.SkCraTrapCraftLable',
+        label: 'WITCHER.skills.trapCrafting.label',
+        rollLabel: 'WITCHER.skills.trapCrafting.rollLabel',
         name: 'trapcraft'
     },
 
     physique: {
         attribute: WITCHER.statMap.body,
-        label: 'WITCHER.SkBodyPhys',
+        label: 'WITCHER.skills.physique.label',
         name: 'physique'
     },
     endurance: {
         attribute: WITCHER.statMap.body,
-        label: 'WITCHER.SkBodyEnd',
+        label: 'WITCHER.skills.endurance.label',
         name: 'endurance'
     },
 
     charisma: {
         attribute: WITCHER.statMap.emp,
-        label: 'WITCHER.SkEmpCharisma',
+        label: 'WITCHER.skills.charisma.label',
         name: 'charisma'
     },
     deceit: {
         attribute: WITCHER.statMap.emp,
-        label: 'WITCHER.SkEmpDeceit',
+        label: 'WITCHER.skills.deceit.label',
         name: 'deceit'
     },
     finearts: {
         attribute: WITCHER.statMap.emp,
-        label: 'WITCHER.SkEmpArts',
+        label: 'WITCHER.skills.fineArts.label',
         name: 'finearts'
     },
     gambling: {
         attribute: WITCHER.statMap.emp,
-        label: 'WITCHER.SkEmpGambling',
+        label: 'WITCHER.skills.gambling.label',
         name: 'gambling'
     },
     grooming: {
         attribute: WITCHER.statMap.emp,
-        label: 'WITCHER.SkEmpGrooming',
+        label: 'WITCHER.skills.groomingAndStyle.label',
         name: 'grooming'
     },
     perception: {
         attribute: WITCHER.statMap.emp,
-        label: 'WITCHER.SkEmpHumanPerc',
+        label: 'WITCHER.skills.humanPerception.label',
         name: 'perception'
     },
     leadership: {
         attribute: WITCHER.statMap.emp,
-        label: 'WITCHER.SkEmpLeadership',
+        label: 'WITCHER.skills.leadership.label',
         name: 'leadership'
     },
     persuasion: {
         attribute: WITCHER.statMap.emp,
-        label: 'WITCHER.SkEmpPersuasion',
+        label: 'WITCHER.skills.persuasion.label',
         name: 'persuasion'
     },
     performance: {
         attribute: WITCHER.statMap.emp,
-        label: 'WITCHER.SkEmpPerformance',
+        label: 'WITCHER.skills.performance.label',
         name: 'performance'
     },
     seduction: {
         attribute: WITCHER.statMap.emp,
-        label: 'WITCHER.SkEmpSeduction',
+        label: 'WITCHER.skills.seduction.label',
         name: 'seduction'
     }
 };
