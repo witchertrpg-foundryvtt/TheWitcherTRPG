@@ -90,9 +90,9 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
                 { id: 'emp', cssClass: 'emp', label: 'WITCHER.Actor.Stat.Emp' },
                 { id: 'cra', cssClass: 'cra', label: 'WITCHER.Actor.Stat.Cra' },
                 { id: 'will', cssClass: 'will', label: 'WITCHER.Actor.Stat.Will' },
-                { id: 'ip', cssClass: 'ip', label: 'WITCHER.Actor.rewards.ip' },
+                { id: 'ip', cssClass: 'ip', label: 'WITCHER.Actor.rewards.ip' }
             ],
-            initial: 'all',
+            initial: 'all'
         },
         magicTabs: {
             tabs: [
@@ -101,9 +101,9 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
                 { id: 'rituals', cssClass: 'rituals', label: 'WITCHER.Spell.Rituals' },
                 { id: 'hexes', cssClass: 'hexes', label: 'WITCHER.Spell.Hexes' },
                 { id: 'magicalGift', cssClass: 'magicalGift', label: 'WITCHER.Spell.MagicalGift' },
-                { id: 'focus', cssClass: 'focus', label: 'WITCHER.Actor.focus.name' },
+                { id: 'focus', cssClass: 'focus', label: 'WITCHER.Actor.focus.name' }
             ],
-            initial: 'all',
+            initial: 'all'
         }
     };
 
@@ -141,9 +141,9 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
             ...(await this.document.system.enrichedText())
         };
 
-        context.tabs = this._prepareTabs("primary");
-        context.skillTabs = this._prepareTabs("skillTabs");
-        context.magicTabs = this._prepareTabs("magicTabs");
+        context.tabs = this._prepareTabs('primary');
+        context.skillTabs = this._prepareTabs('skillTabs');
+        context.magicTabs = this._prepareTabs('magicTabs');
 
         return context;
     }
