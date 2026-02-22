@@ -1,0 +1,220 @@
+{
+  "name": "Mounted Control Loss: Personal",
+  "flags": {
+    "better-rolltables": {},
+    "core": {},
+    "scene-packer": {
+      "sourceId": "Compendium.wtrpg-compendium.combat.RollTable.ura8m2lb2H39dvnw",
+      "hash": "195894653f9c4cf01eb7b5bccb638c18d1e41d52"
+    }
+  },
+  "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "2tyZUbhqjxmHQEds",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Personal Effect - Tack Dropped: The reins slip out of your hands. You are now at a -1 to Control checks until you grab them again, which requires a turn.",
+      "name": "",
+      "_key": "!tables.results!KWLoKiOHKXXnq5E4.2tyZUbhqjxmHQEds"
+    },
+    {
+      "_id": "i4n3taLZOfbhwLaS",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Personal Effect - Bucked: Your mount bucks. Make a DC:15 Athletics check. You must succeed to stay in the saddle.",
+      "name": "",
+      "_key": "!tables.results!KWLoKiOHKXXnq5E4.i4n3taLZOfbhwLaS"
+    },
+    {
+      "_id": "t464bMNA1oIhHyfM",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Personal Effect - Bucked: Your mount bucks. Make a DC:18 Athletics check. You must succeed to stay in the saddle. If you fall you are considered prone.",
+      "name": "",
+      "_key": "!tables.results!KWLoKiOHKXXnq5E4.t464bMNA1oIhHyfM"
+    },
+    {
+      "_id": "g0lEhtumnXpkHYbX",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Personal Effect - Bucked: Your mount bucks. Make a DC:20 Athletics check. You must succeed to stay in the saddle. If you fall you are considered prone",
+      "name": "",
+      "_key": "!tables.results!KWLoKiOHKXXnq5E4.g0lEhtumnXpkHYbX"
+    },
+    {
+      "_id": "PzpRoZqfOfF3Q4Cy",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Personal Effect - Bucked: Your mount bucks. Make a DC:25 Athletics check. You must succeed to stay in the saddle. If you fall you are considered prone.",
+      "name": "",
+      "_key": "!tables.results!KWLoKiOHKXXnq5E4.PzpRoZqfOfF3Q4Cy"
+    },
+    {
+      "_id": "h04HqTPf5v1DPHzG",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Personal Effect - Thrown: You have been thrown from your mount. You fly [[1d6/2]] meters from your mount. If you land without hitting anything, roll location and take [[1d6]] damage to that location. If you hit something along the way, roll location and then take a number of d6 damage equal to the number of meters you would have flown. If you hit a living thing, it takes this damage as well.",
+      "name": "",
+      "_key": "!tables.results!KWLoKiOHKXXnq5E4.h04HqTPf5v1DPHzG"
+    },
+    {
+      "_id": "Ul4o2Z6V39ujXoFQ",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Personal Effect - Thrown: You have been thrown from your mount. You fly [[1d6]] meters from your mount. If you land without hitting anything, roll location and take [[1d6]] damage to that location. If you hit something along the way, roll location and then take a number of d6 damage equal to the number of meters you would have flown. If you hit a living thing, it takes this damage as well.",
+      "name": "",
+      "_key": "!tables.results!KWLoKiOHKXXnq5E4.Ul4o2Z6V39ujXoFQ"
+    },
+    {
+      "_id": "YKhMEggwa22NX9sA",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Personal Effect - Thrown: You have been thrown from your mount. You fly [[1d10]] meters from your mount. If you land without hitting anything, roll location and take [[1d6]] damage to that location. If you hit something along the way, roll location and then take a number of d6 damage equal to the number of meters you would have flown. If you hit a living thing, it takes this damage as well.",
+      "name": "",
+      "_key": "!tables.results!KWLoKiOHKXXnq5E4.YKhMEggwa22NX9sA"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 0,
+    "c4glZubSgyUNSkxe": 3,
+    "JEflPFTBB5wpYRms": 3,
+    "dxC9PYhanWf4xPZG": 3
+  },
+  "folder": null,
+  "_stats": {
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "0.107",
+    "coreVersion": "13.351",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "KWLoKiOHKXXnq5E4",
+  "sort": 0,
+  "_key": "!tables!KWLoKiOHKXXnq5E4"
+}

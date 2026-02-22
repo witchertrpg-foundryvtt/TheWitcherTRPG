@@ -1,0 +1,260 @@
+{
+  "name": "Most Influential Friend: Nilfgaard",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "JFQp11xOxJvsDKNM",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: The Cult of the Great Sun - Your greatest influence was the Church. You spent years learning chants and rituals. Gear: A Ceremonial Mask",
+      "name": "",
+      "_key": "!tables.results!8R2zAqegJcbDr4xB.JFQp11xOxJvsDKNM"
+    },
+    {
+      "_id": "VgZylS4pJWSlcJfl",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: An Outcast - Your greatest influence was a social outcast who taught you to always question society. Gear: A Bright Colorful Badge",
+      "name": "",
+      "_key": "!tables.results!8R2zAqegJcbDr4xB.VgZylS4pJWSlcJfl"
+    },
+    {
+      "_id": "TdQRXB7UbEfdV35d",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Count - Your greatest influence was a count who taught you how to lead and instill order. Gear: A Silver Necklace",
+      "name": "",
+      "_key": "!tables.results!8R2zAqegJcbDr4xB.TdQRXB7UbEfdV35d"
+    },
+    {
+      "_id": "Y8g0DWGZfC5wLYWx",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Mage - Your greatest influence was a mage who taught you the importance of order and caution. Gear: An Emblem",
+      "name": "",
+      "_key": "!tables.results!8R2zAqegJcbDr4xB.Y8g0DWGZfC5wLYWx"
+    },
+    {
+      "_id": "XObJWkbk3Q5PzG1h",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Solicitor - Your greatest influence was an imperial detective. You spent a lot of time solving mysteries. Gear: A Magnifying Lens",
+      "name": "",
+      "_key": "!tables.results!8R2zAqegJcbDr4xB.XObJWkbk3Q5PzG1h"
+    },
+    {
+      "_id": "DCx5bDeMkPrAW8Lu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Mage Hunter - Your greatest influence was a mage hunter who taught you to be cautious of magic and mages. Gear: A Ring with Dimeritium",
+      "name": "",
+      "_key": "!tables.results!8R2zAqegJcbDr4xB.DCx5bDeMkPrAW8Lu"
+    },
+    {
+      "_id": "ZchxXpW2jQc3iPVU",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Man At Arms - Your greatest influence was a soldier who shared stories of danger and excitement. Gear: A Trophy of Battle",
+      "name": "",
+      "_key": "!tables.results!8R2zAqegJcbDr4xB.ZchxXpW2jQc3iPVU"
+    },
+    {
+      "_id": "u4lXsez4UGjAY14R",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: An Artisan - Your greatest influence was an artisan who taught you to appreciate skill and precision. Gear: A Trinket You Made",
+      "name": "",
+      "_key": "!tables.results!8R2zAqegJcbDr4xB.u4lXsez4UGjAY14R"
+    },
+    {
+      "_id": "p0WUkxWYGUPh4gEB",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: A Sentient Monster - Your greatest influence was a sentient monster that taught you that not all monsters are evil. Gear: A Strange Totem",
+      "name": "",
+      "_key": "!tables.results!8R2zAqegJcbDr4xB.p0WUkxWYGUPh4gEB"
+    },
+    {
+      "_id": "VSc9ry4JowYa3Rgz",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Most Influential Friend: An Entertainer - Your greatest influence was an entertainer who taught you to express yourself. Gear: A Token from a Fan",
+      "name": "",
+      "_key": "!tables.results!8R2zAqegJcbDr4xB.VSc9ry4JowYa3Rgz"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "8R2zAqegJcbDr4xB",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.KZr760ifhM61v8LL",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!8R2zAqegJcbDr4xB"
+}

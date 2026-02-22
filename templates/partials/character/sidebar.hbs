@@ -1,6 +1,6 @@
 <div class='char-sidebar'>
     <div class="char-image">
-        <img class='witcher-actor-img' src='{{actor.img}}' data-action="editImage" data-edit='img'
+        <img class='witcher-actor-img' src='{{actor.img}}' alt="actor image" data-action="editImage" data-edit='img'
             title='{{actor.name}}' />
         <div class='wound-state' data-tooltip="{{localize 'WITCHER.Actor.woundState'}}">
             {{#if (gte system.derivedStats.hp.value system.derivedStats.hp.unmodifiedMax)}}
@@ -20,6 +20,9 @@
             <h3 class='progress-text'>
                 <input class='progress-input' name='system.derivedStats.hp.value' type='number'
                     value='{{system.derivedStats.hp.value}}' max='99' placeholder='0' data-dtype='Number' />
+                {{#if (gte system.combatEffects.temporaryEffects.temporaryHpSum 1)}}
+                    <span> + {{system.combatEffects.temporaryEffects.temporaryHpSum}}</span>
+                {{/if}}
                 <span>|</span>
                 <span class='progress-total'>{{system.derivedStats.hp.max}}</span>
             </h3>
@@ -60,18 +63,18 @@
             </h3>
         </div>
         {{#if useVerbalCombat}}
-        <div class='progress-container'>
-            <h3 class="progress-header resolve">{{localize system.derivedStats.resolve.label}}</h3>
-            <progress class='resolve-bar' value='{{system.derivedStats.resolve.value}}'
-                max='{{system.derivedStats.resolve.max}}'></progress>
-            <h3 class='progress-text'>
-                <input class='progress-input' name='system.derivedStats.resolve.value' type='number'
-                    value='{{system.derivedStats.resolve.value}}' max='{{system.derivedStats.resolve.max}}' placeholder='0'
-                    data-dtype='Number' />
-                <span>|</span>
-                <span class='progress-total'>{{system.derivedStats.resolve.max}}</span>
-            </h3>
-        </div>
+            <div class='progress-container'>
+                <h3 class="progress-header resolve">{{localize system.derivedStats.resolve.label}}</h3>
+                <progress class='resolve-bar' value='{{system.derivedStats.resolve.value}}'
+                    max='{{system.derivedStats.resolve.max}}'></progress>
+                <h3 class='progress-text'>
+                    <input class='progress-input' name='system.derivedStats.resolve.value' type='number'
+                        value='{{system.derivedStats.resolve.value}}' max='{{system.derivedStats.resolve.max}}'
+                        placeholder='0' data-dtype='Number' />
+                    <span>|</span>
+                    <span class='progress-total'>{{system.derivedStats.resolve.max}}</span>
+                </h3>
+            </div>
         {{/if}}
     </div>
     <div class="optional-stats-section">

@@ -1,10 +1,9 @@
-<form class="{{cssClass}}" autocomplete="off">
+<section class="scrollable">
     {{>"systems/TheWitcherTRPG/templates/partials/item-header.hbs"}}
     <details class="description">
         <summary>{{localize "WITCHER.Item.Description"}}</summary>
         <textarea rows=5 name="system.description">{{item.system.description}}</textarea>
     </details>
-    {{!-- Attributes Tab --}}
     <table class="item-table">
         <tr>
             <th title="{{localize "WITCHER.DamageType.slashing"}} {{localize "WITCHER.Armor.Resistances"}}">
@@ -195,4 +194,4 @@
         </table>
     </div>
     {{>"systems/TheWitcherTRPG/templates/partials/associated-diagram.hbs"}}
-</form>
+</section>

@@ -1,0 +1,234 @@
+{
+  "name": "Elf Profession",
+  "flags": {},
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "txWHzHySbKVqvVJy",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your profession is: Bard",
+      "name": "",
+      "_key": "!tables.results!zEykV0pe3YUlaDTd.txWHzHySbKVqvVJy"
+    },
+    {
+      "_id": "gknOuUjTzhNobwBf",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your profession is: Craftsman",
+      "name": "",
+      "_key": "!tables.results!zEykV0pe3YUlaDTd.gknOuUjTzhNobwBf"
+    },
+    {
+      "_id": "4KzVuwtnuwZv7YtD",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your profession is: Criminal",
+      "name": "",
+      "_key": "!tables.results!zEykV0pe3YUlaDTd.4KzVuwtnuwZv7YtD"
+    },
+    {
+      "_id": "nazai4pjRrZQol7v",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your profession is: Doctor",
+      "name": "",
+      "_key": "!tables.results!zEykV0pe3YUlaDTd.nazai4pjRrZQol7v"
+    },
+    {
+      "_id": "RL96ak8Y8PedDk55",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your profession is: Mage",
+      "name": "",
+      "_key": "!tables.results!zEykV0pe3YUlaDTd.RL96ak8Y8PedDk55"
+    },
+    {
+      "_id": "1ESjbfj4crmoTCGI",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your profession is: Man At Arms",
+      "name": "",
+      "_key": "!tables.results!zEykV0pe3YUlaDTd.1ESjbfj4crmoTCGI"
+    },
+    {
+      "_id": "mq2PwohwHs5RnB5N",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your profession is: Merchant",
+      "name": "",
+      "_key": "!tables.results!zEykV0pe3YUlaDTd.mq2PwohwHs5RnB5N"
+    },
+    {
+      "_id": "sEgnzX8uKdOesEO3",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your profession is: Priest",
+      "name": "",
+      "_key": "!tables.results!zEykV0pe3YUlaDTd.sEgnzX8uKdOesEO3"
+    },
+    {
+      "_id": "TAqa3U3Hkb74BuhC",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your profession is: Noble",
+      "name": "",
+      "_key": "!tables.results!zEykV0pe3YUlaDTd.TAqa3U3Hkb74BuhC"
+    }
+  ],
+  "formula": "1d9",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "zEykV0pe3YUlaDTd",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!zEykV0pe3YUlaDTd"
+}

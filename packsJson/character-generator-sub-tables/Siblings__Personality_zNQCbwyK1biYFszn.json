@@ -1,0 +1,260 @@
+{
+  "name": "Siblings: Personality",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "ciSfEh9nn9LIoeuR",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Shy",
+      "name": "",
+      "_key": "!tables.results!zNQCbwyK1biYFszn.ciSfEh9nn9LIoeuR"
+    },
+    {
+      "_id": "yMqVK3tiav0L8fQk",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Aggressive",
+      "name": "",
+      "_key": "!tables.results!zNQCbwyK1biYFszn.yMqVK3tiav0L8fQk"
+    },
+    {
+      "_id": "j2lDuepiTSG7Pwem",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Kind",
+      "name": "",
+      "_key": "!tables.results!zNQCbwyK1biYFszn.j2lDuepiTSG7Pwem"
+    },
+    {
+      "_id": "YN5dkMg8cg9oF81P",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Strange",
+      "name": "",
+      "_key": "!tables.results!zNQCbwyK1biYFszn.YN5dkMg8cg9oF81P"
+    },
+    {
+      "_id": "d5F4mYU9fpQwiuB1",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Thoughtful",
+      "name": "",
+      "_key": "!tables.results!zNQCbwyK1biYFszn.d5F4mYU9fpQwiuB1"
+    },
+    {
+      "_id": "htXu6vKZbTPVjQtn",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Talkative",
+      "name": "",
+      "_key": "!tables.results!zNQCbwyK1biYFszn.htXu6vKZbTPVjQtn"
+    },
+    {
+      "_id": "woyxU9KOvRD10vrT",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Romantic",
+      "name": "",
+      "_key": "!tables.results!zNQCbwyK1biYFszn.woyxU9KOvRD10vrT"
+    },
+    {
+      "_id": "7F8XPaw6iN19ZxYz",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Stern",
+      "name": "",
+      "_key": "!tables.results!zNQCbwyK1biYFszn.7F8XPaw6iN19ZxYz"
+    },
+    {
+      "_id": "K1FjnYrs9T6QF8lr",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Depressive",
+      "name": "",
+      "_key": "!tables.results!zNQCbwyK1biYFszn.K1FjnYrs9T6QF8lr"
+    },
+    {
+      "_id": "Lc1qzvjevzlL9Lvg",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Immature",
+      "name": "",
+      "_key": "!tables.results!zNQCbwyK1biYFszn.Lc1qzvjevzlL9Lvg"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "zNQCbwyK1biYFszn",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.tsFYQoIe3uxJ2tPX",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!zNQCbwyK1biYFszn"
+}

@@ -1,4 +1,7 @@
-import { applyActiveEffectToActor, applyActiveEffectToActorViaId } from '../scripts/activeEffects/applyActiveEffect.js';
+import {
+    applyActiveEffectToActor,
+    applyActiveEffectToActorViaId
+} from '../scripts/temporaryEffects/applyActiveEffect.js';
 import { applyStatusEffectToActor } from '../scripts/statusEffects/applyStatusEffect.js';
 
 export const registerSocketListeners = function () {

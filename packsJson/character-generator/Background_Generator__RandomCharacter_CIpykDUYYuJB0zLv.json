@@ -1,0 +1,264 @@
+{
+  "name": "Background Generator: RandomCharacter",
+  "flags": {
+    "core": {}
+  },
+  "img": "icons/svg/mystery-man.svg",
+  "description": "<p>Creates a totally random character</p>",
+  "results": [
+    {
+      "_id": "dKmx4ulVwtB0aTze",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your race is: Human",
+      "name": "",
+      "_key": "!tables.results!CIpykDUYYuJB0zLv.dKmx4ulVwtB0aTze"
+    },
+    {
+      "_id": "drJqdmAcZDOONAi1",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/house.svg",
+      "weight": 1,
+      "range": [
+        1,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Background Generator: Human",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen.RollTable.g9I3DpPOi5CfOFBz",
+      "description": "",
+      "_key": "!tables.results!CIpykDUYYuJB0zLv.drJqdmAcZDOONAi1"
+    },
+    {
+      "_id": "XFJTHsfz8Wh23Cug",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your race is: Elf",
+      "name": "",
+      "_key": "!tables.results!CIpykDUYYuJB0zLv.XFJTHsfz8Wh23Cug"
+    },
+    {
+      "_id": "vFOXGLdH7t8pEJ8X",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/oak.svg",
+      "weight": 1,
+      "range": [
+        6,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Background Generator: Elves",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen.RollTable.L8o8Rz85um05VUW4",
+      "description": "",
+      "_key": "!tables.results!CIpykDUYYuJB0zLv.vFOXGLdH7t8pEJ8X"
+    },
+    {
+      "_id": "OjgXqx7OFkIDIrtF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your race is: Dwarf",
+      "name": "",
+      "_key": "!tables.results!CIpykDUYYuJB0zLv.OjgXqx7OFkIDIrtF"
+    },
+    {
+      "_id": "sSTKZFDFEzD0qXZD",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/castle.svg",
+      "weight": 1,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Background Generator: Dwarves",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen.RollTable.PCAssN2Ms7yLzuCv",
+      "description": "",
+      "_key": "!tables.results!CIpykDUYYuJB0zLv.sSTKZFDFEzD0qXZD"
+    },
+    {
+      "_id": "Aoa6abqsATy4bJGX",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your race is: Witcher",
+      "name": "",
+      "_key": "!tables.results!CIpykDUYYuJB0zLv.Aoa6abqsATy4bJGX"
+    },
+    {
+      "_id": "aLWilOjK1d94Rr0Y",
+      "flags": {},
+      "type": "document",
+      "img": "icons/sundries/scrolls/scroll-worn-beige.webp",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background Generator",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen.RollTable.C5d6zkIMvS9gDWEN",
+      "description": "",
+      "_key": "!tables.results!CIpykDUYYuJB0zLv.aLWilOjK1d94Rr0Y"
+    },
+    {
+      "_id": "VLUgM7yOErTcq7LU",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        12,
+        15
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your race is: Halfling",
+      "name": "",
+      "_key": "!tables.results!CIpykDUYYuJB0zLv.VLUgM7yOErTcq7LU"
+    },
+    {
+      "_id": "bemPGrSsRJpsnjWT",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/cave.svg",
+      "weight": 1,
+      "range": [
+        12,
+        15
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Background Generator: Halfling",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen.RollTable.ioZTpiW6W2eVwRiY",
+      "description": "",
+      "_key": "!tables.results!CIpykDUYYuJB0zLv.bemPGrSsRJpsnjWT"
+    }
+  ],
+  "formula": "1d15",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "CIpykDUYYuJB0zLv",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.sc1lvYHmaRJljJzs",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!CIpykDUYYuJB0zLv"
+}

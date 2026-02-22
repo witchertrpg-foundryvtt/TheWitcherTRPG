@@ -1,0 +1,359 @@
+{
+  "name": "Family Status: Elderland",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "<p>Everyone grows up differently. One man may come of age in a palace, as the son of a king, while another toils as a slave in the vineyard of a wealthy man. Your family status can tell a lot about how you grew up and what kind of person you turn out to be.</p>",
+  "results": [
+    {
+      "_id": "5nnfEB4exhLKU2mN",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Aristocracy - You grew up in a palace and were constantly reminded of the glory of the past. You were expected to live up to the legacy. Starting Gear: Paper of Nobility (+2 Reputation)",
+      "name": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.5nnfEB4exhLKU2mN"
+    },
+    {
+      "_id": "LiQWRDw0kOEenPPp",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.eATe1gk2PaKG1K9r",
+      "description": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.LiQWRDw0kOEenPPp"
+    },
+    {
+      "_id": "VlrPIguiOBBjm4bm",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Noble Warrior - You grew up as a noble warrior’s child, expected to rise to your family’s reputation and to never dishonor your heritage. Starting Gear: Personal Heraldry (+1 Reputation)",
+      "name": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.VlrPIguiOBBjm4bm"
+    },
+    {
+      "_id": "vBcbI8JHB2iuiCQO",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.eATe1gk2PaKG1K9r",
+      "description": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.vBcbI8JHB2iuiCQO"
+    },
+    {
+      "_id": "IsRY79j4twFs8apC",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Merchants - You grew up among traveling merchants. Life was difficult sometimes but non-human crafts are always valuable. Starting Gear: 2 Acquaintances",
+      "name": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.IsRY79j4twFs8apC"
+    },
+    {
+      "_id": "QopwFO4hi11CVLBs",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.eATe1gk2PaKG1K9r",
+      "description": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.QopwFO4hi11CVLBs"
+    },
+    {
+      "_id": "d6KS3R5eEDFIeMmw",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Scribe Family - You grew up as the child of scribes, recording and protecting as much elderfolk history as possible. Starting Gear: A Chronicle (+1 Education)",
+      "name": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.d6KS3R5eEDFIeMmw"
+    },
+    {
+      "_id": "b9GGs4YL9DwKfbkX",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.eATe1gk2PaKG1K9r",
+      "description": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.b9GGs4YL9DwKfbkX"
+    },
+    {
+      "_id": "BPTQOqaS1Ccdyifj",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Entertainers - You grew up singing songs and performing plays. You worked backstage, helped write songs, and fixed instruments. Starting Gear: 1 Instrument &amp; 1 Friend",
+      "name": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.BPTQOqaS1Ccdyifj"
+    },
+    {
+      "_id": "LG0Lavg7kvcwJdo1",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.eATe1gk2PaKG1K9r",
+      "description": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.LG0Lavg7kvcwJdo1"
+    },
+    {
+      "_id": "HMOPPekiY08124lE",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Artisan Family - You grew up in a family of artisans, visiting ancient palaces for inspiration and spending hours every day on projects. Starting Gear: 3 Common Diagrams/Formulae",
+      "name": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.HMOPPekiY08124lE"
+    },
+    {
+      "_id": "RyojgGJJe81WldwQ",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        6,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.eATe1gk2PaKG1K9r",
+      "description": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.RyojgGJJe81WldwQ"
+    },
+    {
+      "_id": "AvyV1RxSjBFrzpUx",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Lowborn Family - You grew up in a lowborn family, tending to the manors of others or working small jobs around your home city. Starting Gear: A Lucky Token (+1 Luck)",
+      "name": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.AvyV1RxSjBFrzpUx"
+    },
+    {
+      "_id": "KJ1xz0E7zcKtO4Az",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.eATe1gk2PaKG1K9r",
+      "description": "",
+      "_key": "!tables.results!GOp8mGE4MiGaqjk2.KJ1xz0E7zcKtO4Az"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "GOp8mGE4MiGaqjk2",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.JOanvgczxWszmtKQ",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!GOp8mGE4MiGaqjk2"
+}

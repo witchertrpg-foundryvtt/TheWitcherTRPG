@@ -1,0 +1,260 @@
+{
+  "name": "Origin: Northern Kingdom",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "8UG84FSvmBKRmwHI",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Redania (+1 Education)",
+      "name": "",
+      "_key": "!tables.results!u0EwVGZtkHA4Knoa.8UG84FSvmBKRmwHI"
+    },
+    {
+      "_id": "YxO7ky9eSVJUOI3N",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Kaedwen (+1 Endurance)",
+      "name": "",
+      "_key": "!tables.results!u0EwVGZtkHA4Knoa.YxO7ky9eSVJUOI3N"
+    },
+    {
+      "_id": "Qch5z1vn6YQagvCO",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Temeria (+1 Charisma)",
+      "name": "",
+      "_key": "!tables.results!u0EwVGZtkHA4Knoa.Qch5z1vn6YQagvCO"
+    },
+    {
+      "_id": "2zCNPnCinG46jtWE",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Aedirn (+1 Crafting)",
+      "name": "",
+      "_key": "!tables.results!u0EwVGZtkHA4Knoa.2zCNPnCinG46jtWE"
+    },
+    {
+      "_id": "zr9L8SkmKgKC3FJH",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Lyria &amp; Rivia (+1 Resist Coercion)",
+      "name": "",
+      "_key": "!tables.results!u0EwVGZtkHA4Knoa.zr9L8SkmKgKC3FJH"
+    },
+    {
+      "_id": "Fk8gK60UrUNEvhTk",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Kovir &amp; Poviss (+1 Business)",
+      "name": "",
+      "_key": "!tables.results!u0EwVGZtkHA4Knoa.Fk8gK60UrUNEvhTk"
+    },
+    {
+      "_id": "M2HENBWyZLf6ss7y",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Skellige (+1 Courage)",
+      "name": "",
+      "_key": "!tables.results!u0EwVGZtkHA4Knoa.M2HENBWyZLf6ss7y"
+    },
+    {
+      "_id": "IpJb93nRxSWccCmT",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Cidaris (+1 Sailing)",
+      "name": "",
+      "_key": "!tables.results!u0EwVGZtkHA4Knoa.IpJb93nRxSWccCmT"
+    },
+    {
+      "_id": "jCsO4hX1EfeRlY8p",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Verden (+1 Wilderness Survival)",
+      "name": "",
+      "_key": "!tables.results!u0EwVGZtkHA4Knoa.jCsO4hX1EfeRlY8p"
+    },
+    {
+      "_id": "BJSnWUWuLLZdzDQF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Cintra (+1 Human Perception)",
+      "name": "",
+      "_key": "!tables.results!u0EwVGZtkHA4Knoa.BJSnWUWuLLZdzDQF"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "u0EwVGZtkHA4Knoa",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.U27SlKsxbIzCfkOP",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!u0EwVGZtkHA4Knoa"
+}

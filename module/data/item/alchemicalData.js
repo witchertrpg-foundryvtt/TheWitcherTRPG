@@ -1,25 +1,27 @@
-import CommonItemData from "./commonItemData.js";
-import consumable from "./templates/consumableData.js";
+import CommonItemData from './commonItemData.js';
+import consumable from './templates/consumableData.js';
 
 const fields = foundry.data.fields;
 
 export default class AlchemicalData extends CommonItemData {
+    static defineSchema() {
+        const commonData = super.defineSchema();
 
-  static defineSchema() {
+        return {
+            // Using destructuring to effectively append our additional data here
+            ...commonData,
+            type: new fields.StringField({ initial: '' }),
+            avail: new fields.StringField({ initial: '' }),
 
-    const commonData = super.defineSchema();
+            ...consumable(),
 
-    return {
-      // Using destructuring to effectively append our additional data here
-      ...commonData,
-      type: new fields.StringField({ initial: '' }),
-      avail: new fields.StringField({ initial: '' }),
-
-      ...consumable(),
-
-      effect: new fields.StringField({ initial: '' }),
-      time: new fields.StringField({ initial: '' }),
-      toxicity: new fields.StringField({ initial: '' }),
+            effect: new fields.StringField({ initial: '' }),
+            time: new fields.StringField({ initial: '' }),
+            toxicity: new fields.StringField({ initial: '' })
+        };
     }
-  }
+
+    get canHaveTemporaryItemImprovement() {
+        return true;
+    }
 }

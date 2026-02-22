@@ -1,0 +1,247 @@
+{
+  "name": "Background Generator: Human",
+  "flags": {
+    "better-rolltables": {
+      "table-type": "none",
+      "loot-amount-key": ""
+    },
+    "core": {}
+  },
+  "img": "icons/svg/house.svg",
+  "description": "<p>In the world of The Witcher your early life can be very important. Not only does it tell you what land you grew up in, but also what kind of environment you lived in, what the people around you were like, and even what skills you learned. This is also the point at which you decide which of the three sides of the Third Northern War you hail from. This may not reflect what side you are on now, but it will tell you what you grew up knowing about the conflict and what people will expect of you.</p>",
+  "results": [
+    {
+      "_id": "rGAJedctF1vHUm0t",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Northern Kingdom Origin:",
+      "name": "",
+      "_key": "!tables.results!g9I3DpPOi5CfOFBz.rGAJedctF1vHUm0t"
+    },
+    {
+      "_id": "0dQ3NR8YsZjPzHul",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Origin: Northern Kingdom",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.u0EwVGZtkHA4Knoa",
+      "description": "",
+      "_key": "!tables.results!g9I3DpPOi5CfOFBz.0dQ3NR8YsZjPzHul"
+    },
+    {
+      "_id": "bgm46MMbKjQdbD6L",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family and Parents: Northern",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.xAVQucslVR12q2kc",
+      "description": "",
+      "_key": "!tables.results!g9I3DpPOi5CfOFBz.bgm46MMbKjQdbD6L"
+    },
+    {
+      "_id": "CqIZCaJZUj1KOpiU",
+      "flags": {},
+      "type": "document",
+      "img": "icons/sundries/flags/banner-worn-blue.webp",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Siblings: Northern",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.rLxCo0JWiGvTlapE",
+      "description": "",
+      "_key": "!tables.results!g9I3DpPOi5CfOFBz.CqIZCaJZUj1KOpiU"
+    },
+    {
+      "_id": "IaiOuyj71oLzU7JG",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Human Profession",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.ZSSaEVLn53BVQ77b",
+      "description": "",
+      "_key": "!tables.results!g9I3DpPOi5CfOFBz.IaiOuyj71oLzU7JG"
+    },
+    {
+      "_id": "obUPNuwQ20fRhtom",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Nilfgaard Origin:",
+      "name": "",
+      "_key": "!tables.results!g9I3DpPOi5CfOFBz.obUPNuwQ20fRhtom"
+    },
+    {
+      "_id": "NQvQKUljwbGcZKIk",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Origin: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.DAfZ8BGKmclyyFYc",
+      "description": "",
+      "_key": "!tables.results!g9I3DpPOi5CfOFBz.NQvQKUljwbGcZKIk"
+    },
+    {
+      "_id": "L1KBkf196CGL9GXv",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family and Parents: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.5OcHT6WrJ8pL9cYp",
+      "description": "",
+      "_key": "!tables.results!g9I3DpPOi5CfOFBz.L1KBkf196CGL9GXv"
+    },
+    {
+      "_id": "NUQQD2rE4MFniN0C",
+      "flags": {},
+      "type": "document",
+      "img": "icons/sundries/flags/banner-yellow.webp",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Siblings: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.Vw40FuwmhTGp7Q4V",
+      "description": "",
+      "_key": "!tables.results!g9I3DpPOi5CfOFBz.NUQQD2rE4MFniN0C"
+    }
+  ],
+  "formula": "1d2",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "g9I3DpPOi5CfOFBz",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.o9e4HY1pBQhIkEr5",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!g9I3DpPOi5CfOFBz"
+}

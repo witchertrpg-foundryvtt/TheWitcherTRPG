@@ -1,0 +1,173 @@
+{
+  "name": "Complex Critical",
+  "flags": {
+    "better-rolltables": {},
+    "core": {},
+    "scene-packer": {
+      "sourceId": "Compendium.wtrpg-compendium.combat.RollTable.TFET9fOHKCPcaCYP",
+      "hash": "664335aaeab8e9386a7f8bb96dba29e35d160451"
+    }
+  },
+  "img": "icons/commodities/bones/bone-joint-tan.webp",
+  "description": "",
+  "results": [
+    {
+      "_id": "md13gU5GXWqdSo3b",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Fractured Leg - The blow fractures your leg. You take a -3 to SPD, Dodge/Escape, and Athletics. | Stabilized: You take a -2 to SPD, Dodge/Escape, and Athletics. | Treated: -1 to SPD, Dodge/ Escape, and Athletics.",
+      "name": "",
+      "_key": "!tables.results!p3EAPCnu8RDawpWR.md13gU5GXWqdSo3b"
+    },
+    {
+      "_id": "Kg6cLOw7bcrhf9zi",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Fractured Arm - The blow fractures your arm. You take a -3 to actions with that arm. | Stabilized: You take a -2 to actions with that arm. | Treated: You take a -1 to actions with that arm.",
+      "name": "",
+      "_key": "!tables.results!p3EAPCnu8RDawpWR.Kg6cLOw7bcrhf9zi"
+    },
+    {
+      "_id": "Aupjx9gqdL7IdDsG",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Broken Ribs - The blow breaks your ribs, causing immense pain when you bend and strain. Take a -2 to BODY and a -1 to REF and DEX. | Stabilized: You are at a -1 to BODY and REF. | Treated: You are at a -1 to BODY.",
+      "name": "",
+      "_key": "!tables.results!p3EAPCnu8RDawpWR.Aupjx9gqdL7IdDsG"
+    },
+    {
+      "_id": "dcTrmwGr6QqbwArw",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ruptured Spleen - A tear in your spleen begins bleeding profusely, making you woozy. Make a Stun save every 5 rounds. This wound induces bleeding. | Stabilized: You must make a Stun save every 10 Rounds. | Treated: You take a -2 to Stun.",
+      "name": "",
+      "_key": "!tables.results!p3EAPCnu8RDawpWR.dcTrmwGr6QqbwArw"
+    },
+    {
+      "_id": "8BDa9D8PpydHDt9F",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Lost Teeth - The blow knocked out some teeth. Roll 1d10 to see how many teeth are lost. You take a -3 to magical skills and Verbal Combat. | Stabilized: You take a -2 to magical skills and Verbal Combat. | Treated: You take a -1 to magical skills and Verbal Combat.",
+      "name": "",
+      "_key": "!tables.results!p3EAPCnu8RDawpWR.8BDa9D8PpydHDt9F"
+    },
+    {
+      "_id": "H0XA02QcwUBIRRWa",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Minor Head Wound - The blow rattled your brain and caused some internal bleeding. It’s hard to think straight. You take a -1 to INT, WILL, and STUN. | Stabilized: You are at a -1 to INT and WILL. | Treated: You are at a -1 to WILL.",
+      "name": "",
+      "_key": "!tables.results!p3EAPCnu8RDawpWR.H0XA02QcwUBIRRWa"
+    }
+  ],
+  "formula": "2d6",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 0,
+    "c4glZubSgyUNSkxe": 3,
+    "dxC9PYhanWf4xPZG": 3
+  },
+  "folder": null,
+  "_stats": {
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "0.107",
+    "coreVersion": "13.351",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "p3EAPCnu8RDawpWR",
+  "sort": 0,
+  "_key": "!tables!p3EAPCnu8RDawpWR"
+}

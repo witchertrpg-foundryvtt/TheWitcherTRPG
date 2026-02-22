@@ -1,10 +1,11 @@
 <section class="tab {{tabs.magic.cssClass}} scrollable standard-form" data-group="primary" data-tab="magic">
     <nav class="sheet-tabs tabs">
-    {{#each magicTabs as |tab|}}
-        <a class="{{tab.cssClass}}" data-action="tab" data-group="magicTabs" data-tab="{{tab.id}}">{{localize tab.label}}</a>
-    {{/each}}
+        {{#each magicTabs as |tab|}}
+            <a class="{{tab.cssClass}}" data-action="tab" data-group="magicTabs"
+                data-tab="{{tab.id}}">{{localize tab.label}}</a>
+        {{/each}}
     </nav>
-    <section class="tab active" data-group="magicTabs" data-tab="all">
+    <section class="tab {{magicTabs.all.cssClass}}" data-group="magicTabs" data-tab="all">
         <div class="spell-section">
             {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=noviceSpells itemType='spell' spellType="spellNovice" header=(concat (localize "WITCHER.Spell.Novice") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
 
@@ -20,7 +21,7 @@
             {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=magicalgift itemType='spell' spellType="magicalgift" header=(localize "WITCHER.Spell.MagicalGift")}}
         </div>
     </section>
-    <section class="tab spell-section" data-group="magicTabs" data-tab="magic">
+    <section class="tab spell-section {{magicTabs.magic.cssClass}}" data-group="magicTabs" data-tab="magic">
         {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=noviceSpells itemType='spell' spellType="spellNovice" header=(concat (localize "WITCHER.Spell.Novice") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
 
         {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=journeymanSpells itemType='spell' spellType="spellJourneyman" header=(concat (localize "WITCHER.Spell.Journeyman") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
@@ -28,19 +29,19 @@
         {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=masterSpells itemType='spell' spellType="spellMaster" header=(concat (localize "WITCHER.Spell.Master") " - " (localize "WITCHER.Spell.Spells") ", " (localize "WITCHER.Spell.Invocations") ", " (localize "WITCHER.Spell.Signs"))}}
     </section>
 
-    <section class="tab magic-section" data-group="magicTabs" data-tab="rituals">
+    <section class="tab magic-section {{magicTabs.rituals.cssClass}}" data-group="magicTabs" data-tab="rituals">
         {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=rituals itemType='ritual' header=(localize "WITCHER.Spell.Rituals")}}
     </section>
 
-    <section class="tab magic-section" data-group="magicTabs" data-tab="hexes">
+    <section class="tab magic-section {{magicTabs.hexes.cssClass}}" data-group="magicTabs" data-tab="hexes">
         {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=hexes itemType='hex' header=(localize "WITCHER.Spell.Hexes")}}
     </section>
 
-    <section class="tab magic-section" data-group="magicTabs" data-tab="magicalGift">
+    <section class="tab magic-section {{magicTabs.magicalGift.cssClass}}" data-group="magicTabs" data-tab="magicalGift">
         {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/spell-type-list.hbs" spells=magicalgift itemType='spell' spellType="magicalgift" header=(localize "WITCHER.Spell.MagicalGift")}}
     </section>
 
-    <div class="tab magic-info" data-group="magicTabs" data-tab="focus">
+    <div class="tab magic-info {{magicTabs.focus.cssClass}}" data-group="magicTabs" data-tab="focus">
         <div class="value-max-stat-display">
             <label>{{localize "WITCHER.StVigor"}}</label>
             <input class="focus-value" name="system.derivedStats.vigor.unmodifiedMax" type="number"

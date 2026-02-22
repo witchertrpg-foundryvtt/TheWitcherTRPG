@@ -1,0 +1,218 @@
+{
+  "name": "Witcher Background: How Did Your Trials Go? -4",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        -3,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "How Did Your Trials Go? - Nearly Fatal (Additional -1 EMP &amp; -1 BODY) The Trial of the Grasses nearly destroyed your body. Though you survived the process, your body and mind were damaged permanently.",
+      "name": "",
+      "_key": "!tables.results!sY3qw9UfVyx1l9BF.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "zGbAd12JQAx4PVSw",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        -3,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: What Was Your Most Important Event",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.34nU6OswdgAyMC6p",
+      "description": "",
+      "_key": "!tables.results!sY3qw9UfVyx1l9BF.zGbAd12JQAx4PVSw"
+    },
+    {
+      "_id": "oKZeEBIq2FLMNk2e",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "How Did Your Trials Go? - Poorly Accepted (Additional-1 EMP) The Trial of the Grasses went poorly and the witchers in charge of mutation weren’t entirely sure you would make it. You survived, but not without mental scars.",
+      "name": "",
+      "_key": "!tables.results!sY3qw9UfVyx1l9BF.oKZeEBIq2FLMNk2e"
+    },
+    {
+      "_id": "inn7wXheSB0lUHsl",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: What Was Your Most Important Event",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.34nU6OswdgAyMC6p",
+      "description": "",
+      "_key": "!tables.results!sY3qw9UfVyx1l9BF.inn7wXheSB0lUHsl"
+    },
+    {
+      "_id": "kQX7ZeIIWKy5yTPF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "How Did Your Trials Go? - Passable Mutations (No Modifiers) The Trial of the Grasses went well. You passed into the ranks of witchers with nothing more than memories of horrible pain.",
+      "name": "",
+      "_key": "!tables.results!sY3qw9UfVyx1l9BF.kQX7ZeIIWKy5yTPF"
+    },
+    {
+      "_id": "kStCm5qxgqcW7pCW",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        4,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: What Was Your Most Important Event",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.34nU6OswdgAyMC6p",
+      "description": "",
+      "_key": "!tables.results!sY3qw9UfVyx1l9BF.kStCm5qxgqcW7pCW"
+    },
+    {
+      "_id": "36ROPw9QWjYWmpBV",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        14
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "How Did Your Trials Go? - Extra Mutations (Additional +1 EMP &amp; +1 DEX) Your body was very receptive to the Trial of the Grasses and you had extra mutations applied to you. Your body handled it well, and all of the pain paid off in the end.",
+      "name": "",
+      "_key": "!tables.results!sY3qw9UfVyx1l9BF.36ROPw9QWjYWmpBV"
+    },
+    {
+      "_id": "0NkBgX2JOys4dG8c",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        10,
+        14
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Background: What Was Your Most Important Event",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.34nU6OswdgAyMC6p",
+      "description": "",
+      "_key": "!tables.results!sY3qw9UfVyx1l9BF.0NkBgX2JOys4dG8c"
+    }
+  ],
+  "formula": "1d10-4",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "sY3qw9UfVyx1l9BF",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.ub0OgKJtPKbMpWUS",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!sY3qw9UfVyx1l9BF"
+}

@@ -1,0 +1,359 @@
+{
+  "name": "Family Status: Nilfgaard",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "<p>Everyone grows up differently. One man may come of age in a palace, as the son of a king, while another toils as a slave in the vineyard of a wealthy man. Your family status can tell a lot about how you grew up and what kind of person you turn out to be.</p>",
+  "results": [
+    {
+      "_id": "5nnfEB4exhLKU2mN",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Aristocracy - You grew up in a manor, training to be well-versed in the world of the court. The luxury was just your incentive. Starting Gear: Paper of Nobility (+2 Reputation)",
+      "name": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.5nnfEB4exhLKU2mN"
+    },
+    {
+      "_id": "YKSa1ZWzSmILymvX",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.8R2zAqegJcbDr4xB",
+      "description": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.YKSa1ZWzSmILymvX"
+    },
+    {
+      "_id": "VlrPIguiOBBjm4bm",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: High Clergy - You were raised among the clergy of the Great Sun. You grew up pious and always aware that the Church would guide you. Starting Gear: A Holy Symbol (+1 Courage)",
+      "name": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.VlrPIguiOBBjm4bm"
+    },
+    {
+      "_id": "lisAkdcM9LZzCIFB",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.8R2zAqegJcbDr4xB",
+      "description": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.lisAkdcM9LZzCIFB"
+    },
+    {
+      "_id": "IsRY79j4twFs8apC",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Knights - You grew up knowing that your duty was to the Emperor, and that all of your luxury was a reward for your eventual service. Starting Gear: Personal Heraldry (+1 Reputation)",
+      "name": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.IsRY79j4twFs8apC"
+    },
+    {
+      "_id": "bjZwAmuqXpNKHjAg",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.8R2zAqegJcbDr4xB",
+      "description": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.bjZwAmuqXpNKHjAg"
+    },
+    {
+      "_id": "d6KS3R5eEDFIeMmw",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Artisan Family - You grew up in an artisan’s shop, learning to craft products for sale around the world. You learned the value of quality. Starting Gear: 3 Common Diagrams/Formulae",
+      "name": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.d6KS3R5eEDFIeMmw"
+    },
+    {
+      "_id": "vZecLds1BUXGxeQg",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.8R2zAqegJcbDr4xB",
+      "description": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.vZecLds1BUXGxeQg"
+    },
+    {
+      "_id": "BPTQOqaS1Ccdyifj",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Merchant Family - You grew up selling products all around the Empire. You saw all kinds exotic of goods from all around the world. Starting Gear: 2 Acquaintances",
+      "name": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.BPTQOqaS1Ccdyifj"
+    },
+    {
+      "_id": "srTNN36Ce2HHSisB",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.8R2zAqegJcbDr4xB",
+      "description": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.srTNN36Ce2HHSisB"
+    },
+    {
+      "_id": "HMOPPekiY08124lE",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Born into Servitude - You were born into servitude and lived in simple quarters. You owned very little and toiled often. Starting Gear: A trained bird or serpent",
+      "name": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.HMOPPekiY08124lE"
+    },
+    {
+      "_id": "ye32sHyFgcEeHX1J",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        6,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.8R2zAqegJcbDr4xB",
+      "description": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.ye32sHyFgcEeHX1J"
+    },
+    {
+      "_id": "AvyV1RxSjBFrzpUx",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Status: Peasant Family - You grew up on one of the thousands of farms across the Empire. You had little to your name but life was simple. Starting Gear: A Lucky Token (+1 Luck)",
+      "name": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.AvyV1RxSjBFrzpUx"
+    },
+    {
+      "_id": "6jOqPsAISSRQJWuL",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Most Influential Friend: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.8R2zAqegJcbDr4xB",
+      "description": "",
+      "_key": "!tables.results!6WXA7KAOHjeqCCRn.6jOqPsAISSRQJWuL"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "6WXA7KAOHjeqCCRn",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.AZM9P0e4192Tcf5m",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!6WXA7KAOHjeqCCRn"
+}

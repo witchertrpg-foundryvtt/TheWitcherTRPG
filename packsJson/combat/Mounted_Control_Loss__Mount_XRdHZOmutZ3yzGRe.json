@@ -1,0 +1,220 @@
+{
+  "name": "Mounted Control Loss: Mount",
+  "flags": {
+    "better-rolltables": {},
+    "core": {},
+    "scene-packer": {
+      "sourceId": "Compendium.wtrpg-compendium.combat.RollTable.XlxN7Dytx84BxN6X",
+      "hash": "a1bec211d9710a5278db6effcb71bdb38523f6d5"
+    }
+  },
+  "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "2tyZUbhqjxmHQEds",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Mount Effect - Refusal: Your mount simply doesn’t to do what you want it to do. You must make another Control check next round.",
+      "name": "",
+      "_key": "!tables.results!XRdHZOmutZ3yzGRe.2tyZUbhqjxmHQEds"
+    },
+    {
+      "_id": "i4n3taLZOfbhwLaS",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Mount Effect - Spooked: Your mount startles and rears. You must make an Athletics check (DC:16) to stay on its back and an Animal Handling check (DC:18) to calm it down before you can keep riding.",
+      "name": "",
+      "_key": "!tables.results!XRdHZOmutZ3yzGRe.i4n3taLZOfbhwLaS"
+    },
+    {
+      "_id": "t464bMNA1oIhHyfM",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Mount Effect - Stumble: Your mount stumbles and must make a DC:14 Athletics check to stay standing.",
+      "name": "",
+      "_key": "!tables.results!XRdHZOmutZ3yzGRe.t464bMNA1oIhHyfM"
+    },
+    {
+      "_id": "g0lEhtumnXpkHYbX",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Mount Effect - Stumble: Your mount stumbles and must make a DC:18 Athletics check to stay standing.",
+      "name": "",
+      "_key": "!tables.results!XRdHZOmutZ3yzGRe.g0lEhtumnXpkHYbX"
+    },
+    {
+      "_id": "PzpRoZqfOfF3Q4Cy",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Mount Effect - Trip: Your mount trips and must make a DC:15 Athletics check or fall and take [[1d10]] points of damage to one randomly rolled leg. Roll 1d10 = [[1d10]]. 1-3: Front Left, 4-6: Front Right, 7-8: Back Left, 9-10: Back Right.",
+      "name": "",
+      "_key": "!tables.results!XRdHZOmutZ3yzGRe.PzpRoZqfOfF3Q4Cy"
+    },
+    {
+      "_id": "h04HqTPf5v1DPHzG",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Mount Effect - Trip: Your mount trips and must make a DC:20 Athletics check or fall and take [[2d10]] points of damage to one randomly rolled leg. Roll 1d10 = [[1d10]]. 1-3: Front Left, 4-6: Front Right, 7-8: Back Left, 9-10: Back Right.",
+      "name": "",
+      "_key": "!tables.results!XRdHZOmutZ3yzGRe.h04HqTPf5v1DPHzG"
+    },
+    {
+      "_id": "Ul4o2Z6V39ujXoFQ",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Mount Effect - Fall: Your mount falls over. If you are on it or within a meter of it, make a DC:18 Athletics check to avoid being landed on. If you fail, your mount falls on you. Roll a random location to see what part of you falls under the horse, then take [[2d10]] damage to that location. Your horse takes this as torso damage. After this you are trapped under your mount. You can attempt a Control check the next turn to get it off of you.",
+      "name": "",
+      "_key": "!tables.results!XRdHZOmutZ3yzGRe.Ul4o2Z6V39ujXoFQ"
+    },
+    {
+      "_id": "YKhMEggwa22NX9sA",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mounted Control Loss Mount Effect - Faint: Your mount faints from the sheer stress of the situation. If you are on it or within a meter of it, make a DC:18 Athletics check to avoid being landed on. If you fail, your mount falls on you. Roll a random location to see what part of you falls under the horse and take [[2d10]] damage to that location. Your horse takes this as torso damage. After this you are trapped under your mount. Your mount must make a Stun save each round to come to.",
+      "name": "",
+      "_key": "!tables.results!XRdHZOmutZ3yzGRe.YKhMEggwa22NX9sA"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 0,
+    "c4glZubSgyUNSkxe": 3,
+    "JEflPFTBB5wpYRms": 3,
+    "dxC9PYhanWf4xPZG": 3
+  },
+  "folder": null,
+  "_stats": {
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "0.107",
+    "coreVersion": "13.351",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "XRdHZOmutZ3yzGRe",
+  "sort": 0,
+  "_key": "!tables!XRdHZOmutZ3yzGRe"
+}

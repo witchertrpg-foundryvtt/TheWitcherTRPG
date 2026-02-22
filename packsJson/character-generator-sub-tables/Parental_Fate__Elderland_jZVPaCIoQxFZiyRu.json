@@ -1,0 +1,524 @@
+{
+  "name": "Parental Fate: Elderland",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "WLL4GH2QBfngXygQ",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate: One or more of your parents died in one of the Northern Wars. He may have already been in the military or he may have been conscripted into service during that war.",
+      "name": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.WLL4GH2QBfngXygQ"
+    },
+    {
+      "_id": "k0AliUujlhUKLN0G",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.GOp8mGE4MiGaqjk2",
+      "description": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.k0AliUujlhUKLN0G"
+    },
+    {
+      "_id": "uxEsX6eym5hKf3yX",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Which Parent",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.7fAXpaJLFwlWxkWX",
+      "description": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.uxEsX6eym5hKf3yX"
+    },
+    {
+      "_id": "4h4Sw8Y1i17AihjX",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate: One or more of your parents were poisoned. This may have been the work of a professional rival, or it may have been to get your parents out of the way.",
+      "name": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.4h4Sw8Y1i17AihjX"
+    },
+    {
+      "_id": "ITgHqKEQCar6G6Et",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.GOp8mGE4MiGaqjk2",
+      "description": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.ITgHqKEQCar6G6Et"
+    },
+    {
+      "_id": "5VXUJzVqGqVahzfy",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate: The secret police took your parent or parents for ‘questioning.’ The next week their bodies were found hung in the streets of the city",
+      "name": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.5VXUJzVqGqVahzfy"
+    },
+    {
+      "_id": "ONmmUjbSaveNjrSy",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.GOp8mGE4MiGaqjk2",
+      "description": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.ONmmUjbSaveNjrSy"
+    },
+    {
+      "_id": "oQQUBuaPK1pTABqq",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate: One or more of your parents were killed by a rogue mage. Most likely they tried to turn the mage in question in to the Empire and paid the price.",
+      "name": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.oQQUBuaPK1pTABqq"
+    },
+    {
+      "_id": "R36SexxMtQ1y3Mct",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.GOp8mGE4MiGaqjk2",
+      "description": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.R36SexxMtQ1y3Mct"
+    },
+    {
+      "_id": "SdTrfAZtLN9cLgew",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate: One or more of your parents were imprisoned for unlawful magic. Maybe they actually commited the crime or maybe it was a setup.",
+      "name": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.SdTrfAZtLN9cLgew"
+    },
+    {
+      "_id": "fbee84iwrEvwp5A7",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.GOp8mGE4MiGaqjk2",
+      "description": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.fbee84iwrEvwp5A7"
+    },
+    {
+      "_id": "7yYGp4SSAi9ymCGL",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate: One or more of your parents were exiled to the Korath Desert. Likely they committed a major crime but killing them would cause trouble.",
+      "name": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.7yYGp4SSAi9ymCGL"
+    },
+    {
+      "_id": "AErFz1jut68I9mna",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.GOp8mGE4MiGaqjk2",
+      "description": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.AErFz1jut68I9mna"
+    },
+    {
+      "_id": "ts84cRjou8LMlLD4",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate: One or more of your parents were cursed by a mage. The mage likely had a vendetta against them.",
+      "name": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.ts84cRjou8LMlLD4"
+    },
+    {
+      "_id": "fb47S0gLn0cLA2eD",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.GOp8mGE4MiGaqjk2",
+      "description": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.fb47S0gLn0cLA2eD"
+    },
+    {
+      "_id": "LEz6AVGxGmTiJS5K",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate: Your parents simply left you one day. You may not even know why they did it. One day your parents just disappeared.",
+      "name": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.LEz6AVGxGmTiJS5K"
+    },
+    {
+      "_id": "98Ry4FUdzahLh10P",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.GOp8mGE4MiGaqjk2",
+      "description": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.98Ry4FUdzahLh10P"
+    },
+    {
+      "_id": "X4C3zlEyKnAX96jL",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate: One or more of your parents were enslaved. They either commited a crime against the Empire or were set up by a rival.",
+      "name": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.X4C3zlEyKnAX96jL"
+    },
+    {
+      "_id": "P2j9J9NLbtkzp04u",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.GOp8mGE4MiGaqjk2",
+      "description": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.P2j9J9NLbtkzp04u"
+    },
+    {
+      "_id": "XEB17msQM6PA4Wl4",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Parental Fate: One or more of your parents were sent to the North as double agents. You likely don’t even know where they are now, but they’re serving the Emperor.",
+      "name": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.XEB17msQM6PA4Wl4"
+    },
+    {
+      "_id": "uW7X6oeT6MO1gf6G",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.GOp8mGE4MiGaqjk2",
+      "description": "",
+      "_key": "!tables.results!jZVPaCIoQxFZiyRu.uW7X6oeT6MO1gf6G"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "jZVPaCIoQxFZiyRu",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.wgUfc4KauY2AF8cH",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!jZVPaCIoQxFZiyRu"
+}

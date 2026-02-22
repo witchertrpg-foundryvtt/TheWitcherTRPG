@@ -1,0 +1,260 @@
+{
+  "name": "Nilfgaard Vassal Origin",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "8UG84FSvmBKRmwHI",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Vicovaro (+1 Education)",
+      "name": "",
+      "_key": "!tables.results!IEPMPHNGahrfyCWI.8UG84FSvmBKRmwHI"
+    },
+    {
+      "_id": "YxO7ky9eSVJUOI3N",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Angren (+1 Wilderness Survival)",
+      "name": "",
+      "_key": "!tables.results!IEPMPHNGahrfyCWI.YxO7ky9eSVJUOI3N"
+    },
+    {
+      "_id": "Qch5z1vn6YQagvCO",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Nazair (+1 Brawling)",
+      "name": "",
+      "_key": "!tables.results!IEPMPHNGahrfyCWI.Qch5z1vn6YQagvCO"
+    },
+    {
+      "_id": "2zCNPnCinG46jtWE",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mettina (+1 Ride)",
+      "name": "",
+      "_key": "!tables.results!IEPMPHNGahrfyCWI.2zCNPnCinG46jtWE"
+    },
+    {
+      "_id": "zr9L8SkmKgKC3FJH",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Mag Turga (+1 Endurance)",
+      "name": "",
+      "_key": "!tables.results!IEPMPHNGahrfyCWI.zr9L8SkmKgKC3FJH"
+    },
+    {
+      "_id": "Fk8gK60UrUNEvhTk",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Gheso (+1 Stealth)",
+      "name": "",
+      "_key": "!tables.results!IEPMPHNGahrfyCWI.Fk8gK60UrUNEvhTk"
+    },
+    {
+      "_id": "M2HENBWyZLf6ss7y",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ebbing (+1 Deduction)",
+      "name": "",
+      "_key": "!tables.results!IEPMPHNGahrfyCWI.M2HENBWyZLf6ss7y"
+    },
+    {
+      "_id": "IpJb93nRxSWccCmT",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Maecht (+1 Charisma)",
+      "name": "",
+      "_key": "!tables.results!IEPMPHNGahrfyCWI.IpJb93nRxSWccCmT"
+    },
+    {
+      "_id": "jCsO4hX1EfeRlY8p",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Gemmeria (+1 Intimidation)",
+      "name": "",
+      "_key": "!tables.results!IEPMPHNGahrfyCWI.jCsO4hX1EfeRlY8p"
+    },
+    {
+      "_id": "BJSnWUWuLLZdzDQF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Etolia (+1 Courage)",
+      "name": "",
+      "_key": "!tables.results!IEPMPHNGahrfyCWI.BJSnWUWuLLZdzDQF"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "IEPMPHNGahrfyCWI",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.RLTWo7SY0YCx4Oqo",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!IEPMPHNGahrfyCWI"
+}

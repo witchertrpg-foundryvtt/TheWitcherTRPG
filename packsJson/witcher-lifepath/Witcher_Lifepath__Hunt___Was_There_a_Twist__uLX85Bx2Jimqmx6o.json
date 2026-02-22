@@ -1,0 +1,100 @@
+{
+  "name": "Witcher Lifepath: Hunt - Was There a Twist?",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "ciSfEh9nn9LIoeuR",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Was There a Twist? - Yes",
+      "name": "",
+      "_key": "!tables.results!uLX85Bx2Jimqmx6o.ciSfEh9nn9LIoeuR"
+    },
+    {
+      "_id": "GYY5qvm0B5sAWS6S",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Lifepath: Hunt - What Was the Twist?",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.ZyRLAmxDu5SVt7rg",
+      "description": "",
+      "_key": "!tables.results!uLX85Bx2Jimqmx6o.GYY5qvm0B5sAWS6S"
+    },
+    {
+      "_id": "Gl1XVUlHbuQVyANO",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Was There a Twist? - No",
+      "name": "",
+      "_key": "!tables.results!uLX85Bx2Jimqmx6o.Gl1XVUlHbuQVyANO"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "uLX85Bx2Jimqmx6o",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.DJ7WtYF7tFFy7RiU",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!uLX85Bx2Jimqmx6o"
+}

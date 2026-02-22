@@ -1,0 +1,260 @@
+{
+  "name": "Romance: Problematic Love",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your Lover’s family or friends hate you and do not condone your romance.",
+      "name": "",
+      "_key": "!tables.results!l7k0hSL3iRzjJcYs.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "oKZeEBIq2FLMNk2e",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your Lover works as a whore for a living and refuses to give up their job.",
+      "name": "",
+      "_key": "!tables.results!l7k0hSL3iRzjJcYs.oKZeEBIq2FLMNk2e"
+    },
+    {
+      "_id": "kQX7ZeIIWKy5yTPF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your Lover is under a minor curse such as paranoia or horrible nightmares.",
+      "name": "",
+      "_key": "!tables.results!l7k0hSL3iRzjJcYs.kQX7ZeIIWKy5yTPF"
+    },
+    {
+      "_id": "36ROPw9QWjYWmpBV",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your Lover slept around and refused to stop when you found out.",
+      "name": "",
+      "_key": "!tables.results!l7k0hSL3iRzjJcYs.36ROPw9QWjYWmpBV"
+    },
+    {
+      "_id": "9kVdEtFeX4a3nAoe",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your Lover is insanely jealous and can’t stand you being around any possible rival.",
+      "name": "",
+      "_key": "!tables.results!l7k0hSL3iRzjJcYs.9kVdEtFeX4a3nAoe"
+    },
+    {
+      "_id": "cQfRuoxqB1FI58LA",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You fight constantly and nothing can stop it for long. You always descend into screaming.",
+      "name": "",
+      "_key": "!tables.results!l7k0hSL3iRzjJcYs.cQfRuoxqB1FI58LA"
+    },
+    {
+      "_id": "th9s2aW3pwS3ZZX2",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You’re professional rivals of some sort. You steal customers from each other often.",
+      "name": "",
+      "_key": "!tables.results!l7k0hSL3iRzjJcYs.th9s2aW3pwS3ZZX2"
+    },
+    {
+      "_id": "tfUjaxwfTwqW98vG",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "One of you is human and the other is non-human, making your life difficult.",
+      "name": "",
+      "_key": "!tables.results!l7k0hSL3iRzjJcYs.tfUjaxwfTwqW98vG"
+    },
+    {
+      "_id": "XFy2l49tSxFMwvUu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your Lover is already married. They may or may not be willing to leave their spouse.",
+      "name": "",
+      "_key": "!tables.results!l7k0hSL3iRzjJcYs.XFy2l49tSxFMwvUu"
+    },
+    {
+      "_id": "NlfhnGUfAnLtImRU",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Your friends or family hate your Lover and do not condone your romance.",
+      "name": "",
+      "_key": "!tables.results!l7k0hSL3iRzjJcYs.NlfhnGUfAnLtImRU"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "l7k0hSL3iRzjJcYs",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.mtcwd7JxTTleCslr",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!l7k0hSL3iRzjJcYs"
+}

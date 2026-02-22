@@ -1,0 +1,148 @@
+{
+  "name": "Family and Parents: Elderland",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "FyjZwFRJUzcqDrwW",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "At Least Some of Your Family Is Alive",
+      "name": "",
+      "_key": "!tables.results!d7NLtNEdvkagBLOP.FyjZwFRJUzcqDrwW"
+    },
+    {
+      "_id": "VySuFOPm5I8jY8r9",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Parents: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.zSTMrICDELIRaNyL",
+      "description": "",
+      "_key": "!tables.results!d7NLtNEdvkagBLOP.VySuFOPm5I8jY8r9"
+    },
+    {
+      "_id": "g4JnOCAOpDRIw8tQ",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Something Happened to Your Family",
+      "name": "",
+      "_key": "!tables.results!d7NLtNEdvkagBLOP.g4JnOCAOpDRIw8tQ"
+    },
+    {
+      "_id": "rx40q7d9iV7PIvy0",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Fate: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.W6mgmCP3219eYdf0",
+      "description": "",
+      "_key": "!tables.results!d7NLtNEdvkagBLOP.rx40q7d9iV7PIvy0"
+    },
+    {
+      "_id": "hNdtp3IHu6NaWkJo",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Elderland",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.GOp8mGE4MiGaqjk2",
+      "description": "",
+      "_key": "!tables.results!d7NLtNEdvkagBLOP.hNdtp3IHu6NaWkJo"
+    }
+  ],
+  "formula": "1d2",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "d7NLtNEdvkagBLOP",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.xGKpYv3tSn01WYn8",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!d7NLtNEdvkagBLOP"
+}

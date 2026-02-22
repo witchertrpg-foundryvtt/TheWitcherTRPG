@@ -78,6 +78,9 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
         context.systemFields = this.document.system.schema.fields;
         context.items = context.actor.items.filter(i => !i.system.isStored).sort((a, b) => a.sort - b.sort);
 
+        context.system.combatEffects.temporaryEffects.temporaryHpSum =
+            context.system.combatEffects.temporaryEffects.temporaryHp.reduce((acc, temp) => acc + temp.value, 0);
+
         this._prepareGeneralInformation(context);
         this._prepareCustomSkills(context);
         this._prepareWeapons(context);

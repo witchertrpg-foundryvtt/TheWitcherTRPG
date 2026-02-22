@@ -1,0 +1,260 @@
+{
+  "name": "Enemies: The Cause",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Why Does Your Enemy Dislike You: Assaulted the Offended Party",
+      "name": "",
+      "_key": "!tables.results!U9R1ct2xP13y6R7j.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "oKZeEBIq2FLMNk2e",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Why Does Your Enemy Dislike You: Caused the Loss of a Loved One",
+      "name": "",
+      "_key": "!tables.results!U9R1ct2xP13y6R7j.oKZeEBIq2FLMNk2e"
+    },
+    {
+      "_id": "kQX7ZeIIWKy5yTPF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Why Does Your Enemy Dislike You: Caused Major Humiliation",
+      "name": "",
+      "_key": "!tables.results!U9R1ct2xP13y6R7j.kQX7ZeIIWKy5yTPF"
+    },
+    {
+      "_id": "36ROPw9QWjYWmpBV",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Why Does Your Enemy Dislike You: Caused a Curse",
+      "name": "",
+      "_key": "!tables.results!U9R1ct2xP13y6R7j.36ROPw9QWjYWmpBV"
+    },
+    {
+      "_id": "9kVdEtFeX4a3nAoe",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Why Does Your Enemy Dislike You: Accused of Illegal Witchcraft",
+      "name": "",
+      "_key": "!tables.results!U9R1ct2xP13y6R7j.9kVdEtFeX4a3nAoe"
+    },
+    {
+      "_id": "cQfRuoxqB1FI58LA",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Why Does Your Enemy Dislike You: Turned Down Romantically",
+      "name": "",
+      "_key": "!tables.results!U9R1ct2xP13y6R7j.cQfRuoxqB1FI58LA"
+    },
+    {
+      "_id": "th9s2aW3pwS3ZZX2",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Why Does Your Enemy Dislike You: Caused a Terrible Wound",
+      "name": "",
+      "_key": "!tables.results!U9R1ct2xP13y6R7j.th9s2aW3pwS3ZZX2"
+    },
+    {
+      "_id": "tfUjaxwfTwqW98vG",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Why Does Your Enemy Dislike You: Blackmail",
+      "name": "",
+      "_key": "!tables.results!U9R1ct2xP13y6R7j.tfUjaxwfTwqW98vG"
+    },
+    {
+      "_id": "XFy2l49tSxFMwvUu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Why Does Your Enemy Dislike You: Foiled Plans",
+      "name": "",
+      "_key": "!tables.results!U9R1ct2xP13y6R7j.XFy2l49tSxFMwvUu"
+    },
+    {
+      "_id": "NlfhnGUfAnLtImRU",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Why Does Your Enemy Dislike You: Caused a Monster Attack",
+      "name": "",
+      "_key": "!tables.results!U9R1ct2xP13y6R7j.NlfhnGUfAnLtImRU"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "U9R1ct2xP13y6R7j",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.AFlxvOkbTAVvKpEU",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!U9R1ct2xP13y6R7j"
+}

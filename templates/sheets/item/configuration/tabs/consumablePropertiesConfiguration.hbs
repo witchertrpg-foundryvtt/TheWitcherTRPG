@@ -1,10 +1,18 @@
-<div class="tab {{tabs.consumableProperties.cssClass}} scrollable standard-form" data-group="primary" data-tab="consumableProperties">
+<div class="tab {{tabs.consumableProperties.cssClass}} scrollable standard-form" data-group="primary"
+    data-tab="consumableProperties">
     {{formGroup systemFields.isConsumable value=item.system.isConsumable localize=true}}
     {{#if item.system.isConsumable}}
         {{formGroup systemFields.consumeProperties.fields.doesHeal value=item.system.consumeProperties.doesHeal localize=true}}
         {{#if item.system.consumeProperties.doesHeal}}
             {{formGroup systemFields.consumeProperties.fields.heal value=item.system.consumeProperties.heal localize=true}}
         {{/if}}
+        {{formGroup systemFields.consumeProperties.fields.addsTempHp value=item.system.consumeProperties.addsTempHp localize=true}}
+        {{#if item.system.consumeProperties.addsTempHp}}
+            {{formGroup systemFields.consumeProperties.fields.temporaryHp.fields.value value=item.system.consumeProperties.temporaryHp.value localize=true}}
+            {{formGroup systemFields.consumeProperties.fields.temporaryHp.fields.duration value=item.system.consumeProperties.temporaryHp.duration localize=true}}
+        {{/if}}
+
+        {{!-- Effects --}}
         <table class="item-bottom-table">
             <tr>
                 <th><a data-action="addEffect" data-target='effects' title="{{localize "WITCHER.Item.AddEffect"}}"><i

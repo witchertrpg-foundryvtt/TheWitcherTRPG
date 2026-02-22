@@ -1,0 +1,99 @@
+{
+  "name": "Siblings: Elves",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/sundries/flags/banner-worn-green.webp",
+  "description": "",
+  "results": [
+    {
+      "_id": "uZEDUG0b1QS3X7aE",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You have 1 Sibling",
+      "name": "",
+      "_key": "!tables.results!6QuZTatyIKElcCKz.uZEDUG0b1QS3X7aE"
+    },
+    {
+      "_id": "owOV7YfwzHeKjQgE",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You are an only child",
+      "name": "",
+      "_key": "!tables.results!6QuZTatyIKElcCKz.owOV7YfwzHeKjQgE"
+    },
+    {
+      "_id": "cHIc5jk2KytQfMji",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You have 2 Siblings",
+      "name": "",
+      "_key": "!tables.results!6QuZTatyIKElcCKz.cHIc5jk2KytQfMji"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "6QuZTatyIKElcCKz",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.QzUqgzDS7UqXbA2X",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!6QuZTatyIKElcCKz"
+}

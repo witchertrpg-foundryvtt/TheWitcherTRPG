@@ -69,6 +69,10 @@ export default class WitcherItem extends Item {
         };
     }
 
+    get isConsumable() {
+        return this.system.isConsumable ?? false;
+    }
+
     isAlchemicalCraft() {
         return this.system.alchemyDC && this.system.alchemyDC > 0;
     }
@@ -317,8 +321,8 @@ export default class WitcherItem extends Item {
 
     /**
      * Get all ActiveEffects that may apply to this Item.
-     * @yields {ActiveEffect5e}
-     * @returns {Generator<ActiveEffect5e, void, void>}
+     * @yields {ActiveEffect}
+     * @returns {Generator<ActiveEffect, void, void>}
      */
     *allApplicableEffects() {
         for (const effect of this.effects) {

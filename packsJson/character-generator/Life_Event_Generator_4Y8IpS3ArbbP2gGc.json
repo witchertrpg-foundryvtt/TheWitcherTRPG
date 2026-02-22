@@ -1,0 +1,102 @@
+{
+  "name": "Life Event Generator",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/sundries/gaming/dice-runed-brown.webp",
+  "description": "<p>Roll once for every full 10 years you've been alive.</p>",
+  "results": [
+    {
+      "_id": "fEC34SOBkzdDBUtx",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Fortune",
+      "documentUuid": "Compendium.TheWitcherTRPG.Life_Event_Sub-tables.RollTable.Z0eeWQI3R8v4YNLd",
+      "description": "",
+      "_key": "!tables.results!4Y8IpS3ArbbP2gGc.fEC34SOBkzdDBUtx"
+    },
+    {
+      "_id": "nzF8eW0BGLhTGpdM",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        5,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Misfortune",
+      "documentUuid": "Compendium.TheWitcherTRPG.Life_Event_Sub-tables.RollTable.JNbvihde5EGIFPdB",
+      "description": "",
+      "_key": "!tables.results!4Y8IpS3ArbbP2gGc.nzF8eW0BGLhTGpdM"
+    },
+    {
+      "_id": "fnoSJmCrZPrgneXp",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Romance",
+      "documentUuid": "Compendium.TheWitcherTRPG.Life_Event_Sub-tables.RollTable.CDgdx129wZvINn16",
+      "description": "",
+      "_key": "!tables.results!4Y8IpS3ArbbP2gGc.fnoSJmCrZPrgneXp"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "4Y8IpS3ArbbP2gGc",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.gUOTqBlrFsBrxz1G",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!4Y8IpS3ArbbP2gGc"
+}

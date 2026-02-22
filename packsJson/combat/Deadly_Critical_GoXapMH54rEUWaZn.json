@@ -1,0 +1,174 @@
+{
+  "name": "Deadly Critical",
+  "flags": {
+    "better-rolltables": {},
+    "core": {},
+    "scene-packer": {
+      "sourceId": "Compendium.wtrpg-compendium.combat.RollTable.dR0fghweDP4uIt6c",
+      "hash": "15f6798eac5783bc35ecd1ea199d13e3a46d315a"
+    }
+  },
+  "img": "https://assets.forge-vtt.com/bazaar/core/icons/commodities/bones/skull-hollow-brown-red.webp",
+  "description": "",
+  "results": [
+    {
+      "_id": "md13gU5GXWqdSo3b",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Dismembered Leg - The blow tears your leg from your body or damages it beyond repair. Quarter your SPD, Dodge/Escape, and Athletics. This wound begins bleeding. | Stabilized: You quarter your SPD, Dodge/Escape, and Athletics. | Treated: The leg can be replaced with a prosthetic.",
+      "name": "",
+      "_key": "!tables.results!GoXapMH54rEUWaZn.md13gU5GXWqdSo3b"
+    },
+    {
+      "_id": "Kg6cLOw7bcrhf9zi",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Dismembered Arm - The blow rends your arm from your body or damages it beyond repair. The arm cannot be used and you start bleeding. | Stabilized: That arm is useless. | Treated: The arm can be replaced with a prosthetic.",
+      "name": "",
+      "_key": "!tables.results!GoXapMH54rEUWaZn.Kg6cLOw7bcrhf9zi"
+    },
+    {
+      "_id": "Aupjx9gqdL7IdDsG",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Septic Shock - The blow damages your intestines, letting waste enter your blood stream. Quarter your Stamina, take a -3 to INT, WILL, REF, and DEX. You are poisoned. | Stabilized: Your Stamina is halved and you take a -1 to INT, WILL, REF, and DEX. | Treated: You take a -5 to Stamina permanently.",
+      "name": "",
+      "_key": "!tables.results!GoXapMH54rEUWaZn.Aupjx9gqdL7IdDsG"
+    },
+    {
+      "_id": "dcTrmwGr6QqbwArw",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Heart Damage - The blow damages your heart. Make an immediate Death save. If you survive, the wound is bleeding and you must quarter your Stamina, SPD, and BODY. | Stabilized: You halve your Stamina, SPD, and BODY. | Treated: You take +2 damage per round from bleeding damage permanently",
+      "name": "",
+      "_key": "!tables.results!GoXapMH54rEUWaZn.dcTrmwGr6QqbwArw"
+    },
+    {
+      "_id": "8BDa9D8PpydHDt9F",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Damaged Eye - The blow cuts into or indents your eyeball. You take a -5 to sight-based Awareness and -4 to DEX. This wound begins bleeding. | Stabilized: You take a -3 to sight-based Awareness and -2 to DEX | Treated: Permanent -1 to sight-based Awareness and DEX.",
+      "name": "",
+      "_key": "!tables.results!GoXapMH54rEUWaZn.8BDa9D8PpydHDt9F"
+    },
+    {
+      "_id": "H0XA02QcwUBIRRWa",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Separated Spine/Decapitated - The blow either snaps your neck or separates your head from your shoulders. You die immediately. | Stabilized: This wound cannot be stabilized. | Treated: This wound cannot be treated.",
+      "name": "",
+      "_key": "!tables.results!GoXapMH54rEUWaZn.H0XA02QcwUBIRRWa"
+    }
+  ],
+  "formula": "2d6",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 0,
+    "c4glZubSgyUNSkxe": 3,
+    "JEflPFTBB5wpYRms": 3,
+    "dxC9PYhanWf4xPZG": 3
+  },
+  "folder": null,
+  "_stats": {
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "0.107",
+    "coreVersion": "13.351",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "GoXapMH54rEUWaZn",
+  "sort": 0,
+  "_key": "!tables!GoXapMH54rEUWaZn"
+}

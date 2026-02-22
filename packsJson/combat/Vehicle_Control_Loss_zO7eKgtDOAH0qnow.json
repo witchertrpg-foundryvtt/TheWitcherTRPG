@@ -1,0 +1,105 @@
+{
+  "name": "Vehicle Control Loss",
+  "flags": {
+    "better-rolltables": {},
+    "core": {},
+    "scene-packer": {
+      "sourceId": "Compendium.wtrpg-compendium.combat.RollTable.G4YmqvuA3twbjtfz",
+      "hash": "9e3653a30d8a2780caf90d9a07607e3bb967cdd2"
+    }
+  },
+  "img": "https://assets.forge-vtt.com/bazaar/core/icons/environment/settlement/ship.webp",
+  "description": "",
+  "results": [
+    {
+      "_id": "6MBEl0tLYVFIn7zR",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Vehicle Control Loss - Skid or Slew: No other results",
+      "name": "",
+      "_key": "!tables.results!zO7eKgtDOAH0qnow.6MBEl0tLYVFIn7zR"
+    },
+    {
+      "_id": "OlzIW2c5GeaHCxi2",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Vehicle Control Loss - Major Skid: Slide [[1d10x2]] meters sideways in the direction of travel. If you hit an object, use the Charging rules to see what damage is done to your vehicle and the object.",
+      "name": "",
+      "_key": "!tables.results!zO7eKgtDOAH0qnow.OlzIW2c5GeaHCxi2"
+    },
+    {
+      "_id": "VmZlsmcJudyNWenE",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Vehicle Control Loss - Rolled the Vehicle: Your vehicle skids [[1d10x3]] meters sideways in the direction of travel and rolls. In a land vehicle, you, the vehicle, and the animals pulling it take [[5d6]] damage. In a water vehicle, you have capsized and are trapped underwater until you make a DC:12 Athletics check to swim",
+      "name": "",
+      "_key": "!tables.results!zO7eKgtDOAH0qnow.VmZlsmcJudyNWenE"
+    }
+  ],
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 0,
+    "c4glZubSgyUNSkxe": 3,
+    "JEflPFTBB5wpYRms": 3,
+    "dxC9PYhanWf4xPZG": 3
+  },
+  "folder": null,
+  "_stats": {
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "0.107",
+    "coreVersion": "13.351",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "zO7eKgtDOAH0qnow",
+  "sort": 0,
+  "_key": "!tables!zO7eKgtDOAH0qnow"
+}

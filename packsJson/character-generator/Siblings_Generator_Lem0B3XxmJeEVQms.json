@@ -1,0 +1,128 @@
+{
+  "name": "Siblings Generator",
+  "flags": {
+    "better-rolltables": {
+      "table-type": "none"
+    },
+    "core": {}
+  },
+  "img": "icons/environment/people/group.webp",
+  "description": "<p>You have a sibling that is:</p>",
+  "results": [
+    {
+      "_id": "lHDeQbKOzEyvSCTK",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Siblings: Gender",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.QbkrG0W11fREICK8",
+      "description": "",
+      "_key": "!tables.results!Lem0B3XxmJeEVQms.lHDeQbKOzEyvSCTK"
+    },
+    {
+      "_id": "6wmO1a81DMV7foRw",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Siblings: Age",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.0PcW1kFO5g40cELc",
+      "description": "",
+      "_key": "!tables.results!Lem0B3XxmJeEVQms.6wmO1a81DMV7foRw"
+    },
+    {
+      "_id": "x8daSlTDdqBl39P0",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Siblings: Feelings About You",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.ACf1JfCfVtJWw5DG",
+      "description": "",
+      "_key": "!tables.results!Lem0B3XxmJeEVQms.x8daSlTDdqBl39P0"
+    },
+    {
+      "_id": "ZHa5PBGJnRAbdzZr",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Siblings: Personality",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.zNQCbwyK1biYFszn",
+      "description": "",
+      "_key": "!tables.results!Lem0B3XxmJeEVQms.ZHa5PBGJnRAbdzZr"
+    }
+  ],
+  "formula": "1d1",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "Lem0B3XxmJeEVQms",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.Rgx1vfQgy82DVGXx",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!Lem0B3XxmJeEVQms"
+}

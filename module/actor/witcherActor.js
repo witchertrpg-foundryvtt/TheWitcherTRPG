@@ -10,7 +10,7 @@ import { weaponAttackMixin } from './mixins/weaponAttackMixin.js';
 import { verbalCombatMixin } from './mixins/verbalCombatMixin.js';
 import { defenseMixin } from './mixins/defenseMixin.js';
 import { damageMixin } from './mixins/damageMixin.js';
-import { activeEffectMixin } from './mixins/activeEffectMixin.js';
+import { temporaryEffectMixin } from './mixins/temporaryEffectMixin.js';
 import ChatMessageData from '../chatMessage/chatMessageData.js';
 import { professionMixin } from './mixins/professionMixin.js';
 import { armorMixin } from './mixins/armorMixin.js';
@@ -294,7 +294,7 @@ export default class WitcherActor extends Actor {
         let attributeValue = this.system.stats[attribute.name].value;
 
         let skillName = skillMapEntry.name;
-        let skillLabel = game.i18n.localize(skillMapEntry.label);
+        let skillLabel = game.i18n.localize(skillMapEntry.rollLabel ?? skillMapEntry.label);
         let skillValue = this.system.skills[attribute.name][skillName].value;
 
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
@@ -502,7 +502,7 @@ export default class WitcherActor extends Actor {
             return this.castSpell(item);
         }
 
-        if (item.system.isConsumable) {
+        if (item.isConsumable) {
             item.consume();
             this.removeItem(item.id, 1);
             return;
@@ -712,7 +712,7 @@ Object.assign(WitcherActor.prototype, healMixin);
 Object.assign(WitcherActor.prototype, castSpellMixin);
 Object.assign(WitcherActor.prototype, verbalCombatMixin);
 Object.assign(WitcherActor.prototype, locationMixin);
-Object.assign(WitcherActor.prototype, activeEffectMixin);
+Object.assign(WitcherActor.prototype, temporaryEffectMixin);
 Object.assign(WitcherActor.prototype, armorMixin);
 Object.assign(WitcherActor.prototype, rewardsMixin);
 Object.assign(WitcherActor.prototype, craftingMixin);

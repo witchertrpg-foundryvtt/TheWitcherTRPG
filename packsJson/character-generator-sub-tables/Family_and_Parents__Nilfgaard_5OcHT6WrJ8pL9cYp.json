@@ -1,0 +1,148 @@
+{
+  "name": "Family and Parents: Nilfgaard",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "FyjZwFRJUzcqDrwW",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "At Least Some of Your Family Is Alive",
+      "name": "",
+      "_key": "!tables.results!5OcHT6WrJ8pL9cYp.FyjZwFRJUzcqDrwW"
+    },
+    {
+      "_id": "VySuFOPm5I8jY8r9",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Parents: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.Nnf1BMSJOnc5Mx3m",
+      "description": "",
+      "_key": "!tables.results!5OcHT6WrJ8pL9cYp.VySuFOPm5I8jY8r9"
+    },
+    {
+      "_id": "g4JnOCAOpDRIw8tQ",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Something Happened to Your Family",
+      "name": "",
+      "_key": "!tables.results!5OcHT6WrJ8pL9cYp.g4JnOCAOpDRIw8tQ"
+    },
+    {
+      "_id": "rx40q7d9iV7PIvy0",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Fate: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.VstrJuRw43OKcuGr",
+      "description": "",
+      "_key": "!tables.results!5OcHT6WrJ8pL9cYp.rx40q7d9iV7PIvy0"
+    },
+    {
+      "_id": "JQeprlU3cojjnCY0",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Family Status: Nilfgaard",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.6WXA7KAOHjeqCCRn",
+      "description": "",
+      "_key": "!tables.results!5OcHT6WrJ8pL9cYp.JQeprlU3cojjnCY0"
+    }
+  ],
+  "formula": "1d2",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "5OcHT6WrJ8pL9cYp",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.l7wOQAP4owJziCHk",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!5OcHT6WrJ8pL9cYp"
+}

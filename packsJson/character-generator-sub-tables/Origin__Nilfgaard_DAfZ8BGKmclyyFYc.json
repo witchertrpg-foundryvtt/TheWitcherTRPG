@@ -1,0 +1,100 @@
+{
+  "name": "Origin: Nilfgaard",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "nX4mbx8F2ITxvBNF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Origin: The Heart of Nilfgaard (+1 Deceit)",
+      "name": "",
+      "_key": "!tables.results!DAfZ8BGKmclyyFYc.nX4mbx8F2ITxvBNF"
+    },
+    {
+      "_id": "yWqJljl7QFD5RvAg",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        4,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Nilfgaard Vassal Origin:",
+      "name": "",
+      "_key": "!tables.results!DAfZ8BGKmclyyFYc.yWqJljl7QFD5RvAg"
+    },
+    {
+      "_id": "cFrOuK1g41ekdakj",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        4,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Nilfgaard Vassal Origin",
+      "documentUuid": "Compendium.TheWitcherTRPG.Character-gen_Sub-tables.RollTable.IEPMPHNGahrfyCWI",
+      "description": "",
+      "_key": "!tables.results!DAfZ8BGKmclyyFYc.cFrOuK1g41ekdakj"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "DAfZ8BGKmclyyFYc",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.WylxcMCSIE6tcNz6",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!DAfZ8BGKmclyyFYc"
+}

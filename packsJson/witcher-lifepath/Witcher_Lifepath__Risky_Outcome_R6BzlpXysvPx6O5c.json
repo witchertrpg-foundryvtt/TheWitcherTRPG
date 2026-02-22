@@ -1,0 +1,194 @@
+{
+  "name": "Witcher Lifepath: Risky Outcome",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "<p>Roll this once for every decade after age 29 for your character.</p>",
+  "results": [
+    {
+      "_id": "UdHUplxRtBUmcUsy",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "This decade you gained a benefit:",
+      "name": "",
+      "_key": "!tables.results!R6BzlpXysvPx6O5c.UdHUplxRtBUmcUsy"
+    },
+    {
+      "_id": "26OatJZ2irFtE5Ly",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Lifepath: Benefit Outcome",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.snt4khwSoq2rdeZa",
+      "description": "",
+      "_key": "!tables.results!R6BzlpXysvPx6O5c.26OatJZ2irFtE5Ly"
+    },
+    {
+      "_id": "P2yeZWXSDGGrGeKW",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "This decade you gained an ally:",
+      "name": "",
+      "_key": "!tables.results!R6BzlpXysvPx6O5c.P2yeZWXSDGGrGeKW"
+    },
+    {
+      "_id": "RVpgllc0boqo3hTN",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        6,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Lifepath: Allies - Generator",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.47kWQhpq3yeAG74c",
+      "description": "",
+      "_key": "!tables.results!R6BzlpXysvPx6O5c.RVpgllc0boqo3hTN"
+    },
+    {
+      "_id": "YVCSNqm0kMcDxKF3",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "This decade you went on a hunt:",
+      "name": "",
+      "_key": "!tables.results!R6BzlpXysvPx6O5c.YVCSNqm0kMcDxKF3"
+    },
+    {
+      "_id": "t7agSbQuKa3YhMog",
+      "flags": {},
+      "type": "document",
+      "img": "icons/svg/d20-grey.svg",
+      "weight": 1,
+      "range": [
+        8,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Witcher Lifepath: Hunt Generator",
+      "documentUuid": "Compendium.TheWitcherTRPG.Witcher_Lifepath_and_BG_Sub-tables.RollTable.vTIEP2TnU2n4hwY3",
+      "description": "",
+      "_key": "!tables.results!R6BzlpXysvPx6O5c.t7agSbQuKa3YhMog"
+    },
+    {
+      "_id": "gnrDCDMdILjGyQdl",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Nothing noteworthy really happened for that decade of your life. You just wandered the world, slaying little monsters here and there.",
+      "name": "",
+      "_key": "!tables.results!R6BzlpXysvPx6O5c.gnrDCDMdILjGyQdl"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "R6BzlpXysvPx6O5c",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.QePGYXnyLXGAKZgM",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!R6BzlpXysvPx6O5c"
+}

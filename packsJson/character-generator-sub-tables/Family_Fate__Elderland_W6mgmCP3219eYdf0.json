@@ -1,0 +1,260 @@
+{
+  "name": "Family Fate: Elderland",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "WLL4GH2QBfngXygQ",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family were marked as human sympathizers and are not particularly loved in their homeland.",
+      "name": "",
+      "_key": "!tables.results!W6mgmCP3219eYdf0.WLL4GH2QBfngXygQ"
+    },
+    {
+      "_id": "4h4Sw8Y1i17AihjX",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family was ostracized for dissenting opinions and now people won’t socialize with you or your family at all.",
+      "name": "",
+      "_key": "!tables.results!W6mgmCP3219eYdf0.4h4Sw8Y1i17AihjX"
+    },
+    {
+      "_id": "5VXUJzVqGqVahzfy",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family died in the Northern Wars. They may have actually fought in the war, or were casualties of war who just happened to get in the way.",
+      "name": "",
+      "_key": "!tables.results!W6mgmCP3219eYdf0.5VXUJzVqGqVahzfy"
+    },
+    {
+      "_id": "oQQUBuaPK1pTABqq",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family has been caught in a feud for centuries. You may not remember why this feud started, but it is dire.",
+      "name": "",
+      "_key": "!tables.results!W6mgmCP3219eYdf0.oQQUBuaPK1pTABqq"
+    },
+    {
+      "_id": "SdTrfAZtLN9cLgew",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family was stripped of its title for some reason. You were evicted from your home and left scrambling to survive.",
+      "name": "",
+      "_key": "!tables.results!W6mgmCP3219eYdf0.SdTrfAZtLN9cLgew"
+    },
+    {
+      "_id": "7yYGp4SSAi9ymCGL",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family turned to raiding human settlements early in your life to get food and perhaps strike back at the humans.",
+      "name": "",
+      "_key": "!tables.results!W6mgmCP3219eYdf0.7yYGp4SSAi9ymCGL"
+    },
+    {
+      "_id": "ts84cRjou8LMlLD4",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family house is haunted. Most likely this is because your home was the site of many, many deaths during the war against humans.",
+      "name": "",
+      "_key": "!tables.results!W6mgmCP3219eYdf0.ts84cRjou8LMlLD4"
+    },
+    {
+      "_id": "LEz6AVGxGmTiJS5K",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family has been split by a human in-law who was brought into your family by a sibling or relative. Some of your family like them and some hate them.",
+      "name": "",
+      "_key": "!tables.results!W6mgmCP3219eYdf0.LEz6AVGxGmTiJS5K"
+    },
+    {
+      "_id": "X4C3zlEyKnAX96jL",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family was killed by humans who thought they were Scoia’tael. They may have been slaughtered or hung with no court proceedings or trials.",
+      "name": "",
+      "_key": "!tables.results!W6mgmCP3219eYdf0.X4C3zlEyKnAX96jL"
+    },
+    {
+      "_id": "XEB17msQM6PA4Wl4",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family is descended from an infamous traitor. It taints your family’s interactions with others of the elder races and has made living in the elderland difficult.",
+      "name": "",
+      "_key": "!tables.results!W6mgmCP3219eYdf0.XEB17msQM6PA4Wl4"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "W6mgmCP3219eYdf0",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.rI4Aie0iwrfrSNZG",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!W6mgmCP3219eYdf0"
+}

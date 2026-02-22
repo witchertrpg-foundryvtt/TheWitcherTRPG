@@ -1,0 +1,145 @@
+{
+  "name": "Witcher Background: Where Are You Now?",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Where Are You Now? - Became a Personal Witcher: You signed on to work for a merchant group, noble house, or important person as a personal witcher. You work for modest pay and hunt what they tell you to hunt. Mostly it’s monsters...",
+      "name": "",
+      "_key": "!tables.results!w8GcZsTyPF85V5Rr.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "oKZeEBIq2FLMNk2e",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Where Are You Now? - Looking For Work: The hard life of a witcher continues. You spend a lot of time on the road, lamenting the efficiency of your kind and the extinction of monsters. You travel constantly and never settle down",
+      "name": "",
+      "_key": "!tables.results!w8GcZsTyPF85V5Rr.oKZeEBIq2FLMNk2e"
+    },
+    {
+      "_id": "kQX7ZeIIWKy5yTPF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Where Are You Now? - Became a Hermit: You gave up on the life of a witcher and traveled out into the wilderness. Now you live as a hermit in the wilds. Only now that monsters are returning have you started to venture out again.",
+      "name": "",
+      "_key": "!tables.results!w8GcZsTyPF85V5Rr.kQX7ZeIIWKy5yTPF"
+    },
+    {
+      "_id": "36ROPw9QWjYWmpBV",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Where Are You Now? - Turned to a Normal Life: You’ve tried for decades to leave the witcher life behind. It’s difficult, since people won’t ever really accept you, but you have managed to cobble together an almost normal life. Good luck.",
+      "name": "",
+      "_key": "!tables.results!w8GcZsTyPF85V5Rr.36ROPw9QWjYWmpBV"
+    },
+    {
+      "_id": "9kVdEtFeX4a3nAoe",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Where Are You Now? - Became a Dangerous Criminal: Eventually all the negativity and thankless people got to you— you decided that with fewer and fewer monsters, it was time to start hunting people. You can determine what you do to survive.",
+      "name": "",
+      "_key": "!tables.results!w8GcZsTyPF85V5Rr.9kVdEtFeX4a3nAoe"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "w8GcZsTyPF85V5Rr",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.ub0OgKJtPKbMpWUS",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!w8GcZsTyPF85V5Rr"
+}

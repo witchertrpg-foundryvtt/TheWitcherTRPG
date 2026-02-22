@@ -1,0 +1,260 @@
+{
+  "name": "Family Fate: Nilfgaard",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "WLL4GH2QBfngXygQ",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family was indentured for crimes against the Empire or on trumped-up charges. Only you escaped.",
+      "name": "",
+      "_key": "!tables.results!VstrJuRw43OKcuGr.WLL4GH2QBfngXygQ"
+    },
+    {
+      "_id": "4h4Sw8Y1i17AihjX",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family was exiled to the Korath Desert and you likely spent most of your early life struggling to survive in the deadly wasteland.",
+      "name": "",
+      "_key": "!tables.results!VstrJuRw43OKcuGr.4h4Sw8Y1i17AihjX"
+    },
+    {
+      "_id": "5VXUJzVqGqVahzfy",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family was killed by a rogue mage who either had a vendetta against your family, or just wanted blood. Either way, you are alone.",
+      "name": "",
+      "_key": "!tables.results!VstrJuRw43OKcuGr.5VXUJzVqGqVahzfy"
+    },
+    {
+      "_id": "oQQUBuaPK1pTABqq",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family disappeared and you have no idea where they went. One day they just up and left.",
+      "name": "",
+      "_key": "!tables.results!VstrJuRw43OKcuGr.oQQUBuaPK1pTABqq"
+    },
+    {
+      "_id": "SdTrfAZtLN9cLgew",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family was executed for treason against the Empire. You were the only one to escape this fate.",
+      "name": "",
+      "_key": "!tables.results!VstrJuRw43OKcuGr.SdTrfAZtLN9cLgew"
+    },
+    {
+      "_id": "7yYGp4SSAi9ymCGL",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family was stripped of its title for some reason. You were evicted from your home and left scrambling to survive among the un-washed masses.",
+      "name": "",
+      "_key": "!tables.results!VstrJuRw43OKcuGr.7yYGp4SSAi9ymCGL"
+    },
+    {
+      "_id": "ts84cRjou8LMlLD4",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family name was tarnished by a magic relative who flaunted their magical gift disgracefully like a Northern mage.",
+      "name": "",
+      "_key": "!tables.results!VstrJuRw43OKcuGr.ts84cRjou8LMlLD4"
+    },
+    {
+      "_id": "LEz6AVGxGmTiJS5K",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: You disgraced your family in the eyes of the Empire. Something you did or failed to do has ruined your personal name and harmed your family.",
+      "name": "",
+      "_key": "!tables.results!VstrJuRw43OKcuGr.LEz6AVGxGmTiJS5K"
+    },
+    {
+      "_id": "X4C3zlEyKnAX96jL",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family has a deep, dark secret that if discovered would destroy them and their name forever. You must protect this secret with your life",
+      "name": "",
+      "_key": "!tables.results!VstrJuRw43OKcuGr.X4C3zlEyKnAX96jL"
+    },
+    {
+      "_id": "XEB17msQM6PA4Wl4",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Family Fate: Your family was assassinated. They may have been in the way of someone’s plan or they may have been used to get at someone more powerful. Either way, your family is gone now",
+      "name": "",
+      "_key": "!tables.results!VstrJuRw43OKcuGr.XEB17msQM6PA4Wl4"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "VstrJuRw43OKcuGr",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.e3gdpwCQhrMc4g14",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!VstrJuRw43OKcuGr"
+}

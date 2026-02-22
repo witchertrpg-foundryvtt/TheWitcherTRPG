@@ -1,0 +1,174 @@
+{
+  "name": "Simple Critical",
+  "flags": {
+    "better-rolltables": {},
+    "core": {},
+    "scene-packer": {
+      "sourceId": "Compendium.wtrpg-compendium.combat.RollTable.zcgqd0E0BE030zu3",
+      "hash": "470571dc66c2389196c0ed4e8dcf6d1a7398dbf1"
+    }
+  },
+  "img": "https://assets.forge-vtt.com/bazaar/core/icons/skills/wounds/anatomy-bone-joint.webp",
+  "description": "",
+  "results": [
+    {
+      "_id": "md13gU5GXWqdSo3b",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Sprained Leg - The blow sprained your leg, making it difficult to walk and maneuver. You take a -2 to SPD, Dodge/ Escape, and Athletics. | Stabilized: You take a -1 to SPD, Dodge/Escape, and Athletics. | Treated: You take a -1 to SPD",
+      "name": "",
+      "_key": "!tables.results!SkHR3GrB2e3Tz1v4.md13gU5GXWqdSo3b"
+    },
+    {
+      "_id": "Kg6cLOw7bcrhf9zi",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Sprained Arm - The blow sprained your arm, making it difficult to maneuver. You take a -2 to actions that use the arm. | Stabilized - You are at a -1 to actions with that arm. | Treated: You take a -1 to Physique.",
+      "name": "",
+      "_key": "!tables.results!SkHR3GrB2e3Tz1v4.Kg6cLOw7bcrhf9zi"
+    },
+    {
+      "_id": "Aupjx9gqdL7IdDsG",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Foreign Object - The blow lodged a piece of clothing or armor in your wound, causing an infection. Your Recovery and Critical Healing are quartered. | Stabilized: Your Recovery &amp; Critical Healing are halved. | Treated: You take a -2 to Recovery and a -1 to your Critical Healing.",
+      "name": "",
+      "_key": "!tables.results!SkHR3GrB2e3Tz1v4.Aupjx9gqdL7IdDsG"
+    },
+    {
+      "_id": "dcTrmwGr6QqbwArw",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Cracked Ribs -  The blow cracked your ribs, making it painful to breathe and exert strength. You take a -2 to BODY. This does not effect Health Points. | Stabilized: You are at a -1 to BODY. | Treated: You take a -10 to Encumbrance.",
+      "name": "",
+      "_key": "!tables.results!SkHR3GrB2e3Tz1v4.dcTrmwGr6QqbwArw"
+    },
+    {
+      "_id": "8BDa9D8PpydHDt9F",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Disfiguring Scar - The blow mangled your face in some way. You are grotesque and difficult to look at. You take a -3 to empathic Verbal Combat (Charisma, Persuasion, Seduction, Deceit, Social Etiquette, and Leadership). | Stabilized: You take a -1 to empathic Verbal Combat | Treated: You take a -1 to Seduction.",
+      "name": "",
+      "_key": "!tables.results!SkHR3GrB2e3Tz1v4.8BDa9D8PpydHDt9F"
+    },
+    {
+      "_id": "H0XA02QcwUBIRRWa",
+      "flags": {},
+      "type": "text",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Cracked Jaw - The blow cracked your jaw, making it hard to speak clearly. You are at a -2 to Magical Skills &amp; Verbal Combat (Charisma, Persuasion, Seduction, Leadership, Deceit, Social Etiquette, and Intimidation). | Stabilized: You are at a -1 to Magical Skills &amp; Verbal Combat. | Treated: You are at a -1 to Magical Skills.",
+      "name": "",
+      "_key": "!tables.results!SkHR3GrB2e3Tz1v4.H0XA02QcwUBIRRWa"
+    }
+  ],
+  "formula": "2d6",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 0,
+    "c4glZubSgyUNSkxe": 3,
+    "JEflPFTBB5wpYRms": 3,
+    "dxC9PYhanWf4xPZG": 3
+  },
+  "folder": null,
+  "_stats": {
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "0.107",
+    "coreVersion": "13.351",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "SkHR3GrB2e3Tz1v4",
+  "sort": 0,
+  "_key": "!tables!SkHR3GrB2e3Tz1v4"
+}

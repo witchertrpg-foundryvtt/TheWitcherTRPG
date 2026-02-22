@@ -1,0 +1,260 @@
+{
+  "name": "Witcher Lifepath: Allies - Position",
+  "flags": {
+    "better-rolltables": {},
+    "core": {}
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "q0DM4FW7XCnFdKZu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ally Position: A Bounty Hunter",
+      "name": "",
+      "_key": "!tables.results!zG6aQ2srMV79PDHY.q0DM4FW7XCnFdKZu"
+    },
+    {
+      "_id": "oKZeEBIq2FLMNk2e",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ally Position: A Mage",
+      "name": "",
+      "_key": "!tables.results!zG6aQ2srMV79PDHY.oKZeEBIq2FLMNk2e"
+    },
+    {
+      "_id": "kQX7ZeIIWKy5yTPF",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ally Position: A Mentor or Teacher",
+      "name": "",
+      "_key": "!tables.results!zG6aQ2srMV79PDHY.kQX7ZeIIWKy5yTPF"
+    },
+    {
+      "_id": "36ROPw9QWjYWmpBV",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ally Position: A Childhood Friend",
+      "name": "",
+      "_key": "!tables.results!zG6aQ2srMV79PDHY.36ROPw9QWjYWmpBV"
+    },
+    {
+      "_id": "9kVdEtFeX4a3nAoe",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ally Position: A Craftsman",
+      "name": "",
+      "_key": "!tables.results!zG6aQ2srMV79PDHY.9kVdEtFeX4a3nAoe"
+    },
+    {
+      "_id": "cQfRuoxqB1FI58LA",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ally Position: An Old Enemy",
+      "name": "",
+      "_key": "!tables.results!zG6aQ2srMV79PDHY.cQfRuoxqB1FI58LA"
+    },
+    {
+      "_id": "th9s2aW3pwS3ZZX2",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ally Position: A Duke/Duchess",
+      "name": "",
+      "_key": "!tables.results!zG6aQ2srMV79PDHY.th9s2aW3pwS3ZZX2"
+    },
+    {
+      "_id": "tfUjaxwfTwqW98vG",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ally Position: A Priest/Priestess",
+      "name": "",
+      "_key": "!tables.results!zG6aQ2srMV79PDHY.tfUjaxwfTwqW98vG"
+    },
+    {
+      "_id": "XFy2l49tSxFMwvUu",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ally Position: A Soldier",
+      "name": "",
+      "_key": "!tables.results!zG6aQ2srMV79PDHY.XFy2l49tSxFMwvUu"
+    },
+    {
+      "_id": "NlfhnGUfAnLtImRU",
+      "flags": {},
+      "type": "text",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "13.341",
+        "systemId": null,
+        "systemVersion": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Ally Position: A Bard",
+      "name": "",
+      "_key": "!tables.results!zG6aQ2srMV79PDHY.NlfhnGUfAnLtImRU"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": false,
+  "_id": "zG6aQ2srMV79PDHY",
+  "_stats": {
+    "coreVersion": "13.341",
+    "systemId": null,
+    "systemVersion": null,
+    "compendiumSource": "RollTable.hcMvZiWNjz8cQDc4",
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "2w1nWBDVMXqVbciv": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "_key": "!tables!zG6aQ2srMV79PDHY"
+}

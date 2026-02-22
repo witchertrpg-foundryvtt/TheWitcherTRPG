@@ -14,6 +14,7 @@ export let healMixin = {
             isSterilized: false,
             isHealingHand: false,
             isHealingTent: false,
+            resetTempHealth: true,
             daysHealed: 1,
             actualWoundList: actualWoundList.length
         };
@@ -105,7 +106,11 @@ export let healMixin = {
             }
         });
 
-        this.actor.update({ 'system.critWounds': newCritList });
+        await this.actor.update({ 'system.critWounds': newCritList });
+
+        if (dialogData.resetTempHealth) {
+            this.actor.update({ 'system.combatEffects.temporaryEffects.temporaryHp': [] });
+        }
 
         ChatMessage.create({
             content: await foundry.applications.handlebars.renderTemplate(

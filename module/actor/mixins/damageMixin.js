@@ -1,5 +1,5 @@
 import { getRandomInt } from '../../scripts/helper.js';
-import { applyActiveEffectToActorViaId } from '../../scripts/activeEffects/applyActiveEffect.js';
+import { applyActiveEffectToActorViaId } from '../../scripts/temporaryEffects/applyActiveEffect.js';
 import { applyStatusEffectToActor } from '../../scripts/statusEffects/applyStatusEffect.js';
 
 export let damageMixin = {
@@ -58,11 +58,7 @@ export let damageMixin = {
         }
 
         this.createDamageResultMessage(damageResult);
-
-        await this.update({
-            [`system.derivedStats.${derivedStat}.value`]:
-                this.system.derivedStats[derivedStat].value - Math.floor(damageResult.totalDamage)
-        });
+        await this.updateDerivedStat(damageResult.totalDamage, derivedStat);
     },
 
     async applyDamageToAllLocations(dialogData, damage, totalDamage, infoTotalDmg, derivedStat) {
@@ -94,9 +90,30 @@ export let damageMixin = {
         ChatMessage.applyRollMode(chatData, game.settings.get('core', 'rollMode'));
         let message = await ChatMessage.create(chatData);
 
+        await this.updateDerivedStat(totalAppliedDamage, derivedStat);
+    },
+
+    async updateDerivedStat(damage, derivedStat) {
+        damage = Math.floor(damage);
+        //first subtract from temp health
+        if (derivedStat == 'hp') {
+            let tempHpArray = this.system.combatEffects.temporaryEffects.temporaryHp;
+            for (let tempHp of tempHpArray) {
+                if (tempHp.value < damage) {
+                    tempHp.value = 0;
+                    damage -= tempHp.value;
+                } else {
+                    tempHp.value -= damage;
+                    damage = 0;
+                }
+            }
+            await this.update({
+                'system.combatEffects.temporaryEffects.temporaryHp': tempHpArray
+            });
+        }
+
         await this.update({
-            [`system.derivedStats.${derivedStat}.value`]:
-                this.system.derivedStats[derivedStat].value - totalAppliedDamage
+            [`system.derivedStats.${derivedStat}.value`]: this.system.derivedStats[derivedStat].value - damage
         });
     },
 
