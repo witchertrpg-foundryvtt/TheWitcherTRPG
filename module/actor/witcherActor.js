@@ -502,7 +502,7 @@ export default class WitcherActor extends Actor {
             return this.castSpell(item);
         }
 
-        if (item.system.isConsumable) {
+        if (item.isConsumable) {
             item.consume();
             this.removeItem(item.id, 1);
             return;

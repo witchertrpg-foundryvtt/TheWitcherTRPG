@@ -4,7 +4,7 @@
             <h3 class="item-name header-name flexrow">{{localize section.label}}</h3>
             <h3 class="header-source">{{localize "WITCHER.activeEffect.source"}}</h3>
             <h3 class="header-source">{{localize "EFFECT.TABS.duration"}}</h3>
-            {{#unless (and (eq section.type 'temporaryItemImprovement') ../actor)}}
+            {{#unless (and (eq section.type 'temporaryItemImprovement') (not ../document.system.canHaveTemporaryItemImprovement) )}}
                 <div class="item-controls header-controls flexrow">
                     <a class="effect-control" data-action="create" title="{{localize 'DOCUMENT.Create' type="Effect"}}">
                         <i class="fas fa-plus"></i> {{localize "DOCUMENT.New" type="Effect"}}

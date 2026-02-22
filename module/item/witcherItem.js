@@ -69,6 +69,10 @@ export default class WitcherItem extends Item {
         };
     }
 
+    get isConsumable() {
+        return this.system.isConsumable ?? false;
+    }
+
     isAlchemicalCraft() {
         return this.system.alchemyDC && this.system.alchemyDC > 0;
     }

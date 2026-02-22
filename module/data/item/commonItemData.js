@@ -18,4 +18,8 @@ export default class CommonItemData extends foundry.abstract.TypeDataModel {
     calcWeight() {
         return this.isCarried && !this.isStored ? this.quantity * this.weight : 0;
     }
+
+    get canHaveTemporaryItemImprovement() {
+        return false;
+    }
 }

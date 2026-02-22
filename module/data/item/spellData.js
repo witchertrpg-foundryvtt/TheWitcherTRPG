@@ -80,6 +80,10 @@ export default class SpellData extends CommonItemData {
         };
     }
 
+    get canHaveTemporaryItemImprovement() {
+        return true;
+    }
+
     /** @inheritdoc */
     static migrateData(source) {
         if ('dificultyCheck' in source) {
