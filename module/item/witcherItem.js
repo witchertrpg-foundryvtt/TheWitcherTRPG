@@ -317,8 +317,8 @@ export default class WitcherItem extends Item {
 
     /**
      * Get all ActiveEffects that may apply to this Item.
-     * @yields {ActiveEffect5e}
-     * @returns {Generator<ActiveEffect5e, void, void>}
+     * @yields {ActiveEffect}
+     * @returns {Generator<ActiveEffect, void, void>}
      */
     *allApplicableEffects() {
         for (const effect of this.effects) {

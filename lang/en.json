@@ -26,6 +26,9 @@
             "monster": "Monster",
             "loot": "Loot",
             "mystery": "Mystery"
+        },
+        "ActiveEffect": {
+            "temporaryItemImprovement": "Temporary Item Improvement"
         }
     },
     "WITCHER": {
