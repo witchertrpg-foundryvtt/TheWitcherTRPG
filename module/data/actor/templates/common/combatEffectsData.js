@@ -1,3 +1,5 @@
+import TemporaryEffects from "./temporaryEffectsData.js";
+
 const fields = foundry.data.fields;
 
 export default function combatEffects() {
@@ -32,6 +34,7 @@ export default function combatEffects() {
                     modifier: new fields.NumberField({ initial: 0 })
                 })
             })
-        )
+        ),
+        temporaryEffects: new fields.EmbeddedDataField(TemporaryEffects),
     };
 }

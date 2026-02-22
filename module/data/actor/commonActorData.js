@@ -1,7 +1,5 @@
 import critWound from './templates/common/critWoundData.js';
 import currency from './templates/common/currencyData.js';
-import reputation from './templates/common/reputationData.js';
-import stats from './templates/common/stats/statsData.js';
 import adrenaline from './templates/common/adrenalineData.js';
 import skills from './templates/common/skills/skillsData.js';
 import focus from './templates/common/focusData.js';

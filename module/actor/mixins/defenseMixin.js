@@ -1,7 +1,7 @@
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import { applyStatusEffectToActor } from '../../scripts/statusEffects/applyStatusEffect.js';
-import { applyActiveEffectToActorViaId } from '../../scripts/activeEffects/applyActiveEffect.js';
+import { applyActiveEffectToActorViaId } from '../../scripts/temporaryEffects/applyActiveEffect.js';
 import { getRandomInt } from '../../scripts/helper.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 

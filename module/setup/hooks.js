@@ -1,4 +1,4 @@
-import { removeExpiredActiveEffects } from '../scripts/activeEffects/activeEffectHook.js';
+import { removeExpiredEffects } from '../scripts/temporaryEffects/temporaryEffectHook.js';
 import { applyGeneralCombatHooks } from '../scripts/combat/generalCombatHook.js';
 import { countdownDurationOfRegions } from '../scripts/regions/regionHooks.js';
 
@@ -10,6 +10,6 @@ export function registerHooks() {
 
 function combatHooks(combat, update, options, userId) {
     applyGeneralCombatHooks(combat);
-    removeExpiredActiveEffects(combat);
+    removeExpiredEffects(combat);
     countdownDurationOfRegions(combat, update, options, userId);
 }

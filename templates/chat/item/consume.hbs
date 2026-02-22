@@ -7,6 +7,12 @@
             {{localize "WITCHER.Item.ConsumeProperties.Chat.healedFor"}}: {{messageInfos.heal}}
         </div>
     {{/if}}
+    {{#if item.system.consumeProperties.addsTempHp}}
+        <div>
+            {{localize "WITCHER.Item.ConsumeProperties.Chat.tempHpAdded"}}: {{messageInfos.temporaryHp.tempHp}}
+            {{localize "WITCHER.Item.ConsumeProperties.temporaryHp.duration"}}: {{messageInfos.temporaryHp.duration}}
+        </div>
+    {{/if}}
     {{#if item.system.consumeProperties.effects}}
         <div>
             {{localize "WITCHER.Item.ConsumeProperties.Chat.consumeEffects"}}:
@@ -14,7 +20,7 @@
         {{#each statusEffects as |effect|}}
             <div>
                 <span>{{effect.name}}</span>
-                <img class='chat-icon' src='{{effect.statusEffect.img}}' />
+                <img class='chat-icon' src='{{effect.statusEffect.img}}' alt="status effect icon" />
                 <span> {{localize effect.statusEffect.name}}</span>
             </div>
         {{/each}}

@@ -1,5 +1,8 @@
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
-import { applyActiveEffectToActor, applyActiveEffectToTargets } from '../../scripts/activeEffects/applyActiveEffect.js';
+import {
+    applyActiveEffectToActor,
+    applyActiveEffectToTargets
+} from '../../scripts/temporaryEffects/applyActiveEffect.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import { applyStatusEffectToActor, applyStatusEffectToTargets } from '../../scripts/statusEffects/applyStatusEffect.js';

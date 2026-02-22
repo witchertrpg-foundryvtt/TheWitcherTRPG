@@ -259,8 +259,14 @@
             "ConsumeProperties": {
                 "doesHeal": "Applies heal",
                 "heal": "Heals for",
+                "addsTempHp": "Add temporary health",
+                "temporaryHp": {
+                    "value": "Amount",
+                    "duration": "Duration"
+                },
                 "Chat": {
                     "healedFor": "healed for",
+                    "tempHpAdded": "Added temporary health",
                     "consumeEffects": "applied these effects"
                 }
             },
@@ -1278,6 +1284,7 @@
             "sterilized": "Received Sterilising Fluid",
             "healinghand": "Received Healing Hands",
             "healingTent": "Received Healing Tent",
+            "resetTempHealth": "Reset temporary health",
             "recovered": " has recovered from an",
             "restful": "restful",
             "active": "active",
