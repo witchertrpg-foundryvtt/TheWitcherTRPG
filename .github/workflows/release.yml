@@ -8,11 +8,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
 
-      # Run build script, leaving out CSS because that's handled by the postInstall script
-      - name: Build All
-        run: npm run build:db
+      # Run build script
+      - name: Build Packs
+        run: |
+          npm ci
+          npm run build:db
 
       # Get all relevant files
       - name: Get Includes
