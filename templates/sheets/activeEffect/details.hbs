@@ -7,12 +7,13 @@
         {{formGroup fields.origin value=source.origin rootId=rootId disabled=true}}
     {{/if}}
     {{#if isItemEffect}}
+        {{formGroup systemFields.applySelf value=document.system.applySelf localize=true}}
+        {{formGroup systemFields.applyOnTarget value=document.system.applyOnTarget localize=true}}
         {{#unless document.isTemporaryItemImprovement}}
-            {{formGroup systemFields.applySelf value=document.system.applySelf localize=true}}
-            {{formGroup systemFields.applyOnTarget value=document.system.applyOnTarget localize=true}}
             {{formGroup systemFields.applyOnHit value=document.system.applyOnHit localize=true}}
             {{formGroup systemFields.applyOnDamage value=document.system.applyOnDamage localize=true}}
         {{/unless}}
+
     {{/if}}
 
     {{formGroup fields.statuses value=source.statuses options=statuses rootId=rootId classes="statuses"}}

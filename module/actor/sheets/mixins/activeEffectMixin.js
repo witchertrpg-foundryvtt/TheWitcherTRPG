@@ -35,7 +35,7 @@ export let activeEffectMixin = {
             else if (e.isTemporaryItemImprovement && !e.isAppliedTemporaryItemImprovement)
                 categories.temporaryItemImprovement.effects.push(e);
             else if (e.isTemporary) categories.temporary.effects.push(e);
-            else if (e.type !== 'temporaryItemImprovement') categories.passive.effects.push(e);
+            else categories.passive.effects.push(e);
         }
         return categories;
     },
