@@ -70,5 +70,22 @@
                 {{formGroup skillFields.fields.skillDefense.fields.defenseProperties.fields.modifier value=skill.skillDefense.defenseProperties.modifier localize=true}}
             {{/if}}
         </div>
+        <div>
+            {{formGroup skillFields.fields.skillUsage.fields.hasCustomEffect value=skill.skillUsage.hasCustomEffect localize=true}}
+            {{#if skill.skillUsage.hasCustomEffect}}
+                {{formGroup skillFields.fields.skillUsage.fields.applySelf value=skill.skillUsage.applySelf options=config.attackOptions localize=true}}
+                {{formGroup skillFields.fields.skillUsage.fields.applyOnTarget value=skill.skillUsage.applyOnTarget localize=true}}
+
+                {{formGroup skillFields.fields.skillUsage.fields.temporaryHealth.fields.addTemporaryHealth value=skill.skillUsage.temporaryHealth.addTemporaryHealth localize=true}}
+                {{#if skill.skillUsage.temporaryHealth.addTemporaryHealth}}
+                    {{formGroup skillFields.fields.skillUsage.fields.temporaryHealth.fields.difficultyCheck.fields.multiplier value=skill.skillUsage.temporaryHealth.difficultyCheck.multiplier localize=true}}
+                    {{formGroup skillFields.fields.skillUsage.fields.temporaryHealth.fields.difficultyCheck.fields.stat value=skill.skillUsage.temporaryHealth.difficultyCheck.stat options=config.statOptions blank=false  localize=true}}
+                    {{formGroup skillFields.fields.skillUsage.fields.temporaryHealth.fields.difficultyCheck.fields.maxRollOver value=skill.skillUsage.temporaryHealth.difficultyCheck.maxRollOver localize=true}}
+
+                    {{formGroup skillFields.fields.skillUsage.fields.temporaryHealth.fields.temporaryHp.fields.value value=skill.skillUsage.temporaryHealth.temporaryHp.value localize=true}}
+                    {{formGroup skillFields.fields.skillUsage.fields.temporaryHealth.fields.temporaryHp.fields.duration value=skill.skillUsage.temporaryHealth.temporaryHp.duration localize=true}}
+                {{/if}}
+            {{/if}}
+        </div>
     </div>
 </div>

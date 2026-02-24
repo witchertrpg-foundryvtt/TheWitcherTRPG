@@ -29,7 +29,7 @@ function onHeal(event) {
 
     let actor = fromUuidSync(actorUuid);
 
-    let target = game.user.targets[0]?.actor ?? canvas.tokens.controlled[0]?.actor ?? game.user.character;
+    let target = game.user.targets.first()?.actor ?? canvas.tokens.controlled[0]?.actor ?? game.user.character;
     if (!target) return;
 
     heal =

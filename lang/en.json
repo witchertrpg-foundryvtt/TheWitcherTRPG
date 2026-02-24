@@ -470,12 +470,30 @@
                     },
                     "skillDefense": {
                         "isDefense": "Is Defense"
+                    },
+                    "skillUsage": {
+                        "hasCustomEffect": "Has custom effect",
+                        "temporaryHealth": {
+                            "addTemporaryHealth": "Adds temporary health",
+                            "difficultyCheck": {
+                                "multiplier": "Stat Multiplier",
+                                "stat": "Stat",
+                                "maxRollOver": "Maximum points rolled over"
+                            },
+                            "temporaryHp": {
+                                "value": "Value per point",
+                                "duration": "Duration"
+                            }
+                        }
                     }
                 }
             },
             "professionSkills": {
                 "label": "Profession Skills",
                 "hint": "Add the skills that will be marked as profession skills"
+            },
+            "error": {
+                "noTarget": "This skill needs a target"
             }
         },
         "Weapon": {

@@ -20,6 +20,7 @@ import { deprecationWarnings } from './setup/deprecations.js';
 import { applyActiveEffectToActorViaId } from './scripts/temporaryEffects/applyActiveEffect.js';
 import { preloadHandlebarsTemplates, registerHandelbarHelpers } from './setup/handlebars.js';
 import Rewards from './app/reward/reward.js';
+import { registerQueries } from './setup/queries.js';
 
 registerHooks();
 
@@ -45,6 +46,7 @@ Hooks.once('init', function () {
     registerSheets();
     preloadHandlebarsTemplates();
     registerSettings();
+    registerQueries();
 });
 
 Hooks.on('renderChatMessageHTML', (message, html, data) => {
