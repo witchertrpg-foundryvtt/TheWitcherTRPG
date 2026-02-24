@@ -31,8 +31,15 @@ export async function applyActiveEffectToActor(actorUuid, activeEffects, duratio
 
     if (!actor) return;
 
+    applyTemporaryItemImprovements(actor, activeEffects);
+
     if (!actor.isOwner) {
-        sendToGm('applyActiveEffectToActor', actorUuid, activeEffects, duration);
+         sendToGm(
+             'applyActiveEffectToActor',
+             actorUuid,
+             activeEffects.filter(effect => effect.type != 'temporaryItemImprovement'),
+             duration
+         );
         return;
     }
 
@@ -53,8 +60,26 @@ export async function applyActiveEffectToActor(actorUuid, activeEffects, duratio
         );
 
     await actor.createEmbeddedDocuments('ActiveEffect', newEffects);
+}
+
+async function applyTemporaryItemImprovements(actor, activeEffects) {
+    if (!actor.isOwner) {
+        getActorOwner(actor).query('TheWitcherTRPG.applyTemporaryItemImprovements', {
+            actorUuid: actor.uuid,
+            effects: activeEffects
+        });
+        return;
+    }
 
     actor.applyTemporaryItemImprovements(activeEffects);
+}
+
+function getActorOwner(actor) {
+    let owner = game.users.activeGM;
+    if (actor.hasPlayerOwner) {
+        owner = game.users.find(e => actor.testUserPermission(e, 'OWNER') && !e.isGM);
+    }
+    return owner;
 }
 
 function sendToGm(call, actorUuid, activeEffects, duration) {

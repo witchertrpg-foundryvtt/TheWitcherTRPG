@@ -55,7 +55,8 @@ export let temporaryEffectMixin = {
         let weapon = weapons.find(weapon => weapon.id === itemId);
         temps = temps.map(temp => {
             return {
-                ...temp.toObject(),
+                //when sent via query it is already an object
+                ...(temp.toObject?.() ?? temp),
                 name: weapon.name + ' - ' + temp.name,
                 origin: this.uuid,
                 system: {
@@ -69,18 +70,18 @@ export let temporaryEffectMixin = {
         });
         weapon.createEmbeddedDocuments('ActiveEffect', temps);
 
-       const messageTemplate = 'systems/TheWitcherTRPG/templates/chat/item/appliedTemporaryItemImprovements.hbs';
+        const messageTemplate = 'systems/TheWitcherTRPG/templates/chat/item/appliedTemporaryItemImprovements.hbs';
 
-       const content = await foundry.applications.handlebars.renderTemplate(messageTemplate, {
-           item: weapon,
-           temporaryItemImprovements: temps
-       });
-       const chatData = {
-           content: content,
-           speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-           type: CONST.CHAT_MESSAGE_STYLES.OTHER
-       };
+        const content = await foundry.applications.handlebars.renderTemplate(messageTemplate, {
+            item: weapon,
+            temporaryItemImprovements: temps
+        });
+        const chatData = {
+            content: content,
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+        };
 
-       ChatMessage.create(chatData);
+        ChatMessage.create(chatData);
     }
 };
