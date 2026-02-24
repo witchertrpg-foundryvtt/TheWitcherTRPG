@@ -23,8 +23,7 @@ export class WitcherActiveEffectConfig extends foundry.applications.sheets.Activ
         changes: {
             template: 'systems/TheWitcherTRPG/templates/sheets/activeEffect/active-effect-changes.hbs',
             scrollable: ['ol[data-changes]']
-        },
-        footer: { template: 'templates/generic/form-footer.hbs' }
+        }
     };
 
     /** @override */

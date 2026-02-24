@@ -36,21 +36,25 @@ export async function applyActiveEffectToActor(actorUuid, activeEffects, duratio
         return;
     }
 
-    let newEffects = activeEffects.map(effect =>
-        effect.clone(
-            {
-                'duration.rounds': duration ?? effect.duration.rounds,
-                'duration.combat': ui.combat.combats.find(combat => combat.isActive)?.id,
-                'system.applySelf': false,
-                'system.applyOnTarget': false,
-                'system.applyOnHit': false,
-                'system.applyOnDamage': false
-            },
-            { parent: actor }
-        )
-    );
+    let newEffects = activeEffects
+        .filter(effect => effect.type != 'temporaryItemImprovement')
+        .map(effect =>
+            effect.clone(
+                {
+                    'duration.rounds': duration ?? effect.duration.rounds,
+                    'duration.combat': ui.combat.combats.find(combat => combat.isActive)?.id,
+                    'system.applySelf': false,
+                    'system.applyOnTarget': false,
+                    'system.applyOnHit': false,
+                    'system.applyOnDamage': false
+                },
+                { parent: actor }
+            )
+        );
 
-    actor.createEmbeddedDocuments('ActiveEffect', newEffects);
+    await actor.createEmbeddedDocuments('ActiveEffect', newEffects);
+
+    actor.applyTemporaryItemImprovements(activeEffects);
 }
 
 function sendToGm(call, actorUuid, activeEffects, duration) {

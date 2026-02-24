@@ -1,3 +1,5 @@
+const DialogV2 = foundry.applications.api.DialogV2;
+
 export let temporaryEffectMixin = {
     async handleExpiredEffects() {
         let expiredEffects = this.effects.filter(effect => effect.duration.remaining === 0);
@@ -24,5 +26,61 @@ export let temporaryEffectMixin = {
         await this.update({
             'system.combatEffects.temporaryEffects.temporaryHp': tempHp
         });
+    },
+
+    async applyTemporaryItemImprovements(effects) {
+        let temps = effects.filter(effect => effect.type === 'temporaryItemImprovement');
+        if (!temps || temps.length == 0) return;
+
+        let weapons = this.items.filter(item => item.type === 'weapon');
+
+        let options = '';
+        weapons.forEach(
+            weapon =>
+                (options += `<option value="${weapon.id}" data-itemId="${weapon.itemId}"> ${weapon.name}</option>`)
+        );
+
+        let chooserContent = `<select name="choosen">${options}</select>`;
+        let itemId = await DialogV2.prompt({
+            window: { title: `` },
+            content: chooserContent,
+            ok: {
+                callback: (event, button, dialog) => {
+                    return button.form.elements.choosen.value;
+                }
+            },
+            rejectClose: true
+        });
+
+        let weapon = weapons.find(weapon => weapon.id === itemId);
+        temps = temps.map(temp => {
+            return {
+                ...temp.toObject(),
+                name: weapon.name + ' - ' + temp.name,
+                origin: this.uuid,
+                system: {
+                    isTransferred: true
+                },
+                duration: {
+                    ...temp.duration,
+                    combat: ui.combat.combats.find(combat => combat.isActive)?.id
+                }
+            };
+        });
+        weapon.createEmbeddedDocuments('ActiveEffect', temps);
+
+       const messageTemplate = 'systems/TheWitcherTRPG/templates/chat/item/appliedTemporaryItemImprovements.hbs';
+
+       const content = await foundry.applications.handlebars.renderTemplate(messageTemplate, {
+           item: weapon,
+           temporaryItemImprovements: temps
+       });
+       const chatData = {
+           content: content,
+           speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+           type: CONST.CHAT_MESSAGE_STYLES.OTHER
+       };
+
+       ChatMessage.create(chatData);
     }
 };

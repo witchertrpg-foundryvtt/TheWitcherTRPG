@@ -1,0 +1,16 @@
+<div class="witcherTRPG">
+    {{log this}}
+    <h3>
+        {{item.name}}
+    </h3>
+    <div>
+        {{localize "WITCHER.activeEffect.temporaryItemImprovement"}}:
+    </div>
+    {{#each temporaryItemImprovements as |effect|}}
+        <div>
+            <img class='chat-icon' src='{{effect.img}}' alt="status effect icon" />
+            <span>{{effect.name}}</span>
+            <span> {{localize effect.statusEffect.name}}</span>
+        </div>
+    {{/each}}
+</div>
