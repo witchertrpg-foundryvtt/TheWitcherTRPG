@@ -11,21 +11,13 @@ export let consumeMixin = {
         }
 
         if (properties.temporaryHp != '0') {
-            let temporaryHp = properties.temporaryHp.value;
-            if (temporaryHp.includes('d')) {
-                temporaryHp = (await new Roll(temporaryHp).evaluate()).total;
-            }
-            let temporaryHpArray = this.actor.system.combatEffects.temporaryEffects.temporaryHp;
-            if (!temporaryHpArray.find(temp => temp.source === this.uuid)) {
-                temporaryHpArray.push({
-                    duration: properties.temporaryHp.duration,
-                    value: temporaryHp,
-                    source: this.uuid
-                });
-                await this.actor.update({
-                    'system.combatEffects.temporaryEffects.temporaryHp': temporaryHpArray
-                });
-                messageInfos.temporaryHp = { tempHp: temporaryHp, duration: properties.temporaryHp.duration };
+            if (
+                this.actor.addTemporaryHealth(properties.temporaryHp.value, properties.temporaryHp.duration, this.uuid)
+            ) {
+                messageInfos.temporaryHp = {
+                    tempHp: properties.temporaryHp.value,
+                    duration: properties.temporaryHp.duration
+                };
             }
         }
 

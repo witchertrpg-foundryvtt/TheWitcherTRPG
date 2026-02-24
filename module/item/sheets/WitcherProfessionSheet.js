@@ -24,6 +24,12 @@ export default class WitcheProfessionSheet extends WitcherItemSheet {
             return { value: skill.name, label: skill.label };
         });
 
+        context.config.statOptions = Object.keys(CONFIG.WITCHER.statTypes)
+            .filter(key => key != 'none')
+            .map(key => {
+                return { value: key, label: CONFIG.WITCHER.statTypes[key] };
+            });
+
         return context;
     }
 }
