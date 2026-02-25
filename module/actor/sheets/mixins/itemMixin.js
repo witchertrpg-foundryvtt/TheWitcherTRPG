@@ -194,8 +194,7 @@ export let itemMixin = {
             );
         }
 
-        let quantity = enhancements.sum('quantity');
-        if (quantity == 0) {
+        if (enhancements.length == 0) {
             content += `<div class="error-display">${game.i18n.localize('WITCHER.Enhancement.NoEnhancement')}</div>`;
         } else {
             let enhancementsOption = ``;

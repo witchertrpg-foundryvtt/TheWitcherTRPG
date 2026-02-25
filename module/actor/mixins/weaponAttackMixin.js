@@ -42,11 +42,8 @@ export let weaponAttackMixin = {
         let noAmmo = 0;
         let ammunitionOption = ``;
         if (weapon.system.usingAmmo) {
-            ammunitions = this.items.filter(function (item) {
-                return item.type == 'weapon' && item.system.isAmmo;
-            });
-            let quantity = ammunitions.sum('quantity');
-            if (quantity <= 0) {
+            ammunitions = this.items.filter(item => item.type == 'weapon' && item.system.isAmmo);
+            if (ammunitions.length <= 0) {
                 noAmmo = 1;
             } else {
                 ammunitions.forEach(element => {
