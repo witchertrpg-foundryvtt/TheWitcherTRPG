@@ -24,7 +24,7 @@
     <h3>{{localize "WITCHER.Item.Settings.castProperties.targetProperties"}}</h3>
     <table class="item-bottom-table">
         <tr>
-            <th><a data-action='addEffect' data-target='system.onCastEffects'
+            <th><a data-action='addEffect' data-target='system.onCastEffects' data-target='system.onCastEffects'
                     title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
             </th>
             <th>{{localize "WITCHER.Item.Effect"}}</th>
@@ -32,11 +32,12 @@
         {{#each item.system.onCastEffects as |effect name|}}
             <tr class="list-item" data-id="{{effect.id}}">
                 <td>
-                    <a data-action='removeEffect' title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
-                            class="fas fa-minus"></i></a>
+                    <a data-action='removeEffect' data-target='system.onCastEffects'
+                        title="{{localize "WITCHER.Item.RemoveEffect"}}"><i class="fas fa-minus"></i></a>
                 </td>
                 <td>
-                    <select class="item-effect" data-action='editEffect' data-field="statusEffect">
+                    <select class="item-effect" data-action='editEffect' data-target='system.onCastEffects'
+                        data-field="statusEffect">
                         {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                     </select>
                 </td>

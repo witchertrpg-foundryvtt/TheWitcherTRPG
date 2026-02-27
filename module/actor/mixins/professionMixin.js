@@ -327,7 +327,7 @@ export let professionMixin = {
                 queryData.itemUuid = this.getList('profession')[0].uuid;
 
                 let duration = eval(
-                    temporaryHealth.temporaryHp.duration.replace('@level', skill.level).match(/\d+\*\d+/g)[0]
+                    temporaryHealth.temporaryHp.duration.replace('@level', skill.level).match(/\d+\*?\d+/g)[0]
                 );
                 let value =
                     '' +
