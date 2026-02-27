@@ -31,26 +31,55 @@ export async function applyActiveEffectToActor(actorUuid, activeEffects, duratio
 
     if (!actor) return;
 
+    applyTemporaryItemImprovements(actor, activeEffects);
+
     if (!actor.isOwner) {
-        sendToGm('applyActiveEffectToActor', actorUuid, activeEffects, duration);
+         sendToGm(
+             'applyActiveEffectToActor',
+             actorUuid,
+             activeEffects.filter(effect => effect.type != 'temporaryItemImprovement'),
+             duration
+         );
         return;
     }
 
-    let newEffects = activeEffects.map(effect =>
-        effect.clone(
-            {
-                'duration.rounds': duration ?? effect.duration.rounds,
-                'duration.combat': ui.combat.combats.find(combat => combat.isActive)?.id,
-                'system.applySelf': false,
-                'system.applyOnTarget': false,
-                'system.applyOnHit': false,
-                'system.applyOnDamage': false
-            },
-            { parent: actor }
-        )
-    );
+    let newEffects = activeEffects
+        .filter(effect => effect.type != 'temporaryItemImprovement')
+        .map(effect =>
+            effect.clone(
+                {
+                    'duration.rounds': duration ?? effect.duration.rounds,
+                    'duration.combat': ui.combat.combats.find(combat => combat.isActive)?.id,
+                    'system.applySelf': false,
+                    'system.applyOnTarget': false,
+                    'system.applyOnHit': false,
+                    'system.applyOnDamage': false
+                },
+                { parent: actor }
+            )
+        );
 
-    actor.createEmbeddedDocuments('ActiveEffect', newEffects);
+    await actor.createEmbeddedDocuments('ActiveEffect', newEffects);
+}
+
+async function applyTemporaryItemImprovements(actor, activeEffects) {
+    if (!actor.isOwner) {
+        getActorOwner(actor).query('TheWitcherTRPG.applyTemporaryItemImprovements', {
+            actorUuid: actor.uuid,
+            effects: activeEffects
+        });
+        return;
+    }
+
+    actor.applyTemporaryItemImprovements(activeEffects);
+}
+
+function getActorOwner(actor) {
+    let owner = game.users.activeGM;
+    if (actor.hasPlayerOwner) {
+        owner = game.users.find(e => actor.testUserPermission(e, 'OWNER') && !e.isGM);
+    }
+    return owner;
 }
 
 function sendToGm(call, actorUuid, activeEffects, duration) {

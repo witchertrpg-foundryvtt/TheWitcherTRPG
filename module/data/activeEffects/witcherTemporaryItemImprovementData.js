@@ -7,6 +7,14 @@ export default class WitcherTemporaryItemImprovementData extends foundry.abstrac
 
     static defineSchema() {
         return {
+            applySelf: new fields.BooleanField({
+                initial: false,
+                label: 'WITCHER.Effect.applySelf'
+            }),
+            applyOnTarget: new fields.BooleanField({
+                initial: false,
+                label: 'WITCHER.Effect.applyOnTarget'
+            }),
             isTransferred: new fields.BooleanField({ initial: false })
         };
     }
