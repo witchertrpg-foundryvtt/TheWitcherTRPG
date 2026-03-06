@@ -3,6 +3,7 @@ const DialogV2 = foundry.applications.api.DialogV2;
 export const deprecationWarnings = function () {
     lifepathModifiers();
     statSkillModifiers();
+    ritualComponents();
 };
 
 async function lifepathModifiers() {
@@ -50,6 +51,38 @@ async function statSkillModifiers() {
         );
         DialogV2.prompt({
             window: { title: `${game.i18n.localize('WITCHER.deprecations.statSkillModifiers.title')}` },
+            content: dialogTemplate
+        });
+    }
+}
+
+async function ritualComponents() {
+    let actorWithItem = game.actors
+        .filter(actor => actor.isOwner)
+        .filter(actor => actor.type != 'mystery' && actor.type != 'loot')
+        .flatMap(actor => Array.from(actor.items.values()))
+        .filter(item => item.type == 'ritual')
+        .filter(item => item.system.components)
+        .map(item => {
+            return { actor: item.parent, item: item.name };
+        });
+
+    let items = game.items
+        .filter(item => item.type == 'ritual')
+        .filter(item => item.system.components)
+        .map(item => {
+            return { actor: { name: 'Sidebar' }, item: item.name };
+        });
+
+    let ritualComponents = actorWithItem.concat(items);
+
+    if (actorWithItem.length > 0) {
+        const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/dialog/deprecations/ritualComponents.hbs',
+            { ritualComponents }
+        );
+        DialogV2.prompt({
+            window: { title: `${game.i18n.localize('WITCHER.deprecations.ritualComponents.title')}` },
             content: dialogTemplate
         });
     }

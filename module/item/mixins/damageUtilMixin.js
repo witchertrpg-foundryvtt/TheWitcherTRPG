@@ -45,10 +45,11 @@ export let damageUtilMixin = {
         messageData.flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.damageType')}:</b> ${game.i18n.localize(damageTypeloc)} </div>`;
         messageData.flavor += `<div>${game.i18n.localize('WITCHER.Damage.RemoveSP')}</div>`;
 
-        if (damage.properties.effects && damage.properties.effects.length > 0) {
+        if (Object.keys(damage.properties.effects)) {
             messageData.flavor += `<b>${game.i18n.localize('WITCHER.Item.Effect')}:</b>`;
 
-            damage.properties.effects.forEach((effect, index, effectArray) => {
+            Object.keys(damage.properties.effects).forEach(key => {
+                let effect = damage.properties.effects[key];
                 messageData.flavor += `<div class="flex gap">`;
                 if (effect.name != '') {
                     messageData.flavor += `<span>${effect.name}</span>`;
@@ -62,10 +63,10 @@ export let damageUtilMixin = {
                     messageData.flavor += `<div data-tooltip='${game.i18n.localize('WITCHER.Effect.Rolled')}: ${rollPercentage}'>(${effect.percentage}%) `;
                     if (rollPercentage > effect.percentage) {
                         messageData.flavor += `<span class="percentageFailed">${game.i18n.localize('WITCHER.Effect.Failed')}</span>`;
-                        effectArray[index].applied = false;
+                        effect.applied = false;
                     } else {
                         messageData.flavor += `<span class="percentageSuccess">${game.i18n.localize('WITCHER.Effect.Applied')}</span>`;
-                        effectArray[index].applied = true;
+                        effect.applied = true;
                     }
                     messageData.flavor += '</div>';
                 }

@@ -1,4 +1,4 @@
-import damageProperties from '../../item/templates/combat/damagePropertiesData.js';
+import DamageProperties from '../../item/templates/combat/damagePropertiesData.js';
 import critData from './critData.js';
 import locationData from './locationData.js';
 
@@ -13,6 +13,6 @@ export default function damageData() {
         type: new fields.StringField(),
         originalLocation: new fields.StringField(),
         location: new fields.SchemaField(locationData()),
-        properties: new fields.SchemaField(damageProperties())
+        properties: new fields.EmbeddedDataField(DamageProperties)
     };
 }

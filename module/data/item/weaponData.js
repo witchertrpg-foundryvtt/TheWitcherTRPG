@@ -1,11 +1,11 @@
 import { migrateDamageProperties } from '../migrations/damagePropertiesMigration.js';
 import CommonItemData from './commonItemData.js';
-import damageProperties from './templates/combat/damagePropertiesData.js';
 import weaponType from './templates/weaponTypeData.js';
 import { associatedDiagramUuid, unwrapAssociatedDiagram } from './templates/associatedDiagramData.js';
 import defenseOptions from './templates/combat/defenseOptionsData.js';
 import attackOptions from './templates/combat/attackOptionsData.js';
 import DefenseProperties from './templates/combat/defensePropertiesData.js';
+import DamageProperties from './templates/combat/damagePropertiesData.js';
 
 const fields = foundry.data.fields;
 
@@ -37,7 +37,7 @@ export default class WeaponData extends CommonItemData {
             enhancementItemIds: new fields.ArrayField(new fields.StringField({ initial: '' })),
 
             ...attackOptions(),
-            damageProperties: new fields.SchemaField(damageProperties()),
+            damageProperties: new fields.EmbeddedDataField(DamageProperties),
             ...defenseOptions(),
             defenseProperties: new fields.EmbeddedDataField(DefenseProperties),
 

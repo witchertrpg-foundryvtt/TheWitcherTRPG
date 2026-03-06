@@ -1,0 +1,11 @@
+{{#if ritualComponents}}
+    <span>{{localize "WITCHER.deprecations.ritualComponents.text"}}</span>
+    <div class="scrollable" style="max-height: 300px;">
+        {{#each ritualComponents as |ritualComponents|}}
+            <div>
+                <span>{{ritualComponents.actor.name}} - {{ritualComponents.item}}</span>
+            </div>
+        {{/each}}
+    </div>
+
+{{/if}}

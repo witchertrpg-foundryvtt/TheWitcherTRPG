@@ -30,8 +30,8 @@
             <th></th>
             <th>{{localize "WITCHER.Percentage"}}</th>
         </tr>
-        {{#each item.system.damageProperties.effects as |effect name|}}
-            <tr class="list-item" data-id="{{effect.id}}">
+        {{#each item.system.damageProperties.effects as |effect id|}}
+            <tr class="list-item" data-id="{{id}}">
                 <td>
                     <a data-action='removeEffect' data-target='system.damageProperties.effects'
                         title="{{localize "WITCHER.Item.RemoveEffect"}}"><i class="fas fa-minus"></i></a>
@@ -53,7 +53,7 @@
                 </td>
             </tr>
             {{#if ../item.system.staminaIsVar }}
-                <tr class="list-item" data-id="{{effect.id}}">
+                <tr class="list-item" data-id="{{id}}">
                     <td>{{localize "WITCHER.Spell.variableEffect"}}</td>
                     <td>
                         <input data-action='editEffect' data-target='system.damageProperties.effects' type="checkbox"
