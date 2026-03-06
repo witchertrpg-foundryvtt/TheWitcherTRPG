@@ -72,22 +72,17 @@ export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemShe
             }
         }).bind(this.element);
 
-        this.element
-            .querySelectorAll('input[data-action=editEffect]')
-            .forEach(input => input.addEventListener('focusout', this._onEditEffect.bind(this)));
-        this.element
-            .querySelectorAll('textarea[data-action=editEffect]')
-            .forEach(input => input.addEventListener('focusout', this._onEditEffect.bind(this)));
-        this.element
-            .querySelectorAll('select[data-action=editEffect]')
-            .forEach(input => input.addEventListener('input', this._onEditEffect.bind(this)));
-
         this.activateListeners(this.element);
     }
 
-    activateListeners(html) {
-
+    _onChangeForm(formConfig, event) {
+        super._onChangeForm(formConfig, event);
+        if (event.target.dataset.action === 'editEffect') {
+            this._onEditEffect(event, event.target);
+        }
     }
+
+    activateListeners(html) {}
 
     _canDragStart() {
         return false;
@@ -142,16 +137,15 @@ export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemShe
 
     static async _onAddEffect(event, element) {
         event.preventDefault();
-        let newList = this.item.system.effects ?? [];
-        newList.push({ percentage: 100 });
-        this.item.update({ 'system.effects': newList });
+        let target = element.dataset.target;
+        let id = foundry.utils.randomID();
+        this.item.update({ [`${target}.${id}`]: { percentage: 0 } });
     }
 
-    _onEditEffect(event) {
+    async _onEditEffect(event, element) {
         event.preventDefault();
-        let element = event.currentTarget;
-        let itemId = element.closest('.list-item').dataset.id;
-
+        let id = element.closest('.list-item').dataset.id;
+        let target = element.closest('.list-item').dataset.target;
         let field = element.dataset.field;
         let value = element.value;
 
@@ -159,18 +153,16 @@ export default class WitcherItemSheet extends HandlebarsApplicationMixin(ItemShe
             value = element.checked;
         }
 
-        let effects = this.item.system.effects;
-        let objIndex = effects.findIndex(obj => obj.id == itemId);
-        effects[objIndex][field] = value;
-
-        this.item.update({ 'system.effects': effects });
+        this.item.update({ [`${target}.${id}.${field}`]: value });
     }
 
     static async _oRemoveEffect(event, element) {
         event.preventDefault();
-        let itemId = element.closest('.list-item').dataset.id;
-        let newList = this.item.system.effects.filter(item => item.id !== itemId);
-        this.item.update({ 'system.effects': newList });
+        let target = element.closest('.list-item').dataset.target;
+        let id = element.closest('.list-item').dataset.id;
+        this.item.update({ [`${target}.-=${id}`]: null });
+        //v14
+        // this.item.update({ [`${target}.${id}`]: _del });
     }
 
     static async _renderConfigureDialog() {

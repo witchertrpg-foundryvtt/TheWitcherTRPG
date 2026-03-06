@@ -50,7 +50,7 @@ export default class ArmorData extends CommonItemData {
             enhancements: new fields.NumberField({ initial: 0 }),
             enhancementItemIds: new fields.ArrayField(new fields.StringField({ initial: '' })),
 
-            effects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
+            effects: new fields.TypedObjectField(new fields.SchemaField(itemEffect())),
 
             ...associatedDiagramUuid(),
             defenseProperties: new fields.EmbeddedDataField(DefenseProperties)
@@ -82,6 +82,10 @@ export default class ArmorData extends CommonItemData {
         unwrapAssociatedDiagram(this);
     }
 
+    addEffects(effects) {
+        this.effects = { ...this.effects, ...effects };
+    }
+
     /** @inheritdoc */
     static migrateData(source) {
         if ('enhancementItems' in source) {
@@ -94,7 +98,18 @@ export default class ArmorData extends CommonItemData {
         }
 
         this.effects?.forEach(effect => (effect.percentage = parseInt(effect.percentage)));
+        this.migrateEffectsToTypedField(source);
 
         return super.migrateData(source);
+    }
+
+    static migrateEffectsToTypedField(source) {
+        if (Array.isArray(source.effects) && source.effects.length > 0) {
+            source.effects = Object.fromEntries(
+                source.effects.map(o => {
+                    return [foundry.utils.randomID(), o];
+                })
+            );
+        }
     }
 }

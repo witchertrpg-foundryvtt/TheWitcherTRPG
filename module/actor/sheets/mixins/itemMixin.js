@@ -257,7 +257,7 @@ export let itemMixin = {
                                     'system.bludgeoning': choosenEnhancement.system.bludgeoning,
                                     'system.slashing': choosenEnhancement.system.slashing,
                                     'system.piercing': choosenEnhancement.system.piercing,
-                                    'system.effects': item.system.effects.concat(choosenEnhancement.system.effects)
+                                    'system.effects': item.system.addEffects(choosenEnhancement.system.effects)
                                 });
                             }
 

@@ -35,28 +35,39 @@
             </tr>
         </table>
     {{/if}}
-    <div class="flex">
-        <b>{{localize "WITCHER.Item.Effect"}} </b><a data-action="addEffect"><i class="fas fa-plus"></i></a>
+    <div>
+        <table class="item-bottom-table">
+            <tr>
+                <th><a data-action='addEffect' data-target='system.effects'><i class="fas fa-plus"></i></a></th>
+                <th><b>{{localize "WITCHER.Item.Effect"}}</b></th>
+            </tr>
+            {{#each item.system.effects as |effect id|}}
+                <tr class="list-item" data-id="{{id}}" data-target='system.effects'>
+                    <th>
+                        <a data-action='removeEffect'><i class="fas fa-minus"></i></a>
+                    </th>
+                    <td>
+                        <input class="item-effect" data-action='editEffect'
+                            placeholder="{{localize "WITCHER.Item.Effect"}} {{localize "WITCHER.table.Name"}}"
+                            data-field="name" type="text" value="{{effect.name}}" />
+                    </td>
+                    <td>
+                        <select class="item-effect" data-action="editEffect" data-field="statusEffect">
+                            {{#if (or (eq ../item.system.type "weapon") (eq ../item.system.type "rune"))}}
+                                {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                            {{else}}
+                                {{selectOptions ../config.armorEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                            {{/if}}
+                        </select>
+                    </td>
+                    <td class="flex">
+                        <label>{{localize "WITCHER.Percentage"}}:</label>
+                        <input data-action="editEffect" data-field="percentage" type="text"
+                            value="{{effect.percentage}}" data-dtype="Number" />
+                        %
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
     </div>
-    {{#each item.system.effects as |effect name|}}
-        <div class="flex list-item" data-id="{{effect.id}}">
-            <a data-action="removeEffect"><i class="fas fa-minus"></i></a>
-            <textarea data-action="editEffect" rows=3 data-field="name">{{effect.name}}</textarea>
-            {{#if (or (eq ../item.system.type "weapon") (eq ../item.system.type "rune"))}}
-                <select class="item-effect" data-action="editEffect" data-field="statusEffect">
-                    {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
-                </select>
-            {{else}}
-                <select class="item-effect" data-action="editEffect" data-field="statusEffect">
-                    {{selectOptions ../config.armorEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
-                </select>
-            {{/if}}
-            <div class="flex">
-                <label>{{localize "WITCHER.Percentage"}}:</label>
-                <input data-action="editEffect" data-field="percentage" type="text" value="{{effect.percentage}}"
-                    data-dtype="Number" />
-                %
-            </div>
-        </div>
-    {{/each}}
 </section>

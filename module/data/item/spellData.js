@@ -2,7 +2,7 @@ import { migrateDamageProperties } from '../migrations/damagePropertiesMigration
 import CommonItemData from './commonItemData.js';
 import { spellVisualMixin } from './mixin/spellVisualMixin.js';
 import attackOptions from './templates/combat/attackOptionsData.js';
-import damageProperties from './templates/combat/damagePropertiesData.js';
+import DamageProperties from './templates/combat/damagePropertiesData.js';
 import defenseOptions from './templates/combat/defenseOptionsData.js';
 import DefenseProperties from './templates/combat/defensePropertiesData.js';
 import itemEffect from './templates/itemEffectData.js';
@@ -44,7 +44,7 @@ export default class SpellData extends CommonItemData {
                 nullable: false,
                 label: 'WITCHER.DamageType.name'
             }),
-            damageProperties: new fields.SchemaField(damageProperties()),
+            damageProperties: new fields.EmbeddedDataField(DamageProperties),
 
             createsShield: new fields.BooleanField({ initial: false }),
             shield: new fields.StringField({ initial: '' }),

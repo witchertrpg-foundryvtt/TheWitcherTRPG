@@ -30,34 +30,32 @@
             <th></th>
             <th>{{localize "WITCHER.Percentage"}}</th>
         </tr>
-        {{#each item.system.damageProperties.effects as |effect name|}}
-            <tr class="list-item" data-id="{{effect.id}}">
+        {{#each item.system.damageProperties.effects as |effect id|}}
+            <tr class="list-item" data-id="{{id}}" data-target='system.damageProperties.effects'>
                 <td>
-                    <a data-action='removeEffect' data-target='system.damageProperties.effects'
-                        title="{{localize "WITCHER.Item.RemoveEffect"}}"><i class="fas fa-minus"></i></a>
+                    <a data-action='removeEffect' title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                            class="fas fa-minus"></i></a>
                 </td>
                 <td>
-                    <input class="item-effect" data-action='editEffect' data-target='system.damageProperties.effects'
-                        placeholder="{{localize "WITCHER.table.Name"}}" data-field="name" type="text"
-                        value="{{effect.name}}" />
+                    <input class="item-effect" data-action='editEffect' placeholder="{{localize "WITCHER.table.Name"}}"
+                        data-field="name" type="text" value="{{effect.name}}" />
                 </td>
                 <td>
-                    <select class="item-effect" data-action='editEffect' data-target='system.damageProperties.effects'
-                        data-field="statusEffect">
+                    <select class="item-effect" data-action='editEffect' data-field="statusEffect">
                         {{selectOptions ../config.statusEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                     </select>
                 </td>
                 <td>
-                    <input data-action='editEffect' data-target='system.damageProperties.effects' placeholder="%"
-                        data-field="percentage" type="text" value="{{effect.percentage}}" data-dtype="Number" />
+                    <input data-action='editEffect' placeholder="%" data-field="percentage" type="text"
+                        value="{{effect.percentage}}" data-dtype="Number" />
                 </td>
             </tr>
             {{#if ../item.system.staminaIsVar }}
-                <tr class="list-item" data-id="{{effect.id}}">
+                <tr class="list-item" data-id="{{id}}" data-target='system.damageProperties.effects'>
                     <td>{{localize "WITCHER.Spell.variableEffect"}}</td>
                     <td>
-                        <input data-action='editEffect' data-target='system.damageProperties.effects' type="checkbox"
-                            data-field="varEffect" {{checked effect.varEffect}} />
+                        <input data-action='editEffect' type="checkbox" data-field="varEffect"
+                            {{checked effect.varEffect}} />
                     </td>
                 </tr>
             {{/if}}

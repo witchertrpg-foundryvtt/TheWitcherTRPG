@@ -51,7 +51,7 @@
             </td>
         </tr>
     </table>
-    <div class="flex">
+    <div>
         <table class="item-bottom-table">
             <tr>
                 {{#unless (eq item.system.location "Shield")}}
@@ -169,23 +169,25 @@
                 </tr>
             {{/if}}
         </table>
+    </div>
+    <div>
         <table class="item-bottom-table">
             <tr>
-                <th><a class="add-effect"><i class="fas fa-plus"></i></a></th>
+                <th><a data-action='addEffect' data-target='system.effects'><i class="fas fa-plus"></i></a></th>
                 <th><b>{{localize "WITCHER.Item.Effect"}}</b></th>
             </tr>
-            {{#each item.system.effects as |effect name|}}
-                <tr>
-                    <th class="list-item" data-id="{{effect.id}}">
-                        <a class="remove-effect"><i class="fas fa-minus"></i></a>
+            {{#each item.system.effects as |effect id|}}
+                <tr class="list-item" data-id="{{id}}" data-target='system.effects'>
+                    <th>
+                        <a data-action='removeEffect'><i class="fas fa-minus"></i></a>
                     </th>
-                    <td class="list-item" data-id="{{effect.id}}">
-                        <input class="edit-effect item-effect"
+                    <td>
+                        <input class="item-effect" data-action='editEffect'
                             placeholder="{{localize "WITCHER.Item.Effect"}} {{localize "WITCHER.table.Name"}}"
                             data-field="name" type="text" value="{{effect.name}}" />
                     </td>
-                    <td class="list-item" data-id="{{effect.id}}">
-                        <select class="edit-effect item-effect" data-field="statusEffect">
+                    <td>
+                        <select class="item-effect" data-action='editEffect' data-field="statusEffect">
                             {{selectOptions ../config.armorEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
                         </select>
                     </td>
