@@ -79,14 +79,14 @@
         <label>{{localize "WITCHER.Item.Effect"}}</label>
         <textarea rows="10" name="system.effect">{{item.system.effect}}</textarea>
     </div>
-    {{#unless item.system.ritualComponents}}
+    {{#if item.system.components}}
         <div>
             <label>{{localize "WITCHER.Spell.Ritual.components"}}</label>
             {{#if item.system.components}}
                 <textarea rows="4" name="system.components">{{item.system.components}}</textarea>
             {{/if}}
         </div>
-    {{/unless}}
+    {{/if}}
 
     <div class="flex">
         <div class="spell-template-damage">
