@@ -101,9 +101,10 @@ export default class WitcherProfessionConfigurationSheet extends WitcherConfigur
 
         let skillObject = this.findSkillWithName(skillName);
 
-        let newList = skillObject.skill.skillAttack.damageProperties.effects ?? [];
-        newList.push({ percentage: 0 });
-        this.item.update({ [`system.${skillObject.path}.skillAttack.damageProperties.effects`]: newList });
+        let id = foundry.utils.randomID();
+        this.item.update({
+            [`system.${skillObject.path}.skillAttack.damageProperties.effects.${id}`]: { percentage: 0 }
+        });
     }
 
     static async _onEditEffectDamageProperties(event) {
@@ -121,11 +122,9 @@ export default class WitcherProfessionConfigurationSheet extends WitcherConfigur
         let skillName = element.closest('.list-item').dataset.target;
         let skillObject = this.findSkillWithName(skillName);
 
-        let effects = skillObject.skill.skillAttack.damageProperties.effects;
-        let objIndex = effects.findIndex(obj => obj.id == effectId);
-        effects[objIndex][field] = value;
-
-        this.item.update({ [`system.${skillObject.path}.skillAttack.damageProperties.effects`]: effects });
+        this.item.update({
+            [`system.${skillObject.path}.skillAttack.damageProperties.effects.${effectId}.${field}`]: value
+        });
     }
 
     static async _oRemoveEffectDamageProperties(event) {
@@ -136,8 +135,7 @@ export default class WitcherProfessionConfigurationSheet extends WitcherConfigur
         let skillName = element.closest('.list-item').dataset.target;
         let skillObject = this.findSkillWithName(skillName);
 
-        let newList = skillObject.skill.skillAttack.damageProperties.effects.filter(effect => effect.id !== effectId);
-        this.item.update({ [`system.${skillObject.path}.skillAttack.damageProperties.effects`]: newList });
+        this.item.update({ [`system.${skillObject.path}.skillAttack.damageProperties.effects.-=${effectId}`]: null });
     }
 
     static findSkillWithName(skillName) {
