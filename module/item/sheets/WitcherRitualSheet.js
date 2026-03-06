@@ -1,9 +1,6 @@
-import WitcherConfigurationSheet from './configurations/WitcherConfigurationSheet.js';
 import WitcherItemSheet from './WitcherItemSheet.js';
 
 export default class WitcherRitualSheet extends WitcherItemSheet {
-    configuration = new WitcherConfigurationSheet({ document: this.item });
-
     static PARTS = {
         main: {
             template: `systems/TheWitcherTRPG/templates/sheets/item/ritual-sheet.hbs`,

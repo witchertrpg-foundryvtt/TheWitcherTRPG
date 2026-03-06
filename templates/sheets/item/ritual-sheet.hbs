@@ -1,7 +1,7 @@
 <section class="scrollable">
     <header class="item-header">
         <h1 class="itemname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
-        <a class="configure-item"><i class="fas fa-gear"></i></a>
+        <a class="configure-item" data-action="configureItem"><i class="fas fa-gear"></i></a>
         <general>
             <itemimage>
                 {{#if (and (includes (getSetting "clickableImageItemTypes") item.type)  (or (window "game" "user" "isGM") (eq (getSetting "clickableImageCheckboxForGMOnly") false)) )}}
@@ -75,12 +75,19 @@
             <td><input name="system.duration" type="text" value="{{item.system.duration}}" /></td>
         </tr>
     </table>
-    <label>{{localize "WITCHER.Item.Effect"}}</label>
-    <textarea rows="10" name="system.effect">{{item.system.effect}}</textarea>
-    <label>{{localize "WITCHER.Spell.Ritual.components"}}</label>
-    {{#if item.system.components}}
-        <textarea rows="4" name="system.components">{{item.system.components}}</textarea>
-    {{/if}}
+    <div>
+        <label>{{localize "WITCHER.Item.Effect"}}</label>
+        <textarea rows="10" name="system.effect">{{item.system.effect}}</textarea>
+    </div>
+    {{#unless item.system.ritualComponents}}
+        <div>
+            <label>{{localize "WITCHER.Spell.Ritual.components"}}</label>
+            {{#if item.system.components}}
+                <textarea rows="4" name="system.components">{{item.system.components}}</textarea>
+            {{/if}}
+        </div>
+    {{/unless}}
+
     <div class="flex">
         <div class="spell-template-damage">
             <div>

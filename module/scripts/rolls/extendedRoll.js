@@ -61,17 +61,21 @@ export async function extendedRoll(rollFormula, messageData, config = new RollCo
     messageData.system.rollTotal = roll.total;
 
     //calculate overall success/failure for the attack/defense
-    if (config.showSuccess && config.threshold >= 0) {
+    if (config.threshold >= 0) {
         let success;
         if (!config.reversal) {
             success = config.defense ? roll.total >= config.threshold : roll.total > config.threshold;
+            roll.options.rollOver = roll.total - config.threshold;
         } else {
             success = config.defense ? roll.total <= config.threshold : roll.total < config.threshold;
+            roll.options.rollOver = config.threshold - roll.total;
         }
 
         roll.options.success = success;
 
-        let successHeader = config.thresholdDesc ? `: ${game.i18n.localize(config.thresholdDesc)}` : '';
+        let successHeader = config.thresholdDesc
+            ? `: ${game.i18n.localize(config.thresholdDesc)}`
+            : ': ' + config.threshold;
         messageData.flavor += success
             ? `<div class="dice-success"><i>${game.i18n.localize('WITCHER.Chat.Success')}${successHeader}</i></br>${config.messageOnSuccess}</div>`
             : `<div class="dice-fail"><i>${game.i18n.localize('WITCHER.Chat.Fail')}${successHeader}</i></br>${config.messageOnFailure}</div>`;
@@ -90,6 +94,8 @@ export async function extendedRoll(rollFormula, messageData, config = new RollCo
                 message.setFlag('TheWitcherTRPG', flags.key, flags.value);
             }
         }
+    } else {
+        roll.messageData = messageData;
     }
 
     return roll;

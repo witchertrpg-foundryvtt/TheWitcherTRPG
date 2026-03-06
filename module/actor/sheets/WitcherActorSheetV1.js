@@ -12,28 +12,6 @@ import { activeEffectMixin } from './mixins/activeEffectMixin.js';
 import { customSkillMixin } from './mixins/customSkillMixin.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 
-Array.prototype.sum = function (prop) {
-    var total = 0;
-    for (var i = 0; i < this.length; i++) {
-        if (this[i].system[prop]) {
-            total += Number(this[i].system[prop]);
-        } else if (this[i].system?.system[prop]) {
-            total += Number(this[i].system?.system[prop]);
-        }
-    }
-    return total;
-};
-
-Array.prototype.cost = function () {
-    var total = 0;
-    for (var i = 0, _len = this.length; i < _len; i++) {
-        if (this[i].system.cost && this[i].system.quantity) {
-            total += Number(this[i].system.quantity) * Number(this[i].system.cost);
-        }
-    }
-    return Math.ceil(total);
-};
-
 export default class WitcherActorSheetV1 extends foundry.appv1.sheets.ActorSheet {
     statMap = CONFIG.WITCHER.statMap;
     skillMap = CONFIG.WITCHER.skillMap;

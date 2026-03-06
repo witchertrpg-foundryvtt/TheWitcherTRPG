@@ -18,25 +18,18 @@ const { ActorSheetV2 } = foundry.applications.sheets;
 Array.prototype.sum = function (prop) {
     var total = 0;
     for (var i = 0; i < this.length; i++) {
-        if (this[i].system[prop]) {
-            total += Number(this[i].system[prop]);
-        } else if (this[i].system?.system[prop]) {
-            total += Number(this[i].system?.system[prop]);
-        }
+        total += Number(this[i].system[prop] ?? 0);
     }
     return total;
 };
 
 Array.prototype.cost = function () {
     var total = 0;
-    for (var i = 0, _len = this.length; i < _len; i++) {
-        if (this[i].system.cost && this[i].system.quantity) {
-            total += Number(this[i].system.quantity) * Number(this[i].system.cost);
-        }
+    for (var i = 0; i < this.length; i++) {
+        total += Number(this[i].system.quantity ?? 0) * Number(this[i].system.cost ?? 0);
     }
     return Math.ceil(total);
 };
-
 export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     statMap = CONFIG.WITCHER.statMap;
     skillMap = CONFIG.WITCHER.skillMap;

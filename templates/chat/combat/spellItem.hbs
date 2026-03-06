@@ -21,13 +21,17 @@
 {{#if spellItem.system.difficultyCheck}}
     <div><b>{{localize "WITCHER.DC"}}: </b>{{spellItem.system.difficultyCheck}}</div>
 {{/if}}
-{{#if spellItem.system.components}}
-    <div><b>{{localize "WITCHER.Spell.Components"}}: </b>{{spellItem.system.components}}
+{{#if spellItem.system.ritualComponents}}
+    <div>
+        <b>{{localize "WITCHER.Spell.Ritual.components"}}: </b><br>
+        {{#each spellItem.system.ritualComponents as |component|}}
+            {{component.quantity}}x {{component.item.name}}<br>
+        {{/each}}
     </div>
 {{/if}}
-{{#if spellItem.system.alternateComponents}}
-    <div><b>{{localize "WITCHER.Spell.AlternateComponents"}}:
-        </b>{{spellItem.system.alternateComponents}}</div>
+{{#if spellItem.system.alternateRitualComponents}}
+    <div><b>{{localize "WITCHER.Spell.Ritual.alternateComponents"}}:
+        </b>{{spellItem.system.alternateRitualComponents}}</div>
 {{/if}}
 {{#if spellItem.system.liftRequirement}}
     <div><b>{{localize "WITCHER.Spell.Requirements"}}:

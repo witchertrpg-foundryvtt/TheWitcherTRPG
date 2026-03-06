@@ -48,10 +48,7 @@ export default class WitcherActor extends Actor {
             .flat()
             .filter(effect => effect.statusEffect)
             .map(effect => WITCHER.armorEffects.find(armorEffect => armorEffect.id == effect.statusEffect));
-
-        armorEffects.forEach(effect => {
-            this.applyStatus(effect);
-        });
+        this.applyStatus(armorEffects);
 
         this.calculateStats();
         this.calculateFixedDerivedStats();
@@ -464,7 +461,7 @@ export default class WitcherActor extends Actor {
 
     async applyStatus(effects) {
         effects
-            .filter(effect => !!effect.statusEffect)
+            ?.filter(effect => !!effect.statusEffect)
             .forEach(effect => {
                 if (!this.statuses.find(status => status == effect.statusEffect)) {
                     this.toggleStatusEffect(effect.statusEffect);

@@ -32,6 +32,8 @@ export let professionMixin = {
 
         if (skill.skillAttack.isAttack) {
             this.doProfessionAttackRoll(skill);
+        } else if (skill.skillUsage.hasCustomEffect) {
+            this.doProfessionSkillUsage(skill);
         } else {
             this.doProfessionSkillRoll(skill);
         }
@@ -254,7 +256,7 @@ export let professionMixin = {
         });
     },
 
-    async doProfessionSkillRoll(skill) {
+    async doProfessionSkillRoll(skill, { threshold, showResult } = { threshold: 0, showResult: true }) {
         let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
         let stat = skill.stat;
         let level = skill.level || 0;
@@ -292,7 +294,57 @@ export let professionMixin = {
 
         let config = new RollConfig();
         config.showCrit = true;
-        extendedRoll(rollFormula, messageData, config);
+        config.threshold = threshold;
+        config.showResult = showResult;
+        return extendedRoll(rollFormula, messageData, config);
+    },
+
+    async doProfessionSkillUsage(skill) {
+        let target;
+        if (skill.skillUsage.applyOnTarget) {
+            target = game.user.targets.first()?.actor;
+            if (!target) {
+                ui.notifications.error(game.i18n.localize('WITCHER.profession.error.noTarget'));
+                return;
+            }
+        } else {
+            target = this;
+        }
+
+        if (skill.skillUsage.temporaryHealth.addTemporaryHealth) {
+            let temporaryHealth = skill.skillUsage.temporaryHealth;
+            let targetStat = target.system.stats[temporaryHealth.difficultyCheck.stat];
+            let threshold = targetStat.max * temporaryHealth.difficultyCheck.multiplier;
+            let roll = await this.doProfessionSkillRoll(skill, {
+                threshold,
+                showResult: false
+            });
+            roll.toMessage(roll.messageData);
+
+            if (roll.options.rollOver > 0) {
+                let queryData = {};
+                queryData.actorUuid = target.uuid;
+                queryData.itemUuid = this.getList('profession')[0].uuid;
+
+                let duration = eval(
+                    temporaryHealth.temporaryHp.duration.replace('@level', skill.level).match(/\d+\*?\d+/g)[0]
+                );
+                let value =
+                    '' +
+                    Math.min(roll.options.rollOver, temporaryHealth.difficultyCheck.maxRollOver) +
+                    temporaryHealth.temporaryHp.value;
+                queryData.temporaryHp = {
+                    value,
+                    duration
+                };
+
+                let owner = game.users.activeGM;
+                if (target.hasPlayerOwner) {
+                    owner = game.users.find(e => target.testUserPermission(e, 'OWNER') && !e.isGM);
+                }
+                owner.query('TheWitcherTRPG.addTemporaryHpToActor', queryData);
+            }
+        }
     },
 
     findSkillWithName(skillName) {
