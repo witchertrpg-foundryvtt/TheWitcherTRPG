@@ -30,6 +30,7 @@ import HomelandData from '../data/item/homelandData.js';
 import BaseMessageData from '../data/chatMessage/baseMessageData.js';
 import DefenseMessageData from '../data/chatMessage/defenseMessageData.js';
 import DamageMessageData from '../data/chatMessage/damageMessageData.js';
+import CriticalWoundData from '../data/item/criticalWoundData.js';
 
 export const registerDataModels = () => {
     foundry.utils.mergeObject(CONFIG.Actor.dataModels, {
@@ -48,6 +49,7 @@ export const registerDataModels = () => {
         armor: ArmorData,
         container: ContainerData,
         component: ComponentData,
+        criticalWound: CriticalWoundData,
         diagrams: DiagramData,
         enhancement: EnhancementData,
         mount: MountData,

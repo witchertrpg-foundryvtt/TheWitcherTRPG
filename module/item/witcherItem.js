@@ -169,6 +169,10 @@ export default class WitcherItem extends Item {
         return alchemyCraftComponents;
     }
 
+    async enrichedText() {
+        return await this.system.enrichedText?.();
+    }
+
     /**
      * @param {string} rollFormula
      * @param {*} messageData

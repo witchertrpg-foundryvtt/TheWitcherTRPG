@@ -1,0 +1,34 @@
+<section>
+    {{#if showConfig}}
+        <a class="configure-item" data-action="configureItem"><i class="fas fa-gear"></i></a>
+    {{/if}}
+    <div class="critwound">
+        <div class="critwound-header">
+            <div class="critwound-info">
+                <input name="name" type="text" value="{{document.name}}" placeholder="Name" />
+                <select name="system.criticalLevel">
+                    {{selectOptions config.critLevel selected=document.system.criticalLevel localize=true}}
+                </select>
+                <select name="system.treatment">
+                    {{selectOptions config.CritMod selected=document.system.treatment localize=true}}
+                </select>
+                <select name="system.location">
+                    {{selectOptions config.location selected=document.system.location localize=true}}
+                </select>
+            </div>
+            <div class="critwound-days-rest">
+                <label class="healing-time-lable">{{localize "WITCHER.CritWound.HealingTime.Label"}}:
+                </label>
+                <div class="healing-time-inputs">
+                    <input class="days-healed" name="system.daysHealed" type="number" data-dtype="Number"
+                        value="{{document.system.daysHealed}}" />
+                    /
+                    <input class="healing-time" name="system.healingTime" type="number" data-dtype="Number" disabled
+                        value="{{document.system.healingTime}}" />
+                </div>
+            </div>
+        </div>
+        <br>
+        {{formInput enrichedText.description.systemField value=enrichedText.description.value enriched=enrichedText.description.enriched toggled=true}}
+    </div>
+</section>

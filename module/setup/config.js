@@ -1904,7 +1904,7 @@ WITCHER.Crit = {
     }
 };
 
-WITCHER.CritGravity = {
+WITCHER.critLevel = {
     simple: 'WITCHER.CritWound.Simple',
     complex: 'WITCHER.CritWound.Complex',
     difficult: 'WITCHER.CritWound.Difficult',

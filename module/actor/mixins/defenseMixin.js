@@ -216,7 +216,7 @@ export let defenseMixin = {
             ? await foundry.applications.handlebars.renderTemplate(
                   'systems/TheWitcherTRPG/templates/chat/combat/defense/defenseCrit.hbs',
                   {
-                      crit: { severity: CONFIG.WITCHER.CritGravity[crit.severity] }
+                      crit: { severity: CONFIG.WITCHER.critLevel[crit.severity] }
                   }
               )
             : '';

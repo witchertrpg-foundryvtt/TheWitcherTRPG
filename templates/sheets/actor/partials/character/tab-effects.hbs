@@ -6,6 +6,41 @@
                 <a class="add-crit"><i class="fas fa-plus"></i></a>
             </div>
             {{> "systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs"}}
+
+            {{#each this.document.items.documentsByType.criticalWound as |critWound i| }}
+                {{log critWound}}
+                <div class="critwound">
+                    <div class="critwound-header">
+                        <div class="critwound-info">
+                            <input name="name" type="text" value="{{critWound.name}}" placeholder="Name" />
+                            <select name="system.criticalLevel">
+                                {{selectOptions ../config.critLevel selected=critWound.system.criticalLevel localize=true}}
+                            </select>
+                            <select name="system.treatment">
+                                {{selectOptions ../config.CritMod selected=critWound.system.treatment localize=true}}
+                            </select>
+                            <select name="system.location">
+                                {{selectOptions ../config.location selected=critWound.system.location localize=true}}
+                            </select>
+                        </div>
+                        <div class="critwound-days-rest">
+                            <label class="healing-time-lable">{{localize "WITCHER.CritWound.HealingTime.Label"}}:
+                            </label>
+                            <div class="healing-time-inputs">
+                                <input class="days-healed" name="system.daysHealed" type="number" data-dtype="Number"
+                                    value="{{critWound.system.daysHealed}}" />
+                                /
+                                <input class="healing-time" name="system.healingTime" type="number" data-dtype="Number"
+                                    disabled value="{{critWound.system.healingTime}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    {{log critWound}}
+                    {{log critWound.enrichedText}}
+                    {{formInput critWound.enrichedText.description.systemField value=critWound.enrichedText.description.value enriched=critWound.enrichedText.description.enriched toggled=true}}
+                </div>
+            {{/each}}
         </div>
     </div>
 
