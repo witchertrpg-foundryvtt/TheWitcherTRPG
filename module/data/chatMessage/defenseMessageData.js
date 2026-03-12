@@ -25,7 +25,7 @@ export default class DefenseMessageData extends BaseMessageData {
                 location: new fields.SchemaField({
                     name: new fields.StringField(),
                     alias: new fields.StringField(),
-                    locationFormula: new fields.NumberField(),
+                    formula: new fields.NumberField(),
                     critEffect: new fields.NumberField(),
                     modifier: new fields.NumberField()
                 })

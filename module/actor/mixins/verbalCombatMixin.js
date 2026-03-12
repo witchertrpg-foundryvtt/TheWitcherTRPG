@@ -66,17 +66,18 @@ export let verbalCombatMixin = {
                                 : `+${customAtt}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
                         }
 
-                        let messageData = new ChatMessageData(this);
-                        messageData.flavor = `
-            <div class="verbal-combat-attack-message">
-              <h2>${game.i18n.localize('WITCHER.verbalCombat.Title')}: ${game.i18n.localize(vcName)}</h2>
-              <b>${game.i18n.localize('WITCHER.Weapon.Damage')}</b>: ${vcDmg} <br />
-              ${game.i18n.localize(effect)}
-              <hr />
-              </div>`;
-                        messageData.flavor += vcDmg.includes('d')
+                        let flavor = `
+                            <div class="verbal-combat-attack-message">
+                              <h2>${game.i18n.localize('WITCHER.verbalCombat.Title')}: ${game.i18n.localize(vcName)}</h2>
+                              <b>${game.i18n.localize('WITCHER.Weapon.Damage')}</b>: ${vcDmg} <br />
+                              ${game.i18n.localize(effect)}
+                              <hr />
+                              </div>`;
+                        flavor += vcDmg.includes('d')
                             ? `<button class="vcDamage" > ${game.i18n.localize('WITCHER.table.Damage')}</button>`
                             : '';
+
+                        let messageData = new ChatMessageData(this, flavor, 'damage', { vcDamage: vcDmg });
 
                         let config = new RollConfig();
                         config.showCrit = true;

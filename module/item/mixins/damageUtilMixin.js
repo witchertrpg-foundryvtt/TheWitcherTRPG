@@ -39,7 +39,7 @@ export let damageUtilMixin = {
 
         damage.location = WitcherActor.getLocationObject(damage.location.name);
 
-        flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.attackLocation')}:</b> ${damage.location.alias} = ${damage.location.locationFormula} </div>`;
+        flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.attackLocation')}:</b> ${damage.location.alias} = ${damage.location.formula} </div>`;
         let damageTypeloc = damage.type ? 'WITCHER.DamageType.' + damage.type : '';
         flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.damageType')}:</b> ${game.i18n.localize(damageTypeloc)} </div>`;
         flavor += `<div>${game.i18n.localize('WITCHER.Damage.RemoveSP')}</div>`;
@@ -74,7 +74,12 @@ export let damageUtilMixin = {
             });
         }
 
-        let messageData = new ChatMessageData(this.parent, flavor);
+        let messageData = new ChatMessageData(this.parent, flavor, 'damage', {
+            damage: {
+                ...damage,
+                properties: { ...damage.properties, effects: preprocessedEffects }
+            }
+        });
         let message = await (await new Roll(damageFormula).evaluate()).toMessage(messageData);
         message.setFlag('TheWitcherTRPG', 'damage', {
             ...damage,
