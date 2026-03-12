@@ -1,23 +1,23 @@
-import skill from './skillData.js';
+import Skill from './skillData.js';
 
 const fields = foundry.data.fields;
 
 export default class Intelligence extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
-            awareness: new fields.SchemaField(skill('WITCHER.skills.awareness.label')),
-            business: new fields.SchemaField(skill('WITCHER.skills.business.label')),
-            deduction: new fields.SchemaField(skill('WITCHER.skills.deduction.label')),
-            education: new fields.SchemaField(skill('WITCHER.skills.education.label')),
-            commonsp: new fields.SchemaField(skill('WITCHER.skills.commonSpeech.label')),
-            eldersp: new fields.SchemaField(skill('WITCHER.skills.elderSpeech.label')),
-            dwarven: new fields.SchemaField(skill('WITCHER.skills.dwarvenSpeech.label')),
-            monster: new fields.SchemaField(skill('WITCHER.skills.monsterLore.label')),
-            socialetq: new fields.SchemaField(skill('WITCHER.skills.socialEtiquette.label')),
-            streetwise: new fields.SchemaField(skill('WITCHER.skills.streetwise.label')),
-            tactics: new fields.SchemaField(skill('WITCHER.skills.tactics.label')),
-            teaching: new fields.SchemaField(skill('WITCHER.skills.teaching.label')),
-            wilderness: new fields.SchemaField(skill('WITCHER.skills.wildernessSurvival.label'))
+            awareness: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.awareness.label' }),
+            business: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.business.label' }),
+            deduction: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.deduction.label' }),
+            education: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.education.label' }),
+            commonsp: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.commonSpeech.label' }),
+            eldersp: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.elderSpeech.label' }),
+            dwarven: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.dwarvenSpeech.label' }),
+            monster: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.monsterLore.label' }),
+            socialetq: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.socialEtiquette.label' }),
+            streetwise: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.streetwise.label' }),
+            tactics: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.tactics.label' }),
+            teaching: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.teaching.label' }),
+            wilderness: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.wildernessSurvival.label' })
         };
     }
 

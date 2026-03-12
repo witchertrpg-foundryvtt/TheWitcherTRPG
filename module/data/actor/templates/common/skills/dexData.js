@@ -1,15 +1,15 @@
-import skill from './skillData.js';
+import Skill from './skillData.js';
 
 const fields = foundry.data.fields;
 
 export default class Dexterity extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
-            archery: new fields.SchemaField(skill('WITCHER.skills.archery.label')),
-            athletics: new fields.SchemaField(skill('WITCHER.skills.athletics.label')),
-            crossbow: new fields.SchemaField(skill('WITCHER.skills.crossbow.label')),
-            sleight: new fields.SchemaField(skill('WITCHER.skills.sleightOfHand.label')),
-            stealth: new fields.SchemaField(skill('WITCHER.skills.stealth.label'))
+            archery: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.archery.label' }),
+            athletics: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.athletics.label' }),
+            crossbow: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.crossbow.label' }),
+            sleight: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.sleightOfHand.label' }),
+            stealth: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.stealth.label' })
         };
     }
 

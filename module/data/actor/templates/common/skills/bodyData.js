@@ -1,18 +1,18 @@
-import skill from './skillData.js';
+import Skill from './skillData.js';
 
 const fields = foundry.data.fields;
 
 export default class Body extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
-            physique: new fields.SchemaField(skill('WITCHER.skills.physique.label')),
-            endurance: new fields.SchemaField(skill('WITCHER.skills.endurance.label'))
+            physique: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.physique.label' }),
+            endurance: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.endurance.label' })
         };
     }
 
     /** @inheritdoc */
     static migrateData(source) {
-        source.physique.label = "WITCHER.skills.physique.label";
+        source.physique.label = 'WITCHER.skills.physique.label';
         source.endurance.label = 'WITCHER.skills.endurance.label';
 
         return super.migrateData(source);

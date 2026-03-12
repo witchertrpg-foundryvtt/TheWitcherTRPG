@@ -1,17 +1,17 @@
-import skill from './skillData.js';
+import Skill from './skillData.js';
 
 const fields = foundry.data.fields;
 
 export default class Will extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
-            courage: new fields.SchemaField(skill('WITCHER.skills.courage.label')),
-            hexweave: new fields.SchemaField(skill('WITCHER.skills.hexWeaving.label')),
-            intimidation: new fields.SchemaField(skill('WITCHER.skills.intimidation.label')),
-            spellcast: new fields.SchemaField(skill('WITCHER.skills.spellCasting.label')),
-            resistmagic: new fields.SchemaField(skill('WITCHER.skills.resistMagic.label')),
-            resistcoerc: new fields.SchemaField(skill('WITCHER.skills.resistCoercion.label')),
-            ritcraft: new fields.SchemaField(skill('WITCHER.skills.ritualCrafting.label'))
+            courage: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.courage.label' }),
+            hexweave: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.hexWeaving.label' }),
+            intimidation: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.intimidation.label' }),
+            spellcast: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.spellCasting.label' }),
+            resistmagic: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.resistMagic.label' }),
+            resistcoerc: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.resistCoercion.label' }),
+            ritcraft: new fields.EmbeddedDataField(Skill, { label: 'WITCHER.skills.ritualCrafting.label' })
         };
     }
 
