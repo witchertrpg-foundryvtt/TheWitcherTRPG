@@ -1,4 +1,18 @@
 export const registerSettings = function () {
+    game.settings.register('TheWitcherTRPG', 'criticalWoundsPack', {
+        name: 'WITCHER.Settings.criticalWoundsPack',
+        hint: 'WITCHER.Settings.criticalWoundsPackDetails',
+        scope: 'world',
+        config: true,
+        type: new foundry.data.fields.StringField({
+            initial: 'TheWitcherTRPG.criticalWounds',
+            blank: false,
+            nullable: false,
+            choices: getAllCompendia
+        }),
+        default: 'TheWitcherTRPG.criticalWounds'
+    });
+
     //optional rules
     game.settings.register('TheWitcherTRPG', 'useOptionalAdrenaline', {
         name: 'WITCHER.Settings.Adrenaline',
@@ -75,4 +89,16 @@ export const registerSettings = function () {
         type: Boolean,
         default: true
     });
+};
+
+const getAllCompendia = () => {
+    const itemPacks = game.packs.filter(p => p.documentName === 'Item');
+
+    const packRecord = itemPacks.reduce((record, p) => {
+        // two getters that fetch metadata.id and metadata.label respectively
+        record[p.collection] = p.title;
+        return record;
+    }, {});
+
+    return packRecord;
 };

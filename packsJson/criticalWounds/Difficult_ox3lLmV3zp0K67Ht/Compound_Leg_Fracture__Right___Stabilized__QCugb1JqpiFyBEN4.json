@@ -1,0 +1,104 @@
+{
+  "folder": "ox3lLmV3zp0K67Ht",
+  "name": "Compound Leg Fracture (Right - Stabilized)",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<p>halves SPD, Dodge/Escape, and Athletics</p>",
+    "criticalLevel": "difficult",
+    "treatment": "stabilized",
+    "location": "rightArm",
+    "lesserEffect": false,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": "Compendium.TheWitcherTRPG.criticalWounds.Item.3SwpPbi2ddEJkebh"
+  },
+  "effects": [
+    {
+      "type": "base",
+      "name": "Compound Leg Fracture (Right - Stabilized)",
+      "origin": "Compendium.TheWitcherTRPG.criticalWounds.Item.QCugb1JqpiFyBEN4",
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "img": "icons/svg/item-bag.svg",
+      "_id": "XOBIfzJ65964vrHX",
+      "system": {
+        "applySelf": false,
+        "applyOnTarget": false,
+        "applyOnHit": false,
+        "applyOnDamage": false
+      },
+      "changes": [
+        {
+          "key": "system.stats.spd.max",
+          "mode": 1,
+          "value": "0.5",
+          "priority": null
+        },
+        {
+          "key": "system.skills.ref.dodge.value",
+          "mode": 1,
+          "value": "0.5",
+          "priority": null
+        },
+        {
+          "key": "system.skills.dex.athletics.value",
+          "mode": 1,
+          "value": "0.5",
+          "priority": null
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "statuscounter": {
+          "value": 1,
+          "config": {
+            "type": "default"
+          },
+          "visible": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "TheWitcherTRPG",
+        "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+      },
+      "_key": "!items.effects!QCugb1JqpiFyBEN4.XOBIfzJ65964vrHX"
+    }
+  ],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "QCugb1JqpiFyBEN4",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 0,
+  "_key": "!items!QCugb1JqpiFyBEN4"
+}

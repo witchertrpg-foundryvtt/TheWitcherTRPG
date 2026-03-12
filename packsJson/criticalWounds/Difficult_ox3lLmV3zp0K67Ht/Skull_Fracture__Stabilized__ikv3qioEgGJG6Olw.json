@@ -1,0 +1,98 @@
+{
+  "folder": "ox3lLmV3zp0K67Ht",
+  "name": "Skull Fracture (Stabilized)",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<ul><li><p>take quadruple damage from head wound</p></li></ul>",
+    "criticalLevel": "difficult",
+    "treatment": "stabilized",
+    "location": "head",
+    "lesserEffect": false,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": "Compendium.TheWitcherTRPG.criticalWounds.Item.v4RVIshohh1PPuAu"
+  },
+  "effects": [
+    {
+      "type": "base",
+      "name": "Skull Fracture",
+      "origin": "Item.UImIh794nOy21jg2",
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "img": "icons/svg/item-bag.svg",
+      "_id": "XMpXbZE84msMUpnF",
+      "system": {
+        "applySelf": false,
+        "applyOnTarget": false,
+        "applyOnHit": false,
+        "applyOnDamage": false
+      },
+      "changes": [
+        {
+          "key": "system.stats.int.totalModifiers",
+          "mode": 2,
+          "value": "-1",
+          "priority": null
+        },
+        {
+          "key": "system.stats.dex.totalModifiers",
+          "mode": 2,
+          "value": "-1",
+          "priority": null
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "statuscounter": {
+          "value": 1,
+          "config": {
+            "type": "default"
+          },
+          "visible": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "TheWitcherTRPG",
+        "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+      },
+      "_key": "!items.effects!ikv3qioEgGJG6Olw.XMpXbZE84msMUpnF"
+    }
+  ],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "ikv3qioEgGJG6Olw",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 0,
+  "_key": "!items!ikv3qioEgGJG6Olw"
+}

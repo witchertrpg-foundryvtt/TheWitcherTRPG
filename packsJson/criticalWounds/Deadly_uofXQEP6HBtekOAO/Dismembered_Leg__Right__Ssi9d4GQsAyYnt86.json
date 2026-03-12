@@ -1,0 +1,160 @@
+{
+  "folder": "uofXQEP6HBtekOAO",
+  "name": "Dismembered Leg (Right)",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<p>The blow tears your leg from your body or damages it beyond repair. Quarter your SPD, Dodge/Escape, and Athletics.</p>",
+    "criticalLevel": "deadly",
+    "treatment": "none",
+    "location": "rightLeg",
+    "lesserEffect": false,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": "Compendium.TheWitcherTRPG.criticalWounds.Item.vYza9bpK13G36YRV"
+  },
+  "effects": [
+    {
+      "type": "base",
+      "name": "Dismembered Leg (Left)",
+      "origin": "Item.Us9OmoKhRydSqA8z",
+      "duration": {
+        "rounds": 1,
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "img": "icons/svg/item-bag.svg",
+      "_id": "qbyJKEvoYMrHtiBg",
+      "system": {
+        "applySelf": false,
+        "applyOnTarget": false,
+        "applyOnHit": false,
+        "applyOnDamage": false
+      },
+      "changes": [
+        {
+          "key": "system.combatEffects.turnStartEffects.bleed",
+          "mode": 2,
+          "value": "{\"damage\": {\"amount\": 2, \"ignoreArmor\": \"true\"}, \"img\": \"icons/svg/blood.svg\", \"name\": \"WITCHER.statusEffects.bleed\"}",
+          "priority": null
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [
+        "bleed"
+      ],
+      "sort": 0,
+      "flags": {
+        "statuscounter": {
+          "value": 1,
+          "config": {
+            "type": "default"
+          },
+          "visible": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "TheWitcherTRPG",
+        "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+      },
+      "_key": "!items.effects!Ssi9d4GQsAyYnt86.qbyJKEvoYMrHtiBg"
+    },
+    {
+      "type": "base",
+      "name": "Dismembered Leg (Right)",
+      "origin": "Compendium.TheWitcherTRPG.criticalWounds.Item.Ssi9d4GQsAyYnt86",
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": true,
+      "img": "icons/svg/item-bag.svg",
+      "_id": "teBgn7uGcPnT0CzT",
+      "system": {
+        "applySelf": false,
+        "applyOnTarget": false,
+        "applyOnHit": false,
+        "applyOnDamage": false
+      },
+      "changes": [
+        {
+          "key": "system.stats.spd.max",
+          "mode": 1,
+          "value": "0.25",
+          "priority": null
+        },
+        {
+          "key": "system.skills.ref.dodge.value",
+          "mode": 1,
+          "value": "0.25",
+          "priority": null
+        },
+        {
+          "key": "system.skills.dex.athletics.value",
+          "mode": 1,
+          "value": "0.25",
+          "priority": null
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "statuscounter": {
+          "value": 1,
+          "config": {
+            "type": "default"
+          },
+          "visible": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "TheWitcherTRPG",
+        "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+      },
+      "_key": "!items.effects!Ssi9d4GQsAyYnt86.teBgn7uGcPnT0CzT"
+    }
+  ],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "Ssi9d4GQsAyYnt86",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 0,
+  "_key": "!items!Ssi9d4GQsAyYnt86"
+}

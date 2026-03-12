@@ -1,0 +1,154 @@
+{
+  "folder": "uofXQEP6HBtekOAO",
+  "name": "Damaged Eye",
+  "type": "criticalWound",
+  "_id": "zHK1XmZ77V8c26Xv",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<p>-5 to sight-based Awareness</p>",
+    "criticalLevel": "deadly",
+    "treatment": "none",
+    "location": "head",
+    "lesserEffect": true,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": "Compendium.TheWitcherTRPG.criticalWounds.Item.LNy3P3HUw2Ja9DNu"
+  },
+  "effects": [
+    {
+      "type": "base",
+      "name": "Damaged Eye",
+      "origin": "Item.zHK1XmZ77V8c26Xv",
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "img": "icons/svg/item-bag.svg",
+      "_id": "a9KpYZkIQ4eyIqTP",
+      "system": {
+        "applySelf": false,
+        "applyOnTarget": false,
+        "applyOnHit": false,
+        "applyOnDamage": false
+      },
+      "changes": [
+        {
+          "key": "system.stats.dex.totalModifiers",
+          "mode": 2,
+          "value": "-4",
+          "priority": null
+        },
+        {
+          "key": "system.skills.int.awareness.activeEffectModifiers",
+          "mode": 2,
+          "value": "-5",
+          "priority": null
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "statuscounter": {
+          "value": 1,
+          "config": {
+            "type": "default"
+          },
+          "visible": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "TheWitcherTRPG",
+        "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+      },
+      "_key": "!items.effects!zHK1XmZ77V8c26Xv.a9KpYZkIQ4eyIqTP"
+    },
+    {
+      "type": "base",
+      "name": "Damaged Eye",
+      "origin": "Item.zHK1XmZ77V8c26Xv",
+      "duration": {
+        "rounds": 1,
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "img": "icons/svg/item-bag.svg",
+      "_id": "6sfs7Qmak2Kf8jxo",
+      "system": {
+        "applySelf": false,
+        "applyOnTarget": false,
+        "applyOnHit": false,
+        "applyOnDamage": false
+      },
+      "changes": [
+        {
+          "key": "system.combatEffects.turnStartEffects.bleed",
+          "mode": 2,
+          "value": "{\"damage\": {\"amount\": 2, \"ignoreArmor\": \"true\"}, \"img\": \"icons/svg/blood.svg\", \"name\": \"WITCHER.statusEffects.bleed\"}",
+          "priority": null
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [
+        "bleed"
+      ],
+      "sort": 0,
+      "flags": {
+        "statuscounter": {
+          "value": 1,
+          "config": {
+            "type": "default"
+          },
+          "visible": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "TheWitcherTRPG",
+        "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+      },
+      "_key": "!items.effects!zHK1XmZ77V8c26Xv.6sfs7Qmak2Kf8jxo"
+    }
+  ],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 0,
+  "_key": "!items!zHK1XmZ77V8c26Xv"
+}

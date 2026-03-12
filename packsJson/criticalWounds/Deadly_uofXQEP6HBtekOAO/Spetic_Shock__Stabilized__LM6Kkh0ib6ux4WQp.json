@@ -1,0 +1,116 @@
+{
+  "folder": "uofXQEP6HBtekOAO",
+  "name": "Spetic Shock (Stabilized)",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<p>halve your Stamina</p>",
+    "criticalLevel": "deadly",
+    "treatment": "stabilized",
+    "location": "torso",
+    "lesserEffect": true,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": "Compendium.TheWitcherTRPG.criticalWounds.Item.vkr5MXhnalPp8yJJ"
+  },
+  "effects": [
+    {
+      "type": "base",
+      "name": "Spetic Shock",
+      "origin": "Item.tF3hsi4yZOMJ6xuW",
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "img": "icons/svg/item-bag.svg",
+      "_id": "mpyziqOjGOOpnHJ7",
+      "system": {
+        "applySelf": false,
+        "applyOnTarget": false,
+        "applyOnHit": false,
+        "applyOnDamage": false
+      },
+      "changes": [
+        {
+          "key": "system.stats.int.totalModifiers",
+          "mode": 2,
+          "value": "-1",
+          "priority": null
+        },
+        {
+          "key": "system.stats.will.totalModifiers",
+          "mode": 2,
+          "value": "-1",
+          "priority": null
+        },
+        {
+          "key": "system.stats.ref.totalModifiers",
+          "mode": 2,
+          "value": "-1",
+          "priority": null
+        },
+        {
+          "key": "system.stats.dex.totalModifiers",
+          "mode": 2,
+          "value": "-1",
+          "priority": null
+        },
+        {
+          "key": "system.derivedStats.sta.max",
+          "mode": 1,
+          "value": "0.5",
+          "priority": null
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "statuscounter": {
+          "value": 1,
+          "config": {
+            "type": "default"
+          },
+          "visible": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "TheWitcherTRPG",
+        "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+      },
+      "_key": "!items.effects!LM6Kkh0ib6ux4WQp.mpyziqOjGOOpnHJ7"
+    }
+  ],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "LM6Kkh0ib6ux4WQp",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 0,
+  "_key": "!items!LM6Kkh0ib6ux4WQp"
+}

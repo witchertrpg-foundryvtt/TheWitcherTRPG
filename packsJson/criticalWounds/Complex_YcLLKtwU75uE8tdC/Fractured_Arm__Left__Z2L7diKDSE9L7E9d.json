@@ -1,0 +1,37 @@
+{
+  "folder": "YcLLKtwU75uE8tdC",
+  "name": "Fractured Arm (Left)",
+  "type": "criticalWound",
+  "_id": "Z2L7diKDSE9L7E9d",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<p>You take a -3 to actions with that arm</p>",
+    "criticalLevel": "complex",
+    "treatment": "none",
+    "location": "leftArm",
+    "lesserEffect": false,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": "Compendium.TheWitcherTRPG.criticalWounds.Item.eCiJjDqfUyaXCW2z"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 2500000,
+  "_key": "!items!Z2L7diKDSE9L7E9d"
+}

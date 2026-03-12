@@ -1,0 +1,92 @@
+{
+  "folder": "kHSYUTn6UUJsIu4l",
+  "name": "Disfiguring Scar (Treated)",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "",
+    "criticalLevel": "simple",
+    "treatment": "treated",
+    "location": "head",
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": null,
+    "lesserEffect": true
+  },
+  "effects": [
+    {
+      "type": "base",
+      "name": "Disfiguring Scar (Treated)",
+      "origin": "Compendium.TheWitcherTRPG.criticalWounds.Item.kbeASc2PnnkYc5SR",
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "img": "icons/svg/item-bag.svg",
+      "_id": "3KaR9v7qVMpyMDCV",
+      "system": {
+        "applySelf": false,
+        "applyOnTarget": false,
+        "applyOnHit": false,
+        "applyOnDamage": false
+      },
+      "changes": [
+        {
+          "key": "system.skills.emp.seduction.activeEffectModifiers",
+          "mode": 2,
+          "value": "-1",
+          "priority": null
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "statuscounter": {
+          "value": 1,
+          "config": {
+            "type": "default"
+          },
+          "visible": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "TheWitcherTRPG",
+        "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+      },
+      "_key": "!items.effects!kbeASc2PnnkYc5SR.3KaR9v7qVMpyMDCV"
+    }
+  ],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "kbeASc2PnnkYc5SR",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 900000,
+  "_key": "!items!kbeASc2PnnkYc5SR"
+}

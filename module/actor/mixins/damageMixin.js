@@ -290,13 +290,12 @@ export let damageMixin = {
 
     async applyCritWound(crit) {
         let location = crit.location;
-        let possibleWounds = [];
 
-        for (let [woundName, woundConfig] of Object.entries(CONFIG.WITCHER.Crit)) {
-            if (woundConfig.location.includes(location.name) && woundConfig.severity == crit.severity) {
-                possibleWounds.push(woundName);
-            }
-        }
+        let possibleWounds = game.packs
+            .get(game.settings.get('TheWitcherTRPG', 'criticalWoundsPack'))
+            .index.filter(criticalWound => criticalWound.system.treatment == 'none')
+            .filter(criticalWound => criticalWound.system.location == location.name)
+            .filter(criticalWound => criticalWound.system.criticalLevel == crit.criticalLevel);
 
         let wound;
 
@@ -305,30 +304,28 @@ export let damageMixin = {
         } else {
             let woundRoll = crit.location.critEffect ?? getRandomInt(6) + crit.critEffectModifier;
             if (woundRoll > 4) {
-                wound = possibleWounds[0];
+                wound = possibleWounds.find(criticalWound => criticalWound.system.lesserEffect === false);
             } else {
-                wound = possibleWounds[1];
+                wound = possibleWounds.find(criticalWound => criticalWound.system.lesserEffect === true);
             }
         }
 
-        const critList = this.system.critWounds;
-        critList.push({
-            configEntry: wound,
-            location: crit.location.name,
-            healingTime: this.calculateHealingTime(crit.severity)
-        });
-        this.update({ 'system.critWounds': critList });
+        //convert index to real item
+        wound = await fromUuid(wound.uuid);
+        this.addItem(wound);
+
+        console.log(this);
 
         const chatData = {
-            content: `<div>${game.i18n.localize(CONFIG.WITCHER.Crit[wound].label)}</div><div>${game.i18n.localize(CONFIG.WITCHER.Crit[wound].description)}</div>`,
+            content: `<div>${wound.name}</div><div>${wound.system.description}</div>`,
             speaker: ChatMessage.getSpeaker({ actor: this }),
             type: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
         ChatMessage.create(chatData);
     },
 
-    calculateHealingTime(severity) {
-        switch (severity) {
+    calculateHealingTime(criticalLevel) {
+        switch (criticalLevel) {
             case 'simple':
                 return Math.max(8 - this.system.stats.body.max, 1);
             case 'complex':
