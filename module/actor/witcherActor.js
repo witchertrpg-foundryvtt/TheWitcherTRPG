@@ -520,7 +520,7 @@ export default class WitcherActor extends Actor {
         return this.items.filter(i => i.type == name && !i.system.isStored).sort((a, b) => a.sort - b.sort);
     }
 
-    async addItem(addItem, numberOfItem, forcecreate = false) {
+    async addItem(addItem, numberOfItem = 1, forcecreate = false) {
         let foundItem = this.items.find(item => item.name == addItem.name && item.type == addItem.type);
         if (foundItem && !forcecreate && !foundItem.system.isStored) {
             await foundItem.update({ 'system.quantity': Number(foundItem.system.quantity) + Number(numberOfItem) });

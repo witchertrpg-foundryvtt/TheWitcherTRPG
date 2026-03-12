@@ -1,0 +1,20 @@
+{
+  "type": "Item",
+  "folder": null,
+  "name": "Simple",
+  "color": null,
+  "sorting": "m",
+  "_id": "kHSYUTn6UUJsIu4l",
+  "description": "",
+  "sort": -100000,
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_key": "!folders!kHSYUTn6UUJsIu4l"
+}

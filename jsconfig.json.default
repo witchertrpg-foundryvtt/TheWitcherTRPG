@@ -1,7 +1,11 @@
 {
     "compilerOptions": {
       "module": "es6",
-      "target": "ES6"
+      "target": "ES6",
+        "paths": {
+            "@client/*": ["foundry/resources/app/client/*"],
+            "@common/*": ["foundry/resources/common/*"]
+        }
     },
     "exclude": ["node_modules", "**/node_modules/*"],
     "include": ["foundry/**/*.js", "foundry/**/*.mjs"],

@@ -1904,14 +1904,14 @@ WITCHER.Crit = {
     }
 };
 
-WITCHER.CritGravity = {
+WITCHER.critLevel = {
     simple: 'WITCHER.CritWound.Simple',
     complex: 'WITCHER.CritWound.Complex',
     difficult: 'WITCHER.CritWound.Difficult',
     deadly: 'WITCHER.CritWound.Deadly'
 };
 
-WITCHER.CritMod = {
+WITCHER.critTreatment = {
     none: 'WITCHER.CritWound.None',
     stabilized: 'WITCHER.CritWound.Stabilized',
     treated: 'WITCHER.CritWound.Treated'

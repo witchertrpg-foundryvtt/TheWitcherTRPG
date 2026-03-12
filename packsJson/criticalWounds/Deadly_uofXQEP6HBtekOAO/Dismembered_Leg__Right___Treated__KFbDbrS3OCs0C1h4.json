@@ -1,0 +1,37 @@
+{
+  "folder": "uofXQEP6HBtekOAO",
+  "name": "Dismembered Leg (Right - Treated)",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<p>The leg can be replaced with a prosthetic</p>",
+    "criticalLevel": "deadly",
+    "treatment": "treated",
+    "location": "rightLeg",
+    "lesserEffect": false,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": null
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "KFbDbrS3OCs0C1h4",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 0,
+  "_key": "!items!KFbDbrS3OCs0C1h4"
+}
