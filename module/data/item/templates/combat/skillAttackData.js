@@ -1,5 +1,5 @@
 import attackOptions from './attackOptionsData.js';
-import damageProperties from './damagePropertiesData.js';
+import DamageProperties from './damagePropertiesData.js';
 import defenseOptions from './defenseOptionsData.js';
 
 const fields = foundry.data.fields;
@@ -19,7 +19,7 @@ export default function skillAttack() {
             label: 'WITCHER.profession.skillPath.skill.skillAttack.damageFormulaOverrides'
         }),
         ...attackOptions(),
-        damageProperties: new fields.SchemaField(damageProperties()),
+        damageProperties: new fields.EmbeddedDataField(DamageProperties),
         ...defenseOptions()
     };
 }

@@ -87,15 +87,14 @@ export default class WitcherPropertiesConfigurationSheet extends WitcherConfigur
     static async _onAddEffect(event, element) {
         event.preventDefault();
         let target = element.dataset.target;
-        let newList = this.getPathedObject(this.item, target) ?? [];
-        newList.push({ percentage: 0 });
-        this.item.update({ [target]: newList });
+        let id = foundry.utils.randomID();
+        this.item.update({ [`${target}.${id}`]: { percentage: 0 } });
     }
 
     async _onEditEffect(event, element) {
         event.preventDefault();
-        let itemId = element.closest('.list-item').dataset.id;
-        let target = element.dataset.target;
+        let id = element.closest('.list-item').dataset.id;
+        let target = element.closest('.list-item').dataset.target;
         let field = element.dataset.field;
         let value = element.value;
 
@@ -103,32 +102,15 @@ export default class WitcherPropertiesConfigurationSheet extends WitcherConfigur
             value = element.checked;
         }
 
-        let effects = this.getPathedObject(this.item, target);
-        let objIndex = effects.findIndex(obj => obj.id == itemId);
-        effects[objIndex][field] = value;
-        this.item.update({ [target]: effects });
+        this.item.update({ [`${target}.${id}.${field}`]: value });
     }
 
     static async _oRemoveEffect(event, element) {
         event.preventDefault();
-        let target = element.dataset.target;
-        let itemId = element.closest('.list-item').dataset.id;
-        let newList = this.getPathedObject(this.item, target).filter(item => item.id !== itemId);
-        this.item.update({ [target]: newList });
-    }
-
-    getPathedObject(object, path) {
-        path = path.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-        path = path.replace(/^\./, ''); // strip a leading dot
-        var a = path.split('.');
-        for (var i = 0, n = a.length; i < n; ++i) {
-            var k = a[i];
-            if (k in object) {
-                object = object[k];
-            } else {
-                return;
-            }
-        }
-        return object;
+        let target = element.closest('.list-item').dataset.target;
+        let id = element.closest('.list-item').dataset.id;
+        this.item.update({ [`${target}.-=${id}`]: null });
+        //v14
+        // this.item.update({ [`${target}.${id}`]: _del });
     }
 }

@@ -1,10 +1,11 @@
-<a class="char-stat-button skill {{#if skill.isProfession}}profession{{else if skill.isPickup}}pickup{{else if skill.isLearned}}learned{{/if}}" data-action="rollSkill" data-skill="{{name}}" data-stat={{stat}}>
+<a class="char-stat-button skill {{#if skill.isProfession}}profession{{else if skill.isPickup}}pickup{{else if skill.isLearned}}learned{{/if}}"
+    data-action="rollSkill" data-skill="{{name}}" data-stat={{stat}}>
     <div class="label">
         <span>{{localize skill.label}}</span>
-        {{#if (gte skill.value 0)}}
-            <span>+{{skill.value}}</span>
+        {{#if (gte skill.modifiedValue 0)}}
+            <span>+{{skill.modifiedValue}}</span>
         {{else}}
-            <span>{{skill.value}}</span>
+            <span>{{skill.modifiedValue}}</span>
         {{/if}}
     </div>
     {{#if (or skill.isProfession skill.isPickup skill.isLearned)}}

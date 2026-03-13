@@ -19,8 +19,7 @@ export let damageUtilMixin = {
     },
 
     async rollDamage(damage) {
-        let messageData = new ChatMessageData(this.parent);
-        messageData.flavor = `<div class="damage-message" <h1><img src="${this.img}" class="item-img" />${game.i18n.localize('WITCHER.table.Damage')}: ${this.name} </h1>`;
+        let flavor = `<div class="damage-message" <h1><img src="${this.img}" class="item-img" />${game.i18n.localize('WITCHER.table.Damage')}: ${this.name} </h1>`;
 
         let damageFormula = '' + damage.formula;
 
@@ -35,47 +34,57 @@ export let damageUtilMixin = {
 
         if (CONFIG.WITCHER.weapon.attacks[damage.strike]?.dmgMulti) {
             damageFormula = `(${damageFormula})${CONFIG.WITCHER.weapon.attacks[damage.strike].dmgMulti}`;
-            messageData.flavor += `<div>${game.i18n.localize(CONFIG.WITCHER.weapon.attacks[damage.strike].label)}</div>`;
+            flavor += `<div>${game.i18n.localize(CONFIG.WITCHER.weapon.attacks[damage.strike].label)}</div>`;
         }
 
         damage.location = WitcherActor.getLocationObject(damage.location.name);
 
-        messageData.flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.attackLocation')}:</b> ${damage.location.alias} = ${damage.location.locationFormula} </div>`;
+        flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.attackLocation')}:</b> ${damage.location.alias} = ${damage.location.formula} </div>`;
         let damageTypeloc = damage.type ? 'WITCHER.DamageType.' + damage.type : '';
-        messageData.flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.damageType')}:</b> ${game.i18n.localize(damageTypeloc)} </div>`;
-        messageData.flavor += `<div>${game.i18n.localize('WITCHER.Damage.RemoveSP')}</div>`;
+        flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.damageType')}:</b> ${game.i18n.localize(damageTypeloc)} </div>`;
+        flavor += `<div>${game.i18n.localize('WITCHER.Damage.RemoveSP')}</div>`;
 
-        if (damage.properties.effects && damage.properties.effects.length > 0) {
-            messageData.flavor += `<b>${game.i18n.localize('WITCHER.Item.Effect')}:</b>`;
+        let preprocessedEffects = damage.properties.getPreprocessedEffects();
+        if (preprocessedEffects) {
+            flavor += `<b>${game.i18n.localize('WITCHER.Item.Effect')}:</b>`;
 
-            damage.properties.effects.forEach((effect, index, effectArray) => {
-                messageData.flavor += `<div class="flex gap">`;
+            preprocessedEffects.forEach(effect => {
+                flavor += `<div class="flex gap">`;
                 if (effect.name != '') {
-                    messageData.flavor += `<span>${effect.name}</span>`;
+                    flavor += `<span>${effect.name}</span>`;
                 }
                 if (effect.statusEffect) {
                     let statusEffect = CONFIG.WITCHER.statusEffects.find(status => status.id == effect.statusEffect);
-                    messageData.flavor += `<a class='apply-status' data-status='${effect.statusEffect}' ><img class='chat-icon' src='${statusEffect.img}' /> <span>${game.i18n.localize(statusEffect.name)}</span></a>`;
+                    flavor += `<a class='apply-status' data-status='${effect.statusEffect}' ><img class='chat-icon' src='${statusEffect.img}' /> <span>${game.i18n.localize(statusEffect.name)}</span></a>`;
                 }
                 if (effect.percentage) {
                     let rollPercentage = getRandomInt(100);
-                    messageData.flavor += `<div data-tooltip='${game.i18n.localize('WITCHER.Effect.Rolled')}: ${rollPercentage}'>(${effect.percentage}%) `;
+                    flavor += `<div data-tooltip='${game.i18n.localize('WITCHER.Effect.Rolled')}: ${rollPercentage}'>(${effect.percentage}%) `;
                     if (rollPercentage > effect.percentage) {
-                        messageData.flavor += `<span class="percentageFailed">${game.i18n.localize('WITCHER.Effect.Failed')}</span>`;
-                        effectArray[index].applied = false;
+                        flavor += `<span class="percentageFailed">${game.i18n.localize('WITCHER.Effect.Failed')}</span>`;
+                        effect.applied = false;
                     } else {
-                        messageData.flavor += `<span class="percentageSuccess">${game.i18n.localize('WITCHER.Effect.Applied')}</span>`;
-                        effectArray[index].applied = true;
+                        flavor += `<span class="percentageSuccess">${game.i18n.localize('WITCHER.Effect.Applied')}</span>`;
+                        effect.applied = true;
                     }
-                    messageData.flavor += '</div>';
+                    flavor += '</div>';
                 }
 
-                messageData.flavor += `</div>`;
+                flavor += `</div>`;
             });
         }
 
+        let messageData = new ChatMessageData(this.parent, flavor, 'damage', {
+            damage: {
+                ...damage,
+                properties: { ...damage.properties, effects: preprocessedEffects }
+            }
+        });
         let message = await (await new Roll(damageFormula).evaluate()).toMessage(messageData);
-        message.setFlag('TheWitcherTRPG', 'damage', damage);
+        message.setFlag('TheWitcherTRPG', 'damage', {
+            ...damage,
+            properties: { ...damage.properties, effects: preprocessedEffects }
+        });
     },
 
     async createVariableDamageDialog(damageFormula) {

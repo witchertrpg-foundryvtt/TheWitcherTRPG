@@ -34,8 +34,8 @@
                             <th></th>
                             <th>{{localize "WITCHER.Percentage"}}</th>
                         </tr>
-                        {{#each skill.skillAttack.damageProperties.effects as |effect name|}}
-                            <tr class="list-item" data-id="{{effect.id}}" data-target="{{../skill.skillName}}">
+                        {{#each skill.skillAttack.damageProperties.effects as |effect id|}}
+                            <tr class="list-item" data-id="{{id}}" data-target="{{../skill.skillName}}">
                                 <td>
                                     <a data-action="removeEffectDamageProperties"
                                         title="{{localize "WITCHER.Item.RemoveEffect"}}"><i

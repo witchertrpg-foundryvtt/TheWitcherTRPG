@@ -34,8 +34,8 @@ export function addDamageMessageContextOptions(html, options) {
 }
 
 async function ApplyNormalDamage(actor, totalDamage, messageId) {
-    let damage = game.messages.get(messageId).getFlag('TheWitcherTRPG', 'damage');
-    applyDamageFromMessage(actor, totalDamage, messageId, damage.properties.isNonLethal ? 'sta' : 'hp');
+    let message = game.messages.get(messageId);
+    applyDamageFromMessage(actor, totalDamage, messageId, message.system.damage.properties.isNonLethal ? 'sta' : 'hp');
 }
 
 async function ApplyNonLethalDamage(actor, totalDamage, messageId) {
@@ -100,7 +100,7 @@ async function applyDamageFromStatus(actor, totalDamage, damageObject, derivedSt
 }
 
 async function applyDamageFromMessage(actor, totalDamage, messageId, derivedStat) {
-    let damage = game.messages.get(messageId).getFlag('TheWitcherTRPG', 'damage');
+    let damage = game.messages.get(messageId).system.damage;
 
     let dialogData = await createApplyDamageDialog(actor, damage);
 

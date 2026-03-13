@@ -6,31 +6,27 @@
                     <span>{{localize skill.label}}</span>
                     <input class='header-stat stat-max' name='system.skills.{{@root.skillKey}}.{{skillName}}.value'
                         type='number' value='{{skill.value}}' placeholder='0' data-dtype='Number' />
+
+                    <label>{{localize "WITCHER.skills.profession"}}:
+                        <input class="skill-checkbox" type="checkbox"
+                            name="system.skills.{{@root.skillKey}}.{{skillName}}.isProfession"
+                            {{checked skill.isProfession}} />
+                    </label>
+                    <label>{{localize "WITCHER.skills.pickup"}}:
+                        <input class="skill-checkbox" type="checkbox"
+                            name="system.skills.{{@root.skillKey}}.{{skillName}}.isPickup" {{checked skill.isPickup}} />
+                    </label>
+                    <label>{{localize "WITCHER.skills.learn"}}:
+                        <input class="skill-checkbox" type="checkbox"
+                            name="system.skills.{{@root.skillKey}}.{{skillName}}.isLearned"
+                            {{checked skill.isLearned}} />
+                    </label>
                 </summary>
                 <div class='skill-modifiers'>
-                    <tr>
-                        <td colspan="3">
-                            <label>{{localize "WITCHER.skills.profession"}}:
-                                <input class="skill-checkbox" type="checkbox"
-                                    name="system.skills.{{@root.skillKey}}.{{skillName}}.isProfession"
-                                    {{checked skill.isProfession}} />
-                            </label>
-                            <label>{{localize "WITCHER.skills.pickup"}}:
-                                <input class="skill-checkbox" type="checkbox"
-                                    name="system.skills.{{@root.skillKey}}.{{skillName}}.isPickup"
-                                    {{checked skill.isPickup}} />
-                            </label>
-                            <label>{{localize "WITCHER.skills.learn"}}:
-                                <input class="skill-checkbox" type="checkbox"
-                                    name="system.skills.{{@root.skillKey}}.{{skillName}}.isLearned"
-                                    {{checked skill.isLearned}} />
-                            </label>
-                        </td>
-                    </tr>
                     {{#if skill.modifiers}}
-                        <tr>
-                            <td colspan="3">
-                                {{#each skill.modifiers as |modifier value|}}
+                        {{#each skill.modifiers as |modifier value|}}
+                            <tr>
+                                <td colspan="3">
                                     <div class="list-modifiers skill" data-id="{{modifier.id}}"
                                         data-skill="{{skillName}}" data-stat="{{@root.skillKey}}">
                                         <input class="medium skill-mod-edit" data-field="name" type="text"
@@ -40,9 +36,9 @@
                                         <a class="delete-skill-modifier"><i class="fas fa-trash-alt"
                                                 data-id="{{modifier.id}}"></i></a>
                                     </div>
-                                {{/each}}
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        {{/each}}
                     {{/if}}
                     {{#if skill.activeEffectModifiers}}
                         <tr>

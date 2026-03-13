@@ -173,11 +173,11 @@ export let damageMixin = {
 
         let flatDamageMod = this.getFlatDamageMod(damage);
 
-        totalDamage = Math.max(Math.floor(location.locationFormula * totalDamage), 0);
-        silverDamage = Math.max(Math.floor(location.locationFormula * silverDamage), 0);
+        totalDamage = Math.max(Math.floor(location.formula * totalDamage), 0);
+        silverDamage = Math.max(Math.floor(location.formula * silverDamage), 0);
         let infoAfterLocation = totalDamage;
         if (flatDamageMod) {
-            infoAfterLocation += `+${location.locationFormula * flatDamageMod}[${game.i18n.localize('WITCHER.Damage.activeEffect')}]`;
+            infoAfterLocation += `+${location.formula * flatDamageMod}[${game.i18n.localize('WITCHER.Damage.activeEffect')}]`;
         }
 
         if (silverDamage) {

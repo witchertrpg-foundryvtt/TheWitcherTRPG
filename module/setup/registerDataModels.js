@@ -29,6 +29,7 @@ import WitcherTemporaryItemImprovementData from '../data/activeEffects/witcherTe
 import HomelandData from '../data/item/homelandData.js';
 import BaseMessageData from '../data/chatMessage/baseMessageData.js';
 import DefenseMessageData from '../data/chatMessage/defenseMessageData.js';
+import DamageMessageData from '../data/chatMessage/damageMessageData.js';
 
 export const registerDataModels = () => {
     foundry.utils.mergeObject(CONFIG.Actor.dataModels, {
@@ -74,4 +75,5 @@ export const registerDataModels = () => {
     CONFIG.ChatMessage.dataModels['base'] = BaseMessageData;
     CONFIG.ChatMessage.dataModels['attack'] = AttackMessageData;
     CONFIG.ChatMessage.dataModels['defense'] = DefenseMessageData;
+    CONFIG.ChatMessage.dataModels['damage'] = DamageMessageData;
 };

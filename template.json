@@ -59,9 +59,10 @@
         "effect": {}
     },
     "ChatMessage": {
-        "types": ["attack", "defense"],
+        "types": ["attack", "defense", "damage"],
         "attack": {},
-        "defense": {}
+        "defense": {},
+        "damage": {}
     },
     "ActiveEffect": {
         "types": ["temporaryItemImprovement"],

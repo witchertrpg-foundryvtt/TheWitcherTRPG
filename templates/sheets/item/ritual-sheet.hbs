@@ -75,19 +75,10 @@
             <td><input name="system.duration" type="text" value="{{item.system.duration}}" /></td>
         </tr>
     </table>
-    <div>
+    <div style="display: grid;">
         <label>{{localize "WITCHER.Item.Effect"}}</label>
         <textarea rows="10" name="system.effect">{{item.system.effect}}</textarea>
     </div>
-    {{#unless item.system.ritualComponents}}
-        <div>
-            <label>{{localize "WITCHER.Spell.Ritual.components"}}</label>
-            {{#if item.system.components}}
-                <textarea rows="4" name="system.components">{{item.system.components}}</textarea>
-            {{/if}}
-        </div>
-    {{/unless}}
-
     <div class="flex">
         <div class="spell-template-damage">
             <div>
@@ -121,6 +112,11 @@
                 {{/if}}
             </tr>
         </table>
+    </div>
+
+    <div style="display: grid;">
+        <label>{{localize "WITCHER.Spell.Ritual.components"}}</label>
+        <textarea rows="4" name="system.components">{{item.system.components}}</textarea>
     </div>
     <div class='ritualComponents'>
         <h3>{{localize "WITCHER.Spell.Ritual.components"}}</h3>

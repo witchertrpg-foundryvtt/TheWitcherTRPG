@@ -1,4 +1,4 @@
-import damageProperties from '../item/templates/combat/damagePropertiesData.js';
+import DamageProperties from '../item/templates/combat/damagePropertiesData.js';
 import BaseMessageData from './baseMessageData.js';
 
 const fields = foundry.data.fields;
@@ -15,7 +15,7 @@ export default class DefenseMessageData extends BaseMessageData {
         let commonData = super.defineSchema();
         return {
             ...commonData,
-            attackWeaponProperties: new fields.SchemaField(damageProperties()),
+            attackWeaponProperties: new fields.EmbeddedDataField(DamageProperties),
             defender: new fields.DocumentUUIDField(),
             defense: new fields.StringField(),
             crit: new fields.SchemaField({
@@ -25,7 +25,7 @@ export default class DefenseMessageData extends BaseMessageData {
                 location: new fields.SchemaField({
                     name: new fields.StringField(),
                     alias: new fields.StringField(),
-                    locationFormula: new fields.NumberField(),
+                    formula: new fields.NumberField(),
                     critEffect: new fields.NumberField(),
                     modifier: new fields.NumberField()
                 })

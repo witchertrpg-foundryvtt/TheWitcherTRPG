@@ -200,7 +200,7 @@ export let castSpellMixin = {
             if (spellItem.system.staminaIsVar) {
                 dmg = this.calcStaminaMulti(origStaCost, dmg);
 
-                damage.properties?.effects?.forEach(effect => {
+                Object.keys(damage.properties?.effects)?.forEach(effect => {
                     if (effect.varEffect) {
                         effect.percentage = this.calcStaminaMulti(origStaCost, effect.percentage);
                     }
