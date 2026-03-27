@@ -619,6 +619,19 @@ WITCHER.currency = {
     falsecoin: 'WITCHER.Currency.falsecoin'
 };
 
+WITCHER.currencyRates = {
+    bizant: 4,
+    ducat: 1 / 3,
+    lintar: 2,
+    floren: 3,
+    crown: 1,
+    oren: 1
+};
+
+WITCHER.currencyConverter = {
+    excluded: ['falsecoin']
+};
+
 WITCHER.substanceTypes = {
     vitriol: 'WITCHER.Inventory.Vitriol',
     rebis: 'WITCHER.Inventory.Rebis',
