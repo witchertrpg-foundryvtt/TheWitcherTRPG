@@ -690,7 +690,7 @@
             "SimpleSprainedArm": "The blow sprained your arm, making it difficult to manoeuvre.",
             "SimpleSprainedLeg": "The blow sprained your leg, making it difficult to walk and manoeuvre.",
             "ComplexMinorHeadWound": "The blow rattled your brain and caused some internal bleeding. It's hard to think straight.",
-            "ComplexLostTeeth": "The blow knocked out some teeth. Roll 1d10 to see how many teeth are lost.",
+            "ComplexLostTeeth": "The blow knocked out some teeth. Roll [[1d10]] to see how many teeth are lost.",
             "ComplexRupturedSpleen": "A tear in your spleen begins bleeding profusely, making you woozy.",
             "ComplexBrokenRibs": "The blow breaks your ribs, causing immense pain when you bend and strain.",
             "ComplexFracturedArm": "The blow fractures your arm.",
@@ -985,6 +985,7 @@
         },
         "Button": {
             "Cancel": "Cancel",
+            "Confirm": "Confirm",
             "Continue": "Continue",
             "All": "All"
         },
@@ -1076,6 +1077,19 @@
             "crown": "Crown",
             "oren": "Oren",
             "falsecoin": "FalseCoin"
+        },
+        "currencyConverter": {
+            "title": "Currency Converter",
+            "open": "Open Currency Converter",
+            "amount": "Amount",
+            "from": "From",
+            "to": "To",
+            "convert": "Convert",
+            "fee": "Fee (%)",
+            "result": "Result",
+            "errors": {
+                "insufficient": "Not enough {currency}"
+            }
         },
         "Settings": {
             "criticalWoundsPack": "Critical Wounds Compendium",
@@ -1292,13 +1306,11 @@
                 "Name": "Derived Stats"
             }
         },
-
         "SocialStanding": "Social Standing",
         "Profession": "Profession",
         "Reputation": "Reputation",
         "NoDamageSpecified": "Damage is not specified",
         "Shield.Broken": "Your shield is now broken",
-
         "Items.transferTitle": "Transferring Items",
         "Items.transferMany": "How many items to transfer",
         "Combat": {

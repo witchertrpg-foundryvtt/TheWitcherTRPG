@@ -155,6 +155,26 @@ table th {
         display: flex;
         gap: 5px;
     }
+
+    .currency-actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .currency-actions a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 4px;
+    }
+
+    .currency-actions a:hover {
+        background-color: rgba(25, 25, 25, 0.1);
+    }
 }
 
 .weightbar {
