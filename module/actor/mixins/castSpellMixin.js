@@ -266,7 +266,7 @@ export let castSpellMixin = {
         spellItem.system.createSpellVisuals?.(roll, damage, { stamina: origStaCost });
 
         if (!roll.options.fumble) {
-            spellItem.system.selfEffects?.forEach(effect =>
+            Object.entries(spellItem.system.selfEffects)?.forEach(effect =>
                 applyStatusEffectToActor(this.uuid, effect.statusEffect, damage.duration)
             );
             applyActiveEffectToActor(

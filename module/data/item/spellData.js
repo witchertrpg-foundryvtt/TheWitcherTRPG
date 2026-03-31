@@ -52,8 +52,8 @@ export default class SpellData extends CommonItemData {
             doesHeal: new fields.BooleanField({ initial: false }),
             heal: new fields.StringField({ initial: '' }),
 
-            selfEffects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
-            onCastEffects: new fields.ArrayField(new fields.SchemaField(itemEffect())),
+            selfEffects: new fields.TypedObjectField(new fields.SchemaField(itemEffect())),
+            onCastEffects: new fields.TypedObjectField(new fields.SchemaField(itemEffect())),
 
             ...attackOptions(),
             ...defenseOptions(),
@@ -94,6 +94,7 @@ export default class SpellData extends CommonItemData {
 
         this.migrateTemplateSize(source);
         migrateDamageProperties(source);
+        this.migrateEffectsToTypedField(source);
 
         return super.migrateData(source);
     }
@@ -101,6 +102,24 @@ export default class SpellData extends CommonItemData {
     static migrateTemplateSize(source) {
         if (typeof source.templateSize === 'string' || source.templateSize instanceof String) {
             source.templateSize = parseInt(source.templateSize) || 0;
+        }
+    }
+
+    static migrateEffectsToTypedField(source) {
+        if (Array.isArray(source.selfEffects) && source.selfEffects.length > 0) {
+            source.selfEffects = Object.fromEntries(
+                source.selfEffects.map(o => {
+                    return [foundry.utils.randomID(), o];
+                })
+            );
+        }
+
+        if (Array.isArray(source.onCastEffects) && source.onCastEffects.length > 0) {
+            source.onCastEffects = Object.fromEntries(
+                source.onCastEffects.map(o => {
+                    return [foundry.utils.randomID(), o];
+                })
+            );
         }
     }
 }
