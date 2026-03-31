@@ -46,6 +46,10 @@ export async function applyActiveEffectToActor(actorUuid, activeEffects, duratio
 
     let newEffects = activeEffects
         .filter(effect => effect.type != 'temporaryItemImprovement')
+        .map(effect => {
+            if (effect.clone) return effect;
+            else return new ActiveEffect(effect);
+        })
         .map(effect =>
             effect.clone(
                 {
