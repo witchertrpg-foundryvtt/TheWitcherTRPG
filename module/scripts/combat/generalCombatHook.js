@@ -1,7 +1,7 @@
 import { applyDamageFromStatus } from '../combat/applyDamage.js';
 
 export async function applyGeneralCombatHooks(combat) {
-    if (!game.user.isGM) return;
+    if (!game.user.isActiveGM) return;
 
     let actor = combat.combatants.get(combat.current.combatantId).actor;
     applyMonsterRegeneration(actor);
