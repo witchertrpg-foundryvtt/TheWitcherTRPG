@@ -1,5 +1,5 @@
 export async function countdownDurationOfRegions(combat, update, options, userId) {
-    if (!game.user.isGM) return;
+    if (!game.user.isActiveGM) return;
 
     let actorUuid = combat.combatants.get(combat.current.combatantId).actor.uuid;
 
