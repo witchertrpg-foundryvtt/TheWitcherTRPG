@@ -20,6 +20,7 @@ export default class CommonActorData extends foundry.abstract.TypeDataModel {
         return {
             currency: new fields.SchemaField(currency()),
             woundTresholdApplied: new fields.BooleanField({ initial: false }),
+            ignoreWoundThreshold: new fields.BooleanField({ initial: false }),
             deathStateApplied: new fields.BooleanField({ initial: false }),
             deathSaves: new fields.NumberField({ initial: 0 }),
             critWounds: new fields.ArrayField(new fields.SchemaField(critWound())),

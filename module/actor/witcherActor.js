@@ -94,10 +94,15 @@ export default class WitcherActor extends Actor {
         if (HPvalue <= 0) {
             this.system.deathStateApplied = true;
             divider += 2;
-        } else if (HPvalue < this.system.derivedStats.woundTreshold.value > 0) {
-            this.system.woundTresholdApplied = true;
-            if (stat === 'ref' || stat === 'dex' || stat === 'int' || stat === 'will') {
-                divider += 1;
+        } else {
+            this.system.deathStateApplied = false;
+            if (HPvalue < this.system.derivedStats.woundTreshold.value && this.system.derivedStats.woundTreshold.value > 0) {
+                this.system.woundTresholdApplied = true;
+                if (!this.system.ignoreWoundThreshold && (stat === 'ref' || stat === 'dex' || stat === 'int' || stat === 'will')) {
+                    divider += 1;
+                }
+            } else {
+                this.system.woundTresholdApplied = false;
             }
         }
 

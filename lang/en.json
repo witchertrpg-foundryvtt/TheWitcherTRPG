@@ -99,6 +99,8 @@
             "Adda.Profession": "Add a Profession",
             "Adda.Race": "Add a Race",
             "woundState": "Wound State",
+            "IgnoreWoundThreshold": "WT",
+            "IgnoreWoundThresholdHint": "Ignore Wound Threshold penalties when HP is below WT.",
             "TotalStats": "Total Stats",
             "Stat.Int": "INT",
             "Stat.Ref": "REF",

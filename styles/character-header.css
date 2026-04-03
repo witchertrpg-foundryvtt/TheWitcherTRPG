@@ -684,8 +684,47 @@ input.progress-input,
     }
 }
 
+.optional-stats-section .switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 22px;
+}
 
+.optional-stats-section .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 
+.optional-stats-section .switch .slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #7a7a7a;
+    transition: 0.2s ease;
+    border-radius: 999px;
+}
+
+.optional-stats-section .switch .slider:before {
+    position: absolute;
+    content: '';
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    top: 2px;
+    background-color: #ffffff;
+    transition: 0.2s ease;
+    border-radius: 50%;
+}
+
+.optional-stats-section .switch input:checked + .slider {
+    background-color: #2d7d46;
+}
+
+.optional-stats-section .switch input:checked + .slider:before {
+    transform: translateX(20px);
+}
 
 .optional-buttons {
     place-content: center;
@@ -714,4 +753,3 @@ input.progress-input,
     color: white;
     padding: 5px;
 }
-

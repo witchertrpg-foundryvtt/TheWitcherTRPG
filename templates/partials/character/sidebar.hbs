@@ -99,6 +99,18 @@
                 </h3>
             </div>
         </div>
+        <div class='optional-stat wound-threshold-toggle'>
+            <div class='optional-name'>
+                <i class='fa-solid fa-heart-pulse'></i>
+                <span class=''>{{localize 'WITCHER.Actor.IgnoreWoundThreshold'}}</span>
+            </div>
+            <div class='optional-info'>
+                <label class='switch' data-tooltip="{{localize 'WITCHER.Actor.IgnoreWoundThresholdHint'}}">
+                    <input type='checkbox' name='system.ignoreWoundThreshold' {{checked system.ignoreWoundThreshold}} />
+                    <span class='slider'></span>
+                </label>
+            </div>
+        </div>
         <div class='optional-stat luck-display'>
             <div class='optional-name'>
                 <i class='fa-solid fa-clover'></i>
