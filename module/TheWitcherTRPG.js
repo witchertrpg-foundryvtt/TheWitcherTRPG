@@ -58,33 +58,7 @@ Hooks.on('renderChatMessageHTML', (message, html, data) => {
 });
 
 Hooks.on('renderActiveEffectConfig', async (activeEffectConfig, html, data) => {
-    const effectsSection = html.querySelector("section[data-tab='changes']");
-    const inputFields = effectsSection.querySelectorAll('.key input');
-    const datalist = document.createElement('datalist');
-    const attributeKeyOptions = {};
 
-    datalist.id = 'attribute-key-list';
-    inputFields.forEach(inputField => {
-        inputField.setAttribute('list', 'attribute-key-list');
-    });
-
-    for (const datamodel in CONFIG.Actor.dataModels) {
-        CONFIG.Actor.dataModels[datamodel].schema.apply(function () {
-            if (!(this instanceof foundry.data.fields.SchemaField)) {
-                attributeKeyOptions[this.fieldPath] = this.label;
-            }
-        });
-    }
-
-    const sortedKeys = Object.keys(attributeKeyOptions).sort();
-    sortedKeys.forEach(key => {
-        const attributeKeyOption = document.createElement('option');
-        attributeKeyOption.value = key;
-        if (!!attributeKeyOptions[key]) attributeKeyOption.label = attributeKeyOptions[key];
-        datalist.appendChild(attributeKeyOption);
-    });
-
-    effectsSection.append(datalist);
 });
 
 Hooks.once('ready', async function () {
