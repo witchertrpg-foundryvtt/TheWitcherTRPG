@@ -33,6 +33,11 @@
             "temporaryItemImprovement": "Temporary Item Improvement"
         }
     },
+    "EFFECT": {
+        "TABS": {
+            "systemSpecific": "System Specific"
+        }
+    },
     "WITCHER": {
         "Name": "Name",
         "Type": "Type",
