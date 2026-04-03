@@ -25,6 +25,7 @@ import WitcherItemSheet from '../item/sheets/WitcherItemSheet.js';
 import WitcherMountSheet from '../item/sheets/WitcherMountSheet.js';
 import WitcherComponentSheet from '../item/sheets/WitcherComponentSheet.js';
 import WitcherHomelandSheet from '../item/sheets/WitcherHomelandSheet.js';
+import WitcherCriticalWoundSheet from '../item/sheets/WitcherCriticalWoundSheet.js';
 
 const Actors = foundry.documents.collections.Actors;
 const Items = foundry.documents.collections.Items;
@@ -47,6 +48,10 @@ export const registerSheets = () => {
     Items.registerSheet('witcher', WitcherComponentSheet, {
         makeDefault: true,
         types: ['component']
+    });
+    Items.registerSheet('witcher', WitcherCriticalWoundSheet, {
+        makeDefault: true,
+        types: ['criticalWound']
     });
     Items.registerSheet('witcher', WitcherDiagramSheet, {
         makeDefault: true,

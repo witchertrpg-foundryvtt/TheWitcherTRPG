@@ -166,7 +166,7 @@ export let itemContextMenu = {
 
         if (game.user.isGM) {
             let receiverActor = fromUuidSync(receiver);
-            receiverActor.addItem(item, 1);
+            receiverActor.addItem(item);
         } else {
             emitForGM('addItem', [receiver, item, 1]);
         }

@@ -1,3 +1,4 @@
+import { getActorOwner } from '../helper.js';
 import { emitForGM } from '../socket/socketMessage.js';
 
 export async function applyActiveEffectToTargets(activeEffects, duration) {
@@ -45,6 +46,10 @@ export async function applyActiveEffectToActor(actorUuid, activeEffects, duratio
 
     let newEffects = activeEffects
         .filter(effect => effect.type != 'temporaryItemImprovement')
+        .map(effect => {
+            if (effect.clone) return effect;
+            else return new ActiveEffect(effect);
+        })
         .map(effect =>
             effect.clone(
                 {
@@ -71,14 +76,6 @@ async function applyTemporaryItemImprovements(actor, activeEffects) {
     }
 
     actor.applyTemporaryItemImprovements(activeEffects);
-}
-
-function getActorOwner(actor) {
-    let owner = game.users.activeGM;
-    if (actor.hasPlayerOwner) {
-        owner = game.users.find(e => actor.testUserPermission(e, 'OWNER') && !e.isGM);
-    }
-    return owner;
 }
 
 function sendToGm(call, actorUuid, activeEffects, duration) {

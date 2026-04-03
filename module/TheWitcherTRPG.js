@@ -58,36 +58,16 @@ Hooks.on('renderChatMessageHTML', (message, html, data) => {
 });
 
 Hooks.on('renderActiveEffectConfig', async (activeEffectConfig, html, data) => {
-    const effectsSection = html.querySelector("section[data-tab='changes']");
-    const inputFields = effectsSection.querySelectorAll('.key input');
-    const datalist = document.createElement('datalist');
-    const attributeKeyOptions = {};
 
-    datalist.id = 'attribute-key-list';
-    inputFields.forEach(inputField => {
-        inputField.setAttribute('list', 'attribute-key-list');
-    });
-
-    for (const datamodel in CONFIG.Actor.dataModels) {
-        CONFIG.Actor.dataModels[datamodel].schema.apply(function () {
-            if (!(this instanceof foundry.data.fields.SchemaField)) {
-                attributeKeyOptions[this.fieldPath] = this.label;
-            }
-        });
-    }
-
-    const sortedKeys = Object.keys(attributeKeyOptions).sort();
-    sortedKeys.forEach(key => {
-        const attributeKeyOption = document.createElement('option');
-        attributeKeyOption.value = key;
-        if (!!attributeKeyOptions[key]) attributeKeyOption.label = attributeKeyOptions[key];
-        datalist.appendChild(attributeKeyOption);
-    });
-
-    effectsSection.append(datalist);
 });
 
 Hooks.once('ready', async function () {
+    //Wait till packs are loaded for index
+    const criticalWounds = game.packs.get(game.settings.get('TheWitcherTRPG', 'criticalWoundsPack'));
+    await criticalWounds.getIndex({
+        fields: ['system.criticalLevel', 'system.location', 'system.lesserEffect', 'system.treatment']
+    });
+
     // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
     Hooks.on('hotbarDrop', (bar, data, slot) => {
         if (data.type === 'Item') {
@@ -129,7 +109,7 @@ Hooks.once('polyglot.init', LanguageProvider => {
                 actor.system.skills.int.eldersp.isProfession ||
                 actor.system.skills.int.eldersp.isPickup ||
                 actor.system.skills.int.eldersp.isLearned ||
-                actor.system.skills.int.eldersp.value > 0
+                actor.system.skills.int.eldersp.modifiedValue > 0
             ) {
                 known_languages.add('elder');
             }
@@ -137,7 +117,7 @@ Hooks.once('polyglot.init', LanguageProvider => {
                 actor.system.skills.int.dwarven.isProfession ||
                 actor.system.skills.int.dwarven.isPickup ||
                 actor.system.skills.int.dwarven.isLearned ||
-                actor.system.skills.int.dwarven.value > 0
+                actor.system.skills.int.dwarven.modifiedValue > 0
             ) {
                 known_languages.add('dwarven');
             }
@@ -145,7 +125,7 @@ Hooks.once('polyglot.init', LanguageProvider => {
                 actor.system.skills.int.commonsp.isProfession ||
                 actor.system.skills.int.commonsp.isPickup ||
                 actor.system.skills.int.commonsp.isLearned ||
-                actor.system.skills.int.commonsp.value > 0
+                actor.system.skills.int.commonsp.modifiedValue > 0
             ) {
                 known_languages.add('common');
             }

@@ -1,0 +1,39 @@
+.currency-converter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.currency-converter .converter-balances {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 6px 12px;
+    background-color: light-dark(#22222210, #e7d1b110);
+    border: 1px solid light-dark(#22222240, #e7d1b140);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.currency-converter .converter-balance {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.currency-converter .converter-fields {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.currency-converter label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+}
+
+.currency-converter input,
+.currency-converter select {
+    width: 100%;
+}

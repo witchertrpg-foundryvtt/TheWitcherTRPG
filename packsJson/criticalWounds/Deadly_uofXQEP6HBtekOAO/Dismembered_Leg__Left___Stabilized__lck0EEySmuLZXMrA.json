@@ -1,0 +1,104 @@
+{
+  "folder": "uofXQEP6HBtekOAO",
+  "name": "Dismembered Leg (Left - Stabilized)",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<p>The blow tears your leg from your body or damages it beyond repair. Quarter your SPD, Dodge/Escape, and Athletics.</p>",
+    "criticalLevel": "deadly",
+    "treatment": "stabilized",
+    "location": "leftLeg",
+    "lesserEffect": false,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": "Compendium.TheWitcherTRPG.criticalWounds.Item.eYEp1CPif98mDm2U"
+  },
+  "effects": [
+    {
+      "type": "base",
+      "name": "Dismembered Leg (Left - Stabilized)",
+      "origin": "Compendium.TheWitcherTRPG.criticalWounds.Item.lck0EEySmuLZXMrA",
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "img": "icons/svg/item-bag.svg",
+      "_id": "3atgpxSf0fttNYLr",
+      "system": {
+        "applySelf": false,
+        "applyOnTarget": false,
+        "applyOnHit": false,
+        "applyOnDamage": false
+      },
+      "changes": [
+        {
+          "key": "system.stats.spd.max",
+          "mode": 1,
+          "value": "0.25",
+          "priority": null
+        },
+        {
+          "key": "system.skills.ref.dodge.value",
+          "mode": 1,
+          "value": "0.25",
+          "priority": null
+        },
+        {
+          "key": "system.skills.dex.athletics.value",
+          "mode": 1,
+          "value": "0.25",
+          "priority": null
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "statuscounter": {
+          "value": 1,
+          "config": {
+            "type": "default"
+          },
+          "visible": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "TheWitcherTRPG",
+        "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+      },
+      "_key": "!items.effects!lck0EEySmuLZXMrA.3atgpxSf0fttNYLr"
+    }
+  ],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "lck0EEySmuLZXMrA",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 0,
+  "_key": "!items!lck0EEySmuLZXMrA"
+}

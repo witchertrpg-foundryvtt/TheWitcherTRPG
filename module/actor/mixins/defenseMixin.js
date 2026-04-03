@@ -216,7 +216,7 @@ export let defenseMixin = {
             ? await foundry.applications.handlebars.renderTemplate(
                   'systems/TheWitcherTRPG/templates/chat/combat/defense/defenseCrit.hbs',
                   {
-                      crit: { severity: CONFIG.WITCHER.CritGravity[crit.severity] }
+                      crit: { criticalLevel: CONFIG.WITCHER.critLevel[crit.criticalLevel] }
                   }
               )
             : '';
@@ -314,7 +314,7 @@ export let defenseMixin = {
 
         if (defenseRoll <= deadly) {
             return {
-                severity: 'deadly',
+                criticalLevel: 'deadly',
                 critdamage: 10,
                 bonusdamage: 20
             };
@@ -322,7 +322,7 @@ export let defenseMixin = {
 
         if (defenseRoll <= difficult) {
             return {
-                severity: 'difficult',
+                criticalLevel: 'difficult',
                 critdamage: 8,
                 bonusdamage: 15
             };
@@ -330,7 +330,7 @@ export let defenseMixin = {
 
         if (defenseRoll <= complex) {
             return {
-                severity: 'complex',
+                criticalLevel: 'complex',
                 critdamage: 5,
                 bonusdamage: 10
             };
@@ -338,7 +338,7 @@ export let defenseMixin = {
 
         if (defenseRoll <= simple) {
             return {
-                severity: 'simple',
+                criticalLevel: 'simple',
                 critdamage: 3,
                 bonusdamage: 5
             };

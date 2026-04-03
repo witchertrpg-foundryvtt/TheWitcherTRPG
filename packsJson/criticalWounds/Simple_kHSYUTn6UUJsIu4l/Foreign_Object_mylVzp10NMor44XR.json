@@ -1,0 +1,37 @@
+{
+  "name": "Foreign Object",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<table class=\"NormalTable\"><tbody><tr><td style=\"border-left-style:none;border-bottom-style:none;border-right-style:none;border-top-style:none;\"><p><span class=\"fontstyle0\">Your Recovery and Critical Healing are quartered</span></p></td></tr></tbody></table><p><br style=\" font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; \"></p>",
+    "criticalLevel": "simple",
+    "treatment": "none",
+    "location": "torso",
+    "lesserEffect": true,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": "Compendium.TheWitcherTRPG.criticalWounds.Item.fnYssldrMLVqbF22"
+  },
+  "effects": [],
+  "folder": "kHSYUTn6UUJsIu4l",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "mylVzp10NMor44XR",
+  "sort": 1300000,
+  "_key": "!items!mylVzp10NMor44XR"
+}

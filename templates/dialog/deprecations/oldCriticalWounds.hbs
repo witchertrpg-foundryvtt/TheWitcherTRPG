@@ -1,0 +1,16 @@
+{{#if affectedActors}}
+    <span>{{localize "WITCHER.deprecations.oldCriticalWounds.text"}}</span>
+    <div class="scrollable" style="max-height: 300px;">
+        {{#each affectedActors as |actor|}}
+            <div>
+                <span>{{actor.name}}</span>
+                <span>
+                    {{#each actor.critWounds as |critWound|}}
+                        <span>{{critWound.name}}</span>
+                    {{/each}}
+                </span>
+            </div>
+        {{/each}}
+    </div>
+
+{{/if}}

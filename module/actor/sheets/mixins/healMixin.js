@@ -112,6 +112,8 @@ export let healMixin = {
             this.actor.update({ 'system.combatEffects.temporaryEffects.temporaryHp': [] });
         }
 
+        this.actor.items.documentsByType.criticalWound.forEach(crit => crit.system.heal({ sterilized: isSterilized }));
+
         ChatMessage.create({
             content: await foundry.applications.handlebars.renderTemplate(
                 'systems/TheWitcherTRPG/templates/chat/heal/resting-status.hbs',

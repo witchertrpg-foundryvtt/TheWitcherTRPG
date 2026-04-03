@@ -35,7 +35,7 @@ export async function applyStatusEffectToTargets(statusEffects, duration) {
 
     targets.forEach(target => {
         let actorUuid = target.actor.uuid;
-        statusEffects.forEach(effect => applyStatusEffectToActor(actorUuid, effect.statusEffect, duration));
+        Object.entries(statusEffects).forEach(effect => applyStatusEffectToActor(actorUuid, effect.statusEffect, duration));
     });
 }
 

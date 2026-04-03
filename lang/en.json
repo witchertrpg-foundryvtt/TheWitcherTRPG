@@ -6,9 +6,11 @@
             "clue": "Clue",
             "component": "Component",
             "container": "Container",
+            "criticalWound": "Critical Wound",
             "diagrams": "Diagrams",
             "enhancement": "Enhancement",
             "hex": "Hex",
+            "homeland": "Homeland",
             "mount": "Mount",
             "mutagen": "Mutagen",
             "note": "Note",
@@ -29,6 +31,11 @@
         },
         "ActiveEffect": {
             "temporaryItemImprovement": "Temporary Item Improvement"
+        }
+    },
+    "EFFECT": {
+        "TABS": {
+            "systemSpecific": "System Specific"
         }
     },
     "WITCHER": {
@@ -318,17 +325,8 @@
                 "notFound": "These items are not linked and could not be automatically added."
             },
             "Settings": {
+                "settings": "Settings",
                 "general": "General Settings",
-                "alchemical": "Alchemical Settings",
-                "armor": "Armor Settings",
-                "hex": "Hex Settings",
-                "mutagen": "Mutagen Settings",
-                "race": "Race Settings",
-                "ritual": "Ritual Settings",
-                "spell": "Spell Settings",
-                "valuable": "Valuable Settings",
-                "profession": "Profession Settings",
-                "weapon": "Weapon Settings",
                 "damageProperties": "Damage Properties",
                 "defenseProperties": "Defense Properties",
                 "consumableProperties": "Consumable Properties",
@@ -566,6 +564,33 @@
             "Quantity": "Quantity",
             "Forage": "Forage DC"
         },
+        "criticalWound": {
+            "followUp": "Item that will replace this after treatment",
+            "followUpHint": "leave empty to only remove critical wound",
+            "header": "Crit Wounds",
+            "healingTime.label": "Days Until Healed",
+            "criticalLevel": {
+                "label": "Critical Level",
+                "Simple": "Simple",
+                "Complex": "Complex",
+                "Difficult": "Difficult",
+                "Deadly": "Deadly",
+                "None": "None"
+            },
+            "treatment": {
+                "label": "Treatment",
+                "Stabilized": "Stabilized",
+                "Treated": "Treated"
+            },
+            "location": {
+                "label": "Location"
+            },
+            "lesserEffect": {
+                "label": "Lesser Effect",
+                "hint": "used by aimed criticals"
+            },
+            "treat": "Treat"
+        },
         "Enhancement": {
             "Stopping": "Stopping",
             "Bludgeoning": "B",
@@ -672,7 +697,7 @@
             "SimpleSprainedArm": "The blow sprained your arm, making it difficult to manoeuvre.",
             "SimpleSprainedLeg": "The blow sprained your leg, making it difficult to walk and manoeuvre.",
             "ComplexMinorHeadWound": "The blow rattled your brain and caused some internal bleeding. It's hard to think straight.",
-            "ComplexLostTeeth": "The blow knocked out some teeth. Roll 1d10 to see how many teeth are lost.",
+            "ComplexLostTeeth": "The blow knocked out some teeth. Roll [[1d10]] to see how many teeth are lost.",
             "ComplexRupturedSpleen": "A tear in your spleen begins bleeding profusely, making you woozy.",
             "ComplexBrokenRibs": "The blow breaks your ribs, causing immense pain when you bend and strain.",
             "ComplexFracturedArm": "The blow fractures your arm.",
@@ -967,6 +992,7 @@
         },
         "Button": {
             "Cancel": "Cancel",
+            "Confirm": "Confirm",
             "Continue": "Continue",
             "All": "All"
         },
@@ -1059,7 +1085,22 @@
             "oren": "Oren",
             "falsecoin": "FalseCoin"
         },
+        "currencyConverter": {
+            "title": "Currency Converter",
+            "open": "Open Currency Converter",
+            "amount": "Amount",
+            "from": "From",
+            "to": "To",
+            "convert": "Convert",
+            "fee": "Fee (%)",
+            "result": "Result",
+            "errors": {
+                "insufficient": "Not enough {currency}"
+            }
+        },
         "Settings": {
+            "criticalWoundsPack": "Critical Wounds Compendium",
+            "criticalWoundsPackDetails": "Compendium queried for critical wounds options",
             "Adrenaline": "Use Adrenaline Optional Rule",
             "AdrenalineDetails": "Adrenaline is the willpower to go on and Fight harder in dire situations",
             "WoundsAffectSkillBase": "Wounds affect skill base",
@@ -1272,13 +1313,11 @@
                 "Name": "Derived Stats"
             }
         },
-
         "SocialStanding": "Social Standing",
         "Profession": "Profession",
         "Reputation": "Reputation",
         "NoDamageSpecified": "Damage is not specified",
         "Shield.Broken": "Your shield is now broken",
-
         "Items.transferTitle": "Transferring Items",
         "Items.transferMany": "How many items to transfer",
         "Combat": {
@@ -1514,6 +1553,10 @@
             "statSkillModifiers": {
                 "title": "Stat or Skill Modifiers",
                 "text": "Stat and Skill Modifiers are deprecated. Move them to active effects for the following actors"
+            },
+            "oldCriticalWounds": {
+                "title": "Critical Wounds deprecation",
+                "text": "Critical Wounds were moved to items. Replace the wounds of these actors."
             }
         },
         "AssociatedDiagram": {
