@@ -1519,11 +1519,11 @@
         "deprecations": {
             "lifepathModifiers": {
                 "title": "Modificadores de Caminho de Vida",
-                "text": "Os bônus de ataque dos Modificadores de Caminho de Vida foram alterados. Readicione-os pelo assistente de efeitos ativos para os seguintes atores"
+                "text": "Os bônus de ataque dos Modificadores de Caminho de Vida foram alterados. This MUST be done before switching to v14. Readicione-os pelo assistente de efeitos ativos para os seguintes atores"
             },
             "statSkillModifiers": {
                 "title": "Modificadores de Atributo ou Perícia",
-                "text": "Modificadores de Atributo e Perícia foram depreciados. Mova-os para efeitos ativos para os seguintes atores"
+                "text": "Modificadores de Atributo e Perícia foram depreciados. This MUST be done before switching to v14. Mova-os para efeitos ativos para os seguintes atores"
             }
         },
         "AssociatedDiagram": {

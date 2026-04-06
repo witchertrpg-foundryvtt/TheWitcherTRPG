@@ -1335,8 +1335,6 @@
                 ">9": "Du erleidest einen furchtbaren Sturz und fällst nicht nur zu Boden, sondern nimmst auch 1W6 tödlichen Schaden am Kopf und musst einen Rettungswurf auf Betäubung ablegen."
             }
         },
-        "Deprecations": {
-        },
         "AssociatedDiagram": {
             "actions": {
                 "add": "Herstellungsdiagramm hinzufügen",
