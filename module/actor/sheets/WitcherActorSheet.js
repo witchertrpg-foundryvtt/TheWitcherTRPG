@@ -242,7 +242,7 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
         jquery.find('.crit-roll').on('click', this._onCritRoll.bind(this));
         jquery.find('.recover-sta').on('click', this._onRecoverSta.bind(this));
         jquery.find('.verbal-button').on('click', this._onVerbalCombat.bind(this));
-        
+
         jquery.find('input').focusin(event => event.currentTarget.select());
 
         jquery.find('.configure-actor').on('click', this._renderConfigureDialog.bind(this));
