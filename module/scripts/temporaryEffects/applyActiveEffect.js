@@ -1,5 +1,4 @@
 import { getActorOwner } from '../helper.js';
-import { emitForGM } from '../socket/socketMessage.js';
 
 export async function applyActiveEffectToTargets(activeEffects, duration) {
     let targets = game.user.targets;
@@ -16,7 +15,10 @@ export async function applyActiveEffectToActorViaId(actorUuid, itemUuid, applyWh
     let item = fromUuidSync(itemUuid);
 
     if (!item) {
-        sendToGm('applyActiveEffectToActorViaId', actorUuid, itemUuid, applyWhen, duration);
+        game.users.activeGM.query('TheWitcherTRPG.query', {
+            function: 'applyActiveEffectToActorViaId',
+            data: [actorUuid, itemUuid, applyWhen, duration]
+        });
         return;
     }
 
@@ -36,11 +38,10 @@ export async function applyActiveEffectToActor(actorUuid, activeEffects, duratio
     applyTemporaryItemImprovements(actor, activeEffects);
 
     if (!actor.isOwner) {
-        sendToGm(
-            'applyActiveEffectToActor',
-            actorUuid,
-            activeEffects.filter(effect => effect.type != 'temporaryItemImprovement')
-        );
+        getActorOwner(actor).query('TheWitcherTRPG.query', {
+            function: 'applyActiveEffectToActor',
+            data: [actorUuid, activeEffects.filter(effect => effect.type != 'temporaryItemImprovement')]
+        });
         return;
     }
 
@@ -76,8 +77,4 @@ async function applyTemporaryItemImprovements(actor, activeEffects) {
     }
 
     actor.applyTemporaryItemImprovements(activeEffects);
-}
-
-function sendToGm(call, actorUuid, activeEffects, duration) {
-    emitForGM(call, [actorUuid, activeEffects, duration]);
 }

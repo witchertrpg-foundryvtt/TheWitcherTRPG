@@ -1,16 +1,7 @@
-import {
-    applyActiveEffectToActor,
-    applyActiveEffectToActorViaId
-} from '../scripts/temporaryEffects/applyActiveEffect.js';
-import { applyStatusEffectToActor } from '../scripts/statusEffects/applyStatusEffect.js';
-
 export const registerSocketListeners = function () {
     let SYSTEM_SOCKET = 'system.TheWitcherTRPG';
 
     let callableFunctions = {
-        applyStatusEffectToActor,
-        applyActiveEffectToActor,
-        applyActiveEffectToActorViaId,
         restoreReliability: 'uuid',
         createRegionFromTemplateUuids: 'uuid',
         addItem: 'uuid'
