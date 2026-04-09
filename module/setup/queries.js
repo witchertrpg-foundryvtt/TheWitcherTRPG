@@ -18,6 +18,12 @@ async function applyTemporaryItemImprovementsToActor(queryData, { timeout }) {
     return true;
 }
 
+async function createRegionFromTemplates(queryData, { timeout }) {
+    let item = fromUuidSync(queryData.uuid);
+    item.system.regionProperties.createRegionFromTemplateUuids(...queryData.data);
+    return true;
+}
+
 async function query(queryData, { timeout }) {
     let callableFunctions = {
         applyStatusEffectToActor,
@@ -53,5 +59,6 @@ async function query(queryData, { timeout }) {
 export function registerQueries() {
     CONFIG.queries[`${system}.addTemporaryHpToActor`] = addTemporaryHpToActor;
     CONFIG.queries[`${system}.applyTemporaryItemImprovements`] = applyTemporaryItemImprovementsToActor;
+    CONFIG.queries[`${system}.createRegionFromTemplates`] = createRegionFromTemplates;
     CONFIG.queries[`${system}.query`] = query;
 }

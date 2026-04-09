@@ -2,9 +2,8 @@ export const registerSocketListeners = function () {
     let SYSTEM_SOCKET = 'system.TheWitcherTRPG';
 
     let callableFunctions = {
-        restoreReliability: 'uuid',
-        createRegionFromTemplateUuids: 'uuid',
-        addItem: 'uuid'
+        'restoreReliability': 'uuid',
+        'addItem': 'uuid'
     };
 
     if (!game.socket || !game.user) return;
