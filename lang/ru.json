@@ -6,9 +6,11 @@
             "clue": "Подсказка",
             "component": "Компонент",
             "container": "Контейнер",
+            "criticalWound": "Критические ранения",
             "diagrams": "Чертежи",
             "enhancement": "Улучшение",
             "hex": "Порча",
+            "homeland": "Родина",
             "mount": "Ездовое животное",
             "mutagen": "Мутаген",
             "note": "Заметка",
@@ -26,6 +28,14 @@
             "monster": "Монстр",
             "loot": "Добыча",
             "mystery": "Тайна"
+        },
+        "ActiveEffect": {
+            "temporaryItemImprovement": "Временное улучшение"
+        }
+    },
+    "EFFECT": {
+        "TABS": {
+            "systemSpecific": "System Specific"
         }
     },
     "WITCHER": {
@@ -93,9 +103,9 @@
             "Gender": "Пол",
             "Age": "Возраст",
             "Perks": "Черты",
-            "woundState": "Состояние раны",
             "Adda.Profession": "Добавить профессию",
             "Adda.Race": "Добавить расу",
+            "woundState": "Состояние раны",
             "TotalStats": "Всего хар-ик",
             "Stat.Int": "ИНТ",
             "Stat.Ref": "РЕА",
@@ -236,7 +246,6 @@
             "openDescription": "Нажмите, чтобы открыть описание",
             "equipEnhancement": "Оборудовать улучшением",
             "Availability": "Доступность",
-            "containerItems": "Предметы в контейнере",
             "AddEffect": "Добавить эффект",
             "AddComponent": "Добавить компонент",
             "AddAssociatedItem": "Добавить связанный предмет",
@@ -256,11 +265,18 @@
             "Small": "Н",
             "Large": "К",
             "CantHide": "Н/С",
+            "containerItems": "Предметы в контейнере",
             "ConsumeProperties": {
                 "doesHeal": "Лечит",
                 "heal": "Лечит на",
+                "addsTempHp": "Добавить временные ПЗ",
+                "temporaryHp": {
+                    "value": "Кол-во",
+                    "duration": "Длительность"
+                },
                 "Chat": {
                     "healedFor": "вылечено на",
+                    "tempHpAdded": "временных ПЗ добавлено",
                     "consumeEffects": "применены эффекты"
                 }
             },
@@ -307,20 +323,11 @@
                 "notFound": "Эти предметы не связаны и не могут быть автоматически добавлены."
             },
             "Settings": {
+                "settings": "Настройки",
                 "general": "Общие настройки",
-                "alchemical": "Настройки алхимии",
-                "armor": "Настройки брони",
-                "hex": "Настройки порчи",
-                "mutagen": "Настройки мутагенов",
-                "race": "Настройки расы",
-                "ritual": "Настройки ритуалов",
-                "valuable": "Настройки ценностей",
-                "profession": "Настройки профессии",
-                "weapon": "Настройки оружия",
-                "spell": "Настройки заклинаний",
-                "DamageProperties": "Свойства урона",
-                "DefenseProperties": "Свойства защиты",
-                "ConsumableProperties": "Свойства расходуемых",
+                "damageProperties": "Свойства урона",
+                "defenseProperties": "Свойства защиты",
+                "consumableProperties": "Свойства расходуемых",
                 "regionProperties": "Свойства региона",
                 "attacks": {
                     "defendWith": {
@@ -436,7 +443,10 @@
             "staDialog": "Как вы хотите восстановить выносливость?",
             "recoveryAction": "Действие восстановления",
             "fullRecovery": "Полное восстановление",
-            "fullStaInfo": "Ваша выносливость уже полная"
+            "fullStaInfo": "Ваша выносливость уже полная",
+            "defense": {
+                "custom": "Модификатор защиты"
+            }
         },
         "DamageType": {
             "name": "Тип урона",
@@ -458,12 +468,30 @@
                     },
                     "skillDefense": {
                         "isDefense": "Является защитой"
+                    },
+                    "skillUsage": {
+                        "hasCustomEffect": "Имеет пользовательский эффект",
+                        "temporaryHealth": {
+                            "addTemporaryHealth": "Добавляет временные ПЗ",
+                            "difficultyCheck": {
+                                "multiplier": "Множитель сложности",
+                                "stat": "Характеристика для проверки",
+                                "maxRollOver": "Непревышаемый результат"
+                            },
+                            "temporaryHp": {
+                                "value": "Кол-во за единицу",
+                                "duration": "Длительность"
+                            }
+                        }
                     }
                 }
             },
             "professionSkills": {
                 "label": "Навыки профессии",
                 "hint": "Добавьте навыки, которые будут отмечены как навыки профессии"
+            },
+            "error": {
+                "noTarget": "Данный навык требует цели"
             }
         },
         "Weapon": {
@@ -533,6 +561,33 @@
             "Location": "Где найти",
             "Quantity": "Количество",
             "Forage": "СЛ собирания"
+        },
+        "criticalWound": {
+            "followUp": "Предмет, который заменит критическое ранение при лечении",
+            "followUpHint": "Оставьте пустым, чтобы удалить критическое ранение",
+            "header": "Крит Ранения",
+            "healingTime.label": "Дней до исцеления",
+            "criticalLevel": {
+                "label": "Уровень критического ранения",
+                "Simple": "Лёгкий",
+                "Complex": "Средний",
+                "Difficult": "Тяжёлый",
+                "Deadly": "Смертельный",
+                "None": "Нет"
+            },
+            "treatment": {
+                "label": "Лечение",
+                "Stabilized": "Стабилизировано",
+                "Treated": "Излечено"
+            },
+            "location": {
+                "label": "Часть тела"
+            },
+            "lesserEffect": {
+                "label": "Меньший эффект",
+                "hint": "Используется при прицельном ударе"
+            },
+            "treat": "Лечить"
         },
         "Enhancement": {
             "Stopping": "Прочность",
@@ -935,6 +990,7 @@
         },
         "Button": {
             "Cancel": "Отменить",
+            "Confirm": "Подтвердить",
             "Continue": "Продолжить",
             "All": "Все"
         },
@@ -944,7 +1000,7 @@
             "Ritual": {
                 "name": "Ритуал",
                 "components": "Компоненты",
-                "alternateComponents": "Альтернативные компоненты"
+                "alternateComponents": "Альтернативные Компоненты"
             },
             "Invocations": "Инвокации",
             "Witcher": "Знаки Ведьмака",
@@ -1027,20 +1083,35 @@
             "oren": "Орен",
             "falsecoin": "Фальшивая монета"
         },
+        "currencyConverter": {
+            "title": "Обмен валюты",
+            "open": "Открыть конвертер валюты",
+            "amount": "Количество",
+            "from": "Из",
+            "to": "В",
+            "convert": "Конвертировать",
+            "fee": "Комиссия (%)",
+            "result": "Результат",
+            "errors": {
+                "insufficient": "Недостаточно валюты ({currency})"
+            }
+        },
         "Settings": {
+            "criticalWoundsPack": "Справочник критических ранений",
+            "criticalWoundsPackDetails": "Compendium queried for critical wounds options",
             "Adrenaline": "Использовать дополнительное правило адреналина",
             "AdrenalineDetails": "Адреналин - это сила воли, позволяющая держаться и сражаться в критических ситуациях.",
             "WoundsAffectSkillBase": "Раны влияют на базовые навыки",
             "WoundsAffectSkillBaseDetails": "Раны влияют на базовые навыки, а не только на навыки. Это делает раны более значимыми.",
+            "useVerbalCombatRule": "Использовать дополнительные правила Словесной Дуэли",
+            "useVerbalCombatRuleHint": "Разрешить игрокам видеть параметр решимости и использовать Словесную Дуэль в игре",
+            "silverTrait": "Использовать свойство 'Серебряное'",
+            "silverTraitHint": "Вместо серебряных костей, серебро становится свойством урона",
             "displayRollDetails": "Показывать детали броска",
             "displayRollDetailsHint": "Показывать детали при броске кубиков: 1d10+2[параметр]+4[навык]-3[парирование]",
             "Custom": "Пользовательские",
             "displayReputation": "Показывать репутацию игрокам",
             "displayReputationHint": "Разрешить игрокам видеть и изменять их репутацию",
-            "useVerbalCombatRule": "Использовать дополнительные правила Словесной Дуэли",
-            "useVerbalCombatRuleHint": "Разрешить игрокам видеть параметр решимости и использовать Словесную Дуэль в игре",
-            "silverTrait": "Использовать свойство 'Серебряное'",
-            "silverTraitHint": "Вместо серебряных костей, серебро становится свойством урона",
             "clickableImageItemTypes": "Показывать опцию 'Увеличение' на листе предмета",
             "clickableImageItemTypesHint": "Разделенный запятой список типов предметов. Возможные типы: 'valuable', 'weapon', 'armor', 'alchemical', 'diagrams', 'component'.",
             "clickableImageCheckboxForGMOnly": "Показывать опцию 'Увеличение' только для ГМа",
@@ -1049,9 +1120,12 @@
         "background.other": "Другое",
         "Resources.modifiers": "Модификатор ресурсов",
         "Notes": "Заметки",
-        "Skills": {
-            "Name": "Навык",
-            "SkillGroups": {
+        "skills": {
+            "name": "Навык",
+            "profession": "Проф",
+            "pickup": "Жизненный навык",
+            "learn": "Выученный навык",
+            "skillGroups": {
                 "name": "Группы навыков",
                 "allSkills": "Все навыки",
                 "meleeSkills": "Навыки ближнего боя",
@@ -1059,6 +1133,174 @@
                 "magicSkills": "Магические навыки",
                 "verbalCombatSkills": "Навыки словесной дуэли",
                 "empatheticVerbalCombatSkills": "Эмпатические навыки словесной дуэли"
+            },
+            "awareness": {
+                "label": "Внимание"
+            },
+            "business": {
+                "label": "Торговля"
+            },
+            "deduction": {
+                "label": "Дедукция"
+            },
+            "education": {
+                "label": "Образование"
+            },
+            "commonSpeech": {
+                "label": "Язык: Всеобщий (2)",
+                "rollLabel": "Язык: Всеобщий"
+            },
+            "elderSpeech": {
+                "label": "Язык: Старшая речь (2)",
+                "rollLabel": "Язык: Старшая речь"
+            },
+            "dwarvenSpeech": {
+                "label": "Язык: Язык краснолюдов (2)",
+                "rollLabel": "Язык: Язык краснолюдов"
+            },
+            "monsterLore": {
+                "label": "Монстрология (2)",
+                "rollLabel": "Монстрология"
+            },
+            "socialEtiquette": {
+                "label": "Этикет"
+            },
+            "streetwise": {
+                "label": "Ориентирование в городе"
+            },
+            "tactics": {
+                "label": "Тактика (2)",
+                "rollLabel": "Тактика"
+            },
+            "teaching": {
+                "label": "Передача знаний"
+            },
+            "wildernessSurvival": {
+                "label": "Выживание в дикой природе"
+            },
+            "brawling": {
+                "label": "Борьба"
+            },
+            "dodgeEscape": {
+                "label": "Уклонение/Изворотливость"
+            },
+            "melee": {
+                "label": "Ближний бой"
+            },
+            "riding": {
+                "label": "Верховая езда"
+            },
+            "sailing": {
+                "label": "Мореходство"
+            },
+            "smallblades": {
+                "label": "Владение лёгкими клинками"
+            },
+            "staffspear": {
+                "label": "Владение древковым оружием"
+            },
+            "swordsmanship": {
+                "label": "Владение мечом"
+            },
+            "archery": {
+                "label": "Стрельба из лука"
+            },
+            "athletics": {
+                "label": "Атлетика"
+            },
+            "crossbow": {
+                "label": "Стрельба из арбалета"
+            },
+            "sleightOfHand": {
+                "label": "Ловкость рук"
+            },
+            "stealth": {
+                "label": "Скрытность"
+            },
+            "physique": {
+                "label": "Сила"
+            },
+            "endurance": {
+                "label": "Стойкость"
+            },
+            "charisma": {
+                "label": "Харизма"
+            },
+            "deceit": {
+                "label": "Обман"
+            },
+            "fineArts": {
+                "label": "Искусство"
+            },
+            "gambling": {
+                "label": "Азартные игры"
+            },
+            "groomingAndStyle": {
+                "label": "Внешний вид"
+            },
+            "humanPerception": {
+                "label": "Понимание людей"
+            },
+            "leadership": {
+                "label": "Лидерство"
+            },
+            "persuasion": {
+                "label": "Убеждение"
+            },
+            "performance": {
+                "label": "Выступление"
+            },
+            "seduction": {
+                "label": "Соблазнение"
+            },
+            "alchemy": {
+                "label": "Алхимия (2)",
+                "rollLabel": "Алхимия"
+            },
+            "crafting": {
+                "label": "Изготовление (2)",
+                "rollLabel": "Изготовление"
+            },
+            "disguise": {
+                "label": "Маскировка"
+            },
+            "firstAid": {
+                "label": "Первая помощь"
+            },
+            "forgery": {
+                "label": "Подделывание"
+            },
+            "pickLock": {
+                "label": "Взлом замков"
+            },
+            "trapCrafting": {
+                "label": "Знание ловушек (2)",
+                "rollLabel": "Знание ловушек"
+            },
+            "courage": {
+                "label": "Храбрость"
+            },
+            "hexWeaving": {
+                "label": "Наведение порчи (2)",
+                "rollLabel": "Наведение порчи"
+            },
+            "intimidation": {
+                "label": "Запугивание"
+            },
+            "spellCasting": {
+                "label": "Сотворение заклинаний (2)",
+                "rollLabel": "Сотворение заклинаний"
+            },
+            "resistMagic": {
+                "label": "Сопротивление магии (2)",
+                "rollLabel": "Сопротивление магии"
+            },
+            "resistCoercion": {
+                "label": "Сопротивление убеждению"
+            },
+            "ritualCrafting": {
+                "label": "Проведение ритуалов (2)",
+                "rollLabel": "Проведение ритуалов"
             }
         },
         "Stats": {
@@ -1069,78 +1311,11 @@
                 "Name": "Производные характеристики"
             }
         },
-        "SkIntAwareness": "Внимание",
-        "SkIntBusiness": "Торговля",
-        "SkIntDeduction": "Дедукция",
-        "SkIntEducation": "Образование",
-        "SkIntCommon": "Язык: Всеобщий (2)",
-        "SkIntCommonLable": "Язык: Всеобщий",
-        "SkIntElder": "Язык: Старшая речь (2)",
-        "SkIntElderLable": "Язык: Старшая речь",
-        "SkIntDwarven": "Язык: Язык Краснолюдов (2)",
-        "SkIntDwarvenLable": "Язык: Язык Краснолюдов",
-        "SkIntMonster": "Монстрология (2)",
-        "SkIntMonsterLable": "Монстрология",
-        "SkIntSocialEt": "Этикет",
-        "SkIntStreet": "Ориентирование в городе",
-        "SkIntTactics": "Тактика (2)",
-        "SkIntTacticsLable": "Тактика",
-        "SkIntTeaching": "Передача знаний",
-        "SkIntWilderness": "Выживание в дикой природе",
-        "SkRefBrawling": "Борьба",
-        "SkRefDodge": "Уклонение/Изворотливость",
-        "SkRefMelee": "Ближний бой",
-        "SkRefRiding": "Верховая езда",
-        "SkRefSailing": "Мореходство",
-        "SkRefSmall": "Владение лёгкими клинками",
-        "SkRefStaff": "Владение древковым оружием",
-        "SkRefSwordsmanship": "Владение мечом",
-        "SkDexArchery": "Стрельба из лука",
-        "SkDexAthletics": "Атлетика",
-        "SkDexCrossbow": "Стрельба из арбалета",
-        "SkDexSleight": "Ловкость рук",
-        "SkDexStealth": "Скрытность",
-        "SkBodyPhys": "Сила",
-        "SkBodyEnd": "Стойкость",
-        "SkEmpCharisma": "Харизма",
-        "SkEmpDeceit": "Обман",
-        "SkEmpArts": "Искусство",
-        "SkEmpGambling": "Азартные игры",
-        "SkEmpGrooming": "Внешний вид",
-        "SkEmpHumanPerc": "Понимание людей",
-        "SkEmpLeadership": "Лидерство",
-        "SkEmpPersuasion": "Убеждение",
-        "SkEmpPerformance": "Выступление",
-        "SkEmpSeduction": "Соблазнение",
-        "SkCraAlchemy": "Алхимия (2)",
-        "SkCraAlchemyLable": "Алхимия",
-        "SkCraCrafting": "Изготовление (2)",
-        "SkCraCraftingLable": "Изготовление",
-        "SkCraDisguise": "Маскировка",
-        "SkCraAid": "Первая помощь",
-        "SkCraForge": "Подделывание",
-        "SkCraPick": "Взлом замков",
-        "SkCraTrapCraft": "Знание ловушек (2)",
-        "SkCraTrapCraftLable": "Знание ловушек",
-        "SkWillCourage": "Храбрость",
-        "SkWillHex": "Наведение порчи (2)",
-        "SkWillHexLable": "Наведение порчи",
-        "SkWillIntim": "Запугивание",
-        "SkWillSpellcast": "Сотворение заклинаний (2)",
-        "SkWillSpellcastLable": "Сотворение заклинаний",
-        "SkWillResistMag": "Сопротивление магии (2)",
-        "SkWillResistMagLable": "Сопротивление магии",
-        "SkWillResistCoer": "Сопротивление убеждению",
-        "SkWillRitCraft": "Проведение ритуалов (2)",
-        "SkWillRitCraftLable": "Проведение ритуалов",
-        "SocialStanding": "Социальное положение",
+        "SocialStanding": "Социальный статус",
         "Profession": "Профессия",
         "Reputation": "Репутация",
         "NoDamageSpecified": "Урон не указан",
         "Shield.Broken": "Ваш щит сломан",
-        "SKill.profession": "Проф",
-        "SKill.pickup": "Жизненный навык",
-        "SKill.learn": "Выученный навык",
         "Items.transferTitle": "Передача предметов",
         "Items.transferMany": "Сколько предметов передать",
         "Combat": {
@@ -1169,6 +1344,7 @@
             "sterilized": "Получил стерилизующую жидкость",
             "healinghand": "Получил лечащее прикосновение",
             "healingTent": "Получил лечение в палатке медика",
+            "resetTempHealth": "Сбросить временные ПЗ",
             "recovered": "вылечился от",
             "restful": "отдыхая",
             "active": "активно",
@@ -1375,6 +1551,10 @@
             "statSkillModifiers": {
                 "title": "Модификаторы характеристик или навыков",
                 "text": "Модификаторы характеристик и навыков устарели. This MUST be done before switching to v14. Переместите их в активные эффекты для следующих персонажей"
+            },
+            "oldCriticalWounds": {
+                "title": "Устранение критических ранений",
+                "text": "Критические ранения были перенесены в предметы. Это НЕОБХОДИМО сделать перед переходом на версию 14. Замените ранения этих персонажей."
             }
         },
         "AssociatedDiagram": {
