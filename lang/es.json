@@ -1331,7 +1331,6 @@
                 ">9": "Cometes un terrible error y no solo quedas postrado, sino que sufres [[1d6]] puntos de daño letal en la cabeza y debes realizar una tirada de salvación contra aturdimiento."
             }
         },
-        "Deprecations": {},
         "AssociatedDiagram": {
             "actions": {
                 "add": "Añadir diagrama de fabricación",

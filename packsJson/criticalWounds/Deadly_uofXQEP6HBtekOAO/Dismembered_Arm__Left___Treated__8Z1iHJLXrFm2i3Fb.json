@@ -1,0 +1,37 @@
+{
+  "folder": "uofXQEP6HBtekOAO",
+  "name": "Dismembered Arm (Left - Treated)",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<p>The arm can be replaced with a prosthetic.</p>",
+    "criticalLevel": "deadly",
+    "treatment": "treated",
+    "location": "leftArm",
+    "lesserEffect": false,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": null
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "8Z1iHJLXrFm2i3Fb",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 0,
+  "_key": "!items!8Z1iHJLXrFm2i3Fb"
+}

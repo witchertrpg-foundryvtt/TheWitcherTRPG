@@ -1,5 +1,4 @@
-import { getCurrentCharacter } from '../helper.js';
-import { emitForGM } from '../socket/socketMessage.js';
+import { getActorOwner, getCurrentCharacter } from '../helper.js';
 
 export function addStatusEffectChatListeners(html) {
     // setup chat listener messages for each message as some need the message context instead of chatlog context.
@@ -35,7 +34,9 @@ export async function applyStatusEffectToTargets(statusEffects, duration) {
 
     targets.forEach(target => {
         let actorUuid = target.actor.uuid;
-        statusEffects.forEach(effect => applyStatusEffectToActor(actorUuid, effect.statusEffect, duration));
+        Object.entries(statusEffects).forEach(effect =>
+            applyStatusEffectToActor(actorUuid, effect.statusEffect, duration)
+        );
     });
 }
 
@@ -45,12 +46,18 @@ export async function applyStatusEffectToActor(actorUuid, statusEffectId, durati
     if (!actor) return;
 
     if (!actor.isOwner) {
-        sendToGm(actorUuid, statusEffectId, duration);
+        getActorOwner(actor).query('TheWitcherTRPG.query', {
+            function: 'applyStatusEffectToActor',
+            data: [actorUuid, statusEffectId, duration]
+        });
         return;
     }
 
     //only try to apply it when not already present
-    if (!actor.appliedEffects.find(effect => effect.statuses.find(status => status == statusEffectId))) {
+    if (
+        statusEffectId &&
+        !actor.appliedEffects.find(effect => effect.statuses.find(status => status == statusEffectId))
+    ) {
         await actor.toggleStatusEffect(statusEffectId);
 
         handleStatusCounterIntegration(actor, statusEffectId, duration);
@@ -74,8 +81,4 @@ function handleStatusCounterIntegration(target, statusId, duration) {
     let effectCounter = EffectCounter.getAllCounters(target).querySelector(effects => effects.path == statusEffect.img);
     effectCounter.setValue(parseInt(duration));
     effectCounter.changeType('statuscounter.countdown_round', target);
-}
-
-function sendToGm(actorUuid, statusEffectId, duration) {
-    emitForGM('applyStatusEffectToActor', [actorUuid, statusEffectId, duration]);
 }

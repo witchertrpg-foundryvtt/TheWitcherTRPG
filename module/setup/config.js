@@ -619,6 +619,19 @@ WITCHER.currency = {
     falsecoin: 'WITCHER.Currency.falsecoin'
 };
 
+WITCHER.currencyRates = {
+    bizant: 4,
+    ducat: 1 / 3,
+    lintar: 2,
+    floren: 3,
+    crown: 1,
+    oren: 1
+};
+
+WITCHER.currencyConverter = {
+    excluded: ['falsecoin']
+};
+
 WITCHER.substanceTypes = {
     vitriol: 'WITCHER.Inventory.Vitriol',
     rebis: 'WITCHER.Inventory.Rebis',
@@ -1904,14 +1917,14 @@ WITCHER.Crit = {
     }
 };
 
-WITCHER.CritGravity = {
+WITCHER.critLevel = {
     simple: 'WITCHER.CritWound.Simple',
     complex: 'WITCHER.CritWound.Complex',
     difficult: 'WITCHER.CritWound.Difficult',
     deadly: 'WITCHER.CritWound.Deadly'
 };
 
-WITCHER.CritMod = {
+WITCHER.critTreatment = {
     none: 'WITCHER.CritWound.None',
     stabilized: 'WITCHER.CritWound.Stabilized',
     treated: 'WITCHER.CritWound.Treated'

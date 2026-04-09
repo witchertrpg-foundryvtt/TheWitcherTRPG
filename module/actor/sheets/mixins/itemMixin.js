@@ -49,7 +49,7 @@ export let itemMixin = {
             });
             this.actor.update(delta);
         }
-        this.actor.addItem(item, 1);
+        this.actor.addItem(item);
     },
 
     _isUniqueItem(item) {

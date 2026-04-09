@@ -4,7 +4,8 @@
     "description": "The Witcher TRPG System",
     "compatibility": {
         "minimum": "13",
-        "verified": "13"
+        "verified": "13",
+        "maximum": "13"
     },
     "version": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION",
     "authors": [
@@ -24,6 +25,7 @@
         {
             "name": "Witcher TRPG System",
             "sorting": "m",
+            "packs": ["Combat", "criticalWounds"],
             "folders": [
                 {
                     "name": "Character Generation",
@@ -45,6 +47,13 @@
             "label": "Combat",
             "path": "packs/combat.db",
             "type": "RollTable"
+        },
+        {
+            "name": "criticalWounds",
+            "label": "Critical Wounds",
+            "path": "packs/criticalWounds.db",
+            "type": "Item",
+            "sorting": "m"
         },
         {
             "name": "Character-gen",

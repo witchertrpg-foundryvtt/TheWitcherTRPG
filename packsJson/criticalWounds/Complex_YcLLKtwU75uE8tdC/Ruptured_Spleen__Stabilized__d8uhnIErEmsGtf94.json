@@ -1,0 +1,37 @@
+{
+  "name": "Ruptured Spleen (Stabilized)",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<p>You must make a Stun save every 10 Rounds.</p>",
+    "criticalLevel": "complex",
+    "treatment": "stabilized",
+    "location": "torso",
+    "lesserEffect": false,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": "Compendium.TheWitcherTRPG.criticalWounds.Item.kFcie7Io28kKittg"
+  },
+  "effects": [],
+  "folder": "YcLLKtwU75uE8tdC",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "d8uhnIErEmsGtf94",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 800000,
+  "_key": "!items!d8uhnIErEmsGtf94"
+}

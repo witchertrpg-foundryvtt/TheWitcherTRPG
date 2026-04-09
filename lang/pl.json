@@ -1369,11 +1369,11 @@
         "deprecations": {
             "lifepathModifiers": {
                 "title": "Modyfikatory Ścieżki Życia",
-                "text": "Modyfikatory do ataków ze ścieżki życia zmieniły się. Dodaj je ponownie do Active Effects poprzez 'wizarda' dla następujących aktorów"
+                "text": "Modyfikatory do ataków ze ścieżki życia zmieniły się. This MUST be done before switching to v14. Dodaj je ponownie do Active Effects poprzez 'wizarda' dla następujących aktorów"
             },
             "statSkillModifiers": {
                 "title": "Modyfikatory Cech i Zdolności",
-                "text": "Modyfikatory Cech i Zdolności nie są już wspierane. Przenieś je do aktywnych efektów dla następujących aktorów"
+                "text": "Modyfikatory Cech i Zdolności nie są już wspierane. This MUST be done before switching to v14. Przenieś je do aktywnych efektów dla następujących aktorów"
             }
         },
         "AssociatedDiagram": {
@@ -1444,7 +1444,7 @@
         "magic": {
             "magicImprovementPoints": "P.W. Magii"
         },
-        
+
         "_legacyComment": "Legacy Translations start here",
         "Enhancement.ChooseTitle": "Wybierz ulepszenie",
         "Enhancement.NoEnhancement": "Brak ulepszeń",

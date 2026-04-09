@@ -1,3 +1,5 @@
+const DialogV2 = foundry.applications.api.DialogV2;
+
 export default class WitcherActiveEffect extends ActiveEffect {
     get isSuppressed() {
         if (
@@ -54,15 +56,8 @@ export default class WitcherActiveEffect extends ActiveEffect {
     async _preCreate(data, options, user) {
         const allowed = await super._preCreate(data, options, user);
         if (allowed === false) return false;
-        if (foundry.utils.hasProperty(data, 'flags.core.statusId')) {
-            foundry.utils.logCompatibilityWarning(
-                'You are setting flags.core.statusId on an Active Effect. This flag is' +
-                    ' deprecated in favor of the statuses set.',
-                { since: 11, until: 13 }
-            );
-        }
 
-        // Set initial duration data for Actor-owned effects
+        // Set initial duration data for Actor-owned effects or transferred item effects
         if (this.parent instanceof Actor || this.system.isTransferred) {
             const updates = this.constructor.getInitialDuration();
             for (const k of Object.keys(updates.duration)) {
@@ -71,5 +66,47 @@ export default class WitcherActiveEffect extends ActiveEffect {
             updates.transfer = false;
             this.updateSource(updates);
         }
+
+        for await (let change of this._source.changes) {
+            if (change.key.includes('@skill')) {
+                await this.chooseSkill(change);
+            }
+        }
+    }
+
+    async chooseSkill(change) {
+        let allSkills = Object.keys(CONFIG.WITCHER.skillMap)
+            .map(key => {
+                let skill = CONFIG.WITCHER.skillMap[key];
+                return {
+                    label: skill.label,
+                    value: 'system.skills.' + skill.attribute.name + '.' + key + '.activeEffectModifiers',
+                    group: game.i18n.localize('WITCHER.skills.name')
+                };
+            })
+            .reduce((skills, skill) => {
+                skills[skill.label] = skill;
+                return skills;
+            }, {});
+
+        const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/dialog/activeEffects/wizard.hbs',
+            {
+                selects: allSkills
+            }
+        );
+
+        let skill = await DialogV2.prompt({
+            content: dialogTemplate,
+            modal: true,
+            ok: {
+                callback: (event, button, dialog) => {
+                    return button.form.elements.path.value;
+                }
+            },
+            rejectClose: true
+        });
+
+        change.key = skill;
     }
 }

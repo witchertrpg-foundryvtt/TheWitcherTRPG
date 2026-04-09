@@ -1,0 +1,37 @@
+{
+  "folder": "YcLLKtwU75uE8tdC",
+  "name": "Fractured Arm (Right - Stabilized)",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<p>You take a -2 to actions with that arm</p>",
+    "criticalLevel": "complex",
+    "treatment": "stabilized",
+    "location": "rightArm",
+    "lesserEffect": false,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": "Compendium.TheWitcherTRPG.criticalWounds.Item.djnBTcYyGVsykdoy"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "t9bcLB3zDGUX9Uuq",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 1700000,
+  "_key": "!items!t9bcLB3zDGUX9Uuq"
+}

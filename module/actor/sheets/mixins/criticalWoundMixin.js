@@ -1,20 +1,21 @@
-
 export let criticalWoundMixin = {
-
     async _onCriticalWoundAdd(event) {
         event.preventDefault();
-        const critList = this.actor.system.critWounds;
-        critList.push({ id: foundry.utils.randomID() });
-        this.actor.update({ "system.critWounds": critList });
+        this.actor.createEmbeddedDocuments('Item', [
+            {
+                name: game.i18n.localize('TYPES.Item.criticalWound'),
+                type: 'criticalWound'
+            }
+        ]);
     },
 
     async _onCriticalWoundRemove(event) {
         event.preventDefault();
         const prevCritList = this.actor.system.critWounds;
-        const newCritList = Object.values(prevCritList).map((details) => details);
-        const idxToRm = newCritList.findIndex((v) => v.id === event.target.dataset.id);
+        const newCritList = Object.values(prevCritList).map(details => details);
+        const idxToRm = newCritList.findIndex(v => v.id === event.target.dataset.id);
         newCritList.splice(idxToRm, 1);
-        this.actor.update({ "system.critWounds": newCritList });
+        this.actor.update({ 'system.critWounds': newCritList });
     },
 
     async _onCritWoundDisplayInfo(event) {
@@ -31,11 +32,22 @@ export let criticalWoundMixin = {
         }
     },
 
-    criticalWoundListener(html) {
-        html = $(html);
-        html.find(".add-crit").on("click", this._onCriticalWoundAdd.bind(this));
-        html.find(".delete-crit").on("click", this._onCriticalWoundRemove.bind(this));
-        html.find('.critwound-display').on('click', this._onCritWoundDisplayInfo.bind(this));
-    }
+    async _onTreat(event) {
+        event.preventDefault();
 
-}
+        const crit = fromUuidSync(event.target.dataset.id);
+        crit.system.treat();
+    },
+
+    criticalWoundListener(html) {
+        let jquery = $(html);
+
+        jquery.find('.add-crit').on('click', this._onCriticalWoundAdd.bind(this));
+        jquery.find('.delete-crit').on('click', this._onCriticalWoundRemove.bind(this));
+        jquery.find('.critwound-display').on('click', this._onCritWoundDisplayInfo.bind(this));
+
+        html.querySelectorAll('[data-action=treatCriticalWound]').forEach(crit =>
+            crit.addEventListener('click', event => this._onTreat(event))
+        );
+    }
+};

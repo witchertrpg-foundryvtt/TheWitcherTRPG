@@ -1,6 +1,7 @@
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
+import { getActorOwner } from '../../scripts/helper.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -338,11 +339,7 @@ export let professionMixin = {
                     duration
                 };
 
-                let owner = game.users.activeGM;
-                if (target.hasPlayerOwner) {
-                    owner = game.users.find(e => target.testUserPermission(e, 'OWNER') && !e.isGM);
-                }
-                owner.query('TheWitcherTRPG.addTemporaryHpToActor', queryData);
+                getActorOwner(target).query('TheWitcherTRPG.addTemporaryHpToActor', queryData);
             }
         }
     },

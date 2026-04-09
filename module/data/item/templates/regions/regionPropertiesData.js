@@ -1,5 +1,4 @@
 import regionBehaviours from './regionBehavioursData.js';
-import { emitForGM } from '../../../../scripts/socket/socketMessage.js';
 
 const fields = foundry.data.fields;
 
@@ -26,13 +25,10 @@ export default class RegionProperties extends foundry.abstract.DataModel {
     async createRegionFromTemplates(templates, roll, damage, options) {
         let item = this.parent.parent;
         if (!game.user.isGM) {
-            emitForGM('createRegionFromTemplateUuids', [
-                item.uuid,
-                templates.map(template => template.uuid),
-                roll,
-                damage,
-                options
-            ]);
+            game.users.activeGM.query('TheWitcherTRPG.createRegionFromTemplates', {
+                uuid: item.uuid,
+                data: [templates.map(template => template.uuid), roll, damage, options]
+            });
             return;
         }
         templates.forEach(async template => {

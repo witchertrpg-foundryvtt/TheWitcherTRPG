@@ -1,0 +1,37 @@
+{
+  "name": "Ruptured Spleen",
+  "type": "criticalWound",
+  "_id": "rHrrGeB9A8bNCiC2",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<p>Make a Stun save every 5 rounds. This wound induces bleeding</p>",
+    "criticalLevel": "complex",
+    "treatment": "none",
+    "location": "torso",
+    "lesserEffect": false,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": "Compendium.TheWitcherTRPG.criticalWounds.Item.d8uhnIErEmsGtf94"
+  },
+  "effects": [],
+  "folder": "YcLLKtwU75uE8tdC",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "sort": 700000,
+  "_key": "!items!rHrrGeB9A8bNCiC2"
+}

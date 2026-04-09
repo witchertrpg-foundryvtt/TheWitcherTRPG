@@ -1,0 +1,37 @@
+{
+  "name": "Foreign Object (Treated)",
+  "type": "criticalWound",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "htmlFields": [
+      "description"
+    ],
+    "description": "<table class=\"NormalTable\"><tbody><tr><td style=\"border-left-style:none;border-bottom-style:none;border-right-style:none;border-top-style:none;\"><p><span class=\"fontstyle0\">You take a -2 to Recovery and a -1 to your Critical Healing.</span></p></td></tr></tbody></table>",
+    "criticalLevel": "simple",
+    "treatment": "treated",
+    "location": "torso",
+    "lesserEffect": true,
+    "daysHealed": 0,
+    "healingTime": 0,
+    "sterilized": false,
+    "followUp": null
+  },
+  "effects": [],
+  "folder": "kHSYUTn6UUJsIu4l",
+  "ownership": {
+    "default": 0,
+    "ugXtPMJIktbl63QV": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "TheWitcherTRPG",
+    "systemVersion": "AUTOMATICALLY REPLACED BY GITHUB WORKFLOW ACTION"
+  },
+  "_id": "rgRGVfLBlHMwUvGy",
+  "sort": 1500000,
+  "_key": "!items!rgRGVfLBlHMwUvGy"
+}

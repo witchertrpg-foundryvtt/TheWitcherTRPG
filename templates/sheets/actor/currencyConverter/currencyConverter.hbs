@@ -1,0 +1,33 @@
+<div class="currency-converter">
+    <div class="converter-balances">
+        {{#each currencies}}
+            <div class="converter-balance">
+                <span class="label">{{localize label}}</span>
+                <span class="value">{{value}}</span>
+            </div>
+        {{/each}}
+    </div>
+
+    <div class="converter-fields">
+        <label>
+            <span>{{localize "WITCHER.currencyConverter.amount"}}</span>
+            <input type="number" name="amount" min="1" step="1" value="1" data-dtype="Number" />
+        </label>
+        <label>
+            <span>{{localize "WITCHER.currencyConverter.from"}}</span>
+            <select name="from">
+                {{selectOptions options selected="crown" localize=true}}
+            </select>
+        </label>
+        <label>
+            <span>{{localize "WITCHER.currencyConverter.to"}}</span>
+            <select name="to">
+                {{selectOptions options selected="oren" localize=true}}
+            </select>
+        </label>
+        <label>
+            <span>{{localize "WITCHER.currencyConverter.fee"}}</span>
+            <input type="number" name="fee" min="0" max="100" step="1" value="0" data-dtype="Number" />
+        </label>
+    </div>
+</div>

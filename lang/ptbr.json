@@ -26,6 +26,9 @@
             "monster": "Monstro",
             "loot": "Saque",
             "mystery": "Mistério"
+        },
+        "ActiveEffect": {
+            "temporaryItemImprovement": "Melhoria Temporária de Item"
         }
     },
     "WITCHER": {
@@ -64,6 +67,7 @@
         "Defense": {
             "name": "Defesa",
             "Crit": "Você recebeu um crítico",
+            "critStun": "Teste de Atordoamento",
             "defenseOptions": {
                 "name": "Opções de Defesa",
                 "dodge": "Esquivar",
@@ -71,15 +75,22 @@
                 "parry": "Aparar",
                 "block": "Bloquear",
                 "parryThrown": "Aparar Projéteis",
-                "magicResist": "Resistir a Magia"
+                "magicResist": "Resistir à Magia"
+            },
+            "stun": {
+                "button": "Atordoar"
             }
         },
         "Actor": {
-            "SkillTab": "Perícias & Modificadores",
-            "ProfessionTab": "Profissão & Raça",
-            "InventoryTab": "Equipamento & Inventário",
-            "MagicTab": "Magia & Feitiços",
-            "BackgroundTab": "Antecedente",
+            "tabs": {
+                "stats": "Estatísticas",
+                "skills": "Perícias",
+                "profession": "Profissão & Raça",
+                "inventory": "Inventário",
+                "magic": "Feitiços",
+                "background": "Antecedentes",
+                "effects": "Efeitos Ativos"
+            },
             "Name": "Nome do Personagem",
             "Race": "Raça",
             "Gender": "Gênero",
@@ -87,7 +98,8 @@
             "Perks": "Vantagens",
             "Adda.Profession": "Adicione uma Profissão",
             "Adda.Race": "Adicione uma Raça",
-            "TotalStats": "Total de Atr.",
+            "woundState": "Estado do Ferimento",
+            "TotalStats": "Total de Est.",
             "Stat.Int": "INT",
             "Stat.Ref": "REF",
             "Stat.Dex": "DES",
@@ -98,7 +110,7 @@
             "Stat.Will": "VON",
             "Stat.Luck": "SORTE",
             "Stat.Toxicity": "Toxicidade",
-            "StatTitle.LableLeft": "Atributos",
+            "StatTitle.LableLeft": "Estatísticas",
             "StatTitle.ModMax": "Mod / Máx",
             "StatTitle.Derived": "Derivado",
             "DerStat.Stun": "ATORD",
@@ -138,6 +150,13 @@
             "TotalSkill": "Perícias Totais",
             "TotalProfSkill": "Árvore de Profissão",
             "SpecialSkillModifier": "Modificadores Especiais",
+            "focus": {
+                "name": "Foco",
+                "first": "Primeiro",
+                "second": "Segundo",
+                "third": "Terceiro",
+                "fourth": "Quarto"
+            },
             "Lifepath": {
                 "Bonus": "Bônus do Caminho de Vida",
                 "strongStrikeAttackBonus": "Bônus de Ataque Forte",
@@ -155,6 +174,11 @@
                 "actor": "Configurações do Ator",
                 "general": "Geral",
                 "skills": "Perícias"
+            },
+            "rewards": {
+                "heading": "Recompensas",
+                "currency": "Moeda",
+                "ip": "PM"
             }
         },
         "Alchemy": {
@@ -197,11 +221,13 @@
         "Item": {
             "Equipped": "Equipado",
             "NotEquipped": "Não Equipado",
+            "sendToChat": "Enviar para o Chat",
             "ClickableImage": "Ampliável",
             "Short.Availability": "Disp.",
             "Weight": "Peso",
             "Cost": "Custo",
             "Carried": "Carregado",
+            "notCarried": "Não Carregado",
             "isConsumable": "É Consumível",
             "Effect": "Efeitos",
             "statusEffect": "Efeito de Status",
@@ -220,9 +246,9 @@
             "RemoveEffect": "Remover Efeito",
             "RemoveComponent": "Remover Componente",
             "CraftingMaterial": "Materiais para Criação",
-            "Hides&AnimalParts": "Couros e Partes de Animais",
+            "Hides&AnimalParts": "Couros & Partes de Animais",
             "AlchemicalTreatments": "Tratamentos Alquímicos",
-            "Ingots&Minerals": "Lingotes e Minerais",
+            "Ingots&Minerals": "Lingotes & Minerais",
             "AvailabilityEverywhere": "F",
             "AvailabilityCommon": "C",
             "AvailabilityPoor": "I",
@@ -232,20 +258,29 @@
             "Small": "P",
             "Large": "G",
             "CantHide": "IE",
+            "containerItems": "Itens do Contêiner",
             "ConsumeProperties": {
                 "doesHeal": "Aplica cura",
                 "heal": "Cura para",
+                "addsTempHp": "Adicionar vida temporária",
+                "temporaryHp": {
+                    "value": "Quantidade",
+                    "duration": "Duração"
+                },
                 "Chat": {
                     "healedFor": "curado em",
+                    "tempHpAdded": "Vida temporária adicionada",
                     "consumeEffects": "Aplicado esses efeitos"
                 }
             },
             "DamageProperties": {
                 "damageIsAblation": "Tratar o dano como ablação (não é funcional)",
+                "stun": "Atordoamento(x)",
                 "damageToAllLocations": "Dano em todas as localizações",
                 "bypassesWornArmor": "Ignora a armadura vestida",
                 "bypassesNaturalArmor": "Ignora a armadura natural",
                 "variableDamage": "Dano Variável",
+                "silverTrait": "possui Traço de Prata",
                 "silverDamage": "Fórmula Dano de Prata",
                 "isMeteorite": "Arma de Meteorito",
                 "isNonLethal": "Arma Não-Letal",
@@ -253,7 +288,12 @@
                 "defenseMultiplierCap": "O multiplicador é limitado a (não é funcional)"
             },
             "DefenseProperties": {
-                "parrying": "Nega penalidade de aparar"
+                "parrying": "Nega penalidade de aparar",
+                "defendsAgainst": {
+                    "label": "Defende contra",
+                    "hint": "contra qual tipo de ataque isso defende"
+                },
+                "modifier": "Modificador"
             },
             "RegionProperties": {
                 "createRegionFromTemplate": "Criar Região a partir do Modelo",
@@ -263,13 +303,13 @@
                 "tokenExit": "Aplicar Macro ao Sair"
             },
             "ContextMenu": {
-                "Edit": "Editar",
+                "edit": "Editar",
                 "Consume": "Consumir",
                 "NotConsumable": "O item não está configurado como consumível",
                 "RemoveEnhancement": "Remover Melhorias",
                 "Gift": "Presentear",
                 "dismantle": "Desmontar",
-                "Delete": "Deletar"
+                "delete": "Deletar"
             },
             "dismantle": {
                 "addedItems": "Os seguintes itens foram adicionados ao ator",
@@ -279,9 +319,13 @@
                 "general": "Configurações Gerais",
                 "alchemical": "Configurações dos Alquímicos",
                 "armor": "Configurações da Armadura",
+                "hex": "Configurações de Hex",
                 "mutagen": "Configurações de Mutagênico",
                 "race": "Configurações de Raça",
+                "ritual": "Configurações de Ritual",
+                "spell": "Configurações de Magia",
                 "valuable": "Configurações de Valioso",
+                "profession": "Configurações de Profissão",
                 "weapon": "Configurações da Arma",
                 "damageProperties": "Propriedades do Dano",
                 "defenseProperties": "Propriedades da Defesa",
@@ -293,10 +337,11 @@
                         "hint": "Configure como o alvo pode se defender contra isso"
                     }
                 },
-                "spell": {
+                "castProperties": {
                     "selfProperties": "Aplicar ao conjurador",
-                    "castProperties": "Aplicar ao alvo"
-                }
+                    "targetProperties": "Aplicar ao alvo"
+                },
+                "activeEffects": "Efeito Ativo"
             }
         },
         "Damage": {
@@ -374,10 +419,6 @@
             "rangeMedium": "Médio (1/2 Alcance)",
             "rangeLong": "Longo (Full Alcance)",
             "rangeExtreme": "Extremo (2x Alcance)",
-            "strikeNormal": "Golpe Normal",
-            "strikeFast": "Golpe Rápido",
-            "strikeStrong": "Golpe Forte",
-            "strikeJoint": "Ataque Conjunto",
             "attackUse": "Perícia utilizada",
             "attackExtra": "Ataque Extra",
             "attackLocation": "Local de Acerto",
@@ -404,7 +445,10 @@
             "staDialog": "Como você quer recuperar sua estamina?",
             "recoveryAction": "Ação de Recuperação",
             "fullRecovery": "Recuperação Total",
-            "fullStaInfo": "Sua estamina já está cheia"
+            "fullStaInfo": "Sua estamina já está cheia",
+            "defense": {
+                "custom": "Modificadores de Defesa Personalizados"
+            }
         },
         "DamageType": {
             "name": "Tipo de Dano",
@@ -423,8 +467,33 @@
                         "isAttack": "É Ataque",
                         "usesWeapon": "Usa Arma",
                         "damageFormulaOverrides": "Sobrescrever Fórmula de Dano"
+                    },
+                    "skillDefense": {
+                        "isDefense": "É Defesa"
+                    },
+                    "skillUsage": {
+                        "hasCustomEffect": "Tem efeito personalizado",
+                        "temporaryHealth": {
+                            "addTemporaryHealth": "Adiciona vida temporária",
+                            "difficultyCheck": {
+                                "multiplier": "Multiplicador de Atributo",
+                                "stat": "Atributo",
+                                "maxRollOver": "Pontos máximos excedidos"
+                            },
+                            "temporaryHp": {
+                                "value": "Valor por ponto",
+                                "duration": "Duração"
+                            }
+                        }
                     }
                 }
+            },
+            "professionSkills": {
+                "label": "Perícias de Profissão",
+                "hint": "Adicione as perícias que serão marcadas como perícias de profissão"
+            },
+            "error": {
+                "noTarget": "Esta perícia precisa de um alvo"
             }
         },
         "Weapon": {
@@ -457,6 +526,7 @@
             "rangedMeleeBonus": "Bônus de Curta Distância para Ataques à Distância",
             "rangedMeleeBonusHint": "Algumas armas à distância tammbém aplicam bónus de curta distância",
             "isAmmunition": "É uma Munição",
+            "Ammunition": "Munição",
             "isThrowable": "É um Arremessável",
             "Broken": "Sua arma agora está Quebrada",
             "onlyDmg": "Rolar só Dano",
@@ -464,7 +534,17 @@
             "armorPiercing": "Perfura Armadura",
             "improvedArmorPiercing": "Perfuração Melhorada",
             "ablating": "Ablativa",
-            "crushingForce": "Força de Esmagamento"
+            "crushingForce": "Força de Esmagamento",
+            "error": {
+                "noAttackSkill": "Nenhuma perícia de ataque configurada"
+            },
+            "attacks": {
+                "normal": "Golpe Normal",
+                "fast": "Golpe Rápido",
+                "strong": "Golpe Forte",
+                "joint": "Ataque Conjunto",
+                "half": "Dano pela metade"
+            }
         },
         "Location": {
             "Random": "Aleatório",
@@ -485,7 +565,7 @@
             "Forage": "ND da Coleta"
         },
         "Enhancement": {
-            "Stopping": "Parando",
+            "Stopping": "Poder de Parada",
             "Bludgeoning": "CC",
             "Slashing": "CO",
             "Piercing": "PE",
@@ -504,6 +584,7 @@
             "otherComponents": "Outros Componentes",
             "investment": "Investimento",
             "Learned": "Aprendido",
+            "notLearned": "Não Aprendido",
             "Formulae": "Fórmulas",
             "Ingredient": "Ingrediente",
             "Weapon": "Arma",
@@ -589,7 +670,7 @@
             "SimpleSprainedArm": "O golpe torceu seu braço, dificultando os movimentos.",
             "SimpleSprainedLeg": "O golpe torceu a perna, dificultando o movimento.",
             "ComplexMinorHeadWound": "O golpe sacudiu seu cérebro e causou algum sangramento interno.",
-            "ComplexLostTeeth": "O golpe arrancou alguns dentes. Jogue 1d10 para ver quantos dentes foram perdidos.",
+            "ComplexLostTeeth": "O golpe arrancou alguns dentes. Jogue [[1d10]] para ver quantos dentes foram perdidos.",
             "ComplexRupturedSpleen": "Uma laceração no seu baço começa a sangrar profusamente, deixando-o tonto.",
             "ComplexBrokenRibs": "O golpe quebra suas costelas, causando imensa dor quando você tenta agachar ou fazer esforço.",
             "ComplexFracturedArm": "O golpe fratura seu braço.",
@@ -743,6 +824,7 @@
             "UpperArmor": "PP Tronco",
             "LowerArmor": "PP Inferior",
             "WingTailArmor": "PP Asa/Cauda",
+            "regeneration": "Regeneração",
             "CustomHP/STA": "PV/EST Personalizado",
             "Easy": "Fácil",
             "Normal": "Médio",
@@ -883,6 +965,7 @@
         },
         "Button": {
             "Cancel": "Cancelar",
+            "Confirm": "Confirmar",
             "Continue": "Continuar",
             "All": "Todos"
         },
@@ -975,19 +1058,33 @@
             "oren": "Oren",
             "falsecoin": "Falsa"
         },
+        "currencyConverter": {
+            "title": "Conversor de Moedas",
+            "open": "Abrir Conversor de Moedas",
+            "amount": "Quantidade",
+            "from": "De",
+            "to": "Para",
+            "convert": "Converter",
+            "fee": "Taxa (%)",
+            "result": "Resultado",
+            "errors": {
+                "insufficient": "Não há {currency} suficiente"
+            }
+        },
         "Settings": {
             "Adrenaline": "Use a Regra Opcional de Adrenalina",
             "AdrenalineDetails": "Adrenalina é a força de vontade para continuar e lutar mais em situações difíceis",
             "WoundsAffectSkillBase": "Ferimentos afetam a base de perícias",
             "WoundsAffectSkillBaseDetails": "Ferimentos afetam a base de perícias em vez de somente as perícias. Isso torna os ferimentos mais impactantes.",
+            "useVerbalCombatRule": "Use a Regra Opcional do Combate Verbal",
+            "useVerbalCombatRuleHint": "Permite que os jogadores vejam seu valor de resolução e rolem para ações de combate verbal",
+            "silverTrait": "Usar regra de Traço de Prata",
+            "silverTraitHint": "Em vez de dados de prata, prata é uma propriedade de dano",
             "displayRollDetails": "Exibir Detalhes das Rolagens",
             "displayRollDetailsHint": "Exibe detalhes ao lançar dados: 1d10+2[atributo]+4[perícia]-3[aparar]",
             "Custom": "Personalizado",
-            "modifiers": "Modificadores",
             "displayReputation": "Mostrar Reputação aos Jogadores",
             "displayReputationHint": "Permite que os jogadores vejam e modifiquem sua reputação",
-            "useVerbalCombatRule": "Use a Regra Opcional do Combate Verbal",
-            "useVerbalCombatRuleHint": "Permite que os jogadores vejam seu valor de resolução e rolem para ações de combate verbal",
             "clickableImageItemTypes": "Mostrar caixa de seleção 'Ampliável' na planilha de itens",
             "clickableImageItemTypesHint": "Uma lista de tipos de itens separados por vírgula, onde uma caixa de seleção pode ser definida. Se estiver marcado, os jogadores podem clicar na imagem do item em seu inventário para ver uma versão maior dele. Os tipos possíveis são 'valuable', 'weapon', 'armor', 'alchemical', 'diagrams', 'component'.",
             "clickableImageCheckboxForGMOnly": "Mostrar caixa de seleção 'Ampliável' apenas para GM",
@@ -996,9 +1093,12 @@
         "background.other": "Outro",
         "Resources.modifiers": "Modificadores de Recursos",
         "Notes": "Anotações",
-        "Skills": {
-            "Name": "Perícias",
-            "SkillGroups": {
+        "skills": {
+            "name": "Perícias",
+            "profession": "Prof",
+            "pickup": "Escolha",
+            "learn": "Aprendeu",
+            "skillGroups": {
                 "name": "Grupos de Perícias",
                 "allSkills": "Todas as Perícias",
                 "meleeSkills": "Perícias de Curta Distância",
@@ -1006,6 +1106,174 @@
                 "magicSkills": "Perícias Mágicas",
                 "verbalCombatSkills": "Perícias de Combate Verbal",
                 "empatheticVerbalCombatSkills": "Perícias Empáticas de Combate Verbal"
+            },
+            "awareness": {
+                "label": "Consciência"
+            },
+            "business": {
+                "label": "Negócios"
+            },
+            "deduction": {
+                "label": "Dedução"
+            },
+            "education": {
+                "label": "Educação"
+            },
+            "commonSpeech": {
+                "label": "Idioma Comum (2)",
+                "rollLabel": "Idioma Comum"
+            },
+            "elderSpeech": {
+                "label": "Fala Ancestral (2)",
+                "rollLabel": "Fala Ancestral"
+            },
+            "dwarvenSpeech": {
+                "label": "Anão (2)",
+                "rollLabel": "Anão"
+            },
+            "monsterLore": {
+                "label": "Conh. sobre Monstros (2)",
+                "rollLabel": "Conh. sobre Monstros"
+            },
+            "socialEtiquette": {
+                "label": "Etiqueta Social"
+            },
+            "streetwise": {
+                "label": "Sabedoria das Ruas"
+            },
+            "tactics": {
+                "label": "Táticas (2)",
+                "rollLabel": "Táticas"
+            },
+            "teaching": {
+                "label": "Ensinar"
+            },
+            "wildernessSurvival": {
+                "label": "Sobrevivência no Ermo"
+            },
+            "brawling": {
+                "label": "Brigar"
+            },
+            "dodgeEscape": {
+                "label": "Esquivar/Escapar"
+            },
+            "melee": {
+                "label": "Curta Distância"
+            },
+            "riding": {
+                "label": "Cavalgar"
+            },
+            "sailing": {
+                "label": "Velejar"
+            },
+            "smallblades": {
+                "label": "Lâminas Pequenas"
+            },
+            "staffspear": {
+                "label": "Cajado/Lança"
+            },
+            "swordsmanship": {
+                "label": "Esgrima"
+            },
+            "archery": {
+                "label": "Arco e Flecha"
+            },
+            "athletics": {
+                "label": "Atletismo"
+            },
+            "crossbow": {
+                "label": "Besta"
+            },
+            "sleightOfHand": {
+                "label": "Prestidigitação"
+            },
+            "stealth": {
+                "label": "Furtividade"
+            },
+            "physique": {
+                "label": "Físico"
+            },
+            "endurance": {
+                "label": "Tolerância"
+            },
+            "charisma": {
+                "label": "Carisma"
+            },
+            "deceit": {
+                "label": "Ludibriar"
+            },
+            "fineArts": {
+                "label": "Belas Artes"
+            },
+            "gambling": {
+                "label": "Apostar"
+            },
+            "groomingAndStyle": {
+                "label": "Aparência e Estilo"
+            },
+            "humanPerception": {
+                "label": "Percepção Humana"
+            },
+            "leadership": {
+                "label": "Liderança"
+            },
+            "persuasion": {
+                "label": "Persuasão"
+            },
+            "performance": {
+                "label": "Apresentação"
+            },
+            "seduction": {
+                "label": "Sedução"
+            },
+            "alchemy": {
+                "label": "Alquimia (2)",
+                "rollLabel": "Alquimia"
+            },
+            "crafting": {
+                "label": "Criar (2)",
+                "rollLabel": "Criar"
+            },
+            "disguise": {
+                "label": "Disfarce"
+            },
+            "firstAid": {
+                "label": "Primeiros Socorros"
+            },
+            "forgery": {
+                "label": "Falsificação"
+            },
+            "pickLock": {
+                "label": "Arrombar Fechadura"
+            },
+            "trapCrafting": {
+                "label": "Criar Armadilhas (2)",
+                "rollLabel": "Criar Armadilhas"
+            },
+            "courage": {
+                "label": "Coragem"
+            },
+            "hexWeaving": {
+                "label": "Criar uma Hex (2)",
+                "rollLabel": "Criar uma Hex"
+            },
+            "intimidation": {
+                "label": "Intimidação"
+            },
+            "spellCasting": {
+                "label": "Lançar Feitiços (2)",
+                "rollLabel": "Lançar Feitiços"
+            },
+            "resistMagic": {
+                "label": "Resistir à Magia (2)",
+                "rollLabel": "Resistir à Magia"
+            },
+            "resistCoercion": {
+                "label": "Resistir Coerção"
+            },
+            "ritualCrafting": {
+                "label": "Criar Ritual (2)",
+                "rollLabel": "Criar Ritual"
             }
         },
         "Stats": {
@@ -1016,83 +1284,17 @@
                 "Name": "Status Derivado"
             }
         },
-        "SkIntAwareness": "Consciência",
-        "SkIntBusiness": "Negócios",
-        "SkIntDeduction": "Dedução",
-        "SkIntEducation": "Educação",
-        "SkIntCommon": "Idioma Comum (2)",
-        "SkIntCommonLable": "Idioma Comum",
-        "SkIntElder": "Fala Ancestral (2)",
-        "SkIntElderLable": "Fala Ancestral",
-        "SkIntDwarven": "Anão (2)",
-        "SkIntDwarvenLable": "Anão",
-        "SkIntMonster": "Conh. sobre Monstros (2)",
-        "SkIntMonsterLable": "Conh. sobre Monstros",
-        "SkIntSocialEt": "Etiqueta Social",
-        "SkIntStreet": "Sabedoria das Ruas",
-        "SkIntTactics": "Táticas (2)",
-        "SkIntTacticsLable": "Táticas",
-        "SkIntTeaching": "Ensinar",
-        "SkIntWilderness": "Sobrevivência no Ermo",
-        "SkRefBrawling": "Brigar",
-        "SkRefDodge": "Esquivar/Escapar",
-        "SkRefMelee": "Curta Distância",
-        "SkRefRiding": "Cavalgar",
-        "SkRefSailing": "Velejar",
-        "SkRefSmall": "Lâminas Pequenas",
-        "SkRefStaff": "Cajado/Lança",
-        "SkRefSwordsmanship": "Esgrima",
-        "SkDexArchery": "Arco e Flecha",
-        "SkDexAthletics": "Atletismo",
-        "SkDexCrossbow": "Besta",
-        "SkDexSleight": "Prestidigitação",
-        "SkDexStealth": "Furtividade",
-        "SkBodyPhys": "Físico",
-        "SkBodyEnd": "Tolerância",
-        "SkEmpCharisma": "Carisma",
-        "SkEmpDeceit": "Ludibriar",
-        "SkEmpArts": "Belas Artes",
-        "SkEmpGambling": "Apostar",
-        "SkEmpGrooming": "Aparência e Estilo",
-        "SkEmpHumanPerc": "Percepção Humana",
-        "SkEmpLeadership": "Liderança",
-        "SkEmpPersuasion": "Persuasão",
-        "SkEmpPerformance": "Apresentação",
-        "SkEmpSeduction": "Sedução",
-        "SkCraAlchemy": "Alquimia (2)",
-        "SkCraAlchemyLable": "Alquimia",
-        "SkCraCrafting": "Criar (2)",
-        "SkCraCraftingLable": "Criar",
-        "SkCraDisguise": "Disfarce",
-        "SkCraAid": "Primeiros Socorros",
-        "SkCraForge": "Falsificação",
-        "SkCraPick": "Arrombar Fechadura",
-        "SkCraTrapCraft": "Criar Armadilhas (2)",
-        "SkCraTrapCraftLable": "Criar Armadilhas",
-        "SkWillCourage": "Coragem",
-        "SkWillHex": "Criar uma Hex (2)",
-        "SkWillHexLable": "Criar uma Hex",
-        "SkWillIntim": "Intimidação",
-        "SkWillSpellcast": "Lançar Feitiços (2)",
-        "SkWillSpellcastLable": "Lançar Feitiços",
-        "SkWillResistMag": "Resistir a Magia (2)",
-        "SkWillResistMagLable": "Resistir a Magia",
-        "SkWillResistCoer": "Resistir Coerção",
-        "SkWillRitCraft": "Criar Ritual (2)",
-        "SkWillRitCraftLable": "Criar Ritual",
         "SocialStanding": "Posição Social",
         "Profession": "Profissão",
         "Reputation": "Reputação",
         "NoDamageSpecified": "O Dano não é especificado",
         "Shield.Broken": "Seu Escudo agora está Quebrado",
-        "SKill.profession": "Prof",
-        "SKill.pickup": "Escolha",
-        "SKill.learn": "Aprendeu",
         "Items.transferTitle": "Transferindo Itens",
         "Items.transferMany": "Quantos itens transferir",
         "Combat": {
             "shieldApplied": "ganhou escudo:",
-            "healed": "curado {target} para {heal}"
+            "healed": "curado {target} para {heal}",
+            "healedFor": "curado em"
         },
         "Context": {
             "applyDmg": "Aplicar Dano",
@@ -1115,6 +1317,7 @@
             "sterilized": "Recebeu Fluido Esterilizante",
             "healinghand": "Recebeu Mãos que Curam",
             "healingTent": "Recebeu Tenda de Cura",
+            "resetTempHealth": "Redefinir vida temporária",
             "recovered": " se recuperou de um",
             "restful": "repousante",
             "active": "ativo",
@@ -1225,6 +1428,7 @@
         },
         "err": {
             "CraftItemDeletion": "Quantidade incorreta de itens foram excluídos do ator",
+            "craftItemAvailable": "Nem todos os itens necessários estão disponíveis",
             "NoItemsOfSpecificType": "Nenhum item de tipo específico está disponível para o ator"
         },
         "Investigation": {
@@ -1296,7 +1500,7 @@
                 "6": "Sua arma leva [[1d6]] pontos extras de dano de Durabilidade.",
                 "7": "Sua arma é derrubada da sua mão e voa [[1d6]] metros em uma direção aleatória (veja Tabela de Dispersão).",
                 "8": "Você é derrubado ao chão. Você está agora prostrado e deve fazer um teste de resistência a Atordoamento.",
-                "9": "Sua arma leva 2d6 pontos extras de dano de Durabilidade.",
+                "9": "Sua arma leva [[2d6]] pontos extras de dano de Durabilidade.",
                 ">9": "Sua arma ricocheteia e bate em você. Jogue para saber o local."
             },
             "rangedAttack": {
@@ -1312,8 +1516,15 @@
                 ">9": "Você não apenas fica prostrado, mas também recebe [[1d6]] de dano letal na cabeça e precisa fazer um teste de resistência a Atordoameto."
             }
         },
-        "Deprecations": {
-
+        "deprecations": {
+            "lifepathModifiers": {
+                "title": "Modificadores de Caminho de Vida",
+                "text": "Os bônus de ataque dos Modificadores de Caminho de Vida foram alterados. This MUST be done before switching to v14. Readicione-os pelo assistente de efeitos ativos para os seguintes atores"
+            },
+            "statSkillModifiers": {
+                "title": "Modificadores de Atributo ou Perícia",
+                "text": "Modificadores de Atributo e Perícia foram depreciados. This MUST be done before switching to v14. Mova-os para efeitos ativos para os seguintes atores"
+            }
         },
         "AssociatedDiagram": {
             "actions": {
@@ -1363,7 +1574,25 @@
             "required": "Requerido",
             "cost": "Custo",
             "totalPrice": "Preço Total"
+        },
+        "rewards": {
+            "dialog": {
+                "title": "Selecionar atores para recompensa",
+                "label": "Rótulo: ",
+                "ip": "PM: ",
+                "magicIp": "É PM mágico: ",
+                "currency": "Quantidade de Moeda",
+                "currencyType": "Tipo de Moeda",
+                "confirm": "Confirmar"
+            },
+            "chat": {
+                "title": "Recompensas",
+                "ip": "PM",
+                "currency": "Moeda"
+            }
+        },
+        "magic": {
+            "magicImprovementPoints": "PM de Magia"
         }
     }
 }
-

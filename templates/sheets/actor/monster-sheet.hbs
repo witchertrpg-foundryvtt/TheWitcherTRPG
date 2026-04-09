@@ -63,9 +63,12 @@
             <label>{{localize "WITCHER.Actor.Hp"}}</label>
             <input class="small" name="system.derivedStats.hp.value" type="number"
                 value="{{system.derivedStats.hp.value}}" data-dtype="Number" />
+            {{#if (gte system.combatEffects.temporaryEffects.temporaryHpSum 1)}}
+                <span> + {{system.combatEffects.temporaryEffects.temporaryHpSum}}</span>
+            {{/if}}
             /
-            <input class="small" name="system.derivedStats.hp.unmodifiedMax" type="number" value="{{system.derivedStats.hp.unmodifiedMax}}"
-                data-dtype="Number" />
+            <input class="small" name="system.derivedStats.hp.unmodifiedMax" type="number"
+                value="{{system.derivedStats.hp.unmodifiedMax}}" data-dtype="Number" />
         </div>
         <div class="monster-HPSTA margin-right">
             <label>{{localize "WITCHER.Actor.DerStat.Sta"}}</label>

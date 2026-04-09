@@ -6,6 +6,7 @@ import { skillMixin } from './mixins/skillMixin.js';
 import { statMixin } from './mixins/statMixin.js';
 import { itemMixin } from './mixins/itemMixin.js';
 import { healMixin } from './mixins/healMixin.js';
+import { currencyConverterMixin } from './mixins/currencyConverterMixin.js';
 
 import { itemContextMenu } from './interactions/itemContextMenu.js';
 import { activeEffectMixin } from './mixins/activeEffectMixin.js';
@@ -259,6 +260,7 @@ export default class WitcherActorSheet extends HandlebarsApplicationMixin(ActorS
         this.criticalWoundListener(html);
         this.noteListener(html);
         this.healListeners(html);
+        this.currencyConverterListeners(html);
 
         this.itemContextMenu(html);
     }
@@ -336,5 +338,6 @@ Object.assign(WitcherActorSheet.prototype, deathsaveMixin);
 Object.assign(WitcherActorSheet.prototype, criticalWoundMixin);
 Object.assign(WitcherActorSheet.prototype, noteMixin);
 Object.assign(WitcherActorSheet.prototype, healMixin);
+Object.assign(WitcherActorSheet.prototype, currencyConverterMixin);
 
 Object.assign(WitcherActorSheet.prototype, itemContextMenu);

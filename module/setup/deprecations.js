@@ -3,6 +3,7 @@ const DialogV2 = foundry.applications.api.DialogV2;
 export const deprecationWarnings = function () {
     lifepathModifiers();
     statSkillModifiers();
+    oldCriticalWounds();
 };
 
 async function lifepathModifiers() {
@@ -50,6 +51,26 @@ async function statSkillModifiers() {
         );
         DialogV2.prompt({
             window: { title: `${game.i18n.localize('WITCHER.deprecations.statSkillModifiers.title')}` },
+            content: dialogTemplate
+        });
+    }
+}
+
+async function oldCriticalWounds() {
+    let affectedActors = game.actors
+        .filter(actor => actor.system.critWounds?.length > 0)
+        .map(actor => {
+            return { actor: actor.name, critWounds: actor.system.critWounds };
+        });
+
+
+    if (affectedActors.length > 0) {
+        const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/dialog/deprecations/oldCriticalWounds.hbs',
+            { affectedActors }
+        );
+        DialogV2.prompt({
+            window: { title: `${game.i18n.localize('WITCHER.deprecations.oldCriticalWounds.title')}` },
             content: dialogTemplate
         });
     }

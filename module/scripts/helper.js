@@ -58,6 +58,18 @@ export async function chooseFromAvailableActors() {
     }
 }
 
+export function getActorOwner(actor) {
+    let owner = game.users.activeGM;
+    if (actor.hasPlayerOwner) {
+        owner =
+            game.users
+                .filter(user => user.active)
+                .filter(user => !user.isGM)
+                .find(e => actor.testUserPermission(e, 'OWNER')) ?? game.users.activeGM;
+    }
+    return owner;
+}
+
 export function getRandomInt(max) {
     return Math.floor(Math.random() * max) + 1;
 }
