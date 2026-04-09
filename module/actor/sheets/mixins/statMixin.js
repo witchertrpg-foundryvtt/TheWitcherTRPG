@@ -193,7 +193,7 @@ export let statMixin = {
 
     async _onAdrenalinePlus(event) {
         event.preventDefault();
-        await this.actor.update({ 'system.adrenaline.value': this.actor.system.adrenaline.value + 1 });
+        this.actor.addAdrenaline();
     },
 
     statListener(html) {

@@ -36,6 +36,7 @@ async function query(queryData, { timeout }) {
         'addItem',
         'addTemporaryHpToActor',
         'applyTemporaryItemImprovements',
+        'addAdrenaline',
         //Item
         'restoreReliability',
         //Region
@@ -47,9 +48,9 @@ async function query(queryData, { timeout }) {
         return true;
     }
 
-    if (queryData.function in callableEntityFunctions) {
-        let actor = fromUuidSync(queryData.uuid);
-        actor[queryData.function](...queryData.data);
+    if (callableEntityFunctions.includes(queryData.function)) {
+        let entity = fromUuidSync(queryData.uuid);
+        entity[queryData.function](...queryData.data);
         return true;
     }
 
