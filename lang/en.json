@@ -157,6 +157,15 @@
             "TotalSkill": "Total Skills",
             "TotalProfSkill": "Total Profession Skills",
             "SpecialSkillModifier": "Special Skill Modifiers",
+            "woundThreshold": {
+                "state": "Wound State",
+                "ignore": "WT",
+                "ignoreHint": "Ignore Wound Threshold penalties when HP is below WT."
+            },
+            "deathState": {
+                "ignore": "DS",
+                "ignoreHint": "Ignore Death State penalties when HP is 0 or below."
+            },
             "focus": {
                 "name": "Focus",
                 "first": "First",
