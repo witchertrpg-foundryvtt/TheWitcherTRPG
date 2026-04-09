@@ -150,6 +150,15 @@
             "TotalSkill": "Perícias Totais",
             "TotalProfSkill": "Árvore de Profissão",
             "SpecialSkillModifier": "Modificadores Especiais",
+            "woundThreshold": {
+                "state": "Estado do Ferimento",
+                "ignore": "LF",
+                "ignoreHint": "Ignora a penalidade do Limite de Ferimentos quando o PV está abaixo do LF."
+            },
+            "deathState": {
+                "ignore": "EM",
+                "ignoreHint": "Ignora as penalidades do Estado de Morte quando o PV está em 0 ou abaixo."
+            },
             "focus": {
                 "name": "Foco",
                 "first": "Primeiro",

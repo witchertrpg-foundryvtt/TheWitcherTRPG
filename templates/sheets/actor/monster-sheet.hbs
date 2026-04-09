@@ -206,16 +206,16 @@
                 <div class="monster-right-attributes">
                     <div class="monster-right-row">
                         <div class="right-element" title="{{localize 'WITCHER.Actor.Hp'}}">
-                            {{#if system.deathStateApplied}}
+                            {{#if system.healthState.deathState.applied}}
                                 <img class="right-image" src="systems/TheWitcherTRPG/assets/images/health-dead.png" />
                             {{/if}}
-                            {{#if system.woundTresholdApplied}}
-                                {{#unless system.deathStateApplied}}
+                            {{#if system.healthState.woundThreshold.applied}}
+                                {{#unless system.healthState.deathState.applied}}
                                     <img class="right-image"
                                         src="systems/TheWitcherTRPG/assets/images/health-down.png" />
                                 {{/unless}}
                             {{else}}
-                                {{#unless system.deathStateApplied}}
+                                {{#unless system.healthState.deathState.applied}}
                                     <img class="right-image" src="systems/TheWitcherTRPG/assets/images/health.png" />
                                 {{/unless}}
                             {{/if}}
