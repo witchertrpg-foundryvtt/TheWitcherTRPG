@@ -87,5 +87,36 @@
                 {{/if}}
             {{/if}}
         </div>
+        <div>
+            {{formGroup skillFields.fields.thresholds.fields.hasThresholds value=skill.thresholds.hasThresholds localize=true}}
+            {{#if skill.thresholds.hasThresholds}}
+                <table class="item-bottom-table">
+                    <tr>
+                        <th><a data-action="addThreshold" data-target="{{skill.skillName}}"
+                                title="{{localize "WITCHER.Item.AddEffect"}}"><i class="fas fa-plus"></i></a>
+                        </th>
+                        <th>{{localize "WITCHER.profession.skillPath.skill.thresholds.name"}}</th>
+                        <th>{{localize "WITCHER.profession.skillPath.skill.thresholds.thresholdValue"}}</th>
+                    </tr>
+                    {{#each skill.thresholds.thresholds as |threshold id|}}
+                        <tr class="list-item" data-id="{{id}}" data-target="{{../skill.skillName}}">
+                            <td>
+                                <a data-action="removeThreshold" title="{{localize "WITCHER.Item.RemoveEffect"}}"><i
+                                        class="fas fa-minus"></i></a>
+                            </td>
+                            <td>
+                                <input class="item-effect" data-action="editThreshold"
+                                    placeholder="{{localize "WITCHER.table.Name"}}" data-field="name" type="text"
+                                    value="{{threshold.name}}" />
+                            </td>
+                            <td>
+                                <input placeholder="0" data-action="editThreshold" data-field="value" type="number"
+                                    value="{{threshold.value}}" data-dtype="Number" />
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            {{/if}}
+        </div>
     </div>
 </div>

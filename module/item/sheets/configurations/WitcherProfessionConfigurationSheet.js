@@ -5,8 +5,9 @@ export default class WitcherProfessionConfigurationSheet extends WitcherConfigur
     static DEFAULT_OPTIONS = {
         actions: {
             addEffectDamageProperties: WitcherProfessionConfigurationSheet._onAddEffectDamageProperties,
-            editEffect: WitcherProfessionConfigurationSheet._onEditEffectDamageProperties,
-            removeEffect: WitcherProfessionConfigurationSheet._oRemoveEffectDamageProperties
+            removeEffect: WitcherProfessionConfigurationSheet._oRemoveEffectDamageProperties,
+            addThreshold: WitcherProfessionConfigurationSheet._onAddThreshold,
+            removeThreshold: WitcherProfessionConfigurationSheet._oRemoveThreshold
         }
     };
 
@@ -93,6 +94,9 @@ export default class WitcherProfessionConfigurationSheet extends WitcherConfigur
         if (event.target.dataset.action === 'editEffectDamageProperties') {
             this._onEditEffectDamageProperties(event, event.target);
         }
+        if (event.target.dataset.action === 'editThreshold') {
+            this._onEditThreshold(event, event.target);
+        }
     }
 
     static async _onAddEffectDamageProperties(event, element) {
@@ -107,9 +111,8 @@ export default class WitcherProfessionConfigurationSheet extends WitcherConfigur
         });
     }
 
-    static async _onEditEffectDamageProperties(event) {
+    async _onEditEffectDamageProperties(event, element) {
         event.preventDefault();
-        let element = event.currentTarget;
         let effectId = element.closest('.list-item').dataset.id;
 
         let field = element.dataset.field;
@@ -138,7 +141,45 @@ export default class WitcherProfessionConfigurationSheet extends WitcherConfigur
         this.item.update({ [`system.${skillObject.path}.skillAttack.damageProperties.effects.-=${effectId}`]: null });
     }
 
-    static findSkillWithName(skillName) {
+    static async _onAddThreshold(event, element) {
+        event.preventDefault();
+        let skillName = element.dataset.target;
+        let skillObject = this.findSkillWithName(skillName);
+
+        let id = foundry.utils.randomID();
+        this.item.update({
+            [`system.${skillObject.path}.thresholds.thresholds.${id}`]: { value: 0 }
+        });
+    }
+
+    async _onEditThreshold(event, element) {
+        event.preventDefault();
+        let id = element.closest('.list-item').dataset.id;
+
+        let field = element.dataset.field;
+        let value = element.value;
+
+        let skillName = element.closest('.list-item').dataset.target;
+        let skillObject = this.findSkillWithName(skillName);
+
+        this.item.update({
+            [`system.${skillObject.path}.thresholds.thresholds.${id}.${field}`]: value
+        });
+    }
+
+    static async _oRemoveThreshold(event, element) {
+        event.preventDefault();
+        let id = element.closest('.list-item').dataset.id;
+
+        let skillName = element.closest('.list-item').dataset.target;
+        let skillObject = this.findSkillWithName(skillName);
+
+        this.item.update({ [`system.${skillObject.path}.thresholds.thresholds.-=${id}`]: null });
+        //v14
+        // this.item.update({ [`${target}.${id}`]: _del });
+    }
+
+    findSkillWithName(skillName) {
         let skillPath = this.document;
 
         if (this.findSkillWithNameInSkillPath(skillPath.system.skillPath1, skillName)) {
@@ -155,7 +196,7 @@ export default class WitcherProfessionConfigurationSheet extends WitcherConfigur
         }
     }
 
-    static findSkillWithNameInSkillPath(skillPath, skillName) {
+    findSkillWithNameInSkillPath(skillPath, skillName) {
         if (skillPath.skill1.skillName === skillName) {
             return { skill: skillPath.skill1, path: 'skill1' };
         }
