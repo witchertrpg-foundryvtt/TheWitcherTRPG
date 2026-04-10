@@ -2,7 +2,7 @@ import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import { applyStatusEffectToActor } from '../../scripts/statusEffects/applyStatusEffect.js';
 import { applyActiveEffectToActorViaId } from '../../scripts/temporaryEffects/applyActiveEffect.js';
-import { getRandomInt } from '../../scripts/helper.js';
+import { getActorOwner, getRandomInt } from '../../scripts/helper.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
@@ -13,7 +13,7 @@ export let defenseMixin = {
         <div class="flex">
             <label>${game.i18n.localize('WITCHER.Dialog.DefenseExtra')}: <input type="checkbox" name="isExtraDefense"></label> <br />
         </div>
-        <label>${game.i18n.localize('WITCHER.Dialog.defense.custom')}: <input type="Number" class="small" name="customDef" value=0></label> <br />`;
+        <label>${game.i18n.localize('WITCHER.Dialog.defense.custom')}: <input type="Number" name="customDef" value=0></label> <br />`;
 
         let additionalOptions = this.items
             .filter(item => item.system.isApplicableDefense?.(attack.attackOption))
@@ -210,6 +210,14 @@ export let defenseMixin = {
             crit.location = await this.handleCritLocation(attackDamageObject);
             attackDamageObject.location = crit.location;
             crit.critEffectModifier = attackDamageObject.crit.critEffectModifier;
+
+            //adrenaline dice added to attacker
+            let attackerActor = fromUuidSync(attacker);
+            getActorOwner(attackerActor).query('TheWitcherTRPG.query', {
+                uuid: attacker,
+                function: 'addAdrenaline',
+                data: []
+            });
         }
 
         const chatMessageCrit = crit

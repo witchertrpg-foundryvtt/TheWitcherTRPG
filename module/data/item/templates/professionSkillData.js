@@ -1,6 +1,7 @@
 import skillDefense from './combat/skillDefenseData.js';
 import skillAttack from './combat/skillAttackData.js';
 import SkillUsage from './profession/skillUsageData.js';
+import Threshold from './profession/thresholdData.js';
 
 const fields = foundry.data.fields;
 
@@ -14,6 +15,7 @@ export default function professionSkill() {
         skillAttack: new fields.SchemaField(skillAttack()),
         skillDefense: new fields.SchemaField(skillDefense()),
 
-        skillUsage: new fields.EmbeddedDataField(SkillUsage)
+        skillUsage: new fields.EmbeddedDataField(SkillUsage),
+        thresholds: new fields.EmbeddedDataField(Threshold)
     };
 }

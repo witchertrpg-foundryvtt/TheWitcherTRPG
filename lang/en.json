@@ -483,6 +483,11 @@
                                 "duration": "Duration"
                             }
                         }
+                    },
+                    "thresholds": {
+                        "hasThresholds": "Has thresholds",
+                        "name": "Name",
+                        "thresholdValue": "Threshold"
                     }
                 }
             },
