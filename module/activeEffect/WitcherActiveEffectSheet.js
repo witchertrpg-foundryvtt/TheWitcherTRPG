@@ -16,7 +16,11 @@ export class WitcherActiveEffectConfig extends foundry.applications.sheets.Activ
         tabs: { template: 'templates/generic/tab-navigation.hbs' },
         details: { template: 'templates/sheets/active-effect/details.hbs', scrollable: [''] },
         duration: { template: 'templates/sheets/active-effect/duration.hbs' },
-        changes: { template: 'templates/sheets/active-effect/changes.hbs', scrollable: ['ol[data-changes]'] },
+        changes: {
+            template: 'templates/sheets/active-effect/changes.hbs',
+            templates: ['templates/sheets/active-effect/change.hbs'],
+            scrollable: ['ol[data-changes]']
+        },
         systemSpecific: {
             template: 'systems/TheWitcherTRPG/templates/sheets/activeEffect/system-specific.hbs',
             scrollable: ['']

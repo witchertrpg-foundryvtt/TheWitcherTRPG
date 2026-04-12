@@ -57,16 +57,6 @@ export default class WitcherActiveEffect extends ActiveEffect {
         const allowed = await super._preCreate(data, options, user);
         if (allowed === false) return false;
 
-        // Set initial duration data for Actor-owned effects or transferred item effects
-        if (this.parent instanceof Actor || this.system.isTransferred) {
-            const updates = this.constructor.getInitialDuration();
-            for (const k of Object.keys(updates.duration)) {
-                if (Number.isNumeric(data.duration?.[k])) delete updates.duration[k]; // Prefer user-defined duration data
-            }
-            updates.transfer = false;
-            this.updateSource(updates);
-        }
-
         for await (let change of this._source.changes) {
             if (change.key.includes('@skill')) {
                 await this.chooseSkill(change);

@@ -240,11 +240,10 @@ export default class WitcherActor extends Actor {
         this.system.attackStats.kick.value = `1d6+${4 + meleeBonus}`;
     }
 
-    applyActiveEffects(preparationStage) {
-        const overrides = {};
+    applyActiveEffects(phase) {
         const changes = [];
 
-        switch (preparationStage) {
+        switch (phase) {
             case 'derived':
                 // Organize non-disabled effects by their application priority
                 for (const effect of this.allApplicableEffects()) {
@@ -282,14 +281,15 @@ export default class WitcherActor extends Actor {
         changes.sort((a, b) => a.priority - b.priority);
 
         // Apply all changes
+        let overrides = {};
+        const replacementData = this.getRollData();
         for (const change of changes) {
-            if (!change.key) continue;
-            const changes = change.effect.apply(this, change);
-            Object.assign(overrides, changes);
+            const result = ActiveEffect.applyChange(this, change, { replacementData });
+            if (foundry.utils.isPlainObject(result)) Object.assign(overrides, result);
         }
 
         // Expand the set of final overrides
-        this.overrides = foundry.utils.expandObject(overrides);
+        foundry.utils.mergeObject(this.overrides, foundry.utils.expandObject(overrides));
     }
 
    
