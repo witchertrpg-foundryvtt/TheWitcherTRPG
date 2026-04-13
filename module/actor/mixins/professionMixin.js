@@ -293,12 +293,29 @@ export let professionMixin = {
                     '' +
                     Math.min(roll.options.rollOver, temporaryHealth.difficultyCheck.maxRollOver) +
                     temporaryHealth.temporaryHp.value;
-                queryData.temporaryHp = {
-                    value,
-                    duration
-                };
+                if (value.includes('d')) {
+                    value = (await new Roll(value).evaluate()).total;
+                }
 
-                getActorOwner(target).query('TheWitcherTRPG.addTemporaryHpToActor', queryData);
+                let newEffect = new ActiveEffect({
+                    name: skill.skillName,
+                    icon: this.getList('profession')[0].img,
+                    description: skill.definition,
+                    origin: this.uuid,
+                    changes: [
+                        {
+                            key: `system.combatEffects.temporaryEffects.temporaryHp.${skill.skillName}`,
+                            mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                            value: `{"name": "${skill.skillName}", "value": ${value}}`
+                        }
+                    ],
+                    duration: { rounds: duration }
+                });
+
+                getActorOwner(target).query('TheWitcherTRPG.query', {
+                    function: 'applyActiveEffectToActor',
+                    data: [target.uuid, [newEffect]]
+                });
             }
         }
     },

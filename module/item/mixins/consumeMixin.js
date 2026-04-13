@@ -10,17 +10,6 @@ export let consumeMixin = {
             messageInfos.heal = heal;
         }
 
-        if (properties.temporaryHp != '0') {
-            if (
-                this.actor.addTemporaryHealth(properties.temporaryHp.value, properties.temporaryHp.duration, this.uuid)
-            ) {
-                messageInfos.temporaryHp = {
-                    tempHp: properties.temporaryHp.value,
-                    duration: properties.temporaryHp.duration
-                };
-            }
-        }
-
         this.actor.applyStatus(properties.effects);
         this.actor.removeStatus(this.system.consumeProperties.removesEffects);
         applyActiveEffectToActorViaId(this.actor.uuid, this.uuid, 'applySelf');
