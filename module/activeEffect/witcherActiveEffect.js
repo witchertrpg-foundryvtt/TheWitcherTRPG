@@ -57,6 +57,29 @@ export default class WitcherActiveEffect extends ActiveEffect {
         const allowed = await super._preCreate(data, options, user);
         if (allowed === false) return false;
 
+        if (
+            (this.parent instanceof foundry.documents.Actor || this.system.isTransferred) &&
+            this.start?.combat?.started
+        ) {
+            // Set start combatant to targeted actor's combatant, if present.
+            // Adjust the duration of round-based effects depending on the current turn order.
+            // If the target combatant has not acted yet (or is currently acting) we may need to decrease the duration.
+            const effectUpdate = {};
+            const combat = this.start.combat;
+            const combatant = combat.getCombatantsByActor(this.parent)[0];
+            if (combatant && combatant.turnNumber !== null) {
+                effectUpdate.start = { combatant: combatant.id };
+                const { units, value, expiry } = this.duration;
+                if (units === 'rounds' && ['turnStart', 'turnEnd'].includes(expiry)) {
+                    const isTurn = combatant.turnNumber === this.start.combat.turn;
+                    const upcoming = combatant.turnNumber > this.start.combat.turn;
+                    const decreaseDuration = upcoming || (expiry === 'turnEnd' && isTurn);
+                    if (decreaseDuration) effectUpdate.duration = { value: value - 1 };
+                }
+            }
+            this.updateSource(effectUpdate);
+        }
+
         for await (let change of this._source.changes) {
             if (change.key.includes('@skill')) {
                 await this.chooseSkill(change);
