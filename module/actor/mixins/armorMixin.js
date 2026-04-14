@@ -12,9 +12,12 @@ export let armorMixin = {
     getLocationArmor(location, properties) {
         let armors = this.getList('armor').filter(a => a.system.equipped);
 
-        let headArmors = armors.filter(h => h.system.location == 'Head' || h.system.location == 'FullCover');
-        let torsoArmors = armors.filter(t => t.system.location == 'Torso' || t.system.location == 'FullCover');
-        let legArmors = armors.filter(l => l.system.location == 'Leg' || l.system.location == 'FullCover');
+        let headArmors = armors.filter(h => h.system.headMaxStopping > 0);
+        let torsoArmors = armors.filter(t => t.system.torsoMaxStopping > 0);
+        let leftArmArmors = armors.filter(t => t.system.leftArmMaxStopping > 0);
+        let rightArmArmors = armors.filter(t => t.system.rightArmMaxStopping > 0);
+        let leftLegArmors = armors.filter(l => l.system.leftLegMaxStopping > 0);
+        let rightLegArmors = armors.filter(l => l.system.rightLegMaxStopping > 0);
 
         let armorSet;
         let totalSP = 0;
@@ -28,15 +31,27 @@ export let armorMixin = {
                 displaySP += this.system.armorHead > 0 ? this.system.armorHead + ' + ' : '';
                 break;
             case 'torso':
-            case 'rightArm':
-            case 'leftArm':
                 armorSet = this.getArmors(torsoArmors);
                 totalSP += this.system.armorUpper ?? 0;
                 displaySP += this.system.armorUpper > 0 ? this.system.armorUpper + ' + ' : '';
                 break;
+            case 'rightArm':
+                armorSet = this.getArmors(rightArmArmors);
+                totalSP += this.system.armorUpper ?? 0;
+                displaySP += this.system.armorUpper > 0 ? this.system.armorUpper + ' + ' : '';
+                break;
+            case 'leftArm':
+                armorSet = this.getArmors(leftArmArmors);
+                totalSP += this.system.armorUpper ?? 0;
+                displaySP += this.system.armorUpper > 0 ? this.system.armorUpper + ' + ' : '';
+                break;
             case 'rightLeg':
+                armorSet = this.getArmors(rightLegArmors);
+                totalSP += this.system.armorLower ?? 0;
+                displaySP += this.system.armorLower > 0 ? this.system.armorLower + ' + ' : '';
+                break;
             case 'leftLeg':
-                armorSet = this.getArmors(legArmors);
+                armorSet = this.getArmors(leftLegArmors);
                 totalSP += this.system.armorLower ?? 0;
                 displaySP += this.system.armorLower > 0 ? this.system.armorLower + ' + ' : '';
                 break;
