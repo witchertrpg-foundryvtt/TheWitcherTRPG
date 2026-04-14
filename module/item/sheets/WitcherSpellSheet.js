@@ -29,25 +29,25 @@ export default class WitcherSpellSheet extends WitcherItemSheet {
                 MagicalGift: 'WITCHER.Spell.MagicalGift'
             },
             levelSpell: {
-                novice: 'WITCHER.Spell.Novice',
-                journeyman: 'WITCHER.Spell.Journeyman',
-                master: 'WITCHER.Spell.Master'
+                novice: 'WITCHER.Spell.novice',
+                journeyman: 'WITCHER.Spell.journeyman',
+                master: 'WITCHER.Spell.master'
             },
             levelMagicalGift: {
                 'minor gift': 'WITCHER.Spell.MinorGift',
                 'major gift': 'WITCHER.Spell.MajorGift'
             },
             sourceElements: {
-                mixedElements: 'WITCHER.Spell.Mixed',
-                earth: 'WITCHER.Spell.Earth',
-                air: 'WITCHER.Spell.Air',
-                fire: 'WITCHER.Spell.Fire',
-                Water: 'WITCHER.Spell.Water'
+                mixedElements: 'WITCHER.Spell.mixedElements',
+                earth: 'WITCHER.Spell.earth',
+                air: 'WITCHER.Spell.air',
+                fire: 'WITCHER.Spell.fire',
+                Water: 'WITCHER.Spell.water'
             },
             sourceClass: {
-                'druid': 'WITCHER.Spell.Druid',
-                'preacher': 'WITCHER.Spell.Preacher',
-                'arch priest': 'WITCHER.Spell.Archpriest'
+                'druid': 'WITCHER.Spell.druid',
+                'preacher': 'WITCHER.Spell.preacher',
+                'arch priest': 'WITCHER.Spell.archpriest'
             },
             domain: {
                 basic: 'WITCHER.Spell.Basic',
