@@ -67,7 +67,8 @@ async function applyCombatEffect(actor, status) {
                 damageToAllLocations: status.damage.allLocations,
                 effects: [],
                 bypassesNaturalArmor: status.damage.ignoreArmor,
-                bypassesWornArmor: status.damage.ignoreArmor
+                bypassesWornArmor: status.damage.ignoreArmor,
+                bypassesShield: status.damage.bypassesShield
             },
             location: actor.getLocationObject('torso')
         };

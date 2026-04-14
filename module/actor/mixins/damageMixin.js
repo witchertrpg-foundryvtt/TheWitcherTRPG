@@ -4,24 +4,11 @@ import { applyStatusEffectToActor } from '../../scripts/statusEffects/applyStatu
 
 export let damageMixin = {
     async applyDamage(dialogData, totalDamage, damageObject, derivedStat, infoTotalDmg = totalDamage) {
-        let shield = this.system.derivedStats.shield.value;
-        if (totalDamage < shield) {
-            this.update({ 'system.derivedStats.shield.value': shield - totalDamage });
-            let messageContent = `${game.i18n.localize('WITCHER.Damage.initial')}: <span class="error-display">${infoTotalDmg}</span><br />
-                                ${game.i18n.localize('WITCHER.Damage.shield')}: <span class="error-display">${shield}</span><br />
-                                ${game.i18n.localize('WITCHER.Damage.ToMuchShield')}
-                                `;
-            let messageData = {
-                content: messageContent,
-                speaker: ChatMessage.getSpeaker({ actor: this }),
-                flags: this.getNoDamageFlags()
-            };
-            ChatMessage.applyRollMode(messageData, game.settings.get('core', 'rollMode'));
-            ChatMessage.create(messageData);
-            return;
-        } else {
-            this.update({ 'system.derivedStats.shield.value': 0 });
-            totalDamage -= shield;
+        if (!damageObject.properties.bypassesShield) {
+            totalDamage = this.handleShield(totalDamage, infoTotalDmg);
+            if (totalDamage <= 0) {
+                return;
+            }
         }
 
         if (this.system.category && damageObject.properties?.oilEffect === this.system.category) {
@@ -43,6 +30,29 @@ export let damageMixin = {
         if (damageObject.itemUuid) {
             applyActiveEffectToActorViaId(this.uuid, damageObject.itemUuid, 'applyOnDamage', damageObject.duration);
         }
+    },
+
+    handleShield(totalDamage, infoTotalDmg) {
+        let shield = this.system.derivedStats.shield.value;
+        if (totalDamage < shield) {
+            this.update({ 'system.derivedStats.shield.value': shield - totalDamage });
+            let messageContent = `${game.i18n.localize('WITCHER.Damage.initial')}: <span class="error-display">${infoTotalDmg}</span><br />
+                                ${game.i18n.localize('WITCHER.Damage.shield')}: <span class="error-display">${shield}</span><br />
+                                ${game.i18n.localize('WITCHER.Damage.ToMuchShield')}
+                                `;
+            let messageData = {
+                content: messageContent,
+                speaker: ChatMessage.getSpeaker({ actor: this }),
+                flags: this.getNoDamageFlags()
+            };
+            ChatMessage.applyRollMode(messageData, game.settings.get('core', 'rollMode'));
+            ChatMessage.create(messageData);
+            return 0;
+        } else {
+            this.update({ 'system.derivedStats.shield.value': 0 });
+            totalDamage -= shield;
+        }
+        return totalDamage;
     },
 
     async applyDamageToLocation(dialogData, damageObject, totalDamage, infoTotalDmg, derivedStat) {

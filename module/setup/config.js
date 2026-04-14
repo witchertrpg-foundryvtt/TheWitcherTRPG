@@ -2108,7 +2108,8 @@ WITCHER.statusEffects = [
                     "img": "icons/svg/poison.svg",
                     "damage": {
                         "amount": 3,
-                        "ignoreArmor": "true"
+                        "ignoreArmor": "true",
+                        "bypassesShield": "true"
                     }
                 }`
             }
@@ -2165,7 +2166,8 @@ WITCHER.statusEffects = [
                     "img": "icons/svg/blood.svg",
                     "damage": {
                         "amount": 2,
-                        "ignoreArmor": "true"
+                        "ignoreArmor": "true",
+                        "bypassesShield": "true"
                     }
                 }`
             }
@@ -2300,7 +2302,8 @@ WITCHER.statusEffects = [
                     "img": "icons/svg/silenced.svg",
                     "damage": {
                         "amount": 3,
-                        "ignoreArmor": "true"
+                        "ignoreArmor": "true",
+                        "bypassesShield": "true"
                     }
                 }`
             }
