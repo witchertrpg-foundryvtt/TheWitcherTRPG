@@ -1,7 +1,7 @@
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
-import { getActorOwner } from '../../scripts/helper.js';
+import { getActorOwner, getCustomModifier } from '../../scripts/helper.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -364,26 +364,9 @@ export let professionMixin = {
             ? `1d10+${statValue}+${level}`
             : `1d10+${statValue}[${game.i18n.localize(statName)}]+${level}[${skill.skillName}]`;
 
-        let customMod = await DialogV2.prompt({
-            window: { title: `${game.i18n.localize('WITCHER.Dialog.profession.skill')}: ${skill.skillName}` },
-            content: `<label>${game.i18n.localize('WITCHER.Dialog.attackCustom')}: <input name="customModifiers" value=0></label>`,
-            modal: true,
-            ok: {
-                callback: (event, button, dialog) => button.form.elements.customModifiers.value
-            },
-            rejectClose: true
-        });
-
-        if (customMod < 0) {
-            rollFormula += !displayRollDetails
-                ? `${customMod}`
-                : `${customMod}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-        }
-        if (customMod > 0) {
-            rollFormula += !displayRollDetails
-                ? `+${customMod}`
-                : `+${customMod}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-        }
+        rollFormula += await getCustomModifier(
+            `${game.i18n.localize('WITCHER.Dialog.profession.skill')}: ${skill.skillName}`
+        );
 
         let messageData = new ChatMessageData(this.actor, `<h2>${skill.skillName}</h2>${definition}`);
 

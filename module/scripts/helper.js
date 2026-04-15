@@ -73,3 +73,30 @@ export function getActorOwner(actor) {
 export function getRandomInt(max) {
     return Math.floor(Math.random() * max) + 1;
 }
+
+export async function getCustomModifier(title) {
+    let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
+    let customModifier = await DialogV2.prompt({
+        window: { title: title },
+        content: `<label>${game.i18n.localize(
+            'WITCHER.Dialog.customModifier'
+        )}: <input name="customModifiers" value=0></label>`,
+        ok: {
+            label: game.i18n.localize('WITCHER.Button.Continue'),
+            callback: (event, button, dialog) => {
+                return button.form.elements.customModifiers.value;
+            }
+        },
+        rejectClose: true
+    });
+
+    if (customModifier != 0) {
+        let part = `${customModifier}`;
+        if (displayRollDetails) {
+            part += `[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
+        }
+        return part;
+    }
+
+    return '';
+}

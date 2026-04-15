@@ -251,7 +251,7 @@ export let weaponAttackMixin = {
             if (customAim > 0) {
                 attFormula += !displayRollDetails
                     ? `+${customAim}`
-                    : `+${customAim}[${game.i18n.localize('WITCHER.Dialog.attackCustom')}]`;
+                    : `+${customAim}[${game.i18n.localize('WITCHER.Dialog.customModifier')}]`;
             }
 
             if (customAtt != '0') {

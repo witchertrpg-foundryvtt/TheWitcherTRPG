@@ -1,5 +1,5 @@
 import { extendedRoll } from '../scripts/rolls/extendedRoll.js';
-import { getRandomInt } from '../scripts/helper.js';
+import { getCustomModifier, getRandomInt } from '../scripts/helper.js';
 import { RollConfig } from '../scripts/rollConfig.js';
 import { WITCHER } from '../setup/config.js';
 import { modifierMixin } from './mixins/modifierMixin.js';
@@ -320,34 +320,13 @@ export default class WitcherActor extends Actor {
                 : `-${armorEnc}[${game.i18n.localize('WITCHER.Armor.EncumbranceValue')}]`;
         }
 
-        return await DialogV2.prompt({
-            window: { title: `${game.i18n.localize('WITCHER.Dialog.Skill')}: ${skillLabel}` },
-            content: `<label>${game.i18n.localize(
-                'WITCHER.Dialog.attackCustom'
-            )}: <input name="customModifiers" value=0></label>`,
-            ok: {
-                label: game.i18n.localize('WITCHER.Button.Continue'),
-                callback: (event, button, dialog) => {
-                    let customModifier = button.form.elements.customModifiers.value;
-                    if (customModifier < 0) {
-                        rollFormula += !displayRollDetails
-                            ? ` ${customModifier}`
-                            : ` ${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-                    }
-                    if (customModifier > 0) {
-                        rollFormula += !displayRollDetails
-                            ? ` +${customModifier}`
-                            : ` +${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-                    }
-                    let config = new RollConfig();
-                    config.showCrit = true;
-                    config.showSuccess = true;
-                    config.threshold = threshold;
-                    return extendedRoll(rollFormula, messageData, config);
-                }
-            },
-            rejectClose: true
-        });
+        rollFormula += await getCustomModifier(`${game.i18n.localize('WITCHER.Dialog.Skill')}: ${skillLabel}`);
+
+        let config = new RollConfig();
+        config.showCrit = true;
+        config.showSuccess = true;
+        config.threshold = threshold;
+        return extendedRoll(rollFormula, messageData, config);
     }
 
     addSocialStanding(attribute, skillName) {
@@ -432,33 +411,12 @@ export default class WitcherActor extends Actor {
             }
         });
 
-        return DialogV2.prompt({
-            window: { title: `${game.i18n.localize('WITCHER.Dialog.Skill')}: ${skillLabel}` },
-            content: `<label>${game.i18n.localize(
-                'WITCHER.Dialog.attackCustom'
-            )}: <input name="customModifiers" value=0></label>`,
-            ok: {
-                label: game.i18n.localize('WITCHER.Button.Continue'),
-                callback: (event, button, dialog) => {
-                    let customModifier = button.form.elements.customModifiers.value;
-                    if (customModifier < 0) {
-                        rollFormula += !displayRollDetails
-                            ? ` ${customModifier}`
-                            : ` ${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-                    }
-                    if (customModifier > 0) {
-                        rollFormula += !displayRollDetails
-                            ? ` +${customModifier}`
-                            : ` +${customModifier}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-                    }
-                    let config = new RollConfig();
-                    config.showCrit = true;
-                    config.showSuccess = true;
-                    return extendedRoll(rollFormula, messageData, config);
-                }
-            },
-            rejectClose: true
-        });
+        rollFormula += await getCustomModifier(`${game.i18n.localize('WITCHER.Dialog.Skill')}: ${skillLabel}`);
+
+        let config = new RollConfig();
+        config.showCrit = true;
+        config.showSuccess = true;
+        return extendedRoll(rollFormula, messageData, config);
     }
 
     async applyStatus(effects) {
