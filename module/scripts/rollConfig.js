@@ -13,8 +13,6 @@ export var RollConfig = (function () {
             this.thresholdDesc = "";
             this.messageOnSuccess = "";
             this.messageOnFailure = "";
-            this.flagsOnSuccess = "";
-            this.flagsOnFailure = "";
         }
     }
     return RollConfig;

@@ -42,8 +42,7 @@ export let damageMixin = {
                                 `;
             let messageData = {
                 content: messageContent,
-                speaker: ChatMessage.getSpeaker({ actor: this }),
-                flags: this.getNoDamageFlags()
+                speaker: ChatMessage.getSpeaker({ actor: this })
             };
             ChatMessage.applyRollMode(messageData, game.settings.get('core', 'rollMode'));
             ChatMessage.create(messageData);
@@ -254,8 +253,7 @@ export let damageMixin = {
 
         let messageData = {
             content: messageContent,
-            speaker: ChatMessage.getSpeaker({ actor: this }),
-            flags: this.getNoDamageFlags()
+            speaker: ChatMessage.getSpeaker({ actor: this })
         };
 
         let rollResult = await new Roll('1').evaluate();
@@ -270,7 +268,6 @@ export let damageMixin = {
         const chatData = {
             content: content,
             speaker: ChatMessage.getSpeaker({ actor: this }),
-            flags: this.getDamageFlags(),
             type: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 
