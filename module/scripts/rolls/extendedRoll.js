@@ -80,10 +80,6 @@ export async function extendedRoll(rollFormula, messageData, config = new RollCo
         messageData.flavor += success
             ? `<div class="dice-success"><i>${game.i18n.localize('WITCHER.Chat.Success')}${successHeader}</i></br>${config.messageOnSuccess}</div>`
             : `<div class="dice-fail"><i>${game.i18n.localize('WITCHER.Chat.Fail')}${successHeader}</i></br>${config.messageOnFailure}</div>`;
-
-        messageData.flags = {
-            TheWitcherTRPG: success ? config.flagsOnSuccess : config.flagsOnFailure
-        };
     }
 
     if (config.showResult) {

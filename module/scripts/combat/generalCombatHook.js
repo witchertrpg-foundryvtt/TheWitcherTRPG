@@ -23,7 +23,6 @@ async function applyMonsterRegeneration(actor) {
     const chatData = {
         content: content,
         speaker: ChatMessage.getSpeaker({ actor: actor }),
-        flags: actor.getDamageFlags(),
         type: CONST.CHAT_MESSAGE_STYLES.OTHER,
         whisper: [game.user.id]
     };
@@ -53,7 +52,6 @@ async function applyCombatEffect(actor, status) {
     const chatData = {
         content: content,
         speaker: ChatMessage.getSpeaker({ actor: actor }),
-        flags: actor.getDamageFlags(),
         type: CONST.CHAT_MESSAGE_STYLES.OTHER
     };
 
