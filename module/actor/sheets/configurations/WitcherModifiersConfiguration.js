@@ -1,5 +1,6 @@
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
+import { skillMixin } from '../mixins/skillMixin.js';
 import { skillModifierMixin } from '../mixins/skillModifierMixin.js';
 import { statMixin } from '../mixins/statMixin.js';
 
@@ -49,6 +50,7 @@ export default class WitcherModifiersConfiguration extends HandlebarsApplication
         //mixins
         this.skillModifierListener(html);
         this.statListener(html);
+        this.skillListener(html);
     }
 
     async _prepareContext(options) {
@@ -68,4 +70,5 @@ export default class WitcherModifiersConfiguration extends HandlebarsApplication
 }
 
 Object.assign(WitcherModifiersConfiguration.prototype, statMixin);
+Object.assign(WitcherModifiersConfiguration.prototype, skillMixin);
 Object.assign(WitcherModifiersConfiguration.prototype, skillModifierMixin);

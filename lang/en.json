@@ -1135,6 +1135,7 @@
             "profession": "Prof",
             "pickup": "Pick",
             "learn": "Learn",
+            "levelUp": "Level up",
             "skillGroups": {
                 "name": "Skill Groups",
                 "allSkills": "All Skills",
