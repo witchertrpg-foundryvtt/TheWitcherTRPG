@@ -34,5 +34,9 @@ export let skillMixin = {
         html.querySelectorAll('[data-action=rollSkill]').forEach(skill =>
             skill.addEventListener('click', event => thisActor.rollSkillCheck(skillMap[skill.dataset.skill]))
         );
+
+        html.querySelectorAll('[data-action=level-up]').forEach(skill =>
+            skill.addEventListener('click', event => thisActor.levelUpSkill(skill.dataset.skill))
+        );
     }
 };
