@@ -93,7 +93,7 @@ export let damageMixin = {
         const content = await foundry.applications.handlebars.renderTemplate(messageTemplate, templateContext);
         const chatData = {
             content: content,
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 
         ChatMessage.applyRollMode(chatData, game.settings.get('core', 'rollMode'));
@@ -268,7 +268,7 @@ export let damageMixin = {
         const chatData = {
             content: content,
             speaker: ChatMessage.getSpeaker({ actor: this }),
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 
         ChatMessage.applyRollMode(chatData, game.settings.get('core', 'rollMode'));
@@ -330,7 +330,7 @@ export let damageMixin = {
         const chatData = {
             content: `<div>${wound.name}</div><div>${wound.system.description}</div>`,
             speaker: ChatMessage.getSpeaker({ actor: this }),
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
         ChatMessage.create(chatData);
     },

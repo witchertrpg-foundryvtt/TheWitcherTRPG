@@ -23,7 +23,7 @@ async function applyMonsterRegeneration(actor) {
     const chatData = {
         content: content,
         speaker: ChatMessage.getSpeaker({ actor: actor }),
-        type: CONST.CHAT_MESSAGE_STYLES.OTHER,
+        style: CONST.CHAT_MESSAGE_STYLES.OTHER,
         whisper: [game.user.id]
     };
 
@@ -52,7 +52,7 @@ async function applyCombatEffect(actor, status) {
     const chatData = {
         content: content,
         speaker: ChatMessage.getSpeaker({ actor: actor }),
-        type: CONST.CHAT_MESSAGE_STYLES.OTHER
+        style: CONST.CHAT_MESSAGE_STYLES.OTHER
     };
 
     ChatMessage.applyRollMode(chatData, game.settings.get('core', 'rollMode'));

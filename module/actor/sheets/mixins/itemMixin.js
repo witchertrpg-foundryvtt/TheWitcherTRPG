@@ -348,7 +348,7 @@ export let itemMixin = {
                 dialogData
             ),
             speaker: ChatMessage.getSpeaker({ actor: this.actor.name }),
-            type: CONST.CHAT_MESSAGE_TYPES.IC
+            style: CONST.CHAT_MESSAGE_TYPES.IC
         });
     },
 

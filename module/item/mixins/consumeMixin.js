@@ -34,7 +34,7 @@ export let consumeMixin = {
         const chatData = {
             content: content,
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 
         ChatMessage.create(chatData);

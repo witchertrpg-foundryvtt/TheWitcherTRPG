@@ -100,7 +100,7 @@ export const currencyConverterMixin = {
 
         ChatMessage.create({
             content: chatContent,
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER,
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER,
             speaker: ChatMessage.getSpeaker({ actor: this })
         });
     }

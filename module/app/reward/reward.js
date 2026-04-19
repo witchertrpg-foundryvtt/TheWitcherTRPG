@@ -79,7 +79,7 @@ export default class Rewards {
         );
         const chatData = {
             content: content,
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 
         if (ip) {
@@ -168,7 +168,7 @@ export default class Rewards {
         );
         const chatData = {
             content: content,
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 
         if (amount) {

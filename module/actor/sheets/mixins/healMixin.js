@@ -116,7 +116,7 @@ export let healMixin = {
                 dialogData
             ),
             speaker: ChatMessage.getSpeaker({ actor: game.actors.getName(this.actor.name) }),
-            type: CONST.CHAT_MESSAGE_TYPES.IC
+            style: CONST.CHAT_MESSAGE_TYPES.IC
         });
 
         ui.notifications.info(
