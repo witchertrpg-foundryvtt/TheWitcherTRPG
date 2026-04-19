@@ -21,7 +21,7 @@ export let spellVisualMixin = {
         if (templates && this.visualEffectDuration > 0) {
             setTimeout(() => {
                 canvas.scene.deleteEmbeddedDocuments(
-                    'MeasuredTemplate',
+                    'Region',
                     templates.map(effect => effect.id)
                 );
             }, this.visualEffectDuration * 1000);
