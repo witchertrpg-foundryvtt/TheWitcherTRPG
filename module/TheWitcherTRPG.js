@@ -32,6 +32,7 @@ Hooks.once('init', function () {
     CONFIG.Item.documentClass = WitcherItem;
     CONFIG.Actor.documentClass = WitcherActor;
     CONFIG.ActiveEffect.documentClass = WitcherActiveEffect;
+    CONFIG.ActiveEffect.expiryAction = 'delete';
 
     game.api = {
         applyActiveEffectToActorViaId,

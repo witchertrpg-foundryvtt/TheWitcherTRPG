@@ -1,20 +1,6 @@
 const DialogV2 = foundry.applications.api.DialogV2;
 
 export let temporaryEffectMixin = {
-    async handleExpiredEffects() {
-        let expiredEffects = this.effects.filter(effect => effect.duration.remaining === 0);
-
-        let itemEffects = this.items
-            .map(item => item.effects.contents)
-            .flat()
-            .filter(effect => effect.system.isTransferred && effect.duration.remaining === 0);
-
-        itemEffects.forEach(effect => effect.delete());
-        expiredEffects.forEach(effect => effect.delete());
-
-    },
-
-
     async applyTemporaryItemImprovements(effects) {
         let temps = effects.filter(effect => effect.type === 'temporaryItemImprovement');
         if (!temps || temps.length == 0) return;
@@ -68,7 +54,7 @@ export let temporaryEffectMixin = {
         const chatData = {
             content: content,
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 
         ChatMessage.create(chatData);
