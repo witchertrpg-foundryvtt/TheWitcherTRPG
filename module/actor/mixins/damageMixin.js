@@ -4,24 +4,11 @@ import { applyStatusEffectToActor } from '../../scripts/statusEffects/applyStatu
 
 export let damageMixin = {
     async applyDamage(dialogData, totalDamage, damageObject, derivedStat, infoTotalDmg = totalDamage) {
-        let shield = this.system.derivedStats.shield.value;
-        if (totalDamage < shield) {
-            this.update({ 'system.derivedStats.shield.value': shield - totalDamage });
-            let messageContent = `${game.i18n.localize('WITCHER.Damage.initial')}: <span class="error-display">${infoTotalDmg}</span><br />
-                                ${game.i18n.localize('WITCHER.Damage.shield')}: <span class="error-display">${shield}</span><br />
-                                ${game.i18n.localize('WITCHER.Damage.ToMuchShield')}
-                                `;
-            let messageData = {
-                content: messageContent,
-                speaker: ChatMessage.getSpeaker({ actor: this }),
-                flags: this.getNoDamageFlags()
-            };
-            ChatMessage.applyRollMode(messageData, game.settings.get('core', 'rollMode'));
-            ChatMessage.create(messageData);
-            return;
-        } else {
-            this.update({ 'system.derivedStats.shield.value': 0 });
-            totalDamage -= shield;
+        if (!damageObject.properties.bypassesShield) {
+            totalDamage = this.handleShield(totalDamage, infoTotalDmg);
+            if (totalDamage <= 0) {
+                return;
+            }
         }
 
         if (this.system.category && damageObject.properties?.oilEffect === this.system.category) {
@@ -43,6 +30,28 @@ export let damageMixin = {
         if (damageObject.itemUuid) {
             applyActiveEffectToActorViaId(this.uuid, damageObject.itemUuid, 'applyOnDamage', damageObject.duration);
         }
+    },
+
+    handleShield(totalDamage, infoTotalDmg) {
+        let shield = this.system.derivedStats.shield.value;
+        if (totalDamage < shield) {
+            this.update({ 'system.derivedStats.shield.value': shield - totalDamage });
+            let messageContent = `${game.i18n.localize('WITCHER.Damage.initial')}: <span class="error-display">${infoTotalDmg}</span><br />
+                                ${game.i18n.localize('WITCHER.Damage.shield')}: <span class="error-display">${shield}</span><br />
+                                ${game.i18n.localize('WITCHER.Damage.ToMuchShield')}
+                                `;
+            let messageData = {
+                content: messageContent,
+                speaker: ChatMessage.getSpeaker({ actor: this })
+            };
+            ChatMessage.applyRollMode(messageData, game.settings.get('core', 'rollMode'));
+            ChatMessage.create(messageData);
+            return 0;
+        } else {
+            this.update({ 'system.derivedStats.shield.value': 0 });
+            totalDamage -= shield;
+        }
+        return totalDamage;
     },
 
     async applyDamageToLocation(dialogData, damageObject, totalDamage, infoTotalDmg, derivedStat) {
@@ -97,19 +106,23 @@ export let damageMixin = {
         damage = Math.floor(damage);
         //first subtract from temp health
         if (derivedStat == 'hp') {
-            let tempHpArray = this.system.combatEffects.temporaryEffects.temporaryHp;
+            let tempHpArray = this.temporaryEffects.filter(ae =>
+                ae.changes.find(change => change.key.includes('temporaryHp'))
+            );
             for (let tempHp of tempHpArray) {
-                if (tempHp.value < damage) {
-                    tempHp.value = 0;
-                    damage -= tempHp.value;
-                } else {
-                    tempHp.value -= damage;
-                    damage = 0;
+                for (let change of tempHp.changes) {
+                    let changeContent = JSON.parse(change.value);
+                    if (changeContent.value < damage) {
+                        damage -= changeContent.value;
+                        changeContent.value = 0;
+                    } else {
+                        changeContent.value -= damage;
+                        damage = 0;
+                    }
+                    change.value = JSON.stringify(changeContent);
                 }
+                await tempHp.update({ changes: tempHp.changes });
             }
-            await this.update({
-                'system.combatEffects.temporaryEffects.temporaryHp': tempHpArray
-            });
         }
 
         await this.update({
@@ -240,8 +253,7 @@ export let damageMixin = {
 
         let messageData = {
             content: messageContent,
-            speaker: ChatMessage.getSpeaker({ actor: this }),
-            flags: this.getNoDamageFlags()
+            speaker: ChatMessage.getSpeaker({ actor: this })
         };
 
         let rollResult = await new Roll('1').evaluate();
@@ -256,7 +268,6 @@ export let damageMixin = {
         const chatData = {
             content: content,
             speaker: ChatMessage.getSpeaker({ actor: this }),
-            flags: this.getDamageFlags(),
             type: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 

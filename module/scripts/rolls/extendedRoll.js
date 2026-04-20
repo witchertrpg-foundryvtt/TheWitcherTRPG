@@ -7,22 +7,23 @@ import { RollConfig } from '../rollConfig.js';
  * @param {Flag} flags an object/array of objects of flags to be set
  */
 export async function extendedRoll(rollFormula, messageData, config = new RollConfig(), flags = []) {
-    let roll = await new Roll(rollFormula).evaluate();
-    let rollTotal = Number(roll.total);
+    let roll = new Roll(rollFormula);
+    let evaluatedRoll = await roll.evaluate();
+    let rollTotal = Number(evaluatedRoll.total);
 
     //crit/fumble calculation
-    if (config.showCrit && (isCrit(roll) || isFumble(roll))) {
-        let extraRollDescription = isCrit(roll)
+    if (config.showCrit && (isCrit(evaluatedRoll) || isFumble(evaluatedRoll))) {
+        let extraRollDescription = isCrit(evaluatedRoll)
             ? `${game.i18n.localize('WITCHER.Crit')}`
             : `${game.i18n.localize('WITCHER.Fumble')}`;
 
         let critClass = config.reversal ? 'dice-fail' : 'dice-success';
         let fumbleClass = config.reversal ? 'dice-success' : 'dice-fail';
-        messageData.flavor += isCrit(roll)
+        messageData.flavor += isCrit(evaluatedRoll)
             ? `<div class="${critClass}"><i class="fas fa-dice-d6"></i>${game.i18n.localize('WITCHER.Crit')}</div>`
             : `<div class="${fumbleClass}"><i class="fas fa-dice-d6"></i>${game.i18n.localize('WITCHER.Fumble')}</div>`;
 
-        messageData.flavor += `<div>${rollFormula} = <b>${rollTotal}</b></div>`;
+        messageData.flavor += `<div>${roll.formula} = <b>${rollTotal}</b></div>`;
 
         //print crit/fumble roll
         let extraRollFormula = `1d10x10[${extraRollDescription}]`;
@@ -33,7 +34,7 @@ export async function extendedRoll(rollFormula, messageData, config = new RollCo
         //add/subtract extra result from the original one
         extraRollFormula = `${rollTotal}[${game.i18n.localize('WITCHER.BeforeCrit')}]`;
         let options;
-        if (isCrit(roll)) {
+        if (isCrit(evaluatedRoll)) {
             extraRollFormula += `+${extraRollTotal}[${extraRollDescription}]`;
             rollTotal += extraRollTotal;
             options = {
@@ -55,23 +56,23 @@ export async function extendedRoll(rollFormula, messageData, config = new RollCo
 
         //print add/subtract roll info
         extraRoll = await new Roll(extraRollFormula, null, options).evaluate();
-        roll = extraRoll;
+        evaluatedRoll = extraRoll;
     }
 
-    messageData.system.rollTotal = roll.total;
+    messageData.system.rollTotal = evaluatedRoll.total;
 
     //calculate overall success/failure for the attack/defense
     if (config.threshold >= 0) {
         let success;
         if (!config.reversal) {
-            success = config.defense ? roll.total >= config.threshold : roll.total > config.threshold;
-            roll.options.rollOver = roll.total - config.threshold;
+            success = config.defense ? evaluatedRoll.total >= config.threshold : evaluatedRoll.total > config.threshold;
+            evaluatedRoll.options.rollOver = evaluatedRoll.total - config.threshold;
         } else {
-            success = config.defense ? roll.total <= config.threshold : roll.total < config.threshold;
-            roll.options.rollOver = config.threshold - roll.total;
+            success = config.defense ? evaluatedRoll.total <= config.threshold : evaluatedRoll.total < config.threshold;
+            evaluatedRoll.options.rollOver = config.threshold - evaluatedRoll.total;
         }
 
-        roll.options.success = success;
+        evaluatedRoll.options.success = success;
 
         let successHeader = config.thresholdDesc
             ? `: ${game.i18n.localize(config.thresholdDesc)}`
@@ -79,14 +80,10 @@ export async function extendedRoll(rollFormula, messageData, config = new RollCo
         messageData.flavor += success
             ? `<div class="dice-success"><i>${game.i18n.localize('WITCHER.Chat.Success')}${successHeader}</i></br>${config.messageOnSuccess}</div>`
             : `<div class="dice-fail"><i>${game.i18n.localize('WITCHER.Chat.Fail')}${successHeader}</i></br>${config.messageOnFailure}</div>`;
-
-        messageData.flags = {
-            TheWitcherTRPG: success ? config.flagsOnSuccess : config.flagsOnFailure
-        };
     }
 
     if (config.showResult) {
-        let message = await roll.toMessage(messageData);
+        let message = await evaluatedRoll.toMessage(messageData);
         if (flags) {
             if (Array.isArray(flags)) {
                 flags.forEach(flag => message.setFlag('TheWitcherTRPG', flag.key, flag.value));
@@ -95,10 +92,10 @@ export async function extendedRoll(rollFormula, messageData, config = new RollCo
             }
         }
     } else {
-        roll.messageData = messageData;
+        evaluatedRoll.messageData = messageData;
     }
 
-    return roll;
+    return evaluatedRoll;
 }
 
 function isCrit(roll) {

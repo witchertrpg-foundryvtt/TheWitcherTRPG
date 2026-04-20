@@ -2,10 +2,14 @@
     {{#with (lookup system.skills skillKey) as |skillGroup|}}
         {{#each skillGroup as |skill skillName|}}
             <details>
-                <summary>
-                    <span>{{localize skill.label}}</span>
-                    <input class='header-stat stat-max' name='system.skills.{{@root.skillKey}}.{{skillName}}.value'
-                        type='number' value='{{skill.value}}' placeholder='0' data-dtype='Number' />
+                <summary style="display: flex; gap: 10px;">
+                    <span>{{localize skill.label}} <input class='header-stat stat-max'
+                            name='system.skills.{{@root.skillKey}}.{{skillName}}.value' type='number'
+                            value='{{skill.value}}' placeholder='0' data-dtype='Number' /></span>
+                    <button data-action="level-up"
+                        data-skill="{{skillName}}">{{localize "WITCHER.skills.levelUp"}}</button>
+                </summary>
+                <div>
 
                     <label>{{localize "WITCHER.skills.profession"}}:
                         <input class="skill-checkbox" type="checkbox"
@@ -21,7 +25,7 @@
                             name="system.skills.{{@root.skillKey}}.{{skillName}}.isLearned"
                             {{checked skill.isLearned}} />
                     </label>
-                </summary>
+                </div>
                 <div class='skill-modifiers'>
                     {{#if skill.modifiers}}
                         {{#each skill.modifiers as |modifier value|}}
@@ -53,6 +57,7 @@
                         </tr>
                     {{/if}}
                 </div>
+
             </details>
         {{/each}}
     {{/with}}

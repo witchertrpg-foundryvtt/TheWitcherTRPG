@@ -1,6 +1,7 @@
 import { extendedRoll } from '../../../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../../../scripts/rollConfig.js';
 import ChatMessageData from '../../../chatMessage/chatMessageData.js';
+import { getCustomModifier } from '../../../scripts/helper.js';
 
 export let statMixin = {
     _onStatModifierDisplay(event) {
@@ -83,13 +84,21 @@ export let statMixin = {
         </div>
         <hr />`;
 
+        let parts = ['1d10'];
+
+        parts.push(
+            await getCustomModifier(
+                `${game.i18n.localize('WITCHER.Dialog.savingThrow')}: ${game.i18n.localize(statName)}`
+            )
+        );
+
         let config = new RollConfig();
         config.showCrit = true;
         config.showSuccess = true;
         config.reversal = true;
         config.threshold = statValue;
         config.thresholdDesc = statName;
-        await extendedRoll(`1d10`, messageData, config);
+        await extendedRoll(parts.filter(part => part).join('+'), messageData, config);
     },
 
     async _onReputation(event) {

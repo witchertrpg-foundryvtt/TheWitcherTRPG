@@ -3,6 +3,5 @@ export async function removeExpiredEffects(combat) {
 
     combat.combatants.forEach(async combatant => {
         await combatant.actor.handleExpiredEffects();
-        await combatant.actor.tickdownEffects();
     });
 }

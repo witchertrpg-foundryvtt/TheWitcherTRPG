@@ -34,18 +34,66 @@ export default class ArmorData extends CommonItemData {
             slashing: new fields.BooleanField({ initial: false }),
             piercing: new fields.BooleanField({ initial: false }),
 
-            headStopping: new fields.NumberField({ initial: 0 }),
-            headMaxStopping: new fields.NumberField({ initial: 0 }),
-            torsoStopping: new fields.NumberField({ initial: 0 }),
-            torsoMaxStopping: new fields.NumberField({ initial: 0 }),
-            leftArmStopping: new fields.NumberField({ initial: 0 }),
-            leftArmMaxStopping: new fields.NumberField({ initial: 0 }),
-            rightArmStopping: new fields.NumberField({ initial: 0 }),
-            rightArmMaxStopping: new fields.NumberField({ initial: 0 }),
-            leftLegStopping: new fields.NumberField({ initial: 0 }),
-            leftLegMaxStopping: new fields.NumberField({ initial: 0 }),
-            rightLegStopping: new fields.NumberField({ initial: 0 }),
-            rightLegMaxStopping: new fields.NumberField({ initial: 0 }),
+            headStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.StoppingPower',
+                hint: 'WITCHER.Armor.LocationHead'
+            }),
+            headMaxStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.MaxStoppingPower',
+                hint: 'WITCHER.Armor.LocationHead'
+            }),
+            torsoStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.StoppingPower',
+                hint: 'WITCHER.Armor.LocationTorso'
+            }),
+            torsoMaxStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.MaxStoppingPower',
+                hint: 'WITCHER.Armor.LocationTorso'
+            }),
+            leftArmStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.StoppingPower',
+                hint: 'WITCHER.Armor.locationLeftArm'
+            }),
+            leftArmMaxStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.MaxStoppingPower',
+                hint: 'WITCHER.Armor.locationLeftArm'
+            }),
+            rightArmStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.StoppingPower',
+                hint: 'WITCHER.Armor.locationRightArm'
+            }),
+            rightArmMaxStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.MaxStoppingPower',
+                hint: 'WITCHER.Armor.locationRightArm'
+            }),
+            leftLegStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.StoppingPower',
+                hint: 'WITCHER.Armor.locationLeftLeg'
+            }),
+            leftLegMaxStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.MaxStoppingPower',
+                hint: 'WITCHER.Armor.locationLeftLeg'
+            }),
+            rightLegStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.StoppingPower',
+                hint: 'WITCHER.Armor.locationRightLeg'
+            }),
+            rightLegMaxStopping: new fields.NumberField({
+                initial: 0,
+                label: 'WITCHER.Armor.MaxStoppingPower',
+                hint: 'WITCHER.Armor.locationRightLeg'
+            }),
 
             enhancements: new fields.NumberField({ initial: 0 }),
             enhancementItemIds: new fields.ArrayField(new fields.StringField({ initial: '' })),

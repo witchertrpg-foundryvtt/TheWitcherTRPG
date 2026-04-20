@@ -1,9 +1,9 @@
-import WitcherPropertiesConfigurationSheet from './configurations/WitcherPropertiesConfigurationSheet.js';
+import WitcherArmorConfigurationSheet from './configurations/WitcherArmorConfigurationSheet.js';
 import WitcherItemSheet from './WitcherItemSheet.js';
 import { associatedDiagramMixin } from './mixins/associatedDiagramMixin.js';
 
 export default class WitcherArmorSheet extends WitcherItemSheet {
-    configuration = new WitcherPropertiesConfigurationSheet({ document: this.item });
+    configuration = new WitcherArmorConfigurationSheet({ document: this.item });
 
     static PARTS = {
         main: {

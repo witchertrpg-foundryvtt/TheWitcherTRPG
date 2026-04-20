@@ -58,6 +58,7 @@ async function statSkillModifiers() {
 
 async function oldCriticalWounds() {
     let affectedActors = game.actors
+        .filter(actor => actor.isOwner)
         .filter(actor => actor.system.critWounds?.length > 0)
         .map(actor => {
             return { actor: actor.name, critWounds: actor.system.critWounds };

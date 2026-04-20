@@ -1,7 +1,7 @@
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
-import { getActorOwner } from '../../scripts/helper.js';
+import { getActorOwner, getCustomModifier } from '../../scripts/helper.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -293,12 +293,29 @@ export let professionMixin = {
                     '' +
                     Math.min(roll.options.rollOver, temporaryHealth.difficultyCheck.maxRollOver) +
                     temporaryHealth.temporaryHp.value;
-                queryData.temporaryHp = {
-                    value,
-                    duration
-                };
+                if (value.includes('d')) {
+                    value = (await new Roll(value).evaluate()).total;
+                }
 
-                getActorOwner(target).query('TheWitcherTRPG.addTemporaryHpToActor', queryData);
+                let newEffect = new ActiveEffect({
+                    name: skill.skillName,
+                    icon: this.getList('profession')[0].img,
+                    description: skill.definition,
+                    origin: this.uuid,
+                    changes: [
+                        {
+                            key: `system.combatEffects.temporaryEffects.temporaryHp.${skill.skillName}`,
+                            mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                            value: `{"name": "${skill.skillName}", "value": ${value}}`
+                        }
+                    ],
+                    duration: { rounds: duration }
+                });
+
+                getActorOwner(target).query('TheWitcherTRPG.query', {
+                    function: 'applyActiveEffectToActor',
+                    data: [target.uuid, [newEffect]]
+                });
             }
         }
     },
@@ -347,26 +364,9 @@ export let professionMixin = {
             ? `1d10+${statValue}+${level}`
             : `1d10+${statValue}[${game.i18n.localize(statName)}]+${level}[${skill.skillName}]`;
 
-        let customMod = await DialogV2.prompt({
-            window: { title: `${game.i18n.localize('WITCHER.Dialog.profession.skill')}: ${skill.skillName}` },
-            content: `<label>${game.i18n.localize('WITCHER.Dialog.attackCustom')}: <input name="customModifiers" value=0></label>`,
-            modal: true,
-            ok: {
-                callback: (event, button, dialog) => button.form.elements.customModifiers.value
-            },
-            rejectClose: true
-        });
-
-        if (customMod < 0) {
-            rollFormula += !displayRollDetails
-                ? `${customMod}`
-                : `${customMod}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-        }
-        if (customMod > 0) {
-            rollFormula += !displayRollDetails
-                ? `+${customMod}`
-                : `+${customMod}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-        }
+        rollFormula += await getCustomModifier(
+            `${game.i18n.localize('WITCHER.Dialog.profession.skill')}: ${skill.skillName}`
+        );
 
         let messageData = new ChatMessageData(this.actor, `<h2>${skill.skillName}</h2>${definition}`);
 
