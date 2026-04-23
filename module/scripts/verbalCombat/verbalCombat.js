@@ -15,9 +15,9 @@ export function addVerbalCombatChatListeners(html) {
 export function addVerbalCombatMessageContextOptions(html, options) {
     let canApplyVcDamage = li => li.querySelector('.verbalcombat-damage-message')?.length;
     options.push({
-        name: `${game.i18n.localize('WITCHER.Context.applyDmg')}`,
+        label: `${game.i18n.localize('WITCHER.Context.applyDmg')}`,
         icon: '<i class="fas fa-user-minus"></i>',
-        condition: canApplyVcDamage,
+        visible: canApplyVcDamage,
         callback: async li => {
             applyVerbalCombatDamage(
                 await getInteractActor(),

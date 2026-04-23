@@ -6,9 +6,9 @@ export function addDamageMessageContextOptions(html, options) {
     let canApplyDamage = li => li.querySelector('.damage-message');
     options.push(
         {
-            name: `${game.i18n.localize('WITCHER.Context.applyDmg')}`,
+            label: `${game.i18n.localize('WITCHER.Context.applyDmg')}`,
             icon: '<i class="fas fa-user-minus"></i>',
-            condition: canApplyDamage,
+            visible: canApplyDamage,
             callback: async li => {
                 ApplyNormalDamage(
                     await getInteractActor(),
@@ -18,9 +18,9 @@ export function addDamageMessageContextOptions(html, options) {
             }
         },
         {
-            name: `${game.i18n.localize('WITCHER.Context.applyNonLethal')}`,
+            label: `${game.i18n.localize('WITCHER.Context.applyNonLethal')}`,
             icon: '<i class="fas fa-user-minus"></i>',
-            condition: canApplyDamage,
+            visible: canApplyDamage,
             callback: async li => {
                 ApplyNonLethalDamage(
                     await getInteractActor(),

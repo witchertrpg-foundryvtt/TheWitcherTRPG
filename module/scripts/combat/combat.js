@@ -40,9 +40,9 @@ export const defenseChatMessageListeners = async (message, html) => {
 export function addDefenseOptionsContextMenu(html, options) {
     let canDefend = li => game.messages.get(li.dataset.messageId).system.defenseOptions;
     options.push({
-        name: `${game.i18n.localize('WITCHER.Context.Defense')}`,
+        label: `${game.i18n.localize('WITCHER.Context.Defense')}`,
         icon: '<i class="fas fa-shield-alt"></i>',
-        condition: canDefend,
+        visible: canDefend,
         callback: async li => {
             executeDefense(await getInteractActor(), li.dataset.messageId);
         }
@@ -68,25 +68,25 @@ export function addCritMessageContextOptions(html, options) {
     let wasCritted = li => li.querySelector('.crit-taken');
     options.push(
         {
-            name: `${game.i18n.localize('WITCHER.Context.applyCritDmg')}`,
+            label: `${game.i18n.localize('WITCHER.Context.applyCritDmg')}`,
             icon: '<i class="fas fa-user-minus"></i>',
-            condition: wasCritted,
+            visible: wasCritted,
             callback: async li => {
                 (await getInteractActor()).applyCritDamage(game.messages.get(li.dataset.messageId).system.crit);
             }
         },
         {
-            name: `${game.i18n.localize('WITCHER.Context.applyBonusCritDmg')}`,
+            label: `${game.i18n.localize('WITCHER.Context.applyBonusCritDmg')}`,
             icon: '<i class="fas fa-user-minus"></i>',
-            condition: wasCritted,
+            visible: wasCritted,
             callback: async li => {
                 (await getInteractActor()).applyBonusCritDamage(game.messages.get(li.dataset.messageId).system.crit);
             }
         },
         {
-            name: `${game.i18n.localize('WITCHER.Context.applyCritWound')}`,
+            label: `${game.i18n.localize('WITCHER.Context.applyCritWound')}`,
             icon: '<i class="fas fa-user-minus"></i>',
-            condition: wasCritted,
+            visible: wasCritted,
             callback: async li => {
                 (await getInteractActor()).applyCritWound(game.messages.get(li.dataset.messageId).system.crit);
             }

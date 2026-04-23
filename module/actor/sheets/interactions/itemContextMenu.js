@@ -21,7 +21,7 @@ export let itemContextMenu = {
 
     editItem() {
         return {
-            name: 'WITCHER.Item.ContextMenu.edit',
+            label: 'WITCHER.Item.ContextMenu.edit',
             icon: '<i class="fas fa-edit"></i>',
             callback: event => {
                 const item = this.actor.items.get(event.dataset.itemId);
@@ -32,10 +32,10 @@ export let itemContextMenu = {
 
     consumableItem() {
         return {
-            name: 'WITCHER.Item.ContextMenu.Consume',
+            label: 'WITCHER.Item.ContextMenu.Consume',
             icon: '<i class="fa-solid fa-cookie-bite"></i>',
             callback: this.consumeItem.bind(this),
-            condition: this.isItemConsumable.bind(this)
+            visible: this.isItemConsumable.bind(this)
         };
     },
 
@@ -58,10 +58,10 @@ export let itemContextMenu = {
 
     removableEnhancement() {
         return {
-            name: 'WITCHER.Item.ContextMenu.RemoveEnhancement',
+            label: 'WITCHER.Item.ContextMenu.RemoveEnhancement',
             icon: '<i class="fa-solid fa-square-minus"></i>',
             callback: this.removeEnhancement.bind(this),
-            condition: this.isEnhancementRemovable.bind(this)
+            visible: this.isEnhancementRemovable.bind(this)
         };
     },
 
@@ -114,10 +114,10 @@ export let itemContextMenu = {
 
     giftableItem() {
         return {
-            name: 'WITCHER.Item.ContextMenu.Gift',
+            label: 'WITCHER.Item.ContextMenu.Gift',
             icon: '<i class="fa-solid fa-gift"></i>',
             callback: this.giftItem.bind(this),
-            condition: this.isItemGiftable.bind(this)
+            visible: this.isItemGiftable.bind(this)
         };
     },
 
@@ -176,10 +176,10 @@ export let itemContextMenu = {
 
     dismantableItem() {
         return {
-            name: 'WITCHER.Item.ContextMenu.dismantle',
+            label: 'WITCHER.Item.ContextMenu.dismantle',
             icon: '<i class="fa-solid fa-recycle"></i>',
             callback: this.dismantleItem.bind(this),
-            condition: this.isItemDismantable.bind(this)
+            visible: this.isItemDismantable.bind(this)
         };
     },
 
@@ -198,7 +198,7 @@ export let itemContextMenu = {
 
     deleteItem() {
         return {
-            name: 'WITCHER.Item.ContextMenu.delete',
+            label: 'WITCHER.Item.ContextMenu.delete',
             icon: '<i class="fa-solid fa-trash"></i>',
             callback: event => {
                 const item = this.actor.items.get(event.dataset.itemId);
