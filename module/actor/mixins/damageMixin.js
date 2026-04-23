@@ -44,7 +44,7 @@ export let damageMixin = {
                 content: messageContent,
                 speaker: ChatMessage.getSpeaker({ actor: this })
             };
-            ChatMessage.applyRollMode(messageData, game.settings.get('core', 'rollMode'));
+            ChatMessage.applyMode(messageData, game.settings.get('core', 'messageMode'));
             ChatMessage.create(messageData);
             return 0;
         } else {
@@ -96,7 +96,7 @@ export let damageMixin = {
             style: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 
-        ChatMessage.applyRollMode(chatData, game.settings.get('core', 'rollMode'));
+        ChatMessage.applyMode(chatData, game.settings.get('core', 'messageMode'));
         let message = await ChatMessage.create(chatData);
 
         await this.updateDerivedStat(totalAppliedDamage, derivedStat);
@@ -257,7 +257,7 @@ export let damageMixin = {
         };
 
         let rollResult = await new Roll('1').evaluate();
-        ChatMessage.applyRollMode(messageData, game.settings.get('core', 'rollMode'));
+        ChatMessage.applyMode(messageData, game.settings.get('core', 'messageMode'));
         rollResult.toMessage(messageData);
     },
 
@@ -271,7 +271,7 @@ export let damageMixin = {
             style: CONST.CHAT_MESSAGE_STYLES.OTHER
         };
 
-        ChatMessage.applyRollMode(chatData, game.settings.get('core', 'rollMode'));
+        ChatMessage.applyMode(chatData, game.settings.get('core', 'messageMode'));
         ChatMessage.create(chatData);
     },
 
