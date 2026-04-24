@@ -1,7 +1,7 @@
 import { extendedRoll } from '../../scripts/rolls/extendedRoll.js';
 import { RollConfig } from '../../scripts/rollConfig.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
-import { getActorOwner } from '../../scripts/helper.js';
+import { getActorOwner, getCustomModifier } from '../../scripts/helper.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -35,6 +35,8 @@ export let professionMixin = {
             this.doProfessionAttackRoll(skill);
         } else if (skill.skillUsage.hasCustomEffect) {
             this.doProfessionSkillUsage(skill);
+        } else if (skill.thresholds.hasThresholds) {
+            this.doProfessionThreshold(skill);
         } else {
             this.doProfessionSkillRoll(skill);
         }
@@ -257,49 +259,6 @@ export let professionMixin = {
         });
     },
 
-    async doProfessionSkillRoll(skill, { threshold, showResult } = { threshold: 0, showResult: true }) {
-        let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
-        let stat = skill.stat;
-        let level = skill.level || 0;
-
-        let definition = skill.definition;
-        let statValue = this.system.stats[stat].value;
-        let statName = CONFIG.WITCHER.statMap[stat].label;
-
-        let rollFormula = !displayRollDetails
-            ? `1d10+${statValue}+${level}`
-            : `1d10+${statValue}[${game.i18n.localize(statName)}]+${level}[${skill.skillName}]`;
-
-        let customMod = await DialogV2.prompt({
-            window: { title: `${game.i18n.localize('WITCHER.Dialog.profession.skill')}: ${skill.skillName}` },
-            content: `<label>${game.i18n.localize('WITCHER.Dialog.attackCustom')}: <input name="customModifiers" value=0></label>`,
-            modal: true,
-            ok: {
-                callback: (event, button, dialog) => button.form.elements.customModifiers.value
-            },
-            rejectClose: true
-        });
-
-        if (customMod < 0) {
-            rollFormula += !displayRollDetails
-                ? `${customMod}`
-                : `${customMod}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-        }
-        if (customMod > 0) {
-            rollFormula += !displayRollDetails
-                ? `+${customMod}`
-                : `+${customMod}[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-        }
-
-        let messageData = new ChatMessageData(this.actor, `<h2>${skill.skillName}</h2>${definition}`);
-
-        let config = new RollConfig();
-        config.showCrit = true;
-        config.threshold = threshold;
-        config.showResult = showResult;
-        return extendedRoll(rollFormula, messageData, config);
-    },
-
     async doProfessionSkillUsage(skill) {
         let target;
         if (skill.skillUsage.applyOnTarget) {
@@ -334,14 +293,89 @@ export let professionMixin = {
                     '' +
                     Math.min(roll.options.rollOver, temporaryHealth.difficultyCheck.maxRollOver) +
                     temporaryHealth.temporaryHp.value;
-                queryData.temporaryHp = {
-                    value,
-                    duration
-                };
+                if (value.includes('d')) {
+                    value = (await new Roll(value).evaluate()).total;
+                }
 
-                getActorOwner(target).query('TheWitcherTRPG.addTemporaryHpToActor', queryData);
+                let newEffect = new ActiveEffect({
+                    name: skill.skillName,
+                    icon: this.getList('profession')[0].img,
+                    description: skill.definition,
+                    origin: this.uuid,
+                    changes: [
+                        {
+                            key: `system.combatEffects.temporaryEffects.temporaryHp.${skill.skillName}`,
+                            mode: foundry.CONST.ACTIVE_EFFECT_MODES.ADD,
+                            value: `{"name": "${skill.skillName}", "value": ${value}}`
+                        }
+                    ],
+                    duration: { rounds: duration }
+                });
+
+                getActorOwner(target).query('TheWitcherTRPG.query', {
+                    function: 'applyActiveEffectToActor',
+                    data: [target.uuid, [newEffect]]
+                });
             }
         }
+    },
+
+    async doProfessionThreshold(skill) {
+        let thresholds = Object.entries(skill.thresholds.thresholds);
+
+        let choosenThreshold;
+        if (thresholds.length == 1) {
+            choosenThreshold = thresholds[0][0];
+        } else {
+            let content = '<select id="threshold">';
+            thresholds.forEach(([id, threshold]) => (content += `<option value="${id}" > ${threshold.name}</option>`));
+            content += '</select>';
+            choosenThreshold = await DialogV2.prompt({
+                content: content,
+                modal: true,
+                ok: {
+                    callback: (event, button, dialog) => {
+                        return button.form.elements.threshold.value;
+                    }
+                },
+                rejectClose: true
+            });
+        }
+
+        this.doProfessionSkillRoll(skill, {
+            threshold: skill.thresholds.thresholds[choosenThreshold].value,
+            thresholdDesc: skill.thresholds.thresholds[choosenThreshold].name
+        });
+    },
+
+    async doProfessionSkillRoll(
+        skill,
+        { threshold, thresholdDesc, showResult = true } = { threshold: 0, showResult: true }
+    ) {
+        let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
+        let stat = skill.stat;
+        let level = skill.level || 0;
+
+        let definition = skill.definition;
+        let statValue = this.system.stats[stat].value;
+        let statName = CONFIG.WITCHER.statMap[stat].label;
+
+        let rollFormula = !displayRollDetails
+            ? `1d10+${statValue}+${level}`
+            : `1d10+${statValue}[${game.i18n.localize(statName)}]+${level}[${skill.skillName}]`;
+
+        rollFormula += await getCustomModifier(
+            `${game.i18n.localize('WITCHER.Dialog.profession.skill')}: ${skill.skillName}`
+        );
+
+        let messageData = new ChatMessageData(this.actor, `<h2>${skill.skillName}</h2>${definition}`);
+
+        let config = new RollConfig();
+        config.showCrit = true;
+        config.threshold = threshold;
+        config.thresholdDesc = thresholdDesc;
+        config.showResult = showResult;
+        return extendedRoll(rollFormula, messageData, config);
     },
 
     findSkillWithName(skillName) {

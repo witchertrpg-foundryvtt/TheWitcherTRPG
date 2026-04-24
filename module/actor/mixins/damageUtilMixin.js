@@ -1,23 +1,4 @@
 export let damageUtilMixin = {
-    getDamageFlags() {
-        return {
-            origin: {
-                name: this.name,
-                uuid: this.uuid
-            },
-            damage: true
-        };
-    },
-
-    getNoDamageFlags() {
-        return {
-            origin: {
-                name: this.name,
-                uuid: this.uuid
-            },
-            damage: false
-        };
-    },
 
     getFlatDamageMod(damage) {
         return this.system.damageTypeModification[damage.type]?.flat ?? 0;

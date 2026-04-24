@@ -99,6 +99,30 @@
                 </h3>
             </div>
         </div>
+        <div class='optional-stat wound-threshold-toggle'>
+            <div class='optional-name'>
+                <i class='fa-solid fa-heart-pulse'></i>
+                <span class=''>{{localize 'WITCHER.Actor.woundThreshold.ignore'}}</span>
+            </div>
+            <div class='optional-info'>
+                <label class='switch' data-tooltip="{{localize 'WITCHER.Actor.woundThreshold.ignoreHint'}}">
+                    <input type='checkbox' name='system.healthState.woundThreshold.ignored' {{checked system.healthState.woundThreshold.ignored}} />
+                    <span class='slider'></span>
+                </label>
+            </div>
+        </div>
+        <div class='optional-stat death-state-toggle'>
+            <div class='optional-name'>
+                <i class='fa-solid fa-skull'></i>
+                <span class=''>{{localize 'WITCHER.Actor.deathState.ignore'}}</span>
+            </div>
+            <div class='optional-info'>
+                <label class='switch' data-tooltip="{{localize 'WITCHER.Actor.deathState.ignoreHint'}}">
+                    <input type='checkbox' name='system.healthState.deathState.ignored' {{checked system.healthState.deathState.ignored}} />
+                    <span class='slider'></span>
+                </label>
+            </div>
+        </div>
         <div class='optional-stat luck-display'>
             <div class='optional-name'>
                 <i class='fa-solid fa-clover'></i>

@@ -164,19 +164,19 @@ export let castSpellMixin = {
 
         switch (spellItem.system.source) {
             case 'mixedElements':
-                templateInfo.spellSource = 'WITCHER.Spell.Mixed';
+                templateInfo.spellSource = 'WITCHER.Spell.mixedElements';
                 break;
             case 'earth':
-                templateInfo.spellSource = 'WITCHER.Spell.Earth';
+                templateInfo.spellSource = 'WITCHER.Spell.earth';
                 break;
             case 'air':
-                templateInfo.spellSource = 'WITCHER.Spell.Air';
+                templateInfo.spellSource = 'WITCHER.Spell.air';
                 break;
             case 'fire':
-                templateInfo.spellSource = 'WITCHER.Spell.Fire';
+                templateInfo.spellSource = 'WITCHER.Spell.fire';
                 break;
             case 'Water':
-                templateInfo.spellSource = 'WITCHER.Spell.Water';
+                templateInfo.spellSource = 'WITCHER.Spell.water';
                 break;
         }
 
@@ -266,7 +266,7 @@ export let castSpellMixin = {
         spellItem.system.createSpellVisuals?.(roll, damage, { stamina: origStaCost });
 
         if (!roll.options.fumble) {
-            Object.entries(spellItem.system.selfEffects)?.forEach(effect =>
+            Object.values(spellItem.system.selfEffects)?.forEach(effect =>
                 applyStatusEffectToActor(this.uuid, effect.statusEffect, damage.duration)
             );
             applyActiveEffectToActor(

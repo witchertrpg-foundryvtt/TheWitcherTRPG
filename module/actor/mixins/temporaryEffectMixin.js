@@ -12,21 +12,8 @@ export let temporaryEffectMixin = {
         itemEffects.forEach(effect => effect.delete());
         expiredEffects.forEach(effect => effect.delete());
 
-        let tempHp = this.system.combatEffects.temporaryEffects.temporaryHp.filter(
-            temp => temp.duration > 0 && temp.value > 0
-        );
-        await this.update({
-            'system.combatEffects.temporaryEffects.temporaryHp': tempHp
-        });
     },
 
-    async tickdownEffects() {
-        let tempHp = this.system.combatEffects.temporaryEffects.temporaryHp;
-        tempHp.forEach(temp => (temp.duration = temp.duration - 1));
-        await this.update({
-            'system.combatEffects.temporaryEffects.temporaryHp': tempHp
-        });
-    },
 
     async applyTemporaryItemImprovements(effects) {
         let temps = effects.filter(effect => effect.type === 'temporaryItemImprovement');

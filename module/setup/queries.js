@@ -6,11 +6,6 @@ import { applyStatusEffectToActor } from '../scripts/statusEffects/applyStatusEf
 
 const system = 'TheWitcherTRPG';
 
-async function addTemporaryHpToActor(queryData, { timeout }) {
-    let actor = fromUuidSync(queryData.actorUuid);
-    actor.addTemporaryHealth(queryData.temporaryHp.value, queryData.temporaryHp.duration, queryData.itemUuid, false);
-    return true;
-}
 
 async function applyTemporaryItemImprovementsToActor(queryData, { timeout }) {
     let actor = fromUuidSync(queryData.actorUuid);
@@ -34,8 +29,8 @@ async function query(queryData, { timeout }) {
     let callableEntityFunctions = [
         //Actor
         'addItem',
-        'addTemporaryHpToActor',
         'applyTemporaryItemImprovements',
+        'addAdrenaline',
         //Item
         'restoreReliability',
         //Region
@@ -47,9 +42,9 @@ async function query(queryData, { timeout }) {
         return true;
     }
 
-    if (queryData.function in callableEntityFunctions) {
-        let actor = fromUuidSync(queryData.uuid);
-        actor[queryData.function](...queryData.data);
+    if (callableEntityFunctions.includes(queryData.function)) {
+        let entity = fromUuidSync(queryData.uuid);
+        entity[queryData.function](...queryData.data);
         return true;
     }
 
@@ -57,7 +52,6 @@ async function query(queryData, { timeout }) {
 }
 
 export function registerQueries() {
-    CONFIG.queries[`${system}.addTemporaryHpToActor`] = addTemporaryHpToActor;
     CONFIG.queries[`${system}.applyTemporaryItemImprovements`] = applyTemporaryItemImprovementsToActor;
     CONFIG.queries[`${system}.createRegionFromTemplates`] = createRegionFromTemplates;
     CONFIG.queries[`${system}.query`] = query;

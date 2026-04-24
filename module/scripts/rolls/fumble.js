@@ -1,6 +1,5 @@
 import AttackMessageData from '../../data/chatMessage/attackMessageData.js';
 import DefenseMessageData from '../../data/chatMessage/defenseMessageData.js';
-import { getInteractActor } from '../helper.js';
 
 export function addFumbleContextOptions(html, options) {
     let isFumble = li => game.messages.get(li.dataset.messageId).rolls[0]?.options.fumble;

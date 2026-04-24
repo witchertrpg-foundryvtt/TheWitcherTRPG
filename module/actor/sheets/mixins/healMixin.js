@@ -14,7 +14,6 @@ export let healMixin = {
             isSterilized: false,
             isHealingHand: false,
             isHealingTent: false,
-            resetTempHealth: true,
             daysHealed: 1,
             actualWoundList: actualWoundList.length
         };
@@ -108,9 +107,6 @@ export let healMixin = {
 
         await this.actor.update({ 'system.critWounds': newCritList });
 
-        if (dialogData.resetTempHealth) {
-            this.actor.update({ 'system.combatEffects.temporaryEffects.temporaryHp': [] });
-        }
 
         this.actor.items.documentsByType.criticalWound.forEach(crit => crit.system.heal({ sterilized: isSterilized }));
 

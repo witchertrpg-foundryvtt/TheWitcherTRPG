@@ -26,6 +26,7 @@ export default function combatEffects() {
                     allLocations: new fields.BooleanField({ initial: false }),
                     type: new fields.StringField(),
                     ignoreArmor: new fields.BooleanField({ initial: false }),
+                    bypassesShield: new fields.BooleanField({ initial: false }),
                     nonLethal: new fields.BooleanField({ initial: false }),
                     spDamage: new fields.NumberField({ initial: 0 })
                 }),
@@ -35,6 +36,6 @@ export default function combatEffects() {
                 })
             })
         ),
-        temporaryEffects: new fields.EmbeddedDataField(TemporaryEffects),
+        temporaryEffects: new fields.EmbeddedDataField(TemporaryEffects)
     };
 }
