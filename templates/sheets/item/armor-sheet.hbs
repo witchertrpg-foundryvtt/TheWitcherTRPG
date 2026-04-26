@@ -193,6 +193,23 @@
                     </td>
                 </tr>
             {{/each}}
+            {{#each item.system.enhancementsEffects as |effect id|}}
+                <tr class="list-item">
+                    <th>
+
+                    </th>
+                    <td>
+                        <input class="item-effect"
+                            placeholder="{{localize "WITCHER.Item.Effect"}} {{localize "WITCHER.table.Name"}}"
+                            data-field="name" type="text" value="{{effect.name}}" disabled />
+                    </td>
+                    <td>
+                        <select class="item-effect" disabled>
+                            {{selectOptions ../config.armorEffects blank='' selected=effect.statusEffect nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+                        </select>
+                    </td>
+                </tr>
+            {{/each}}
         </table>
     </div>
     {{>"systems/TheWitcherTRPG/templates/partials/associated-diagram.hbs"}}

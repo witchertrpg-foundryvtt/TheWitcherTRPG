@@ -225,41 +225,6 @@ export let itemMixin = {
                             await item.update({ 'system.enhancementItemIds': newEnhancementList });
 
                             let choosenEnhancement = this.actor.items.get(enhancementId);
-                            if (
-                                choosenEnhancement.system.type == 'armor' ||
-                                choosenEnhancement.system.type == 'glyph'
-                            ) {
-                                await item.update({
-                                    'system.headStopping':
-                                        item.system.headStopping + choosenEnhancement.system.stopping,
-                                    'system.headMaxStopping':
-                                        item.system.headMaxStopping + choosenEnhancement.system.stopping,
-                                    'system.torsoStopping':
-                                        item.system.torsoStopping + choosenEnhancement.system.stopping,
-                                    'system.torsoMaxStopping':
-                                        item.system.torsoMaxStopping + choosenEnhancement.system.stopping,
-                                    'system.leftArmStopping':
-                                        item.system.leftArmStopping + choosenEnhancement.system.stopping,
-                                    'system.leftArmMaxStopping':
-                                        item.system.leftArmMaxStopping + choosenEnhancement.system.stopping,
-                                    'system.rightArmStopping':
-                                        item.system.rightArmStopping + choosenEnhancement.system.stopping,
-                                    'system.rightArmMaxStopping':
-                                        item.system.rightArmMaxStopping + choosenEnhancement.system.stopping,
-                                    'system.leftLegStopping':
-                                        item.system.leftLegStopping + choosenEnhancement.system.stopping,
-                                    'system.leftLegMaxStopping':
-                                        item.system.leftLegMaxStopping + choosenEnhancement.system.stopping,
-                                    'system.rightLegStopping':
-                                        item.system.rightLegStopping + choosenEnhancement.system.stopping,
-                                    'system.rightLegMaxStopping':
-                                        item.system.rightLegMaxStopping + choosenEnhancement.system.stopping,
-                                    'system.bludgeoning': choosenEnhancement.system.bludgeoning,
-                                    'system.slashing': choosenEnhancement.system.slashing,
-                                    'system.piercing': choosenEnhancement.system.piercing,
-                                    'system.effects': item.system.addEffects(choosenEnhancement.system.effects)
-                                });
-                            }
 
                             let newName = choosenEnhancement.name + '(Applied)';
                             let newQuantity = choosenEnhancement.system.quantity;
