@@ -1,6 +1,9 @@
 import CommonItemData from './commonItemData.js';
 import itemEffect from './templates/itemEffectData.js';
 import { associatedDiagramUuid, unwrapAssociatedDiagram } from './templates/associatedDiagramData.js';
+import SpData from './templates/armor/spData.js';
+import ResistanceData from './templates/armor/resistanceData.js';
+
 import DefenseProperties from './templates/combat/defensePropertiesData.js';
 
 const fields = foundry.data.fields;
@@ -30,9 +33,18 @@ export default class ArmorData extends CommonItemData {
             encumb: new fields.NumberField({ initial: 0 }),
             location: new fields.StringField({ initial: '' }),
 
+            resistance: new fields.EmbeddedDataField(ResistanceData),
+
             bludgeoning: new fields.BooleanField({ initial: false }),
             slashing: new fields.BooleanField({ initial: false }),
             piercing: new fields.BooleanField({ initial: false }),
+
+            head: new fields.EmbeddedDataField(SpData),
+            torso: new fields.EmbeddedDataField(SpData),
+            leftArm: new fields.EmbeddedDataField(SpData),
+            rightArm: new fields.EmbeddedDataField(SpData),
+            leftLeg: new fields.EmbeddedDataField(SpData),
+            rightLeg: new fields.EmbeddedDataField(SpData),
 
             headStopping: new fields.NumberField({
                 initial: 0,
@@ -105,6 +117,17 @@ export default class ArmorData extends CommonItemData {
         };
     }
 
+    prepareBaseData() {
+        super.prepareBaseData();
+        this.resistance.prepareBaseData();
+        this.head.prepareBaseData();
+        this.torso.prepareBaseData();
+        this.leftArm.prepareBaseData();
+        this.rightArm.prepareBaseData();
+        this.leftLeg.prepareBaseData();
+        this.rightLeg.prepareBaseData();
+    }
+
     prepareDerivedData() {
         super.prepareDerivedData();
 
@@ -114,20 +137,51 @@ export default class ArmorData extends CommonItemData {
 
             let items = this.parent.actor.items;
 
-            enhancementItemIds.forEach(itemId => {
-                let item = items.get(itemId);
-                if (item) {
-                    this.enhancementItems.push({
-                        name: item.name,
-                        img: item.img,
-                        system: item.system,
-                        id: itemId
-                    });
-                }
-            });
+            enhancementItemIds
+                .filter(id => id)
+                .forEach(itemId => {
+                    let item = items.get(itemId);
+                    if (item) {
+                        this.enhancementItems.push({
+                            name: item.name,
+                            img: item.img,
+                            system: item.system,
+                            id: itemId
+                        });
+                    }
+                });
         }
 
+        this.resistance.prepareDerivedData();
+
+        this.head.prepareDerivedData();
+        this.torso.prepareDerivedData();
+        this.leftArm.prepareDerivedData();
+        this.rightArm.prepareDerivedData();
+        this.leftLeg.prepareDerivedData();
+        this.rightLeg.prepareDerivedData();
+
         unwrapAssociatedDiagram(this);
+    }
+
+    get effectsWithEnhancements() {
+        let effects = { ...this.effects };
+
+        this.enhancementItems
+            .filter(item => Object.keys(item).length !== 0)
+            .forEach(enhancement => (effects = { ...effects, ...enhancement.system.effects }));
+
+        return effects;
+    }
+
+    get enhancementsEffects() {
+        let effects = {};
+
+        this.enhancementItems
+            .filter(item => Object.keys(item).length !== 0)
+            .forEach(enhancement => (effects = { ...effects, ...enhancement.system?.effects }));
+
+        return effects;
     }
 
     addEffects(effects) {
