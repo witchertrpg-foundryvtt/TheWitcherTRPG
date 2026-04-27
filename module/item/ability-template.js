@@ -155,7 +155,7 @@ export default class AbilityTemplate extends foundry.canvas.placeables.MeasuredT
         const now = Date.now(); // Apply a 20ms throttle
         if (now - this.#moveTime <= 20) return;
         const center = event.data.getLocalPosition(this.layer);
-        const interval = canvas.grid.type === CONST.GRID_TYPES.GRIDLESS ? 0 : 2;
+        const interval = canvas.grid.type === CONST.GRID_TYPES.GRIDLESS ? 0 : 65281;
         const snapped = canvas.grid.getSnappedPoint(center, { mode: interval });
         this.document.updateSource({ x: snapped.x, y: snapped.y });
         this.refresh();
@@ -186,7 +186,7 @@ export default class AbilityTemplate extends foundry.canvas.placeables.MeasuredT
      */
     async _onConfirmPlacement(event) {
         await this._finishPlacement(event);
-        const interval = canvas.grid.type === CONST.GRID_TYPES.GRIDLESS ? 0 : 2;
+        const interval = canvas.grid.type === CONST.GRID_TYPES.GRIDLESS ? 0 : 65281;
         const destination = canvas.grid.getSnappedPoint(this.document, { mode: interval });
         this.document.updateSource(destination);
         this.#events.resolve(canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [this.document.toObject()]));
