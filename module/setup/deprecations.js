@@ -4,6 +4,7 @@ export const deprecationWarnings = function () {
     lifepathModifiers();
     statSkillModifiers();
     oldCriticalWounds();
+    unequipArmorEnhancements();
 };
 
 async function lifepathModifiers() {
@@ -64,7 +65,6 @@ async function oldCriticalWounds() {
             return { actor: actor.name, critWounds: actor.system.critWounds };
         });
 
-
     if (affectedActors.length > 0) {
         const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
             'systems/TheWitcherTRPG/templates/dialog/deprecations/oldCriticalWounds.hbs',
@@ -72,6 +72,30 @@ async function oldCriticalWounds() {
         );
         DialogV2.prompt({
             window: { title: `${game.i18n.localize('WITCHER.deprecations.oldCriticalWounds.title')}` },
+            content: dialogTemplate
+        });
+    }
+}
+
+async function unequipArmorEnhancements() {
+    let affectedActors = game.actors
+        .filter(actor => actor.isOwner)
+        .filter(actor =>
+            actor.items
+                .filter(item => item.type == 'armor')
+                .find(item => item.system.enhancementItemIds?.filter(Boolean).length > 0)
+        )
+        .map(actor => {
+            return { name: actor.name };
+        });
+
+    if (affectedActors.length > 0) {
+        const dialogTemplate = await foundry.applications.handlebars.renderTemplate(
+            'systems/TheWitcherTRPG/templates/dialog/deprecations/armorEnhancements.hbs',
+            { affectedActors }
+        );
+        DialogV2.prompt({
+            window: { title: `${game.i18n.localize('WITCHER.deprecations.armorEnhancements.title')}` },
             content: dialogTemplate
         });
     }

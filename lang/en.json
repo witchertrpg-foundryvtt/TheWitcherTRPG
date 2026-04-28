@@ -1575,6 +1575,10 @@
             "oldCriticalWounds": {
                 "title": "Critical Wounds deprecation",
                 "text": "Critical Wounds were moved to items. This MUST be done before switching to v14. Replace the wounds of these actors."
+            },
+            "armorEnhancements": {
+                "title": "Armor Enhancements Rework",
+                "text": "Armor Enhancements are being reworked. To prevent data loss you need to unattach your enhancements from armors and shields before updating to the next version. Some armors might already be broken, it is best to redo them in the next version."
             }
         },
         "AssociatedDiagram": {
