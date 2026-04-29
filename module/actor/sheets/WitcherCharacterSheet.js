@@ -27,7 +27,7 @@ export default class WitcherCharacterSheet extends WitcherActorSheet {
 
     static PARTS = {
         sidebar: {
-            template: 'systems/TheWitcherTRPG/templates/partials/character/sidebar.hbs'
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/sidebar.hbs'
         },
         header: {
             template: 'systems/TheWitcherTRPG/templates/partials/character-header.hbs'

@@ -110,7 +110,7 @@ export default class WitcherActor extends Actor {
                     divider += 1;
                 }
             }
-        } 
+        }
 
         this.system.stats[stat].value = Math.floor((this.system.stats[stat].unmodifiedMax + totalModifiers) / divider);
     }
@@ -291,8 +291,6 @@ export default class WitcherActor extends Actor {
         // Expand the set of final overrides
         this.overrides = foundry.utils.expandObject(overrides);
     }
-
-   
 
     async applyStatus(effects) {
         effects

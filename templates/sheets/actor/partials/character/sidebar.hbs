@@ -1,4 +1,4 @@
-<div class='char-sidebar'>
+<div class='char-sidebar scrollable'>
     <div class="char-image">
         <img class='witcher-actor-img' src='{{actor.img}}' alt="actor image" data-action="editImage" data-edit='img'
             title='{{actor.name}}' />
@@ -78,15 +78,17 @@
         {{/if}}
     </div>
     <div class="optional-stats-section">
-        <div class='optional-stat vigor-display'>
-            <div class='optional-name'>
-                <i class='fa-solid fa-circle-notch optional-icon'></i>
-                <span class=''>{{localize 'WITCHER.Actor.DerStat.Vigor'}}</span>
+        {{#if system.derivedStats.vigor.max}}
+            <div class='optional-stat vigor-display'>
+                <div class='optional-name'>
+                    <i class='fa-solid fa-circle-notch optional-icon'></i>
+                    <span class=''>{{localize 'WITCHER.Actor.DerStat.Vigor'}}</span>
+                </div>
+                <div class='optional-info'>
+                    <h3>{{system.derivedStats.vigor.max}}</h3>
+                </div>
             </div>
-            <div class='optional-info'>
-                <h3>{{system.derivedStats.vigor.max}}</h3>
-            </div>
-        </div>
+        {{/if}}
         <div class='optional-stat shield-display'>
             <div class='optional-name'>
                 <i class='fa-solid fa-shield-halved'></i>
@@ -106,7 +108,8 @@
             </div>
             <div class='optional-info'>
                 <label class='switch' data-tooltip="{{localize 'WITCHER.Actor.woundThreshold.ignoreHint'}}">
-                    <input type='checkbox' name='system.healthState.woundThreshold.ignored' {{checked system.healthState.woundThreshold.ignored}} />
+                    <input type='checkbox' name='system.healthState.woundThreshold.ignored'
+                        {{checked system.healthState.woundThreshold.ignored}} />
                     <span class='slider'></span>
                 </label>
             </div>
@@ -118,7 +121,8 @@
             </div>
             <div class='optional-info'>
                 <label class='switch' data-tooltip="{{localize 'WITCHER.Actor.deathState.ignoreHint'}}">
-                    <input type='checkbox' name='system.healthState.deathState.ignored' {{checked system.healthState.deathState.ignored}} />
+                    <input type='checkbox' name='system.healthState.deathState.ignored'
+                        {{checked system.healthState.deathState.ignored}} />
                     <span class='slider'></span>
                 </label>
             </div>

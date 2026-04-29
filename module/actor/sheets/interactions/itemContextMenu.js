@@ -75,20 +75,18 @@ export let itemContextMenu = {
     removeEnhancement(itemHtml) {
         let choosenEnhancement = this.actor.items.get(itemHtml.dataset.itemId);
 
-        var parentData = itemHtml.parentElement.closest('.item').dataset;
-
         choosenEnhancement.update({
             'system.applied': false,
             'name': choosenEnhancement.name.replace('(Applied)', '')
         });
 
-        let parent = this.actor.items.get(parentData.itemId);
+        let parent = this.actor.items.get(itemHtml.parentElement.closest('.item').dataset.itemId);
 
         parent.update({
             'system.enhancementItemIds': parent.system.enhancementItemIds.filter(id => id != choosenEnhancement.id)
         });
 
-        if (parentData.type == 'armor') {
+        if (parent.type == 'armor') {
             parent.update({
                 'system.headStopping': parent.system.headStopping - choosenEnhancement.system.stopping,
                 'system.headMaxStopping': parent.system.headMaxStopping - choosenEnhancement.system.stopping,
@@ -104,11 +102,9 @@ export let itemContextMenu = {
                 'system.rightLegMaxStopping': parent.system.rightLegMaxStopping - choosenEnhancement.system.stopping,
                 'system.bludgeoning': choosenEnhancement.system.bludgeoning ? false : parent.system.bludgeoning,
                 'system.slashing': choosenEnhancement.system.slashing ? false : parent.system.slashing,
-                'system.piercing': choosenEnhancement.system.piercing ? false : parent.system.piercing,
-                'system.effects': parent.system.effects.filter(
-                    effect => !choosenEnhancement.system.effects.some(enhEffect => enhEffect.id == effect.id)
-                )
+                'system.piercing': choosenEnhancement.system.piercing ? false : parent.system.piercing
             });
+            parent.system.removeEffects(choosenEnhancement.system.effects);
         }
     },
 

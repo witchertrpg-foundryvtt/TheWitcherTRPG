@@ -131,7 +131,11 @@ export default class ArmorData extends CommonItemData {
     }
 
     addEffects(effects) {
-        this.effects = { ...this.effects, ...effects };
+        return { ...this.effects, ...effects };
+    }
+
+    removeEffects(effects) {
+        Object.keys(effects).forEach(key => this.parent.update({ [`system.effects.-=${key}`]: null }));
     }
 
     /** @inheritdoc */

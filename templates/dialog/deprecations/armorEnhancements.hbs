@@ -1,0 +1,10 @@
+{{#if affectedActors}}
+    <span>{{localize "WITCHER.deprecations.armorEnhancements.text"}}</span>
+    <div class="scrollable" style="max-height: 300px;">
+        {{#each affectedActors as |actor|}}
+            <div>
+                <span>{{actor.name}}</span>
+            </div>
+        {{/each}}
+    </div>
+{{/if}}
