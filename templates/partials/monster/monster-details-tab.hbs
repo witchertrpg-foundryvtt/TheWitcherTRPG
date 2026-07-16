@@ -1,39 +1,4 @@
-<label>{{localize "WITCHER.Monster.Resistances"}}</label>
-<input type="text" name="system.resistances" value="{{system.resistances}}" placeholder="" />
-<label>{{localize "WITCHER.Monster.Immunities"}}</label>
-<input type="text" name="system.immunities" value="{{system.immunities}}" placeholder="" />
-<label>{{localize "WITCHER.Monster.ImmunitiesStatusEffects"}}</label>
-<multi-select name="system.statusEffectImmunities">
-    {{selectOptions config.statusEffects selected=system.statusEffectImmunities nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
-</multi-select>
-<label>{{localize "WITCHER.Monster.Susceptibilities"}}</label>
-<input type="text" name="system.susceptibilities" value="{{system.susceptibilities}}" placeholder="" />
-<label>{{localize "WITCHER.Monster.Senses"}}</label>
-<input type="text" name="system.senses" value="{{system.senses}}" placeholder="" />
 
-<div class="monster-crit-wounds-section">
-    <h2>{{localize "WITCHER.CritWound.Header"}}<a class="add-crit" data-action="addCrit" data-itemType="note"><i class="fas fa-plus"></i></a>
-    </h2>
-    {{> "systems/TheWitcherTRPG/templates/partials/crit-wounds-table.hbs"}}
-</div>
 
-<h2>{{localize "WITCHER.Notes"}} <a class="add-item" data-itemType="note"><i class="fas fa-plus"></i></a></h2>
 
-{{#each oldNotes as |note id|}}
-    <div class="item bg-note" data-item-id="{{note._id}}">
-        <div class="flex">
-            <input class="inline-edit" data-field="name" type="text" value="{{note.name}}" placeholder="name" />
-            <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
-        </div>
-        <textarea class="inline-edit" rows="5" data-field="system.description">{{system.description}}</textarea>
-    </div>
-{{/each}}
-{{#each notes as |note|}}
-    <div class="item bg-note">
-        <div class="flex">
-            <input type="text" name="system.notes.{{@index}}.title" value="{{note.title}}" />
-            <a class="delete-note" data-note-index="{{@index}}"><i class="fas fa-trash-alt"></i></a>
-        </div>
-        {{editor note.details target=(concat "system.notes." @index ".details") button=true }}
-    </div>
-{{/each}}
+

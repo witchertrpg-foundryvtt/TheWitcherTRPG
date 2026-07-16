@@ -34,8 +34,14 @@ export async function preloadHandlebarsTemplates() {
         'systems/TheWitcherTRPG/templates/partials/monster/monster-spell-tab.hbs',
         'systems/TheWitcherTRPG/templates/partials/monster/monster-skill-display.hbs',
         'systems/TheWitcherTRPG/templates/partials/monster/monster-custom-skill-display.hbs',
-        'systems/TheWitcherTRPG/templates/partials/monster/monster-profession-skill-display.hbs',
         'systems/TheWitcherTRPG/templates/sheets/actor/configuration/partials/skillConfiguration.hbs',
+
+        'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/header.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/sidebar.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/partials/monster-info.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/partials/monster-knowledge.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/partials/monster-notes.hbs',
+        'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/partials/monster-status.hbs',
 
         'systems/TheWitcherTRPG/templates/sheets/actor/configuration/app/partials/stats-block.hbs',
 

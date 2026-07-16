@@ -161,6 +161,12 @@ input.profession-skill-input {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    width: 100%;
+
+    .profession-card {
+        width: 100%;
+        max-width: none;
+    }
 }
 
 .profession-card .editor {

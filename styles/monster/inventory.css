@@ -1,0 +1,15 @@
+.application.sheet.witcher.monster {
+    .tab.active.inventory {
+        .weapon-section,
+        .armor-section,
+        .valuable-section {
+            flex: none;
+            margin: 0;
+
+            .export-loot {
+                margin-top: 5px;
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+.application.sheet.witcher.monster {
+    .tab.active.details {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacer-16);
+
+        .monster-info {
+            margin: 0;
+        }
+
+        .tab:not(.active) {
+            display: none;
+            visibility: hidden;
+        }
+
+        .monster-knowledge {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacer-8);
+            justify-items: start;
+
+            h1 {
+                display: flex;
+                align-items: center;
+                gap: var(--spacer-8);
+                font-size: 36px;
+                margin: 0;
+            }
+
+            input {
+                width: 4ch;
+                height: 3ch;
+            }
+        }
+    }
+}

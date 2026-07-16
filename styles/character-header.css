@@ -400,12 +400,14 @@ a.button-roll:hover {
     background-color: #e06d6d;
 }
 
-.heal-button {
+.heal-button,
+.button-roll.export-loot {
     background-color: #aff2a4;
     color: #236231;
 }
 
-.heal-button:hover {
+.heal-button:hover,
+.button-roll.export-loot:hover {
     background-color: #79cc6b;
 }
 
