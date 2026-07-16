@@ -1,4 +1,5 @@
-.application.sheet.witcher.actor {
+.application.sheet.witcher.actor,
+.application.sheet.witcher.monster {
     .tab.profession.active {
         .profession-header,
         .race-header {
@@ -17,7 +18,8 @@
             }
         }
 
-        .profession-flex {
+        .profession-flex,
+        .monster-profession-flex {
             margin-bottom: 20px;
 
             .profession-card,

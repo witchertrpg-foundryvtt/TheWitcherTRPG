@@ -1,0 +1,154 @@
+<div class="monster-sidebar scrollable">
+    <div class="img-view">
+        <img src="{{concat 'systems/TheWitcherTRPG/assets/images/Monsters/' system.category '.png'}}" class="cat-img" data-tooltip="{{localize (concat 'WITCHER.Monster.Type.' system.category)}}">
+        <div class='wound-state' data-tooltip="{{localize 'WITCHER.Actor.woundState'}}">
+            {{#if (gte system.derivedStats.hp.value system.derivedStats.hp.unmodifiedMax)}}
+                <i class='fa-solid fa-heart' style='color: green;'></i>
+            {{else if (gte system.derivedStats.hp.value system.derivedStats.woundTreshold.value)}}
+                <i class='fa-solid fa-heart-crack' style='color: green;'></i>
+            {{else}}
+                <i class='fa-solid fa-heart-crack' style='color: orange;'></i>
+            {{/if}}
+        </div>
+        <img class="monster-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+    </div>
+
+    <div class='status-section'>
+        <div class='progress-container'>
+            <h3 class="progress-header hp">{{localize 'WITCHER.Actor.Hp'}}</h3>
+            <progress class='hp-bar' value='{{system.derivedStats.hp.value}}'
+                max='{{system.derivedStats.hp.max}}'></progress>
+            <h3 class='progress-text'>
+                <input class='progress-input' name='system.derivedStats.hp.value' type='number'
+                    value='{{system.derivedStats.hp.value}}' max='99' placeholder='0' data-dtype='Number' />
+                {{#if (gte system.combatEffects.temporaryEffects.temporaryHpSum 1)}}
+                    <span> + {{system.combatEffects.temporaryEffects.temporaryHpSum}}</span>
+                {{/if}}
+                <span>|</span>
+                <span class='progress-total'>{{system.derivedStats.hp.max}}</span>
+            </h3>
+        </div>
+        <div class='progress-container'>
+            <h3 class="progress-header stamina">{{localize 'WITCHER.Actor.Stamina'}}</h3>
+            <progress class='sta-bar' value='{{system.derivedStats.sta.value}}'
+                max='{{system.derivedStats.sta.max}}'></progress>
+            <h3 class='progress-text'>
+                <input class='progress-input' name='system.derivedStats.sta.value' type='number'
+                    value='{{system.derivedStats.sta.value}}' max='99' placeholder='0' data-dtype='Number' />
+                <span>|</span>
+                <span class='progress-total'>{{system.derivedStats.sta.max}}</span>
+            </h3>
+        </div>
+        <div class='progress-container'>
+            <h3 class="progress-header toxicity">{{localize 'WITCHER.Actor.Stat.Toxicity'}}</h3>
+            <progress class='toxicity-bar' value='{{system.stats.toxicity.value}}'
+                max='{{system.stats.toxicity.max}}'></progress>
+            <h3 class='progress-text'>
+                <input class='progress-input' name='system.stats.toxicity.value' type='number'
+                    value='{{system.stats.toxicity.value}}' max='{{system.stats.toxicity.max}}' placeholder='0'
+                    data-dtype='Number' />
+                <span>|</span>
+                <span class='progress-total'>{{system.stats.toxicity.max}}</span>
+            </h3>
+        </div>
+        <div class='progress-container'>
+            <h3 class="progress-header focus">{{localize system.derivedStats.focus.label}}</h3>
+            <progress class='focus-bar' value='{{system.derivedStats.focus.value}}'
+                max='{{system.derivedStats.focus.max}}'></progress>
+            <h3 class='progress-text'>
+                <input class='progress-input' name='system.derivedStats.focus.value' type='number'
+                    value='{{system.derivedStats.focus.value}}' max='{{system.derivedStats.focus.max}}' placeholder='0'
+                    data-dtype='Number' />
+                <span>|</span>
+                <span class='progress-total'>{{system.derivedStats.focus.max}}</span>
+            </h3>
+        </div>
+        {{#if useVerbalCombat}}
+            <div class='progress-container'>
+                <h3 class="progress-header resolve">{{localize system.derivedStats.resolve.label}}</h3>
+                <progress class='resolve-bar' value='{{system.derivedStats.resolve.value}}'
+                    max='{{system.derivedStats.resolve.max}}'></progress>
+                <h3 class='progress-text'>
+                    <input class='progress-input' name='system.derivedStats.resolve.value' type='number'
+                        value='{{system.derivedStats.resolve.value}}' max='{{system.derivedStats.resolve.max}}'
+                        placeholder='0' data-dtype='Number' />
+                    <span>|</span>
+                    <span class='progress-total'>{{system.derivedStats.resolve.max}}</span>
+                </h3>
+            </div>
+        {{/if}}
+    </div>
+    <div class="monster-armor-list">
+        <div class="monster-armor">
+            <label>{{localize "WITCHER.Monster.HeadArmor"}}</label>
+            <input class="small" name="system.armorHead" type="number" value="{{system.armorHead}}" placeholder="0"
+                data-dtype="Number" />
+        </div>
+        <div class="monster-armor">
+            <label>{{localize "WITCHER.Monster.UpperArmor"}}</label>
+            <input class="small" name="system.armorUpper" type="number" value="{{system.armorUpper}}"
+                placeholder="0" data-dtype="Number" />
+        </div>
+        <div class="monster-armor">
+            <label>{{localize "WITCHER.Monster.LowerArmor"}}</label>
+            <input class="small" name="system.armorLower" type="number" value="{{system.armorLower}}"
+                placeholder="0" data-dtype="Number" />
+        </div>
+        <div class="monster-armor">
+            <label>{{localize "WITCHER.Monster.WingTailArmor"}}</label>
+            <input class="small" name="system.armorTailWing" type="number" value="{{system.armorTailWing}}"
+                placeholder="0" data-dtype="Number" />
+        </div>
+    </div>
+    <div class="optional-stats-section">
+        {{#if system.derivedStats.vigor.max}}
+            <div class='optional-stat vigor-display'>
+                <div class='optional-name'>
+                    <i class='fa-solid fa-circle-notch optional-icon'></i>
+                    <span class=''>{{localize 'WITCHER.Actor.DerStat.Vigor'}}</span>
+                </div>
+                <div class='optional-info'>
+                    <h3>{{system.derivedStats.vigor.max}}</h3>
+                </div>
+            </div>
+        {{/if}}
+        <div class='optional-stat shield-display'>
+            <div class='optional-name'>
+                <i class='fa-solid fa-shield-halved'></i>
+                <span class=''>{{localize 'WITCHER.Actor.Shield'}}</span>
+            </div>
+            <div class='optional-info'>
+                <h3>
+                    <input class='small' type='number' name='system.derivedStats.shield.value'
+                        value='{{system.derivedStats.shield.value}}' data-dtype='Number' />
+                </h3>
+            </div>
+        </div>
+        <div class='optional-stat wound-threshold-toggle'>
+            <div class='optional-name'>
+                <i class='fa-solid fa-heart-pulse'></i>
+                <span class=''>{{localize 'WITCHER.Actor.woundThreshold.ignore'}}</span>
+            </div>
+            <div class='optional-info'>
+                <label class='switch' data-tooltip="{{localize 'WITCHER.Actor.woundThreshold.ignoreHint'}}">
+                    <input type='checkbox' name='system.healthState.woundThreshold.ignored'
+                        {{checked system.healthState.woundThreshold.ignored}} />
+                    <span class='slider'></span>
+                </label>
+            </div>
+        </div>
+        <div class='optional-stat death-state-toggle'>
+            <div class='optional-name'>
+                <i class='fa-solid fa-skull'></i>
+                <span class=''>{{localize 'WITCHER.Actor.deathState.ignore'}}</span>
+            </div>
+            <div class='optional-info'>
+                <label class='switch' data-tooltip="{{localize 'WITCHER.Actor.deathState.ignoreHint'}}">
+                    <input type='checkbox' name='system.healthState.deathState.ignored'
+                        {{checked system.healthState.deathState.ignored}} />
+                    <span class='slider'></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

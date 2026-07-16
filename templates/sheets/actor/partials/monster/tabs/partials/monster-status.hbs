@@ -1,0 +1,14 @@
+<div class="monster-status">
+    <label>{{localize "WITCHER.Monster.Resistances"}}</label>
+    <input type="text" name="system.resistances" value="{{system.resistances}}" placeholder="" />
+    <label>{{localize "WITCHER.Monster.Immunities"}}</label>
+    <input type="text" name="system.immunities" value="{{system.immunities}}" placeholder="" />
+    <label>{{localize "WITCHER.Monster.ImmunitiesStatusEffects"}}</label>
+    <multi-select name="system.statusEffectImmunities">
+        {{selectOptions config.statusEffects selected=system.statusEffectImmunities nameAttr='id' valueAttr="id" labelAttr="name" localize=true}}
+    </multi-select>
+    <label>{{localize "WITCHER.Monster.Susceptibilities"}}</label>
+    <input type="text" name="system.susceptibilities" value="{{system.susceptibilities}}" placeholder="" />
+    <label>{{localize "WITCHER.Monster.Senses"}}</label>
+    <input type="text" name="system.senses" value="{{system.senses}}" placeholder="" />
+</div>

@@ -1,0 +1,22 @@
+<div class="monster-notes">
+    <h2>{{localize "WITCHER.Notes"}} <a class="add-item" data-itemType="note"><i class="fas fa-plus"></i></a></h2>
+
+    {{#each oldNotes as |note id|}}
+        <div class="item bg-note" data-item-id="{{note._id}}">
+            <div class="flex">
+                <input class="inline-edit" data-field="name" type="text" value="{{note.name}}" placeholder="name" />
+                <a class="item-delete"><i class="fas fa-trash-alt"></i></a>
+            </div>
+            <textarea class="inline-edit" rows="5" data-field="system.description">{{system.description}}</textarea>
+        </div>
+    {{/each}}
+    {{#each notes as |note|}}
+        <div class="item bg-note">
+            <div class="flex">
+                <input type="text" name="system.notes.{{@index}}.title" value="{{note.title}}" />
+                <a class="delete-note" data-note-index="{{@index}}"><i class="fas fa-trash-alt"></i></a>
+            </div>
+            {{editor note.details target=(concat "system.notes." @index ".details") button=true }}
+        </div>
+    {{/each}}
+</div>

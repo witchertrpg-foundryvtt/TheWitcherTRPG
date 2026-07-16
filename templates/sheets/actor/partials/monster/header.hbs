@@ -1,0 +1,42 @@
+
+<div class="monster-header">
+    <h1 class="input-name">
+        <input class='charname' name='name' type='text' value='{{actor.name}}'
+            placeholder='{{localize "WITCHER.Actor.Name"}}' />
+        <a class="configure-actor"><i class="fas fa-gear"></i></a>
+    </h1>
+    <div class="monster-general">
+        <span>
+            {{localize (concat 'WITCHER.Monster.Type.' system.category)}}
+            -
+        </span>
+        <span>
+            {{localize (lookup config.monsterDifficulty system.threat)}}
+            -
+        </span>
+        <span>
+            {{localize (lookup config.monsterComplexity system.difficulty)}}
+        </span>
+    </div>
+
+    <div class="monster-actions">
+        <div class='monster-button-list'>
+            <a class='button-roll init-roll' data-tooltip="{{localize 'WITCHER.Actor.Initiative'}}"><i class="fa-solid fa-user-ninja"></i></a>
+            <a class='button-roll death-roll' data-tooltip="{{localize 'WITCHER.Actor.SavingThrow'}}"><i class="fa-solid fa-heart-circle-exclamation"></i></a>
+            <a class='button-roll crit-roll' data-tooltip="{{localize 'WITCHER.Actor.Crit/Fumble'}}"><i class="fa-solid fa-dice"></i></a>
+            {{#if useVerbalCombat}}
+                <a class='button-roll verbal-button' data-tooltip="{{localize 'WITCHER.verbalCombat.Title'}}"><i class="fa-solid fa-comment"></i></a>
+            {{/if}}
+            <a class='button-roll export-loot' data-action="exportLoot" data-tooltip="{{localize 'WITCHER.Monster.exportLoot'}}"><i class="fa-solid fa-sack-dollar"></i></a>
+        </div>
+
+        <div class='death-section action'>
+            <a class='death-minus' data-tooltip="Reset"><i class='fa-solid fa-rotate-left'></i></a>
+            <div class='death-counter'>
+                <i class='fas fa-skull'></i>
+                <h3>{{system.deathSaves}}</h3>
+            </div>
+            <a class='death-plus' data-tooltip="Add"><i class='fas fa-plus'></i></a>
+        </div>
+    </div>
+</div>

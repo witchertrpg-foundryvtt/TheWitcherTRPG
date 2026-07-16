@@ -1,25 +1,125 @@
 import WitcherMonsterConfigurationSheet from './configurations/WitcherMonsterConfigurationSheet.js';
-import WitcherActorSheetV1 from './WitcherActorSheetV1.js';
+import WitcherActorSheet from './WitcherActorSheet.js';
+import WitcherModifiersConfiguration from '../../actor/sheets/configurations/WitcherModifiersConfiguration.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
-export default class WitcherMonsterSheet extends WitcherActorSheetV1 {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['witcher', 'sheet', 'actor'],
-            width: 1120,
-            height: 600,
-            template: 'systems/TheWitcherTRPG/templates/sheets/actor/actor-sheet.hbs',
-            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }]
-        });
+export default class WitcherMonsterSheet extends WitcherActorSheet {
+    /** @override */
+    static DEFAULT_OPTIONS = {
+        position: {
+            width: 900,
+            height: 800
+        },
+        classes: ['witcher', 'sheet', 'monster'],
+        actions: {
+            openModifiers: this.#openModifiers,
+            exportLoot: this.#exportLoot,
+        }
+    };
+
+    static PARTS = {
+        sidebar: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/sidebar.hbs'
+        },
+        header: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/header.hbs'
+        },
+        tabs: {
+            // Foundry-provided generic template
+            template: 'templates/generic/tab-navigation.hbs'
+        },
+        stats: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-stats.hbs',
+            scrollable: ['']
+        },
+        skills: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-skills.hbs',
+            scrollable: ['']
+        },
+        profession: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/tab-profession.hbs',
+            scrollable: ['']
+        },
+        inventory: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/tab-inventory.hbs',
+            scrollable: ['']
+        },
+        details: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/tab-details.hbs',
+            scrollable: ['']
+        },
+        magic: {
+            template: 'systems/TheWitcherTRPG/templates/partials/character/tab-magic.hbs',
+            scrollable: ['']
+        },
+        effects: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/character/tab-effects.hbs',
+            scrollable: ['']
+        }
     }
+
+    static TABS = {
+        primary: {
+            tabs: [
+                { id: 'stats', cssClass: 'stats', label: 'WITCHER.Monster.SkillTab' },
+                { id: 'skills', cssClass: 'skills', label: 'WITCHER.Actor.tabs.skills' },
+                { id: 'profession', cssClass: 'profession', label: 'WITCHER.Profession' },
+                { id: 'inventory', cssClass: 'inventory', label: 'WITCHER.Monster.InventoryTab' },
+                { id: 'details', cssClass: 'details', label: 'WITCHER.Monster.DetailsTab' },
+                { id: 'magic', cssClass: 'magic', label: 'WITCHER.Monster.SpellsTab' },
+                { id: 'effects', cssClass: 'effects', label: 'WITCHER.activeEffect.tab' }
+            ],
+            initial: 'stats',
+        },
+        skillTabs: {
+            tabs: [
+                { id: 'all', cssClass: 'all', label: 'WITCHER.Button.All' },
+                { id: 'int', cssClass: 'int', label: 'WITCHER.Actor.Stat.Int' },
+                { id: 'ref', cssClass: 'ref', label: 'WITCHER.Actor.Stat.Ref' },
+                { id: 'dex', cssClass: 'dex', label: 'WITCHER.Actor.Stat.Dex' },
+                { id: 'body', cssClass: 'body', label: 'WITCHER.Actor.Stat.Body' },
+                { id: 'emp', cssClass: 'emp', label: 'WITCHER.Actor.Stat.Emp' },
+                { id: 'cra', cssClass: 'cra', label: 'WITCHER.Actor.Stat.Cra' },
+                { id: 'will', cssClass: 'will', label: 'WITCHER.Actor.Stat.Will' },
+                { id: 'ip', cssClass: 'ip', label: 'WITCHER.Actor.rewards.ip' }
+            ],
+            initial: 'all'
+        },
+        magicTabs: {
+            tabs: [
+                { id: 'all', cssClass: 'all', label: 'WITCHER.Button.All' },
+                { id: 'magic', cssClass: 'magic', label: 'WITCHER.Actor.tabs.magic' },
+                { id: 'rituals', cssClass: 'rituals', label: 'WITCHER.Spell.Rituals' },
+                { id: 'hexes', cssClass: 'hexes', label: 'WITCHER.Spell.Hexes' },
+                { id: 'magicalGift', cssClass: 'magicalGift', label: 'WITCHER.Spell.MagicalGift' },
+                { id: 'focus', cssClass: 'focus', label: 'WITCHER.Actor.focus.name' }
+            ],
+            initial: 'all'
+        },
+        detailTabs: {
+            tabs: [
+                { id: 'all', cssClass: 'all', label: 'WITCHER.Button.All' },
+                { id: 'notes', cssClass: 'notes', label: 'WITCHER.Notes' },
+                { id: 'lore', cssClass: 'lore', label: 'WITCHER.skills.monsterLore.rollLabel' },
+            ],
+            initial: 'all'
+        }
+    };
 
     configuration = new WitcherMonsterConfigurationSheet({ document: this.actor });
 
-    getData() {
-        let context = super.getData();
-        this._prepareLoot(context);
+    async _prepareContext(options) {
+        let context = await super._prepareContext(options);
+
         this._prepareCharacterData(context);
+        this._prepareLoot(context);
+
+        context.tabs = this._prepareTabs('primary');
+        context.skillTabs = this._prepareTabs('skillTabs');
+        context.magicTabs = this._prepareTabs('magicTabs');
+        context.detailTabs = this._prepareTabs('detailTabs');
+
         return context;
     }
 
@@ -45,12 +145,6 @@ export default class WitcherMonsterSheet extends WitcherActorSheetV1 {
         );
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
-
-        html.find('.export-loot').on('click', this.exportLoot.bind(this));
-    }
-
     async getOrCreateFolder() {
         let folderName = `${game.i18n.localize('WITCHER.Loot.Name')}`;
         let type = CONST.FOLDER_DOCUMENT_TYPES[0]; //actor
@@ -67,7 +161,7 @@ export default class WitcherMonsterSheet extends WitcherActorSheetV1 {
         return folder ? (folder[0] ? folder[0] : folder) : null;
     }
 
-    async exportLoot() {
+    static async #exportLoot() {
         let content = `${game.i18n.localize('WITCHER.Loot.MultipleExport')} <input type="number" class="small" name="multiple" value=1><br />`;
 
         let multiplier = await DialogV2.prompt({
@@ -109,5 +203,17 @@ export default class WitcherMonsterSheet extends WitcherActorSheetV1 {
         });
 
         await newLoot.sheet.render(true);
+    }
+
+    static async #openModifiers(_, target) {
+        _.preventDefault();
+        const type = target.dataset.type;
+        const skillKey = target.dataset.skillKey;
+
+        new WitcherModifiersConfiguration({
+            document: this.document,
+            skillKey: skillKey,
+            type: type
+        })?.render(true);
     }
 }

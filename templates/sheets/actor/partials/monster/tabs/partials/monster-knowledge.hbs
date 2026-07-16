@@ -1,0 +1,23 @@
+<div class="monster-knowledge">
+    {{#if system.showCommonerSuperstition}}
+        <h1>{{localize "WITCHER.Monster.CommonerSuperstition"}}
+            <input class="skill-value" name="system.commonSkillValue" type="number"
+                value="{{system.commonSkillValue}}" data-dtype="Number" />
+        </h1>
+        {{editor system.common target="system.common" button=true editable=editable}}
+    {{/if}}
+    {{#if system.showAcademicKnowledge}}
+        <h1>{{localize "WITCHER.Monster.AcademicKnowledge"}}
+            <input class="skill-value" name="system.academicKnowledgeSkillValue" type="number"
+                value="{{system.academicKnowledgeSkillValue}}" data-dtype="Number" />
+        </h1>
+        {{editor system.academicKnowledge target="system.academicKnowledge" button=true editable=editable}}
+    {{/if}}
+    {{#if system.showMonsterLore}}
+        <h1>{{localize "WITCHER.Monster.WitcherKnowledge"}}
+            <input class="skill-value" name="system.monsterLoreSkillValue" type="number"
+                value="{{system.monsterLoreSkillValue}}" data-dtype="Number" />
+        </h1>
+        {{editor system.monsterLore target="system.monsterLore" button=true editable=editable}}
+    {{/if}}
+</div>
