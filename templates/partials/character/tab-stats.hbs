@@ -73,6 +73,16 @@
         </div>
         <div class='stat-grid'>
             {{#each system.derivedStats as |details derStat|}}
+            {{#unless 
+                (or 
+                    (eq (localize details.label) (localize 'WITCHER.Actor.DerStat.HP'))
+                    (eq (localize details.label) (localize 'WITCHER.Actor.DerStat.Sta'))
+                    (eq (localize details.label) (localize 'WITCHER.Actor.DerStat.Shield'))
+                    (eq (localize details.label) (localize 'WITCHER.Actor.DerStat.Resolve'))
+                    (eq (localize details.label) (localize 'WITCHER.Actor.DerStat.Focus'))
+                    (eq (localize details.label) (localize 'WITCHER.Actor.DerStat.Vigor'))
+                )
+            }}
                 <div class='stat-display char-derived-button' data-type='derStat' data-stat='{{derStat}}'>
                     <div class="label">
                         <span>{{localize details.label}}</span>
@@ -97,6 +107,7 @@
                         {{/if}}
                     </div>
                 </div>
+            {{/unless}}
             {{/each}}
         </div>
     </div>

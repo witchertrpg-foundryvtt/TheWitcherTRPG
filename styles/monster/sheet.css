@@ -1,4 +1,3 @@
-.application.sheet.witcher.actor:not(.extended-sheet), 
 .application.sheet.witcher.monster:not(.extended-sheet) {
     .window-content {
         display: grid;
@@ -6,11 +5,10 @@
         grid-template-rows: 130px 70px 1fr;
         gap: 10px 30px;
 
-        .char-sidebar {
+        .monster-sidebar {
             grid-row: 1 / span 3;
         }
 
-        .char-header-center,
         .monster-header-center {
             grid-column: 2;
             grid-row: 1;

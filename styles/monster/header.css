@@ -1,0 +1,68 @@
+.application.sheet.witcher.monster {
+    .monster-header {
+        display: flex;
+        flex-direction: column;
+
+        .input-name {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+
+            .configure-actor {
+                font-size: 1rem;
+            }
+        }
+
+        .monster-general {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .monster-general > span > * {
+            border: none;
+        }
+
+        .monster-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 12px;
+
+            .monster-button-list {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .action {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border: 1px solid light-dark(#22222240, #e7d1b140);
+                border-radius: 5px;
+                padding: 5px 10px 5px;
+                width: 125px;
+
+                h3 {
+                    margin: 0;
+                    font-weight: 300;
+                }
+
+                .death-counter {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 5px;
+
+                    h3 {
+                        margin: 0;
+                        font-weight: 300;
+                    }
+                }
+            }
+        }
+
+    }
+}

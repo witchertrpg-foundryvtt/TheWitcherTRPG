@@ -29,6 +29,12 @@
 @import './character/sheet.css';
 @import './character/tab-profession.css';
 
+@import './monster/header.css';
+@import './monster/inventory.css';
+@import './monster/sheet.css';
+@import './monster/sidebar.css';
+@import './monster/details.css';
+
 @import './configurations/modifier-configuration.css';
 
 @font-face {

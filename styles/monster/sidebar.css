@@ -1,0 +1,59 @@
+.application.sheet.witcher.monster {
+    .monster-sidebar {
+        display: flex;
+        flex-direction: column;
+
+        .img-view {
+            position: relative;
+
+            .monster-img {
+                height: 260px;
+                width: 130px;
+                border-radius: 3px;
+                object-fit: cover;
+                cursor: pointer;
+            }
+
+            .cat-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 48px;
+                width: 48px;
+            }
+
+            .wound-state {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 5px;
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                right: 0;
+                bottom: 0;
+                background: rgba(34, 34, 34, 0.4);
+                backdrop-filter: blur(4px);
+                border-radius: 5px 0px 3px;
+                font-size: 28px;
+            }
+        }
+
+        .monster-armor-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 10px;
+
+            .monster-armor {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+
+                label {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

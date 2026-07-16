@@ -188,22 +188,6 @@
     border: none;
 }
 
-.monster-info {
-    position: absolute;
-    top: 410px;
-    left: 10px;
-    width: 250px;
-    background-color: silver;
-    font-size: 12px;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.monster-info input {
-    height: 18px;
-    font-weight: bold;
-}
-
 .monster-knowledge {
     margin-top: 10px;
     flex-basis: 380px;

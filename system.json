@@ -152,7 +152,9 @@
     "documentTypes": {
         "Actor": {
             "character": {},
-            "monster": {},
+            "monster": {
+                "htmlFields": ["common", "academicKnowledge", "monsterLore"]
+            },
             "loot": {}
         },
         "Item": {
