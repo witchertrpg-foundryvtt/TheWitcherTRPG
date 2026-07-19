@@ -74,8 +74,20 @@ export function getRandomInt(max) {
     return Math.floor(Math.random() * max) + 1;
 }
 
-export async function getCustomModifier(title) {
+export function addPart(value, details, hideZero = false) {
     let displayRollDetails = game.settings.get('TheWitcherTRPG', 'displayRollsDetails');
+    if (value == 0 && hideZero) {
+        return '';
+    }
+
+    let part = `+${value}`;
+    if (displayRollDetails) {
+        part += `[${game.i18n.localize(details)}]`;
+    }
+    return part;
+}
+
+export async function getCustomModifier(title) {
     let customModifier = await DialogV2.prompt({
         window: { title: title },
         content: `<label>${game.i18n.localize(
@@ -90,13 +102,5 @@ export async function getCustomModifier(title) {
         rejectClose: true
     });
 
-    if (customModifier != 0) {
-        let part = `+${customModifier}`;
-        if (displayRollDetails) {
-            part += `[${game.i18n.localize('WITCHER.Settings.Custom')}]`;
-        }
-        return part;
-    }
-
-    return '';
+    return addPart(customModifier, 'WITCHER.Settings.Custom', true);
 }
