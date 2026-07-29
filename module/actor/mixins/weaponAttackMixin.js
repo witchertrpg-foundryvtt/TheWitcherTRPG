@@ -174,6 +174,8 @@ export let weaponAttackMixin = {
             }
         });
 
+        damage.properties = damage.properties.toObject(false);
+
         for (let i = 0; i < attacknumber; i++) {
             let attFormula = '1d10+';
             let skill = CONFIG.WITCHER.skillMap[attack.skill];
@@ -298,7 +300,6 @@ export let weaponAttackMixin = {
             if (weapon.system.rollOnlyDmg) {
                 weapon.rollDamage(damage);
             } else {
-                damage.properties = damage.properties.toObject(false);
                 let messageData = new ChatMessageData(this, messageDataFlavor, 'attack', {
                     attacker: this.uuid,
                     attack: attack,
