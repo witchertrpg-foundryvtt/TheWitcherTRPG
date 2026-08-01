@@ -6,6 +6,7 @@ import defenseOptions from './templates/combat/defenseOptionsData.js';
 import attackOptions from './templates/combat/attackOptionsData.js';
 import DefenseProperties from './templates/combat/defensePropertiesData.js';
 import DamageProperties from './templates/combat/damagePropertiesData.js';
+import DamageInstance from './templates/combat/damageInstanceData.js';
 
 const fields = foundry.data.fields;
 
@@ -15,7 +16,7 @@ export default class WeaponData extends CommonItemData {
         return {
             // Using destructuring to effectively append our additional data here
             ...commonData,
-            type: new fields.SchemaField(weaponType()),
+
             isAmmo: new fields.BooleanField({ initial: false }),
 
             conceal: new fields.StringField({ initial: '' }),
@@ -27,6 +28,9 @@ export default class WeaponData extends CommonItemData {
             maxReliability: new fields.NumberField({ initial: 0 }),
 
             damage: new fields.StringField({ initial: '' }),
+            type: new fields.SchemaField(weaponType()),
+            damageInstances: new fields.TypedObjectField(new fields.EmbeddedDataField(DamageInstance)),
+
             range: new fields.StringField({ initial: '' }),
             accuracy: new fields.NumberField({ initial: 0 }),
             rateOfFire: new fields.NumberField({ initial: 1 }),
@@ -110,6 +114,28 @@ export default class WeaponData extends CommonItemData {
 
         migrateDamageProperties(source);
 
+        this.migrateDamage(source);
+
         return super.migrateData(source);
+    }
+
+    static migrateDamage(source) {
+        if (source.damage) {
+            console.log(source);
+            source.damageInstance = Object.fromEntries([
+                [
+                    foundry.utils.randomID(),
+                    {
+                        value: source.damage,
+                        type: Object.keys(source.type)
+                            .filter(key => key !== 'text')
+                            .filter(key => source.type[key])
+                    }
+                ]
+            ]);
+            console.log(source);
+        }
+
+        return source;
     }
 }

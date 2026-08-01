@@ -356,6 +356,7 @@
             }
         },
         "Damage": {
+            "name": "Damage",
             "RemoveSP": "Remove SP before applying location modifier.",
             "damageType": "What type of damage",
             "ChangeLocation": "Change The Location",
