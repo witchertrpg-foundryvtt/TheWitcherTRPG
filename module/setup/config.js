@@ -2069,7 +2069,7 @@ WITCHER.statusEffects = [
         changes: [
             {
                 key: 'system.combatEffects.turnStartEffects.healing',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'override',
                 value: `{ 
                     "name": "WITCHER.statusEffects.healing",
                     "img": "icons/svg/regen.svg",
@@ -2092,7 +2092,7 @@ WITCHER.statusEffects = [
         changes: [
             {
                 key: 'system.combatEffects.turnStartEffects.fire',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'override',
                 value: `{ 
                     "name": "WITCHER.statusEffects.fire",
                     "img": "icons/svg/fire.svg",
@@ -2118,7 +2118,7 @@ WITCHER.statusEffects = [
         changes: [
             {
                 key: 'system.combatEffects.turnStartEffects.poison',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'override',
                 value: `{ 
                     "name": "WITCHER.statusEffects.poison",
                     "img": "icons/svg/poison.svg",
@@ -2138,7 +2138,7 @@ WITCHER.statusEffects = [
         changes: [
             {
                 key: 'system.skillGroupModifiers.disease',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: `{ 
                     "name": "WITCHER.statusEffects.disease",
                     "group": "allSkills",
@@ -2147,7 +2147,7 @@ WITCHER.statusEffects = [
             },
             {
                 key: 'system.derivedStats.sta.max',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.MULTIPLY,
+                type: 'multiply',
                 value: 0.75
             }
         ]
@@ -2159,12 +2159,12 @@ WITCHER.statusEffects = [
         changes: [
             {
                 key: 'system.combatEffects.attackModifier.prone',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: '{ "name": "WITCHER.statusEffects.prone", "value": "-2" }'
             },
             {
                 key: 'system.combatEffects.defenseModifier.prone',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: '{ "name": "WITCHER.statusEffects.prone", "value": "-2" }'
             }
         ]
@@ -2176,7 +2176,7 @@ WITCHER.statusEffects = [
         changes: [
             {
                 key: 'system.combatEffects.turnStartEffects.bleed',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'override',
                 value: `{ 
                     "name": "WITCHER.statusEffects.bleed",
                     "img": "icons/svg/blood.svg",
@@ -2196,12 +2196,12 @@ WITCHER.statusEffects = [
         changes: [
             {
                 key: 'system.stats.spd.totalModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -3
             },
             {
                 key: 'system.stats.ref.totalModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -1
             }
         ]
@@ -2213,12 +2213,12 @@ WITCHER.statusEffects = [
         changes: [
             {
                 key: 'system.combatEffects.attackModifier.staggered',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: '{ "name": "WITCHER.statusEffects.staggered", "value": "-2" }'
             },
             {
                 key: 'system.combatEffects.defenseModifier.staggered',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: '{ "name": "WITCHER.statusEffects.staggered", "value": "-2" }'
             }
         ]
@@ -2230,67 +2230,67 @@ WITCHER.statusEffects = [
         changes: [
             {
                 key: 'system.stats.dex.totalModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -2
             },
             {
                 key: 'system.stats.ref.totalModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -2
             },
             {
                 key: 'system.stats.int.totalModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -2
             },
             {
                 key: 'system.skills.emp.seduction.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -3
             },
             {
                 key: 'system.skills.emp.persuasion.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -3
             },
             {
                 key: 'system.skills.emp.leadership.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -3
             },
             {
                 key: 'system.skills.emp.charisma.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -3
             },
             {
                 key: 'system.skills.emp.deceit.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -3
             },
             {
                 key: 'system.skills.int.socialetq.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -3
             },
             {
                 key: 'system.skills.will.intimidation.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -3
             },
             {
                 key: 'system.skills.will.resistcoerc.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -3
             },
             {
                 key: 'system.skills.emp.perception.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -3
             },
             {
                 key: 'system.skills.emp.gambling.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -3
             }
         ]
@@ -2312,7 +2312,7 @@ WITCHER.statusEffects = [
         changes: [
             {
                 key: 'system.combatEffects.turnStartEffects.suffocation',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'override',
                 value: `{ 
                     "name": "WITCHER.statusEffects.suffocation",
                     "img": "icons/svg/silenced.svg",
@@ -2332,17 +2332,17 @@ WITCHER.statusEffects = [
         changes: [
             {
                 key: 'system.combatEffects.attackModifier.blinded',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'override',
                 value: '{ "name": "WITCHER.statusEffects.blinded", "value": "-2" }'
             },
             {
                 key: 'system.combatEffects.defenseModifier.blinded',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'override',
                 value: '{ "name": "WITCHER.statusEffects.blinded", "value": "-2" }'
             },
             {
                 key: 'system.skills.int.awareness.activeEffectModifiers',
-                mode: foundry.CONST.ACTIVE_EFFECT_CHANGE_TYPES.ADD,
+                type: 'add',
                 value: -5
             }
         ]
