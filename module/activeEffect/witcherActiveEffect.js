@@ -111,9 +111,9 @@ export default class WitcherActiveEffect extends ActiveEffect {
         const allowed = await super._preUpdate(data, options, user);
         if (allowed === false) return false;
 
-        let phase = data.system.applyAfterCalculations ? 'final' : 'initial';
+        let phase = data.system?.applyAfterCalculations ? 'final' : 'initial';
 
-        data.system.changes.forEach(change => {
+        data.system?.changes.forEach(change => {
             change.phase = phase;
         });
     }
