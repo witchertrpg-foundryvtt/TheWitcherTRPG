@@ -99,11 +99,10 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
         },
         detailTabs: {
             tabs: [
-                { id: 'all', cssClass: 'all', label: 'WITCHER.Button.All' },
                 { id: 'notes', cssClass: 'notes', label: 'WITCHER.Notes' },
                 { id: 'lore', cssClass: 'lore', label: 'WITCHER.skills.monsterLore.rollLabel' },
             ],
-            initial: 'all'
+            initial: 'notes'
         }
     };
 
@@ -119,6 +118,12 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
         context.skillTabs = this._prepareTabs('skillTabs');
         context.magicTabs = this._prepareTabs('magicTabs');
         context.detailTabs = this._prepareTabs('detailTabs');
+
+        context.systemFields = this.document.system.schema.fields;
+        context.enrichedText = {
+            ...context.enrichedText,
+            ...(await this.document.system.enrichedText())
+        };
 
         return context;
     }

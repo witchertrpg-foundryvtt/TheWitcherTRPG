@@ -1,4 +1,5 @@
 import CommonActorData from './commonActorData.js';
+import { createEnrichedText } from '../dataUtils.js';
 
 const fields = foundry.data.fields;
 
@@ -39,19 +40,19 @@ export default class MonsterData extends CommonActorData {
             intelligence: new fields.StringField({ initial: '' }),
             organization: new fields.StringField({ initial: '' }),
 
-            common: new fields.StringField({ initial: '' }),
+            common: new fields.HTMLField({ initial: '' }),
             commonSkillValue: new fields.StringField({ initial: '' }),
             showCommonerSuperstition: new fields.BooleanField({
                 initial: true,
                 label: 'WITCHER.Monster.CommonerSuperstition'
             }),
-            academicKnowledge: new fields.StringField({ initial: '' }),
+            academicKnowledge: new fields.HTMLField({ initial: '' }),
             academicKnowledgeSkillValue: new fields.StringField({ initial: '' }),
             showAcademicKnowledge: new fields.BooleanField({
                 initial: true,
                 label: 'WITCHER.Monster.AcademicKnowledge'
             }),
-            monsterLore: new fields.StringField({ initial: '' }),
+            monsterLore: new fields.HTMLField({ initial: '' }),
             monsterLoreSkillValue: new fields.StringField({ initial: '' }),
             showMonsterLore: new fields.BooleanField({ initial: true, label: 'WITCHER.Monster.WitcherKnowledge' }),
 
@@ -59,6 +60,16 @@ export default class MonsterData extends CommonActorData {
             addMeleeBonus: new fields.BooleanField({ initial: false, label: 'WITCHER.Monster.addMeleeBonus' }),
             dontAddAttr: new fields.BooleanField({ initial: false, label: 'WITCHER.Monster.dontAddAttr' }),
             hasTailWing: new fields.BooleanField({ initial: false, label: 'WITCHER.Monster.hasTailWing' })
+        };
+    }
+
+    async enrichedText() {
+        return {
+            lore: {
+                common: await createEnrichedText(this, this.common, 'common'),
+                academicKnowledge: await createEnrichedText(this, this.academicKnowledge, 'academicKnowledge'),
+                monsterLore: await createEnrichedText(this, this.monsterLore, 'monsterLore'),
+            }
         };
     }
 }
