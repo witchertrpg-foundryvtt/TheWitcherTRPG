@@ -1,5 +1,6 @@
 import WitcherActor from '../../actor/witcherActor.js';
 import ChatMessageData from '../../chatMessage/chatMessageData.js';
+import DamageProperties from '../../data/item/templates/combat/damagePropertiesData.js';
 import { getRandomInt } from '../../scripts/helper.js';
 
 const DialogV2 = foundry.applications.api.DialogV2;
@@ -43,6 +44,10 @@ export let damageUtilMixin = {
         let damageTypeloc = damage.type ? 'WITCHER.DamageType.' + damage.type : '';
         flavor += `<div><b>${game.i18n.localize('WITCHER.Dialog.damageType')}:</b> ${game.i18n.localize(damageTypeloc)} </div>`;
         flavor += `<div>${game.i18n.localize('WITCHER.Damage.RemoveSP')}</div>`;
+
+        if (!(damage.properties instanceof DamageProperties)) {
+            damage.properties = new DamageProperties(damage.properties);
+        }
 
         let preprocessedEffects = damage.properties.getPreprocessedEffects();
         if (preprocessedEffects) {
