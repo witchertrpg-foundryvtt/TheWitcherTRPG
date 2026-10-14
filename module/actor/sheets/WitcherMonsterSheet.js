@@ -62,7 +62,7 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
     static TABS = {
         primary: {
             tabs: [
-                { id: 'stats', cssClass: 'stats', label: 'WITCHER.Monster.SkillTab' },
+                { id: 'stats', cssClass: 'stats', label: 'WITCHER.Actor.tabs.stats' },
                 { id: 'skills', cssClass: 'skills', label: 'WITCHER.Actor.tabs.skills' },
                 { id: 'profession', cssClass: 'profession', label: 'WITCHER.Profession' },
                 { id: 'inventory', cssClass: 'inventory', label: 'WITCHER.Monster.InventoryTab' },

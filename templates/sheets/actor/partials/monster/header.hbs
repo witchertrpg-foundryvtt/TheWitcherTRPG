@@ -6,16 +6,20 @@
         <a class="configure-actor"><i class="fas fa-gear"></i></a>
     </h1>
     <div class="monster-general">
-        <span>
+        <span data-tooltip="{{localize "WITCHER.Monster.Type.Lable"}}">
             {{localize (concat 'WITCHER.Monster.Type.' system.category)}}
             -
         </span>
-        <span>
+        <span data-tooltip="{{localize "WITCHER.Monster.Difficulty"}}">
             {{localize (lookup config.monsterDifficulty system.threat)}}
             -
         </span>
-        <span>
+        <span data-tooltip="{{localize "WITCHER.Monster.Complexity"}}">
             {{localize (lookup config.monsterComplexity system.difficulty)}}
+            -
+        </span>
+        <span data-tooltip="{{localize "WITCHER.Monster.Bounty"}}">
+            {{actor.system.bounty}} <i class="fa-solid fa-coins"></i>
         </span>
     </div>
 

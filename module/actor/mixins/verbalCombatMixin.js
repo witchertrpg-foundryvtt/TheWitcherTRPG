@@ -15,7 +15,7 @@ export let verbalCombatMixin = {
             }
         );
         let { group, verbal, customModifier } = await DialogV2.prompt({
-            window: { title: game.i18n.localize('WITCHER.verbalCombat.DialogTitle') },
+            window: { title: game.i18n.localize('WITCHER.verbalCombat.DialogTitle'), contentClasses: ['scrollable'] },
             content: dialogTemplate,
             ok: {
                 callback: (event, button, dialog) => {
@@ -58,13 +58,13 @@ export let verbalCombatMixin = {
         let rollFormula = `1d10`;
 
         if (verbalCombat.skill) {
-            rollFormula += (addPart(vcStat, vcStatName));
-            rollFormula += (addPart(vcSkill, vcSkillName));
+            rollFormula += addPart(vcStat, vcStatName);
+            rollFormula += addPart(vcSkill, vcSkillName);
 
-            rollFormula += (this.addActiveEffects(verbalCombat.skill.name));
+            rollFormula += this.addActiveEffects(verbalCombat.skill.name);
         }
 
-        rollFormula += (addPart(customModifier, 'WITCHER.Settings.Custom', 'hide'));
+        rollFormula += addPart(customModifier, 'WITCHER.Settings.Custom', 'hide');
 
         let flavor = `
                             <div class="verbal-combat-attack-message">
