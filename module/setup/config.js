@@ -507,13 +507,13 @@ WITCHER.skillMap = {
     },
     picklock: {
         attribute: WITCHER.statMap.cra,
-        label: 'WITCHER.skills.pickLock.label',
+        label: 'WITCHER.skills.picklock.label',
         name: 'picklock'
     },
     trapcraft: {
         attribute: WITCHER.statMap.cra,
-        label: 'WITCHER.skills.trapCrafting.label',
-        rollLabel: 'WITCHER.skills.trapCrafting.rollLabel',
+        label: 'WITCHER.skills.trapcraft.label',
+        rollLabel: 'WITCHER.skills.trapcraft.rollLabel',
         name: 'trapcraft',
         costMultiplier: 2
     },
