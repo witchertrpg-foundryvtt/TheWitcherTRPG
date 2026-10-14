@@ -1,4 +1,27 @@
 <section class="tab {{tabs.general.cssClass}} scrollable standard-form" data-group="primary" data-tab="general">
+    <div class="form-group">
+        <label>{{localize "WITCHER.Monster.Type.Lable"}}</label>
+        <select name="system.category">
+            {{selectOptions config.MonsterTypes selected=system.category localize=true}}
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{{localize "WITCHER.Monster.Difficulty"}}</label>
+        <select name="system.threat">
+            {{selectOptions config.monsterDifficulty selected=system.threat localize=true}}
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{{localize "WITCHER.Monster.Complexity"}}</label>
+        <select name="system.difficulty">
+            {{selectOptions config.monsterComplexity selected=system.difficulty localize=true}}
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{{localize "WITCHER.Monster.Bounty"}}</label>
+        <input name="system.bounty" type="text" value="{{system.bounty}}" />
+    </div>
+
     {{formGroup systemFields.customStat value=system.customStat localize=true}}
     {{#if system.customStat}}
         {{formGroup systemFields.derivedStats.fields.hp.fields.unmodifiedMax value=system.derivedStats.hp.unmodifiedMax localize=true}}
